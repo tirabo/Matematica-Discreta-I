@@ -9,6 +9,43 @@ def mcd(a, b):
         a, b = b, a % b
     return a
 
+
+"""
+mcd2: encuentra r, s tal mcd(a, b) = a * s + b * t
+Se basa en el siguiente razonamiento:  el invariante es
+r = a * s + b * t donde r recorre la lista de restos del Algoritmo de Euclides (AE).
+recordemos que r(0) = a, r(1) = b y en general r(i+1) = r(i-1) % r(i)
+Si
+(i-1) r(i-1) = a * s(i-1) + b * t(i-1)
+(i) r(i) = a * s(i) + b * t(i)
+Sea q = r(i+1) = r(i-1) / r(i). Entonces:
+r(i-1) = r(i) * q + r(i+1), luego
+r(i+1) = r(i-1) + r(i) * (-q)
+       = a * s(i-1) + b * t(i-1) + (a * s(i) + b * t(i)) * (-q)
+       = a * (s(i-1) +  s(i) * (-q)) + b * (t(i-1) +  t(i) * (-q))
+Es decir:
+(i+1) r(i+1) = a * s(i+1) + b * t(i+1)
+con
+s(i+1) = s(i-1) +  s(i) * (-q)
+t(i+1) = t(i-1) +  t(i) * (-q)
+Es decir con laes ecuaciones (i-1)) y (i) obtuvimos (i+1). Analogamente, con (i) y (i+1) se obtiene
+la ecuacion (i+2) y asi sucesivamente. Como r(i) > r(i+1) en algun momento obtenemos r(n+1) = 0. Entonces
+r(n) = mcd(a,b) y r, s = r(n), s(n).
+IMPLEMENTACION
+Valores iniciales
+(0) a = a * 1 + b * 0, es decir r0 = a, s0 = 1, t0 = 0
+(1) b = a * 0 + b * 1, es decir r1 = b, r1 = 0, t1 = 1
+No es necesario guardar todos los r(i),s(i): dados r0, s0, t0, r1, s1, t1 tal que
+r0 = a * s0 + b * t0
+r1 = a * s1 + b * t1
+Tomamos q = r0 / r1 y
+r1' = r0 % r1, r0' = r1
+s1' = s0 + s1 *^(-q), s0' = s1
+t1' = t0 + t1 *^(-q), t0' = t1
+Finalmente, eliminamos los "prima" y repetimos.
+"""
+
+
 def mcd2(a, b):
     # pre: a,b enteros. b > 0
     # post: devuelve s,t tal que mcd(a,b) = s*a + t*b
@@ -17,21 +54,21 @@ def mcd2(a, b):
     r0, r1 = a, b
     s0, s1 = 1, 0
     t0, t1 = 0, 1
-    while r1 !=0 :
+    while r1 != 0:
         q = r0 / r1
         s1n = s0 - q * s1
         t1n = t0 - q * t1
         r0, r1 = r1, r0 % r1
         s0, s1 = s1, s1n
         t0, t1 = t1, t1n
-    return  s0, t0
+    return s0, t0
 
 
-def cambiodebase(m, b):
+def cambiodebase(numa, b):
     # pre: m> 0, 1<b
-    # post: devuelve una lista que es la expresion de m en base b
+    # post: devuelve una lista que es la expresion de numa en base b
     ret = []
-    cociente = m
+    cociente = numa
     while cociente > 0:
         resto = cociente % b
         cociente = cociente/b
@@ -84,7 +121,6 @@ primo2 = 23674957702171429952648279486668092330664094976998701120031493523803751
 n = primo1 * primo2
 m = (primo1 - 1) * (primo2 - 1)
 e = 5
-d = mcd2(e,m)[0]
+d = mcd2(e, m)[0]
 
-print pot_modulo(6952221076085874809964747211172927529925899121966847505496583100,d,n)
-
+print pot_modulo(6952221076085874809964747211172927529925899121966847505496583100, d, n)
