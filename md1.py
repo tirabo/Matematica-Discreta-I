@@ -1,5 +1,54 @@
 
 
+def criba(num):
+    # pre: num entero
+    # post: devuelve la criba de Eratostenes hasta n
+    result = []
+    cr = []
+    for i in range(num):
+        cr.append(0)  # inicializacion de cr
+        # cr[i] = 0 :: i no es multiplo de los anteriores (es primo)
+        # cr[i] = 1 :: i es multiplo de los anteriores
+    for i in range(2, num):
+        if cr[i] == 0:
+            result.append(i)
+            k = 2
+            while k * i < num:
+                cr[k * i] = 1
+                k = k + 1
+    return result
+
+
+def factorizacion(num):
+    # pre: num numero natural
+    # post: factoriza num en primos. Si num = p0**r0 * p1**r1 * ... * pn**rn las descomposicion prima de num
+    #       Devuelve una lista donde en cada coordenada i esta [pi,ri]
+    #       Usa la criba de Eratostenes
+    result = []
+    cr = criba(num)
+    for i in range(len(cr)):
+        r = 0
+        mcr = num
+        while mcr % cr[i] == 0:
+            r = r + 1
+            mcr = mcr / cr[i]
+        if r > 0:
+            result.append([cr[i], r])
+    return result
+
+
+def criterio_raiz(num):
+    # pre: num es un numero natural
+    # post: devuelve True si num es primo usando el criterio de la raiz. Si el numero es compuesto devuelve False.
+    result = True
+    q = int(num ** 0.5) + 1
+    for i in range(2, q):
+        if num % i == 0:
+            result = False
+            break
+    return result
+
+
 def mcd(a, b):
     # pre: a,b enteros.
     # post: mcd divisor de a,b usando Algoritmo de Euclides. Si ambos son nulos devuelve 0.
@@ -28,9 +77,10 @@ Es decir:
 con
 s(i+1) = s(i-1) +  s(i) * (-q)
 t(i+1) = t(i-1) +  t(i) * (-q)
-Es decir con laes ecuaciones (i-1)) y (i) obtuvimos (i+1). Analogamente, con (i) y (i+1) se obtiene
+Es decir con las ecuaciones (i-1)) y (i) obtuvimos (i+1). Analogamente, con (i) y (i+1) se obtiene
 la ecuacion (i+2) y asi sucesivamente. Como r(i) > r(i+1) en algun momento obtenemos r(n+1) = 0. Entonces
 r(n) = mcd(a,b) y r, s = r(n), s(n).
+
 IMPLEMENTACION
 Valores iniciales
 (0) a = a * 1 + b * 0, es decir r0 = a, s0 = 1, t0 = 0
@@ -76,12 +126,12 @@ def cambiodebase(numa, b):
     return ret
 
 
-def phi(natural):
-    # pre: natural  entero positivo
+def phi(num):
+    # pre: num  entero positivo
     # post: devuelve la phi de Euler
     result = 0
-    for k in range(1, natural + 1):
-        if mcd(natural, k) == 1:
+    for k in range(1, num + 1):
+        if mcd(num, k) == 1:
             result += 1
     return result
 
@@ -115,7 +165,7 @@ def pot_modulo(base, exponente, modulo):
             bine = bine[:-1]
     return result
 
-
+# primo1, primo2 son dos primos de longitud 100
 primo1 = 2074722246773485207821695222107608587480996474721117292752992589912196684750549658310084416732550077
 primo2 = 2367495770217142995264827948666809233066409497699870112003149352380375124855230068487109373226251983
 n = primo1 * primo2
@@ -123,4 +173,4 @@ m = (primo1 - 1) * (primo2 - 1)
 e = 5
 d = mcd2(e, m)[0]
 
-print pot_modulo(6952221076085874809964747211172927529925899121966847505496583100, d, n)
+#print pot_modulo(6952221076085874809964747211172927529925899121966847505496583100, d, n)
