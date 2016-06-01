@@ -1,54 +1,4 @@
 
-
-def criba(num):
-    # pre: num entero
-    # post: devuelve la criba de Eratostenes hasta n
-    result = []
-    cr = []
-    for i in range(num):
-        cr.append(0)  # inicializacion de cr
-        # cr[i] = 0 :: i no es multiplo de los anteriores (es primo)
-        # cr[i] = 1 :: i es multiplo de los anteriores
-    for i in range(2, num):
-        if cr[i] == 0:
-            result.append(i)
-            k = 2
-            while k * i < num:
-                cr[k * i] = 1
-                k = k + 1
-    return result
-
-
-def factorizacion(num):
-    # pre: num numero natural
-    # post: factoriza num en primos. Si num = p0**r0 * p1**r1 * ... * pn**rn las descomposicion prima de num
-    #       Devuelve una lista donde en cada coordenada i esta [pi,ri]
-    #       Usa la criba de Eratostenes
-    result = []
-    cr = criba(num)
-    for i in range(len(cr)):
-        r = 0
-        mcr = num
-        while mcr % cr[i] == 0:
-            r = r + 1
-            mcr = mcr / cr[i]
-        if r > 0:
-            result.append([cr[i], r])
-    return result
-
-
-def criterio_raiz(num):
-    # pre: num es un numero natural
-    # post: devuelve True si num es primo usando el criterio de la raiz. Si el numero es compuesto devuelve False.
-    result = True
-    q = int(num ** 0.5) + 1
-    for i in range(2, q):
-        if num % i == 0:
-            result = False
-            break
-    return result
-
-
 def mcd(a, b):
     # pre: a,b enteros.
     # post: mcd divisor de a,b usando Algoritmo de Euclides. Si ambos son nulos devuelve 0.
@@ -126,6 +76,66 @@ def cambiodebase(numa, b):
     return ret
 
 
+def criba(num):
+    # pre: num entero
+    # post: devuelve la criba de Eratostenes hasta n
+    result = []
+    cr = []
+    for i in range(num):
+        cr.append(0)  # inicializacion de cr
+        # cr[i] = 0 :: i no es multiplo de los anteriores (es primo)
+        # cr[i] = 1 :: i es multiplo de los anteriores
+    for i in range(2, num):
+        if cr[i] == 0:
+            result.append(i)
+            k = 2
+            while k * i < num:
+                cr[k * i] = 1
+                k = k + 1
+    return result
+
+
+def factorizacion(num):
+    # pre: num numero natural
+    # post: factoriza num en primos. Si num = p0**r0 * p1**r1 * ... * pn**rn las descomposicion prima de num
+    #       Devuelve una lista donde en cada coordenada i esta [pi,ri]
+    #       Usa la criba de Eratostenes
+    result = []
+    cr = criba(num)
+    for i in range(len(cr)):
+        r = 0
+        mcr = num
+        while mcr % cr[i] == 0:
+            r = r + 1
+            mcr = mcr / cr[i]
+        if r > 0:
+            result.append([cr[i], r])
+    return result
+
+
+def criterio_raiz(num):
+    # pre: num es un numero natural
+    # post: devuelve True si num es primo usando el criterio de la raiz. Si el numero es compuesto devuelve False.
+    result = True
+    q = int(num ** 0.5) + 1
+    i = 2
+    while i < q:
+        if num % i == 0:
+            result = False
+            print i
+            break
+        i += 1
+    return result
+
+"""
+i = 2
+while i < 10**10:
+    k =10**20 % i
+    if i % 10**7 == 0:
+        print i
+    i = i+1
+"""
+
 def phi(num):
     # pre: num  entero positivo
     # post: devuelve la phi de Euler
@@ -134,6 +144,9 @@ def phi(num):
         if mcd(num, k) == 1:
             result += 1
     return result
+
+
+
 
 """
 Metodo binario para exponencicion modular

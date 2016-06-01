@@ -105,6 +105,38 @@ res =  pot_modulo_poly(bb, ee, mm)
 print res
 """
 
+
+def pot_monomio_modulo(ngrande, rtest, a):
+    # post: devuelve true si  (x + a) ** ngrande % (x ** rtest - 1, ngrande) = x ** ngrande + a
+    #       es decir si (x + a) ** ngrande - x ** ngrande + a = (x ** rtest - 1)*g + ngrande * f donde g,f in Z[x]
+    #       Procedimiento: cada vez que hace una cuenta en polinomios, se hace % ngrande de los coeficientes de
+    #       los polinomios (es como trabajar en Z_n)
+    result = 0
+    base,  exponente, modulo = poly([a, 1]), ngrande, poly([0,1])**rtest
+    print  base, ':', exponente, ':',  modulo
+    if modulo.grado() >= 1:
+        bine = cambiodebase(exponente, 2)
+        result = poly([1])
+        pot2 = base % modulo
+        while len(bine) > 0:
+            # print 'bb', bine
+            print len(bine)
+            result = (result * (pot2 ** int(bine[-1])) % modulo).mod(ngrande)
+            # print result
+            pot2 = (pot2 ** 2 % modulo).mod(ngrande)
+            print pot2
+            bine = bine[:-1]
+    return result
+
+pp = poly([3, 1])**300
+qq = poly([5, 1])**1000
+print 'pp:', pp
+# print 'qq:', qq
+# print pp*qq
+print (pp*qq).mod(100000)
+
+# print pot_monomio_modulo(100000, 333, 3)
+
 def orden_admisible(rtest, ngrande):
     # pre: rtest, ngrande enteros positivos
     # post: devuelve True si ngrande**k % rtest != 1 para for all  k tal 1 <= k <= log_2(ngrande)**2.
@@ -181,14 +213,14 @@ def paso5(ngrande, rtest):
 # print paso3(n,r)
 # print len(cambiodebase(n, 2))
 
-""""""
+
 
 # n = 10**25+37
 # r = 6899
 # r = 7000
 # f = poly([1,1])
 
-
+"""
 n = 10**10+37
 r = 1103
 r = 1100
@@ -224,6 +256,6 @@ for i in range(r/100):
 t1 = time.clock()
 print nh.grado()
 print 'Tiempo', t1-t0
-
+"""
 
 
