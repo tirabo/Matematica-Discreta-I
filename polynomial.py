@@ -81,9 +81,10 @@ class Polynomial(object):
 
     def __mod__(self, val):
         "Return self % val, val debe ser monico"
-        q, r = Polynomial(), self  # A cada paso el invariante es self = val * q + r
+        q, r = Polynomial([0]), self  # A cada paso el invariante es self = val * q + r
         x = Polynomial([0, 1])
         while r != 0 and r.grado() >= val.grado():
+            print 'rrrr', r.grado()
             if val.lead() != 1:
                 break
             g = r.grado() - val.grado()

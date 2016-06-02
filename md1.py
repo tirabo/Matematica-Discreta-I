@@ -119,21 +119,27 @@ def criterio_raiz(num):
     result = True
     q = int(num ** 0.5) + 1
     i = 2
+    print q
     while i < q:
+        if i % 10**6 == 0:
+            print  i / 10 ** 6
         if num % i == 0:
             result = False
-            print i
             break
         i += 1
-    return result
+    return result,i
 
+# print 'Primo? :', criterio_raiz(10**16+79)
+# 10**16+79 es primo (rapido)
+# print 'Primo? :', criterio_raiz(10**17+99)
+# 10**17+99 es primo (2 o 3 minutos)
 
-i = 2
-while i < 10**10:
-    k =10**20 % i
-    if i % 10**7 == 0:
-        print i
-    i = i+1
+# i = 2
+# while i < 10**9:
+#     k =10**20 % i
+#     if i % 10**7 == 0:
+#         print i
+#     i = i+1
 
 
 def phi(num):

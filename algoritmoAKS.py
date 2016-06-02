@@ -2,37 +2,8 @@
 import math
 from polynomial import Polynomial as poly
 import time
+import md1
 
-def mcd(a, b):
-    # pre: a,b enteros.
-    # post: mcd divisor de a,b usando Algoritmo de Euclides. Si ambos son nulos devuelve 0.
-    if b < 0:
-        b = -b
-    while b > 0:
-        a, b = b, a % b
-    return a
-
-
-def cambiodebase(m, b):
-    # pre: m> 0, 1<b
-    # post: devuelve una lista que es la expresion de m en base b
-    ret = []
-    cociente = m
-    while cociente > 0:
-        resto = cociente % b
-        cociente = cociente/b
-        ret.insert(0, resto)  # inserta por delante en la lista
-    return ret
-
-
-def phi(natural):
-    # pre: natural  entero positivo
-    # post: devuelve la phi de Euler
-    result = 0
-    for k in range(1, natural + 1):
-        if mcd(natural, k) == 1:
-            result += 1
-    return result
 
 """
 Metodo binario para exponencicion modular
@@ -49,27 +20,12 @@ y asi sucesivamente
 """
 
 
-def pot_modulo(base, exponente, modulo):
-    # pre: base, exponente, modulo enteros no negativos
-    # post: devuelve b**e % m usando el metodo binario
-    result = 0
-    if modulo > 1:
-        bine = cambiodebase(exponente, 2)
-        result = 1
-        pot2 = base % modulo
-        while len(bine) > 0:
-            # print bine
-            result = result*(pot2**int(bine[-1])) % modulo
-            pot2 = pot2**2 % modulo
-            bine = bine[:-1]
-    return result
-
 def pot_modulo_poly_entero(base, exponente, modulo):
     # pre: base polinomio; exponente, modulo enteros no negativos
     # post: devuelve b**e donde cada coeficiente se hace % m. Se usa el metodo binario
     result = poly([0])
     if modulo > 1:
-        bine = cambiodebase(exponente, 2)
+        bine = md1.cambiodebase(exponente, 2)
         result = poly([1])
         pot2 = base.mod(modulo)
         while len(bine) > 0:
@@ -84,7 +40,7 @@ def pot_modulo_poly_poly(base, exponente, modulo):
     # post: devuelve base**exponente % mmodulo usando el metodo binario
     result = 0
     if modulo.grado() >= 1:
-        bine = cambiodebase(exponente, 2)
+        bine = md1.cambiodebase(exponente, 2)
         result = poly([1])
         pot2 = base % modulo
         while len(bine) > 0:
@@ -115,18 +71,25 @@ def pot_monomio_modulo(ngrande, rtest, a):
     base,  exponente, modulo = poly([a, 1]), ngrande, poly([0,1])**rtest - 1
     # print  base, ':', exponente, ':',  modulo
     if modulo.grado() >= 1:
-        bine = cambiodebase(exponente, 2)
+        bine = md1.cambiodebase(exponente, 2)
         result = poly([1])
         pot2 = base % modulo
         while len(bine) > 0:
-            # print 'bb', bine
-            # print len(bine)
             result = (result * (pot2 ** int(bine[-1]))).mod(ngrande) % modulo
-            # print result
-            pot2 = (pot2 ** 2 % modulo).mod(ngrande)
-            # print pot2
+            # print pot2.grado()
+            pot2a = (pot2 ** 2).mod(ngrande)
+            # print 'pot2a, modulo:', pot2a.grado(), modulo.grado()
+            pot2 = pot2a % modulo  # esta es la operacion mas lenta
+            # print 'bb'
             bine = bine[:-1]
     return result
+
+
+n = 10**10+79
+r = 1109
+a = 1
+qq = pot_monomio_modulo(n, r, a)
+print 'qq: ', qq
 
 # pp = poly([3, 1])**300
 # qq =  pot_modulo_poly_entero(poly([5, 1]), 4000, 10**20)
@@ -144,7 +107,7 @@ def orden_admisible(rtest, ngrande):
     result = True
     u = int(math.log(ngrande, 2)**2)+1
     for k in range(1, u):
-        a = pot_modulo(ngrande, k, rtest)
+        a = md1.pot_modulo(ngrande, k, rtest)
         if a == 1:
             # print  k
             result = False
@@ -169,7 +132,7 @@ def paso3(ngrande, rtest):
     # sino devuelve True  (en ese caso sigue el test)
     result = True
     for a in range(1, rtest+1):
-        if mcd(a, ngrande) > 1:
+        if md1.mcd(a, ngrande) > 1:
             result = False
             break
     return result
@@ -182,12 +145,12 @@ def paso4(ngrande, rtest):
 
 
 def paso5(ngrande, rtest):
-    # post: sea u = int(phi(rtest)**0.5*math.log(ngrande,2)). Entonces si for all a <= u  se cumple
+    # post: sea u = int(md1.phi(rtest)**0.5*math.log(ngrande,2)). Entonces si for all a <= u  se cumple
     #       (x+a)**ngrande % (x**rtest-1,ngrande) = x**ngrande +a entonces devuelve True (en ese caso ngrande  es primo)
     #       en caso contrario devuelve False (y ngrande es compuesto)
     #       Aqui x es una variable independiente y congruencia se hace en polinomios.
     result = False
-    u = int(phi(rtest) ** 0.5 * math.log(ngrande, 2))
+    u = int(md1.phi(rtest) ** 0.5 * math.log(ngrande, 2))
     print 'Comprobaciones:', u
     for a in range(1, u+1):
         print a
@@ -197,37 +160,54 @@ def paso5(ngrande, rtest):
 # n = 10**100+37
 # r = 110431
 # print paso3(n,r)
-# print len(cambiodebase(n, 2))
+# print len(md1.cambiodebase(n, 2))
 # paso5(n, r)
 
 # n = 10**25+43
 # r = 6899
 # print paso3(n,r)
-# print len(cambiodebase(n, 2))
+# print len(md1.cambiodebase(n, 2))
 # paso5(n, r)
 
 # n = 10**20+111
 # r = 4481
 # print paso3(n,r)
-# print len(cambiodebase(n, 2))
+# print len(md1.cambiodebase(n, 2))
+#paso5(n, r)
+
+# n = 10**18 + 57
+# r = 3583
+# print paso3(n,r)
+# print len(md1.cambiodebase(n, 2))
 # paso5(n, r)
 
 # n = 10**15+37
 # r = 2531
 # print paso3(n,r)
-# print len(cambiodebase(n, 2))
+# print len(md1.cambiodebase(n, 2))
 # paso5(n, r)
 
-n = 10**10+79
-r = 1109
-print 'p3:', paso3(n,r)
-# print len(cambiodebase(n, 2))
+# n = 10**10+79
+# r = 1109
+# print 'p3:', paso3(n,r)
+# print len(md1.cambiodebase(n, 2))
 #print 'pmm:', pot_monomio_modulo(n, r, 5)
-mon = poly([0,1])**r - 1
-q =pot_modulo_poly_entero(poly([5,1]), r, n)
-p = q * q
-p = p % mon
-print p
+# mon = poly([0,1])**r - 1
+# q =pot_modulo_poly_entero(poly([5,1]), r, n)
+# print q
+
+# t0 = time.clock()
+# k = []
+# print 'aa'
+# for i in range(4500**2):
+#     k.append(0)
+# print len(k)
+# t1 = time.clock()
+# print 'Tiempo', t1-t0
+
+# p = q * q
+# p = p % mon
+# print p
 # paso5(n, r)
 
 
