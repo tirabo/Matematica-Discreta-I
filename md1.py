@@ -127,14 +127,14 @@ def criterio_raiz(num):
         i += 1
     return result
 
-"""
+
 i = 2
 while i < 10**10:
     k =10**20 % i
     if i % 10**7 == 0:
         print i
     i = i+1
-"""
+
 
 def phi(num):
     # pre: num  entero positivo

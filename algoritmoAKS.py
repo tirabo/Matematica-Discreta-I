@@ -64,7 +64,7 @@ def pot_modulo(base, exponente, modulo):
             bine = bine[:-1]
     return result
 
-def pot_modulo_poly_0(base, exponente, modulo):
+def pot_modulo_poly_entero(base, exponente, modulo):
     # pre: base polinomio; exponente, modulo enteros no negativos
     # post: devuelve b**e donde cada coeficiente se hace % m. Se usa el metodo binario
     result = poly([0])
@@ -79,7 +79,7 @@ def pot_modulo_poly_0(base, exponente, modulo):
             bine = bine[:-1]
     return result
 
-def pot_modulo_poly(base, exponente, modulo):
+def pot_modulo_poly_poly(base, exponente, modulo):
     # pre: base y modulo son polinomios con modulo monico. exponente un entero no negativo
     # post: devuelve base**exponente % mmodulo usando el metodo binario
     result = 0
@@ -101,7 +101,7 @@ bb = poly([0, 1])**1 + poly([2])
 mm = poly([0, 1])**2 + 1
 ee = 56043
 print bb, ' : ', mm, ' : ', ee
-res =  pot_modulo_poly(bb, ee, mm)
+res =  pot_modulo_poly_poly(bb, ee, mm)
 print res
 """
 
@@ -112,28 +112,28 @@ def pot_monomio_modulo(ngrande, rtest, a):
     #       Procedimiento: cada vez que hace una cuenta en polinomios, se hace % ngrande de los coeficientes de
     #       los polinomios (es como trabajar en Z_n)
     result = 0
-    base,  exponente, modulo = poly([a, 1]), ngrande, poly([0,1])**rtest
-    print  base, ':', exponente, ':',  modulo
+    base,  exponente, modulo = poly([a, 1]), ngrande, poly([0,1])**rtest - 1
+    # print  base, ':', exponente, ':',  modulo
     if modulo.grado() >= 1:
         bine = cambiodebase(exponente, 2)
         result = poly([1])
         pot2 = base % modulo
         while len(bine) > 0:
             # print 'bb', bine
-            print len(bine)
-            result = (result * (pot2 ** int(bine[-1])) % modulo).mod(ngrande)
+            # print len(bine)
+            result = (result * (pot2 ** int(bine[-1]))).mod(ngrande) % modulo
             # print result
             pot2 = (pot2 ** 2 % modulo).mod(ngrande)
-            print pot2
+            # print pot2
             bine = bine[:-1]
     return result
 
-pp = poly([3, 1])**300
-qq = poly([5, 1])**1000
-print 'pp:', pp
+# pp = poly([3, 1])**300
+# qq =  pot_modulo_poly_entero(poly([5, 1]), 4000, 10**20)
+# print 'pp:', pp
 # print 'qq:', qq
 # print pp*qq
-print (pp*qq).mod(100000)
+# print (pp*qq).mod(100000)
 
 # print pot_monomio_modulo(100000, 333, 3)
 
@@ -181,13 +181,6 @@ def paso4(ngrande, rtest):
     return ngrande <= rtest
 
 
-def pot_monomio_modulo(ngrande, rtest, a):
-    # post: devuelve true si  (x + a) ** ngrande % (x ** rtest - 1, ngrande) = x ** ngrande + a
-    #       es decir si (x + a) ** ngrande - x ** ngrande + a = (x ** rtest - 1)*g + ngrande * f donde g,f in Z[x]
-    result = True
-    return result
-
-
 def paso5(ngrande, rtest):
     # post: sea u = int(phi(rtest)**0.5*math.log(ngrande,2)). Entonces si for all a <= u  se cumple
     #       (x+a)**ngrande % (x**rtest-1,ngrande) = x**ngrande +a entonces devuelve True (en ese caso ngrande  es primo)
@@ -195,67 +188,84 @@ def paso5(ngrande, rtest):
     #       Aqui x es una variable independiente y congruencia se hace en polinomios.
     result = False
     u = int(phi(rtest) ** 0.5 * math.log(ngrande, 2))
-    print 'u', u
+    print 'Comprobaciones:', u
     for a in range(1, u+1):
-        pass
-        # pot_monomio_modulo(ngrande, rtest, a)
+        print a
+        pot_monomio_modulo(ngrande, rtest, a)
     return result
 
 # n = 10**100+37
-# print paso2(n)
 # r = 110431
 # print paso3(n,r)
 # print len(cambiodebase(n, 2))
+# paso5(n, r)
 
-# n = 10**25+37
-# print paso2(n)
+# n = 10**25+43
 # r = 6899
 # print paso3(n,r)
 # print len(cambiodebase(n, 2))
+# paso5(n, r)
+
+# n = 10**20+111
+# r = 4481
+# print paso3(n,r)
+# print len(cambiodebase(n, 2))
+# paso5(n, r)
+
+# n = 10**15+37
+# r = 2531
+# print paso3(n,r)
+# print len(cambiodebase(n, 2))
+# paso5(n, r)
+
+n = 10**10+79
+r = 1109
+print 'p3:', paso3(n,r)
+# print len(cambiodebase(n, 2))
+#print 'pmm:', pot_monomio_modulo(n, r, 5)
+mon = poly([0,1])**r - 1
+q =pot_modulo_poly_entero(poly([5,1]), r, n)
+p = q * q
+p = p % mon
+print p
+# paso5(n, r)
 
 
-
-# n = 10**25+37
-# r = 6899
-# r = 7000
+# n = 10**10+37
+# r = 1103
+# r = 1100
 # f = poly([1,1])
+#
+# t0 = time.clock()
+# xr1 = poly([0, 1])**r + 1
+# print 'xr1', xr1
+# t1 = time.clock()
+# print 'Tiempo 0', t1-t0
+#
+#
+#
+# t0 = time.clock()
+# h = f**100
+# h = h.mod(n)
+# nh = poly([1])
+# for i in range(r/100):
+#     nh = nh * h
+#     nh = nh.mod(n)
+#     #print i
+# t1 = time.clock()
+# print nh.grado()
+# print 'Tiempo 0', t1-t0
+#
+#
+# t0 = time.clock()
+# for i in range(r/100):
+#     nh = nh * h
+#     nh = nh.mod(n)
+#     nh = nh % xr1
+#     print i
+# t1 = time.clock()
+# print nh.grado()
+# print 'Tiempo', t1-t0
 
-"""
-n = 10**10+37
-r = 1103
-r = 1100
-f = poly([1,1])
-
-t0 = time.clock()
-xr1 = poly([0, 1])**r + 1
-print 'xr1', xr1
-t1 = time.clock()
-print 'Tiempo 0', t1-t0
-
-
-
-t0 = time.clock()
-h = f**100
-h = h.mod(n)
-nh = poly([1])
-for i in range(r/100):
-    nh = nh * h
-    nh = nh.mod(n)
-    #print i
-t1 = time.clock()
-print nh.grado()
-print 'Tiempo 0', t1-t0
-
-
-t0 = time.clock()
-for i in range(r/100):
-    nh = nh * h
-    nh = nh.mod(n)
-    nh = nh % xr1
-    print i
-t1 = time.clock()
-print nh.grado()
-print 'Tiempo', t1-t0
-"""
 
 

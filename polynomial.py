@@ -219,10 +219,6 @@ t1 = time.clock()
 print 'Tiempo', t1-t0
 """
 
-n = 10**25+37
-r = 6899
-f = Polynomial([1,1])
-
 """
 nh = Polynomial([1])
 t0 = time.clock()
