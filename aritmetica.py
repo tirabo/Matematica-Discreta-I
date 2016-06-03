@@ -91,7 +91,7 @@ def criba(num):
             k = 2
             while k * i < num:
                 cr[k * i] = 1
-                k = k + 1
+                k += 1
     return result
 
 
@@ -155,7 +155,7 @@ def phi(num):
 
 
 """
-Metodo binario para exponencicion modular
+Metodo binario para exponenciacion modular
 Ver: 'Right-to-left binary method' en https://en.wikipedia.org/wiki/Modular_exponentiation
 Se desea calular b**e % m
 1) Se calcula la expresion binaria de e
@@ -193,3 +193,15 @@ e = 5
 d = mcd2(e, m)[0]
 
 #print pot_modulo(6952221076085874809964747211172927529925899121966847505496583100, d, n)
+
+def RSA_encode(n, e, cadena):
+    # pre: n, e clave publica. cadena es una string de digitos tal que int(cadena) < n
+    # post: devuelve una string con los digitos de m**e % n
+    m = int(cadena)
+    return str(pot_modulo(m, e, n))
+
+def RSA_decode(n, d, mensaje):
+    # pre: n, d clave privada. mensaje es una string de digitos tal que int(mensaje) < n
+    # post: devuelve una string con los digitos de mensaje**d % n
+    m = int(mensaje)
+    return str(pot_modulo(m,d,n))
