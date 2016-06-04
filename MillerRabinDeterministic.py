@@ -23,7 +23,7 @@ def mrd(ng):
     while d % 2 == 0:
         d = d / 2
         s = s + 1
-    # ng - 1 = 2**s * d by factoring powers of 2 from ng - 1
+    # ng - 1 = 2**s * d  con mcd(2, d) = 1
     vr = int(min(ng - 1, 2 * math.log(ng)**2)) + 1
     print 'Chequeos: ',vr
     for a in range(2, vr):
@@ -38,7 +38,6 @@ def mrd(ng):
             compuesto = compuesto and (chk1 != 1 and chk2 != ng - 1)
         if compuesto:
             return False
-
     return True
 
 
