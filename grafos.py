@@ -1,4 +1,4 @@
-
+import copy
 
 # Un grafo se define con una lista de adyacencia G =[a0,a1,...]
 #  1) los vertices son 0,1,...,len(G)-1
@@ -6,92 +6,123 @@
 #  3) j in ai sii i in aj
 #  4) cada ai no tiene elementos repetidos
 
-def grafo(G):
-    # pre: G es un lista. Cada componente es una lista de enteros j, con 0 <= j < len(G)
+
+def grafo(graph):
+    # pre: graph es un lista. Cada componente es una lista de enteros j, con 0 <= j < len(graph)
     # post: devuelve una lista de adyacencia (cumple 2), 3) y 4) de arriba)
-    for i in range(len(G)):
-        #print G[i]
+    for i in range(len(graph)):
+        # print graph[i]
         j = 0
-        while j  < len(G[i]):
-            k = G[i][j]
-            if i not in G[k]:
-                G[k].append(i)
-            if G[i][j] == i or G[i][j] >= len(G) :
-                del G[i][j]
+        while j < len(graph[i]):
+            k = graph[i][j]
+            if i not in graph[k]:
+                graph[k].append(i)
+            if graph[i][j] == i or graph[i][j] >= len(graph):
+                del graph[i][j]
             else:
-                j = j +1
-    for i in range(len(G)):
-        G[i].sort()
+                j += 1
+    for i in range(len(graph)):
+        graph[i].sort()
         j = 1
-        while j < len(G[i]):
-            if G[i][j] == G[i][j-1]:
-                del G[i][j]
+        while j < len(graph[i]):
+            if graph[i][j] == graph[i][j-1]:
+                del graph[i][j]
                 pass
             else:
-                j = j+1
-    return G
+                j += 1
+        graph[i].sort()
+    return graph
 
 
-def valencia(G):
-    # pre: G es un grafo
-    # post: devuelve la lista de valencias. La valencia(G)[i] = valencia del vertice i
-    G = grafo(G)  # por las dudas chequea el grafo
+def valencia(graph):
+    # pre: graph es un grafo
+    # post: devuelve la lista de valencias. La valencia(graph)[i] = valencia del vertice i
+    graph = grafo(graph)  # por las dudas chequea el grafo
     val = []
-    for i in range(len(G)):
-        val.append(len(G[i]))
+    for i in range(len(graph)):
+        val.append(len(graph[i]))
     return val
 
 
-def aristas(G):
-    # pre: G grafo
-    # post:  devuelve una lista de aristas [a,b]. Para simplificar tambien se pone [b,a]
-    G = grafo(G)  # por las dudas chequea el grafo
-    aristas = []
-    for i in range(len(G)):
-        aristas.append([i,G[i]])
-    return aristas
+def aristas(graph):
+    # pre: graph grafo
+    # post:  devuelve una lista de aristas, una copia del mismo grafo
+    graph = grafo(graph)
+    hgraph = copy.deepcopy(graph)
+    return hgraph
 
-def adyacentes(v, G):
-    # pre: G grafo, v vertice
-    # post: devuelve los vertices adyacentes a v
-    return G[v]
 
-def sacar_arista(G,i,j):
-    # pre: G grafo, i, j vertices
-    # post: elimina la arista ij (si existe)
+def vertices(graph):
+    # pre: graph grafo
+    # post:  devuelve una lista de vertices de graph
+    verts = []
+    for i in range(len(graph)):
+        verts.append(i)
+    return verts
+
+
+def adyacentes(vert, graph):
+    # pre: graph graph, vert vertice
+    # post: devuelve los vertices adyacentes a vert
+    hgraph = aristas(graph)
+    return hgraph[vert]
+
+
+def quitar_arista(graph, i, j):
+    # pre: graph grafo, i, j vertices
+    # post: devuelve el grafo sin la arista ij (si existe)
     k = 0
-    while k < len(G[i]):
-        if G[i][k] == j:
-            del G[i][k]
-            break
+    hgraph = aristas(graph)
+    while k < len(hgraph[i]):
+        if hgraph[i][k] == j:
+            del hgraph[i][k]
         k += 1
     k = 0
-    while k < len(G[j]):
-        if G[j][k] == i:
-            del G[j][k]
-            break
+    while k < len(hgraph[j]):
+        if hgraph[j][k] == i:
+            del hgraph[j][k]
         k += 1
-    return G
+    return hgraph
 
 
-def agregar_arista(G,i,j):
-    # pre: G grafo, i, j vertices
+def agregar_arista(graph, i, j):
+    # pre: graph grafo, i, j vertices
     # post: agrega la arista ij (si no existe)
-    G[i].append(j)
-    G[j].append(i)
-    G = grafo(G)
-    return G
+    h = aristas(graph)
+    h[i].append(j)
+    h[j].append(i)
+    return h
 
 
+def caminata_euleriana_from(graph, v):
+    # pre: graph grafo que 1) todas los son pares o 2) solo hay 2 vertices impares
+    #      v es un vertice tal que en 1) es arbitrario, en 2) es uno de los vertices de valencia impar.
+    # post: devuelve  la lista de vertices de la caminata euleriana
+    #       La caminata empieza desde v.
+    recorrido = [v]
+    libres = aristas(graph)  # en cada vertice nos dira que arista no hemos usado
+    usados = []
+    for i in range(len(graph)):
+        usados.append([])
+    pos = v
+    while len(libres[pos]) > 0:
+        prox = libres[pos][0]
+        # print pos, libres[pos], prox
+        recorrido.append(prox)
+        libres = quitar_arista(libres, pos, prox)
+        usados = agregar_arista(usados, pos, prox)
+        # print 'lib:', libres
+        # print 'usa:', usados
+        pos = prox
+    return recorrido
 
-def caminata_euleriana(G):
-    # pre: G grafo
+
+def caminata_euleriana(graph):
+    # pre: graph grafo.
     # post: devuelve un par. La primera coordenada es True si hay camina euleriana y False en otro caso.
     #       La segunda coordenada es vacia si no hay c e y es la lista de vertices de la caminata si existe  c e
-    #       La caminata empieza desde un vertice arbitrorio.
-    result = []
-    val = valencia(G)
-    caminata = True
+    #       La caminata empieza desde un vertice arbitrario (0 en el caso to_do par).
+    val = valencia(graph)
     extremos = []
     for i in range(len(val)):
         if val[i] % 2 == 1:
@@ -100,30 +131,41 @@ def caminata_euleriana(G):
         vini, vfin = 0, 0
         if len(extremos) == 2:
             vini, vfin = extremos[0], extremos[1]
-        recorrido = [vini]
-        libres = G # en cada vertice nos dira que arista no hemos usado
-        usados = []
-        for u in G:
-            usados.append([])
-        pos = extremos[0]
-        while len(libres[pos]) > 0:
-            prox = libres[pos][0]
-            print pos, libres[pos], prox
-            recorrido.append(prox)
-            libres = sacar_arista(libres, pos, prox)
-            usados = agregar_arista(usados, pos, prox)
-            print libres
-            print usados
-            pos = prox
-        return (True,recorrido)
+        recorrido = caminata_euleriana_from(graph, vini)
+        return True, recorrido
     else:
-        return (False,[])
+        return False, []
 
-G = [[2, 4, 5],[3, 5],[3, 4, 5],[1, 2, 4], [0, 2, 3, 5], [0, 1, 2, 4]]
+
+def coloracion_vertices(graph):
+    # pre: graph grafo
+    # post: devuelve la cantidad de colores usados  y  una lista de i:c donde i es vertice y
+    #       c es color (c in N); de tal forma que si i:c,  j:c' y ij arista, entonces c != c'.
+    color = {}  # diccionario color[v] = c es que el color de v es c. Si v no es key, no esta coloreado.
+    colores = 0
+    for u in vertices(graph):
+        cu = []  # colores de los vertices adyacentes a u
+        for v in graph[u]:
+            if v in color.keys():
+                cu.append(color[v])
+            nuevo = True  # determina si hay que agregar un color
+            for i in range(colores):
+                if i not in cu:
+                    color[u] = i
+                    nuevo = False
+                    break
+            if nuevo is True:
+                color[u] = colores
+                colores += 1
+    return colores, color
+
+
+G = [[2, 4, 5], [3, 5], [3, 4, 5], [1, 2, 4], [0, 2, 3, 5], [0, 1, 4]]
 G = grafo(G)
 print G
 
 print caminata_euleriana(G)
+print coloracion_vertices(G)
 
 # def caminata_euleriana(G, v):
 #     return True
