@@ -140,23 +140,24 @@ def caminata_euleriana(graph):
 def coloracion_vertices(graph):
     # pre: graph grafo
     # post: devuelve la cantidad de colores usados  y  una lista de i:c donde i es vertice y
-    #       c es color (c in N); de tal forma que si i:c,  j:c' y ij arista, entonces c != c'.
-    color = {}  # diccionario color[v] = c es que el color de v es c. Si v no es key, no esta coloreado.
-    colores = 0
-    for u in vertices(graph):
-        cu = []  # colores de los vertices adyacentes a u
-        for v in graph[u]:
-            if v in color.keys():
-                cu.append(color[v])
-            nuevo = True  # determina si hay que agregar un color
-            for i in range(colores):
-                if i not in cu:
-                    color[u] = i
-                    nuevo = False
-                    break
-            if nuevo is True:
-                color[u] = colores
-                colores += 1
+    #       c es color (c in N); de tal forma que si i:c,  k:c' y ij arista, entonces c != c'.
+    color = []  # si  j < len(color), color[j] = c dice que el color de j es c.
+    # si j <= len(color), todavia no esta asignado el color a j
+    colores = 0  # cantidad de colores utilizados
+    for i in range(len(graph)):
+        s = []  # conjunto de colores asignados a los vertices j (1 <= j < i) que son
+        # adyacentes a vi (comienza vacio)
+        for j in range(i):  # recorre todos los vertices j < i
+            if j in graph[i]:  # si j es adyacente a i
+                if color[j] not in s:
+                    s.append(color[j])  # agrega el color de j a s (si no estaba)
+        k = 0
+        while k in s:
+            k += 1
+        color.append(k)  # k es el primer color que no esta en s. Asigna el color k a i
+        if k + 1 > colores:
+            colores += 1
+
     return colores, color
 
 
