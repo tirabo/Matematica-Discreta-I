@@ -1,15 +1,18 @@
 import copy
 
+
 # Un grafo se define con una lista de adyacencia G =[a0,a1,...]
 #  1) los vertices son 0,1,...,len(G)-1
-#  2) ai non los vertices adyacentes a i. ai es una lista ordenada de vertices != i.
+#  2) ai lista de vertices adyacentes a i.
 #  3) j in ai sii i in aj
-#  4) cada ai no tiene elementos repetidos
+#  4) ai no tiene elementos repetidos (0 <= i <= len(G)-1).
 
+# OPERACIONES ELEMENTALES SOBRE GRAFOS
+# valencia de un vertice, vertices adyacentes, agregar arista, quitar arista
 
 def grafo(graph):
-    # pre: graph es un lista. Cada componente es una lista de enteros j, con 0 <= j < len(graph)
-    # post: devuelve una lista de adyacencia (cumple 2), 3) y 4) de arriba)
+    # pre: graph es un lista. La coordenada i es una lista de enteros j, con 0 <= j < len(graph) tq ij arista
+    # post: devuelve una lista de adyacencia (que cumple 2), 3) y 4) de arriba)
     for i in range(len(graph)):
         # print graph[i]
         j = 0
@@ -25,7 +28,7 @@ def grafo(graph):
         graph[i].sort()
         j = 1
         while j < len(graph[i]):
-            if graph[i][j] == graph[i][j-1]:
+            if graph[i][j] == graph[i][j - 1]:
                 del graph[i][j]
                 pass
             else:
@@ -45,15 +48,14 @@ def valencia(graph):
 
 
 def aristas(graph):
-    # pre: graph grafo
+    # pre: graph es un  grafo
     # post:  devuelve una lista de aristas, una copia del mismo grafo
-    graph = grafo(graph)
     hgraph = copy.deepcopy(graph)
     return hgraph
 
 
 def vertices(graph):
-    # pre: graph grafo
+    # pre: graph es un grafo
     # post:  devuelve una lista de vertices de graph
     verts = []
     for i in range(len(graph)):
@@ -71,6 +73,7 @@ def adyacentes(vert, graph):
 def quitar_arista(graph, i, j):
     # pre: graph grafo, i, j vertices
     # post: devuelve el grafo sin la arista ij (si existe)
+    # mod: no modifica graph, devuelve otro grafo
     k = 0
     hgraph = aristas(graph)
     while k < len(hgraph[i]):
@@ -89,16 +92,20 @@ def agregar_arista(graph, i, j):
     # pre: graph grafo, i, j vertices
     # post: agrega la arista ij (si no existe)
     h = aristas(graph)
-    h[i].append(j)
-    h[j].append(i)
+    if j not in h[i]:
+        h[i].append(j)
+        h[j].append(i)
     return h
+
+
+# ALGORITMOS SOBRE GRAFOS
 
 
 def caminata_euleriana_from(graph, v):
     # pre: graph grafo que 1) todas los son pares o 2) solo hay 2 vertices impares
     #      v es un vertice tal que en 1) es arbitrario, en 2) es uno de los vertices de valencia impar.
     # post: devuelve  la lista de vertices de la caminata euleriana
-    #       La caminata empieza desde v.
+    #       La caminata empieza en v.
     recorrido = [v]
     libres = aristas(graph)  # en cada vertice nos dira que arista no hemos usado
     usados = []
@@ -168,5 +175,72 @@ print G
 print caminata_euleriana(G)
 print coloracion_vertices(G)
 
+
 # def caminata_euleriana(G, v):
 #     return True
+
+
+# Algoritmo de Prim
+# si G es un grafo una funcion de peso de las aristas es un lista de listas w tal que
+# w[i][j] = peso de la arista de i a j (real >= 0), para 0 <= i, j <= n -1.
+# Si ij arista, w[i][j] = w[j[i] > 0. Si ij no es arista w[i][j] = w[j][i] = 0.
+
+def peso_max(w):
+    # pre: w es una lista de pesos de las aristas de un grafo
+    # post: devuelve el peso maximo
+    resultado = 0
+    for i in range(w):
+        for j in  range(w[i]):
+            resultado = max(resultado,w[i][j])
+    return resultado
+
+def peso_std(graph):
+    # pre: graph es un grafo
+    # post: devuelve w, funcion de peso, tal que a cada arista le asigna peso 1
+    n = len(graph)
+    w = []
+    for i in range(n):
+        w.append([])
+        for i in range(n):
+            w[i].append(0)
+        for j in range(n):
+            for j in range(n):
+                if j in graph[i]:
+                    w[i]
+
+
+
+def prim(graph, w):
+    #  pre: graph grafo con vertices 1,...,n y pesos w[i][j]. n >= 1.
+    # (w[i][j] = infinito si ij no es arista de G)
+    # post: devuelve tree un MST de graph
+    n = len(graph)
+    S = [0]  # lista de vertices utilizados en el MST (comienza con el primero)
+    Q = range(1, n)  # lista de vertices aun no utilizados en el MST
+    L = []
+    for i in Q:
+        L.append([i, 1, w(i, 1)])
+    F = []
+    for i in range(len(graph)):
+        F.append([])
+    # F  grafo con vertices 0,...,n-1 y sin aristas.
+    while Q != []:
+        uk = L[0][0]
+        vk = L[0][1]
+        pk = L[0][2]
+        for u in L:
+            if u[2] < pk:
+                uk = u[0]
+                vk = u[1]
+                pk = u[2]
+        # uk = vertice en Q tal que pk = w(uk,vk) es minimo
+        F = agregar_arista(F, uk, vk)
+        S.append(uk)
+        Q.remove(uk)
+        L.remove([uk, vk, pk])
+        for i in range(len(L)):
+            if w(L[i][0], uk) < L[i][2]:
+                L[i][1] = uk
+                L[i][2] = w(L[i][0], uk)
+            # el for modifica L
+    return F
