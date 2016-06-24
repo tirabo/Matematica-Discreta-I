@@ -213,7 +213,13 @@ G = [[1,2,3,4],[0,2,3,4],[0,1,3,4],[0,1,2,4],[0,1,2,3]]
 G = grafo(G)
 w = [[0, 6, 8, 6, 3],[6, 0, 2, 4, 5],[8, 2, 0, 5, 7],[6, 4, 5, 0, 7],[3, 5, 7, 7, 0]]
 
-
+G = [[1, 2, 3], [0, 2, 4], [0, 1, 3, 4, 5, 6], [0, 2, 6], [1, 2, 5, 7, 8], [2, 4, 6, 8], [2, 3, 5, 8, 9],
+     [4, 8, 10], [4, 5, 6, 7, 9, 10], [6, 8, 10], [7, 8, 9]]
+G = grafo(G)
+w = [[0, 2, 8, 1, 0, 0, 0, 0, 0, 0, 0], [2, 0, 6, 0, 1, 0, 0, 0, 0, 0, 0], [8, 6, 0, 7, 0, 0, 0, 0, 0, 0, 0],
+     [1, 0, 7, 0, 0, 0, 9, 0, 0, 0, 0], [0, 1, 5, 0, 0, 3, 0, 2, 9, 0, 0], [0, 0, 1, 0, 3, 0, 4, 0, 6, 0, 0],
+     [0, 0, 2, 9, 0, 4, 0, 0, 3, 1, 0], [0, 0, 0, 0, 2, 0, 0, 0, 7, 0, 9], [0, 0, 0, 0, 9, 6, 3, 7, 0, 1, 2],
+     [0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 4], [0, 0, 0, 0, 0, 0, 0, 9, 2, 4, 0]]
 
 def prim(graph, w):
     #  pre: graph grafo con vertices 1,...,n y pesos w[i][j]. n >= 1.
@@ -224,17 +230,21 @@ def prim(graph, w):
     Q = range(1, n)  # lista de vertices aun no utilizados en el MST
     L = []
     for i in Q:
-        L.append([i, 1, w[i][1]])
+        L.append([i, 0, w[i][0]])
+    # L = [[1, 0, p2], ..., [n-1, 0, p(n-1)]]]  con pi = w(i,0)
+    # se ira modificando L de tal forma que si Q = [u0,...,ur],
+    # L = [[u0,v0,p0],...,[ur,vr,pr]] donde  vi = vertice en S adyacente a ui tal que w(ui,vi) es minimo, pi = w(ui,vi)
     F = []
     for i in range(len(graph)):
         F.append([])
     # F  grafo con vertices 0,...,n-1 y sin aristas.
     while Q != []:
+        print 'L :', L
         uk = L[0][0]
         vk = L[0][1]
         pk = L[0][2]
         for u in L:
-            if u[2] < pk:
+            if u[2] < pk and u[2] > 0:
                 uk = u[0]
                 vk = u[1]
                 pk = u[2]
@@ -244,7 +254,7 @@ def prim(graph, w):
         Q.remove(uk)
         L.remove([uk, vk, pk])
         for i in range(len(L)):
-            if w[L[i][0]][uk] < L[i][2]:
+            if w[L[i][0]][uk] < L[i][2] and w[L[i][0]][uk] > 0:
                 L[i][1] = uk
                 L[i][2] = w[L[i][0]][uk]
             # el for modifica L
