@@ -170,10 +170,10 @@ def coloracion_vertices(graph):
 
 G = [[2, 4, 5], [3, 5], [3, 4, 5], [1, 2, 4], [0, 2, 3, 5], [0, 1, 4]]
 G = grafo(G)
-print G
+# print G
 
-print caminata_euleriana(G)
-print coloracion_vertices(G)
+# print caminata_euleriana(G)
+# print coloracion_vertices(G)
 
 
 # def caminata_euleriana(G, v):
@@ -201,12 +201,17 @@ def peso_std(graph):
     w = []
     for i in range(n):
         w.append([])
-        for i in range(n):
-            w[i].append(0)
         for j in range(n):
-            for j in range(n):
-                if j in graph[i]:
-                    w[i]
+            w[i].append(0)
+            if j in  graph[i]:
+                w[i][j] = 1
+    return w
+
+
+
+G = [[1,2,3,4],[0,2,3,4],[0,1,3,4],[0,1,2,4],[0,1,2,3]]
+G = grafo(G)
+w = [[0, 6, 8, 6, 3],[6, 0, 2, 4, 5],[8, 2, 0, 5, 7],[6, 4, 5, 0, 7],[3, 5, 7, 7, 0]]
 
 
 
@@ -219,7 +224,7 @@ def prim(graph, w):
     Q = range(1, n)  # lista de vertices aun no utilizados en el MST
     L = []
     for i in Q:
-        L.append([i, 1, w(i, 1)])
+        L.append([i, 1, w[i][1]])
     F = []
     for i in range(len(graph)):
         F.append([])
@@ -239,8 +244,10 @@ def prim(graph, w):
         Q.remove(uk)
         L.remove([uk, vk, pk])
         for i in range(len(L)):
-            if w(L[i][0], uk) < L[i][2]:
+            if w[L[i][0]][uk] < L[i][2]:
                 L[i][1] = uk
-                L[i][2] = w(L[i][0], uk)
+                L[i][2] = w[L[i][0]][uk]
             # el for modifica L
     return F
+
+print prim(G,w)
