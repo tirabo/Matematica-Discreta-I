@@ -189,10 +189,23 @@ def peso_max(w):
     # pre: w es una lista de pesos de las aristas de un grafo
     # post: devuelve el peso maximo
     resultado = 0
-    for i in range(w):
-        for j in  range(w[i]):
+    for i in range(len(w)):
+        for j in  range(len(w[i])):
             resultado = max(resultado,w[i][j])
     return resultado
+
+
+def w_infty(w):
+    # pre: w es una lista de pesos de las aristas de un grafo
+    # post: devuelve w donde reemplaza el peso 0 por peso_max+100 ('= infinito')
+    u = copy.deepcopy(w)
+    pinfty = peso_max(w) + 100
+    for i in range(len(w)):
+        for j in range(len(w[i])):
+            if w[i][j] == 0:
+                u[i][j] = pinfty
+    return u
+
 
 def peso_std(graph):
     # pre: graph es un grafo
@@ -229,6 +242,7 @@ def prim(graph, w):
     S = [0]  # lista de vertices utilizados en el MST (comienza con el primero)
     Q = range(1, n)  # lista de vertices aun no utilizados en el MST
     L = []
+    w = w_infty(w)
     for i in Q:
         L.append([i, 0, w[i][0]])
     # L = [[1, 0, p2], ..., [n-1, 0, p(n-1)]]]  con pi = w(i,0)
@@ -239,22 +253,17 @@ def prim(graph, w):
         F.append([])
     # F  grafo con vertices 0,...,n-1 y sin aristas.
     while Q != []:
-        print 'L :', L
-        uk = L[0][0]
-        vk = L[0][1]
-        pk = L[0][2]
-        for u in L:
-            if u[2] < pk and u[2] > 0:
-                uk = u[0]
-                vk = u[1]
-                pk = u[2]
+        # print 'L :', L
+        L.sort(key=lambda x: x[2]) # ordena L por pesos
+        [uk,vk,pk] = L[0]
+        # print uk,vk,pk
         # uk = vertice en Q tal que pk = w(uk,vk) es minimo
         F = agregar_arista(F, uk, vk)
         S.append(uk)
         Q.remove(uk)
         L.remove([uk, vk, pk])
         for i in range(len(L)):
-            if w[L[i][0]][uk] < L[i][2] and w[L[i][0]][uk] > 0:
+            if w[L[i][0]][uk] < L[i][2]:
                 L[i][1] = uk
                 L[i][2] = w[L[i][0]][uk]
             # el for modifica L
