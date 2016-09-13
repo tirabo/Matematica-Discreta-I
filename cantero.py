@@ -1,86 +1,51 @@
-import copy
+import itertools
 
-conf1 = []
-for i in range(4):
-	conf1.append([i])
+"""
+Se colocan 6 plantines en un cantero circular
+1) Hay 4 clases de plantines (0, 1, 2, 3)
+2) No puede haber 2 plantines consecutivos de la misma clase
+De cuantas formas se puede hacer? (las rotaciones son equivalentes)
+"""
 
+cls = [0, 1, 2, 3]
+plt1 = list(itertools.product(cls, cls, cls, cls, cls, cls))
+r0 = []
+for u in plt1:
+    r0.append(list(u))
+# r0 son todos los canteros posibles, sin restricciones, sin equivalencia de rotaciones (es cls**6)
 
-conf2 = []
-for i in range(4):
-	for u in conf1:
-		v = u[:]
-		v.append(i)
-		conf2.append(v)
-
-		
-conf3 = []
-for i in range(4):
-	for u in conf2:
-		v = u[:]
-		v.append(i)
-		conf3.append(v)
-		
-conf4 = []
-for i in range(4):
-	for u in conf3:
-		v = u[:]
-		v.append(i)
-		conf4.append(v)
-		
-conf5 = []
-for i in range(4):
-	for u in conf4:
-		v = u[:]
-		v.append(i)
-		conf5.append(v)
-
-conf = []
-for i in range(4):
-	for u in conf5:
-		v = u[:]
-		v.append(i)
-		conf.append(v)
-conf.sort()
-	
-for u in conf:
-	print u
-	
-exit(0)
 
 r1 = []
+for u in r0:
+    sirve = True
+    for i in range(5):
+        if u[i] == u[i + 1]:
+            sirve = False
+    if u[5] == u[0]:
+        sirve = False
+    if sirve:
+        r1.append(u)
+# r1 son todos los canteros circulares posibles donde no puede haber dos clases iguales contiguas.
+# No hay equivalencia por rotaciones
 
-for u in conf:
-	sirve = True
-	for i in range(5):
-		if u[i] == u[i+1]:
-			sirve = False
-	if u[5] == u[0]:
-		sirve = False
-	if sirve == True:
-		r1.append(u)
-"""		
-print len(r1)
-for u in r1:
-	print u
-"""
 
 r2 = []
 raux = []
 for u in r1:
-	sirve = True
-	if u  in raux:
-		sirve = False
-	else:
-		for i  in range(6):
-			x = []
-			for j in range(6):
-				x.append(u[(i+j)%6])
-			if  x not  in raux:
-				raux.append(x)
-	if sirve == True:
-		r2.append(u)
-		
+    sirve = True
+    if u in raux:
+        sirve = False
+    else:
+        for i in range(6):  # agrega todas las rotaciones de u a raux
+            x = []
+            for j in range(6):
+                x.append(u[(i + j) % 6])
+            if x not in raux:
+                raux.append(x)
+    if sirve:
+        r2.append(u)
+# r2 son todos los canteros circulares posibles donde no puede haber dos clases iguales contiguas.
+# Hay equivalencia por rotaciones
 print len(r2)
-for u in r2:
-	print u
-	
+# for u in r2:
+#     print u
