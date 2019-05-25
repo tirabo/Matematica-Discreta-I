@@ -1,0 +1,209 @@
+\documentclass[12pt,spanish,makeidx]{amsbook}
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+
+
+
+\usepackage{t1enc}
+\usepackage[spanish]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}       % From LaTeX distribution
+\usepackage{subfigure}    % From CTAN/macros/latex/contrib/supported/subfigure
+\usepackage{pst-all}      % From PSTricks
+\usepackage{pst-poly}     % From pstricks/contrib/pst-poly
+\usepackage{multido}      % From PSTricks
+\input{random.tex}        % From CTAN/macros/generic
+
+
+%% \theoremstyle{plain} %% This is the default
+\oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
+\headheight .3in \headsep .2in \footskip .2in
+\setlength{\textwidth}{16cm} %ancho para apunte
+\setlength{\textheight}{21cm} %largo para apunte
+%\leftmargin 2.5cm
+%\rightmargin 2.5cm
+\topmargin 0.5 cm
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{FAMAF}
+\fancyhead[RE,LO]{Matemática Discreta I}
+\fancyfoot[LE,RO]{\leftmark}
+\fancyfoot[RE,LO]{\thepage}
+ 
+\renewcommand{\headrulewidth}{0.5pt}
+%\renewcommand{\footrulewidth}{0.5pt}
+ 
+
+
+
+\begin{document}
+
+{\bf \begin{center} Práctico 2 \\ Matemática Discreta I -- Año 2019/1 \\ FAMAF \end{center}}
+
+\smallskip
+
+\begin {enumerate}
+%\item Contar las aplicaciones de $X_3=\{1,2,3\}$ en $X_4=\{1,2,3,4\}$.
+%Mostrar que hay $m^3$ aplicaciones de $X_3$ en $X_m=\{1,2,\dots,m\}$, con $m \ge 1$.
+
+%\
+
+\item La cantidad de d\'\i gitos o cifras de un n\'umero se cuenta a partir del primer d\'\i gito distinto de cero. Por ejemplo, $0035010$ es un n\'umero de $5$ d\'\i gitos.
+\begin{enumerate}
+\item ¿Cu\'antos n\'umeros de 5 d\'\i gitos hay?
+\item ¿Cu\'antos n\'umeros pares de 5 d\'\i gitos  hay?
+\item ¿Cu\'antos n\'umeros de 5 d\'\i gitos existen con s\'olo un 3?
+\item ¿Cu\'antos n\'umeros capic\'uas de 5 d\'\i gitos existen?
+\item ¿Cu\'antos n\'umeros capic\'uas de a lo sumo 5 d\'\i gitos hay?
+\end{enumerate}
+
+\smallskip
+
+\item ¿Cu\'antos n\'umeros de 6 cifras pueden formarse con los d\'\i gitos de 112200?
+
+\smallskip
+
+\item ¿Cu\'antos n\'umeros impares de cuatro cifras hay?
+
+\smallskip
+
+\item ¿Cu\'antos n\'umeros m\'ultiplos de  5 y menores que 4999 hay?
+
+\smallskip
+
+\item En los boletos viejos de \'omnibus, aparec\'\i a un {\em n\'umero} de 5 cifras (en este caso pod\'\i an empezar con 0), y uno ten\'\i a un {\it boleto capic\'ua} si el n\'umero lo era.
+\begin{enumerate}
+\item ¿Cu\'antos boletos capic\'uas hab\'\i a?
+\item ¿Cu\'antos boletos hab\'\i a en los cuales no hubiera ning\'un d\'\i gito repetido?
+\end{enumerate}
+
+\smallskip
+
+\item Las antiguas patentes de auto ten\'\i an una letra indicativa de la provincia y luego 6 d\'\i gitos. (En algunas provincias, Bs. As. y Capital, ten\'\i an 7 d\'\i gitos, pero ignoremos eso por el momento). Las nuevas patentes tienen 3 letras y luego 3 d\'\i gitos. ¿Con cu\'al de los dos criterios pueden formarse m\'as patentes?
+
+\smallskip
+
+\item Si uno tiene 8 CD distintos de Rock, 7 CD distintos de m\'usica cl\'asica y 5 CD distintos de cuartetos,
+\begin{enumerate}
+	\item ¿Cu\'antas formas distintas hay de seleccionar un CD?
+
+	\item ¿Cu\'antas formas hay de seleccionar tres CD, uno de cada tipo?
+
+	\item Un sonidista en una fiesta de casamientos planea poner 3 CD, uno a continuaci\'on de otro. ¿Cu\'antas formas distintas tiene de hacerlo si le han dicho que no mezcle m\'as de dos estilos?
+\end{enumerate}
+
+\smallskip
+
+\item Mostrar que si uno arroja un dado $n$ veces y suma todos los resultados obtenidos, hay $\dfrac{6^n}{2}$ formas distintas de obtener una suma par.
+
+\smallskip
+
+\item ¿Cu\'antos enteros entre 1 y 10000 tienen exactamente un 7 y exactamente un 5 entre sus cifras?
+
+\smallskip
+
+\item ¿Cu\'antos subconjuntos de $\{0,1,2,\dots,8,9\}$ contienen al menos un impar?
+
+\smallskip
+
+\item El truco se juega con un mazo de 40 cartas, y se reparten 3 cartas a cada jugador. Obtener el 1 de espadas (el {\it macho}) es muy bueno. Tambi\'en lo es, por otros motivos, obtener un 7 y un 6 del mismo palo ({\it tener 33}). ¿Qu\'e es m\'as probable: obtener el macho, o tener 33?
+
+\smallskip
+
+\item ¿Cu\'antos comit\'es pueden formarse de un conjunto de 6 mujeres y 4 hombres, si el comit\'e debe estar compuesto por 3 mujeres y 2 hombres?
+
+\smallskip
+
+\item ¿De cu\'antas formas puede formarse un comit\'e de 5 personas tomadas de un grupo de 11 personas entre las cuales hay 4 profesores y 7 estudiantes, si:
+\begin{enumerate}
+	\item No hay restricciones en la selecci\'on?
+
+	\item El comit\'e debe tener exactamente 2 profesores?
+
+	\item El comit\'e debe tener al menos 3 profesores?
+
+	\item El profesor $X$ y el estudiante $Y$ no pueden estar juntos en el comit\'e?
+\end{enumerate}
+
+\smallskip
+
+\item Si en un torneo de f\'utbol participan $2n$ equipos, probar que el n\'umero total de opciones posibles para la primera fecha es $1\cdot 3\cdot 5 \cdot \dots \cdot (2n - 1)$. sugerencia: use un argumento por inducción. 
+
+\smallskip
+
+\item En una clase hay $n$ chicas y $n$ chicos. Dar el n\'umero de maneras de ubicarlos en una fila de modo que todas las chicas est\'en juntas.
+
+\smallskip
+
+\item ¿De cu\'antas maneras  distintas pueden sentarse 8 personas en una mesa circular?
+
+\smallskip
+
+\item \begin{enumerate}
+	\item ¿De cu\'antas maneras distintas pueden sentarse 6 hombres y 6 mujeres en una mesa circular si nunca deben quedar dos mujeres juntas?
+	\item \'Idem, pero con 10 hombres y 7 mujeres.
+\end{enumerate}
+
+\smallskip
+
+\item 
+\begin{enumerate}
+	\item  ¿De cu\'antas formas distintas pueden ordenarse las letras de la palabra MATEMATICA
+	\item \'Idem con las palabras ALGEBRA, GEOMETRIA.
+	\item ¿De cu\'antas formas distintas pueden ordenarse las letras de la palabra MATEMATICA si se pide que las consonantes y las vocales se alternen?
+\end{enumerate}
+
+\smallskip
+
+\item ¿Cuántas diagonales tiene un polígono regular de $n$ lados?
+
+\smallskip
+
+\item Dados $m$, $n$ y $k$ naturales tales que $m \le k \le n$, probar que se verifica
+\[ \binom{n}{k}\binom{k}{m} = \binom{n}{m}\binom{n-m}{k-m}.\]
+
+\smallskip
+
+\item Probar que para todo $i$, $j$, $k \in {\mathbb N}_0$ vale
+\[ \binom{i + j + k}{i}\binom{j+k}{j} = \frac{(i+j+k)!}{i!j!k!}\]
+
+\smallskip
+
+\item Demostrar que para todo $n \in \mathbb N$ vale:
+\begin{enumerate}
+  \item $\displaystyle{\binom{n}{0} + \binom{n}{1} + \cdots + \binom{n}{n} = 2^n}$.
+\medskip
+  \item $\displaystyle{\binom{n}{0} - \binom{n}{1} + \cdots + (-1)^n\binom{n}{n} = 0}$
+  \end{enumerate}
+
+\smallskip
+
+\item Probar que para todo natural $n$ vale que \[\binom{2n}{2} = 2 \binom{n}{2} + n^2.\]
+
+\smallskip
+
+
+
+\item Con $20$ socios de un club se desea formar $5$ listas electorales (disjuntas).
+Cada lista consta de $1$ Presidente, $1$ Tesorero y $2$ vocales.  ¿De cu\'antas
+formas puede hacerse?
+
+\smallskip
+
+\item ¿De cu\'antas formas se pueden fotografiar $7$ matrimonios en una hilera,
+de tal forma que cada hombre aparezca al lado de su esposa?
+
+\smallskip
+
+\item ¿De cu\'antas formas pueden distribuirse $14$ libros distintos entre dos
+personas de manera tal que cada persona reciba al menos $3$ libros?
+\end{enumerate}
+\end{document}
