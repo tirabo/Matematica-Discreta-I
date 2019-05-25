@@ -1,2 +1,4 @@
-# MDIPython
-Programas Python para la materia MDI de FAMAF, UNC. Año 2016. 
+# Matemática Discreta I
+- Apunte de la materia
+- Prácticos
+- Programas Python  
