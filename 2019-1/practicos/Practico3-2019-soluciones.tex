@@ -1,0 +1,552 @@
+\documentclass[12pt,spanish,makeidx]{amsbook}
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+
+
+
+\usepackage{t1enc}
+\usepackage[spanish]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}       % From LaTeX distribution
+\usepackage{subfigure}    % From CTAN/macros/latex/contrib/supported/subfigure
+\usepackage{pst-all}      % From PSTricks
+\usepackage{pst-poly}     % From pstricks/contrib/pst-poly
+\usepackage{multido}      % From PSTricks
+\input{random.tex}        % From CTAN/macros/generic
+
+
+%% \theoremstyle{plain} %% This is the default
+\oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
+\headheight .3in \headsep .2in \footskip .2in
+\setlength{\textwidth}{16cm} %ancho para apunte
+\setlength{\textheight}{21cm} %largo para apunte
+%\leftmargin 2.5cm
+%\rightmargin 2.5cm
+\topmargin 0.5 cm
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{FAMAF}
+\fancyhead[RE,LO]{Matemática Discreta I}
+\fancyfoot[LE,RO]{\leftmark}
+\fancyfoot[RE,LO]{\thepage}
+
+\renewcommand{\headrulewidth}{0.5pt}
+%\renewcommand{\footrulewidth}{0.5pt}
+
+\newcommand{\rta}{\noindent\textit{Rta: }}
+
+
+\begin{document}
+	
+{\bf \begin{center} Práctico 3 \\ Matemática Discreta I -- Año 2019/1 \\ FAMAF \end{center}}
+
+{\bf \begin{center} Soluciones \end{center}}
+
+\smallskip
+\begin{enumerate}
+
+\item Hallar el cociente y el resto de la divisi\'on de:
+\begin{enumerate}
+\item 
+135 por 23, \rta $135= 23\times 5 +20$ $q=5, r=20$
+\item
+-135 por 23, \rta $-135= 23\times (-6) +3$ $q=-6, r=3$
+\item
+135 por -23, \rta $ -135= 23\times (-6) +3$ $q=-6, r=3$
+\item
+-135 por -23, \rta $135= 23\times 5 +20$ $q=5, r=20$
+\item
+127 por 99, \rta $127=99\times1+28$, $q=1, r=28$
+\item
+-98 por -73. \rta $ 98=73\times 1+25$, $q=1, r=25$
+\end{enumerate}
+\smallskip
+
+\item 
+\begin{enumerate}
+	\item Si $a=b\cdot q+r$, con $b \le r <2 b$, hallar el cociente y el resto de la divisi\'on de $a$ por $b$.
+	
+	\rta $a = b \cdot (q+1) + r-b$, con $0 \le r-b < b$ por lo tanto el cociente es $q+1$ y el resto  $r-b$.
+	
+	
+	\item Repetir el ejercicio anterior, suponiendo ahora que $-b \le r < 0$.  
+	
+	\rta  $a = b \cdot (q-1) + r+b$, con $0 \le r+b < b$ por lo tanto el cociente es $q-1$ y el resto  $r+b$.
+\end{enumerate}
+
+
+\smallskip
+\item Dado $m\in \mathbb N$ hallar los restos posibles de $m^2$ y $m^3$ en la division por $3,4,5,7,8, 11$.
+
+
+\rta El resto del cuadrado (cubo)  de $m$ es el resto del cuadrado (cubo)  del resto de $m$.
+Por lo tanto hay que calcular los restos de $r^2$ con $0\le r\le m$.
+Así tenemos para $m=3, r\in\{0, 1\}$; $m=4, r\in\{0,1\}$; $m=5, r\in\{0,1,4\}$; $m=7,r\in\{0,1,4,2\}$;
+$m=8, r\in\{0,1,4\}$; $m=11, r\in\{0,1,4,9,5,3\}$.
+
+\smallskip
+
+\item Expresar en base 10 los siguientes enteros:
+\begin{enumerate}
+	\item 
+	$(1503)_6$  \rta  $1 \times 6^3+ 5 \times 6^2+0 \times 6^1+3 \times 6^0=1  \times 216+ 5 \times 36 +3=399$
+	\item
+	$(1111)_2$  \rta  $2^3+2^2+2^1+2^0= 8+4+2+1=15$
+	\item
+	$(1111)_{12}$  \rta  En este ejercicio (y en otro más abajo) usaremos  que 
+	\begin{equation*}
+		1+ q^1 +q^2 +\cdots +q^n =  \frac{q^{n+1} -1}{q-1}\quad \text{(serie geométrica)}.
+	\end{equation*}
+	Por lo tanto,
+	\begin{align*}
+		12^3+12^2+12^1+1 &=\frac{12^4-1}{11}=\frac{144^2-1}{11}=\frac{143\times145}{11}\\
+		&= \frac{143}{11} \times 145  = 13 \times 145.
+	\end{align*}
+	 
+	\item
+	$(123)_4$  \rta  $1\times 16+2\times 4+3=27$.
+	\item
+	$(12121)_3$  \rta $3^4+2\times 3^3+3^2+2\times 3^1+3=81+54+9+6+3=153$.
+	\item
+	$(1111)_5$  \rta =$(5^4-1)/4=624/4 = 156$.
+\end{enumerate}
+
+\smallskip
+
+\item Convertir
+\begin{enumerate}
+	\item
+	$(133)_4$ a base 8,  
+	
+	\rta  Debemos primero calcular cuanto vale  $(133)_4$ en base 10 (la base usual) y luego pasarlo a base 8. Ahora bien, $(133)_4 = 4^2+3\times 4+3 = 31$ y $31 = 3 \times 8 + 7$, por lo tanto  $(133)_4 =  (37)_8$.
+	\item
+	$(B38)_{16}$ a base 8,  
+	
+	\rta  Aquí usaremos que $16 = 2 \times 8$. Entonces,  $(B38)_{16} = 12\times (16)^2+3\times 16+8=6(8)^3+6\times 8+8=6\times 8^3+7\times 8=(6010)_8$.
+	\item
+	$(3506)_7$ a base 2, 
+	
+	\rta  $(3506)_7 = 3\times 7^3+5\times 7^2+6= 1280$. Ahora debemos escribir 1280 en base 2
+	\begin{align*}
+	1280 &= 2 \times 640 + 0 \\
+	640 &= 2 \times 320 + 0 \\
+	320 &= 2 \times 160 + 0 \\
+	160 &= 2 \times 80 + 0 \\
+	80 &= 2 \times 40 + 0 \\		
+	40 &= 2 \times 20 +0\\
+	20 &= 2 \times 10 + 0\\
+	10&= 2 \times 5+0 \\
+	5&= 2 \times 2 +1 \\
+	2&= 2 \times 1+ 0\\
+	1 &= 2 \times 0 + 1.
+	\end{align*}
+	Luego $(3506)_7 = (10100000000)_2$. 
+	
+	Hay una forma de hacer este ejercicio más corta: observar que $1280 = 2^7\times 10 = 2^8\times 5 = 2^8\times (2^2 +1) = 2^{10} + 2^8$. 
+	\item
+	$(1541)_6$ a base 4. 
+	
+	 \rta  $6^3+5\times 6^2+4\times 6+1=54\times 4+45\times 4+6\times 4=105\times 4=420$. Luego,
+	 \begin{align*}
+	 	420 &= 4 \times 105 + 0 \\
+	 	105 &= 4 \times 26 +1 \\
+	 	26 &= 4 \times 6 +2 \\
+	 	6 &= 4 \times 1 +2 \\
+	 	1 &= 4 \times 0 +1.
+	 \end{align*}
+	 Entonces, $(1541)_6=(12210)_4$.
+\end{enumerate}
+
+
+\smallskip
+
+\item Calcular: 
+\begin{enumerate} 
+	\item
+	$(2234)_5 + (2310)_5$  
+	
+	\rta La suma entre números escritos en la misma base se hace de la misma forma que la suma usual, teniendo en cuenta que en base 5 tenemos, $2+3 = 10$, $3+3 = 11$, etc.
+	\begin{equation*}
+		\begin{array}{r}
+		(2234)_5 \\
+		+(2310)_5 \\
+		\hline 
+		(10044)_5
+		\end{array}
+	\end{equation*}
+	
+
+	\item
+	$(10101101)_2 + (10011)_2$  \rta  $(11000000)_2$.
+\end{enumerate}
+\smallskip
+
+\item Sean $a$, $b$, $c \in {\mathbb Z}$. Demostrar las siguientes afirmaciones:
+\begin{enumerate}
+	\item Si $ab=1$, entonces \,$a=b=1$\, \'o \,$a=b=-1$.
+	
+	\rta  $a$ y $b$ no pueden ser nulos y si tienen distinto signo su producto es negativo, podemos suponer que son ambos positivos o negativos. Si $a>1$ entonces $1=ab>b>0$ es absurdo. Igualmente si $a<-1$ entonces $1=ab >-b>0$. Luego $a=\pm1$ y entonces $b=\pm1$.
+	
+	\item Si $a,b \neq 0$,  $a| b$\, y \,$b | a$, entonces \,$a=b$\, \'o \,$a=-b$.
+	
+	\rta Tenemos $b\vert a \Rightarrow a=bq$ y   $a\vert b\Rightarrow b=ap$ luego $a=apq$ y  $a\neq0 \Rightarrow pq=1$. El inciso a)  dice que $p=q=1$ o $p=q=-1$ de donde se sigue el resultado buscado.
+	
+	\item Si $a | 1$, entonces \,$a=1$\, \'o \,$a=-1$.
+	
+	\rta Este es un corolario del inciso \textit{b)} tomando $b=1$ ya que $1\vert a$, $\forall a\in \mathbb{Z}$.
+	
+	\item Si $a \neq 0$, $a | b$\, y \,$a | c$, entonces \,$a | (b+c)$\, y \,$a | (b-c)$.
+	
+	\rta Como $b=aq$ y $c=ap$, $b\pm c=a(q\pm p)$.
+	
+	\item Si $a \neq 0$, $a | b$\, y \,$a | (b+c)$, entonces \,$a | c$.
+	
+	\rta Se puede usar el inciso anterior con $b=0$.
+	
+	\item Si $a \neq 0$\, y \,$a | b$, entonces \,$a| b\cdot c$.
+	
+	\rta Si $b=aq$ entonces $b.c=aqc \Rightarrow a\vert b.c$.
+\end{enumerate}
+
+\smallskip
+
+\item Dados $b,c$ enteros, probar las siguientes propiedades:
+\begin{enumerate}
+	\item  $0$\, es par y $1$\, es impar.
+	
+	\rta $0=2\times 0$ y $1=2\times 0+1$.
+	
+	\item  Si $b$ es par y \,$b \mid c$, entonces $c$ es par.  (Por lo tanto, si $b$ es par, tambi\'en lo es $-b$).
+	
+	\rta $b=2q, c=bp\Rightarrow c=2qp \Rightarrow c$ es par. ($b\vert -b$).
+	
+	\item  Si $b$ y $c$ son pares, entonces $b+c$ tambi\'en lo es. %(Por lo tanto, la suma de una cantidad cualquiera de números pares es par).
+	
+	\rta $2\vert b, 2\vert c \Rightarrow 2\vert b+c$.
+	
+	\item  Si un número par divide a 2, entonces ese número es 2\, \'o \,$-2$.
+	
+	\rta Dicho número $a$ no puede ser 0 y por el ejercicio 7 b) $2\vert a$ y $a\vert 2$ entonces $a= \pm2$.
+	
+	\item  La suma de un número par y uno impar es impar.
+	
+	\rta $a=2q, b=2p+1 \Rightarrow a+b=2(q+p)+1$.
+	
+	\item $b + c$ es par si y  sólo si $b$ y $c$ son ambos pares o ambos impares.
+	
+	\rta $b=2q, c=2p \Rightarrow b+c=2(q+p); b=2q+1, c=2p+1\Rightarrow b+c=2q+1+2p+1=2(q+p+1)$.
+\end{enumerate}
+
+\smallskip
+
+\item Sea $n\in \mathbb Z$. Probar que $n$ es par si y s\'olo si $n^2$ es par.
+
+\rta $n=2q \Rightarrow n^2=2(2q^2)$. $n=2q+1\Rightarrow n^2=4q^2+4q+1=2(2q^2+2q)+1$.
+
+\smallskip
+
+\item Probar que $n(n+1)$ es par para todo $n$ entero.
+
+\rta Si $ n=2q, n(n+1)=2q(2q+1)$ es par. Si $n=2q+1, n(n+1)=(2q+1)(2q+1+1)=2(q+1)(2q+1)$.
+
+\smallskip
+
+\item Sean $a$, $b$, $c \in {\mathbb Z}$. ¿Cuáles de las siguientes afirmaciones son verdaderas? Justificar las respuestas.
+\begin{enumerate}
+	\item $a \mid b\cdot c \Rightarrow a \mid b$\, \'o \,$a \mid c$.
+	
+	\rta Falso, contraejemplo: $6\vert12=4\times 3$ pero 6 no divide a 4 ni divide a 3.
+	
+	\item $a \mid (b+c) \Rightarrow a\mid b$\, \'o \,$a \mid c$.
+	
+	\rta Falso, contraejemplo: $6\vert 5=1$ per 6 no divide a 5 ni a 1.
+	
+	\item $a \mid c$\, y \,$b \mid c \Rightarrow a\cdot b \mid c$.
+	
+	\rta Falso, contraejemplo: $6\vert 12$ y $4\vert 12$ pero 24 no divide a 12.
+	
+	\item $a \mid c$\, y \,$b \mid c$ $\Rightarrow (a +b) \mid c$.
+	
+	\rta  Falso, contraejemplo: $2\vert 6$ y $3\vert 6$ pero 5=2+3 no divide a 6.
+	
+	\item $a$, $b$, $c>0$\, y \,$a=b\cdot c$, entonces  \,$a \ge b$ y $a \ge c$.
+	
+	\rta  Verdadero, $b\ge1 \Rightarrow a= bc\ge c$ y $ c\ge1 \Rightarrow bc\ge b$.
+\end{enumerate}
+
+
+\smallskip
+
+\item Probar que cualquiera sea $n \in {\mathbb N}$:
+\begin{enumerate}
+	\item $3^{2n+2}+ 2^{6n+1}$ es múltiplo de 11.
+	
+	\rta $3^{2n+2} + 2^{6n+1}=9^n \cdot 9+64^n \cdot 2$. Como el resto de dividir 64 por 11 es 9, tenemos que $9^n \cdot 9+64^n \cdot 2$ es divisible por 11 si $9^n \cdot 9+9^n \cdot 2$ lo es y este último es $9^n(9+2)$ que claramente es divisible por 11.
+	
+\textit{Rta	Alternativa}: podemos probar por inducción. Si $n=0$ es claro. Supongamos $11\vert 3^{2n+2} + 2^{6n+1}$ (HI). Debemos probar que  
+$$11\vert 3^{2(n+1)+2} + 2^{6(n+1)+1} = 11\vert 3^{2n+4} + 2^{6n+7}.$$
+Ahora bien,
+\begin{align*}
+	3^{2n+4} + 2^{6n+7} &=   3^23^{2n+2} + 2^62^{6n+1} \\
+	&= 9\cdot3^{2n+2} + 64\cdot2^{6n+1} \\
+	&= 	9(3^{2n+2} + 2^{6n+1}) +55\cdot 2^{6n+1} .
+\end{align*}
+   Es claro que el primer término es divisible por 11 por HI. El segundo término es $55\cdot 2^{6n+1}$ que es divisible por 11, pues 55 lo es. Concluyendo $9(3^{2n+2} + 2^{6n+1}) +55\cdot 2^{6n+1} $ es divisible por  11 y por lo tanto  $ 11\vert 3^{2n+4} + 2^{6n+7}$ lo es.
+	
+	\item $3^{2n+2} - 8n - 9$\, es divisible por 64.
+	
+	\rta Lo haremos por inducción. El caso base es $n=1$ y  en ese caso debemos ver que $64|3^{2\cdot 1+2} - 8\cdot 1 - 9 = 3^4-8-9 = 81-17 =64$, lo cual esta bien.
+	
+	Supongamos que $64|3^{2n+2} - 8n - 9$ (HI),  entonces debemos probar que $64|3^{2(n+1)+2} - 8(n+1) - 9 = 9\cdot 3^{2n+2} - 8n -17$. 
+	
+	Ahora bien   
+	\begin{align*}
+		9\cdot 3^{2n+2} - 8n -17 &=  9\cdot (3^{2n+2} - 8n - 9 + 8n + 9) - 8n -17 \\
+		&=   9\cdot (3^{2n+2} - 8n - 9) + 9\cdot(8n + 9) - 8n -17 \\
+		&=  9\cdot (3^{2n+2} - 8n - 9) + 72n + 81 - 8n -17 \\
+		&= 9\cdot (3^{2n+2} - 8n - 9) + 64(n+1).
+	\end{align*}
+	El primer término es múltiplo de 64 por HI y  el segundo es $64(n+1)$ que claramente es múltiplo de 64.
+
+\end{enumerate}
+
+\smallskip
+
+\item Decir si es verdadero o falso justificando:
+\begin{enumerate}
+	\item $3^n+1$\, es múltiplo de $n$, $\forall n \in {\mathbb N}$.
+	
+	\rta Falso, contraejemplo $n=3$.
+	
+	\item $3n^2+1$\, es múltiplo de 2, $\forall n \in {\mathbb N}$.
+	
+	\rta Falso, contraejemplo $n=2$.
+	
+	\item $(n+1)\cdot (5n+2)$\, es múltiplo de 2, $\forall n \in {\mathbb N}$.
+	
+	\rta Verdadero, si $n$ es par,  $5n+2$ es par y por lo tanto $(n + 1) \cdot (5n + 2)$ es múltiplo de $2$.	Si $n$ es impar $n+1$ es par y $2\vert (n + 1) \cdot (5n + 2)$.
+\end{enumerate}
+
+\smallskip
+
+\item Probar que para todo $n \in {\mathbb Z}$, $n^2 + 2$ no es divisible por 4.
+
+\rta Si $n$ es impar $n^2+2$ es impar y por lo tanto no es divisible por 4.
+Si $n$ es par $n^2$ es divisible por 4 y como 4 no divide a 2 entonces no divide a $n^2+2$ .
+
+\smallskip
+\item Probar que todo entero impar que no es múltiplo de 3, es de la forma $6m\pm 1$, con $m$ entero.
+
+\rta Como $n$ no es divisible por 3, debe ser $n=3q\pm1$. Si $q$ fuese impar entonces $n$ sería par, por lo tanto $q=2m$  y tenemos el resultado.
+
+\smallskip
+
+\item 
+\begin{enumerate}
+	\item Probar que el producto de tres enteros consecutivos es divisible por 6.
+	
+	\rta Como los pares e impares se alternan dados dos consecutivos uno de ellos debe ser par. 
+	Similarmente cada tres consecutivos habrá uno que es divisible por 3 (ya que al dividirlos por 3 sus restos son tres números distintos entre 0 y 2, o sea que uno de los restos debe ser 0). Entonces $n(n+1)(n+2)$ tiene que ser divisible por 2 y por 3 y como estos son coprimos debe ser divisible por 6.
+	
+	\item Probar que el producto de cuatro enteros consecutivos es divisible por 24.
+	
+	\rta Como en el ejercicio anterior, ahora tenemos que uno de los números es divisible por 4 y otro de los restantes es divisible por 2. Entonces el producto es divisible por 8 y también hay uno que es múltiplo de 3 por lo cual el producto es divisible por $24=3\times8$.
+	
+	\textit{Rta Alternativa:} el producto de cuatro enteros consecutivos es de la forma $n(n-1)(n-2)(n-3)$. Ahora bien,
+	\begin{equation*}
+		\binom{n}{4} = \frac{n!}{(n-4)!4!} = \frac{n(n-1)(n-2)(n-3)}{4!}.
+	\end{equation*}
+	Por un teorema de la teórica sabemos que $\binom{n}{4}$ es un número entero, por lo tanto $ \frac{n(n-1)(n-2)(n-3)}{4!}$ es entero, lo cual quiere decir que $4! | n(n-1)(n-2)(n-3)$ (y $4! = 24$). 
+	
+\end{enumerate}
+
+
+
+\smallskip
+\item Probar que si $a$ y $b$ son enteros entonces $a^2+b^2$ es divisible por 7 si y s\'olo si $a$ y $b$ son divisibles por 7. ¿Es lo mismo cierto para 3? ¿Para 5?
+
+\rta Los restos posibles de dividir por 7 son 0,1,2,3,4,5,6. Los restos de sus cuadrados son 0,1,4,2. La única suma de dos de ellos que da un múltiplo de 7 es $0+0=0$. Luego $a^2+b^2$ sólo puede ser divisible por 7 si $a$ y $b$ lo son.
+En el caso de 3 tenemos tenemos que los restos de cuadrados posibles son 0 y 1 y para que la suma de 0 solo puede ser $0+0$ como en el caso anterior. Para el caso 5 tenemos $1^2+2^2$ es divisible por 5 pero 1 y 2 no lo son.
+
+\smallskip
+
+
+\item Encontrar $(7469,2464)$, $(2689,4001)$, $(2447,-3997)$, $(-1109,-4999)$.
+
+\noindent\textit{Rta 1: }  $7469=3\cdot 2464+ 77$, $2464= 32\cdot77$ Por lo tanto $(2469,2464)=77$.
+
+\noindent\textit{Rta 2: }  $4001=2689+ 1312$, $2689=2\cdot 1312+65$,  $1312=20\cdot 65+12$,  $65=5\cdot 12+5$,  $12=2\cdot 5+2$, $ 5=2\cdot 2+1$. Por lo tanto$ (2689, 4001)=1$.
+
+\noindent\textit{Rta 3: } $-3997=(-2)2447+897$,  $2447=2\cdot 897+653$,  $897=653+244$,  $653=2\cdot244+165$, $244=165+79$,  $165=2\cdot79+7$, $79=11\cdot7+2$, $7=3\cdot+1$. Por lo tanto $(2447,-3997)=1$.
+
+\noindent\textit{Rta 4: } $4999=4\cdot1109+ 563; 1109=2\cdot 563-17; 563=33\cdot 17+2; 17=8\cdot 2+1$. Por lo tanto $(-1109,-4999)=1$.
+\smallskip
+
+\item
+Calcular el máximo común divisor y expresarlo como combinaci\'on lineal de los
+números dados, para cada uno de  los siguientes pares de números:
+\begin{enumerate}
+	\item 	14 y 35, \rta $35=2\cdot14+7; 14=2\cdot7; (14, 35)=-2\cdot 14+35$.
+	\item 11 y 15, \rta  $15=11+4; 11=2\cdot4+3; 4=3+1; 1= 4-3=$\par\quad\quad\quad\quad\quad$=15-11- (11-2\cdot(15-11))=3\cdot 15-4\cdot11$.
+	\item 12 y 52, \rta  $(12, 52)=4=52-4\cdot12$.
+	\item  12 y -52, \rta  $(12, -52)=4=-4\cdot 12+(-52)$.
+	\item 12 y 532,  \rta  $ (12,532)=4=-44\cdot 12+532$.
+	\item  725 y 441,
+	
+	\rta \begin{align*}
+	725 &= 441 \cdot 1 + 284 &&\Rightarrow& 284 &= 725 - 441 \\
+	441 &= 284 \cdot 1 +157 &&\Rightarrow& 157 &= 441-284 \\
+	284 &= 157 \cdot 1 + 127 &&\Rightarrow& 127 &=284-157 \\
+	157 &= 127 \cdot 1 + 30 &&\Rightarrow& 30 &= 157 - 127 \\
+	127 &= 30 \cdot 4  + 7 &&\Rightarrow& 7 &= 127-30 \cdot 4 \\
+	30 &= 7 \cdot 4 + 2  &&\Rightarrow& 2 &= 30 -7 \cdot 4 \\
+	7 &= 2 \cdot 3 + 1  &&\Rightarrow& 1 &= 7- 2 \cdot 3 \\
+	2 &= 1 \cdot 2 + 0.
+	\end{align*} 
+	Luego $(725,441)=1$ y
+	\begin{align*}
+	1 &= 7- 2  \cdot 3 \\
+	& =  7- (30 -7 \cdot 4)  \cdot 3 = 7 \cdot 13 - 30 \cdot 3 \\
+	&= (127-30 \cdot 4 ) \cdot 13 - 30 \cdot 3= 127\cdot 13 - 55 \cdot 30 \\
+	&=  127\cdot 13 - 55 \cdot (157 - 127) = 68\cdot 127 - 55\cdot 157 \\
+	&=  68\cdot (284-157) - 55\cdot 157 = 68\cdot 284 - 123 \cdot 157 \\
+	&= 68\cdot 284 - 123 \cdot (441-284)= 191\cdot 284 - 123\cdot 441\\
+	&= 191\cdot (725 - 441) - 123\cdot 441= 191 \cdot 725 - 314 \cdot 441.	
+	\end{align*}
+	Es decir, $1 = 191 \cdot 725 - 314 \cdot 441$.
+	
+	\item 606 y 108.
+	
+	\rta
+	\begin{align*}
+	606 &= 108 \cdot 5 + 66 &&\Rightarrow& 66 &= 606 -108 \cdot 5 \\
+	108 &= 66 \cdot 1 +42 &&\Rightarrow& 42 &= 108 - 66 \\
+	66 &= 42 \cdot 1 + 24 &&\Rightarrow& 24 &= 66 - 42 \\
+	42 &= 24 \cdot 1 + 18 &&\Rightarrow& 18 &= 42 - 24 \\
+	24 &= 18 \cdot 1  + 6 &&\Rightarrow& 6 &= 24 -18 \\
+	18 &= 6 \cdot 3 + 0
+	\end{align*} 
+	Luego $(606,108) =6$ y 
+	\begin{align*}
+	6 &= 24 -  18 \\
+	&= 24 - (42-24)  = 2 \cdot 24 - 42 \\
+	& = 2 \cdot (66-42) - 42 = 2 \cdot 66 -3 \cdot 42 \\
+	& = 2 \cdot 66 -3 \cdot (108 - 66) = 5\cdot 66  - 3\cdot 108 \\
+	& = 5\cdot (606 -108 \cdot 5)  - 3\cdot 108  = 5\cdot 606 - 28  \cdot 108.
+	\end{align*}
+	Es decir, $6 =  5 \cdot 606 -  28 \cdot 108$.
+\end{enumerate}
+
+
+
+\smallskip
+
+\item Probar que no existen enteros $x$ e $y$ que satisfagan $x+y=100$ y $(x,y)=3$.
+
+\rta Si $(x,y)=3$ entonces $3\vert x, 3\vert y$ y por lo tanto $3\vert x+y=100$, absurdo. 
+
+\smallskip
+
+\item %Si $(a,b)=1$. Probar:
+\begin{enumerate}
+	\item Sean $a$ y $b$ coprimos. Probar que si $a\mid b\cdot c$ entonces $a \mid c$.
+	
+	\rta Como $a$ y $b$ son coprimos existen $r$ y $s$ tales que $1=ra+sb$ por lo tanto $c=rac+sbc$ y como $a$ divide ambos sumandos, $a\vert c$.
+	
+	\item Sean $a$ y $b$ coprimos. Probar que si $a \mid c$ y $b \mid c$, entonces $a\cdot b \mid c$.
+	
+	\rta Como $a$ y $b$ son coprimos existen $r$ y $s$ tales que $1=ra+sb$. Además $ap=c=bq$, entonces $c=rac+sbc=rabq+sbap=(rq+sp)ab$. Por lo tanto $ab\vert c$.
+	
+\end{enumerate}
+
+
+
+\smallskip
+
+\item Probar que si $n \in {\mathbb Z}$, entonces los números $2n+1$ y $\dfrac{n(n+1)}{2}$ son coprimos.
+
+\rta Si $a$ es coprimo con $b$ y con $c$ entonces $a$ es coprimo con $bc$, ya que un primo que divida a $b\cdot c$ debe dividir a $b$ o a $c$ y entonces no puede dividir a $a$. Como $2n+1$ es coprimo con $n$ y con $n+1$ entonces es coprimo con $n(n+1)$ y por lo tanto es coprimo con $\frac{n(n+1)}{2}$.
+
+Más explícitamente: $1=2n+1-2\cdot n; 1=2(n+1)-(2n+1) \Rightarrow (2n+1,n)=1=(2n+1, n+1)$.
+Entonces  $1=(2n+1-2\cdot n)(2(n+1)-(2n+1))=(2n+1)(1+2n)-4n(n+1)=(2n+1)(1+2n)-8\frac{n(n+1)}{2}$ y esto implica $2n+1$ y $\frac{n(n+1)}{2}$ son coprimos.
+
+\noindent\textit{Rta Alternativa: } si $p$ es un primo que divide a $\frac{n(n+1)}{2}, p$ debe dividir a $n(n+1)$ y por ser primo debe dividir a $n$ o a $n+1$. Si además se pide que $p\vert 2n+1$ que es coprimo con $n$ y $n+1$, entonces $p\vert 1$ absurdo.
+
+\smallskip
+
+
+\item Encontrar todos los enteros positivos $a$ y $b$ tales que $(a,b)=10$ y $[a,b]=100$.
+
+\rta Es claro que $(a/10,b/10)=1$ y $[a/10,b/10] = 10$. Como $[a/10,b/10] = \displaystyle\frac{(a/10)(b/10)}{(a/10,b/10)}= (a/10)(b/10)$,  tenemos que $(a/10)(b/10) = 10$, por lo tanto $\{a/10,b/10\}\in \{\{1,10\},\{2.5\}\}$. Es decir, $a=10, b=100$ ó $a=20, b=50$ ó al revés.
+
+
+
+
+\smallskip
+\item
+\begin{enumerate}
+	\item Probar que si $d$ es divisor común de $a$ y $b$, entonces $\dfrac{(a,b)}{d} = \left(\dfrac{a}{d}, \dfrac{b}{d}\right)$.
+	
+	 \rta  $d\vert a, d\vert b\Rightarrow d\vert(a,b)\Rightarrow (a,b)=dq$. Como $a=(a,b)r; b=(a, b)s$ con $(r, s)=1$, se tiene $a/d=qr; b/d=qs$ con $(r, s)=1$. Por lo tanto $(a/d, b/d)=q=(a,b)/d$.
+	
+	\item Probar que si $a,b\in \mathbb Z$ no nulos, entonces  $\displaystyle \frac a{(a,b)}$ y $\displaystyle \frac b{(a,b)}$ son coprimos.
+	
+	 \rta  usar el inciso anterior con $d=(a,b)$.
+\end{enumerate}
+
+\smallskip
+
+\item Probar que 3  y 5 son números primos.
+
+ \rta  3 no es divisible por 2 y 5 no es divisible por 2 ni por 3.
+\smallskip
+
+\item  Dar todos los números primos positivos menores que 100.
+
+\rta  2,3,5,7, están en la lista. Por  el criterio de la raíz debemos ver cuales números del  8 al 100 no son divisibles  por 2, 3, 5 ni 7. Estos son: 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97.
+ 
+\smallskip
+
+\item Determinar con el criterio de la raíz cuáles de los siguientes números son primos: 113, 123, 131, 151, 199, 503.
+
+ \rta  $\sqrt{113}< 11$ y 113 no es divisible por 2, 3, 5 y 7, por lo tanto es primo. $123=3\cdot 41$ luego no es primo. 131 es primo, pues $\sqrt{131}<12$ y 131 no es divisible por 2, 3, 7 y 11. 151 es primo, pues $\sqrt{151}<13$ y 151 no es divisible por 2, 3, 7 y 11. 199 es primo, pues $\sqrt{199}<14$ y 199 no es divisible por 2, 3, 7, 11 y 13. 503 es primo, pues $\sqrt{503} \sim 22.42...<23$ y 503 no es divisible por 2, 3, 7, 11, 13, 17 y 19.
+ 
+\smallskip
+
+\item Si $a\cdot b$ es un cuadrado y $a$ y $b$ son coprimos, probar que $a$ y $b$ son cuadrados.
+
+\rta  Si un primo $p$ divide a $a$ entonces divide a $ab$ y por ser este un cuadrado $p^2\vert ab$, por ser coprimos $p$ no divide a $b$ y entonces $p^2$ debe dividir a $a$. El resultado se sigue por el principio de buen orden tomando el $ab$ más chico que contradice la proposición y considerando $ab/p^2, a/p^2, b$.
+
+
+\smallskip
+\item Probar que si $p_k$ es el $k$-\'esimo primo positivo entonces $$p_{k+1}\leq p_1\cdot p_2\cdot \cdots \cdot p_k+1$$
+
+ \rta  el miembro de la derecha no es divisible por ninguno de los primeros $k$ primos luego o es el $k+1$-ésimo primo, o es divisible por un primo mayor que este. Por lo tanto debe ser un número mayor o igual que el $k+1$-ésimo primo.
+ 
+\smallskip
+
+
+\item Calcular el máximo común divisor y el mínimo común múltiplo de los siguientes pares de números usando la descomposición en números primos. 
+\begin{enumerate}
+	\item 
+	$a = 12$ y $b = 15$.  \rta $a = 2^2 \cdot 3$, $b = 3 \cdot 5$, $(a,b)=3$, $[a,b]=2^2 \cdot 3 \cdot 5$.
+	\item 
+	$a = 11$ y $b = 13$.  \rta $(a,b)=1$, $[a,b]=11 \cdot 13 =143$.
+	\item 
+	$a = 140$ y $b = 150$.  \rta $a = 2^2 \cdot 5 \cdot 7$, $b = 2 \cdot 3 \cdot 5^2$,  $(a,b)= 2 \cdot 5 = 10$, $[a,b]=2^2  \cdot 3\cdot 5^2  \cdot 7=2100$
+	\item 
+	$a = 3^2\cdot5^2$  y $b = 2^2\cdot11$.  \rta  $(a,b)=1$, $[a,b]= 2^2\cdot3^2\cdot5^2\cdot11$ 
+	
+	\item 
+	$a = 2^2\cdot3\cdot5$ y $b = 2\cdot5\cdot7$.  \rta  $(a,b)=2 \cdot 5$, $[a,b]=2^2\cdot3\cdot5\cdot7$.
+\end{enumerate}
+\end{enumerate}
+\end{document}
