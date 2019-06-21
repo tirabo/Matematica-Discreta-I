@@ -1,0 +1,305 @@
+\documentclass[12pt,spanish,makeidx]{amsbook}
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+
+
+
+\usepackage{t1enc}
+\usepackage[spanish]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}       % From LaTeX distribution
+\usepackage{subfigure}    % From CTAN/macros/latex/contrib/supported/subfigure
+\usepackage{pst-all}      % From PSTricks
+\usepackage{pst-poly}     % From pstricks/contrib/pst-poly
+\usepackage{multido}      % From PSTricks
+\input{random.tex}        % From CTAN/macros/generic
+
+
+%% \theoremstyle{plain} %% This is the default
+\oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
+\headheight .3in \headsep .2in \footskip .2in
+\setlength{\textwidth}{16cm} %ancho para apunte
+\setlength{\textheight}{21cm} %largo para apunte
+%\leftmargin 2.5cm
+%\rightmargin 2.5cm
+\topmargin 0.5 cm
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{FAMAF}
+\fancyhead[RE,LO]{Matemática Discreta I}
+\fancyfoot[LE,RO]{\leftmark}
+\fancyfoot[RE,LO]{\thepage}
+ 
+\renewcommand{\headrulewidth}{0.5pt}
+%\renewcommand{\footrulewidth}{0.5pt}
+ 
+
+
+
+\begin{document}
+
+{\bf \begin{center} Práctico 3 \\ Matemática Discreta I -- Año 2019/1 \\ FAMAF \end{center}}
+
+\smallskip
+
+
+\begin{enumerate}
+
+
+\smallskip
+
+\item Hallar el cociente y el resto de la división de:
+
+\begin{multicols}{3}
+\begin{enumerate}
+  \item $135$ por $23$,
+	\item $-135$ por $23$,
+	\item $135$ por $-23$,
+  \item $-135$ por $-23$,
+	\item $127$ por $99$,
+	\item $98$ por $73$.
+\end{enumerate}
+\end{multicols}
+
+\smallskip
+
+\item 
+\begin{enumerate}
+  \item Si $a=b\cdot q+r$, con $b \le r <2 b$, hallar el cociente y el resto de la división de $a$ por $b$.
+  \item Repetir el ejercicio anterior, suponiendo ahora que $-b \le r < 0$.
+\end{enumerate}
+
+
+\smallskip
+\item Dado $m\in \mathbb N$ hallar los restos posibles de $m^2$ y $m^3$ en la división por $3,4,5,7,8, 11$.
+
+\smallskip
+\item Expresar en base 10 los siguientes enteros:
+\begin{multicols}{3}
+\begin{enumerate}
+	\item $(1503)_6$ 
+	\item $(1111)_2$ 
+	\item $(1111)_{12}$
+	\item $(123)_4$ 
+	\item $(12121)_3$
+	\item $(1111)_5$
+\end{enumerate}
+\end{multicols}
+
+\smallskip
+
+\item Convertir
+\begin{multicols}{2}
+\begin{enumerate}
+	\item  $(133)_4$ a base 8,
+	\item  $(B38)_{16}$ a base 8,
+	\item  $(3506)_7$ a base 2,
+	\item  $(1541)_6$ a base 4.
+\end{enumerate}
+\end{multicols}
+
+\smallskip
+
+\item Calcular: a) $(2234)_5+(2310)_5$ \qquad \qquad b)$(10101101)_2+(10011)_2$.
+
+\smallskip
+
+\item Sean $a$, $b$, $c \in {\mathbb Z}$. Demostrar las siguientes afirmaciones:
+  \begin{enumerate}
+  %\item $\forall a$,\,\, $a \mid 0$. (En particular, $0 \mid 0$).
+  %\item $\forall a \neq 0$,\, $0 \not|\  a$.
+  \item Si $ab=1$, entonces \,$a=b=1$\, ó \,$a=b=-1$.
+  \item Si $a,b \neq 0$,  $a| b$\, y \,$b | a$, entonces \,$a=b$\, ó \,$a=-b$.
+  \item Si $a | 1$, entonces \,$a=1$\, ó \,$a=-1$.
+  \item Si $a \neq 0$, $a | b$\, y \,$a | c$, entonces \,$a | (b+c)$\, y \,$a | (b-c)$.
+  \item Si $a \neq 0$, $a | b$\, y \,$a | (b+c)$, entonces \,$a | c$.
+  \item Si $a \neq 0$\, y \,$a | b$, entonces \,$a| b\cdot c$.
+  \end{enumerate}
+
+\smallskip
+
+\item Dados $b,c$ enteros, probar las siguientes propiedades:
+  \begin{enumerate}
+  \item  $0$\, es par y $1$\, es impar.
+  \item  Si $b$ es par y \,$b \mid c$, entonces $c$ es par.  (Por lo tanto, si $b$ es par, también lo es $-b$).
+  \item  Si $b$ y $c$ son pares, entonces $b+c$ también lo es. %(Por lo tanto, la suma de una cantidad cualquiera de números pares es par).
+  \item  Si un número par divide a 2, entonces ese número es 2\, ó \,$-2$.
+  \item  La suma de un número par y uno impar es impar.
+  \item $b + c$ es par si y  sólo si $b$ y $c$ son ambos pares o ambos impares.
+\end{enumerate}
+
+\smallskip
+
+\item Sea $n\in \mathbb Z$. Probar que $n$ es par si y sólo si $n^2$ es par.
+
+\smallskip
+
+\item Probar que $n(n+1)$ es par para todo $n$ entero.
+
+\smallskip
+
+\item Sean $a$, $b$, $c \in {\mathbb Z}$. ¿Cuáles de las siguientes afirmaciones son verdaderas? Justificar las respuestas.
+  \begin{enumerate}
+  \item $a \mid b\cdot c \Rightarrow a \mid b$\, ó \,$a \mid c$.
+  \item $a \mid (b+c) \Rightarrow a\mid b$\, ó \,$a \mid c$.
+  \item $a \mid c$\, y \,$b \mid c \Rightarrow a\cdot b \mid c$.
+  \item $a \mid c$\, y \,$b \mid c$ $\Rightarrow (a +b) \mid c$.
+  \item $a$, $b$, $c>0$\, y \,$a=b\cdot c$, entonces\, $a \ge b$ y $a \ge c$.
+  \end{enumerate}
+
+
+\smallskip
+
+\item Probar que cualquiera sea $n \in {\mathbb N}$:
+  \begin{enumerate}
+  \item $3^{2n+2}+ 2^{6n+1}$ es múltiplo de 11.
+  \item $3^{2n+2} - 8n - 9$\, es divisible por 64.
+  \end{enumerate}
+
+\smallskip
+
+\item Decir si es verdadero o falso justificando:
+  \begin{enumerate}
+  \item $3^n+1$\, es múltiplo de $n$, $\forall n \in {\mathbb N}$.
+  \item $3n^2+1$\, es múltiplo de 2, $\forall n \in {\mathbb N}$.
+  \item $(n+1)\cdot (5n+2)$\, es múltiplo de 2, $\forall n \in {\mathbb N}$.
+  \end{enumerate}
+
+\smallskip
+
+\item Probar que para todo $n \in {\mathbb Z}$, $n^2 + 2$ no es divisible por 4.
+
+
+\smallskip
+\item Probar que todo entero impar que no es múltiplo de 3, es de la forma $6m\pm 1$, con $m$ entero.
+
+\smallskip
+
+\item 
+\begin{enumerate}
+ \item Probar que el producto de tres enteros consecutivos es divisible por 6.
+ \item Probar que el producto de cuatro enteros consecutivos es divisible por 24 (ayuda: el número combinatorio $\binom{n}{4}$ es entero).
+\end{enumerate}
+
+
+\smallskip
+\item Probar que si $a$ y $b$ son enteros entonces $a^2+b^2$ es divisible por 7 si y sólo si $a$ y $b$ son divisibles por 7.
+¿Es lo mismo cierto para 3? ¿Para 5?
+
+\smallskip
+
+
+\item Encontrar $(7469,2464)$, $(2689,4001)$, $(2447,-3997)$, $(-1109,-4999)$.
+
+\smallskip
+
+\item
+Calcular el máximo común divisor y expresarlo como combinación lineal de los
+números dados, para cada uno de  los siguientes pares de números:
+\begin{multicols}{3}
+\begin{enumerate}
+  \item  14 y 35, 
+	\item 11 y 15, 
+	\item 12 y 52,
+  \item 12 y $-52$,  
+	\item 12 y 532,
+	\item 725 y 441,
+	\item 606 y 108.
+\end{enumerate}
+\end{multicols}
+
+
+
+\smallskip
+
+\item Probar que no existen enteros $x$ e $y$ que satisfagan $x+y=100$ y $(x,y)=3$.
+
+\smallskip
+
+\item %Si $(a,b)=1$. Probar:
+\begin{enumerate}
+ \item Sean $a$ y $b$ coprimos. Probar que si $a\mid b\cdot c$ entonces $a \mid c$.
+ \item Sean $a$ y $b$ coprimos. Probar que si $a \mid c$ y $b \mid c$, entonces $a\cdot b \mid c$.
+
+\end{enumerate}
+
+
+
+\smallskip
+
+\item Probar que si $n \in {\mathbb Z}$, entonces los números $2n+1$ y $\dfrac{n(n+1)}{2}$ son coprimos.
+
+\smallskip
+
+
+
+\item Encontrar todos los enteros positivos $a$ y $b$ tales que $(a,b)=10$ y $[a,b]=100$.
+
+
+\smallskip
+\item
+\begin{enumerate}
+\item Probar que si $d$ es divisor común de $a$ y $b$, entonces $\dfrac{(a,b)}{d} = \left(\dfrac{a}{d}, \dfrac{b}{d}\right)$.
+\item Probar que si $a,b\in \mathbb Z$ no nulos, entonces  $\displaystyle \frac a{(a,b)}$ y $\displaystyle \frac b{(a,b)}$ son coprimos.
+\end{enumerate}
+
+\smallskip
+
+\item Probar que 3  y 5 son números primos.
+
+\smallskip
+
+\item  Dar todos los números primos positivos menores que 100.
+
+\smallskip
+
+\item Determinar con el criterio de la raíz  cuáles de los siguientes números son primos: 113, 123, 131, 151, 199, 503.
+
+\smallskip
+
+\item Si $a\cdot b$ es un cuadrado y $a$ y $b$ son coprimos, probar que $a$ y $b$ son cuadrados.
+
+\smallskip
+
+\item 
+\begin{enumerate}
+	\item Probar  que $\sqrt{5}$ no es un número racional.   
+	\item Probar  que $\sqrt{15}$ no es un número racional.  
+	\item Probar  que $\sqrt{8}$ no es un número racional.  
+	\item Probar  que $\sqrt[3]{4}$ no es un número racional.
+\end{enumerate}
+
+
+\smallskip
+
+\item Probar que si $p_k$ es el $k$-ésimo primo positivo entonces
+$$p_{k+1}\leq p_1\cdot p_2\cdot \cdots \cdot p_k+1$$
+
+\smallskip
+
+
+\item Calcular el máximo común divisor y el mínimo común múltiplo de los siguientes pares de números usando la descomposición en números primos. 
+\begin{multicols}{3}
+	\begin{enumerate}
+		\item $a=12$ y $b=15$. 
+		\item$a=11$ y $b=13$.
+		\item $a=140$ y $b=150$.
+		\item $a=3^2 \cdot 5^2$ y $b=2^2 \cdot 11$.
+		\item $a=2^2 \cdot 3\cdot 5$ y $b=2\cdot 5\cdot 7$.
+	\end{enumerate}
+\end{multicols}
+
+
+\end{enumerate}
+
+
+\end{document}
+

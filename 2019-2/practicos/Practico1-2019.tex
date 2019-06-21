@@ -1,0 +1,263 @@
+\documentclass[12pt,spanish,makeidx]{amsbook}
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+
+
+
+\usepackage{t1enc}
+\usepackage[spanish]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}       % From LaTeX distribution
+\usepackage{subfigure}    % From CTAN/macros/latex/contrib/supported/subfigure
+\usepackage{pst-all}      % From PSTricks
+\usepackage{pst-poly}     % From pstricks/contrib/pst-poly
+\usepackage{multido}      % From PSTricks
+\usepackage{fancyhdr}
+\input{random.tex}        % From CTAN/macros/generic
+
+
+%% \theoremstyle{plain} %% This is the default
+\oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
+\headheight .3in \headsep .2in \footskip 0.5in
+\setlength{\textwidth}{16cm} %ancho para apunte
+\setlength{\textheight}{21cm} %largo para apunte
+%\leftmargin 2.5cm
+%\rightmargin 2.5cm
+\topmargin 0.5 cm
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{FAMAF}
+\fancyhead[RE,LO]{Matemática Discreta I}
+\fancyfoot[LE,RO]{\leftmark}
+\fancyfoot[RE,LO]{\thepage}
+ 
+\renewcommand{\headrulewidth}{0.5pt}
+%\renewcommand{\footrulewidth}{0.5pt}
+ 
+
+
+
+\begin{document}
+
+
+
+{\bf \begin{center} Práctico 1 \\ Matemática Discreta I -- Año 2019/1 \\ FAMAF \end{center}}
+
+\smallskip
+
+\begin{enumerate}
+
+
+\item\label{prob1} Demostrar las siguientes afirmaciones
+donde $a$, $b$, $c$ y $d$ son siempre n\'umeros enteros.\\
+Justificar cada uno de los pasos en cada demostraci\'on indicando el axioma o resultado que utiliza.
+\begin{enumerate}
+\item  $a=-(-a)$
+\item  $a=b\,$ si y sólo si $\,-a=-b$
+\item  $a+a=a$ implica que  $a=0$.
+\end{enumerate}
+
+
+\medskip
+
+\item Idem \ref{prob1}.
+
+\begin{enumerate}
+ \item $0<a\,$ y $\,0<b\,$ implican $\,0<a\cdot b$
+ \item $a<b\,$ y $\,c<0$ implican $\,b\cdot c<a\cdot c$
+\end{enumerate}
+
+\medskip
+
+\item  Probar las siguientes afirmaciones, justificando los pasos que realiza.
+\begin{enumerate}
+  \item Si $0 < a$  y $\,0<b\,$ entonces $\,a<b\,$ si y s\'olo si $a^2<b^2$.
+  \item Si $a\neq b$  entonces $a^2+b^2>0$.
+  \item Probar que si $a+c <b+c$ entonces $a<b$.
+\end{enumerate}
+
+\medskip
+
+
+\item Sea $u_1=3$, $u_2=5$ y $u_n=3 u_{n-1} - 2 u_{n-2}$ con $n\in \mathbb N$, $n\geq 3$.
+Probar que $u_n=2^n+1$.
+
+\smallskip
+
+\item Sea $\{ u_n \}_{n \in \mathbb N}$ la sucesi\' on definida
+por recurrencia como sigue: $u_1 = 9$, $u_2 = 33$, $u_k = 7u_{k-1} - 10u_{k-2}$, $\forall k \geq 3$.
+Probar que $u_n = 2^{n+1} + 5^n$, para todo $n \in \mathbb N$.
+
+\smallskip
+
+\item Sea $u_n$ definida recursivamente por: $u_1=2$, $u_n=2+\sum_{i=1}^{n-1}2^{n-2i}u_i \;\;\forall\; n >1$.
+\begin{enumerate}
+ \item Calcule $u_2$ y $u_3$.
+ \item Proponga una fórmula para el término general $u_n$ y pruébela por inducción.
+\end{enumerate}
+
+
+\smallskip
+
+\item Probar las siguientes afirmaciones usando inducci\'on en $n$:
+\begin{enumerate}
+\item $n^2\leq 2^n$ para todo $n\in{\mathbb N}$, $n>3$ .
+\item $n^3 \le 3^n$;\quad $\forall n \in {\mathbb N}$, $n\ge 3$ .
+%\item $(n+1)^n < n^{n+1}$; $\forall n \in {\mathbb N}$, $n \ge 3$.
+\item $\forall n \in {\mathbb N}$,\ $3^n \ge 1 + 2^n$.
+\end{enumerate}
+
+\smallskip
+
+
+\item Calcular evaluando las siguientes expresiones:
+\begin{multicols}{4}
+ \begin{enumerate}
+\item \quad $\displaystyle{\sum_{r=0}^4 r}$
+\item \quad $\displaystyle{\prod_{i=1}^5 i}$
+\item  \quad $\displaystyle{\sum_{k=-3}^{-1} \frac{1}{k(k+4)}}$
+\item \quad $\displaystyle{\prod_{n=2}^7 \frac{n}{n-1}}$
+\end{enumerate}
+\end{multicols}
+
+
+
+
+\smallskip
+
+\item Calcular:
+\begin{multicols}{2}
+ \begin{enumerate}
+\item \quad $2^{10} - 2^{9}$
+\item \quad $3^2 2^5 - 3^5 2^2$
+\item \quad $(2^2)^n - (2^n)^2$
+\item \quad $(2^{2^n} + 1)  (2^{2^n} - 1)$
+\end{enumerate}
+\end{multicols}
+
+
+
+
+\smallskip
+
+\item Probar que:
+\begin{multicols}{3}
+ \begin{enumerate}
+\item \quad $4^5>5^4$
+\item \quad $8^9>9^8$
+\item \quad $2^6 - 2^3  = 7^2 + 7$
+\end{enumerate}
+\end{multicols}
+
+
+
+
+
+\item Dado un natural $m$, probar que $\forall n \in {\mathbb N} $; $x$, $y \in {\mathbb R}$, se cumple:
+\begin{multicols}{3}
+ \begin{enumerate}
+  \item $x^n \cdot x^m = x^{n+m}$
+\item $(x\cdot y)^n=x^n\cdot y^n$
+\item $(x^n)^m = x^{n\cdot m}$
+ \end{enumerate}
+\end{multicols}
+
+
+
+\smallskip
+
+\item Analizar la validez de las siguientes afirmaciones:
+%\begin{multicols}{2}
+ \begin{enumerate}
+\item  $(2^{2^n})^{2^k} = 2^{2^{n+k}}$,  $n$, $k \in {\mathbb N}$.
+\item $(2^n)^2 = 4^n$, $n \in {\mathbb N}$.
+\item $2^{7+11} = 2^7 + 2^{11}$.
+\end{enumerate}
+%\end{multicols}
+
+\smallskip
+
+
+\item Demostrar por inducci\'on  las siguientes igualdades:
+  \begin{enumerate}
+  \item  $\displaystyle{ \sum_{k=1}^n (a_k + b_k) = \sum_{k=1}^n a_k + \sum_{k=1}^n b_k}$, $n\in \mathbb N$.
+  \item  $\displaystyle{ \sum_{j=1}^n j = \frac{n(n+1)}{2}}$, $n\in \mathbb N$, $n\in \mathbb N$.
+  \item  $\displaystyle{ \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}}$, $n\in \mathbb N$.
+  \item  $\displaystyle{ \sum_{k=0}^n (2k+1) = (n+1)^2}$, $n\in \mathbb N_0$.
+  \item  $\displaystyle{ \sum_{i=1}^n i^3 = \left( \frac{n(n+1)}{2 }\right)^2}$, $n\in \mathbb N$.
+  \item  $\displaystyle{ \sum_{k=0}^n a^k = \frac{a^{n+1}-1}{a-1}}$, donde $a\in {\mathbb R}$, $a \neq 0,\ 1$, $n\in \mathbb N_0$.
+  \item  $\displaystyle{ \prod_{i=1}^n \frac{i+1}{i} = n+1}$, $n\in \mathbb N$.
+
+  \item $\displaystyle{ \sum_{i=1}^n \frac{1}{4i^2-1} = \frac{n}{2n+1}}$, $n\in \mathbb N$.
+
+  \item $\displaystyle{ \sum_{i=1}^n i^2\, /\, \sum_{j=1}^n j = \frac{2n+1}{3}}$, $n\in \mathbb N$.
+
+  \item $\displaystyle{ \prod_{i=2}^n \left(1-\frac{1}{i^2}\right) = \frac{n+1}{2n}}$, $n\in \mathbb N$ y $ n\ge 2$.
+
+  \item Si $a\in \mathbb R$ y $a\geq -1$, entonces $(1+a)^n\geq 1+n\cdot a$, $\forall \, n \in \mathbb N$.
+
+  \item Si $a_1,\dots,a_n \in \mathbb R$, entonces $\displaystyle{\sum_{k=1}^n a_{k}^{2}\leq \left(\sum_{k=1}^n |a_{k}|\right)^{2}}$, $n\in \mathbb N$.
+
+
+  \item Si $a_1,\dots,a_n \in \mathbb R$ y $0<a_i<1 \forall \, i$, entonces $(1-a_1)\cdots(1-a_n)\ge 1-a_1-\cdots -a_n$, $n\in \mathbb N$.
+
+  \end{enumerate}
+
+\smallskip
+
+
+
+
+\item Hallar $n_0 \in {\mathbb N}$ tal que $\forall n \ge n_0$ se cumpla que $n^2 \ge 11 \cdot n + 3$.
+
+\smallskip
+
+
+\item Las siguientes proposiciones no son v\'alidas para todo $n \in {\mathbb N}$. Indicar en qu\'e paso del principio de inducci\'on falla la demostraci\'on:
+\begin{multicols}{4}
+\begin{enumerate}
+\item  $n=n^2$,
+\item  $n=n+1$,
+\item  $3^n = 3^{n+2}$,
+\item  $3^{3n} = 3^{n+2}$.
+\end{enumerate}
+\end{multicols}
+
+\smallskip
+
+\item Encuentre el error en los siguientes argumentos de inducci\'on.
+\begin{enumerate}
+\item  Demostraremos que $5n+3$ es m\'ultiplo de 5 para todo $n\in \mathbb N$.
+
+Supongamos que $5k+3$ es m\'ultiplo de 5, siendo $k\in \mathbb N$. Entonces existe
+$p\in \mathbb N$ tal que  $5k+3=5p$. Probemos que $5(k+1)+3$ es m\'ultiplo de 5:
+Como
+$$
+5(k+1)+3=(5k+5)+3=(5k+3)+5=5p+5=5(p+1),
+$$
+entonces obtenemos que $5(k+1)+3$ es m\'ultiplo de 5. Por lo tanto, por el principio
+de inducci\'on, demostramos que $5n+3$ es m\'ultiplo de 5 para todo $n\in \mathbb
+N$.
+
+\smallskip
+
+\item Sea $a\in\mathbb R$, con $a\neq 0$. Vamos a demostrar que para todo entero no negativo $n$, $a^n=1$.
+
+Como $a^0=1$ por definici\'on, la proposici\'on es verdadera para $n=0$. Supongamos
+que para  un entero $k$, $a^m=1$ para $0\leq m \leq k$. Entonces
+$a^{k+1}= \frac{a^k a^k}{a^{k-1}}=\frac{1\cdot1}1=1$.
+Por lo tanto, el principio de inducci\'on fuerte implica que $a^n=1$ para todo $n\in \mathbb N$.
+\end{enumerate}
+
+
+\end{enumerate}
+
+
+\end{document}
