@@ -46,7 +46,7 @@
 
 \begin{document}
 	
-{\bf \begin{center} Práctico 2 \\ Matemática Discreta I -- Año 2019/1 \\ FAMAF \end{center}}
+{\bf \begin{center} Práctico 2 \\ Matemática Discreta I -- Año 2019/2 \\ FAMAF \end{center}}
 
 {\bf \begin{center} Soluciones \end{center}}
 
@@ -117,12 +117,9 @@ podían empezar con 0), y uno tenía un boleto capicúa si el número lo era.
 
 \medskip
 
-\item Las antiguas patentes de auto tenían una letra indicativa de la provincia y luego 6
-dígitos. (En algunas provincias, Bs. As. y Capital, tenían 7 dígitos, pero ignoremos
-eso por el momento). Las nuevas patentes tienen 3 letras y luego 3 dígitos. ¿Con
-cuál de los dos criterios pueden formarse más patentes? 
+\item Las antiguas patentes de auto tenían una letra indicativa de la provincia y luego 6 dígitos. (En algunas provincias, Bs. As. y Capital, tenían 7 dígitos, pero ignoremos eso por el momento). Luego  vinieron patentes que tienen 3 letras y luego 3 dígitos. Finalmente, ahora, las patentes tienen 2 letras, luego 3 dígitos y a continuación dos letras más ¿Cuántas patentes pueden hacerse con cada uno de los sistemas?
 
-\noindent\textit{Rta:} Teníamos 24 letras contando Tierra del Fuego y Caba. Entonces con las primeras patentes había $24\times 10^6$ posibles. Con las segundas $27^3\times 10^3$. Se ve que el primer número es mayor.
+\noindent\textit{Rta:} Con el primer sistema teníamos 24 letras contando Tierra del Fuego y ciudad de Buenos Aires. Entonces con el primer sistema podíamos hacer $24\times 10^6$ patentes (24 millones). Con el segundo sistema  $27^3\times 10^3$ (menos de 20 millones). Con el tercer sistema hay $27^2\times 10^3 \times 27^2$ posibilidades (alrededor de 530 millones).
 
 \medskip
 
@@ -165,7 +162,7 @@ De los de cuatro cifras elegimos dos de ellas donde irán ubicados el 5 y el 7. 
 
 \medskip
 
-\item ¿Cuántos subconjuntos de {0, 1, 2, . . . , 8, 9} contienen al menos un impar?
+\item ¿Cuántos subconjuntos de $\{0,1,2,\dots,8,9\}$ contienen al menos un impar?
 
 \noindent\textit{Rta:} Es más fácil contar todos los subconjuntos ($2^{10}$) y luego eliminar aquellos que no contienen ningún impar, es decir aquellos que están formados únicamente por los elementos de $\{0,2,4,6,8\}$ que son $2^5$. Luego la solución es $2^{10}-2^5$.
 
@@ -173,19 +170,14 @@ Otra forma sería pensar que para armar un subconjunto de $\{0,...,9\}$ tengo qu
 
 \medskip
 
-\item El truco se juega con un mazo de 40 cartas, y se reparten 3 cartas a cada jugador.
-Obtener el 1 de espadas (el macho) es muy bueno. También lo es, por otros motivos,
-obtener un 7 y un 6 del mismo palo (tener 33). ¿Qué es más probable: obtener el
-macho, o tener 33?
-
+\item El truco se juega con un mazo de 40 cartas, y se reparten 3 cartas a cada jugador. Obtener el 1 de espadas (el {\it macho}) es muy bueno. También lo es, por otros motivos, obtener un 7 y un 6 del mismo palo ({\it tener 33}). ¿Qué es más probable: obtener el macho, o tener 33?
 
 \noindent\textit{Rta:} Si contamos todos los subconjuntos de 3 cartas una de las cuales es el macho, tendremos que son todos los subconjuntos de dos cartas entre las 39 restantes esto es $\frac{39!}{2!37!}$.
 Ahora, para cada palo, la cantidad de subconjuntos de 3 cartas, de entre las cuales 2 de ellas son el 7 y el 6 correspondientes, son exactamente 38 (las posibles cartas restantes). Esto para cada palo entonces tenemos $4\times 38$ posibilidades. Ahora bien, es más probable el macho pues $4\times 38< 39\times 19$. 
 
 \medskip
 
-\item ¿Cuántos comités pueden formarse de un conjunto de 6 mujeres y 4 hombres, si el
-comité debe estar compuesto por 3 mujeres y 2 hombres?
+\item ¿Cuántos comités pueden formarse de un conjunto de 6 mujeres y 4 hombres, si el comité debe estar compuesto por 3 mujeres y 2 hombres?
 
 \noindent\textit{Rta:} Debemos elegir 3 mujeres entre 6 y combinarlo con 2 hombres elegidos entre 4. Esto da $\frac{6!}{2!4!}\times \frac{4!}{2!2!}=90$.
 
@@ -206,19 +198,17 @@ No hay restricciones en la selección?
 \noindent\textit{Rta:} Si tuviera exactamente 3 sería:  $\binom{4}{3}\binom{7}{2}=84$. A estos debemos agregar los que tienen 4 profesores:  $\binom{4}{4}\binom{7}{1}=7$. En total quedan 91.
 
 
-\item El profesor X y el estudiante Y no pueden estar juntos en el comité?
+\item El profesor $X$ y el estudiante $Y$ no pueden estar juntos en el comité?
 
-\noindent\textit{Rta:} Sin restricción tenemos  $\binom{11}{5}$. A esto le restamos los que tienen a X e Y:  $\binom{9}{3}$.
-En total quedan 462-84=378. 
+\noindent\textit{Rta:} Sin restricción tenemos  $\binom{11}{5}$. A esto le restamos los que tienen a $X$ e $Y$:  $\binom{9}{3}$.
+En total quedan $462-84=378$. 
 \end{enumerate}
 
 \medskip
 
-\item Si en un torneo de fútbol participan 2n equipos, probar que el número total de
-opciones posibles para la primera fecha es 1 · 3 · 5 · · · · · (2n ? 1). sugerencia: use
-un argumento por inducción.
+\item Si en un torneo de fútbol participan $2n$ equipos, probar que el número total de opciones posibles para la primera fecha es $1\cdot 3\cdot 5 \cdots (2n - 1)$. sugerencia: use un argumento por inducción. 
 
-\noindent\textit{Rta:} Si son 2 equipos hay un único partido posible o sea $2.1-1$. suponiendo que vale para $2k$ equipos consideremos el caso de $2k+2$ equipos. Tomamos uno de los nuevos equipos y tenemos $2k+1$ rivales posibles y una vez definido este partido por hipótesis inductiva tenemos $1.3.\dots.(2k-1)$ posibilidades para completar la fecha. Es decir en total tenemos $1.3.\dots.(2k-1).(2k+1)$ posibilidades para la primera fecha.
+\noindent\textit{Rta:} Si son 2 equipos hay un único partido posible o sea $2\cdot 1-1$. suponiendo que vale para $2k$ equipos consideremos el caso de $2k+2$ equipos. Tomamos uno de los nuevos equipos y tenemos $2k+1$ rivales posibles y una vez definido este partido por hipótesis inductiva tenemos $1\cdot 3\cdots (2k-1)$ posibilidades para completar la fecha. Es decir en total tenemos $1\cdot 3\cdots(2k-1)\cdot(2k+1)$ posibilidades para la primera fecha.
 
  Otra forma es elegir el primer partido, $\binom{2n}{2}$ formas, el segundo partido,$\binom{2n-2}{2}$ formas, y asi sucesivamente hasta $\binom{4}{2}$ y $\binom{2}{2}$ formas para los últimos dos partidos. Al hacer eso se están contando más de una vez la misma elección de partidos pero en diferentes ordenes, así que se deben descontar todas las maneras posibles de ordenar los $n$ partidos para los $2n$ equipos. El resultado sería $(1 / n!) \binom{2n}{2}\binom{2n-2}{2}\dots \binom{4}{2}\binom{2}{2}= (2n)! / ( 2^n n!)$.
 
@@ -226,11 +216,9 @@ Viendo esa última expresión se puede deducir también otra forma: Ordeno a los
 
 \medskip
 
-\item En una clase hay n chicas y n chicos. Dar el número de maneras de ubicarlos en
-una fila de modo que todas las chicas estén juntas.
+\item En una clase hay $n$ chicas y $n$ chicos. Dar el número de maneras de ubicarlos en una fila de modo que todas las chicas estén juntas.
 
-\noindent\textit{Rta:} Podríamos pensar a las chicas como un único bloque y este puede ir en $n+1$ posiciones distintas.
-Si ahora individualizamos cada chico tenemos $n!$ posibilidades de ordenarlos e idénticamente $n!$ posibilidades individualizando cada chica. Luego tenemos $(n+1)(n!)n!=(n+1)!n!$ formas posibles de armar la fila.
+\noindent\textit{Rta:} Podríamos pensar a las chicas como un único bloque y este puede ir en $n+1$ posiciones distintas. Si ahora individualizamos cada chico tenemos $n!$ posibilidades de ordenarlos e idénticamente $n!$ posibilidades individualizando cada chica. Luego tenemos $(n+1)(n!)n!=(n+1)!n!$ formas posibles de armar la fila.
 
 \medskip
 
@@ -287,8 +275,10 @@ Otra forma es considerar todos los segmentos que tienen como extremos a dos vér
 
 \medskip
 
-\item Dados $m, n$ y $ k$ naturales tales que $m \le k \le n$, probar que se verifica
-$$  \binom{n}{k}\binom{k}{m}=\binom{n}{m}\binom{n-m}{k-m}.$$
+\item Dados $m$, $n$ y $k$ naturales tales que $m \le k \le n$, probar que se verifica
+\begin{equation*}
+\binom{n}{k}\binom{k}{m} = \binom{n}{m}\binom{n-m}{k-m}.
+\end{equation*}
 
 \noindent\textit{Rta:} Tenemos: $$\binom{n}{k}\binom{k}{m}=\frac{n!k!}{k!(n-k)!m!(k-m)!}=\frac{n!}{(n-k)!m!(k-m)!}.$$
 
@@ -297,11 +287,15 @@ Y por otra parte: $$\binom{n}{m}\binom{n-m}{k-m}=\frac{n!(n-m)!}{m!(n-m)!(k-m)!(
 
 \medskip
 
-\item Probar que para todo $ i, j, k\in \mathbb{N}_0$  vale
-$\displaystyle{\binom{i + j + k}{i}\binom{j+k}{j}=\frac{(i + j + k)!}{i!j!k!}}$
+\item Probar que para todo $i$, $j$, $k \in {\mathbb N}_0$ vale
+\begin{equation*}
+\binom{i + j + k}{i}\binom{j+k}{j} = \frac{(i+j+k)!}{i!j!k!}
+\end{equation*}
 
 \noindent\textit{Rta:} Por definición: 
-$$\binom{i + j + k}{i}\binom{j+k}{j}=\frac{(i + j + k)!}{i!(i+j+k-i)!}\frac{(j+k)!}{j!k!(j+k-k)!}=\frac{(i + j + k)!}{i!j!k!}.$$
+\begin{equation*}
+\binom{i + j + k}{i}\binom{j+k}{j}=\frac{(i + j + k)!}{i!(i+j+k-i)!}\frac{(j+k)!}{j!k!(j+k-k)!}=\frac{(i + j + k)!}{i!j!k!}.
+\end{equation*}
 
 
 \medskip
@@ -324,8 +318,10 @@ Alternativamente si conocemos la fórmula del binomio de Newton $(a+b)^n=\sum_{i
 
 \medskip
 
-\item Probar que para todo natural $n$ vale que
-$$\binom{2n}{2}=2\binom{n}{2}+n^2$$
+\item Probar que para todo natural $n$ vale que 
+\begin{equation*}
+\binom{2n}{2} = 2 \binom{n}{2} + n^2.
+\end{equation*}
 
 \noindent\textit{Rta:} Tenemos: $$2\binom{n}{2}+n^2=2\frac{n(n-1)}{2}+n^2={n(n-1+n)}=\frac{2n(2n-1)}{2}=\binom{2n}{2}.$$
 
