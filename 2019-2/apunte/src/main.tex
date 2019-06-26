@@ -211,6 +211,8 @@
 
 	\tableofcontents 
 
+
+
 	\pagenumbering{arabic}
 
 	\chapter*{Prefacio} 
@@ -638,7 +640,7 @@ Por lo tanto si el resultado es correcto cuando $n=k$, entonces lo es cuando $n=
 
 La esencia de este argumento es comúnmente llamada {\it principio de inducción}. Es una técnica poderosa, fácil de aplicar y la aplicaremos frecuentemente. Pero primero debemos examinar sus bases lógicas y para hacerlo necesitamos una formulación más general. Con $S$ denotemos al subconjunto de $\mathbb N$ para el cual el resultado es correcto: por supuesto, nuestra intención es probar que $S$ es todo $\mathbb N$. El primer paso es probar que $1$ pertenece a $S$, y luego demostraremos que si $k$ pertenece a $S$, también $k+1$. Entonces lo pensamos paso a paso y concluimos que $S=\mathbb N$. Afortunadamente el pensarlo paso a paso no es esencial, debido a que el principio de inducción es consecuencia de los axiomas que elegimos tan cuidadosamente para $\mathbb Z$ y $\mathbb N$. Más específicamente es consecuencia del axioma del buen orden.
 
-\begin{teorema}\label{t1.4} Supongamos que $S$ es un subconjunto de $\mathbb N$ que satisface las condiciones \index{principio de inducción}
+\begin{teorema}[Principio de inducción]\label{t1.4} Supongamos que $S$ es un subconjunto de $\mathbb N$ que satisface las condiciones \index{principio de inducción}
 \begin{enumerate}
 \item[(\em i)] $1 \in S$,
 \item[(\em ii)] para cada $k \in \mathbb N$, si $ k \in S$ entonces $k+1\in S$.
@@ -675,14 +677,6 @@ Entonces $S$ es un subconjunto de $\mathbb N$ y las condiciones (1) y (2) nos di
 
 En la notación del teorema anterior, (1) es llamado  el {\em caso base}, (2) es llamado el  {\em paso inductivo} y $P(k)$ es llamada la {\em hipótesis inductiva}. El paso inductivo  consiste en probar que $P(k) \Rightarrow P(k + 1)$ o, equivalentemente, podemos suponer $P(k)$ verdadera y a partir de ella probar $P(k + 1)$. 
 
-\begin{ejemplo}\label{ejemplo141} Sea $a\in \mathbb Z$ tal que $0<a$. Probar que $0<a^n$ para todo $n \in \mathbb N$.
-\end{ejemplo}
-\begin{proof}
-
-\noindent(\it Caso  base\rm) El resultado es verdadero cuando $n=1$ pues $ 0 < a=a^1$.
-
-\noindent ({\it Paso  inductivo})  Supongamos que el resultado verdadero cuando $n=k$, o sea, que la hipótesis inductiva es $0 < a^k$. Entonces, como $0<a$, multiplicando por $a$ ambos lados de la desigualdad obtenemos, por la compatibilidad de $<$ con el producto, que $a{.}0 < a^k{.}a$, es decir $0<a^{k+1}$. Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.
-\end{proof}
 
 \begin{ejemplo} El entero $x_n$ esta definido recursivamente por
 $$
@@ -695,18 +689,29 @@ $$
 \end{ejemplo}
 \begin{proof}
 
-\noindent(\it Caso  base\rm) El resultado es verdadero cuando $n=1$ pues $ 2=1\times2$.
+\noindent(\it Caso  base\rm) El resultado es verdadero cuando $n=1$ pues $ x_1 = 2=1\times2$.
 
-\noindent ({\it Paso  inductivo})  Supongamos que el resultado verdadero cuando $n=k$, o sea, que la hipótesis inductiva es $x_k = k(k+1)$. Entonces
-$$
-\begin{matrix} 
-x_{k+1} &=& x_k + 2(k+1) \hfill &\quad \text{(por la definición recursiva)} \hfill \\
-&=& k(k+1)+2(k+1) \hfill &\quad \text{(por hipótesis inductiva)}\hfill \\
-&=& (k+1)(k+2). \hfill &
-\end{matrix}
-$$
+\noindent ({\it Paso  inductivo})  Supongamos que el resultado verdadero cuando $n=k$, o sea, que la hipótesis inductiva es $x_k = k(k+1)$. Entonces debemos probar  que $x_{k+1} = (k+1)(k+2)$. Ahora bien, 
+\begin{equation*}
+	\begin{matrix} 
+	x_{k+1} &=& x_k + 2(k+1) \hfill &\quad \text{(por la definición recursiva)} \hfill \\
+	&=& k(k+1)+2(k+1) \hfill &\quad \text{(por hipótesis inductiva)}\hfill \\
+	&=& (k+1)(k+2). \hfill &
+	\end{matrix}
+\end{equation*}
 Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.
 \end{proof}
+
+
+\begin{ejemplo}\label{ejemplo141} Sea $a\in \mathbb Z$ tal que $0<a$. Probar que $0<a^n$ para todo $n \in \mathbb N$.
+\end{ejemplo}
+\begin{proof}
+	
+	\noindent(\it Caso  base\rm) El resultado es verdadero cuando $n=1$ pues $ 0 < a=a^1$.
+	
+	\noindent ({\it Paso  inductivo})  Supongamos que el resultado verdadero cuando $n=k$, o sea, que la hipótesis inductiva es $0 < a^k$. Entonces, como $0<a$, multiplicando por $a$ ambos lados de la desigualdad obtenemos, por la compatibilidad de $<$ con el producto, que $a\cdot 0 < a^k\cdot a$, es decir $0<a^{k+1}$. Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.
+\end{proof}
+
 
 Existen varias formas modificadas del principio de inducción. A veces es conveniente tomar como base inductiva el valor $n=0$, por otro lado puede ser apropiado tomar un valor como $2$ o $3$ porque los primeros casos pueden ser excepcionales. Cada problema debe ser tratado según sus características. Otra modificación útil es tomar como hipótesis inductiva la suposición de que el resultado es verdadero para todos los valores $n\le k$, más que para $n=k$ solamente. (Esta formulación es llamada a veces el principio de inducción {\it completa}.) Todas esas modificaciones pueden justificarse con cambios triviales en la demostración del teorema \ref{t1.4}.
 
@@ -729,7 +734,7 @@ es no vacío. Como $X$ es un conjunto acotado inferiormente por $n_0$, por el ax
 
 Como se podrá observar, la demostración es muy similar a  la del teorema \ref{t1.4}. El teorema anterior lo podemos utilizar para la demostración de propiedades dependientes de números enteros.
 
-\begin{teorema}[Inducción completa]\label{ind-completa} Sea $n_0$ número entero y sea $P(n)$ una propiedad para $n \ge n_0$ tal que:
+\begin{teorema}[Principio de inducción completa]\label{ind-completa} Sea $n_0$ número entero y sea $P(n)$ una propiedad para $n \ge n_0$ tal que:
 \begin{enumerate}
 \item[(1)] $P(n_0)$ es verdadera.
 \item[(2)] Si $P(h)$ verdadera para toda $h$ tal que $n_0 \le h \le k$ implica $P(k + 1)$ verdadera.
@@ -741,11 +746,11 @@ Entonces $P(n)$ es verdadera para todo $n \ge n_0$.
 
 \begin{ejemplo}
 Sea $u_1 = 3$, $u_2 = 5$ y $u_n = 3u_{n-1}  - 2u_{n-2}$ con $n \in  \mathbb N$, $n \ge 3$. Probar que $u_n = 2^n + 1$.
-\begin{proof} Aquí usaremos una extensión natural del principio de inducción: en este caso, el caso base es $n=1$ y $n=2$.
+\begin{proof} Para $n=1$ el resultado es verdadero pues $u_1 =3 = 1^1 +1$. Tomaremos el caso  base $n=2$.
 
-\noindent(\it Caso  base\rm) El resultado es verdadero cuando $n= 1$ pues $3 = 2^1+1$ y para $n=2$ pues $ 5 =2^2+1$.
+\noindent(\it Caso  base\rm) El resultado es verdadero cuando  $n=2$ pues $u_2 = 5 =2^2+1$.
 
-\noindent ({\it Paso  inductivo}) Supongamos que $k \ge 2$ y el resultado  es cierto para los $h$ tales que  $1 \le h \le k$. Es decir que $u_h = 2^h+1$ para $1 \le h \le k$ y $k \ge 2$ (hipótesis inductiva), entonces
+\noindent ({\it Paso  inductivo}) Supongamos que $k \ge 2$ y el resultado  es cierto para los $h$ tales que  $1 \le h \le k$. Es decir que $u_h = 2^h+1$ para $1 \le h \le k$ y $k \ge 2$ (hipótesis inductiva), entonces debemos probar que $u_{k+1} = 2^{k+1}+1$. Ahora bien, 
 $$
 \begin{matrix} u_{k+1} &=& 3u_k -2u_{k-1} \hfill &\quad \text{(por definición recursiva)} \hfill \\
 &=& 3(2^k+1)-2(2^{k-1}+1) \hfill &\quad \text{(por hipótesis inductiva})\hfill \\
@@ -780,7 +785,7 @@ a^{n}a^{k+1} &= a^{n}a^{k}a&  & \text{(definición (\ref{potencia}))} \\
 &= a^{n+k+1}&  & \text{(definición (\ref{potencia}))}. 
 \end{alignat*}
 
-Probemos ahora \ref{potpot}. Al igual que antes, Se fijará $n$ y se hará inducción sobre $m$.
+Probemos ahora \ref{potpot}. Al igual que antes, se fijará $n$ y se hará inducción sobre $m$.
 
 \noindent(\it Caso  base\rm) Debemos ver que $(a^n)^1 = a^n$, lo cual es verdadero por la definición recursiva (\ref{potencia}). 
 
@@ -1514,7 +1519,7 @@ $$
 (a+b)^2 = a^2 +2ab +b^2, \qquad (a+b)^3 = a^3 + 3 a^2b +3ab^2 +
 b^3,
 $$
-y a veces nos piden desarrollar la formula para $(a+b)^4$ y potencias mayores de $a+b$. El resultado general que da una formula para $(a+b)^n$ es conocido como el  {\it {teorema del binomio}}.  \index{Teorema del binomio}
+y a veces nos piden desarrollar la formula para $(a+b)^4$ y potencias mayores de $a+b$. El resultado general que da una formula para $(a+b)^n$ es conocido como el  {\it {teorema del binomio}} o {\it binomio  de Newton}.  \index{Teorema del binomio}\index{Binomio de Newton}
 
 \begin{teorema}\label{t3.6} Sea $n$ un entero positivo. El coeficiente del termino $a^{n-r}b^r$ en el desarrollo de $(a+b)^n$ es el número binomial $\binom{n}{r}$. Explícitamente, tenemos
 $$
@@ -1576,6 +1581,22 @@ $$
 La expresión $a+b$ es conocida como un expresión {\it binómica} porque tiene dos términos. Como los números  \index{expresión binómica} $\binom{n}{r}$ aparecen como los coeficientes en el desarrollo de $(a+b)^n$, generalmente se los llama, como ya fue dicho,  coeficientes binomiales.   De todos modos esta claro por la prueba del teorema \ref{t3.6} que estos números aparecen en este contexto porque representan el número de formas de hacer ciertas selecciones. Por esta razón continuaremos usando el nombre de números binomiales,  que se aproxima más al concepto que simbolizan.
 
 Además de ser extremadamente útil en manipulaciones algebraicas, el teorema del binomio puede usarse para deducir identidades en que estén involucrados los números binomiales.
+
+
+\begin{ejemplo}
+	Para todo $n \in \mathbb N$ se verifica 
+	\begin{equation*}
+		\displaystyle{\binom{n}{0} + \binom{n}{1} + \cdots + \binom{n}{n} = 2^n}.
+	\end{equation*}
+\end{ejemplo}
+\begin{proof}
+	Aplicamos la fórmula del binomio de Newton  al caso $a=b=1$, entonces
+	\begin{equation*}
+		2^n = (1+1)^n =  \sum_{i=0}^{n} \binom{n}{i}1^{n-i}1^{i} = \sum_{i=0}^{n} \binom{n}{i}.
+	\end{equation*}
+	Con esto termina la demostración, pero, alternativamente, también podemos demostrar este ejemplo usando métodos de conteo: $2^n$ es la cantidad de subconjuntos de $\{1,2,\dots,n\}$. Si agrupamos los subconjuntos de acuerdo a su cardinal, como sabemos que $\binom{n}{k}$ es la cantidad de subconjuntos de $k$ elementos de  $\{1,2,\dots,n\}$, se obtiene la igualdad.
+\end{proof}
+
 
 \begin{ejemplo}Probar que
 \begin{equation}\label{eqcuaddo}
@@ -1790,7 +1811,7 @@ x=r_nb^n +r_{n-1} b^{n-1}+\cdots + r_1 b + r_0.
 $$
 Hemos representado $x$ (con respecto a la base $b$) por la secuencia de los restos, y escribimos $x=(r_nr_{n-1}\dots r_1 r_0)_b$. Convencionalmente $b=10$ es la base para los cálculos hechos ``a mano'' y omitimos ponerle el subíndice, entonces tenemos la notación usual
 $$
-1984=(1\cdot 10^3 ) + (9\cdot 10^2 )+(8\cdot 10 ) + 4.
+1984=1\cdot 10^3  + 9\cdot 10^2 +8\cdot 10  + 4.
 $$
 Esta notación posicional requiere símbolos solo para los enteros $0, 1,\ldots,b-1$ .La base $b=2$ es particularmente adaptable para los cálculos en computadoras porque los símbolos 0 y 1 pueden representarse físicamente por la ausencia o presencia de un pulso de electricidad o luz. 
 
@@ -1807,8 +1828,10 @@ Por lo tanto
 $$
 (109)_{10} = (1101101)_2.
 $$
+\end{proof}
 
 La base 16 también es usada en computación pues se utiliza el byte como unidad básica de memoria y debido a que un byte puede tomar $2^8$ posibles valores, tenemos que $$2^8 = 2^4 \cdot 2^4 = 16 \cdot 16 = 1 \cdot 16^2 + 0 \cdot 16^1 + 0 \cdot 16^0.$$ Luego   un byte puede representar $(100)_{16}$ valores. Más allá de la justificación, es claro que los dígitos disponibles (del 0  al 9) no nos alcanzan  para representar un  número en base 16, pues se requieren 16 símbolos. La convención usada es ${\tt A}=10, {\tt B}=11, {\tt C} =12, {\tt D} = 13, {\tt E} = 14, {\tt F} = 15$.
+
 
 \begin{ejemplo} Representar  12488 en  base 16.
 \begin{alignat*}2
@@ -1820,7 +1843,33 @@ La base 16 también es usada en computación pues se utiliza el byte como unidad
 Luego $12488 = (30{\tt C}8)_{16}$.
 \end{ejemplo}
 
-\end{proof}
+
+\begin{observacion}[*]
+Claramente hallar la representación de un número en cierta base es un proceso algorítmico y por lo tanto, podemos escribir en pseudocódigo el algoritmo. 
+
+\vskip .5cm 
+
+\begin{minipage}{200pt}
+	\noindent {\sc Representación en base $b$}
+	\vskip .2cm
+	\begin{small}
+		\begin{verbatim}
+def base(b,a):
+    # pre: b es entero tal que 2 <= b <= 16. a es número entero positivo
+    # post: Devuelve la representación de a en base b 
+    D = ['0',...,'9','A','B','C','D','E','F'] # posibles caracteres
+    q = a / b
+    rep = D[a % b] # a % b = resto de a / b
+    while q != 0:
+        q, r  = q / b, q % b
+        rep = D[r] + rep
+    return rep
+		\end{verbatim}
+	\end{small}
+\end{minipage}
+\end{observacion}
+ 
+ \vskip .3cm 
 
 \end{subsection}
 \begin{subsection}{Ejercicios}
@@ -1853,13 +1902,13 @@ Cuando $y|x$ podemos usar el símbolo $\frac{x}{y}$ (o $x/y$) para denotar el en
 
 Veamos ahora alguna propiedades básicas de la relación ``divide a''. 
 
-\begin{proposicion}Sean $a,b,c$ enteros, entonces
-\begin{enumerate}
+\begin{proposicion}\label{prop-divide-a-propiedades}Sean $a,b,c$ enteros, entonces
+\begin{enumerate}%[(1)] % si queremos cambiar el estilo de enumerate
 \item $1|a$, $a|0$, $a|\pm a$;
 \item si $a|b$, entonces $a|bc$ para cualquier $c$;
 \item si $a|b$ y $a|c$, entonces $a|b+c$;
 \item si $a|b$ y $a|c$, entonces $a|rb+sc$ para cualesquiera $r,s \in \mathbb Z$;
-\item si $a',b'$ enteros y $a|a'$, $b|b'$, entonces $ab|a'b'$.
+\item\label{prop-divide-a-propiedades-item-5} si $a',b'$ enteros y $a|a'$, $b|b'$, entonces $ab|a'b'$.
 \end{enumerate}
 \end{proposicion}
 \begin{proof}
@@ -2109,14 +2158,17 @@ r_k = \mcd(r_{k},0) = \mcd(r_{k-1},r_k) =\mcd(r_{k-2},r_{k-1}) = \cdots\\\cdots
 \vskip .2cm
 \begin{small}
 \begin{verbatim}
-# pre: a y b son números positivos
-# post: Obtenemos d = mcd(a,b)
-r(0), r(1) = a, b
-i = 1 
-while r(i) != 0:
-    r(i+1) = r(i-1) % r(i)   # a % b = resto de a / b
-    i = i + 1
-d = r(i-1)
+def mcd(a,b):
+    # pre: a y b son números enteros, uno de ellos no nulo
+    # post: Obtenemos d = mcd(a,b)
+    r = lista  de enteros
+    r[0], r[1] = |a|, |b| 
+    i = 1 
+    while r[i] != 0:
+        r[i+1] = r[i-1] % r[i]   # a % b = resto de a / b
+        i = i + 1
+    d = r[i-1]
+    return d
 \end{verbatim}
 \end{small}
 \end{minipage}
@@ -2266,20 +2318,22 @@ Simplificando un poco el algoritmo en el inicio, podemos escribirlo con el sigui
 \vskip .3cm
 \begin{small}
 \begin{verbatim}
-# pre: a y b son números positivos
-# post: Obtenemos s y t tal que mcd(a,b) = a*s +b*t
-r(0), r(1) = a, b
-s(0), t(0) = 1, 0  # r(0) = a*s(0) + b*t(0)
-s(1), t(1) = 0, 1  # r(1) = a*s(1) + b*t(1)
-i = 1 
-while r(i) != 0:
-    q, r(i+1) = r(i-1) / r(i), r(i-1) % r(i)
-    # r(i-1) = r(i)*q + r(i+1),  0 <= r(i+1) < r(i)
-    s(i+1) = s(i-1) + s(i)*q
-    t(i+1) = t(i-1) + t(i)*q
-    # r(i+1) = a*s(i+1) + b*t(i+1)
-    i = i+1
-s, t  = s(i), t(i)
+    def mcd2(a, b):
+        # pre: a y b son números positivos
+        # post: Obtenemos s y t tal que mcd(a,b) = a*s + b*t
+        r[0], r[1] = a, b
+        s[0], t[0] = 1, 0  # r[0] = a*s[0] + b*t[0]
+        s[1], t[1] = 0, 1  # r[1] = a*s[1] + b*t[1]
+        i = 1 
+        while r[i] != 0:
+            q, r[i+1] = r[i-1] / r[i], r[i-1] % r[i]
+            # r[i-1] = r[i]*q + r[i+1],  0 <= r[i+1] < r[i]
+            s[i+1] = s[i-1] + s[i]*q
+            t[i+1] = t[i-1] + t[i]*q
+            # r[i+1] = a*s[i+1] + b*t[i+1]
+            i = i+1
+        s, t  = s[i], t[i]
+        return s, t
 \end{verbatim}
 \end{small}
 \end{minipage}
@@ -2577,11 +2631,11 @@ $$
 luego 2 está elevado a una potencia {\it par} (posiblemente cero) en la factorización prima de $m^2$. se sigue entonces que de ser $m^2 = 2n^2$ deberíamos tener dos factorizaciones primas diferentes del mismo número entero, contradiciendo al teorema \ref{t1.8.2}. Entonces $m^2 \not= 2n^2$.
 \end{proof}
 
-Es claro que la conclusión del {ejemplo}  vale también si nosotros permitimos que alguno de los enteros $m$ o $n$ valga 1. Luego podemos expresar el resultado diciendo que no hay enteros positivos $m$ y $n$ que cumplan
+Si de la desigualdad $m^2 \not= 2n^2$ pasamos dividiendo $n^2$ al otro término, obtenemos
 $$
-\left(\frac{m}{n}\right)^2 =2
+\left(\frac{m}{n}\right)^2 \not=2
 $$
-o equivalentemente, diciendo que la raíz cuadrada de $2$ no puede ser expresada como una fracción $m/n$, es decir, hemos probado: 
+para cualesquiera enteros positivos $m$ y $n$. Equivalentemente, aplicando la raíz cuadrada a ambos términos de la desigualdad, concluimos que la raíz cuadrada de $2$ no puede ser expresada como una fracción $m/n$. Es decir, hemos probado: 
 \begin{center}
 	\textit{$\sqrt{2}$ no es un  número racional.}
 \end{center}
@@ -2613,7 +2667,7 @@ Entonces $m|n$ si y sólo si $e_i \le f_i$ para todo $i$.
 \begin{proof}
 ($\Rightarrow$) Por la descomposición de $m$ es claro que $p^{e_i}|m$. Como $m|n$ entonces   $p^{e_i}|n$. Es decir $n =  p^{e_i}u$. Es claro por TFA entonces que $e_i \le f_i$.
 \vskip .2cm
-($\Leftarrow$) Como $e_i \le f_i$, tenemos que $p^{e_i}|p^{f_i}$, para $1 \le i \le r$.  Luego  $$p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}| p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.$$ Es decir $m|n$.
+($\Leftarrow$) Como $e_i \le f_i$, tenemos que $p^{e_i}|p^{f_i}$, para $1 \le i \le r$.  Luego, por proposición \ref{prop-divide-a-propiedades}(\ref{prop-divide-a-propiedades-item-5}),   $$p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}| p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.$$ Es decir $m|n$.
 \end{proof}
 
 \begin{ejercicio} Sean $m,n$ enteros con $m,n\ge 2$. Entonces  $m$ y  $n$ son coprimos si y sólo si no comparten ningún primo en la factorización. 
