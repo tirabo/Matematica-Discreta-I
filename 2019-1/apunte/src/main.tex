@@ -3,6 +3,8 @@
 \tolerance=10000
 \renewcommand{\baselinestretch}{1.3}
 
+% Para hacer el  indice en linea de comando hacer 
+% makeindex main
 \usepackage{t1enc}
 \usepackage[spanish]{babel}
 \usepackage{latexsym}
@@ -233,7 +235,7 @@ En este curso no nos preocupamos demasiado por el significado lógico y filosóf
 
 El punto de vista adoptado en este apunte es el señalado antes. Aceptamos sin reparo que existe un conjunto de objetos llamados { \it enteros} conteniendo los enteros positivos y los negativos, y el cero, familiares en nuestra temprana educación y experiencia. El conjunto de enteros se denotará por el símbolo especial ${\mathbb Z}$. Las propiedades de ${\mathbb Z}$ serán dadas por una lista de axiomas, a partir de las cuales seremos capaces de deducir todos los resultados sobre números enteros que necesitaremos en las cuestiones subsiguientes. Empezaremos listando aquellos axiomas que tratan la suma y la multiplicación.
 
-Adoptaremos las notaciones usuales $a+b$ para la suma de dos enteros $a$ y $b$, y $a \times b$ (o frecuentemente solo $ab$) para su producto. Pensamos en $+$ y $\times$ como {\it operaciones} que a un par de enteros $a$ y $b$ les hacen corresponder un entero $a+b$ y otro $a\times b$. El hecho de que $a \times b$ y $a+b$ son enteros, y no algún objeto extra\~no como elefantes, es nuestra primera suposición (axioma {\bf I1}). 
+Adoptaremos las notaciones usuales $a+b$ para la suma de dos enteros $a$ y $b$, y $a \times b$ (o frecuentemente solo $a \cdot b$ o $ab$) para su producto. Pensamos en $+$ y $\times$ como {\it operaciones} que a un par de enteros $a$ y $b$ les hacen corresponder un entero $a+b$ y otro $a\times b$. El hecho de que $a \times b$ y $a+b$ son enteros, y no algún objeto extra\~no como elefantes, es nuestra primera suposición (axioma {\bf I1}). 
 
 Una propiedad que debemos mencionar es la siguiente: si $a,b, c \in \mathbb Z$  y $a=b$, entonces $a+c = b+c$ y $ac = bc$. Esto se debe a que la suma y el producto son operaciones que, como acabamos de decir, toman un par de enteros y  devuelven otro entero. Si $a=b$, entonces el  par $a,c$ es igual al par $b,c$ y por lo tanto devuelven la misma suma y el mismo producto.
 
@@ -243,7 +245,7 @@ En la siguiente lista de axiomas $a$, $b$, $c$ denotan enteros arbitrarios, y 0 
 \item[{\bf I1.}] $a+b$ y $ab$ pertenecen a ${\mathbb Z}$.
 \item[{\bf I2.}] {\em Conmutatividad.}\, $a+b = b+a$; $ab=ba$. 
 \item[{\bf I3.}] {\em Asociatividad.}\, $(a+b)+c = a+(b+c)$; $(ab)c = a(bc)$. 
-\item[{\bf I4.}] {\em Existencia de elemento neutro.}\, Existen números $0$, $1 \in \mathbb Z$ con $0\not=1$ tal que $a+0=a$; $a1=a$. 
+\item[{\bf I4.}] {\em Existencia de elemento neutro.}\, Existen números $0$, $1 \in \mathbb Z$ con $0\not=1$ tal que $a+0=a$; $a \times 1=a$. 
 \item[{\bf I5.}] {\em Distributividad.}\, $a(b+c)=ab+ac$. 
 \item[{\bf I6.}] {\em Existencia del inverso aditivo.}\, Por cada $a$ en ${\mathbb Z}$ existe un único entero $-a$ en ${\mathbb Z}$ tal que $a+(-a)=0$. 
 \item[{\bf I7.}] {\em Cancelación.}\, Si $a$ es distinto de 0 y $ab=ac$, entonces $b=c$. 
@@ -363,13 +365,16 @@ $$
 \item[{\bf I11.}] {\em Compatibilidad del producto con el orden.}\, Si $a< b$ y $0< c$, entonces $ac < bc$. 
 \end{enumerate}
 
-Esta claro que podemos definir los otros símbolos de orden $>$, $\le$ y $\ge$, en términos de los símbolos $<$ e $=$. Diremos que $m>n$ si  $n<m$, diremos que $m \le n$ si $m<n$ o $m=n$. Finalmente, diremos que $m \ge n$ si $m > n$ o $m=n$.  Es importante notar que el  axioma {\bf I11} tiene una versión valedera para estos nuevos símbolos.
+Observar que el axioma {\bf I10} nos permite hacer \textit{pasaje de término}, por ejemplo si $a < b$, entonces $0 < b -a$, pues $a < b$ implica $a - a < b - a$, es decir $0 < b -a$. 
+
+Es claro que podemos definir los otros símbolos de orden $>$, $\le$ y $\ge$, en términos de los símbolos $<$ e $=$. Diremos que $m>n$ si  $n<m$, diremos que $m \le n$ si $m<n$ o $m=n$. Finalmente, diremos que $m \ge n$ si $m > n$ o $m=n$.  Es importante notar que los  axiomas {\bf I9}, {\bf I10} e {\bf I11} tienen una versión valedera para estos nuevos símbolos. Explicitemos el caso  del axioma {\bf I11}:
 \begin{enumerate}
 \item[{\bf I11.}] {\bf ($>$)} Si $a > b$ y $c>0$, entonces $ac > bc$.
 \item[{\bf I11.}] {\bf ($\le$)} Si $a \le b$ y $0 \le c$, entonces $ac \le bc$.
 \item[{\bf I11.}] {\bf ($\ge$)} Si $a\ge b$ y $c\ge 0$, entonces $ac \ge bc$.
 \end{enumerate}
-Usando las definiciones de $\ge$, $<$, $>$ y el axioma {\bf I11} original es muy sencillo demostrar estas variantes. 
+
+Usando las definiciones de $\ge$, $<$, $>$ y el axioma {\bf I11} original es muy sencillo demostrar estas variantes. También valen consecuencias obvias de estas propiedades como, por ejemplo, si $a > b$ y $c \ge 0$, entonces $ac \ge bc$. 
 
 Cuando tachemos un símbolo, estamos indicando la negación de la relación que define. Por ejemplo, $a\not< b$ denota ``$a$ {\em no} es menor que $b$''. Otro ejemplo, $a\not= b$ denota  ``$a$ {\em no} es igual a $b$'' o bien ``$a$ es distinto a $b$''. 
 
@@ -407,22 +412,35 @@ $a=b$ y $b=c$. Es claro entonces que $a=c$, lo cual implica que $a\le c$.
 
 Una relación que satisfaga las tres propiedades anteriores (reflexividad, antisimetría y transitividad) es llamada {\em una relación de orden}. Observar que $<$ {\em no} es una relación de orden, en el sentido de la definición anterior. 
 
+\begin{proposicion}\label{prop-0-menor-1} Sean $a,b,c$ números enteros. 
+	\begin{enumerate}
+		\item[{\it (a)}] Si  $a < b$ y $c < 0$, entonces $ac > bc$.
+		\item[{\it (b)}] Si $a \ne 0$, entonces  $0 < a^2$. 
+		\item[{\it (c)}] \label{item-0-menor-1} $0 < 1$.
+		\item[{\it (d)}] $n < n+1$ para todo $n$ en $\mathbb Z$.
+	\end{enumerate}
+\end{proposicion}
+\begin{proof}
+	{\it (a)} Como $c < 0$, sumando $-c$ a la desigualdad, se deduce que $0 < -c$, luego por {\bf I11}, obtenemos que $a(-c) < b(-c)$, es decir $-ac < -bc$ y haciendo pasajes de término llegamos a $bc < ac$. 
+	
+	{\it (b)} Como $a \ne 0$, por tricotomía tenemos dos casos: $ 0<a$  y $a <0$. Si $0 < a$, por {\bf I11}, $0 \cdot a < a \cdot a$,  es decir $0 < a^2$. En  el caso que $a <0$, por {\it (a)}, aplicado a $a<0$ y $a<0$, obtenemos $a^2 >0$.
+	
+	{\it (c)} Como $1 \ne 0$, por {\it (b)}, tenemos que $0 < 1^2 = 1$.
+	
+	{\it (d)} Por {\it (c)}, $0 < 1$. Por  {\bf I10}, $n + 0 < n + 1$, es decir  $n < n+1$.
+\end{proof}
 \begin{subsection}{Ejercicios}\label{ejerciciosorden}
 \begin{enumerate}
 \item Demostrar que $\ge$ es una relación de orden.
 \item Demostrar que dados cualesquiera $a,b,c \in \mathbb Z$ vale que si $a< b$ y $0\le c$, entonces $ac \le bc$. 
-\item Supongamos $a\le b$ . Sumando $-a$ y luego $-b$ a ambos lados de la desigualdad, demuestre que $-b\le -a$. Deduzca que $a\le b$ y $c\le 0$, entonces $bc \le ac$.
-\item Demuestre que $0\le x^2$ para todo $x$ en $\mathbb Z$ y deduzca que $0 \le 1$.
-\item Deduzca del ejercicio previo que $n \le n+1$ para todo $n$ en
-$\mathbb Z$.
 \end{enumerate}
 \end{subsection}
 
 A primera vista podría parecer que ya tenemos todas las propiedades que necesitamos de $\mathbb Z$, pero, sorprendentemente, aún falta un axioma de vital importancia. Supongamos que $X$ es un subconjunto de $\mathbb Z$; entonces diremos que el entero $b$ es una {\em cota inferior}\index{cota inferior} de $X$ si
-$$
-b\le x \qquad \text{ para todo } \ x \in X.
-$$
-Algunos subconjuntos no tienen cotas inferiores: por ejemplo, el conjunto de los enteros negativos $-1,-2,-3,\ldots$, claramente no tiene cota inferior. Por otro lado, el conjunto $S$ denotado por los números resaltados en la Fig.\ref{f1.1} tiene muchas cotas inferiores. Una mirada rápida nos dice que $-9$ por ejemplo es una cota inferior, mientras que una inspección más minuciosa revela que $-7$ es la ``mejor'' cota inferior, pues en realidad pertenece a $S$. En general, una cota inferior de un conjunto $X$ que es a su vez es un elemento de $X$, es conocido como el {\em mínimo}\index{mínimo} de X .
+\begin{equation*}
+	b\le x \qquad \text{ para todo } \ x \in X.
+\end{equation*}
+Algunos subconjuntos no tienen cotas inferiores: por ejemplo, el conjunto de los enteros negativos $-1,-2,-3,\ldots$, claramente no tiene cota inferior. Por otro lado, el conjunto $S$ denotado por los números resaltados en la Fig.\ref{f1.1} tiene muchas cotas inferiores. Una mirada rápida nos dice que $-9$ por ejemplo es una cota inferior, mientras que una inspección más minuciosa revela que $-7$ es la ``mejor'' cota inferior, pues en realidad pertenece a $S$. Una cota inferior de un conjunto $X$ que es a su vez es un elemento de $X$, es conocido como el {\em mínimo}\index{mínimo} de $X$.
 
 %\vskip .3cm
 
@@ -477,7 +495,7 @@ El siguiente resultado es obvio, pero  debe ser demostrado. Sin embargo,  la dem
 $1$ es el menor entero mayor que 0.
 \end{proposicion}
 \begin{proof}
-Supongamos que existe $a \in \mathbb Z$ tal que $0<a<1$ y sea 
+Por proposición \ref{prop-0-menor-1}{\it (c)} sabemos que $0 < 1$. Supongamos que existe $a \in \mathbb Z$ tal que $0<a<1$ y sea 
 $$
 X=\{a\in\mathbb Z: 0<a<1\}.
 $$
@@ -492,6 +510,8 @@ $$
 La desigualdad $0<a_0^2<1$ dice que $a_0^2\in X$ pero la desigualdad $a_0^2<a_0$ dice que  $a_0$ no es el mínimo elemento de $X$, lo cual es una contradicción pues dijimos que $a_0$ es el mínimo elemento de $X$.  El  absurdo  vino de suponer que existe $a \in \mathbb Z$ tal que   $0<a<1$.
 \end{proof}
 
+Finalmente mencionaremos que el axioma del buen orden también se aplica para demostrar la existencia de máximos. Más específicamente, sea $X$ es un subconjunto de $\mathbb Z$; entonces diremos que el entero $c$ es una {\em cota superior}\index{cota superior} de $X$ si $x\le c$  para todo $x \in X$. Una cota superior de  $X$ que es a su vez es un elemento de $X$, es llamada el {\em máximo}\index{máximo} de $X$. 
+No es difícil ver que si $c$ es cota superior de  $X$,  entonces $-c$ es cota inferior de $-X$. Esto  y el axioma del buen orden implican que todo conjunto acotado superiormente tiene máximo.  
 \vskip 0.1 cm
 
 \begin{subsection}{Ejercicios} {\rm (continuación)}
@@ -507,7 +527,6 @@ y \in
 \text{(iii)}\quad X &=\{x \in \mathbb Z | x\le 100x\} .
 \end{aligned}
 $$
-\item Un subconjunto $Y$ de $Z$ se dice que tiene una {\em cota superior}\index{cota superior} $c$ si $c\ge y$ para todo $y \in Y$. Una cota superior que además es un elemento de $Y$ es llamada el {\em máximo} de $Y$. Use el axioma {\bf I12} para demostrar que si $Y$ es no vacío y tiene una cota superior, entonces tiene máximo. [Ayuda: aplique el axioma al conjunto cuyos elementos son $-y$ ($y \in Y$).] 
 \item Los enteros $n$ que satisfacen $1 \le n \le 25$ están acomodados en forma arbitraria en un arreglo cuadrado de cinco filas y cinco columnas. Se selecciona el máximo  de cada fila, y se denota $s$ al mínimo entre ellos. De manera similar, el mínimo de cada columna es seleccionado y $t$ denota al máximo entre ellos. Demuestre que $s\ge t$ y de un ejemplo en el cual $s\not=t$.
 \end{enumerate}
 \end{subsection}
@@ -564,13 +583,33 @@ Esto hace ver claro que ambos símbolos misteriosos son, en realidad, una forma 
 
 Ideas similares pueden aplicarse a la definición de productos tal como $n!$ (que se lee $n$ {\it factorial}). Si decimos que
 $$
-n! = \Pi_{i=1}^n i , \quad \text{ o } \quad n!=1 \times 2 \times 3
-\times \cdots \times n,
+n!=1 \times 2 \times 3 \times \cdots \times n,
 $$
-el significado es bastante claro para cualquiera. Pero para precisar (y hacerlo claro para una computadora) debemos usar la definición recursiva
+el significado es bastante claro para cualquiera. Pero para precisar (y hacerlo claro para una computadora) debemos usar las definiciones recursivas.
+
+\begin{definicion} Sea $n \in \NN$ sean $a_i$  $1 \le i \le n$ una secuencia de números (enteros, reales, etc.). Entonces $\sum_{i=1}^{n} a_i$  denota la función recursiva $s_n$ definida  
+	$$
+	s_1= a_1, \qquad s_n = s_{n-1} + a_{n-1} \quad (n\ge 2).
+	$$
+	El símbolo $\prod_{i=1}^{n} a_i$ denota la función recursiva $p_n$ definida  
+	$$
+	p_1= a_1, \qquad p_n = p_{n-1} \times  a_{n-1} \quad (n\ge 2).
+	$$
+\end{definicion}
+
+
+
+En  el caso de $n!$ se puede  o bien definir como $\prod_{i=1}^{n} i$, o bien como
 $$
 1!=1,\qquad n!=n \times (n-1)! \quad (n\ge 2).
 $$
+
+Otro caso que debemos mencionar es  el de la definición de ``$n$-ésima potencia'': sea $x$ un  número , si $n \in \NN$ definimos
+$$
+x^1=x,\qquad x^n= x \times x^{n-1} \quad (n\ge 2).
+$$
+Por completitud,  definimos $x^0=1$ cuando $x \ne 0$ y  dejamos indefinido $0^0$. 
+
 
 \begin{subsection}{Ejercicios}
 \begin{enumerate}
@@ -619,7 +658,7 @@ Por lo tanto si el resultado es correcto cuando $n=k$, entonces lo es cuando $n=
 
 La esencia de este argumento es comúnmente llamada {\it principio de inducción}. Es una técnica poderosa, fácil de aplicar y la aplicaremos frecuentemente. Pero primero debemos examinar sus bases lógicas y para hacerlo necesitamos una formulación más general. Con $S$ denotemos al subconjunto de $\mathbb N$ para el cual el resultado es correcto: por supuesto, nuestra intención es probar que $S$ es todo $\mathbb N$. El primer paso es probar que $1$ pertenece a $S$, y luego demostraremos que si $k$ pertenece a $S$, también $k+1$. Entonces lo pensamos paso a paso y concluimos que $S=\mathbb N$. Afortunadamente el pensarlo paso a paso no es esencial, debido a que el principio de inducción es consecuencia de los axiomas que elegimos tan cuidadosamente para $\mathbb Z$ y $\mathbb N$. Más específicamente es consecuencia del axioma del buen orden.
 
-\begin{teorema}\label{t1.4} Supongamos que $S$ es un subconjunto de $\mathbb N$ que satisface las condiciones \index{principio de inducción}
+\begin{teorema}[Principio de inducción]\label{t1.4} Supongamos que $S$ es un subconjunto de $\mathbb N$ que satisface las condiciones \index{principio de inducción}
 \begin{enumerate}
 \item[(\em i)] $1 \in S$,
 \item[(\em ii)] para cada $k \in \mathbb N$, si $ k \in S$ entonces $k+1\in S$.
@@ -656,14 +695,6 @@ Entonces $S$ es un subconjunto de $\mathbb N$ y las condiciones (1) y (2) nos di
 
 En la notación del teorema anterior, (1) es llamado  el {\em caso base}, (2) es llamado el  {\em paso inductivo} y $P(k)$ es llamada la {\em hipótesis inductiva}. El paso inductivo  consiste en probar que $P(k) \Rightarrow P(k + 1)$ o, equivalentemente, podemos suponer $P(k)$ verdadera y a partir de ella probar $P(k + 1)$. 
 
-\begin{ejemplo}\label{ejemplo141} Sea $a\in \mathbb Z$ tal que $0<a$. Probar que $0<a^n$ para todo $n \in \mathbb N$.
-\end{ejemplo}
-\begin{proof}
-
-\noindent(\it Caso  base\rm) El resultado es verdadero cuando $n=1$ pues $ 0 < a=a^1$.
-
-\noindent ({\it Paso  inductivo})  Supongamos que el resultado verdadero cuando $n=k$, o sea, que la hipótesis inductiva es $0 < a^k$. Entonces, como $0<a$, multiplicando por $a$ ambos lados de la desigualdad obtenemos, por la compatibilidad de $<$ con el producto, que $a{.}0 < a^k{.}a$, es decir $0<a^{k+1}$. Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.
-\end{proof}
 
 \begin{ejemplo} El entero $x_n$ esta definido recursivamente por
 $$
@@ -676,18 +707,29 @@ $$
 \end{ejemplo}
 \begin{proof}
 
-\noindent(\it Caso  base\rm) El resultado es verdadero cuando $n=1$ pues $ 2=1\times2$.
+\noindent(\it Caso  base\rm) El resultado es verdadero cuando $n=1$ pues $ x_1 = 2=1\times2$.
 
-\noindent ({\it Paso  inductivo})  Supongamos que el resultado verdadero cuando $n=k$, o sea, que la hipótesis inductiva es $x_k = k(k+1)$. Entonces
-$$
-\begin{matrix} 
-x_{k+1} &=& x_k + 2(k+1) \hfill &\quad \text{(por la definición recursiva)} \hfill \\
-&=& k(k+1)+2(k+1) \hfill &\quad \text{(por hipótesis inductiva)}\hfill \\
-&=& (k+1)(k+2). \hfill &
-\end{matrix}
-$$
+\noindent ({\it Paso  inductivo})  Supongamos que el resultado verdadero cuando $n=k$, o sea, que la hipótesis inductiva es $x_k = k(k+1)$. Entonces debemos probar  que $x_{k+1} = (k+1)(k+2)$. Ahora bien, 
+\begin{equation*}
+	\begin{matrix} 
+	x_{k+1} &=& x_k + 2(k+1) \hfill &\quad \text{(por la definición recursiva)} \hfill \\
+	&=& k(k+1)+2(k+1) \hfill &\quad \text{(por hipótesis inductiva)}\hfill \\
+	&=& (k+1)(k+2). \hfill &
+	\end{matrix}
+\end{equation*}
 Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.
 \end{proof}
+
+
+\begin{ejemplo}\label{ejemplo141} Sea $a\in \mathbb Z$ tal que $0<a$. Probar que $0<a^n$ para todo $n \in \mathbb N$.
+\end{ejemplo}
+\begin{proof}
+	
+	\noindent(\it Caso  base\rm) El resultado es verdadero cuando $n=1$ pues $ 0 < a=a^1$.
+	
+	\noindent ({\it Paso  inductivo})  Supongamos que el resultado verdadero cuando $n=k$, o sea, que la hipótesis inductiva es $0 < a^k$. Entonces, como $0<a$, multiplicando por $a$ ambos lados de la desigualdad obtenemos, por la compatibilidad de $<$ con el producto, que $a\cdot 0 < a^k\cdot a$, es decir $0<a^{k+1}$. Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.
+\end{proof}
+
 
 Existen varias formas modificadas del principio de inducción. A veces es conveniente tomar como base inductiva el valor $n=0$, por otro lado puede ser apropiado tomar un valor como $2$ o $3$ porque los primeros casos pueden ser excepcionales. Cada problema debe ser tratado según sus características. Otra modificación útil es tomar como hipótesis inductiva la suposición de que el resultado es verdadero para todos los valores $n\le k$, más que para $n=k$ solamente. (Esta formulación es llamada a veces el principio de inducción {\it completa}.) Todas esas modificaciones pueden justificarse con cambios triviales en la demostración del teorema \ref{t1.4}.
 
@@ -710,7 +752,7 @@ es no vacío. Como $X$ es un conjunto acotado inferiormente por $n_0$, por el ax
 
 Como se podrá observar, la demostración es muy similar a  la del teorema \ref{t1.4}. El teorema anterior lo podemos utilizar para la demostración de propiedades dependientes de números enteros.
 
-\begin{teorema}[Inducción completa]\label{ind-completa} Sea $n_0$ número entero y sea $P(n)$ una propiedad para $n \ge n_0$ tal que:
+\begin{teorema}[Principio de inducción completa]\label{ind-completa} Sea $n_0$ número entero y sea $P(n)$ una propiedad para $n \ge n_0$ tal que:
 \begin{enumerate}
 \item[(1)] $P(n_0)$ es verdadera.
 \item[(2)] Si $P(h)$ verdadera para toda $h$ tal que $n_0 \le h \le k$ implica $P(k + 1)$ verdadera.
@@ -722,11 +764,11 @@ Entonces $P(n)$ es verdadera para todo $n \ge n_0$.
 
 \begin{ejemplo}
 Sea $u_1 = 3$, $u_2 = 5$ y $u_n = 3u_{n-1}  - 2u_{n-2}$ con $n \in  \mathbb N$, $n \ge 3$. Probar que $u_n = 2^n + 1$.
-\begin{proof} Aquí usaremos una extensión natural del principio de inducción: en este caso, el caso base es $n=1$ y $n=2$.
+\begin{proof} Para $n=1$ el resultado es verdadero pues $u_1 =3 = 1^1 +1$. Tomaremos el caso  base $n=2$.
 
-\noindent(\it Caso  base\rm) El resultado es verdadero cuando $n= 1$ pues $3 = 2^1+1$ y para $n=2$ pues $ 5 =2^2+1$.
+\noindent(\it Caso  base\rm) El resultado es verdadero cuando  $n=2$ pues $u_2 = 5 =2^2+1$.
 
-\noindent ({\it Paso  inductivo}) Supongamos que $k \ge 2$ y el resultado  es cierto para los $h$ tales que  $1 \le h \le k$. Es decir que $u_h = 2^h+1$ para $1 \le h \le k$ y $k \ge 2$ (hipótesis inductiva), entonces
+\noindent ({\it Paso  inductivo}) Supongamos que $k \ge 2$ y el resultado  es cierto para los $h$ tales que  $1 \le h \le k$. Es decir que $u_h = 2^h+1$ para $1 \le h \le k$ y $k \ge 2$ (hipótesis inductiva), entonces debemos probar que $u_{k+1} = 2^{k+1}+1$. Ahora bien, 
 $$
 \begin{matrix} u_{k+1} &=& 3u_k -2u_{k-1} \hfill &\quad \text{(por definición recursiva)} \hfill \\
 &=& 3(2^k+1)-2(2^{k-1}+1) \hfill &\quad \text{(por hipótesis inductiva})\hfill \\
@@ -740,11 +782,7 @@ $$
 \end{ejemplo}
 
 \begin{ejemplo}
-Sea $a \in \mathbb Z$ y $n \in \mathbb N$. Definimos $a^n$ de la siguiente manera:
-\begin{equation}\label{potencia}
-a^1 = a, \quad a^{n+1} = a^{n}a \,\,\text{ para $n >1$.}
-\end{equation}
-Si $n,m \in \mathbb N$ verificar las siguientes propiedades
+Si $a$ es un número y $n,m \in \mathbb N$,  se verifican las siguientes propiedades
 \begin{enumerate}
 \item \label{pot+pot}$a^{n}a^m = a^{n+m}$.
 \item \label{potpot}$(a^n)^m = a^{nm}$
@@ -752,22 +790,22 @@ Si $n,m \in \mathbb N$ verificar las siguientes propiedades
 \begin{proof}
 Veamos la primera afirmación. Se fijará $n$ y se hará inducción sobre $m$. 
 
-\noindent(\it Caso  base\rm) Debemos ver que $a^{n}a^1 = a^{n+1}$, lo cual es verdadero por la definición recursiva (\ref{potencia}). 
+\noindent(\it Caso  base\rm) Debemos ver que $a^{n}a^1 = a^{n+1}$, lo cual es verdadero por  por el caso  base de la definición recursiva. 
 
 \noindent ({\it Paso  inductivo}) Supongamos que el resultado es verdadero para $m=k$, es decir que $a^{n}a^k = a^{n+k}$ (hipótesis inductiva). Veamos que  $a^{n}a^{k+1} = a^{n+k+1}$. Ahora bien, 
 \begin{alignat*}2
-a^{n}a^{k+1} &= a^{n}a^{k}a&  & \text{(definición (\ref{potencia}))} \\
+a^{n}a^{k+1} &= a^{n}a^{k}a&  & \text{(definición de recursiva de potencia)} \\
 &= a^{n+k}a& & \text{(hipótesis inductiva)} \\
-&= a^{n+k+1}&  & \text{(definición (\ref{potencia}))}. 
+&= a^{n+k+1}\quad&  & \text{(caso  base de la definición de potencia)}. 
 \end{alignat*}
 
-Probemos ahora \ref{potpot}. Al igual que antes, Se fijará $n$ y se hará inducción sobre $m$.
+Probemos ahora \ref{potpot}. Al igual que antes, se fijará $n$ y se hará inducción sobre $m$.
 
-\noindent(\it Caso  base\rm) Debemos ver que $(a^n)^1 = a^n$, lo cual es verdadero por la definición recursiva (\ref{potencia}). 
+\noindent(\it Caso  base\rm) Debemos ver que $(a^n)^1 = a^n$, lo cual es verdadero por el caso base de la definición recursiva de potencia. 
 
 \noindent ({\it Paso  inductivo}) Supongamos que el resultado es verdadero para $m=k$, es decir que  $(a^n)^k = a^{nk}$ (hipótesis inductiva). Veamos que  $(a^n)^{k+1} = a^{n(k+1)}$. 
 \begin{alignat*}2
-(a^n)^{k+1} &= (a^n)^{k}a^n&  & \text{(definición (\ref{potencia}))} \\
+(a^n)^{k+1} &= (a^n)^{k}a^n&  & \text{(definición de recursiva de potencia)} \\
 &= a^{nk}a^n& & \text{(hipótesis inductiva)} \\
 &= a^{nk+n}&  & \text{(por \ref{pot+pot})}\\
 &= a^{n(k+1)}&  &.  
@@ -807,9 +845,9 @@ $$
 Intutivamente, diremos que un conjunto $A$ es finito si podemos contar la cantidad de elementos que tiene. En ese caso denotaremos $|A|$ la cantidad de elementos de $A$ y la llamaremos el {\em cardinal de $A$}\index{cardinal de un conjunto}.  
 
 \begin{section}{Principios básicos}
+En  esta sección daremos  algunos principios básicos de conteo que nos permitiran desarrollar técnicas de conteo. 
 
-\noindent\textbf{El principio de adición}
-
+\begin{subsection}{El principio de adición}
 Se puede realizar una acción $X$ de $n$ formas distintas o, alternativamente, se puede realizar otra acción $Y$ de $m$ formas distintas. Entonces el número de formas de realizar la acción ``$X$ o $Y$'' es $n + m$.
 
 \begin{ejemplo}\label{cine} Supongamos que una persona va a salir a pasear  y puede ir al cine donde hay 3 películas en cartel o al teatro donde hay 4 obras posibles. Entonces, tendrá un total de $3+4=7$ formas distintas de elegir el paseo. 
@@ -822,33 +860,33 @@ Este principio es el más básico del conteo y más formalmente dice que si $A$ 
 El principio es fácilmente generalizable a varios conjuntos.
 
 \begin{proposicion}\label{principiodeadicion}
-Sean $A_1,\ldots,A_n$ conjuntos finitos tal que $A_i \cap A_j = \emptyset$ cuando $i\not=j$, entonces 
-\begin{equation*}
-|A_1 \cup \cdots \cup A_n| =|A_1|+\cdots+|A_n|.
-\end{equation*}
+	Sean $A_1,\ldots,A_n$ conjuntos finitos tal que $A_i \cap A_j = \emptyset$ cuando $i\not=j$, entonces 
+	\begin{equation*}
+	|A_1 \cup \cdots \cup A_n| =|A_1|+\cdots+|A_n|.
+	\end{equation*}
 \end{proposicion}
 \begin{proof} 
-La  prueba se hace por inducción en $n$. Debemos probar 
-\begin{align*}
-P(n) =\; &\text{Si $A_1,\ldots,A_n$ conjuntos finitos disjuntos dos a dos, entonces }\\  &|A_1 \cup \cdots \cup A_n| =|A_1|+\cdots+|A_n|.
-\end{align*}
-
-({\em Caso base $n=1$}) En este caso no hay nada que probar pues  $|A_1|=|A_1|$.
-
-({\em Paso inductivo}) La hipótesis inductiva es $P(k)$ y debemos probar que $P(k) \Rightarrow P(k+1)$. Si denotamos $B = A_1 \cup \cdots \cup A_k$, entonces 
-$$
-A_1 \cup \cdots \cup A_{k+1} = B \cup A_{k+1}
-$$
-Ahora bien, si $x \in B \cap A_{k+1}$, entonces $x \in A_i$ para algún $i < k+1$ y $x \in A_{k+1}$. Como $A_{i} \cap A_{k+1} = \emptyset$, se produce un absurdo  que viene de suponer que existía un elemento en $B \cap A_{k+1}$. Luego   $B \cap A_{k+1}= \emptyset$ y por el principio de adición  $|B \cup A_{k+1}| = |B|+|A_{k+1}|$. 
-
-Por la hipótesis inductiva tenemos que 
-$$
-|B| = |A_1 \cup \cdots \cup A_k| =|A_1|+\cdots+|A_k|,
-$$
-Luego
-$$
-|A_1 \cup \cdots \cup A_k \cup  A_{k+1}| = |B|+|A_{k+1}| = |A_1|+\cdots+|A_k|+|A_{k+1}|.
-$$
+	La  prueba se hace por inducción en $n$. Debemos probar 
+	\begin{align*}
+	P(n) =\; &\text{Si $A_1,\ldots,A_n$ conjuntos finitos disjuntos dos a dos, entonces }\\  &|A_1 \cup \cdots \cup A_n| =|A_1|+\cdots+|A_n|.
+	\end{align*}
+	
+	({\em Caso base $n=1$}) En este caso no hay nada que probar pues  $|A_1|=|A_1|$.
+	
+	({\em Paso inductivo}) La hipótesis inductiva es $P(k)$ y debemos probar que $P(k) \Rightarrow P(k+1)$. Si denotamos $B = A_1 \cup \cdots \cup A_k$, entonces 
+	$$
+	A_1 \cup \cdots \cup A_{k+1} = B \cup A_{k+1}
+	$$
+	Ahora bien, si $x \in B \cap A_{k+1}$, entonces $x \in A_i$ para algún $i < k+1$ y $x \in A_{k+1}$. Como $A_{i} \cap A_{k+1} = \emptyset$, se produce un absurdo  que viene de suponer que existía un elemento en $B \cap A_{k+1}$. Luego   $B \cap A_{k+1}= \emptyset$ y por el principio de adición  $|B \cup A_{k+1}| = |B|+|A_{k+1}|$. 
+	
+	Por la hipótesis inductiva tenemos que 
+	$$
+	|B| = |A_1 \cup \cdots \cup A_k| =|A_1|+\cdots+|A_k|,
+	$$
+	Luego
+	$$
+	|A_1 \cup \cdots \cup A_k \cup  A_{k+1}| = |B|+|A_{k+1}| = |A_1|+\cdots+|A_k|+|A_{k+1}|.
+	$$
 \end{proof}
 
 Si $A$ y $B$ no son disjuntos, cuando sumamos $|A|$ y $|B|$ estamos contando $A \cap B$ dos veces. Entonces, para obtener la respuesta correcta debemos restar $|A \cap B|$ y obtenemos
@@ -856,15 +894,18 @@ $$
 |A \cup B| = |A|+|B| - |A \cap B|.
 $$
 Generalizar la fórmula de arriba a más conjuntos no es del todo sencillo y es el  llamado principio del tamiz o principio de inclusión-exclusión (ver apéndice \ref{principiodeltamiz}). 
+\end{subsection}
+
+
 
 \vskip .3cm
 
-\noindent\textbf{El principio de multiplicación}
 
+\begin{subsection}{El principio de multiplicación}
 Suponga que una actividad consiste de 2 etapas y la primera etapa puede ser realizada de $n_1$ maneras y la etapa 2  puede realizarse de $n_2$  maneras, independientemente de como se ha hecho la etapa 1. Entonces toda la actividad puede ser realizada de $n_1\times n_2$  formas distintas.
 
 \begin{ejemplo}
-Supongamos que la persona del ejemplo \ref{cine} tiene suficiente tiempo y dinero para ir primero al cine y luego al teatro. Entonces tendrá  $3 \times 4=12$ formas distintas de hacer el paseo.
+	Supongamos que la persona del ejemplo \ref{cine} tiene suficiente tiempo y dinero para ir primero al cine y luego al teatro. Entonces tendrá  $3 \times 4=12$ formas distintas de hacer el paseo.
 \end{ejemplo}
 
 Formalmente, si $A,B$ conjuntos y definimos el {\em producto cartesiano}\index{producto cartesiano} entre $A$ y $B$ por
@@ -875,6 +916,26 @@ Entonces si $A$ y $B$ son conjuntos finitos se cumple que
 $$
 |A \times B| = |A||B|.  
 $$
+\end{subsection}
+
+\begin{subsection}{El principio de las casillas}
+	Supongamos que tenemos un conjunto $X$, cuyos elementos llamaremos ``objetos'', y un conjunto $Y$ cuyos elementos serán ``casillas'', o ``cajas'' y deseamos distribuir los objetos en las casillas. Es claro que si hay más objetos que casillas entonces alguna casilla recibirá por lo menos dos elementos. Esta observación se conoce usualmente como el \textit{{principio de las casillas}}:
+	\index{principio de las casillas}
+	$$\begin{aligned}
+	&\text{\sl Si $m$ objetos son distribuidos en $n$ casillas, y $m > n$,} \\
+	&\text{\sl entonces por lo menos una casilla recibe al menos dos
+		objetos.}
+	\end{aligned}
+	$$
+	Hay muchas aplicaciones obvias de este principio, como por 	ejemplo:
+	
+	\begin{enumerate}
+		\item En un conjunto de 13 personas o más, hay por lo menos dos que cumplen años en el mismo mes.
+		\item En cualquier conjunto de 25 personas o más nacidos en 	Argentina, hay al menos dos que han nacido en la misma provincia.
+	\end{enumerate}
+	
+	
+\end{subsection}
 
 \end{section}
 
@@ -908,7 +969,8 @@ El total de elecciones posibles $27 = 3^3$. Esto se justifica usando dos veces e
 
 Un diagrama arbolado ayuda a pensar.
 
-\begin{tikzpicture}[line width=1pt]
+\begin{center}
+\begin{tikzpicture}[line width=1pt, scale=0.9]
 \lineatz{5}{-95}{28}{-35}
 \lineatz{5}{-95}{28}{-95}
 \lineatz{5}{-95}{28}{-155}
@@ -1027,7 +1089,7 @@ Un diagrama arbolado ayuda a pensar.
 \ponertz{100}{-175}{332}
 \ponertz{100}{-180}{333}
 \end{tikzpicture}
-
+\end{center}
 \vskip .3cm
 
 Cada rama del árbol representa una selección ordenada de elementos de $[[1, 3]]$.
@@ -1495,7 +1557,7 @@ $$
 (a+b)^2 = a^2 +2ab +b^2, \qquad (a+b)^3 = a^3 + 3 a^2b +3ab^2 +
 b^3,
 $$
-y a veces nos piden desarrollar la formula para $(a+b)^4$ y potencias mayores de $a+b$. El resultado general que da una formula para $(a+b)^n$ es conocido como el  {\it {teorema del binomio}}.  \index{Teorema del binomio}
+y a veces nos piden desarrollar la formula para $(a+b)^4$ y potencias mayores de $a+b$. El resultado general que da una formula para $(a+b)^n$ es conocido como el  {\it {teorema del binomio}} o {\it binomio  de Newton}.  \index{Teorema del binomio}\index{Binomio de Newton}
 
 \begin{teorema}\label{t3.6} Sea $n$ un entero positivo. El coeficiente del termino $a^{n-r}b^r$ en el desarrollo de $(a+b)^n$ es el número binomial $\binom{n}{r}$. Explícitamente, tenemos
 $$
@@ -1557,6 +1619,22 @@ $$
 La expresión $a+b$ es conocida como un expresión {\it binómica} porque tiene dos términos. Como los números  \index{expresión binómica} $\binom{n}{r}$ aparecen como los coeficientes en el desarrollo de $(a+b)^n$, generalmente se los llama, como ya fue dicho,  coeficientes binomiales.   De todos modos esta claro por la prueba del teorema \ref{t3.6} que estos números aparecen en este contexto porque representan el número de formas de hacer ciertas selecciones. Por esta razón continuaremos usando el nombre de números binomiales,  que se aproxima más al concepto que simbolizan.
 
 Además de ser extremadamente útil en manipulaciones algebraicas, el teorema del binomio puede usarse para deducir identidades en que estén involucrados los números binomiales.
+
+
+\begin{ejemplo}
+	Para todo $n \in \mathbb N$ se verifica 
+	\begin{equation*}
+		\displaystyle{\binom{n}{0} + \binom{n}{1} + \cdots + \binom{n}{n} = 2^n}.
+	\end{equation*}
+\end{ejemplo}
+\begin{proof}
+	Aplicamos la fórmula del binomio de Newton  al caso $a=b=1$, entonces
+	\begin{equation*}
+		2^n = (1+1)^n =  \sum_{i=0}^{n} \binom{n}{i}1^{n-i}1^{i} = \sum_{i=0}^{n} \binom{n}{i}.
+	\end{equation*}
+	Con esto termina la demostración, pero, alternativamente, también podemos demostrar este ejemplo usando métodos de conteo: $2^n$ es la cantidad de subconjuntos de $\{1,2,\dots,n\}$. Si agrupamos los subconjuntos de acuerdo a su cardinal, como sabemos que $\binom{n}{k}$ es la cantidad de subconjuntos de $k$ elementos de  $\{1,2,\dots,n\}$, se obtiene la igualdad.
+\end{proof}
+
 
 \begin{ejemplo}Probar que
 \begin{equation}\label{eqcuaddo}
@@ -1771,7 +1849,7 @@ x=r_nb^n +r_{n-1} b^{n-1}+\cdots + r_1 b + r_0.
 $$
 Hemos representado $x$ (con respecto a la base $b$) por la secuencia de los restos, y escribimos $x=(r_nr_{n-1}\dots r_1 r_0)_b$. Convencionalmente $b=10$ es la base para los cálculos hechos ``a mano'' y omitimos ponerle el subíndice, entonces tenemos la notación usual
 $$
-1984=(1\cdot 10^3 ) + (9\cdot 10^2 )+(8\cdot 10 ) + 4.
+1984=1\cdot 10^3  + 9\cdot 10^2 +8\cdot 10  + 4.
 $$
 Esta notación posicional requiere símbolos solo para los enteros $0, 1,\ldots,b-1$ .La base $b=2$ es particularmente adaptable para los cálculos en computadoras porque los símbolos 0 y 1 pueden representarse físicamente por la ausencia o presencia de un pulso de electricidad o luz. 
 
@@ -1788,8 +1866,10 @@ Por lo tanto
 $$
 (109)_{10} = (1101101)_2.
 $$
+\end{proof}
 
 La base 16 también es usada en computación pues se utiliza el byte como unidad básica de memoria y debido a que un byte puede tomar $2^8$ posibles valores, tenemos que $$2^8 = 2^4 \cdot 2^4 = 16 \cdot 16 = 1 \cdot 16^2 + 0 \cdot 16^1 + 0 \cdot 16^0.$$ Luego   un byte puede representar $(100)_{16}$ valores. Más allá de la justificación, es claro que los dígitos disponibles (del 0  al 9) no nos alcanzan  para representar un  número en base 16, pues se requieren 16 símbolos. La convención usada es ${\tt A}=10, {\tt B}=11, {\tt C} =12, {\tt D} = 13, {\tt E} = 14, {\tt F} = 15$.
+
 
 \begin{ejemplo} Representar  12488 en  base 16.
 \begin{alignat*}2
@@ -1801,7 +1881,33 @@ La base 16 también es usada en computación pues se utiliza el byte como unidad
 Luego $12488 = (30{\tt C}8)_{16}$.
 \end{ejemplo}
 
-\end{proof}
+
+\begin{observacion}[*]
+Claramente hallar la representación de un número en cierta base es un proceso algorítmico y por lo tanto, podemos escribir en pseudocódigo el algoritmo. 
+
+\vskip .5cm 
+
+\begin{minipage}{200pt}
+	\noindent {\sc Representación en base $b$}
+	\vskip .2cm
+	\begin{small}
+		\begin{verbatim}
+def base(b,a):
+    # pre: b es entero tal que 2 <= b <= 16. a es número entero positivo
+    # post: Devuelve la representación de a en base b 
+    D = ['0',...,'9','A','B','C','D','E','F'] # posibles caracteres
+    q = a / b
+    rep = D[a % b] # a % b = resto de a / b
+    while q != 0:
+        q, r  = q / b, q % b
+        rep = D[r] + rep
+    return rep
+		\end{verbatim}
+	\end{small}
+\end{minipage}
+\end{observacion}
+ 
+ \vskip .3cm 
 
 \end{subsection}
 \begin{subsection}{Ejercicios}
@@ -1834,23 +1940,34 @@ Cuando $y|x$ podemos usar el símbolo $\frac{x}{y}$ (o $x/y$) para denotar el en
 
 Veamos ahora alguna propiedades básicas de la relación ``divide a''. 
 
-\begin{proposicion}Sean $a,b,c$ enteros, entonces
-\begin{enumerate}
+\begin{proposicion}\label{prop-divide-a-propiedades}Sean $a,b,c$ enteros, entonces
+\begin{enumerate}%[(1)] % si queremos cambiar el estilo de enumerate
 \item $1|a$, $a|0$, $a|\pm a$;
+\item si $a|b$, entonces $\pm a| \pm b$;
 \item si $a|b$, entonces $a|bc$ para cualquier $c$;
-\item si $a|b$ y $a|c$, entonces $a|b+c$;
 \item si $a|b$ y $a|c$, entonces $a|rb+sc$ para cualesquiera $r,s \in \mathbb Z$;
-\item si $a',b'$ enteros y $a|a'$, $b|b'$, entonces $ab|a'b'$.
+\item\label{prop-divide-a-propiedades-item-5} si $a',b'$ enteros y $a|a'$, $b|b'$, entonces $ab|a'b'$.
+\item\label{prop-divide-a-propiedades-item-6} Si $a|b$ y $a,b>0$,  entonces $a \le b$.
 \end{enumerate}
 \end{proposicion}
 \begin{proof}
 	La demostración de estos hechos es sencilla, por ejemplo, demostremos (3): como $a|b$, existe $q$ tal que $b = aq$. Análogamente, como $a|c$, existe $q'$ tal que $c = aq'$. Entonces $b+c = aq+aq' = a(q+q')$, luego $a|b+c$.  
 
-	Demostración de (5): como $a|a'$, $b|b'$, existen $r,s$ enteros tal que $a'=ra$ y $b' =sb$. Por lo tanto $a'b' = (ra)(sb) = (rs)ab$. Esto implica que  $ab|a'b'$.
+	Demostración de (\ref{prop-divide-a-propiedades-item-5}): como $a|a'$, $b|b'$, existen $r,s$ enteros tal que $a'=ra$ y $b' =sb$. Por lo tanto $a'b' = (ra)(sb) = (rs)ab$. Esto implica que  $ab|a'b'$.
+	
+	Demostración de (\ref{prop-divide-a-propiedades-item-6}): por definición de ``divide a'' existe $q \in \ZZ$ tal que $b = qa$ y como $a,b>0$,  tenemos que $q>0$. Luego $b = a + (q-1)a$. Ahora bien,  como $q >0$,  entonces $q-1 \ge0$ y por consiguiente $(q-1)a \ge 0$. Por lo tanto,  $b = a + (q-1)a \ge a$.
 
 	Las demás demostraciones se dejan como ejercicio para el lector. 
 
 \end{proof}
+
+
+
+\begin{observacion}
+	Como $x|y$ si y sólo si $-x|y$ la proposición  \ref{prop-divide-a-propiedades}(\ref{prop-divide-a-propiedades-item-6}) implica que dado cualquier entero $y \ne 0$ el número de divisores de  $y$ es finito,  más aún si $x|y$,  entonces $-|y| \le x \le |y|$.  
+\end{observacion}
+
+
 
 \begin{ejemplo} Demuestre que si $c$, $d$ y $n$ son enteros tales
 que
@@ -1872,6 +1989,7 @@ n=ds=d(ct)=c(dt)
 $$
 entonces $c|n$ y $n/c$ denota al entero $dt$. Finalmente, como $n/c=dt$ tenemos $d|n/c$, como queríamos demostrar.
 \end{proof}
+
 
 \begin{proposicion}\label{pm} Sean $a$ y $b$ enteros.
 \begin{enumerate}
@@ -1994,7 +2112,7 @@ $\mcd(12,18)$ existe y es $6$, y así sucesivamente hasta probar que $\mcd(72, 1
 \end{proof}
 \end{ejemplo} 
 
-Existe un famoso método para calcular el mcd de dos enteros no negativos $a,b$ con $b \not=0$, basado en la técnica del cociente y el resto. Depende del siguiente hecho.
+En  general no es sencillo encontrar todos los divisores de un número entero grande. Por ejemplo, para los  números de más de cien dígitos no es posible,  en general, calcular sus divisores ni con las computadoras más poderosas de la actualidad. Por  lo tanto, no es factible calcular el  mcd de números grandes revisando todos los divisores comunes.  El algoritmo que nos provee la  propiedad \ref{propiedad1} nos da un método práctico y relativamente eficiente para calcular el mcd. Veremos a continuación un método similar pero mucho más eficiente para calcular el mcd de dos enteros no negativos $a,b$ con $b \not=0$. Este método esta basado en la técnica del cociente y el resto y depende del siguiente hecho.
 
 \begin{proposicion}\label{prop-alg-eucl} Sean  $a,b$ enteros no negativos con $b \not=0$, entonces 
 \begin{equation}\label{bec}
@@ -2012,9 +2130,9 @@ Luego, supongamos que  exista $d = mcd(a,b)$, probaremos que $d$ es el mcd entre
 \item[({\em i})] como $d|a$ y $d|b$, entonces por (*) tenemos que $ d|b$ y $d|r$;
 \item[({\em ii})] si $c|a $ y $c|r$ entonces por (*)  $c|a$ y $c|b$ y debido a que $d = \mcd(a,b)$, se deduce que $c|d$.
 \end{enumerate}
-Al satisfacer ({\em i}) y ({\em ii}), obtenemos que $d = mcd(b,r)$.
+Al satisfacer ({\em i}) y ({\em ii}), obtenemos que $d = \mcd(b,r)$.
 
-Análogamente, se demuestra que si existe $d = mcd(b,r)$, entonces  $d = mcd(a,b)$.
+Análogamente, se demuestra que si existe $d = \mcd(b,r)$, entonces  $d = \mcd(a,b)$.
 \end{proof}
 
 La aplicación repetida de este simple hecho, en combinación con el algoritmo de división, nos da un método para calcular el mcd.
@@ -2023,12 +2141,12 @@ La aplicación repetida de este simple hecho, en combinación con el algoritmo d
 \end{ejemplo}
 \begin{proof}[Solución] Tenemos
 \begin{alignat*}3
-\mcd(2406,654)&=\mcd(654,444)& &\text{ porque }& 2406&=654\times3+444,\\
-               &=\mcd(444,210)& &\text{ porque }& 654&=444\times1+210,\\
-               &=\mcd(210,24)&& \text{ porque } &444&=210\times2+24,\\
-               &=\mcd(24,18) && \text{ porque } &210&=24\times8+18,\\
-               &=\mcd(18,6)  && \text{ porque } &24 &=18\times1+6,\\
-               & =\mcd(6,0) = 6           &&\text{ porque }&18&=6\times3 + 0
+\mcd(2406,654)&=\mcd(654,444)&\quad &\text{ porque }\quad& 2406&=654\cdot3+444,\\
+               &=\mcd(444,210)& &\text{ porque }\quad& 654&=444\cdot1+210,\\
+               &=\mcd(210,24)&& \text{ porque }\quad &444&=210\cdot2+24,\\
+               &=\mcd(24,18) && \text{ porque }\quad &210&=24\cdot8+18,\\
+               &=\mcd(18,6)  && \text{ porque }\quad &24 &=18\cdot1+6,\\
+               & =\mcd(6,0) = 6           &&\text{ porque }\quad&18&=6\cdot3 + 0
 \end{alignat*}
 
 \end{proof}
@@ -2067,8 +2185,14 @@ Por lo general, para calcular el mcd de enteros $a$ y $b$, con $b >0$,
 
 \vskip .2cm 
 
-El proceso se detiene cuando uno de los restos $r_i$  es igual a $0$ y queda claro que el proceso debe detenerse, porque cada resto no nulo es positivo y estrictamente menor que el anterior.
+El proceso se detiene cuando uno de los restos $r_i$  es igual a $0$ y queda claro que el proceso debe detenerse, porque cada resto no nulo es positivo y estrictamente menor que el anterior. Observar entonces que 
+\begin{multline*}
+\mcd(a,b) =  \mcd(r_0,r_1)  = \mcd(r_1,r_2) = \mcd(r_2,r_3) = \cdots\\\cdots 
+\mcd(r_{k-2},r_{k-1}) =\mcd(r_{k-1},r_k) = \mcd(r_{k},0) = r_k.  
+\end{multline*}
+Es decir el máximo común divisor de $a$ y $b$ es el último resto no nulo que se obtiene por el método anterior.
 
+ 
 Este procedimiento es conocido como el {\em algoritmo de Euclides}\index{algoritmo de Euclides}, debido al matemático griego Euclides (300 a.~c.). Es extremadamente útil en la práctica, y tiene importantes consecuencias.
 
 \begin{teorema} Sean  $a$ y $b$ enteros con $b >0$, entonces el máximo común divisor existe y es el $r_{k}$ obtenido en el algoritmo de Euclides. 
@@ -2079,6 +2203,18 @@ Observar que aplicando repetidas veces (\ref{bec}) de proposición  \ref{prop-al
 r_k = \mcd(r_{k},0) = \mcd(r_{k-1},r_k) =\mcd(r_{k-2},r_{k-1}) = \cdots\\\cdots 
 =  \mcd(r_2,r_3) =  \mcd(r_1,r_2)  =  \mcd(r_0,r_1) = \mcd(a,b)  
 \end{multline*}
+\end{proof}
+
+\begin{ejemplo}\label{ej-mcd-470-55} Encuentre el mcd de 470 y 55.
+\end{ejemplo}
+\begin{proof}[Solución] 
+	\begin{alignat*}3
+	470&=55 \cdot 8 +30&&&&\\
+	55&=30 \cdot 1 + 25&&&&\\
+	30&=25 \cdot 1+5&&&& \\
+	25&=5\cdot 5+0.&&&&
+	\end{alignat*}
+Por  lo tanto $\mcd(470,55) =5$.	
 \end{proof}
 
 \begin{observacion}[*] El algoritmo de Euclides es fácilmente implementable en un lenguaje de programación. A continuación una versión del mismo en pseudocódigo. 
@@ -2130,20 +2266,22 @@ $$
 \end{proof}
 
 Por el ejemplo, de los cálculos usados para encontrar el mcd de 2406 y 654 obtenemos
-\begin{alignat*}9 6&=&&&&&&&\mathbf{24}-\mathbf{18}&\times1&&=
-&1&\times&\mathbf{24}&+&(-1) &\times \mathbf{18 }\\
-&=&&&\mathbf{24}&+&(-1)&\times&(\mathbf{210}-\mathbf{24}&\times8)&&=
-&(-1)&\times&\mathbf{210}&+&9&\times \mathbf{24}\\
-&=&&&\mathbf{-210}&+&9&\times&(\mathbf{444}-\mathbf{210}&\times2)&&=
-&9&\times&\mathbf{444}&+&(-19) &\times \mathbf{210}\\
-&=&9&\times&\mathbf{444}&+&(-19)&\times&(\mathbf{654}-\mathbf{444}&\times1)&&=
-&(-19)&\times&\mathbf{654}&+&28 &\times \mathbf{444}\\
-&=&(-19)&\times&\mathbf{654}&+&28&\times&(\mathbf{2406}-\mathbf{654}&\times3)&&=
-&28&\times&\mathbf{2406}&+&(-103) &\times \mathbf{654}.
+Por el ejemplo, de los cálculos usados para encontrar el mcd de 470 y 55 obtenemos
+\begin{alignat*}4
+	470&=55 \cdot 8 +30&\quad\Rightarrow\quad &30 &=&470 + (-8)\cdot 55&\qquad (*)&\\
+	55&=30 \cdot 1 + 25&\quad\Rightarrow\quad &25 &=&55 +(-1)\cdot 30&\qquad (**)&\\
+	30&=25 \cdot 1+5&\quad\Rightarrow\quad &5 &=&30 +(-1) \cdot 25&\qquad (***)& \\
+	25&=5\cdot 5+0.&&&&&&
+\end{alignat*}
+Luego
+\begin{alignat*}3
+	5 &= 30 +(-1) \cdot 25& &\qquad \text{(por $(***)$)} && \\
+	  &= 30 + (-1) \cdot (55 +(-1)\cdot 30) = 2 \cdot 30 + (-1) \cdot 55& &\qquad \text{(por $(**)$)}&& \\   
+	  &=  2 \cdot (470 + (-8)\cdot 55) + (-1) \cdot 55 = 2 \cdot 470 +(-17)\cdot 55& &\qquad \text{(por $(*)$)}&&\\    
 \end{alignat*}
 De este modo, la expresión requerida $d=sa+tb$ es
 $$
-6=28\times2406+(-103)\times 654.
+5=2 \cdot 470 +(-17)\cdot 55.
 $$
 
 \begin{corolario} Sean $a$ y $b$ enteros, $b$ no nulo, entonces
@@ -2247,20 +2385,22 @@ Simplificando un poco el algoritmo en el inicio, podemos escribirlo con el sigui
 \vskip .3cm
 \begin{small}
 \begin{verbatim}
-# pre: a y b son números positivos
-# post: Obtenemos s y t tal que mcd(a,b) = a*s +b*t
-r(0), r(1) = a, b
-s(0), t(0) = 1, 0  # r(0) = a*s(0) + b*t(0)
-s(1), t(1) = 0, 1  # r(1) = a*s(1) + b*t(1)
-i = 1 
-while r(i) != 0:
-    q, r(i+1) = r(i-1) / r(i), r(i-1) % r(i)
-    # r(i-1) = r(i)*q + r(i+1),  0 <= r(i+1) < r(i)
-    s(i+1) = s(i-1) + s(i)*q
-    t(i+1) = t(i-1) + t(i)*q
-    # r(i+1) = a*s(i+1) + b*t(i+1)
-    i = i+1
-s, t  = s(i), t(i)
+    def mcd2(a, b):
+        # pre: a y b son números positivos
+        # post: Obtenemos s y t tal que mcd(a,b) = a*s + b*t
+        r[0], r[1] = a, b
+        s[0], t[0] = 1, 0  # r[0] = a*s[0] + b*t[0]
+        s[1], t[1] = 0, 1  # r[1] = a*s[1] + b*t[1]
+        i = 1 
+        while r[i] != 0:
+            q, r[i+1] = r[i-1] / r[i], r[i-1] % r[i]
+            # r[i-1] = r[i]*q + r[i+1],  0 <= r[i+1] < r[i]
+            s[i+1] = s[i-1] + s[i]*q
+            t[i+1] = t[i-1] + t[i]*q
+            # r[i+1] = a*s[i+1] + b*t[i+1]
+            i = i+1
+        s, t  = s[i], t[i]
+        return s, t
 \end{verbatim}
 \end{small}
 \end{minipage}
@@ -2274,25 +2414,25 @@ Calcular $\mcd(87,72)$ y escribirlo como combinación lineal entera de $87$ y $7
 \begin{proof}[Solución]
 Los dos primeros pasos del algoritmo de Euclides son
 \begin{align*}
-87 &= 72 \times 1 + 15   \\ 
-72 &= 15 \times 4 + 12.  
+87 &= 72 \cdot 1 + 15   \\ 
+72 &= 15 \cdot 4 + 12.  
 \end{align*}
-Luego $15 = 87 \times 1 + 72 \times (-1)$ y $12 = 72 \times 1 + 15 \times (-4) = 87 \times(-4) + 72 \times 5$. Es decir
+Luego $15 = 87 \cdot 1 + 72 \cdot (-1)$ y $12 = 72 \cdot 1 + 15 \cdot (-4) = 87 \cdot(-4) + 72 \cdot 5$. Es decir
 \begin{align}
-15 &= 87 \times 1 + 72 \times (-1) \label{alg1}   \\ 
-12 &= 87 \times(-4) + 72 \times 5. \label{alg2}
+15 &= 87 \cdot 1 + 72 \cdot (-1) \label{alg1}   \\ 
+12 &= 87 \cdot(-4) + 72 \cdot 5. \label{alg2}
 \end{align}
 Ahora bien
 $$
-15 = 12 \times 1 + 3.
+15 = 12 \cdot 1 + 3.
 $$ 
 Luego
 $$
-3 = 15 \times 1 + 12 \times (-1)
+3 = 15 \cdot 1 + 12 \cdot (-1)
 $$
 y, usando las ecuaciones (\ref{alg1}) y (\ref{alg2}), obtenemos:
 \begin{align}
-3 &= 87 \times 5 + 72 \times (-6). \label{alg3}
+3 &= 87 \cdot 5 + 72 \cdot (-6). \label{alg3}
 \end{align}
 Como $3|12$, resulta que $3 = \mcd(87,72)$ y la ecuación (\ref{alg3}) nos da la escritura del mcd  como combinación lineal entera de $87$ y $72$.
 \end{proof}
@@ -2416,7 +2556,7 @@ for i = 2 to n:
 
 El lector debe estar casi totalmente familiarizado con la idea de que cualquier entero positivo puede expresarse como producto de primos: por ejemplo
 $$
-825=3\times5\times5\times11.
+825=3\cdot5\cdot5\cdot11.
 $$
 La existencia de esta factorización en primos para cualquier entero positivo es una consecuencia del axioma del buen orden.
 
@@ -2433,7 +2573,7 @@ Como estamos suponiendo que $m$ es el menor entero ($\ge 2$) que no tiene factor
 \begin{ejemplo} 
 Encontremos la factorización en números primos de $201\text{.}000$. Esto se hace dividiendo  sucesivamente los números hasta llegar a factores primos:
 \begin{align*}
-201\text{.}000 &= 201\times 1000 = 3\times 67\times 10\times 10\times 10 =  3\times 67\times 2\times 5 \times 2\times 5 \times 2\times 5 \\&= 2^3\times 3\times 5^3\times 67.
+201\text{.}000 &= 201\cdot 1000 = 3\cdot 67\cdot 10\cdot 10\cdot 10 =  3\cdot 67\cdot 2\cdot 5 \cdot 2\cdot 5 \cdot 2\cdot 5 \\&= 2^3\cdot 3\cdot 5^3\cdot 67.
 \end{align*}
 Como vimos más arriba 2, 3, 5 y 67 son  números primos y por lo tanto hemos obtenido la descomposición prima de $201\text{.}000$.
 \end{ejemplo}
@@ -2512,7 +2652,7 @@ Supongamos $p|x_1x_2\ldots x_{k}x_{k+1}$ y sea $x=x_1x_2\ldots x_k$. Si $p|x$ en
 
 Un error común es asumir que el teorema \ref{t1.8} se mantiene verdadero cuando reemplazamos el primo $p$ por un entero arbitrario . Pero esto claramente falso: por ejemplo
 $$
-6| 3\times 8 \quad \text{ pero } \quad 6{\not|} 3 \quad \text{ y }
+6| 3\cdot 8 \quad \text{ pero } \quad 6{\not|} 3 \quad \text{ y }
 \quad 6{\not|}8.
 $$
 Ejemplos como éste nos ayudan a entender que el teorema \ref{t1.8} expresa una propiedad muy significativa de los números primos. Además veremos que esta propiedad juega un papel crucial en el siguiente resultado, que a veces es llamado el {\it Teorema Fundamental de la Aritmética}.
@@ -2534,7 +2674,7 @@ En la práctica a menudo reunimos los primos iguales en la factorización de $n$
 \begin{equation}\label{factpri}
 n=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},
 \end{equation}
-donde $p_1,p_2,\ldots ,p_r$ son primos distintos y $e_1,e_2,\ldots,e_r$ son enteros positivos. Por ejemplo $ 7000 = 2^3 \times 5^3 \times 7$.
+donde $p_1,p_2,\ldots ,p_r$ son primos distintos y $e_1,e_2,\ldots,e_r$ son enteros positivos. Por ejemplo $ 7000 = 2^3 \cdot 5^3 \cdot 7$.
 
 La factorización prima nos dice que los números primos son los  ``ladrillos'' esenciales para ``construir'' los números enteros usando multiplicaciones. Ahora bien, podría ocurrir que haya un número finitos de ellos y que podamos escribir cada número como producto de primos en forma muy sintética. Pero este no es el caso.
 
@@ -2558,11 +2698,11 @@ $$
 luego 2 está elevado a una potencia {\it par} (posiblemente cero) en la factorización prima de $m^2$. se sigue entonces que de ser $m^2 = 2n^2$ deberíamos tener dos factorizaciones primas diferentes del mismo número entero, contradiciendo al teorema \ref{t1.8.2}. Entonces $m^2 \not= 2n^2$.
 \end{proof}
 
-Es claro que la conclusión del {ejemplo}  vale también si nosotros permitimos que alguno de los enteros $m$ o $n$ valga 1. Luego podemos expresar el resultado diciendo que no hay enteros positivos $m$ y $n$ que cumplan
+Si de la desigualdad $m^2 \not= 2n^2$ pasamos dividiendo $n^2$ al otro término, obtenemos
 $$
-\left(\frac{m}{n}\right)^2 =2
+\left(\frac{m}{n}\right)^2 \not=2
 $$
-o equivalentemente, diciendo que la raíz cuadrada de $2$ no puede ser expresada como una fracción $m/n$, es decir, hemos probado: 
+para cualesquiera enteros positivos $m$ y $n$. Equivalentemente, aplicando la raíz cuadrada a ambos términos de la desigualdad, concluimos que la raíz cuadrada de $2$ no puede ser expresada como una fracción $m/n$. Es decir, hemos probado: 
 \begin{center}
 	\textit{$\sqrt{2}$ no es un  número racional.}
 \end{center}
@@ -2594,7 +2734,7 @@ Entonces $m|n$ si y sólo si $e_i \le f_i$ para todo $i$.
 \begin{proof}
 ($\Rightarrow$) Por la descomposición de $m$ es claro que $p^{e_i}|m$. Como $m|n$ entonces   $p^{e_i}|n$. Es decir $n =  p^{e_i}u$. Es claro por TFA entonces que $e_i \le f_i$.
 \vskip .2cm
-($\Leftarrow$) Como $e_i \le f_i$, tenemos que $p^{e_i}|p^{f_i}$, para $1 \le i \le r$.  Luego  $$p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}| p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.$$ Es decir $m|n$.
+($\Leftarrow$) Como $e_i \le f_i$, tenemos que $p^{e_i}|p^{f_i}$, para $1 \le i \le r$.  Luego, por proposición \ref{prop-divide-a-propiedades}(\ref{prop-divide-a-propiedades-item-5}),   $$p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}| p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.$$ Es decir $m|n$.
 \end{proof}
 
 \begin{ejercicio} Sean $m,n$ enteros con $m,n\ge 2$. Entonces  $m$ y  $n$ son coprimos si y sólo si no comparten ningún primo en la factorización. 
@@ -2604,7 +2744,7 @@ $$
 m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
 n=q_1^{f_1}q_2^{f_2}\ldots q_s^{f_s},
 $$ 
-las descomposiciones primas de $m$ y $n$. Entonces  $\operatorname{mcd}(m,n) =1$ si y sólo si con $p_i \not= q_j$ para todos los $i,j$.  
+las descomposiciones primas de $m$ y $n$. Entonces  $\mcd(m,n) =1$ si y sólo si con $p_i \not= q_j$ para todos los $i,j$.  
 \end{ejercicio}
 
 Ahora veremos que es es posible calcular el $\mcd$ y el $\mcm$ de un par de números sabiendo sus descomposiciones primas.
@@ -2633,9 +2773,9 @@ $$
 \begin{ejemplo}
 Encontraremos el mcd y el mcm  de 825 y 385.
 
-Como $825 =  3\times5^2\times11$ y $385 = 5\times 7\times11$, tenemos que
+Como $825 =  3\cdot5^2\cdot11$ y $385 = 5\cdot 7\cdot11$, tenemos que
 $$
-\text{mcd}(825,385) = 5\times11 = 55, \qquad \text{mcm}(825,385) = 3\times5^2\times 7\times11 = 5775.
+\mcd(825,385) = 5\cdot11 = 55, \qquad \mcd(825,385) = 3\cdot5^2\cdot 7\cdot11 = 5775.
 $$
 \end{ejemplo}
 
@@ -2827,7 +2967,7 @@ El procedimiento anterior a veces es llamado ``regla del nueve''  \index{regla d
 
 \begin{ejemplo} Verificar  el siguiente cálculo
 $$
-54\,321 \times 98\,765= 5\,363\,013\,565.
+54\,321 \cdot 98\,765= 5\,363\,013\,565.
 $$
 \end{ejemplo}
 \begin{proof}
@@ -2844,25 +2984,65 @@ y
 $$
 \Sigma 15=6, \quad \Sigma 35=8,\quad \Sigma 37=10.
 $$
-Puesto que $6 \times 8$ no es congruente a $10 \pmod{9}$ se sigue que $15 \times 35$ no es congruente a $37 \pmod{9}$ y que $54\,321 \times 98\,765$ no es congruente a $5\,363\,013\,565\pmod{9}$. En consecuencia el cálculo está errado.
+Puesto que $6 \cdot 8$ no es congruente a $10 \pmod{9}$ se sigue que $15 \cdot 35$ no es congruente a $37 \pmod{9}$ y que $54\,321 \cdot 98\,765$ no es congruente a $5\,363\,013\,565\pmod{9}$. En consecuencia el cálculo está errado.
 \end{proof}
+
+\begin{ejemplo} Desde 1968, a la mayoría de los libros publicados se les ha asignado un número de diez dígitos llamado el International Standard Book Number, ISBN abreviado, que identifica el país de publicación, el editor y el libro en sí. De hecho, toda la información relevante se almacena en los primeros nueve dígitos; el décimo dígito es un dígito de control cuyo único propósito es darnos confianza de que los primeros nueve dígitos son correctos.
+	
+Si los dígitos de un ISBN se denotan $a_1, a_2,\cdots , a_{10}$, con los nueve primeros en el rango 0-9, entonces $a_{10}$ se elige en el rango 0-10 y debe satisfacer
+\begin{equation}\label{eq-isbn}
+	a_1 + 2a_2 + 3a_3 + \cdots + 9a_9  \equiv a_{10} \pmod{11}.
+\end{equation}	
+Si $a_{10}$ resulta ser 10, se registra como una X.  
+	
+Por ejemplo, si los primeros nueve dígitos son 0-936031-03, entonces
+\begin{equation*}
+	1 \cdot 0 + 2 \cdot 9 + 3 \cdot 3 + 4 \cdot 6 + 5 \cdot 0 + 6 \cdot 3 + 7 \cdot 1 + 8 \cdot 0 + 9 \cdot 3  =  103 \equiv 4 \pmod{11}.
+\end{equation*}	
+Por  lo tanto  el ISBN correspondiente será 0-936031-03-4.	
+
+Podemos mostrar que la prueba dada en (\ref{eq-isbn}) siempre detecta errores en un solo dígito
+(ver ejercicio \ref{ejs-congruencia}.\ref{ej-isbn}), aunque es bastante probable que se cancelen los errores en dos dígitos entre sí y así pueden pasar desapercibidos.
+
+\end{ejemplo}
+
+\begin{ejemplo}[ISBN continuado] Un error común cuando se copia un ISBN es transponer dos dígitos consecutivos. Probar que el test  (\ref{eq-isbn}) detecta transposición de dígitos consecutivos.
+	\begin{proof}[Solución] 
+	Supóngase que el ISBN correcto es 
+	\begin{equation}\label{eq-isbn-coor}
+		a_1 a_2\cdots a_{i}a_{i+1} \cdots a_{10}
+	\end{equation}
+	y que al copiarlo se ha permutado el lugar $i$ con el lugar $i+1$ resultando 
+	\begin{equation}\label{eq-isbn-incoor}
+		a_1 a_2\cdots a_{i+1}a_{i} \cdots a_{10}
+	\end{equation}
+	
+	Como (\ref{eq-isbn-coor}) es correcto tenemos que $a = a_1 + 2a_2 +  \cdots + 9a_9  \equiv a_{10} \pmod{11}$. Veamos  que si tratamos de hacer el test  (\ref{eq-isbn}) a (\ref{eq-isbn-incoor}) fallamos. Es decir,  debemos ver  que $b = 	a_1 +2a_2+\cdots+ ia_{i+1}+(i+1)a_{i}+ \cdots+ 9a_{9} \not\equiv  a_{10} \pmod{11}$.
+	Ahora bien, 
+	\begin{align*}
+		a-b  &= i(a_i-a_{i+1})+ (i+1)(a_{i+1}-a_i) \\&=(-i)(a_{i+1}-a_i)+ (i+1)(a_{i+1}-a_i) \\&= a_{i+1}-a_i. 
+	\end{align*}   
+	\end{proof}
+Como  $0 \le a_i, a_{i+1} \le 9$,  la diferencia $a_{i+1}-a_i$ no puede ser $0 \pmod{11}$ (a menos que $a_i = a_{i+1}$ en cuyo caso no hubo error de transposición) y por lo tanto $a-b \not \equiv 0 \pmod{11}$ y en consecuencia  $b \not \equiv a_{10} \pmod{11}$ . El número con esa permutación no pasa la prueba.
+\end{ejemplo}
+
 
 \vskip .3cm
 
-\begin{subsection}{Ejercicios}
+\begin{subsection}{Ejercicios}\label{ejs-congruencia}
 \begin{enumerate}
 \item Sin hacer ninguna ``multiplicación larga'' probar que
 $$
 \begin{aligned}
-\text{(i)} \quad&1\,234\,567 \times 90\,123 \equiv 1 \pmod{10} \\
-\text{(ii)} \quad &2468 \times 13\,579 \equiv -3 \pmod{25}
+\text{(i)} \quad&1\,234\,567 \cdot 90\,123 \equiv 1 \pmod{10} \\
+\text{(ii)} \quad &2468 \cdot 13\,579 \equiv -3 \pmod{25}
 \end{aligned}
 $$
 \item Usar la regla del nueve para verificar que dos de las siguientes ecuaciones son falsas. ?`Qué se puede decir de la otra ecuación?
 $$\begin{aligned}
-\text{(i)}  \quad &5783 \times 40\,162  = 233\,256\,846 , \\
-\text{(ii)} \quad &9787 \times 1258  = 12\,342\,046 , \\
-\text{(iii)} \quad & 8901 \times 5743  = 52\,018\,443 .
+\text{(i)}  \quad &5783 \cdot 40\,162  = 233\,256\,846 , \\
+\text{(ii)} \quad &9787 \cdot 1258  = 12\,342\,046 , \\
+\text{(iii)} \quad & 8901 \cdot 5743  = 52\,018\,443 .
 \end{aligned}
 $$
 \item Encontrar el resto de dividir $3^{15}$ por 17 y el de dividir $15^{81}$ por 13.
@@ -2871,6 +3051,8 @@ $$
 x\equiv x_0-x_1+x_2+\cdots +(-1)^nx_n \pmod{11},
 $$
 y use este resultado para verificar si 1\,213\,141\,516\,171\,819 es divisible por 11.
+\item\label{ej-isbn}  Probar  que cualquier error de un solo dígito en el ISBN  será detectado por la prueba (\ref{eq-isbn}).
+
 \end{enumerate}
 \end{subsection}
 
@@ -2889,7 +3071,7 @@ Notemos además que si $x_0$ es solución de la ecuación (\ref{ecuacionlineal})
 \begin{ejemplo} La solución general de la ecuación $3x\equiv 7
 \pmod{11}$ es $6+k7$ con $k \in \mathbb Z$.
 \end{ejemplo}
-\begin{proof} Si probamos con los enteros $x$ tal que  $0\le x < 11$, veremos que la ecuación admite una única solución, a saber $x=6$. Otras soluciones se obtienen tomando $6+11k$. Por otra parte si $u$ es también solución de la ecuación, entonces $3u\equiv 7 \pmod{11}$ y  como   $3 \times 6 \equiv 7 \pmod{11}$, se tiene que $3u \equiv 3\times 6 \pmod{11}$ y por lo tanto $3(u-6)$ es múltiplo de 11. Como 11 no divide a 3 se tiene que $11|(u-6)$, o sea $u=6+11k$.
+\begin{proof} Si probamos con los enteros $x$ tal que  $0\le x < 11$, veremos que la ecuación admite una única solución, a saber $x=6$. Otras soluciones se obtienen tomando $6+11k$. Por otra parte si $u$ es también solución de la ecuación, entonces $3u\equiv 7 \pmod{11}$ y  como   $3 \cdot 6 \equiv 7 \pmod{11}$, se tiene que $3u \equiv 3\cdot 6 \pmod{11}$ y por lo tanto $3(u-6)$ es múltiplo de 11. Como 11 no divide a 3 se tiene que $11|(u-6)$, o sea $u=6+11k$.
 \end{proof}
 
 Analicemos ahora la situación general de la ecuación $ ax\equiv b \pmod{m}$. Si $\mcd(a,m)=1$, entonces sabemos que existen enteros $r$ y $s$ tales que $1=ra+sm$ y por lo tanto $b=(rb)a +(sb)m$, o sea que
@@ -2973,26 +3155,26 @@ Hagamos, paso a paso, el procedimiento explicado anteriormente.
 \item 
 Usando  el algoritmo de Euclides obtenemos el  $\mcd(13,15)$.
 \begin{align*}
-15 &=  13 \times 1 + 2 \\
-13 &= 2 \times 6 + 1 \\
-2 &= 1 \times 2 + 0
+15 &=  13 \cdot 1 + 2 \\
+13 &= 2 \cdot 6 + 1 \\
+2 &= 1 \cdot 2 + 0
 \end{align*}
 Luego $1 = \mcd(13,15)$. Como 1 divide a cualquier número, en este caso  la ecuación tiene solución. Del algoritmo de Euclides deducimos 
 \begin{align*}
-1 &= 13 - 2 \times 6\\
-&= 13 - (15-13) \times 6  \\
-&= 13\times 7 - 15\times 6. 
+1 &= 13 - 2 \cdot 6\\
+&= 13 - (15-13) \cdot 6  \\
+&= 13\cdot 7 - 15\cdot 6. 
 \end{align*}
 Es decir
 \begin{equation}\label{eq1315}
-1 = 13\times 7 - 15\times 6. 
+1 = 13\cdot 7 - 15\cdot 6. 
 \end{equation}
 
 \item Multiplicando la ecuación (\ref{eq1315}) por 7 obtenemos
 $$
-7 = 13\times 49 - 15\times 42. 
+7 = 13\cdot 49 - 15\cdot 42. 
 $$
-\item Luego $13 \times 49 \equiv 7 \pmod{15}$, es decir 49 es solución de la ecuación y todas las soluciones son de la forma 
+\item Luego $13 \cdot 49 \equiv 7 \pmod{15}$, es decir 49 es solución de la ecuación y todas las soluciones son de la forma 
  $x=49 + 15k$.
 \end{enumerate}
 Debemos ver ahora cuales soluciones $x$ cumplen $0\le x< 15$. La forma más sencilla de hacerlo es buscando por tanteo: $49+15(-1)=34$, $49+15(-2)=19$, , $49+15(-3)=4$, $49+15(-4)=-11$. Es decir la solución que buscamos es $x=4$.  
@@ -3006,27 +3188,27 @@ Debemos ver ahora cuales soluciones $x$ cumplen $0\le x< 15$. La forma más senc
 \item 
 Usando  el algoritmo de Euclides obtenemos el  $\mcd(42,76)$.
 \begin{align*}
-76 &=  42 \times 1 + 34 \\
-42 &= 34 \times 1 + 8 \\
-34 &= 8 \times 4 + 2 \\
-8 &= 2 \times 4 
+76 &=  42 \cdot 1 + 34 \\
+42 &= 34 \cdot 1 + 8 \\
+34 &= 8 \cdot 4 + 2 \\
+8 &= 2 \cdot 4 
 \end{align*}
 Luego $2 = \mcd(42,76)$. Como $2|50$ la ecuación tiene solución. Del algoritmo de Euclides deducimos 
 \begin{align*}
-2 &= 34 - 8 \times 4\\
-&= 34 - (42-34) \times 4 = 34\times 5 - 42\times 4\\
-&= (76-42)\times 5 - 42\times 4 \\
-&= 76\times 5 - 42\times 9. 
+2 &= 34 - 8 \cdot 4\\
+&= 34 - (42-34) \cdot 4 = 34\cdot 5 - 42\cdot 4\\
+&= (76-42)\cdot 5 - 42\cdot 4 \\
+&= 76\cdot 5 - 42\cdot 9. 
 \end{align*}
 Es decir
 $$
-2 = (-9) \times 42 + 5 \times 76.
+2 = (-9) \cdot 42 + 5 \cdot 76.
 $$
 
-\item $50 = 2\times 25$ y tenemos  que 
+\item $50 = 2\cdot 25$ y tenemos  que 
 \begin{align*}
-50 &= (-9\times 25) \times 42 + (5 \times 25) \times 76 \\
-50 &= (-225) \times 42 + 125 \times 76
+50 &= (-9\cdot 25) \cdot 42 + (5 \cdot 25) \cdot 76 \\
+50 &= (-225) \cdot 42 + 125 \cdot 76
 \end{align*}
 \item Luego $x_0 = -225$ es una solución de la ecuación lineal de congruencia y todas las soluciones son de la forma $-225 + (76/2)k$, es decir $x = -225 + 38k$.
 \end{enumerate}
@@ -3037,7 +3219,7 @@ Debemos ver ahora cuales soluciones $x$ cumplen $0\le x< 76$. Como en el caso an
 225/38 &\le k \le 301/38 \\
 5.9 &\le k \le 7.9
 \end{align*}
-Luego $k = 6$ o $k =7$ y entonces $x_1 = -225 + 38\times 6 = 3$ y $x_2 = -225 + 38\times 7 = 41$ son las soluciones que buscamos. 
+Luego $k = 6$ o $k =7$ y entonces $x_1 = -225 + 38\cdot 6 = 3$ y $x_2 = -225 + 38\cdot 7 = 41$ son las soluciones que buscamos. 
 \end{proof}
 
 \begin{ejemplo} Hallar las soluciones del sistema de ecuaciones
@@ -3055,7 +3237,7 @@ Luego $k = 6$ o $k =7$ y entonces $x_1 = -225 + 38\times 6 = 3$ y $x_2 = -225 + 
 	\end{equation}
 	Expandiendo el lado izquierdo de la ecuación obtenemos
 	\begin{equation*}
-		7\times (-1) + 7\times 15 k\equiv -7 + 105 k\equiv 5 + 9k \pmod{12}.
+		7\cdot (-1) + 7\cdot 15 k\equiv -7 + 105 k\equiv 5 + 9k \pmod{12}.
 	\end{equation*}
 	Por lo tanto la ecuación  (\ref{eq-sistema}) es equivalente a $5 + 9k \equiv 8 \pmod{12}$. Pasando el $5$ a la derecha obtenemos:
 	\begin{equation}
@@ -3205,7 +3387,7 @@ donde $d$ es la clave privada que solo $A$ conoce.
 
 Dados primos distintos $p$ y $q$ suficientemente grandes tomamos $n = pq$. 
 
-- La \emph{clave pública} es $n$ y $e$ con $1 < e < (p-1)(q-1)$ tal que $\operatorname{mcd}(e, (p-1)(q-1)) = 1$. 
+- La \emph{clave pública} es $n$ y $e$ con $1 < e < (p-1)(q-1)$ tal que $\mcd(e, (p-1)(q-1)) = 1$. 
 
 - La \emph{clave privada} es un $d$ tal que $ed \equiv 1 \pmod{(p-1)(q-1)}$ y $0 \le d <(p-1)(q-1)$.
 
@@ -3214,7 +3396,7 @@ Dados primos distintos $p$ y $q$ suficientemente grandes tomamos $n = pq$.
 \item
 Los dos primos $p$ y $q$ deberían tener alrededor de 100 dígitos cada uno (longitud considerada segura en este momento).
 \item
-El número $e$ puede elegirse pequeño y se selecciona haciendo prueba y error con el algoritmo de Euclides, es decir probando hasta encontrar un $e$ tal que $\operatorname{mcd}(e, (p-1)(q-1)) = 1$.
+El número $e$ puede elegirse pequeño y se selecciona haciendo prueba y error con el algoritmo de Euclides, es decir probando hasta encontrar un $e$ tal que $\mcd(e, (p-1)(q-1)) = 1$.
 \item
 La existencia de $d$ está garantizada por el teorema \ref{th-elc} (ecuación lineal de congruencia), pues $e$ y $(p-1)(q-1)$ son coprimos.
 \end{itemize}
@@ -3259,7 +3441,7 @@ ed = 1 + k(p - 1)(q - 1).
 \end{equation}
 Consideremos el mensaje $m$ y si es o no coprimo con $p$.
 
-Si $\operatorname{mcd}(m, p) = 1$, el Teorema de Fermat dice que $m^{p - 1}  \equiv 1\pmod{p}$.
+Si $\mcd(m, p) = 1$, el Teorema de Fermat dice que $m^{p - 1}  \equiv 1\pmod{p}$.
 Entonces $(m^{p - 1})^x \equiv 1\pmod{p}$ para cualquier $x$. En particular, para 
 $x = k(q-1)$. Asi que tenemos:
 \begin{equation*}
@@ -3273,16 +3455,16 @@ Usando las ecuaciones (\ref{rsa1}) y (\ref{rsa2}) obtenemos:
 \begin{equation}\label{rsa3}
 m^{ed} \equiv m\pmod{p} 
 \end{equation}
-Esto, si  $\operatorname{mcd}(m, p) = 1$. Pero si esto último no es cierto, entonces al ser $p$ primo debemos tener $m \equiv 0\pmod{p}$ y en ese caso (\ref{rsa3}) es trivial (dice que $0 \equiv 0$) Con lo cual (\ref{rsa3}) es verdadero para todo $m$.
+Esto, si  $\mcd(m, p) = 1$. Pero si esto último no es cierto, entonces al ser $p$ primo debemos tener $m \equiv 0\pmod{p}$ y en ese caso (\ref{rsa3}) es trivial (dice que $0 \equiv 0$) Con lo cual (\ref{rsa3}) es verdadero para todo $m$.
 
 Obviamente la elección u orden de $p$ o $q$ es arbitraria, así que (\ref{rsa3}) también es verdadera si reemplazamos $p$ por $q$. Así que tenemos: $$p|(m^{ed}-m) \qquad \text{ y } \qquad q|(m^{ed}-m).$$ Como $p$ y $q$ son primos distintos, entonces concluimos que $pq|(m^{ed}-m)$, es decir, $$m^{ed} \equiv m \pmod{pq}.$$
 \end{proof}
 
 \begin{ejemplo} Probemos el sistema en forma práctica usando primos pequeños, por ejemplo $p=31$, $q=73$. En este caso $n = pq = 2263$. 
 
-Busquemos ahora un $e$:  tenemos que $ (p-1)(q-1)= 30\times 72 = 2160$. Vemos que $2$, $3$, $5$ dividen a $2160$, pero $7$ es coprimo con $2160$. Tomemos entonces $e = 7$.
+Busquemos ahora un $e$:  tenemos que $ (p-1)(q-1)= 30\cdot 72 = 2160$. Vemos que $2$, $3$, $5$ dividen a $2160$, pero $7$ es coprimo con $2160$. Tomemos entonces $e = 7$.
 
-Usando el algoritmo de Euclides obtenemos $1 = 2\times 2160 + (-617)\times 7$. Luego, podemos tomar $d = 2160 -617 =1543$. 
+Usando el algoritmo de Euclides obtenemos $1 = 2\cdot 2160 + (-617)\cdot 7$. Luego, podemos tomar $d = 2160 -617 =1543$. 
 
 Por lo tanto el receptor tiene clave pública $(7,2263)$ y conserva en secreto  su clave privada $1543$
 
@@ -3345,7 +3527,7 @@ $$
 \text{(i)}\quad 5x\equiv12 \pmod{13},\qquad\, \text{(ii)}\quad x^2-x \equiv 1 \pmod{11}.
 $$
 \item ?`Cuál es el último dígito de la representación en base 10 de $7^{93}$.
-\item Usar que $1001=7\times 11 \times 13$ para construir una prueba para la división para los número 7, 11 y 13 similar a la prueba del 9.
+\item Usar que $1001=7\cdot 11 \cdot 13$ para construir una prueba para la división para los número 7, 11 y 13 similar a la prueba del 9.
 \end{enumerate}
 \end{section}
 
@@ -5546,7 +5728,7 @@ puede ser calculado por el principio del tamiz.
 
 \begin{ejemplo}?`Cuál es el valor de $\phi(60)$? En otras
 palabras, ?`cuántos enteros $x$ en el rango $1 \le x \le 60$
-satisfacen $\operatorname{mcd}(x,60)=1$?
+satisfacen $\mcd(x,60)=1$?
 \end{ejemplo}
 \begin{proof}[Solución] Sabemos que $60 =2^2 \times 3 \times 5$, así que
 podemos contar el números de enteros $x$ en el rango $1 \le x \le
