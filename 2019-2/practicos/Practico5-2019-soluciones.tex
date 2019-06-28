@@ -164,7 +164,7 @@
 \newcommand \mcm{\operatorname{mcm}}
 \newcommand \sisolosi{\Leftrightarrow}
 \newcommand{\cskip}{\vskip .4cm}
-
+\newcommand{\rskip}{\vskip .2cm}
 
 
 
@@ -186,7 +186,7 @@
  
 \renewcommand{\headrulewidth}{0.5pt}
 %\renewcommand{\footrulewidth}{0.5pt}
- \newcommand{\rta}{\noindent\textit{Rta: }}
+ \newcommand{\rta}{\vskip .15cm \noindent\textit{Rta: }}
  \newcommand{\alt}{\noindent\textit{Rta alternativa: }}
 
 
@@ -829,9 +829,7 @@
 		
 		\item  Si $V=\{ v_1 \dots v_n \} $ y $\delta (v_i)=d_i \;\;\forall\,\; i=1,\dots , n\,$, calcule las valencias de el grafo complemento.
 		
-		\rta 
-		
-		Si $v$ vértice del grafo con valencia $\delta(v)=k$, por definición de grafo complemento la valencia de $v$ en el grafo complemento es $n-1 -k$. Por lo tanto si denotamos $\delta'(v)$ la valencia de $v$ en el grafo complemento, la respuesta del ejercicio es $\delta' (v_i)=n-1-d_i \;\;\forall\,\; i=1,\dots , n\,$.
+		\rta Si $v$ vértice del grafo con valencia $\delta(v)=k$, por definición de grafo complemento la valencia de $v$ en el grafo complemento es $n-1 -k$. Por lo tanto si denotamos $\delta'(v)$ la valencia de $v$ en el grafo complemento, la respuesta del ejercicio es $\delta' (v_i)=n-1-d_i \;\;\forall\,\; i=1,\dots , n\,$.
 	\end{enumerate}
 	
 	\cskip
@@ -1060,8 +1058,13 @@
 	Con respecto a las caminata eulerianas, como solo hay dos vértices de valencia impar (2 y 6),  hay caminatas eulerianas que van de 2 a 6 o viceversa. La cantidad de aristas total es $\frac{6\cdot 4 + 2 \cdot 3 + 2}{2} = 16$,  que debe ser el largo de la caminata. Una posible caminata es $21034567850723816$.  
 	
 	\cskip
+	
+	\cskip
 
 	\item Un ratón intenta comer un $3\times 3\times 3$ cubo de queso. Él comienza en una esquina y come un subcubo de $1\times 1\times 1$, para luego pasar a un subcubo adyacente. ¿Podrá el ratón terminar de comer el queso en el centro?
+	
+	\rskip
+	
 	 \rta Podemos modelar este problema con un cubo subdividido en 2 en cada dimensión, o también como un grafo en el espacio con coordenadas $(x,y,z)$ con $0 \le x,y,z \le 2$. El grafo sería como en el siguiente dibujo, donde el vértice de partida está en gris y el vértice de llegada en negro. 
 	 \begin{center}
 	 	\begin{tikzpicture}[scale=2]
