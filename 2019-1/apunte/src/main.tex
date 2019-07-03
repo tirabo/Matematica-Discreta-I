@@ -181,7 +181,7 @@
 		\flushleft 
 		\begin{itemize}
 			\item \textbf{Obra original:} coordinada y escrita por Alejandro Tiraboschi. 
-			\item \textbf{Colaboración especial: } Daniel Penazzi, colaborador  de la sección ``El criptosistema RSA'' y autor principal del apéndice de grafos planares.  
+			\item \textbf{Colaboración: } Daniel Penazzi, colaborador  de la sección ``El criptosistema RSA'' y autor principal del apéndice de grafos planares. Fernando Levstein colaborador en la sección ``Máximo común divisor y mínimo común  múltiplo''.   
 			\item \textbf{Correcciones y sugerencias:} Pedro Pury, Romina Arroyo, Leandro Cagliero. 
 		\end{itemize}
 	}
@@ -351,8 +351,7 @@ a^2 - b^2$.
 
 \begin{section}{Ordenando los enteros}\label{1.2}
 
-El orden natural de los enteros es tan importante como sus propiedades aritméticas. Desde el comienzo aprendemos los números en el orden 1,2,3,4,5, y el hecho de que 4 es ``mayor'' que 3 se convierte en algo de importancia práctica para nosotros. Expresamos esta idea formalmente diciendo que existe una relación de orden que indicamos ``$<$'' ($a < b$ se lee: $a$ es menor que $b$ o también $b$ es mayor que $a$). 
-
+El orden natural de los enteros es tan importante como sus propiedades aritméticas. Desde el comienzo aprendemos los números en el orden 1,2,3,4,5, y el hecho de que 4 es ``mayor'' que 3 se convierte en algo de importancia práctica para nosotros. Expresamos esta idea formalmente diciendo que existe una relación que indicamos ``$<$'' ($a < b$ se lee: $a$ es menor que $b$ o también $b$ es mayor que $a$). 
 Solo cuatro axiomas se necesitan para especificar las propiedades básicas del símbolo $<$ , y ellos son listados en lo que sigue. La numeración de los axiomas se continúa de la sección \ref{1.1}. Como antes, $a$, $b$ y $c$ denotan enteros arbitrarios. 
 \begin{enumerate}
 \item[{\bf I8.}] {\em Ley de tricotomía.}\, Vale una y sólo una de las relaciones
@@ -587,14 +586,16 @@ n!=1 \times 2 \times 3 \times \cdots \times n,
 $$
 el significado es bastante claro para cualquiera. Pero para precisar (y hacerlo claro para una computadora) debemos usar las definiciones recursivas.
 
-\begin{definicion} Sea $n \in \NN$ sean $a_i$  $1 \le i \le n$ una secuencia de números (enteros, reales, etc.). Entonces $\sum_{i=1}^{n} a_i$  denota la función recursiva $s_n$ definida  
+\begin{definicion} Sea $n \in \NN$ sean $a_i$  $1 \le i \le n$ una secuencia de números (enteros, reales, etc.). Entonces $\sum_{i=1}^{n} a_i$  denota la función recursiva definida  
 	$$
-	s_1= a_1, \qquad s_n = s_{n-1} + a_{n-1} \quad (n\ge 2).
+	\sum_{i=1}^{1} a_i= a_1, \qquad \sum_{i=1}^{n} a_i = \sum_{i=1}^{n-1} a_i+ a_{n} \quad (n\ge 2).
 	$$
-	El símbolo $\prod_{i=1}^{n} a_i$ denota la función recursiva $p_n$ definida  
+	En  este caso  decimos que  $\sum_{i=1}^{n} a_i$ es la \textit{sumatoria} de los $a_i$ de $i=1$  a $n$. 
+	El símbolo $\prod_{i=1}^{n} a_i$ denota la función recursiva definida  
 	$$
-	p_1= a_1, \qquad p_n = p_{n-1} \times  a_{n-1} \quad (n\ge 2).
+	\prod_{i=1}^{1} a_i= a_1, \qquad \prod_{i=1}^{n} a_i = \prod_{i=1}^{n-1} a_i \times  a_{n} \quad (n\ge 2).
 	$$
+	En  este caso  decimos que  $\prod_{i=1}^{n} a_i$ es la \textit{productoria} de los $a_i$ de $i=1$  a $n$. 
 \end{definicion}
 
 
@@ -604,7 +605,7 @@ $$
 1!=1,\qquad n!=n \times (n-1)! \quad (n\ge 2).
 $$
 
-Otro caso que debemos mencionar es  el de la definición de ``$n$-ésima potencia'': sea $x$ un  número , si $n \in \NN$ definimos
+Otro caso que debemos mencionar es  el de la definición de ``$n$-ésima potencia'': sea $x$ un  número, si $n \in \NN$ definimos
 $$
 x^1=x,\qquad x^n= x \times x^{n-1} \quad (n\ge 2).
 $$
@@ -619,7 +620,6 @@ Por completitud,  definimos $x^0=1$ cuando $x \ne 0$ y  dejamos indefinido $0^0$
 \item[(\em ii)] $u_1 = 1$, $u_n = u_{n-1} +2u_{n-2}$ ($n \ge 2$). 
 \item[(\em iii)] $u_1 = 0$, $u_n = nu_{n-1}$ ($n \ge 2$).
 \end{enumerate}
-\item De una definición recursiva de la ``$n$-ésima potencia'' para todo $n\ge 1$.
 \item Sea $u_n$ definido por las ecuaciones
 $$
 u_1=2,\qquad u_n= 2^{u_{n-1}} \quad (n\ge 2).
@@ -731,7 +731,7 @@ Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción,
 \end{proof}
 
 
-Existen varias formas modificadas del principio de inducción. A veces es conveniente tomar como base inductiva el valor $n=0$, por otro lado puede ser apropiado tomar un valor como $2$ o $3$ porque los primeros casos pueden ser excepcionales. Cada problema debe ser tratado según sus características. Otra modificación útil es tomar como hipótesis inductiva la suposición de que el resultado es verdadero para todos los valores $n\le k$, más que para $n=k$ solamente. (Esta formulación es llamada a veces el principio de inducción {\it completa}.) Todas esas modificaciones pueden justificarse con cambios triviales en la demostración del teorema \ref{t1.4}.
+Existen varias formas modificadas del principio de inducción. A veces es conveniente tomar como base inductiva el valor $n=0$, por otro lado puede ser apropiado tomar un valor como $2$ o $3$ porque los primeros casos pueden ser excepcionales. Cada problema debe ser tratado según sus características. Otra modificación útil es tomar como hipótesis inductiva la suposición de que el resultado es verdadero para todos los valores $n\le k$, más que para $n=k$ solamente. Esta formulación es llamada a veces el principio de inducción {\it completa}. Todas esas modificaciones pueden justificarse con cambios triviales en la demostración del teorema \ref{t1.4}.
 
 El siguiente teorema incorpora todas las modificaciones del principio de inducción mencionadas más arriba.
 
@@ -1942,10 +1942,10 @@ Veamos ahora alguna propiedades básicas de la relación ``divide a''.
 
 \begin{proposicion}\label{prop-divide-a-propiedades}Sean $a,b,c$ enteros, entonces
 \begin{enumerate}%[(1)] % si queremos cambiar el estilo de enumerate
-\item $1|a$, $a|0$, $a|\pm a$;
+\item $1|a$, $a|0$. Si $a\not=0$,  $a|\pm a$;
 \item si $a|b$, entonces $\pm a| \pm b$;
 \item si $a|b$, entonces $a|bc$ para cualquier $c$;
-\item si $a|b$ y $a|c$, entonces $a|rb+sc$ para cualesquiera $r,s \in \mathbb Z$;
+\item\label{prop-divide-a-propiedades-item-4} si $a|b$ y $a|c$, entonces $a|sb+tc$ para cualesquiera $s,t \in \mathbb Z$;
 \item\label{prop-divide-a-propiedades-item-5} si $a',b'$ enteros y $a|a'$, $b|b'$, entonces $ab|a'b'$.
 \item\label{prop-divide-a-propiedades-item-6} Si $a|b$ y $a,b>0$,  entonces $a \le b$.
 \end{enumerate}
@@ -1991,10 +1991,10 @@ entonces $c|n$ y $n/c$ denota al entero $dt$. Finalmente, como $n/c=dt$ tenemos 
 \end{proof}
 
 
-\begin{proposicion}\label{pm} Sean $a$ y $b$ enteros.
+\begin{proposicion}\label{prop-pm} Sean $a$ y $b$ enteros.
 \begin{enumerate}
 \item Si  $ab=1$ entonces $a=b=1$ o $a=b=-1$. 
-\item Si $x$ e $y$ son enteros tales que $x|y$ e $y|x$, entonces $x=y$ o $x=-y$.
+\item\label{prop-pm-2} Si $x$ e $y$ son enteros tales que $x|y$ e $y|x$, entonces $x=y$ o $x=-y$.
 \end{enumerate}
 \end{proposicion}
 \begin{proof} 1. Si $a$ o $b$ valen 0, entonces $ab=0 \not=1$. Luego $a$ y $b$ son distintos de 0. Si $a>0$ y $b<0$ por los axiomas de compatibilidad del orden con el producto $ab<0$. Lo mismo ocurre si $a<0$ y $b>0$.
@@ -2033,42 +2033,99 @@ $$
 \item[({\em ii})] si $ c|a $ y $c|b$ entonces $ c|d$.
 \end{enumerate}
 \end{definicion}
-La condición ({\em i}) nos dice que $d$ es un común divisor de $a$ y $b$ y la condición ({\em ii}) nos dice que cualquier divisor común de $a$ y $b$ es también divisor de $d$. Por ejemplo, 6 es un divisor común de 60 y 84, pero no es el mayor divisor común, porque $12|60$ y $12|84$ pero $12{\not|}6$ (el símbolo significa ``no divide''.)
 
-\begin{ejemplo} La definición no afirma que el máximo común divisor existe, pero podemos encontrarlo fácilmente para un par de números $a$, $b$ simplemente por inspección. Por  ejemplo, si $a = 174$ y $b =72$;
+La condición ({\em i}) nos dice que $d$ es un común divisor de $a$ y $b$ y la condición ({\em ii}) nos dice que cualquier divisor común de $a$ y $b$ es también divisor de $d$. 
 
-Divisores de 174: 1, 2, 3, 6, 29, 58, 87, 174
 
-Divisores de 72: 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, 72 
-
-Luego, $6$ es divisor común de 174 y 72, y todos los demás divisores comunes ($1$, $2$ y $3$) dividen a $6$.
+\begin{ejemplo} \label{ejem-1-mcd}
+	Los divisores positivos comunes de 60  y 84 son 1, 2, 3, 6 y 12, luego aunque 6  es un divisor común, no satisface ({\em ii}) de la definición, pues $12|60$ y $12|84$ pero $12{\not|}6$ (el símbolo significa ``no divide''). En este caso, 12  claramente es  el  máximo común divisor.
 \end{ejemplo}
 
-\begin{teorema}\label{tmcd} 
-Sean $a,b$ enteros con alguno de ellos no nulo. Si el máximo común divisor entre  $a$ y $b$ existe, entonces es único.  
+En el ejemplo anterior usamos dos enteros pequeños y no tuvimos problemas en encontrar el  máximo común divisor. Pero ¿qué pasaría si consideráramos dos enteros muy grandes? Consideremos las siguientes preguntas.
+\begin{itemize}
+	\item Dados $a,b \in \ZZ$ arbitrarios, alguno de ellos no nulo ¿existe el máximo común divisor? Si existe, ¿hay una forma eficiente de calcularlo?
+	\item  ¿Cuántos máximos común divisores puede tener un  par de enteros?
+\end{itemize}
+En  el desarrollo de esta sección responderemos estas preguntas. 
+
+
+\begin{teorema}
+	Dados $a,b \in \ZZ$, alguno de ellos no nulo, existe un único $d \in \ZZ$ que es el máximo común divisor. 
 \end{teorema}
 \begin{proof}
-Sean $d$ y $d'$ dos enteros no negativos que satisfacen las propiedades de la definición del máximo común divisor. Es decir
-\begin{align}
-&\text{({\em i}) $ d|a$ y $d|b$;\quad ({\em ii}) si $ c|a $ y $c|b$ entonces $ c|d$} \label{mcd1}\\
-&\text{({\em i}) $ d'|a$ y $d'|b$;\quad ({\em ii}) si $ c|a $ y $c|b$ entonces $ c|d'$} \label{mcd2}
-\end{align}
-Ahora bien, $d$ satisface la propiedad (\ref{mcd1})({\em i}), aplicando la propiedad (\ref{mcd2})({\em ii}) obtenemos que $d|d'$. Análogamente,  $d'$ satisface la propiedad (\ref{mcd2})({\em i}),  luego aplicando la propiedad (\ref{mcd1})({\em ii}) obtenemos que $d'|d$. Por lo tanto $d, d' \ge 0$ y  se dividen mutuamente y en consecuencia son iguales (ver ejemplo \ref{pm}).
+	Sin pérdida de generalidad podemos suponer que  $a \ne 0$. Sea 
+	\begin{equation*}
+		S = \{m a+n b : m,n\in \ZZ, m a+n b>0\}.
+	\end{equation*}
+	Como  $a$ o $-a$ pertenecen a $S$, tenemos que  $S \not= \emptyset$, luego, por el principio de buena ordenación, $S$ tiene un  mínimo $d$. Probaremos ahora que  $d$  es un  máximo común divisor de $a$ y $b$. 
+	
+	\textit{Propiedad {(ii)}.} Puesto  que $d \in S$,  existen $s, t \in \ZZ$ tal que $d = sa+tb$. Sea $c$ tal que $c|a$ y $c|b$, por (\ref{prop-divide-a-propiedades-item-4}) de la proposición \ref{prop-divide-a-propiedades},  tenemos que $c|sa+tb$,  es decir $c|d$. 
+	
+	\textit{Propiedad {(i)}.} Supongamos ahora que $d {\not|} a$,  entonces $|a| = qd + r$ con $0 < r <d$ y $q \ge 0$, luego $$r = \pm a - qd = \pm a-q(sa+tb) = a(\pm1-qs) +(-qt)b.$$ Por lo tanto, $r$ es combinación lineal entera de $a$ y $b$, luego  pertenece a $A$.  Pero $r < d$, contradiciendo  el hecho de que $d$  es un mínimo de $S$. La contradicción vino de suponer que  $d{\not|}  a$. Por lo tanto $d|a$. En  forma análoga podemos probar que $d|b$. 
+	
+	
+	\textit{Unicidad.} Sean $d$ y $d'$ dos enteros no negativos que satisfacen las propiedades de la definición del máximo común divisor, como $d'|a$, $d'|b$ y  $d$ satisface la propiedad \textit{(ii)} de la definición de mcd, se deduce que $d|d'$. Intercambiando  los papeles de $d$ y $d'$ se obtiene que $d'|d$. Luego, como $d,d'\ge 0$, por  proposición \ref{prop-pm}(\ref{prop-pm-2}) se obtiene que $d=d'$.
 \end{proof}
 
-Cuando  el máximo común divisor entre $a$ y $b$ existe lo denotaremos $\mcd(a,b)$.
+Si $a,b$ enteros,  alguno de ellos  no nulo,  denotaremos al máximo común divisor  de $a$ y $b$ por $\mcd(a,b)$, o en caso de no haber confusión por $(a,b)$.
+
+
+\begin{ejemplo} Hallar   $\mcd(174,72)$.
+	\begin{proof}[Solución] ${^{}}$
+		
+		Divisores de 174: 1, 2, 3, 6, 29, 58, 87, 174
+		
+		Divisores de 72: 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, 72 
+		
+		Luego, $6$ es divisor común de 174 y 72, y todos los demás divisores comunes ($1$, $2$ y $3$) dividen a $6$. Por lo tanto $\mcd(174,72) =6$.
+	\end{proof}
+
+
+\begin{proposicion}\label{prop-d-comb-lin}
+	Sean $a,b \in \ZZ$, alguno de ellos no nulo. Entonces existen $s,t \in \ZZ$ tal que
+	\begin{equation*}
+		(a,b) = sa + tb. 
+	\end{equation*}
+\end{proposicion}
+\begin{proof}
+	Se deduce trivialmente de la demostración del teorema anterior. 
+\end{proof}
+
+\begin{corolario} Sean $a$ y $b$ enteros, $b$ no nulo, entonces
+	$$
+	(a,b) = 1 \Leftrightarrow \text{existen $s,t \in \mathbb Z$ tales que $1 = sa+tb$.}
+	$$
+\end{corolario}
+\begin{proof}
+	($\Rightarrow$) Es consecuencia trivial de la proposición anterior.
+	
+	($\Leftarrow$) Sea $d = (a,b)$, entonces $d|a$ y $d|b$ y por lo tanto $d|sa+tb$ para cualesquiera   $s,t \in \mathbb Z$.  En particular, la hipótesis implica que $d |e 1$ y, en consecuencia $d =1$. 
+\end{proof}
+
+\begin{definicion}
+	Si el $(a,b)=1$ entonces decimos que $a$ y $ b$ son {\em coprimos}\index{coprimos}.
+\end{definicion}
+
+
+
+
+
+\end{ejemplo}
+
+
+
 
 Podemos enunciar las propiedades más sencillas del mcd en la siguiente proposición
 
 \begin{proposicion} Sean $a,b$ enteros con $a \not = 0$, entonces
 \begin{enumerate}
-\item Si $\mcd(a,b)$ existe, entonces $\mcd(b,a) = \mcd(a,b) = mcd(\pm a, \pm b)$,
+\item $\mcd(b,a) = \mcd(a,b) = mcd(\pm a, \pm b)$,
 \item si $a>0$,  $\mcd(a,0) = a$ y $\mcd(a,a) = a$,
 \item $\mcd(1,b) = 1$.
 \end{enumerate}
 \end{proposicion}
 \begin{proof}
-Estas propiedades son de demostración casi trivial, por ejemplo para demostrar que  $\mcd(1,b) = 1$ comprobamos que 1 cumple con la definición de $\mcd(1,b)$:
+Estas propiedades son de demostración casi trivial, por ejemplo para demostrar que  $\mcd(1,b) = 1$ comprobamos que 1 cumple con la definición:
 \begin{enumerate}
 \item[({\em i})] $ 1|1$ y $1|b$;
 \item[({\em ii})] si $ c|1 $ y $c|b$ entonces $ c|1$,
@@ -2081,35 +2138,33 @@ propiedades que son obviamente verdaderas.
 La siguiente propiedad no es tan obvia y resulta muy importante. 
  
 \begin{propiedad}\label{propiedad1}
-Probar que si $a \not=0, b \in \mathbb Z$ y existe $\mcd(a,b-a)$, entonces existe $\mcd(a,b)$ y $\mcd(a,b) = \mcd(a,b-a)$. 
+Si $a \not=0, b \in \mathbb Z$, entonces $\mcd(a,b) = \mcd(a,b-a)$. 
 \end{propiedad}
 \begin{proof}
-Sea $d =  \mcd(a,b-a)$, luego 
-\begin{enumerate}
-\item[({\em i})] $ d|a$ y $d|b -a$;
-\item[({\em ii})] si $ c|a $ y $c|b -a$ entonces $ c|d$.
-\end{enumerate}
-Ahora bien, como  $ d|a$ y $d|b -a$, entonces $  d|a +(b -a) = b$. Es decir, para recalcar,
- 
-\noindent {({\em *}) $ d|a$ y $d|b$.} 
-
-\noindent Por otro lado, si  $ c|a $ y $c|b$, entonces  $c|b -a$, luego por ({\em ii}) tenemos que $c|d$. Es decir, 
-
-\noindent{({\em **}) si  $ c|a $ y $c|b$, entonces  $c|d$.}
-
-\noindent Luego por ({\em *}), ({\em **}) y la definición de mcd obtenemos que $d = \mcd(a,b)$.
+	Sea $d =  \mcd(a,b-a)$, luego 
+	\begin{enumerate}
+		\item[({\em i})] $ d|a$ y $d|b -a$;
+		\item[({\em ii})] si $ c|a $ y $c|b -a$ entonces $ c|d$.
+	\end{enumerate}
+	Ahora bien, como  $ d|a$ y $d|b -a$, entonces $  d|a +(b -a) = b$. Es decir, para recalcar,
+	\begin{enumerate}
+		\item[({\em i'\,})] $ d|a$ y $d|b$.
+	\end{enumerate}
+	Por otro lado, si  $ c|a $ y $c|b$, entonces  $c|b -a$, luego por ({\em ii}) tenemos que $c|d$. Es decir, 
+	\begin{enumerate}
+		\item[({\em ii'\,})] si  $ c|a $ y $c|b$, entonces  $c|d$.
+	\end{enumerate}
+	Luego, por definición de mcd, obtenemos que $d = \mcd(a,b)$.
 \end{proof}
 
 La propiedad anterior nos provee un método práctico para encontrar el máximo común divisor entre dos números, como vemos en el siguiente ejemplo.
 
 \begin{ejemplo} Encontrar el mcd entre 72 y 174.
-\begin{proof}[Solución] Observar que en caso de existir el mcd para todo número, tenemos
-\begin{align*}
-\mcd(72, 174) &= \mcd(72,174-72) = \mcd(72,102) = \mcd(72,30) =  \mcd(42, 30) \\&= \mcd(12,30) = \mcd(12,18)= \mcd(12,6)= \mcd(6,6) = 6.  
-\end{align*}
-Ahora bien, como sabemos que el $\mcd(6,6)=6$ existe, por la propiedad (\ref{propiedad1}), obtenemos que $\mcd(12,6) $ existe y es $6$, lo que implica que 
-$\mcd(12,18)$ existe y es $6$, y así sucesivamente hasta probar que $\mcd(72, 174)$ existe y es $6$.
-\end{proof}
+	\begin{proof}[Solución] Observar que 
+		\begin{align*}
+		\mcd(72, 174) &= \mcd(72,174-72) = \mcd(72,102) = \mcd(72,30) =  \mcd(42, 30) \\&= \mcd(12,30) = \mcd(12,18)= \mcd(12,6)= \mcd(6,6) = 6.  
+		\end{align*}
+	\end{proof}
 \end{ejemplo} 
 
 En  general no es sencillo encontrar todos los divisores de un número entero grande. Por ejemplo, para los  números de más de cien dígitos no es posible,  en general, calcular sus divisores ni con las computadoras más poderosas de la actualidad. Por  lo tanto, no es factible calcular el  mcd de números grandes revisando todos los divisores comunes.  El algoritmo que nos provee la  propiedad \ref{propiedad1} nos da un método práctico y relativamente eficiente para calcular el mcd. Veremos a continuación un método similar pero mucho más eficiente para calcular el mcd de dos enteros no negativos $a,b$ con $b \not=0$. Este método esta basado en la técnica del cociente y el resto y depende del siguiente hecho.
@@ -2118,21 +2173,20 @@ En  general no es sencillo encontrar todos los divisores de un número entero gr
 \begin{equation}\label{bec}
 a=bq+r\quad \Rightarrow \quad\mcd(a,b)=\mcd(b,r).
 \end{equation}
-Más precisamente, si $a = bq + r$, entonces el $\mcd(a,b)$ existe si y sólo si  $\mcd(b,r)$ existe y ambos números son iguales.
 \end{proposicion}
 \begin{proof}
 Para demostrar esto debemos observar que si $c$ divide $a$ y $b$, entonces también divide a $a-bq$; y como $a-bq=r$, tenemos que $c|r$. De este modo cualquier divisor común de $a$ y $b$ es también divisor común de $b$ y $r$.  Por otro lado si $c$ divide $b$ y $r$ también divide a $a=bq+r$. Es decir, 
 \begin{equation}\label{eqmcd1}
 \text{$c$ es divisor común de $a$ y $b$ si y sólo si $c$ es divisor común de $b$ y $r$.} \tag{*}
 \end{equation}
-Luego, supongamos que  exista $d = mcd(a,b)$, probaremos que $d$ es el mcd entre $b$ y $r$:
+Luego, sea $d = \mcd(a,b)$, probaremos que $d$ es el mcd entre $b$ y $r$:
 \begin{enumerate}
 \item[({\em i})] como $d|a$ y $d|b$, entonces por (*) tenemos que $ d|b$ y $d|r$;
 \item[({\em ii})] si $c|a $ y $c|r$ entonces por (*)  $c|a$ y $c|b$ y debido a que $d = \mcd(a,b)$, se deduce que $c|d$.
 \end{enumerate}
 Al satisfacer ({\em i}) y ({\em ii}), obtenemos que $d = \mcd(b,r)$.
 
-Análogamente, se demuestra que si existe $d = \mcd(b,r)$, entonces  $d = \mcd(a,b)$.
+Análogamente, si $d = \mcd(b,r)$, entonces  $d = \mcd(a,b)$.
 \end{proof}
 
 La aplicación repetida de este simple hecho, en combinación con el algoritmo de división, nos da un método para calcular el mcd.
@@ -2195,15 +2249,7 @@ Es decir el máximo común divisor de $a$ y $b$ es el último resto no nulo que 
  
 Este procedimiento es conocido como el {\em algoritmo de Euclides}\index{algoritmo de Euclides}, debido al matemático griego Euclides (300 a.~c.). Es extremadamente útil en la práctica, y tiene importantes consecuencias.
 
-\begin{teorema} Sean  $a$ y $b$ enteros con $b >0$, entonces el máximo común divisor existe y es el $r_{k}$ obtenido en el algoritmo de Euclides. 
-\end{teorema}
-\begin{proof}
-Observar que aplicando repetidas veces (\ref{bec}) de proposición  \ref{prop-alg-eucl} obte\-nemos:
-\begin{multline*}
-r_k = \mcd(r_{k},0) = \mcd(r_{k-1},r_k) =\mcd(r_{k-2},r_{k-1}) = \cdots\\\cdots 
-=  \mcd(r_2,r_3) =  \mcd(r_1,r_2)  =  \mcd(r_0,r_1) = \mcd(a,b)  
-\end{multline*}
-\end{proof}
+
 
 \begin{ejemplo}\label{ej-mcd-470-55} Encuentre el mcd de 470 y 55.
 \end{ejemplo}
@@ -2217,6 +2263,7 @@ r_k = \mcd(r_{k},0) = \mcd(r_{k-1},r_k) =\mcd(r_{k-2},r_{k-1}) = \cdots\\\cdots
 Por  lo tanto $\mcd(470,55) =5$.	
 \end{proof}
 
+
 \begin{observacion}[*] El algoritmo de Euclides es fácilmente implementable en un lenguaje de programación. A continuación una versión del mismo en pseudocódigo. 
 
 \vskip .5cm
@@ -2226,14 +2273,17 @@ Por  lo tanto $\mcd(470,55) =5$.
 \vskip .2cm
 \begin{small}
 \begin{verbatim}
-# pre: a y b son números positivos
-# post: Obtenemos d = mcd(a,b)
-r(0), r(1) = a, b
-i = 1 
-while r(i) != 0:
-    r(i+1) = r(i-1) % r(i)   # a % b = resto de a / b
-    i = i + 1
-d = r(i-1)
+def mcd(a,b):
+    # pre: a y b son números enteros, uno de ellos no nulo
+    # post: Obtenemos d = mcd(a,b)
+    r = lista  de enteros
+    r[0], r[1] = |a|, |b| 
+    i = 1 
+    while r[i] != 0:
+        r[i+1] = r[i-1] % r[i]   # a % b = resto de a / b
+        i = i + 1
+    d = r[i-1]
+    return d
 \end{verbatim}
 \end{small}
 \end{minipage}
@@ -2242,12 +2292,11 @@ d = r(i-1)
 
 \vskip .5cm
 
-\begin{teorema}\label{t1.7.1} Sean $a$ y $b$ enteros, $b$ no nulo y sea $d=\mcd(a,b)$. Entonces existen enteros $s$ y $t$ tales que
+Sean $a$ y $b$ enteros, $b$ no nulo y sea $d=\mcd(a,b)$. Entonces sabemos que existen enteros $s$ y $t$ tales que
 $$
 d=sa+tb.
 $$
-\end{teorema}
-\begin{proof} En el caso que $b >0$, de acuerdo con el cálculo hecho antes $d=r_{k}$ y usando la  ecuación ($e_{k-1}$) tenemos
+La idea ahora es calcular $s$ y $t$. En el caso que $b >0$, de acuerdo con el cálculo hecho antes $d=r_{k}$ y usando la  ecuación ($e_{k-1}$) tenemos
 $$
 r_{k}=r_{k-2} -r_{k-1}q_{k-1}.
 $$
@@ -2255,7 +2304,7 @@ As{í}, $d$ puede escribirse en la forma $ d = s_{k}r_{k-2} +t_{k}r_{k-1}$,donde
 $$
 d= s_{k}(r_{k-3}-r_{k-2}q_{k-2}) + t_{k}r_{k-3} =  s_{k-1}r_{k-3} +t_{k-1}r_{k-2}
 $$
-donde $s_{k-1} = s_{k} + t_{k} $ y $t_{k-1}= -s_{k}q_{k-2}$.  Aplicando  repetidas veces las ecuciones del algoritmo de Euclides obtenemos, en general que 
+donde $s_{k-1} = s_{k} + t_{k} $ y $t_{k-1}= -s_{k}q_{k-2}$.  Aplicando  repetidas veces las ecuaciones del algoritmo de Euclides obtenemos, en general que 
 $$
 d =  s_{i}r_{i-2} +t_{i}r_{i-1}
 $$
@@ -2263,9 +2312,9 @@ con  $s_{i}, t_{i} \in \mathbb Z$, para $2 \le i \le k$. En particular
 $$
 d =  s_{2}r_{0} +t_{2}r_{1} = s_{2}a +t_{2}b.
 $$
-\end{proof}
 
-Por el ejemplo, de los cálculos usados para encontrar el mcd de 2406 y 654 obtenemos
+
+
 Por el ejemplo, de los cálculos usados para encontrar el mcd de 470 y 55 obtenemos
 \begin{alignat*}4
 	470&=55 \cdot 8 +30&\quad\Rightarrow\quad &30 &=&470 + (-8)\cdot 55&\qquad (*)&\\
@@ -2283,39 +2332,6 @@ De este modo, la expresión requerida $d=sa+tb$ es
 $$
 5=2 \cdot 470 +(-17)\cdot 55.
 $$
-
-\begin{corolario} Sean $a$ y $b$ enteros, $b$ no nulo, entonces
-$$
-\mcd(a,b) = 1 \Leftrightarrow \text{existen $s,t \in \mathbb Z$ tales que 1 = sa+tb.}
-$$
-\end{corolario}
-\begin{proof}
-($\Rightarrow$) Es consecuencia trivial de la proposición anterior.
-
-($\Leftarrow$) Sea $d = \mcd(a,b)$, entonces $d|a$ y $d|b$ y por lo tanto $d|sa+tb$ para cualesquiera   $s,t \in \mathbb Z$.  En particular, la hipótesis implica que $d|1$ y, en consecuencia $d =1$. 
-\end{proof}
-
-\begin{definicion}
-Si el $\mcd(a,b)=1$ entonces decimos que $a$ y $ b$ son {\em coprimos}\index{coprimos}.
-\end{definicion}
-
-El resultado  anterior  es una herramienta de suma utilidad para trabajar en problemas relacionados con el mcd. Por ejemplo, todos estamos familiarizados con la idea de que una fracción puede reducirse al ``mínimo término'', o sea a la forma $a/b$ con $a$ y $b$ coprimos. El siguiente ejemplo establece que esta forma es única, y como veremos, el hecho clave de la demostración es que podemos expresar a 1 como $sa+tb$.
-
-\begin{ejemplo} Supongamos que $a$, $a'$, $b$, $b'$ son enteros positivos que satisfacen
-$$
-\text{({\em i}) }\quad ab'=a'b; \qquad\quad\text{(ii) }
-\quad\mcd(a,b)=\mcd(a',b')=1.
-$$
-Entonces $a=a'$ y $b=b' $.
-
-(La condición ({\em i}) podría escribirse como $a/b=a'/b'$, pero preferimos usar esta forma que no asume ningún conocimiento sobre fracciones.)
-\end{ejemplo}
-\begin{proof} Como el $\mcd (a,b) =1$ existen enteros $s$ y $t$ tales que $sa+tb=1$. En consecuencia
-$$
-b'=(sa+tb)b' =sab'+tbb' = sa'b + tbb'=(sa'+tb')b,
-$$
-y por lo tanto $b|b'$. Por un argumento similar y usando el hecho de que el $\mcd(a',b')=1 $ deducimos que $b|b'$, por lo tanto $b=b'$ o $b=-b'$ y como $b $ y $b'$ son ambos positivos debemos tener $b=b'$ . Ahora de (i) deducimos que $a=a'$ y el resultado esta demostrado.
-\end{proof}
 
 \begin{observacion}[*]
 El  algoritmo explicado anteriormente para obtener el $\mcd(a,b)$ como combinación lineal entera $sa+tb$ no es muy sencillo de programar. Más aún, requiere terminar el cálculo del $\mcd$, usando el algoritmo de Euclides, para comenzar a calcular los coeficientes enteros $s,t$. 
@@ -2471,7 +2487,7 @@ m=\frac{a b}{\mcd(a,b)}=\frac{a}{\mcd(a,b)} b
 $$
 resulta que $m$ es múltiplo de $a$ y $b$.
 
-Sea ahora $n$ un múltiplo de $a$ y $b$. Por teorema \ref{t1.7.1} existen enteros $r,s$ tales que 
+Sea ahora $n$ un múltiplo de $a$ y $b$. Por la proposición \ref{prop-d-comb-lin} existen enteros $s,t$ tales que 
 \begin{equation}\label{clmcd}
 \mcd(a,b)=ra+sb
 \end{equation} 
@@ -2497,7 +2513,7 @@ $721m+448n$ con $m,n \in \mathbb Z$.
 $\mcd(na,nb)=n\mcd(a,b)$.
 \item\label{imp} Demostrar que si existen enteros $m$ y $n$ tales que $mu+nv=1$, entonces el
 $\mcd(u,v)=1$.
-\item Usar el teorema \ref{t1.7.1} y el Ej. \ref{imp} para demostrar que si el
+\item Usar la proposición \ref{prop-d-comb-lin} y el Ej. \ref{imp} para demostrar que si el
 $\mcd(a,b)=d$ , entonces
 $$
 \mcd\left(\frac{a}{d},\frac{b}{d}\right) =1.
@@ -2635,7 +2651,7 @@ $$
 entonces $p|x_i$ para algún $x_i$ ($1\le i \le n$).
 \end{enumerate}
 \end{teorema}
-\begin{proof} 1)  Si $p|x$ ya está probado el resultado. Si $p{{\not|}}x$ entonces tenemos $\mcd(x,p)=1$. Por el teorema \ref{t1.7.1} existen enteros $r$ y $s$ tales que $rp+sx=1$. Por lo tanto tenemos
+\begin{proof} 1)  Si $p|x$ ya está probado el resultado. Si $p{{\not|}}x$ entonces tenemos $\mcd(x,p)=1$. Por la proposición \ref{prop-d-comb-lin} existen enteros $r$ y $s$ tales que $rp+sx=1$. Por lo tanto tenemos
 $$
 y =(rp+sx)y =(ry)p+s(xy).
 $$
@@ -2810,7 +2826,7 @@ f_1=1,\qquad f_2=1, \qquad f_{n+1} = f_n + f_{n-1} \quad
 $$
 Probar que $\mcd(f_{n+1},f_n)=1$ para todo $n\ge2$.
 \item Probar que si $\mcd(a,x)=d$ y $\mcd(b,x)=1$, entonces $\mcd(ab,x)=d$.
-\item Usted tiene a disposición una cantidad ilimitada de agua, un gran contenedor y dos jarras de 7 y 9 litros respectivamente. ?`Cómo se las arreglaría usted para poner un litro de agua en el contenedor? Explique la relación entre su método y el teorema \ref{t1.7.1}.
+\item Usted tiene a disposición una cantidad ilimitada de agua, un gran contenedor y dos jarras de 7 y 9 litros respectivamente. ?`Cómo se las arreglaría usted para poner un litro de agua en el contenedor? Explique la relación entre su método y la proposición \ref{prop-d-comb-lin}.
 \item Siguiendo la definición de mcd de dos enteros, defina el mcd de $n$ enteros $a_1,a_2,\ldots,a_n$. Probar que si $d=\mcd(a_1,a_2,\ldots,a_n)$, entonces existen enteros $x_1,x_2,\ldots,x_n$ tales que
 $$
 d=x_1a_1+x_2a_2+\cdots+x_na_n.

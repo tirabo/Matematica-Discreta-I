@@ -3,10 +3,8 @@
 \tolerance=10000
 \renewcommand{\baselinestretch}{1.3}
 
-
 % Para hacer el  indice en linea de comando hacer 
 % makeindex main
-
 \usepackage{t1enc}
 \usepackage[spanish]{babel}
 \usepackage{latexsym}
@@ -30,7 +28,6 @@
 \usepackage{stackrel}
 \usepackage{enumerate}
 \usepackage{tkz-graph}
-
 
 %% \theoremstyle{plain} %% This is the default
 \oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
@@ -161,7 +158,6 @@
 
 \newcommand{\programa}[1]{  \vskip .5cm \noindent Programa: {\it #1} }
 \newcommand{\principio}[1]{\vskip .3 cm \centerline{\sc #1} \vskip .3cm}
-
 \makeindex
 
 \begin{document}
@@ -216,8 +212,6 @@
 	}
 
 	\tableofcontents 
-
-
 
 	\pagenumbering{arabic}
 
@@ -370,18 +364,16 @@ $$
 \item[{\bf I11.}] {\em Compatibilidad del producto con el orden.}\, Si $a< b$ y $0< c$, entonces $ac < bc$. 
 \end{enumerate}
 
-
 Observar que el axioma {\bf I10} nos permite hacer \textit{pasaje de término}, por ejemplo si $a < b$, entonces $0 < b -a$, pues $a < b$ implica $a - a < b - a$, es decir $0 < b -a$. 
 
-
-Esta claro que podemos definir los otros símbolos de orden $>$, $\le$ y $\ge$, en términos de los símbolos $<$ e $=$. Diremos que $m>n$ si  $n<m$, diremos que $m \le n$ si $m<n$ o $m=n$. Finalmente, diremos que $m \ge n$ si $m > n$ o $m=n$.  Es importante notar que los  axiomas {\bf I9}, {\bf I10} e {\bf I11} tienen una versión valedera para estos nuevos símbolos. Explicitemos el caso  del axioma {\bf I11}:
+Es claro que podemos definir los otros símbolos de orden $>$, $\le$ y $\ge$, en términos de los símbolos $<$ e $=$. Diremos que $m>n$ si  $n<m$, diremos que $m \le n$ si $m<n$ o $m=n$. Finalmente, diremos que $m \ge n$ si $m > n$ o $m=n$.  Es importante notar que los  axiomas {\bf I9}, {\bf I10} e {\bf I11} tienen una versión valedera para estos nuevos símbolos. Explicitemos el caso  del axioma {\bf I11}:
 \begin{enumerate}
 \item[{\bf I11.}] {\bf ($>$)} Si $a > b$ y $c>0$, entonces $ac > bc$.
 \item[{\bf I11.}] {\bf ($\le$)} Si $a \le b$ y $0 \le c$, entonces $ac \le bc$.
 \item[{\bf I11.}] {\bf ($\ge$)} Si $a\ge b$ y $c\ge 0$, entonces $ac \ge bc$.
 \end{enumerate}
-Usando las definiciones de $\ge$, $<$, $>$ y el axioma {\bf I11} original es muy sencillo demostrar estas variantes. También valen consecuencias obvias de estas propiedades como, por ejemplo, si $a > b$ y $c \ge 0$, entonces $ac \ge bc$. 
 
+Usando las definiciones de $\ge$, $<$, $>$ y el axioma {\bf I11} original es muy sencillo demostrar estas variantes. También valen consecuencias obvias de estas propiedades como, por ejemplo, si $a > b$ y $c \ge 0$, entonces $ac \ge bc$. 
 
 Cuando tachemos un símbolo, estamos indicando la negación de la relación que define. Por ejemplo, $a\not< b$ denota ``$a$ {\em no} es menor que $b$''. Otro ejemplo, $a\not= b$ denota  ``$a$ {\em no} es igual a $b$'' o bien ``$a$ es distinto a $b$''. 
 
@@ -436,7 +428,6 @@ Una relación que satisfaga las tres propiedades anteriores (reflexividad, antis
 	
 	{\it (d)} Por {\it (c)}, $0 < 1$. Por  {\bf I10}, $n + 0 < n + 1$, es decir  $n < n+1$.
 \end{proof}
-
 \begin{subsection}{Ejercicios}\label{ejerciciosorden}
 \begin{enumerate}
 \item Demostrar que $\ge$ es una relación de orden.
@@ -520,19 +511,6 @@ La desigualdad $0<a_0^2<1$ dice que $a_0^2\in X$ pero la desigualdad $a_0^2<a_0$
 
 Finalmente mencionaremos que el axioma del buen orden también se aplica para demostrar la existencia de máximos. Más específicamente, sea $X$ es un subconjunto de $\mathbb Z$; entonces diremos que el entero $c$ es una {\em cota superior}\index{cota superior} de $X$ si $x\le c$  para todo $x \in X$. Una cota superior de  $X$ que es a su vez es un elemento de $X$, es llamada el {\em máximo}\index{máximo} de $X$. 
 No es difícil ver que si $c$ es cota superior de  $X$,  entonces $-c$ es cota inferior de $-X$. Esto  y el axioma del buen orden implican que todo conjunto acotado superiormente tiene máximo.  
-
-\begin{comment}
-\begin{proposicion}
-Sea $X$ subconjunto no vacío y finito de $\ZZ$,  entonces $X$  tiene máximo y mínimo. 
-\end{proposicion}
-\begin{proof}
-Al ser un conjunto finito está acotado inferiormente y superiormente, 
-% esto en realidad habría que demostralo
- por  lo tanto tiene mínimo y máximo.  
-\end{proof}	
-\end{comment}
-
-
 \vskip 0.1 cm
 
 \begin{subsection}{Ejercicios} {\rm (continuación)}
@@ -608,14 +586,16 @@ n!=1 \times 2 \times 3 \times \cdots \times n,
 $$
 el significado es bastante claro para cualquiera. Pero para precisar (y hacerlo claro para una computadora) debemos usar las definiciones recursivas.
 
-\begin{definicion} Sea $n \in \NN$ sean $a_i$  $1 \le i \le n$ una secuencia de números (enteros, reales, etc.). Entonces $\sum_{i=1}^{n} a_i$  denota la función recursiva $s_n$ definida  
+\begin{definicion} Sea $n \in \NN$ sean $a_i$  $1 \le i \le n$ una secuencia de números (enteros, reales, etc.). Entonces $\sum_{i=1}^{n} a_i$  denota la función recursiva definida  
 	$$
-	s_1= a_1, \qquad s_n = s_{n-1} + a_{n-1} \quad (n\ge 2).
+	\sum_{i=1}^{1} a_i= a_1, \qquad \sum_{i=1}^{n} a_i = \sum_{i=1}^{n-1} a_i+ a_{n} \quad (n\ge 2).
 	$$
-	El símbolo $\prod_{i=1}^{n} a_i$ denota la función recursiva $p_n$ definida  
+	En  este caso  decimos que  $\sum_{i=1}^{n} a_i$ es la \textit{sumatoria} de los $a_i$ de $i=1$  a $n$. 
+	El símbolo $\prod_{i=1}^{n} a_i$ denota la función recursiva definida  
 	$$
-	p_1= a_1, \qquad p_n = p_{n-1} \times  a_{n-1} \quad (n\ge 2).
+	\prod_{i=1}^{1} a_i= a_1, \qquad \prod_{i=1}^{n} a_i = \prod_{i=1}^{n-1} a_i \times  a_{n} \quad (n\ge 2).
 	$$
+	En  este caso  decimos que  $\prod_{i=1}^{n} a_i$ es la \textit{productoria} de los $a_i$ de $i=1$  a $n$. 
 \end{definicion}
 
 
@@ -625,7 +605,7 @@ $$
 1!=1,\qquad n!=n \times (n-1)! \quad (n\ge 2).
 $$
 
-Otro caso que debemos mencionar es  el de la definición de ``$n$-ésima potencia'': sea $x$ un  número , si $n \in \NN$ definimos
+Otro caso que debemos mencionar es  el de la definición de ``$n$-ésima potencia'': sea $x$ un  número, si $n \in \NN$ definimos
 $$
 x^1=x,\qquad x^n= x \times x^{n-1} \quad (n\ge 2).
 $$
@@ -640,7 +620,6 @@ Por completitud,  definimos $x^0=1$ cuando $x \ne 0$ y  dejamos indefinido $0^0$
 \item[(\em ii)] $u_1 = 1$, $u_n = u_{n-1} +2u_{n-2}$ ($n \ge 2$). 
 \item[(\em iii)] $u_1 = 0$, $u_n = nu_{n-1}$ ($n \ge 2$).
 \end{enumerate}
-\item De una definición recursiva de la ``$n$-ésima potencia'' para todo $n\ge 1$.
 \item Sea $u_n$ definido por las ecuaciones
 $$
 u_1=2,\qquad u_n= 2^{u_{n-1}} \quad (n\ge 2).
@@ -752,7 +731,7 @@ Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción,
 \end{proof}
 
 
-Existen varias formas modificadas del principio de inducción. A veces es conveniente tomar como base inductiva el valor $n=0$, por otro lado puede ser apropiado tomar un valor como $2$ o $3$ porque los primeros casos pueden ser excepcionales. Cada problema debe ser tratado según sus características. Otra modificación útil es tomar como hipótesis inductiva la suposición de que el resultado es verdadero para todos los valores $n\le k$, más que para $n=k$ solamente. (Esta formulación es llamada a veces el principio de inducción {\it completa}.) Todas esas modificaciones pueden justificarse con cambios triviales en la demostración del teorema \ref{t1.4}.
+Existen varias formas modificadas del principio de inducción. A veces es conveniente tomar como base inductiva el valor $n=0$, por otro lado puede ser apropiado tomar un valor como $2$ o $3$ porque los primeros casos pueden ser excepcionales. Cada problema debe ser tratado según sus características. Otra modificación útil es tomar como hipótesis inductiva la suposición de que el resultado es verdadero para todos los valores $n\le k$, más que para $n=k$ solamente. Esta formulación es llamada a veces el principio de inducción {\it completa}. Todas esas modificaciones pueden justificarse con cambios triviales en la demostración del teorema \ref{t1.4}.
 
 El siguiente teorema incorpora todas las modificaciones del principio de inducción mencionadas más arriba.
 
@@ -1963,10 +1942,10 @@ Veamos ahora alguna propiedades básicas de la relación ``divide a''.
 
 \begin{proposicion}\label{prop-divide-a-propiedades}Sean $a,b,c$ enteros, entonces
 \begin{enumerate}%[(1)] % si queremos cambiar el estilo de enumerate
-\item $1|a$, $a|0$, $a|\pm a$;
+\item $1|a$, $a|0$. Si $a\not=0$,  $a|\pm a$;
 \item si $a|b$, entonces $\pm a| \pm b$;
 \item si $a|b$, entonces $a|bc$ para cualquier $c$;
-\item si $a|b$ y $a|c$, entonces $a|rb+sc$ para cualesquiera $r,s \in \mathbb Z$;
+\item\label{prop-divide-a-propiedades-item-4} si $a|b$ y $a|c$, entonces $a|sb+tc$ para cualesquiera $s,t \in \mathbb Z$;
 \item\label{prop-divide-a-propiedades-item-5} si $a',b'$ enteros y $a|a'$, $b|b'$, entonces $ab|a'b'$.
 \item\label{prop-divide-a-propiedades-item-6} Si $a|b$ y $a,b>0$,  entonces $a \le b$.
 \end{enumerate}
@@ -2012,10 +1991,10 @@ entonces $c|n$ y $n/c$ denota al entero $dt$. Finalmente, como $n/c=dt$ tenemos 
 \end{proof}
 
 
-\begin{proposicion}\label{pm} Sean $a$ y $b$ enteros.
+\begin{proposicion}\label{prop-pm} Sean $a$ y $b$ enteros.
 \begin{enumerate}
 \item Si  $ab=1$ entonces $a=b=1$ o $a=b=-1$. 
-\item Si $x$ e $y$ son enteros tales que $x|y$ e $y|x$, entonces $x=y$ o $x=-y$.
+\item\label{prop-pm-2} Si $x$ e $y$ son enteros tales que $x|y$ e $y|x$, entonces $x=y$ o $x=-y$.
 \end{enumerate}
 \end{proposicion}
 \begin{proof} 1. Si $a$ o $b$ valen 0, entonces $ab=0 \not=1$. Luego $a$ y $b$ son distintos de 0. Si $a>0$ y $b<0$ por los axiomas de compatibilidad del orden con el producto $ab<0$. Lo mismo ocurre si $a<0$ y $b>0$.
@@ -2186,11 +2165,11 @@ Por otro lado, si  $ c|a $ y $c|b$, entonces  $c|b -a$, luego por ({\em ii}) ten
 La propiedad anterior nos provee un método práctico para encontrar el máximo común divisor entre dos números, como vemos en el siguiente ejemplo.
 
 \begin{ejemplo} Encontrar el mcd entre 72 y 174.
-\begin{proof}[Solución] Observar que 
-\begin{align*}
-\mcd(72, 174) &= \mcd(72,174-72) = \mcd(72,102) = \mcd(72,30) =  \mcd(42, 30) \\&= \mcd(12,30) = \mcd(12,18)= \mcd(12,6)= \mcd(6,6) = 6.  
-\end{align*}
-\end{proof}
+	\begin{proof}[Solución] Observar que 
+		\begin{align*}
+		\mcd(72, 174) &= \mcd(72,174-72) = \mcd(72,102) = \mcd(72,30) =  \mcd(42, 30) \\&= \mcd(12,30) = \mcd(12,18)= \mcd(12,6)= \mcd(6,6) = 6.  
+		\end{align*}
+	\end{proof}
 \end{ejemplo} 
 
 En  general no es sencillo encontrar todos los divisores de un número entero grande. Por ejemplo, para los  números de más de cien dígitos no es posible,  en general, calcular sus divisores ni con las computadoras más poderosas de la actualidad. Por  lo tanto, no es factible calcular el  mcd de números grandes revisando todos los divisores comunes.  El algoritmo que nos provee la  propiedad \ref{propiedad1} nos da un método práctico y relativamente eficiente para calcular el mcd. Veremos a continuación un método similar pero mucho más eficiente para calcular el mcd de dos enteros no negativos $a,b$ con $b \not=0$. Este método esta basado en la técnica del cociente y el resto y depende del siguiente hecho.
@@ -2358,27 +2337,6 @@ De este modo, la expresión requerida $d=sa+tb$ es
 $$
 5=2 \cdot 470 +(-17)\cdot 55.
 $$
-
-\begin{comment}
-El resultado  anterior  es una herramienta de suma utilidad para trabajar en problemas relacionados con el mcd. Por ejemplo, todos estamos familiarizados con la idea de que una fracción puede reducirse al ``mínimo término'', o sea a la forma $a/b$ con $a$ y $b$ coprimos. El siguiente ejemplo establece que esta forma es única, y como veremos, el hecho clave de la demostración es que podemos expresar a 1 como $sa+tb$.
-
-\begin{ejemplo} Supongamos que $a$, $a'$, $b$, $b'$ son enteros positivos que satisfacen
-$$
-\text{({\em i}) }\quad ab'=a'b; \qquad\quad\text{(ii) }
-\quad\mcd(a,b)=\mcd(a',b')=1.
-$$
-Entonces $a=a'$ y $b=b' $.
-
-(La condición ({\em i}) podría escribirse como $a/b=a'/b'$, pero preferimos usar esta forma que no asume ningún conocimiento sobre fracciones.)
-\end{ejemplo}
-\begin{proof} Como el $\mcd (a,b) =1$ existen enteros $s$ y $t$ tales que $sa+tb=1$. En consecuencia
-$$
-b'=(sa+tb)b' =sab'+tbb' = sa'b + tbb'=(sa'+tb')b,
-$$
-y por lo tanto $b|b'$. Por un argumento similar y usando el hecho de que el $\mcd(a',b')=1 $ deducimos que $b|b'$, por lo tanto $b=b'$ o $b=-b'$ y como $b $ y $b'$ son ambos positivos debemos tener $b=b'$ . Ahora de (i) deducimos que $a=a'$ y el resultado esta demostrado.
-\end{proof}
-	
-\end{comment}
 
 \begin{observacion}[*]
 El  algoritmo explicado anteriormente para obtener el $\mcd(a,b)$ como combinación lineal entera $sa+tb$ no es muy sencillo de programar. Más aún, requiere terminar el cálculo del $\mcd$, usando el algoritmo de Euclides, para comenzar a calcular los coeficientes enteros $s,t$. 
@@ -3065,7 +3023,7 @@ Por ejemplo, si los primeros nueve dígitos son 0-936031-03, entonces
 Por  lo tanto  el ISBN correspondiente será 0-936031-03-4.	
 
 Podemos mostrar que la prueba dada en (\ref{eq-isbn}) siempre detecta errores en un solo dígito
-(ver ejercicio \ref{ejs-congruencia}.\ref{ej-isbn}), aunque es bastante posible que se cancelen los errores en dos dígitos entre sí y así pueden pasar desapercibidos.
+(ver ejercicio \ref{ejs-congruencia}.\ref{ej-isbn}), aunque es bastante probable que se cancelen los errores en dos dígitos entre sí y así pueden pasar desapercibidos.
 
 \end{ejemplo}
 
