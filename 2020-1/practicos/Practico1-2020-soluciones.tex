@@ -1,0 +1,641 @@
+\documentclass[12pt,spanish,makeidx]{amsbook}
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+
+
+
+\usepackage{t1enc}
+\usepackage[spanish]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}       % From LaTeX distribution
+\usepackage{subfigure}    % From CTAN/macros/latex/contrib/supported/subfigure
+\usepackage{pst-all}      % From PSTricks
+\usepackage{pst-poly}     % From pstricks/contrib/pst-poly
+\usepackage{multido}      % From PSTricks
+\usepackage{fancyhdr}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage[leqno]{amsmath}
+
+
+%% \theoremstyle{plain} %% This is the default
+\oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
+\headheight .3in \headsep .2in \footskip 0.5in
+\setlength{\textwidth}{16cm} %ancho para apunte
+\setlength{\textheight}{21cm} %largo para apunte
+%\leftmargin 2.5cm
+%\rightmargin 2.5cm
+\topmargin 0.5 cm
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{FAMAF}
+\fancyhead[RE,LO]{Matemática Discreta I}
+\fancyfoot[LE,RO]{\leftmark}
+\fancyfoot[RE,LO]{\thepage}
+ 
+\newcommand{\rta}{\noindent\textit{Rta: }} 
+\renewcommand{\headrulewidth}{0.5pt}
+%\renewcommand{\footrulewidth}{0.5pt}
+ 
+
+\begin{document}
+	
+	
+	
+	{\bf \begin{center} Práctico 1 \\ Matemática Discreta I -- Año 2020/1 \\ FAMAF \end{center}}
+	
+	{\bf \begin{center} Ejercicios resueltos \end{center}}
+	
+	\smallskip
+	
+	\begin{enumerate}
+		
+		
+		\item\label{prob1} Demostrar las siguientes afirmaciones donde $a$, $b$, $c$ y $d$ son siempre números enteros. Justificar cada uno de los pasos en cada demostración indicando el axioma o resultado que utiliza.
+		\begin{enumerate}
+			\item  $a=-(-a)$
+			
+			\rta $-a$  es el inverso aditivo de $a$ y por lo tanto el inverso aditivo de $-a$ es $a$.  Ahora bien, $-(-a)$  es el inverso aditivo de  $-a$, luego por  unicidad del inverso aditivo (axioma { I6}), obtenemos que $a = -(-a)$.
+			
+			\item  $a=b\,$ si y sólo si $\,-a=-b$
+			
+			\rta Si  $a=b$, es claro que $-a=-b$. Si $-a= -b$, entonces $-(-a) = -(-b)$ y  por \textit{a)}, tenemos que $a=b$.  
+			
+			\item  $a+a=a$ implica que  $a=0$.
+			
+			\rta Sumo $-a$ a ambos lados de la ecuación  $a+a=a$ y obtengo, por axioma I6,  $-a + a + a = -a +a$, luego $0 +a = 0$ y, finalmente por axioma I4, $a=0$. 
+			
+		\end{enumerate}
+		
+		
+		\medskip
+		
+		\item Idem \ref{prob1}.
+		
+		\begin{enumerate}
+			\item $0<a\,$ y $\,0<b\,$ implican $\,0<a\cdot b$
+			
+			\rta Como $0<a\,$ y $\,0<b\,$, por axioma I11, $0 \cdot b < a \cdot b$. Por un resultado del teórico  tenemos que $0 \cdot b = 0$, luego $0 < a\cdot b$.
+			
+			\item $a<b\,$ y $\,c<0$ implican $\,b\cdot c<a\cdot c$
+			
+			\rta Sumamos $-c$  a la inecuación  $\,c<0$ y  obtenemos, por axioma I10,    $-c + c<-c + 0$, luego por axioma I6 en la parte izquierda y axioma I4 en la parte derecha, obtenemos $0 < -c$: Ahora bien  por axioma I11, $a<b\,$ y  $0 < -c$ implican $a \cdot (-c)<b \cdot (-c)$. Por la regla de los signos tenemos $-a \cdot c<- b \cdot c$. Sumando $a \cdot c$ y $ b \cdot c$  a ambos lados de la inecuación y aplicando axioma I10 y  repetidamente los axiomas I4 e I6, obtenemos  $\,b\cdot c<a\cdot c$.
+		\end{enumerate}
+		\medskip
+		
+		\item  Probar las siguientes afirmaciones, justificando los pasos que realiza.
+		\begin{enumerate}
+			\item Si $0 < a$  y $\,0<b\,$ entonces $\,a<b\,$ si y sólo si $a^2<b^2$.
+			
+			\rta  Como $a < b$ y $0 < a$ por I11 obtenemos $a^2 < ba$. Como $a < b$ y $0 < b$ por I11 obtenemos $ab < b^2$. Luego  $a^2 < ba = ab < b^2$.
+			
+			
+			\item Si $a\neq 0$  entonces $0 < a^2$.
+			
+			\rta  Por tricotomía (axioma I8) o bien $0 <a$ o bien $a <0$. Si $0<a$, entonces, por \textit{a)} tenemos que $0 = 0^2 < a^2$.  Si $a<0$, sumando $-a$ a ambos miembros de la desigualdad y aplicando axiomas I10, I6 e I4 obtenemos $0 < -a$. Luego, por \textit{a)},  $0 = 0^2 < (-a)^2 = a^2$. La última igualdad se deduce de la regla de los signos. 
+			
+			\item Si $a\neq b$  entonces $a^2+b^2>0$.
+			
+			\rta Como $a\neq b$,  alguno de los dos, $a$ o $b$, es distinto de cero. Supongamos que $a \ne 0$ y, entonces, por  \textit{b)} tenemos que $0 = < a^2$. Análogamente, si $b \ne 0$, $0 < b^2$ y sumando  $a^2$  a esta inecuación, por axioma I10, obtenemos $a^2 + 0 <a^2 + b^2$, que por axioma I4, es $a^2  <a^2 + b^2$. Como $0 = < a^2$, tenemos $0 = < a^2 < a^2 + b^2$. Falta considerar el caso en que  $b =0$. en este caso $a^2 + b^2 = a^2 + 0^2 = a^2 + 0 = a^2 > 0$.
+			
+			
+			
+			
+			\item Probar que si $a+c <b+c$ entonces $a<b$.
+			
+			\rta Por  axioma I10 $a+c -c  <b+c -c$. Por axiomas I6 e I4 obtenemos $a<b$.
+		\end{enumerate}
+		
+		\medskip
+		
+		
+		\item Sea $u_1=3$, $u_2=5$ y $u_n=3 u_{n-1} - 2 u_{n-2}$ con $n\in \mathbb N$, $n\geq 3$.
+		Probar que $u_n=2^n+1$.
+		
+		\rta Para $n=1$ el resultado es verdadero pues $u_1 =3 = 1^1 +1$. Tomaremos el caso  base $n=2$.
+		
+		\textit{(Caso  base) } El resultado es verdadero cuando  $n=2$ pues $u_2 = 5 =2^2+1$.
+		
+		{\it (Paso  inductivo)} Supongamos que $k \ge 2$ y el resultado  es cierto para los $h$ tales que  $1 \le h \le k$. Es decir que $u_h = 2^h+1$ para $1 \le h \le k$ y $k \ge 2$ (hipótesis inductiva),  entonces debemos probar que $u_{k+1} = 2^{k+1}+1$. Ahora bien, 
+		$$
+		\begin{matrix} u_{k+1} &=& 3u_k -2u_{k-1} \hfill &\quad \text{(por definición recursiva)} \hfill \\
+		&=& 3(2^k+1)-2(2^{k-1}+1) \hfill &\quad \text{(por hipótesis inductiva})\hfill \\
+		&=& 3\cdot 2^k+3-2\cdot 2^{k-1}-2 \hfill & \\
+		&=& 3\cdot 2^k+1- 2^{k} \hfill & \\
+		&=& 2\cdot 2^k+1 \hfill & \\
+		&=& 2^{k+1}+1. \hfill & 
+		\end{matrix}
+		$$
+		
+		\smallskip
+		
+		\item Sea $\{ u_n \}_{n \in \mathbb N}$ la sucesión definida por recurrencia como sigue: $u_1 = 9$, $u_2 = 33$, $u_n = 7u_{n-1} - 10u_{n-2}$, $\forall n \geq 3$. Probar que $u_n = 2^{n+1} + 5^n$, para todo $n \in \mathbb N$.
+		
+		
+		\rta Para $n=1$ el resultado es verdadero pues $u_1 = 9 = 2^{1+1} + 5^1$. Tomaremos el caso  base $n=2$.
+		
+		\textit{(Caso  base) }El resultado es verdadero cuando  $n=2$ pues $u_2 = 33 = 2^{2+1} + 5^2$.
+		
+		{\it (Paso  inductivo) } Supongamos que $k \ge 2$ y el resultado  es cierto para los $h$ tales que  $1 \le h \le k$. Es decir que $u_h = 2^{h+1} + 5^h$ para $1 \le h \le k$ y $k \ge 2$ (hipótesis inductiva), entonces debemos probar que $u_{k+1} = 2^{k+2}+5^{k+1}$. Ahora bien, 
+		\begin{equation*}
+			\begin{matrix}
+				u_{k+1} &=& 7u_{k+1-1} - 10u_{k+1-2}  \hfill &\quad \text{(por definición recursiva)} \hfill \\
+				&=& 7u_{k} - 10u_{k-1}  \hfill &\hfill\\
+				&=& 7( 2^{k+1} + 5^k) -10 ( 2^{k-1+1} + 5^{k-1})  \hfill &\quad \text{(por hipótesis inductiva})\hfill \\
+				&=& 7 \cdot  2^{k+1} + 7 \cdot 5^k -10 \cdot  2^{k} -10 \cdot  5^{k-1} \hfill  & \hfill\\
+				&=& 7 \cdot 2 \cdot  2^{k} + 7 \cdot 5 \cdot 5^{k-1} -10 \cdot  2^{k} -10 \cdot  5^{k-1}  \hfill  & \hfill\\
+				&=& (7 \cdot 2 -10 ) \cdot  2^{k} + (7 \cdot 5 -10) \cdot 5^{k-1}  \hfill  & \hfill\\
+				&=& 4 \cdot  2^{k} + 25 \cdot 5^{k-1}  \hfill  & \hfill\\
+				&=& 2^2 \cdot  2^{k} + 5^2 \cdot 5^{k-1}  \hfill  & \hfill\\
+				&=& 2^{k+2} + 5^{k+1}  \hfill  & \hfill
+			\end{matrix}
+		\end{equation*}
+		 
+		
+
+		\smallskip
+		
+		\item\label{ej-suma-2-ala-n} Probar que $\sum_{i=0}^n 2^i = 2^{n+1} -1$ ($n \ge 0$). 
+
+		\rta Haremos inducción sobre $n$. 
+		
+		\textit{(Caso base $n=0$) }  $\sum_{i=0}^0n 2^i = 2^0 = 1 = 2^{+1} -1$.
+		
+		\textit{(Paso inductivo) } Supongamos que $k\ge 0$ y se cumple que  $\sum_{i=0}^k 2^i = 2^{k+1} -1$ (hipótesis inductiva). Probaremos que  $\sum_{i=0}^{k+1} 2^i = 2^{k+2} -1$. Ahora bien, 
+		\begin{equation*}
+			\sum_{i=0}^{k+1} 2^i = \sum_{i=0}^{k} 2^i + 2^{k+1} \overset{\text{(HI)}}{=}  2^{k+1} -1 + 2^{k+1} = 2 \cdot 2^{k+1} -1 = 2^{k+2} -1.
+		\end{equation*}
+		
+		
+		\smallskip
+		
+		\item Sea $u_n$ definida recursivamente por: $u_1=2$, $u_n=2+\sum_{i=1}^{n-1}2^{n-2i}u_i \;\;\forall\; n >1$.
+		\begin{enumerate}
+			\item Calcule $u_2$ y $u_3$.
+			
+			\rta $u_2 = 2+\sum_{i=1}^{1}2^{2-2i}u_i = 2+2^{2-2}u_1 = 2 + u_1 = 4$.
+			
+			$u_3 = 2+\sum_{i=1}^{2}2^{3-2i}u_i = 2+2^{3-2}u_1 + 2^{3-4}u_2=2+2^12 + 2^{-1}4 = 8$.
+			
+			\item Proponga una fórmula para el término general $u_n$ y pruébela por inducción.
+			
+			\rta Probaremos  que $u_n = 2^n$ y lo haremos por inducción completa. 
+			
+			\textit{(Caso base) } Para $n=2$, por \textit{a)}, se cumple $u_2 = 4 =2^2$. 
+			
+			\textit{(Paso inductivo) } Supongamos que $k \ge 1$ y el resultado  es cierto para los $h$ tales que  $1 \le h \le k$,  es decir $u_h=2^h$ para $1 \le h \le k$. Debemos probar que $u_{k+1} = 2^{k+1}$. Ahora bien
+			\begin{equation*}
+			\begin{matrix}
+			u_{k+1} &=& 2+\sum_{i=1}^{k+1-1}2^{k+1-2i}u_i \hfill &\quad \text{(por definición recursiva)} \hfill \\
+			&=& 2+\sum_{i=1}^{k}2^{k+1-2i}u_i \hfill &\hfill\\
+			&=& 2+\sum_{i=1}^{k}2^{k+1-2i}2^i \hfill &\quad \text{(por hipótesis inductiva)}\hfill \\
+			&=& 2+\sum_{i=1}^{k}2^{k+1-2i+ i} \hfill  & \hfill\\
+			&=& 2+\sum_{i=1}^{k}2^{k+1-i} \hfill  & \hfill\\
+			&=& 2+\sum_{j=1}^{k}2^{j} \hfill  &\quad \text{(cambio de variables $j =k +1-i$)}\hfill \\
+			&=& 2+2^{k+1} -2 \hfill  &\quad \text{(por ejercicio \ref{ej-suma-2-ala-n})}\hfill \\
+				&=& 2^{k+1} \hfill  &\quad \hfill
+			\end{matrix}
+			\end{equation*} 
+		\end{enumerate}
+		
+		
+		\smallskip
+		
+		\item Probar las siguientes afirmaciones usando inducción en $n$:
+		\begin{enumerate}
+			\item $n^2\leq 2^n$ para todo $n\in{\mathbb N}$, $n>3$ .
+			
+			\rta  Se probara por inducción sobre $n$. 
+			
+			\textit{(Caso base $n=4$) } En  este caso $4^2 = 16$ y $2^4 = 16$, luego $4^2 \le 2^4$.
+			
+			\textit{(Paso inductivo)} Debemos probar que si para $k \ge 4$ se cumple  que  $k^2\leq 2^k$ (HI),  entonces $(k+1)^2\leq 2^{k+1}$. 
+			\begin{equation*}
+			\begin{array}{rclr}
+				(k+1)^2 &=& k^2 + 2k +1 \overset{\text{(HI)}}{\le} 2^k +2k +1. \hfill &\quad \hfill(*)
+			\end{array}
+			\end{equation*}
+			Por otro lado, $2^{k+1} = 2 \cdot 2^k = 2^k + 2^k$, deberíamos,  entonces,  probar $2^k +2k +1 \le 2^k +2^k$ o equivalentemente, 
+			\begin{equation*}
+			\begin{array}{rclr}
+			2k +1   &\le&2^k. \hfill &\qquad\qquad\qquad\qquad\qquad\qquad \hfill\hfill(**)
+			\end{array}
+			\end{equation*}
+			Para probar esto debemos hacer inducción nuevamente. El caso base es $k=4$, y en ese caso $2\cdot 4+ 1 = 9 \le 2^4 = 16$. En  el paso inductivo debemos probar que $2s+ 1 < 2^s \text{ (HI) } \Rightarrow 2(s+1)+ 1 < 2^{s+1}$. Ahora bien, 
+			\begin{equation*}
+				2(s+1)+ 1  = (2s + 1) +2 \overset{\text{(HI)}}{\le} 2^s + 2 < 2^s + 2^s = 2\cdot 2^s = 2^{s+1}. 
+			\end{equation*}    
+			Luego,  hemos probado $(**)$. Por lo tanto
+			\begin{equation*}
+				(k+1)^2 \overset{(*)}{\le}  2^k +2k +1 \overset{(**)}{\le} 2^k + 2^k = 2^{k+1}.
+			\end{equation*}
+			 
+			
+			%\item $n^3 \le 3^n$;\quad $\forall n \in {\mathbb N}$, $n\ge 3$ .
+			%\item $(n+1)^n < n^{n+1}$; $\forall n \in {\mathbb N}$, $n \ge 3$.
+			\item $\forall n \in {\mathbb N}$,\ $3^n \ge 1 + 2^n$.
+			
+			\rta Inducción sobre $n$.
+			
+			\textit{(Caso base $n=1$) } En este caso $3^1 = 3$ y $1+2^1 = 3$, y se verifica la desigualdad.
+			
+			\textit{(Paso inductivo) } Debemos ver que si para $k \in \mathbb N$, tenemos que   $3^{k} \ge 1 + 2^k$ (HI),  entonces $3^{k+1} \ge 1 + 2^{k+1}$. 
+			\begin{equation*}
+				3^{k+1} = 3^k\cdot 3 \overset{\text{(HI)}}{\le} (1 + 2^k) \cdot 3 = 3 + 3 \cdot 2^k \le 1 + 2\cdot 2^k = 1 + 2^{k+1}.
+			\end{equation*}
+			
+			
+		\end{enumerate}
+		
+		\smallskip
+		
+		
+		\item Calcular evaluando las siguientes expresiones:
+			\begin{enumerate}
+				\item $\displaystyle{\sum_{r=0}^4 r}$. \quad \rta $\displaystyle{\sum_{r=0}^4 r} = 0+1+2+3+4 = 10.$
+				\item \quad $\displaystyle{\prod_{i=1}^5 i}$. \quad \rta $1 \cdot  2 \cdot 3 \cdot 4\cdot  5 = 120$. 
+				\item  \quad $\displaystyle{\sum_{k=-3}^{-1} \frac{1}{k(k+4)}}$. \quad \rta  $\frac{1}{-3(-3+4)} +\frac{1}{-2(-2+4)} +\frac{1}{-1(-1+4)} = \frac{1}{-3} +\frac{1}{-4} +\frac{1}{-3} = -\frac{11}{12}$.
+				\item \quad $\displaystyle{\prod_{n=2}^7 \frac{n}{n-1}}$. \quad \rta $\displaystyle{\frac{2}{1}\frac{3}{2}\frac{4}{3}\frac{5}{4}\frac{6}{5}\frac{7}{6} = \frac{7}{1} = 7}$
+			\end{enumerate}
+		
+		
+		
+		
+		\smallskip
+		
+		\item Calcular:
+			\begin{enumerate}
+				\item \quad $2^{10} - 2^{9}$. \quad  \rta $2^{10} - 2^{9} = 2\cdot 2^{9} - 2^{9} = 2^{9} + 2^{9} -2^{9} = 2^{9}$.
+				\item \quad $3^2 2^5 - 3^5 2^2$. \quad  \rta $3^2 2^5 - 3^5 2^2 = 3^22^2(2^3 -3^3) = 36 (-19)$.
+				\item \quad $(2^2)^n - (2^n)^2$. \quad  \rta $(2^2)^n - (2^n)^2 = 2^{2n} - 2^{n2} =0$.
+				\item \quad $(2^{2^n} + 1)  (2^{2^n} - 1)$. \quad  \rta $(2^{2^n} + 1)  (2^{2^n} - 1) = {(2^{2^n})}^2 -1^2 = 2^{2 \cdot 2^n} - 1 = 2^{2^{n+1}} - 1$.
+			\end{enumerate}
+		
+		
+		
+		
+		\smallskip
+		
+		
+		
+		
+		\item Dado un natural $m$, probar que $\forall n \in {\mathbb N} $; $x$, $y \in {\mathbb R}$, se cumple:
+			\begin{enumerate}
+				\item $x^n \cdot x^m = x^{n+m}$
+				
+				\rta Se fijará $n$ y se hará inducción sobre $m$. 
+				
+				\noindent(\it Caso  base\rm) Debemos ver que $x^{n}x^1 = x^{n+1}$, lo cual es verdadero por la definición recursiva de potencia. 
+				
+				\noindent ({\it Paso  inductivo}) Supongamos que el resultado es verdadero para $m=k$, es decir que $x^{n}x^k = a^{n+k}$ (HI). Veamos que  $x^{n}x^{k+1} = x^{n+k+1}$. Ahora bien, 
+				\begin{alignat*}2
+				x^{n}x^{k+1} &= x^{n}x^{k}x&  & \text{(definición de potencia)} \\
+				&= x^{n+k}x& & \text{(HI)} \\
+				&= x^{n+k+1}&  & \text{(definición de potencia)}. 
+				\end{alignat*}
+				\item $(x\cdot y)^n=x^n\cdot y^n$
+				
+				\rta Se  hará inducción sobre $n$.
+				
+				\noindent(\it Caso  base\rm) $(x\cdot y)^1=x\cdot y = x^1\cdot y^1$, por definición de potencia. 
+				
+				\noindent ({\it Paso  inductivo}) Veamos que  $(x\cdot y)^k=x^k\cdot y^k \text{ (HI) } \Rightarrow (x\cdot y)^{k+1}=x^{k+1}\cdot y^{k+1}$, para $k \ge 1$. Ahora bien,
+				\begin{multline*}
+				\qquad\; \qquad (x\cdot y)^{k+1} \overset{\text{def}}{=} (x\cdot y)^{k} (x\cdot y) \overset{\text{(HI)}}{=} (x^{k}\cdot y^{k}) (x\cdot y) = (x^{k}x)\cdot (y^{k}y) \overset{\text{def}}{=}  x^{k+1}\cdot y^{k+1}.
+				\end{multline*}
+				
+				 
+				 
+				
+				\item $(x^n)^m = x^{n\cdot m}$
+				
+				\rta Al igual que en \textit{a)}, se fijará $n$ y se hará inducción sobre $m$.
+				
+				\noindent(\it Caso  base\rm) Debemos ver que $(x^n)^1 = x^n$, lo cual es verdadero por la definición recursiva de potencia. 
+				
+				\noindent ({\it Paso  inductivo}) Supongamos que el resultado es verdadero para $m=k$, es decir que  $(x^n)^k = x^{nk}$ (HI). Veamos que  $(x^n)^{k+1} = x^{n(k+1)}$. 
+				\begin{equation*}
+				(x^n)^{k+1}  \overset{\text{def}}{=} (x^n)^{k}x^n
+				\overset{\text{(HI)}}{=} x^{nk}x^n
+				\overset{\text{(\textit{a)}}}{=} x^{nk+n} 
+				= x^{n(k+1)}.  
+				\end{equation*} 
+			\end{enumerate}
+		
+		
+		
+		\smallskip
+		
+		\item Analizar la validez de las siguientes afirmaciones:
+		%\begin{multicols}{2}
+		\begin{enumerate}
+			\item  $(2^{2^n})^{2^k} = 2^{2^{n+k}}$,  $n$, $k \in {\mathbb N}$. 	\rta  Verdadera: $(2^{2^n})^{2^k} =(2^{2^n2^k}) =  2^{2^{n+k}}$.
+			\item $(2^n)^2 = 4^n$, $n \in {\mathbb N}$. \rta  Verdadera: $(2^n)^2 = 2^{2n} =(2^2)^n= 4^n$.
+			\item $2^{7+11} = 2^7 + 2^{11}$. Falsa: si divido la ecuación por $2^7$ se obtiene $2^{11} = 1 + 2^{4}$,  donde la expresión de la izquierda es par y la de la derecha es impar. 
+		\end{enumerate}
+		%\end{multicols}
+		
+		\smallskip
+		
+		
+		\item Demostrar por inducción  las siguientes igualdades:
+		\begin{enumerate}
+			\item  $\displaystyle{ \sum_{k=1}^n (a_k + b_k) = \sum_{k=1}^n a_k + \sum_{k=1}^n b_k}$, $n\in \mathbb N$.
+			
+			\rta Inducción en $n$.
+			
+			\textit{(Caso base $n=1$) }  $\sum_{k=1}^1 (a_k + b_k) = a_1+b_1 = \sum_{k=1}^1 a_k + \sum_{k=1}^1 b_k$, verdadero.
+			
+			\textit{(Paso inductivo) } Dado $h \ge 1$ supondremos  que 
+			$$\sum_{k=1}^h (a_k + b_k) = \sum_{k=1}^h a_k + \sum_{k=1}^h b_k$$ es verdadera (HI) y deduciremos que $$\sum_{k=1}^{h+1} (a_k + b_k) = \sum_{k=1}^{h+1} a_k + \sum_{k=1}^{h+1} b_k.$$
+			Comenzamos con el término de la izquierda de lo que queremos probar  y debemos obtener el término de la derecha. 
+			\begin{align*}
+				\sum_{k=1}^{h+1} (a_k + b_k) &\overset{(\text{def } \Sigma)}{=}  \sum_{k=1}^h (a_k + b_k) + a_{h+1} + b_{h+1}\\ &\overset{\text{(HI)}}{=} \sum_{k=1}^h a_k + \sum_{k=1}^h b_k + a_{h+1} + b_{h+1}
+				\\&= ( \sum_{k=1}^h a_k+a_{h+1} ) + ( \sum_{k=1}^h b_k + b_{h+1}) \\&\overset{(\text{def } \Sigma)}{=} \sum_{k=1}^{h+1} a_k + \sum_{k=1}^{h+1} b_k.
+			\end{align*}
+			
+			
+			\item\label{ej-serie-aritmetica}  $\displaystyle{ \sum_{j=1}^n j = \frac{n(n+1)}{2}}$, $n\in \mathbb N$, $n\in \mathbb N$.
+			
+			\rta Esta es llamada la \textit{suma aritmética} y la demostraremos por inducción en $n$.
+			
+			\textit{(Caso base $n=1$) } $ \sum_{j=1}^1 j = 1 = (1 \cdot 2)/2$. Verdadero. 
+			
+			\textit{(Paso inductivo) } Para $k \ge 1$ suponemos cierto $$\sum_{j=1}^k j = \frac{k(k+1)}{2} \text{\quad (HI)}$$  y  debemos demostrar  que $$\sum_{j=1}^{k+1} j = \frac{(k+1)(k+2)}{2} = \frac{(k+1)(k+2)}{2}.$$ Ahora bien,
+			\begin{align*}
+				\sum_{j=1}^{k+1} j \overset{(\text{def } \Sigma)}{=} \sum_{j=1}^k j + (k+1)&  \overset{\text{(HI)}}{=} \frac{k(k+1)}{2} + (k+1) \\&= \frac{k(k+1) +2(k+1)}{2} = \frac{(k+1)(k +2)}{2}. 
+			\end{align*}
+			
+			\item\label{ej-sum-i2}  $\displaystyle{ \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}}$, $n\in \mathbb N$.
+			
+			\rta Inducción en $n$.
+			
+			\textit{(Caso base $n=1$) } $ \sum_{i=1}^1 i^2 = 1$ y $(1  (1+1)  (2\cdot 1 + 1))/2 = (1 \cdot 2 \cdot 3)/6=1$. Verdadero.  
+			
+			\textit{(Paso inductivo) } Para  $k \ge 1$,  supondremos cierto 
+			$$\sum_{i=1}^{k} i^2 = \frac{k(k+1)(2k+1)}{6} \text{\quad (HI)}$$
+			y probaremos que 
+			$$\sum_{i=1}^{k+1} i^2 = \frac{(k+1)(k+2)(2(k+1)+1)}{6} = \frac{(k+1)(k+2)(2k+3)}{6} \text{\quad (T)}.$$ 
+			Operemos con el lado izquierdo de (T):
+			\begin{align*}
+			\sum_{i=1}^{k+1} i^2 &\overset{(\text{def } \Sigma)}{=} \sum_{i=1}^{k} i^2 + (k+1)^2 \\ &\overset{\text{(HI)}}{=} \frac{k(k+1)(2k+1)}{6}  + (k+1)^2 \\ &=   \frac{k(k+1)(2k+1) + 6(k+1)^2}{6} = \frac{(k+1)(k(2k+1) + 6(k+1))}{6} \\ &= \frac{(k+1)(2k^2+k + 6k+6))}{6} =  \frac{(k+1)(2k^2+7k+6))}{6}.
+			\end{align*}
+			Por otro lado,  desarrollamos el lado derecho de (T): 
+			\begin{align*}
+				\frac{(k+1)(k+2)(2k+3)}{6} &= \frac{(k+1)(2k^2+3k +4k +6)}{6} \\&= \frac{(k+1)(2k^2+7k +6)}{6}.
+			\end{align*}
+			Es decir,  hemos probado que el lado derecho y el lado izquierdo de (T) son iguales y con esto se prueba el resultado. 
+			
+			\item  $\displaystyle{ \sum_{k=0}^n (2k+1) = (n+1)^2}$, $n\in \mathbb N_0$.
+			
+			\rta Inducción en $n$.
+			
+			\textit{(Caso base $n=0$) } $\sum_{k=0}^0 (2k+1) = 1 = 1^2$. Verdadero.
+			
+			\textit{(Paso inductivo) } Para $h \ge 0$ suponemos que $\sum_{k=0}^h (2k+1) = (h+1)^2$ (HI) y debemos probar que $\sum_{k=0}^{h+1} (2k+1) = (h+2)^2$. Ahora bien, 
+			\begin{align*}
+				\sum_{k=0}^{h+1} (2k+1) &\overset{(\text{def } \Sigma)}{=} \sum_{k=0}^h (2k+1) + 2(h+1) +1 \\ &\overset{\text{(HI)}}{=}  (h+1)^2 + 2(h+1) +1 = (h+2)^2.
+			\end{align*}
+			
+			\item  $\displaystyle{ \sum_{i=1}^n i^3 = \left( \frac{n(n+1)}{2 }\right)^2}$, $n\in \mathbb N$.
+			
+			\rta Inducción en $n$.
+			
+			\textit{(Caso base $n=1$) } $\sum_{i=1}^1 i^3 = 1 = (\frac{1 \cdot 2}{2})^2$. Verdadero. 
+			
+			\textit{(Paso inductivo) } Para  $k \ge 1$,  supondremos cierto $\sum_{i=1}^k i^3 = \left( \frac{k(k+1)}{2 }\right)^2$ (HI) y probaremos $\sum_{i=1}^{k+1} i^3 = \left( \frac{(k+1)(k+2)}{2 }\right)^2$. Ahora bien,
+			\begin{align*}
+				\sum_{i=1}^{k+1} i^3 &\overset{(\text{def } \Sigma)}{=} \sum_{i=1}^k i^3 + (k+1)^3 \overset{\text{(HI)}}{=}  \left( \frac{k(k+1)}{2 }\right)^2 + (k+1)^3 \\
+				&= \frac{k^2(k+1)^2}{4 } + (k+1)^3 = (k+1)^2 \left(\frac{k^2}{4 } + k+1 \right)\\
+				&= (k+1)^2 \left(\frac{k^2+4k +4}{4 } \right) = (k+1)^2\frac{(k+2)^2}{4 } \\
+				&= \left( \frac{(k+1)(k+2)}{2 }\right)^2.
+			\end{align*}
+			
+			\item  $\displaystyle{ \sum_{k=0}^n a^k = \frac{a^{n+1}-1}{a-1}}$, donde $a\in {\mathbb R}$, $a \neq 0,\ 1$, $n\in \mathbb N_0$.
+			
+			\rta Esta es llamada la \textit{suma geométrica} y la demostraremos por inducción en $n$.
+			
+			\textit{(Caso base $n=0$) } $\sum_{k=0}^0 a^k = a^0 = 1$ y $\frac{a^{1}-1}{a-1}=1$. Luego el resultado es verdadero para  $n=1$. 
+			
+			\textit{(Paso inductivo) }  Para  $h \ge 0$,  supondremos cierto $\sum_{k=0}^h a^k = \frac{a^{h+1}-1}{a-1}$ (HI) y probaremos $\sum_{k=0}^{h+1} a^k = \frac{a^{h+2}-1}{a-1}$. Ahora bien, 
+			\begin{align*}
+				\sum_{k=0}^{h+1} a^k &\overset{(\text{def } \Sigma)}{=\quad} \;\sum_{k=0}^h a^k + a^{h+1} \overset{\text{(HI)}}{=} \frac{a^{h+1}-1}{a-1} +  a^{h+1} \\
+				&= \frac{a^{h+1}-1 + a^{h+1}(a-1)}{a-1} = \frac{a^{h+1}-1 + a^{h+2}-a^{h+1}}{a-1} \\
+				&=\frac{a^{h+2}-1}{a-1}.
+			\end{align*}
+			
+			\item  $\displaystyle{ \prod_{i=1}^n \frac{i+1}{i} = n+1}$, $n\in \mathbb N$.
+			
+			\rta Inducción en $n$.
+			
+			\textit{(Caso base $n=1$) } $\prod_{i=1}^1 \frac{i+1}{i} = \frac{2}{1} = 2$. Verdadero.   
+			
+			\textit{(Paso inductivo) }  Para  $k \ge 1$,  supondremos cierto $\prod_{i=1}^k \frac{i+1}{i} = k+1$ y probaremos que $\prod_{i=1}^{k+1} \frac{i+1}{i} = k+2$. Ahora bien,
+			\begin{align*}
+				\prod_{i=1}^{k+1} \frac{i+1}{i} &\overset{(\text{def } \Pi)}{=\quad} \prod_{i=1}^k \frac{i+1}{i} \cdot \frac{k+2}{k+1} \overset{\text{(HI)}}{=} (k+1) \cdot \frac{k+2}{k+1} = k+2.
+			\end{align*}
+			
+			
+			\item $\displaystyle{ \sum_{i=1}^n \frac{1}{4i^2-1} = \frac{n}{2n+1}}$, $n\in \mathbb N$.
+			
+			\rta Inducción en $n$.
+			
+			\textit{(Caso base $n=1$) } $\sum_{i=1}^1 \frac{1}{4i^2-1} = \frac{1}{4\cdot 1^2-1} = \frac13$. Por otro lado $\frac{1}{2\cdot 1+1} = \frac13$. Por lo tanto la fórmula vale para $n=1$.  
+			
+			\textit{(Paso inductivo) }  Para  $k \ge 1$,  supondremos cierto $\sum_{i=1}^k \frac{1}{4i^2-1} = \frac{k}{2k+1}$ (HI) y probaremos $\sum_{i=1}^{k+1} \frac{1}{4i^2-1} = \frac{k+1}{2(k+1)+1} = \frac{k+1}{2k+3}$. Ahora bien,
+			\begin{align*}
+			\sum_{i=1}^{k+1} \frac{1}{4i^2-1} &\overset{(\text{def } \Sigma)}{=\quad}\sum_{i=1}^{k} \frac{1}{4i^2-1} +  \frac{1}{4(k+1)^2-1}\\
+			&\overset{\text{(HI)}}{=} \frac{k}{2k+1} + \frac{1}{4(k+1)^2-1} = (*)
+			\end{align*}
+			Ahora debemos observar que $4(k+1)^2-1 = 4k^2 +8k+3 = (2k+1)(2k+3)$, luego
+			\begin{align*}
+			\sum_{i=1}^{k+1} \frac{1}{4i^2-1} &\overset{(*)}{=} \frac{k}{2k+1} + \frac{1}{(2k+1)(2k+3)} \\
+			&=  \frac{k(2k+3) +1}{(2k+1)(2k+3)} = \frac{k(2k+3) +1}{(2k+1)(2k+3)} \\
+			&=  \frac{2k^2+3k +1}{(2k+1)(2k+3)}  = (**)
+			\end{align*}
+			Observemos  que $2k^2+3k +1 = (k+1)(2k+1)$, luego
+			\begin{align*}
+			\sum_{i=1}^{k+1} \frac{1}{4i^2-1} &\overset{(**)}{=} \frac{(k+1)(2k+1)}{(2k+1)(2k+3)} = \frac{(k+1)}{(2k+3)},
+			\end{align*}
+			que es lo que queríamos demostrar.
+			
+			\item $\displaystyle{ \sum_{i=1}^n i^2\, /\, \sum_{j=1}^n j = \frac{2n+1}{3}}$, $n\in \mathbb N$.
+			
+			\rta En  este caso no hace falta hacer inducción: por \textit{ \ref{ej-sum-i2})} y \textit{\ref{ej-serie-aritmetica})} tenemos que 
+			\begin{equation*}
+				\sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6} \text{\quad y \quad} \sum_{j=1}^n j = \frac{n(n+1)}{2},
+			\end{equation*}
+			respectivamente. Por  lo tanto, 
+			\begin{align*}
+				\sum_{i=1}^n i^2\, /\, \sum_{j=1}^n j &= \left(\frac{n(n+1)(2n+1)}{6}\right) / \left(\frac{n(n+1)}{2}\right) \\
+				&= \frac{n(n+1)(2n+1)2}{6n(n+1)} = \frac{2n+1}{3}.
+			\end{align*}
+			
+			
+			\item $\displaystyle{ \prod_{i=2}^n \left(1-\frac{1}{i^2}\right) = \frac{n+1}{2n}}$, $n\in \mathbb N$ y $ n\ge 2$.
+			
+			\rta Inducción en $n$.
+			
+			\textit{(Caso base $n=2$) } $\prod_{i=2}^2 \left(1-\frac{1}{i^2}\right) = (1- \frac{1}{2^2}) = \frac{4-1}{4} = \frac{3}{4} = \frac{2+1}{2 \cdot 2}$.
+			
+			\textit{(Paso inductivo) } Para  $k \ge 1$,  supondremos cierto $\prod_{i=2}^k \left(1-\frac{1}{i^2}\right) = \frac{k+1}{2k}$ y  deberemos probar  que $\prod_{i=2}^{k+1} \left(1-\frac{1}{i^2}\right) = \frac{k+2}{2(k+1)}$. Ahora bien,
+			\begin{align*}
+			\prod_{i=1}^{k+1}\left(1-\frac{1}{i^2}\right) &\overset{(\text{def } \Pi)}{=\quad} \prod_{i=1}^k \left(1-\frac{1}{i^2}\right) \cdot \left(1-\frac{1}{(k+1)^2}\right)\\ &\overset{\text{(HI)}}{=}  \frac{k+1}{2k} \cdot\left(1-\frac{1}{(k+1)^2}\right)
+			=  \frac{k+1}{2k} \cdot\frac{(k+1)^2- 1}{(k+1)^2} \\
+			&= \frac{k+1}{2k} \cdot\frac{k^2+2k}{(k+1)^2} = \frac{k^2+2k}{2k (k+1)} = \frac{k(k+2)}{2k (k+1)} \\
+			&=  \frac{k+2}{2 (k+1)}.
+			\end{align*}
+			
+			\item Si $a\in \mathbb R$ y $a\geq -1$, entonces $(1+a)^n\geq 1+n\cdot a$, $\forall \, n \in \mathbb N$.
+			
+			\rta Inducción en $n$.
+			
+			\textit{(Caso base $n=1$) } $(1+a)^1 = 1+a = 1+ 1\cdot a$. 
+			
+			\textit{(Paso inductivo) }  Para  $k \ge 1$,  supondremos cierto que $(1+a)^k\geq 1+k a$ y probaremos  que $(1+a)^{k+1}\geq 1+(k+1) a$. Ahora bien, 
+			\begin{align*}
+			(1+a)^{k+1} &\overset{(\text{def } x^n)}{=\quad} (1+a)^k(1+a) \qquad (*)
+			\end{align*}
+			Como $a\ge -1$, entonces $1+a \ge 0$, por (HI) tenemos  que $(1+a)^k\geq 1+k a$, entonces  por compatibilidad del  producto con el orden obtenemos
+			\begin{equation*}
+				(1+a)^k(1+a) \ge   (1+k a)(1+a)  \qquad (**)
+			\end{equation*}
+			De $(*)$ y $(**)$ obtenemos
+			\begin{align*}
+			(1+a)^{k+1} &\ge (1+k a)(1+a) \\
+			&= 1+ ka + a + ka^2 = 1 + (k+1)a + ka^2 \\
+			&\ge 1 + (k+1)a
+			\end{align*}
+			(la última desigualdad vale pues $ka^2 \ge 0$). 
+			
+			
+			\item Si $a_1,\dots,a_n \in \mathbb R$, entonces $\displaystyle{\sum_{k=1}^n a_{k}^{2}\leq \left(\sum_{k=1}^n |a_{k}|\right)^{2}}$, $n\in \mathbb N$.
+			
+			\rta Como $a_k^2$ y $|a_k|$ son no negativos, podemos hacer el ejercicio pensando que $a_k \ge 0$ para todo $k$ (con eso evitamos un poco de notación). Debemos entonces probar que  si $a_1,\dots,a_n $ son no negativos, entonces
+			\begin{equation*}
+				\sum_{k=1}^n a_{k}^{2}\leq \left(\sum_{k=1}^n a_{k}\right)^{2}. 
+			\end{equation*} 
+			Lo haremos por inducción en $n$.
+			 
+			\textit{(Caso base $n=1$) } $\sum_{k=1}^1 a_{k}^{2} = a_1^2 = (\sum_{k=1}^1 a_{k})^{2}$.
+			
+			\textit{(Paso inductivo) }  Para  $h \ge 1$,  supondremos cierto $\sum_{k=1}^h a_{k}^{2}\leq \left(\sum_{k=1}^h a_{k}\right)^{2}$ y deberemos  probar $\sum_{k=1}^{h+1} a_{k}^{2}\leq \left(\sum_{k=1}^{h+1} a_{k}\right)^{2}$.  Ahora bien,
+			\begin{align*}
+			\sum_{k=1}^{h+1} a_{k}^{2} &\overset{(\text{def } \Sigma)}{=\quad} \sum_{k=1}^h a_{k}^{2} + a_{h+1}^{2} \overset{\text{(HI)}}{\leq} \left(\sum_{k=1}^h a_{k}\right)^{2} + a_{h+1}^{2}. \qquad (*)
+			\end{align*}
+			Observemos que si $x,y \ge 0$,  entonces $x^2 + y^2 \leq (x+y)^2$ (pues $2xy \ge 0$). Por lo tanto 
+			\begin{equation*}
+				 \left(\sum_{k=1}^h a_{k}\right)^{2} + a_{h+1}^{2} \leq  \left(\sum_{k=1}^h a_{k}+a_{h+1}\right)^{2}. \qquad\qquad\qquad (**)
+			\end{equation*}
+			Combinanado $(*)$ y $(**)$ obtenemos
+			\begin{equation*}
+				\sum_{k=1}^{h+1} a_{k}^{2} \leq \left(\sum_{k=1}^h a_{k}+a_{h+1}\right)^{2} \overset{(\text{def } \Sigma)}{=} \left(\sum_{k=1}^{h+1} a_{k}\right)^{2}
+			\end{equation*}
+			que es lo que queríamos demostrar. 
+			
+			\item Si $a_1,\dots,a_n \in \mathbb R$ y $0<a_i<1$ para $1 \le i\le n$, entonces $(1-a_1)\cdots(1-a_n)\ge 1-a_1-\cdots -a_n$, $n\in \mathbb N$.
+			
+			\rta Lo que debemos probar es equivalente a $\prod_{i=1}^{n} (1-a_i) \ge 1 - \sum_{i=1}^{n} a_i$ y la demostraremos haciendo inducción en $n$.  
+			
+			\textit{(Caso base $n=1$) } $\prod_{i=1}^{1} (1-a_i) = 1-a_1 = 1 - \sum_{i=1}^{1} a_i$.
+			
+			\textit{(Paso inductivo) }  Para  $k \ge 1$,  supondremos cierto  $\prod_{i=1}^{k} (1-a_i) \ge 1 - \sum_{i=1}^{k} a_i$ (HI) y probaremos  $\prod_{i=1}^{k+1} (1-a_i) \ge 1 - \sum_{i=1}^{k+1} a_i$. Ahora bien, 
+			\begin{align*}
+			\prod_{i=1}^{k+1} (1-a_i) &\overset{(\text{def } \Pi)}{=\quad} \prod_{i=1}^{k} (1-a_i)\cdot (1-a_{k+1})\\
+			&\overset{\text{(HI)}}{\ge}  (1 - \sum_{i=1}^{k} a_i)\cdot (1-a_{k+1}) =(*)
+			\end{align*}
+			La última desigualdad es verdadera, puesto  que como $0<a_{k+1}<1$, entonces $0<1-a_{k+1}<1$. 
+			Luego
+			\begin{align*}
+				(*)&= 1 - \sum_{i=1}^{k} a_i -a_{k+1} +  (\sum_{i=1}^{k} a_i)a_{k+1} \overset{(\text{def } \Sigma)}{=} 1 - \sum_{i=1}^{k+1} a_i +  (\sum_{i=1}^{k} a_i)a_{k+1} \\
+				&\ge  1 - \sum_{i=1}^{k+1} a_i,
+			\end{align*}
+			y  esta última desigualdad se debe a que $(\sum_{i=1}^{k} a_i)a_{k+1} \ge 0$.
+		\end{enumerate}
+		
+		\medskip
+		
+		
+		
+		
+		\item Hallar $n_0 \in {\mathbb N}$ tal que $\forall n \ge n_0$ se cumpla que $n^2 \ge 11 \cdot n + 3$.
+		
+		\rta Para $n=1,\ldots,11$,  es claro que no se cumple pues $n^2 \le 11n < 11n +3$. Para $n =12$ la desiguald se cumple, pues $12^2 = 144 \ge 121+3$.   Probaremos  que $n^2 \ge 11  n + 3$ para $n\ge 12$. 
+		
+			\textit{(Caso base $n=12$) } Lo vimos más arriba.
+			
+			\textit{(Paso inductivo) }  Para  $k \ge 12$,  supondremos cierto $k^2 \ge 11  n + 3$ (HI) y debemos probar que $(k+1)^2 \ge 11  (k+1) + 3 =11k +14$. Ahora bien, 
+			\begin{align*}
+				(k+1)^2 = k^2+2k+1 \overset{\text{(HI)}}{\ge} 11k+3 +2k+1 = 11k + 2k+ 4 \ge 11k +14, 
+			\end{align*}
+			y la última desigualdad es válida pues como  $k\ge 12$,  entonces $2k+ 4 \ge 14$.
+		
+		\smallskip
+		
+		
+		\item Las siguientes proposiciones no son válidas para todo $n \in {\mathbb N}$. Indicar en qué paso del principio de inducción falla la demostración:
+			\begin{enumerate}
+				\item  $n=n^2$.
+				
+				\rta Para el caso base no falla pues $1 = 1^2$,  pero cuando queremos hacer el paso inductivo tenemos
+				\begin{equation*}
+					k+1 \overset{\text{(HI)}}{=} k^2 +1 \not=(k+1)^2.
+				\end{equation*}
+				
+				\item  $n=n+1$. No vale en el caso base: $1 \ne 1+1$.
+				\item  $3^n = 3^{n+2}$.  No vale en el caso base: $3^1 = 3 \ne 27 = 3^3$.
+				\item  $3^{3n} = 3^{n+2}$.  
+				
+				\rta La afirmación vale en el caso base pues  $3^{3\cdot 1} = 3^{1+2}$. En el paso inductivo debemos probar que si  vale $3^{3k} = 3^{k+2}$, entonces se cumple $3^{3(k+1)} = 3^{(k+1)+3}$. Sin embargo, usando  la (HI) obtenemos:
+				\begin{equation*}
+				3^{3(k+1)}  = 3^{3k+3} = 3^{3k}3^3\overset{\text{(HI)}}{=} 3^{k+2}3^3 = 3^{k+5}.
+				\end{equation*}
+				Por otro  lado $3^{(k+1)+2} = 3^{k+3}$. Deberíamos probar entonces que $3^{k+5} = 3^{k+3}$, pero esto es falso pues dividiendo  por $3^{k+3}$ obtenemos $3^2 =1$,  lo cual es absurdo.
+		\end{enumerate}
+		
+		\smallskip
+		
+		\item Encuentre el error en los siguientes argumentos de inducción.
+		\begin{enumerate}
+			\item  Demostraremos que $5n+3$ es múltiplo de 5 para todo $n\in \mathbb N$.
+			
+			Supongamos que $5k+3$ es múltiplo de 5, siendo $k\in \mathbb N$. Entonces existe
+			$p\in \mathbb N$ tal que  $5k+3=5p$. Probemos que $5(k+1)+3$ es múltiplo de 5:
+			Como
+			$$
+			5(k+1)+3=(5k+5)+3=(5k+3)+5=5p+5=5(p+1),
+			$$
+			entonces obtenemos que $5(k+1)+3$ es múltiplo de 5. Por lo tanto, por el principio
+			de inducción, demostramos que $5n+3$ es múltiplo de 5 para todo $n\in \mathbb
+			N$.
+			
+			\rta El caso base es par $n=1$ y en ese caso $5\cdot 1+3=8$ que no es divisible por 5. Por lo tanto al fallar el caso base no es posible hacer la demostración por inducción. 
+			
+			\smallskip
+			
+			\item Sea $a\in\mathbb R$, con $a\neq 0$. Vamos a demostrar que para todo entero no negativo $n$, $a^n=1$.
+			
+			Como $a^0=1$ por definición, la proposición es verdadera para $n=0$. Supongamos
+			que para  un entero $k$, $a^m=1$ para $0\leq m \leq k$. Entonces
+			$a^{k+1}= \frac{a^k a^k}{a^{k-1}}=\frac{1\cdot1}1=1$.
+			Por lo tanto, el principio de inducción fuerte implica que $a^n=1$ para todo $n\in \mathbb N$.
+			
+			\rta En  este caso falla el paso inductivo para $k=0$,  en este caso el razonamiento es
+			\begin{equation*}
+				a^{1}= \frac{a^0 a^0}{a^{-1}}=\frac{1\cdot1}1=1
+			\end{equation*}
+			Pero la última igualdad es incorrecta, pues nada demuestra que $a^{-1}$  se igual a $1$ y, en efecto, no lo es salvo que  $a=1$. 
+		\end{enumerate}
+		
+		
+	\end{enumerate}
+	
+	
+\end{document}
+

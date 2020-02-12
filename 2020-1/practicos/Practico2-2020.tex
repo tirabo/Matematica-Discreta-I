@@ -1,0 +1,239 @@
+\documentclass[12pt,spanish,makeidx]{amsbook}
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+
+
+
+\usepackage{t1enc}
+\usepackage[spanish]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}       % From LaTeX distribution
+\usepackage{subfigure}    % From CTAN/macros/latex/contrib/supported/subfigure
+\usepackage{pst-all}      % From PSTricks
+\usepackage{pst-poly}     % From pstricks/contrib/pst-poly
+\usepackage{multido}      % From PSTricks
+\input{random.tex}        % From CTAN/macros/generic
+
+
+%% \theoremstyle{plain} %% This is the default
+\oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
+\headheight .3in \headsep .2in \footskip .2in
+\setlength{\textwidth}{16cm} %ancho para apunte
+\setlength{\textheight}{21cm} %largo para apunte
+%\leftmargin 2.5cm
+%\rightmargin 2.5cm
+\topmargin 0.5 cm
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{FAMAF}
+\fancyhead[RE,LO]{Matemática Discreta I}
+\fancyfoot[LE,RO]{\leftmark}
+\fancyfoot[RE,LO]{\thepage}
+ 
+\renewcommand{\headrulewidth}{0.5pt}
+%\renewcommand{\footrulewidth}{0.5pt}
+ 
+
+
+
+\begin{document}
+
+{\bf \begin{center} Práctico 2 \\ Matemática Discreta I -- Año 2020/1 \\ FAMAF \end{center}}
+
+\smallskip
+
+\begin {enumerate}
+%\item Contar las aplicaciones de $X_3=\{1,2,3\}$ en $X_4=\{1,2,3,4\}$.
+%Mostrar que hay $m^3$ aplicaciones de $X_3$ en $X_m=\{1,2,\dots,m\}$, con $m \ge 1$.
+
+%\
+
+\item La cantidad de dígitos o cifras de un número se cuenta a partir del primer dígito distinto de cero. Por ejemplo, $0035010$ es un número de $5$ dígitos.
+\begin{enumerate}
+\item ¿Cuántos números de 5 dígitos hay?
+\item ¿Cuántos números pares de 5 dígitos  hay?
+\item ¿Cuántos números de 5 dígitos existen con sólo un 3?
+\item ¿Cuántos números capicúas de 5 dígitos existen?
+\item ¿Cuántos números capicúas de a lo sumo 5 dígitos hay?
+\end{enumerate}
+
+\smallskip
+
+\item ¿Cuántos números de 6 cifras pueden formarse con los dígitos de 112200?
+
+\smallskip
+
+\item ¿Cuántos números impares de cuatro cifras hay?
+
+\smallskip
+
+\item ¿Cuántos números múltiplos de  5 y menores que 4999 hay?
+
+\smallskip
+
+\item En los boletos viejos de ómnibus, aparecía un {\em número} de 5 cifras (en este caso podían empezar con 0), y uno tenía un {\it boleto capicúa} si el número lo era.
+\begin{enumerate}
+\item ¿Cuántos boletos capicúas había?
+\item ¿Cuántos boletos había en los cuales no hubiera ningún dígito repetido?
+\end{enumerate}
+
+\smallskip
+
+\item Las antiguas patentes de auto tenían una letra indicativa de la provincia y luego 6 dígitos. (En algunas provincias, Bs. As. y Capital, tenían 7 dígitos, pero ignoremos eso por el momento). Luego  vinieron patentes que tienen 3 letras y luego 3 dígitos. Finalmente, ahora las patentes tienen 2 letras, luego 3 dígitos y a continuación dos letras más ¿Cuántas patentes pueden hacerse con cada uno de los sistemas?
+
+\smallskip
+
+\item Si uno tiene 8 CD distintos de Rock, 7 CD distintos de música clásica y 5 CD distintos de cuartetos,
+\begin{enumerate}
+	\item ¿Cuántas formas distintas hay de seleccionar un CD?
+
+	\item ¿Cuántas formas hay de seleccionar tres CD, uno de cada tipo?
+
+	\item Un sonidista en una fiesta de casamientos planea poner 3 CD, uno a continuación de otro. ¿Cuántas formas distintas tiene de hacerlo si le han dicho que no mezcle más de dos estilos?
+\end{enumerate}
+
+\smallskip
+
+\item Mostrar que si uno arroja un dado $n$ veces y suma todos los resultados obtenidos, hay $\dfrac{6^n}{2}$ formas distintas de obtener una suma par.
+
+\smallskip
+
+\item ¿Cuántos enteros entre 1 y 10000 tienen exactamente un 7 y exactamente un 5 entre sus cifras?
+
+\smallskip
+
+\item ¿Cuántos subconjuntos de $\{0,1,2,\dots,8,9\}$ contienen al menos un impar?
+
+\smallskip
+
+\item El truco se juega con un mazo de 40 cartas, y se reparten 3 cartas a cada jugador. Obtener el 1 de espadas (el {\it macho}) es muy bueno. También lo es, por otros motivos, obtener un 7 y un 6 del mismo palo ({\it tener 33}). ¿Qué es más probable: obtener el macho, o tener 33?
+
+\smallskip
+
+\item ¿Cuántos comités pueden formarse de un conjunto de 6 mujeres y 4 hombres, si el comité debe estar compuesto por 3 mujeres y 2 hombres?
+
+\smallskip
+
+\item ¿De cuántas formas puede formarse un comité de 5 personas tomadas de un grupo de 11 personas entre las cuales hay 4 profesores y 7 estudiantes, si:
+\begin{enumerate}
+	\item No hay restricciones en la selección?
+
+	\item El comité debe tener exactamente 2 profesores?
+
+	\item El comité debe tener al menos 3 profesores?
+
+	\item El profesor $X$ y el estudiante $Y$ no pueden estar juntos en el comité?
+\end{enumerate}
+
+\smallskip
+
+\item Si en un torneo de fútbol participan $2n$ equipos, probar que el número total de opciones posibles para la primera fecha es $1\cdot 3\cdot 5 \cdots (2n - 1)$. sugerencia: use un argumento por inducción. 
+
+\smallskip
+
+\item En una clase hay $n$ chicas y $n$ chicos. Dar el número de maneras de ubicarlos en una fila de modo que todas las chicas estén juntas.
+
+\smallskip
+
+\item ¿De cuántas maneras  distintas pueden sentarse 8 personas en una mesa circular?
+
+\smallskip
+
+\item \begin{enumerate}
+	\item ¿De cuántas maneras distintas pueden sentarse 6 hombres y 6 mujeres en una mesa circular si nunca deben quedar dos mujeres juntas?
+	\item \'Idem, pero con 10 hombres y 7 mujeres.
+\end{enumerate}
+
+\smallskip
+
+\item 
+\begin{enumerate}
+	\item  ¿De cuántas formas distintas pueden ordenarse las letras de la palabra MATEMATICA
+	\item \'Idem con las palabras ALGEBRA, GEOMETRIA.
+	\item ¿De cuántas formas distintas pueden ordenarse las letras de la palabra MATEMATICA si se pide que las consonantes y las vocales se alternen?
+\end{enumerate}
+
+\smallskip
+
+\item ¿Cuántas diagonales tiene un polígono regular de $n$ lados?
+
+\smallskip
+
+\item Dados $m$, $n$ y $k$ naturales tales que $m \le k \le n$, probar que se verifica
+\begin{equation*}
+	\binom{n}{k}\binom{k}{m} = \binom{n}{m}\binom{n-m}{k-m}.
+\end{equation*}
+
+
+\smallskip
+
+\item Probar que para todo $i$, $j$, $k \in {\mathbb N}_0$ vale
+\begin{equation*}
+	\binom{i + j + k}{i}\binom{j+k}{j} = \frac{(i+j+k)!}{i!j!k!}
+\end{equation*}
+
+\smallskip
+
+\item Demostrar que para todo $n \in \mathbb N$ vale:
+\begin{enumerate}
+  \item $\displaystyle{\binom{n}{0} + \binom{n}{1} + \cdots + \binom{n}{n} = 2^n}$.
+\medskip
+  \item $\displaystyle{\binom{n}{0} - \binom{n}{1} + \cdots + (-1)^n\binom{n}{n} = 0}$
+  \end{enumerate}
+
+\smallskip
+
+\item Probar que para todo natural $n$ vale que 
+\begin{equation*}
+	\binom{2n}{2} = 2 \binom{n}{2} + n^2.
+\end{equation*}
+
+
+
+\medskip
+
+
+
+\begin{center}
+	\textbf{Ejercicios adicionales (para repasar)}
+\end{center}
+
+\medskip
+
+\item Con $20$ socios de un club se desea formar $5$ listas electorales (disjuntas).
+Cada lista consta de $1$ Presidente, $1$ Tesorero y $2$ vocales.  ¿De cuántas
+formas puede hacerse?
+
+\smallskip
+
+\item ¿De cuántas formas se pueden fotografiar $7$ matrimonios en una hilera,
+de tal forma que cada hombre aparezca al lado de su esposa?
+
+\smallskip
+
+\item ¿De cuántas formas pueden distribuirse $14$ libros distintos entre dos
+personas de manera tal que cada persona reciba al menos $3$ libros?
+
+\smallskip
+
+\item
+Cecilia ha olvidado la contraseña de su correo electrónico, la cual est\'a formada por $11$ caracteres: $4$ d\'igitos y $7$ letras todos mezclados. ?`Cu\'al es el m\'aximo n\'umero de intentos que deber\'ia probar para entrar a su correo si:
+\begin{enumerate}
+	\item  tiene en cuenta que hay 26 letras?
+	
+	\item la letra B y el d\'igito 2 no pueden estar ambos en la contraseña?
+	
+	\item  recuerda que ha formado la clave de la siguiente manera: los primeros siete caracteres son una mezcla de las letras de su nombre (CECILIA), y los \'ultimos cuatro caracteres son una permutaci\'on de las cuatro cifras de su a\~no de nacimiento (1998)?
+\end{enumerate}
+
+
+\end{enumerate}
+\end{document}
