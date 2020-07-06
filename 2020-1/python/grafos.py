@@ -47,7 +47,7 @@ def valencia(graph):
     return val
 
 
-def aristas(graph):
+def copiar_grafo(graph):
     # pre: graph es un  grafo
     # post:  devuelve una copia del grafo graph
     hgraph = copy.deepcopy(graph)
@@ -66,93 +66,166 @@ def vertices(graph):
 def adyacentes(vert, graph):
     # pre: graph es un grafo, vert es un vertice de graph
     # post: devuelve los vertices adyacentes a vert
-    hgraph = aristas(graph)
+    hgraph = copiar_grafo(graph)
     return hgraph[vert]
 
 
-def quitar_arista(graph, i, j):
-    # pre: graph es un grafo, i, j vertices de graph
-    # post: devuelve el grafo sin la arista ij (si existe)
-    # mod: no modifica graph, devuelve otro grafo
-    k = 0
-    hgraph = aristas(graph)
-    while k < len(hgraph[i]):
-        if hgraph[i][k] == j:
-            del hgraph[i][k]
-        k += 1
-    k = 0
-    while k < len(hgraph[j]):
-        if hgraph[j][k] == i:
-            del hgraph[j][k]
-        k += 1
-    return hgraph
+def quitar_arista(lt, e):
+    # pre: lt lista de adyacencia e= [x,y] arista
+    # mod: modifica lt, quita arista [x,y] (si está)
+    # post: -.
+    lt[e[0]].remove(e[1]) 
+    lt[e[1]].remove(e[0]) 
 
 
-def agregar_arista(graph, i, j):
-    # pre: graph grafo, i, j vertices
-    # post: agrega la arista ij (si no existe)
-    # mod: no modifica graph, devuelve otro grafo
-    h = aristas(graph)
-    if j not in h[i]:
-        h[i].append(j)
-        h[j].append(i)
-    return h
+def agregar_arista(lt, e):
+    # pre: lt lista de adyacencia e= [x,y] arista
+    # mod: modifica lt, agrega arista [x,y] (si no está)
+    # post: -.
+    if e[1] not in lt[e[0]]:
+        lt[e[0]].append(e[1]) 
+        lt[e[1]].append(e[0]) 
 
 
 # ALGORITMOS SOBRE GRAFOS
 
 
-def caminata_euleriana_from(graph, v):
-    # pre: graph grafo que 1) todas los son pares o 2) solo hay 2 vertices impares
-    #      v es un vertice tal que en 1) es arbitrario, en 2) es uno de los vertices de valencia impar.
-    # post: devuelve  la lista de vertices de la caminata euleriana
-    #       La caminata empieza en v.
-    recorrido = [v]
-    libres = aristas(graph)  # libres es un grafo que en cada vertice nos dira que arista no hemos usado
+# Grafos de prueba
+
+# Grafo 1
+# G = [[1,2,4,5],[0,2,4,5],[0,1,3,5],[2,4],[0,1,3,5],[0,1,2,4]]
+
+# Grafo 2
+# G = [[3,4,5,6], [2,4], [1,5], [0,4], [0,1,3,5], [0,2,4,6], [0,5]]
+
+# Grafo 3 (cíclico)
+# G = [[1,5],[0, 2],[1,3],[2,4],[3,5],[4,0]]
+
+# Grafo 4 
+# G = [[2, 4, 5], [3, 5], [3, 4, 5], [1, 2, 4], [0, 2, 3, 5], [0, 1, 4]]
+# G = grafo(G)
+
+
+## Inicio: Algoritmo de Hierholzer ##
+
+def enclibr(lt, tc): # necesaria pa circuitos eulerianos
+    # pre: lt lista de adyacencia, tc = lista de vértices,  
+    # post: devuelve j en tocados tq libres[j] no es vacío.  
+    ret = -1
+    for j in range(len(lt)):
+        if len(lt[j]) > 0 and j in tc:
+            ret = j
+            break
+    return ret
+
+def inserta_circuito(cr, ct): # necesaria pa circuitos eulerianos
+    # pre: cr, ct circuitos tq ct[0] en cr
+    # mod: se modifica cr insertando ct en ct[0]
+    # si cr = [...,c0,c1,c2,...] y ct = [c1,d,...,f,c1]
+    # entonces se obtiene cr = [...,c0,c1,d,...,f,c1,c2,...] 
+    j = cr.index(ct[0])
+    k = j
+    for t in range(len(ct)-1):
+        cr.insert(k,ct[t])
+        k = k + 1
+        
+def circuito_euleriano(G, v = 0): #Algoritmo de Hierholzer
+    # pre: G grafo con todos los vértices de valencia par, v vértice.
+    #      Si no se ingresa v toma el valor 0
+    # post: devuelve 'circuito' una lista de vertices que forma un circuito
+    #       euleriano. El  circuito empieza en 0.
+    circuito = [0]  # caminata
+    libres = G
+    # libres representa las aristas no usadas en la caminata 
     usados = []
-    for i in range(len(graph)):
+    for u in G:
         usados.append([])
-    pos = v
-    while len(libres[pos]) > 0:
-        prox = libres[pos][0]
-        # print(pos, libres[pos], prox)
-        recorrido.append(prox)
-        libres = quitar_arista(libres, pos, prox)
-        usados = agregar_arista(usados, pos, prox)
-        # print('lib:', libres)
-        # print('usa:', usados)
-        pos = prox
-    return recorrido
+    # usados:lista de adyacencia con los vértices de G y sin aristas  
+    # usados representa las aristas usadas en la caminata
+    tocados = [v]
+    # tocados representa los vértices por los cuales pasó la caminata
+    while enclibr(libres, tocados) != -1:
+       # enclibr: (listas de adyacencia, lista de vértices) -> vértices
+       # enclibr(lt, tc) devuelve j en tc tq lt[j] no es vacío. 
+       # En caso contrario, devuelve -1 (representa vacío) 
+       pos0 = enclibr(libres, tocados)
+       p0 = pos0
+       p1 = libres[pos0][0]
+       aux = [pos0] # será el circuito a partir de pos0
+       while p1 != pos0: # mientras no se vuelva al origen
+           # print('arista',p0,p1,libres)
+           aux.append(p1)  # agrega p1 a aux 
+           tocados.append(p1)  # agrega p1 a tocados
+           quitar_arista(libres, [p0, p1]) # quita de libres la arista 'p0, p1'
+           agregar_arista(usados, [p0, p1]) # agregar a usados la arista 'p0, p1'
+           # print(libres,usados)
+           p0 = p1 
+           p1 = libres[p0][0]
+       aux.append(aux[0]) # completa aux a circuito
+       quitar_arista(libres, [p0, p1]) # quita de libres la arista 'p0, p1'
+       agregar_arista(usados, [p0, p1]) # agregar a usados la arista 'p0, p1'
+       # print('fin w',p1,aux)
+       inserta_circuito(circuito, aux) # inserta aux en circuito
+       pos0 = enclibr(libres, tocados)  
+    return circuito 
+    
+def caminata_euleriana_desde_a(G, v, w): 
+    # pre: graph grafo donde v y w son vértices impares y todos demás pares
+    # post: devuelve  la lista de vertices de la caminata euleriana
+    #       La caminata empieza en v y termmina en w.
+    caminata = []
+    H = copiar_grafo(G) # hace una copia de G
+    if w in G[v]: # si [v,w] es arista en G
+        quitar_arista(H, [v, w]) # quita la arista [v, w]
+        cmnt = circuito_euleriano(H, v)
+        caminata = cmnt.append(w)
+    else: # si [v,w] no es arista en G
+        agregar_arista(H, [v, w]) # agrega la arista [v, w]
+        cmnt = circuito_euleriano(H, w)
+        k = -1
+        for i in range(1,len(cmnt)):
+            if cmnt[i - 1] == w and cmnt[i] == v:
+                k = i
+            if k > 0:
+                caminata.append(cmnt[i])
+        for i in range(1,k):
+            caminata.append(cmnt[i])
+    return caminata
 
-
-def caminata_euleriana(graph):
-    # pre: graph grafo.
+def caminata_euleriana(G): 
+    # pre: G grafo.
     # post: devuelve un par. La primera coordenada es True si hay camina euleriana y False en otro caso.
-    #       La segunda coordenada es vacia si no hay c e y es la lista de vertices de la caminata si existe  c e
-    #       La caminata empieza desde un vertice arbitrario (0 en el caso to_do par).
-    val = valencia(graph)
-    extremos = []
-    for i in range(len(val)):
-        if val[i] % 2 == 1:
-            extremos.append(i)
-    if len(extremos) == 0 or len(extremos) == 2:
-        vini, vfin = 0, 0
-        if len(extremos) == 2:
-            vini, vfin = extremos[0], extremos[1]
-        recorrido = caminata_euleriana_from(graph, vini)
-        return True, recorrido
-    else:
-        return False, []
+    #       La segunda coordenada es [] si no hay c e y es la lista de vertices de la caminata si existe  c e
+    #       La caminata empieza desde un vertice arbitrario (0 en el caso par).
+    existe, caminata = False, []
+    impares = []
+    for i in range(len(G)):
+        if len(G[i]) % 2 == 1: # si la valencia es impar
+            impares.append(i)
+    if len(impares) == 0: # todas las valencias pares
+        existe = True
+        caminata = circuito_euleriano(G)
+    elif len(impares) == 2: # dos valencias impares
+        existe = True
+        vini, vfin = impares[0], impares[1]
+        caminata = caminata_euleriana_desde_a(G, vini, vfin)
+    return existe, caminata
+
+# print(caminata_euleriana(G))
+
+## FIN: Algoritmo de Hierholzer ##
 
 
-def coloracion_vertices(graph):
-    # pre: graph grafo
+## INICIO: algoritmo greedy para coloración de vértices
+
+def coloracion_vertices(G):
+    # pre: G grafo
     # post: devuelve la cantidad de colores usados  y  una lista de i:c donde i es vertice y
     #       c es color (c in N); de tal forma que si i:c,  k:c' y ij arista, entonces c != c'.
     color = []  # si  j < len(color), color[j] = c dice que el color de j es c.
     # si j <= len(color), todavia no esta asignado el color a j
     colores = 0  # cantidad de colores utilizados
-    for i in range(len(graph)):
+    for i in range(len(G)):
         s = []  # conjunto de colores asignados a los vertices j (1 <= j < i) que son
         # adyacentes a vi (comienza vacio)
         for j in range(i):  # recorre todos los vertices j < i
@@ -168,20 +241,14 @@ def coloracion_vertices(graph):
 
     return colores, color
 
-
-G = [[2, 4, 5], [3, 5], [3, 4, 5], [1, 2, 4], [0, 2, 3, 5], [0, 1, 4]]
-G = grafo(G)
-# print(G)
-
-# print(caminata_euleriana(G))
 # print(coloracion_vertices(G))
 
-
-# def caminata_euleriana(G, v):
-#     return True
+## FIN: algoritmo greedy para coloración de vértices
 
 
-# Algoritmo de Prim
+
+## INICIO: Algoritmo de Prim ##
+
 # Datos: G, w
 # G es un grafo. 
 # w es una funcion de peso de las aristas. Es un lista de listas, tal que
@@ -223,20 +290,6 @@ def peso_std(graph):
                 w[i][j] = 1
     return w
 
-
-
-G = [[1,2,3,4],[0,2,3,4],[0,1,3,4],[0,1,2,4],[0,1,2,3]]
-G = grafo(G)
-w = [[0, 6, 8, 6, 3],[6, 0, 2, 4, 5],[8, 2, 0, 5, 7],[6, 4, 5, 0, 7],[3, 5, 7, 7, 0]]
-
-G = [[1, 2, 3], [0, 2, 4], [0, 1, 3, 4, 5, 6], [0, 2, 6], [1, 2, 5, 7, 8], [2, 4, 6, 8], [2, 3, 5, 8, 9],
-     [4, 8, 10], [4, 5, 6, 7, 9, 10], [6, 8, 10], [7, 8, 9]]
-G = grafo(G)
-w = [[0, 2, 8, 1, 0, 0, 0, 0, 0, 0, 0], [2, 0, 6, 0, 1, 0, 0, 0, 0, 0, 0], [8, 6, 0, 7, 0, 0, 0, 0, 0, 0, 0],
-     [1, 0, 7, 0, 0, 0, 9, 0, 0, 0, 0], [0, 1, 5, 0, 0, 3, 0, 2, 9, 0, 0], [0, 0, 1, 0, 3, 0, 4, 0, 6, 0, 0],
-     [0, 0, 2, 9, 0, 4, 0, 0, 3, 1, 0], [0, 0, 0, 0, 2, 0, 0, 0, 7, 0, 9], [0, 0, 0, 0, 9, 6, 3, 7, 0, 1, 2],
-     [0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 4], [0, 0, 0, 0, 0, 0, 0, 9, 2, 4, 0]]
-
 def prim(graph, w):
     #  pre: graph grafo con vertices 0,...,n-1 y pesos w[i][j]. n >= 1.
     # (w[i][j] = infinito si ij no es arista de G)
@@ -266,7 +319,7 @@ def prim(graph, w):
         [uk,vk,pk] = L[0]
         # print uk,vk,pk
         # uk = vertice en Q tal que pk = w(uk,vk) es minimo
-        F = agregar_arista(F, uk, vk)
+        agregar_arista(F, [uk, vk])
         wF = wF + w[uk][vk]
         S.append(uk)
         Q.remove(uk)
@@ -278,7 +331,22 @@ def prim(graph, w):
             # el for modifica L
     return (F, wF)
 
+# Pruebas 
 
-(F, wF) = prim(G,w)
-print(F)
-print(wF)
+G = [[1,2,3,4],[0,2,3,4],[0,1,3,4],[0,1,2,4],[0,1,2,3]]
+G = grafo(G)
+w = [[0, 6, 8, 6, 3],[6, 0, 2, 4, 5],[8, 2, 0, 5, 7],[6, 4, 5, 0, 7],[3, 5, 7, 7, 0]]
+
+G = [[1, 2, 3], [0, 2, 4], [0, 1, 3, 4, 5, 6], [0, 2, 6], [1, 2, 5, 7, 8], [2, 4, 6, 8], [2, 3, 5, 8, 9],
+     [4, 8, 10], [4, 5, 6, 7, 9, 10], [6, 8, 10], [7, 8, 9]]
+G = grafo(G)
+w = [[0, 2, 8, 1, 0, 0, 0, 0, 0, 0, 0], [2, 0, 6, 0, 1, 0, 0, 0, 0, 0, 0], [8, 6, 0, 7, 0, 0, 0, 0, 0, 0, 0],
+     [1, 0, 7, 0, 0, 0, 9, 0, 0, 0, 0], [0, 1, 5, 0, 0, 3, 0, 2, 9, 0, 0], [0, 0, 1, 0, 3, 0, 4, 0, 6, 0, 0],
+     [0, 0, 2, 9, 0, 4, 0, 0, 3, 1, 0], [0, 0, 0, 0, 2, 0, 0, 0, 7, 0, 9], [0, 0, 0, 0, 9, 6, 3, 7, 0, 1, 2],
+     [0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 4], [0, 0, 0, 0, 0, 0, 0, 9, 2, 4, 0]]
+
+# (F, wF) = prim(G,w)
+# print(F)
+# print(wF)
+
+## FIN: Algoritmo de Prim ##
