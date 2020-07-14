@@ -2,7 +2,7 @@
 \chapter[Grafos]{Grafos}
 
 
-\begin{section}{Grafos y sus Representaciones}\label{5.1}
+\begin{section}{Grafos y sus representaciones}\label{5.1}
 
 Los objetos a los cuales llamaremos {\it {grafos} } son muy útiles
 en matemática discreta. Su nombre se deriva del hecho de que
@@ -590,9 +590,9 @@ tal que $v_i$ y $v_{i+1}$ son adyacentes ($1 \le i \le k-1$). Si
 todos los vértices son distintos, una caminata es llamada un {\em
 camino}.  \index{camino}
 
-Llamaremos {\em ciclo} a una caminata  \index{ciclo}
-$v_1,v_2,\ldots,v_{r+1}$ cuyos vértices son distintos exceptuando
-los extremos, es decir que $v_1=v_{r+1}$ y  a menudo diremos que es un {\em
+Llamaremos {\em ciclo} a una caminata \index{ciclo}
+$v_1,v_2,\ldots,v_{r+1}$  con $r \ge 3$ y cuyos vértices son distintos exceptuando
+los extremos, es decir que $v_1,v_2,\ldots,v_{r}$ es un camino de al menos tres vértices y $v_1=v_{r+1}$.  A menudo diremos que es un {\em
 $r$-ciclo}, o un ciclo de {\em longitud} $r$ en $G$.
  \index{longitud de un ciclo}
 \end{definicion}
@@ -628,7 +628,10 @@ $$
 una caminata, más corta,  entre $x$ e $y$. Podemos repetir este procedimiento hasta eliminar todos los ``bucles'' y obtener un camino.
 \end{proof}
 
-Debido a este lema es sencillo verificar la siguientes propiedades: sea $G$ y $x,y,z$ vértices de $G$, entonces
+\begin{definicion} Diremos que un grafo  $G$ es \textit{conexo} si para cualesquiera dos vértices $x,y$ existe una camina de $x$ a $y$, es decir si  $x \sim y$. 
+\end{definicion}
+
+Debido al lema que probamos más arriba, es sencillo verificar la siguientes propiedades: sea $G$ grafo y sean $x,y,z$ vértices de $G$, entonces
 \begin{enumerate}[a)]
 \item $x \sim x$ (reflexividad de $\sim$).
 \item $x \sim y$, entonces $y \sim x$ (simetría de $\sim$).
@@ -649,7 +652,7 @@ $$
 Denotemos con $E_i$ ($1\le i \le r$) al subconjunto de $E$ que
 contiene todas las aristas cuyos finales están en $V_i$. Entonces
 los grafos $G_i=(V_i,E_i)$ son llamados las {\em componentes}  \index{componente de un grafo}  \index{grafo conexo}
-de $G$. Si $G$ tiene solo una componente diremos entonces que el grafo es {\em conexo}.
+de $G$. Si $G$ tiene solo una componente entonces, claramente, el grafo es {conexo}.
 \end{definicion}
 
 
@@ -761,16 +764,56 @@ una vez. Una caminata euleriana que comienza y termina en un mismo vértice se l
 
 El siguiente teorema resume los resultados sobre caminatas eulerianas. La demostración no es demasiada complicada, pero excede los alcances de este curso.  
 
-\begin{teorema} Un grafo conexo con más de un vértice posee una caminata euleriana de $v$ a $w$, con $v \not= w$ si y sólo si $v$ y $w$ son los únicos vértices de grado impar. Un grafo conexo con más de un vértice tiene un circuito euleriano si y sólo si todos los vértices tienen grado par.
+\begin{teorema}\label{th-caminata-euleriana} Un grafo conexo con más de un vértice posee una caminata euleriana de $v$ a $w$, con $v \not= w$ si y sólo si $v$ y $w$ son los únicos vértices de grado impar. Un grafo conexo con más de un vértice tiene un circuito euleriano si y sólo si todos los vértices tienen grado par.
 \end{teorema}
 
-Más allá del resultado del teorema, existe un algoritmo fácilmente implementable para encontrar caminatas eulerianas de $v$ a $w$, con $v \not= w$ y es esencialmente ``parta del vértice $v$ y recorra el grafo sin pasar dos veces por la misma arista. Cuando no pueda avanzar más se encontrará en $w$ y habrá hecho una caminata euleriana.'' El caso de un grafo donde todas las valencias son pares se puede reducir al anterior: si deseamos una caminata euleriana que empiece y termine en $v$, eliminamos una arista del grafo que contenga a $v$, digamos la arista $\{v,w\}$ (con lo cual queda un grafo  con solo dos vértices, $v$ y $w$, de valencia impar), aplicamos el caso  anterior, con lo cual hacemos una caminata euleriana que termina en  $w$, y terminamos la caminata agregando  la arista $\{v,w\}$. 
+\begin{observacion}\label{obs-par-a-impar}
+	El caso de un grafo donde todas las valencias son pares se puede reducir al anterior: si deseamos una caminata euleriana que empiece y termine en $v$, eliminamos una arista del grafo que contenga a $v$, digamos la arista $\{v,w\}$ (con lo cual queda un grafo  con solo dos vértices, $v$ y $w$, de valencia impar), aplicamos el caso  anterior, con lo cual hacemos una caminata euleriana que termina en  $w$, y terminamos la caminata agregando  la arista $\{v,w\}$. 
+\end{observacion}
 
+$$
+\forall X \subset \mathbb Z \wedge X \ne \emptyset \wedge (\exists a: \forall\, x \in X: a \le x) \Rightarrow (\exists b: \forall, x \in X :b \le x) \wedge (\forall)
+$$
+\begin{observacion}\label{obs-impar-a-par}
+	Análogamente,  el caso de un grafo  $G$ con dos valencias impares y todas las demás valencias pares  se puede reducir al caso en que todas las valencias son pares. Sean $p$ y $q$ los dos vértices de valencia impar,  entonces tenemos dos casos (1) $\{p,q\}$  es arista de $G$ y (2) $\{p,q\}$  no es arista de $G$.  En el caso (1),  eliminamos la arista  $\{p,q\}$  del grafo  y  nos queda un grafo  con todos los vértices de valencia par. Por lo tanto, hay un circuito euleriano de $p$  a $p$. Agregamos al final la arista $\{p,q\}$  y obtenemos una caminata euleriana de  $p$ a $q$. El caso (2) es un poco más complicado: agregamos al grafo $G$ la arista $\{p,q\}$ y obtenemos un grafo  con todos los vértices de valencia par. Luego  hay un circuito euleriano de $q$ a $q$. Podemos describir el circuito como
+	$$
+	q,v_1,\ldots,v_k,q,p,w_1,\ldots,w_r,q.
+	$$
+	A partir de este circuito podemos obtener la caminata
+	$$
+	p,w_1,\ldots,w_r,q,v_1,\ldots,v_k,q, 
+	$$
+	que es una caminata euleriana. 
+\end{observacion}
+
+
+\vskip .4cm  
+Más allá del resultado del teorema, existe un algoritmo fácilmente implementable para encontrar circuitos eulerianos.
+
+\vskip .4cm 
+
+\noindent \textbf{Algoritmo de Hierholzer}
+
+C. Hierholzer (1840-1871) mostró, poco antes de su muerte, un algoritmo para encontrar un circuito euleriano  para cualquier grafo  con vértices de grado  par.
+
+El  algoritmo es el siguiente: 
+\begin{enumerate}
+	\item (Paso 1) Elija cualquier vértice  inicial $v$ y haga una caminata  que no repita aristas y  que vuelva al vértice (de $v$ a $v$). No es posible quedarse atascado en ningún vértice que no sea $v$, porque el grado par de todos los vértices garantiza que, cuando se ingresa a un vértice $w$ (distinto de $v$) debe haber una  arista sin usar que nos permite dejar $w$. El recorrido formado de esta manera es un recorrido cerrado, pero puede no cubrir todos los vértices y aristas del grafo inicial.
+	\item (Paso iterativo) Mientras exista un vértice $u$ en la caminata ya realizada, pero que tenga aristas que no formen parte de la caminata, inicie otra caminata desde $u$ hasta $u$ siguiendo las aristas no utilizadas. Luego,  inserte esta  caminata a la caminata  anterior para formar una caminata nueva (más larga).
+\end{enumerate}
+
+Puesto que suponemos que el grafo original es conexo, repetir el paso iterativo agotará todos las aristas del grafo.
+
+\vskip .4cm 
+
+El algoritmo de Hierholzer fue la primera demostración del teorema \ref{th-caminata-euleriana} para el caso  de grafos con vértices de grado par. Obviamente,  debido a la observación  \ref{obs-impar-a-par}, esto demuestra también el teorema para grafos con dos valencias impares.
+
+  \vskip .4cm 
   
 \begin{ejemplo} Dado  el  grafo de de la  Fig. \ref{f5.7.1}, encontremos una caminata euleriana con origen en $p$ y final en $r$. 
 
-Debemos primero observar que la caminata euleriana debe existir pues $\delta(p)=3$, $\delta(q)=4$, $\delta(r)=3$, $\delta(s)=4$,
-$\delta(t)=4$, y $\delta(u)=2$. 
+Debemos primero observar que  debe existir un circuito euleriano, pues $\delta(p)=4$, $\delta(q)=4$, $\delta(r)=4$, $\delta(s)=4$,
+$\delta(t)=4$, y $\delta(u)=2$,  es decir todos los vértices tienen grado par. 
 
 
 \begin{figure}[ht]
@@ -778,62 +821,85 @@ $\delta(t)=4$, y $\delta(u)=2$.
 	\begin{tikzpicture}[scale=1]
 	%\SetVertexSimple[Shape=circle,FillColor=white]
 	\def\rvar{1.2}
-	\Vertex[x=0.00, y=-2.00]{$u$}
-	\Vertex[x=\rvar*1.90, y=-0.62]{$t$}
-	\Vertex[x=\rvar*1.18, y=1.62]{$q$}
-	\Vertex[x=-1.18*\rvar, y=1.62]{$p$}
-	\Vertex[x=-1.90*\rvar, y=-0.62]{$r$}
-	\Vertex[x=0, y=0]{$s$}
+	\Vertex[x=0.00, y=-2.00, L=$3$]{$u$}
+	\Vertex[x=\rvar*1.90, y=-0.62, L=$2$]{$t$}
+	\Vertex[x=\rvar*1.18, y=1.62, L=$1$]{$q$}
+	\Vertex[x=-1.18*\rvar, y=1.62, L=$0$]{$p$}
+	\Vertex[x=-1.90*\rvar, y=-0.62, L=$4$]{$r$}
+	\Vertex[x=0, y=0, L=$5$]{$s$}
 	\Edges($u$,$t$,$q$,$p$)
 	\Edges($r$,$u$)
 	\Edges($s$,$t$)
 	\Edges($r$,$s$,$q$,$r$)
 	\Edges($p$,$t$,$s$)
-	\Edges($s$,$p$)
+	\Edges($s$,$p$,$r$)
 	\end{tikzpicture}
 	\end{center}
-	\caption{El gran tour, reducido} \label{f5.7.1}
+	\caption{El gran tour, de nuevo.} \label{f5.7.1}
 \end{figure}
 
-Como fue mencionado más arriba,  el algoritmo más sencillo es en este caso el que sirve: debemos partir de $p$ y recorrer el grafo sin repetir aristas. Cuando  no podamos avanzar más (bajo estas condiciones) habremos obtenido la caminata euleriana. Una posible solución es, por ejemplo,
-$$
-p,s,q,p,t,u,r,s,t,q,r
-$$  
+Apliquemos el algoritmo de Hierholzer partiendo  desde $p$. Una caminata posible con origen en $p$ y que vuelva a $p$ es $$p, q, s, r, p.$$
 
-Existen muchas posibles caminatas eulerianas de $p$ a $r$, por ejemplo le proponemos que encuentre una cuya primera arista sea $\{p,t\}$.
+Ahora elijamos $q$ que es un vértice que pertenece a la caminata pero que tiene aristas que no son parte de la caminata. Una caminata que no toca aristas usadas y  que parte de $q$ y regresa a $q$ es $q,r,u,t,q$. Insertamos en $q$  esta caminata  a la caminata anterior y obtenemos:
+$$
+p,\mathbf{q,r,u,t,q,} s, r, p. 
+$$
+(En  negrita la caminata insertada).
+
+En  el siguiente paso podemos  elegir $t$ y hacer la caminata $t, p, s, t$ que no pasa por aristas ya utilizadas. Insertamos esta caminata en algún $t$ de la caminata anterior y obtenemos:
+$$
+p,q,r,u,t, p, s, t,q, s, r, p,
+$$
+que es un circuito euleriano. 
 \end{ejemplo}
 
+\newpage 
 
 
-\begin{observacion}(*) Escribiremos en pseudocódigo el algoritmo para hallar una caminata euleriana. Partimos de un grafo $G$ con $n$ vértices tal que o bien
-\begin{enumerate}[a)]
-	\item todos los vértices son de valencia par, o bien
+\begin{observacion}(*) Escribiremos en pseudocódigo el algoritmo para hallar un circuito euleriano en un grafo $G$ con $n$ vértices  de valencia par.
 	
-	\item  solo hay dos vértices de valencia impar. 
-\end{enumerate}	
-Tomamos como comienzo del recorrido a un vértice arbitrario $v$, con la restricción en el caso (b) de que $\delta(v)$ sea  impar.  
+Tenemos una grafo $G$ con  $n$ vértices numerados $0,1,\ldots,n-1$,  $G$ se representa por  una lista de adyacencia, es decir $G[i]$  es la lista de vértices adyacentes a $i$.  Tomamos como comienzo del recorrido el vértice arbitrario $0$.
 
 
 %\vskip .4cm
 {%\centering
 \begin{minipage}{400pt}
-\noindent {\sc Caminata euleriana }
+\noindent {\sc Caminata euleriana } %revisar,  el algoritmo esta cmal
 \vskip .2cm
 \begin{small}
 \begin{verbatim}
-# pre: G grafo, v vértice de G (G y v en las condiciones de arriba)
-# post: devuelve 'recorrido' la lista de vertices de la caminata
-#       euleriana. La caminata empieza desde v.
-recorrido = [v]  # lista de vértices recorridos
-libres = lista de adyacencia de G  
-usados = lista de adyacencia con los vértices de G y sin aristas  
-pos = v  # nos ubicamos en el primer vértice
-while len(libres[pos]) > 0:
-   prox = libres[pos][1]  # 'pos, prox' arista no utilizada
-   recorrido.append(prox)  # agrega prox a recorrido 
-   libres = quitar de libres la arista 'pos, prox'
-   usados = agregar a usados la arista 'pos, prox'
-   pos = prox  # nos ubicamos en el próximo vértice
+# pre: G grafo, 0 vértice de G 
+# post: devuelve 'circuito' una lista de vertices que forma una caminata
+#       euleriana. La caminata empieza en 0 (y terminará en 0).
+circuito = [0]  # caminata
+libres = G
+# libres representa las aristas no usadas en la caminata 
+usados = ista de adyacencia con los vértices de G y sin aristas 
+# usados:lista de adyacencia con los vértices de G y sin aristas  
+# usados representa las aristas usadas en la caminata
+tocados = [0]
+# tocados representa los vértices por los cuales pasó la caminata
+while enclibr(libres, tocados) != -1:
+   # enclibr: listas de adyacencia -> vértices
+   # enclibr(libres, tocados) devuelve j en tocados tq libres[j] no es vacío. 
+   # En caso contrario, devuelve -1 (representa vacío) 
+   pos0 = enclibr(libres, tocados)
+   p0 = pos0
+   p1 = libres[pos0][0]
+   aux = [pos0] # será el circuito a partir de pos0
+   while p1 != pos0: # mientras no se vuelva al origen
+      aux.append(p1)  # agrega p1 a aux 
+      tocados.append(p1)  # agrega p1 a tocados
+      quitar_arista(libres, [p0, p1]) # quita de libres la arista 'p0, p1'
+      agregar_arista(usados, [p0, p1]) # agregar a usados la arista 'p0, p1'
+      p0 = p1 
+      p1 = libres[p0][0]
+   aux.append(aux[0]) # completa aux a circuito
+   quitar_arista(libres, [p0, p1]) # quita de libres la arista 'p0, p1'
+   agregar_arista(usados, [p0, p1]) # agregar a usados la arista 'p0, p1'
+   inserta_circuito(circuito, aux) # inserta aux en circuito
+   pos0 = enclibr(libres, tocados)
+return circuito	
 \end{verbatim}
 \end{small}
 \end{minipage}

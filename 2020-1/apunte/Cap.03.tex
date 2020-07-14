@@ -596,25 +596,28 @@ $$
 d =  s_{2}r_{0} +t_{2}r_{1} = s_{2}a +t_{2}b.
 $$
 
+\begin{ejemplo}
+	 Encontrar usando el algoritmo de Euclides $d = \operatorname{mcd}( 470, 55)$ y expresar $d$  como combinación lineal entera entre  $470$ y $55$.
+\end{ejemplo}
+\begin{proof}[Solución]
+	\begin{alignat*}4
+	470&=55 \cdot 8 +30&\quad\Rightarrow\quad &30 &=&470 + (-8)\cdot 55&\qquad (1)&\\
+	55&=30 \cdot 1 + 25&\quad\Rightarrow\quad &25 &=&55 +(-1)\cdot 30&\qquad (2)&\\
+	30&=25 \cdot 1+5&\quad\Rightarrow\quad &5 &=&30 +(-1) \cdot 25&\qquad (3)& \\
+	25&=5\cdot 5+0.&&&&&&
+	\end{alignat*}
+	Luego,  el máximo común divisor de $470$ y $55$ es $5$ y de las fórmulas anteriores obtenemos:
+	\begin{alignat*}3
+	5 &= 30 +(-1) \cdot 25& &\qquad \text{(por $(3)$)} && \\
+	&= 30 + (-1) \cdot (55 +(-1)\cdot 30) = 2 \cdot 30 + (-1) \cdot 55& &\qquad \text{(por $(2)$)}&& \\   
+	&=  2 \cdot (470 + (-8)\cdot 55) + (-1) \cdot 55 = 2 \cdot 470 +(-17)\cdot 55& &\qquad \text{(por $(1)$)}&&\\    
+	\end{alignat*}
+	De este modo, la expresión requerida $d=sa+tb$ es
+	$$
+	5=2 \cdot 470 +(-17)\cdot 55.
+	$$
+\end{proof}
 
-
-Por el ejemplo, de los cálculos usados para encontrar el mcd de 470 y 55 obtenemos
-\begin{alignat*}4
-470&=55 \cdot 8 +30&\quad\Rightarrow\quad &30 &=&470 + (-8)\cdot 55&\qquad (*)&\\
-55&=30 \cdot 1 + 25&\quad\Rightarrow\quad &25 &=&55 +(-1)\cdot 30&\qquad (**)&\\
-30&=25 \cdot 1+5&\quad\Rightarrow\quad &5 &=&30 +(-1) \cdot 25&\qquad (***)& \\
-25&=5\cdot 5+0.&&&&&&
-\end{alignat*}
-Luego
-\begin{alignat*}3
-5 &= 30 +(-1) \cdot 25& &\qquad \text{(por $(***)$)} && \\
-&= 30 + (-1) \cdot (55 +(-1)\cdot 30) = 2 \cdot 30 + (-1) \cdot 55& &\qquad \text{(por $(**)$)}&& \\   
-&=  2 \cdot (470 + (-8)\cdot 55) + (-1) \cdot 55 = 2 \cdot 470 +(-17)\cdot 55& &\qquad \text{(por $(*)$)}&&\\    
-\end{alignat*}
-De este modo, la expresión requerida $d=sa+tb$ es
-$$
-5=2 \cdot 470 +(-17)\cdot 55.
-$$
 
 
 
@@ -824,10 +827,10 @@ Luego si un entero $m\ge 2$ no es un primo si  y sólo si existe  $m_1$ divisor 
 Enfaticemos que de acuerdo a la definición, 1 {\it no} es primo.
 
 Los primeros primos (los  menores que $100$) son
-$$
-2,\ 3,\ 5,\ 11,\ 17,\ 19,\ 23,\ 129,\ 31,\ 37,\ 41,\ 47,\ 
-49,\ 53,\ 59,\ 61,\ 67,\ 71,\ 79,\ 83,\ 89,\ 91,\ 97.
-$$
+\begin{center}
+	$2$, $3$, $5$, $7$, $11$, $13$, $17$, $19$, $23$, $29$, $31$, $37$, $41$, $43$, $47$, $53$, $59$, $61$, $67$, $71$, $73$, $79$, $83$, $89$ y $97$.
+\end{center}
+
 
 
 \begin{observacion}[Criba de Eratóstenes *] Un forma de encontrar números primos es con la \emph{criba de Eratóstenes.} Es un algoritmo que permite hallar todos los números primos menores que un número natural dado $n$. Se forma una lista con todos los números naturales comprendidos entre $2$ y $n$, y se van tachando los números que no son primos de la siguiente manera: comenzando por el 2, se tachan todos sus múltiplos; comenzando de nuevo, cuando se encuentra un número entero que no ha sido tachado, ese número es declarado primo, y se procede a tachar todos sus múltiplos y así sucesivamente. El proceso termina cuando alcanzamos $n$. 

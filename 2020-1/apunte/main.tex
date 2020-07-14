@@ -1,5 +1,5 @@
 % PDFLaTeX
-\documentclass[a4paper,12pt,twoside,spanish]{book}
+\documentclass[a4paper,12pt,twoside,spanish]{amsbook}
 %\documentclass[a4paper,11pt,twoside]{book}
 %\documentclass[a4paper,11pt,twoside,spanish]{amsbook}
 
@@ -10,7 +10,19 @@
 \tolerance=10000
 \renewcommand{\baselinestretch}{1.3}
 
-\renewcommand{\familydefault}{\sfdefault} % la fotn por default es sans serif
+\renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
+\usepackage[T1]{fontenc}
+
+% Para hacer el  indice en linea de comando hacer 
+% makeindex main
+%% En http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf hay ejemplos de packages de fonts libres, como los siguientes:
+%\usepackage{cmbright}
+%\usepackage{pxfonts}
+%\usepackage[varg]{txfonts}
+%\usepackage{ccfonts}
+%\usepackage[math]{iwona}
+%\usepackage[math]{kurier}
+
 
 \usepackage{t1enc}
 %\usepackage[spanish]{babel}
@@ -35,7 +47,7 @@
 \usepackage{stackrel}
 \usepackage{enumerate}
 \usepackage{tkz-graph}
-\usepackage{makeidx}
+%\usepackage{makeidx}
 \makeindex
 
 %%%----------------------------------------------------------------------------
@@ -90,9 +102,9 @@
 \renewcommand{\figurename }{Figura }
 \renewcommand{\tablename }{Tabla }
 \renewcommand{\proofname}{Demostraci\'on}
-\renewcommand{\appendixname }{Ap\'endice }
+\renewcommand{\appendixname }{}
 \renewcommand{\contentsname }{Contenidos }
-\renewcommand{\chaptername }{Cap\'\i tulo }
+\renewcommand{\chaptername }{}
 \renewcommand{\bibname }{Bibliograf\'\i a }
 
 
@@ -192,17 +204,18 @@
 %%%--------------------------------------------------------------------------
 %%% CAPÍTULOS 
 %%%--------------------------------------------------------------------------
- \usepackage{titlesec}%--
+\usepackage{titlesec}%--
  	\newcommand{\hsp}{\hspace{15pt}}
  		\titleformat{\chapter}[hang]{\huge\bfseries}{{
  					\fontsize{6em}{6em}\selectfont
  					\thechapter}\hsp%\textcolor{}%
  					{\vrule height 4em width 3pt}\hsp}{0pt}{\huge\bfseries}
+
 %--------------------------------------------------------------------------
 %--------------------------------------------------------------------------
 % SECCIONES 
 %--------------------------------------------------------------------------
- \usepackage{titlesec}
+\usepackage{titlesec}
  	\titleformat{\section}[frame]{\normalfont}%
  	{\filright\footnotesize\enspace \large {\large SECCIÓN \thesection} \enspace}%
  	{8pt}{\huge\bfseries\filcenter}
@@ -268,7 +281,7 @@ ${}^{}$
 \flushleft 
 \begin{itemize}
 \item \textbf{Obra original:} coordinada y escrita por Alejandro Tiraboschi. 
-\item \textbf{Colaboración: } Daniel Penazzi, colaborador  de la sección ``El criptosistema RSA'' y autor principal del apéndice de grafos planares. Fernando Levstein colaborador en la sección ``Máximo común divisor y mínimo común  múltiplo''.   
+\item \textbf{Colaboración: } Daniel Penazzi, colaborador  de la sección ``El criptosistema RSA'' y autor principal del apéndice de grafos planares. Fernando Levstein colaborador en la sección ``Máximo común divisor y mínimo común múltiplo''.   
 \item \textbf{Correcciones y sugerencias:} Pedro Pury, Romina Arroyo, Leandro Cagliero, Fredy Restrepo, Patricia Kysbye. 
 \end{itemize}
 }

@@ -117,9 +117,7 @@ Tanto formalismo, como el usado en las demostraciones realizadas en el ejemplo a
 $$
 a+0= a, \qquad a+0'=a
 $$
-para todo $a$ de $\mathbb Z$. Demostrar que esto implica $0=0'$,
-por lo tanto $0$ está en realidad caracterizado de manera única por
-el axioma ({\bf I4}) y es llamado el {\em el} elemento neutro de la suma.
+para todo $a$ de $\mathbb Z$. 
 \end{ejemplo}
 \begin{proof}
 \begin{alignat*}2
@@ -128,6 +126,10 @@ el axioma ({\bf I4}) y es llamado el {\em el} elemento neutro de la suma.
 &= 0' &\qquad &\text{axioma ({\bf I4}) aplicado a $0'$ y con $0$ como neutro}.
 \end{alignat*}
 \end{proof}
+
+
+El ejemplo anterior nos demuestra que hay un único elemento elemento que cumple el axioma ({\bf I4}) en lo que respecta a la suma. A este elemento lo denotamos $0$ y lo denominamos el {\em elemento neutro de la suma}. Lo mismo podemos probar con el elemento neutro respecto al producto (ver ejercicio \ref{ej-elem-neutro-prod}),  es decir hay un único elemento,  denotado 1, que satisface el axioma ({\bf I4}) en lo que se refiere al producto. A  este elemento lo llamamos el {\em elemento neutro del producto}.  
+
 
 %
 %\begin{ejercicio} Probar que hay un único elemento neutro del producto.
@@ -178,7 +180,7 @@ Algunos resultados similares pueden encontrarse en los siguientes ejercicios. Co
 \item Como siempre $x^2$ denota $xx$. Demostrar que dados dos enteros $a$ y $b$ tal que $a+b \not=0$, entonces existe un único $c$ tal que $(a+b)c=
 a^2 - b^2$.
 
-\item Probar que hay un único elemento neutro del producto.
+\item \label{ej-elem-neutro-prod}Probar que hay un único elemento neutro del producto.
 
 \item \label{ej0a}
 La siguiente es una demostración de la fórmula $0x=0$ usando solo los axiomas planteados antes. Escribir la demostración completa, explicando que axioma es usado en cada paso.
@@ -348,7 +350,7 @@ vacío y tiene una cota inferior, entonces $X$ tiene un mínimo.
 \end{enumerate}
 
 El axioma ({\bf I12}) es conocido como el {\em axioma del buen orden}\index{axioma del buen orden} o {\em principio de buena ordenación}\index{principio de buena ordenación}. 
-Una buena forma de entender su significado es considerar $X$ un conjunto de entero acotado inferiormente  y un juego en el cual dos personas eligen alternativamente un
+Una buena forma de entender su significado es considerar $X$ un conjunto de enteros acotado inferiormente  y un juego en el cual dos personas eligen alternativamente un
 elemento de $X$, sujetos a la regla de que cada número debe ser
 estrictamente menor que el anterior. El axioma nos dice que cuando
 los números son enteros, el juego terminará; además el final se
