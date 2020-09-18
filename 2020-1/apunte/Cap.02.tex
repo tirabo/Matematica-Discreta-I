@@ -987,13 +987,9 @@ buscábamos.
 
 \begin{observacion}[Definición de $0^0$] No hay consenso matemático en cual es el valor de $0^0$, pues dependiendo del contexto puede ser conveniente definir su valor de cierta forma o declarar su valor como \textit{indeterminado} (ver el artículo de Wikipedia  \href{https://es.wikipedia.org/wiki/Cero_a_la_cero}{Cero  a la cero}). 
 	
-	Sin embargo,  para su uso  en álgebra, así como en combinatoria se considera conveniente  definir  $0^0 =1$. ¿Cuál es la razón para darle este valor? Existen varias razones, pero una de las más importantes proviene del teorema del binomio: observemos que 
+	Sin embargo,  para su uso  en álgebra, así como en combinatoria se considera conveniente  definir  $0^0 =1$. ¿Cuál es la razón para darle este valor? Existen varias razones, pero una de las más importantes proviene del teorema del binomio. Observemos que por el teorema del binomio
 	\begin{equation*}
-		(1 + x)^n = \sum_{i=0}^{n}\binom{n}{i} x^i
-	\end{equation*}
-	En particular, para $x=0$, la ecuación es
-	\begin{equation*}
-	1^n = \sum_{i=0}^{n}\binom{n}{i} 0^i.
+		(1 +0)^n = \sum_{i=0}^{n}\binom{n}{i}1^{n-1} 0^i =  \sum_{i=0}^{n}\binom{n}{i} 0^i.
 	\end{equation*}
 	Es claro que para $i>0$, $0^i = 0 \cdot \ldots \cdot 0 =0$, luego la ecuación se reduce a
 	\begin{equation*}
