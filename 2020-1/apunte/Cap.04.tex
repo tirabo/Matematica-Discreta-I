@@ -63,7 +63,7 @@ $$
 
 Es fácil verificar que la {congruencia módulo} $m$ verifica las
 siguientes propiedades
-\begin{enumerate}[a)]
+\begin{enumerate}[label=(\alph*)]
 \item
 Es {\it {reflexiva}} es decir $x\equiv x\pmod{m}$.
 \item
@@ -93,10 +93,10 @@ $$
 x_1 \equiv x_2 \pmod{m}, \qquad y_1 \equiv y_2 \pmod{m}.
 $$
 Entonces
-\begin{enumerate}[a)]
+\begin{enumerate}[label=(\alph*)]
 \item $ x_1+ y_1 \equiv x_2+ y_2 \pmod{m}$,
-\item $x_1 y_1 \equiv x_2 y_2 \pmod{m}$,
-\item Si $x \equiv y \pmod{m}$  y $j \in  \mathbb N$, entonces $x^j \equiv y^j \pmod{m}$.
+\item  $x_1 y_1 \equiv x_2 y_2 \pmod{m}$,
+\item  Si $x \equiv y \pmod{m}$  y $j \in  \mathbb N$, entonces $x^j \equiv y^j \pmod{m}$.
 \end{enumerate}
 \end{teorema}
 \begin{proof}
@@ -197,9 +197,9 @@ consecuencia el cálculo está errado.
 
 \subsection*{\Large $\S$ Ejercicios}
 %\addcontentsline{toc}{subsection}{Ejercicios}
-\begin{enumerate}[1)]
+\begin{enumerate}
 \item Sin hacer ninguna ``multiplicación larga'' probar que
-\begin{enumerate}[a)]
+\begin{enumerate}
 	\item $1\,234\,567 \cdot 90\,123 \equiv 1 \pmod{10}$
 	
 	\item $2468 \cdot 13\,579 \equiv -3 \pmod{25}$
@@ -210,12 +210,12 @@ consecuencia el cálculo está errado.
 %\end{aligned}
 %$$
 \item Usar la regla del nueve para verificar que dos de las siguientes ecuaciones son falsas. ?`Qué se puede decir de la otra ecuación?
-\begin{enumerate}[a)]
-	\item $5783 \cdot 40\,162  = 233\,256\,846 ,$
+\begin{enumerate}
+	\item  $5783 \cdot 40\,162  = 233\,256\,846 ,$
 	
-	\item $9787 \cdot 1258  = 12\,342\,046 , $
+	\item  $9787 \cdot 1258  = 12\,342\,046 , $
 	
-	\item $ 8901 \cdot 5743  = 52\,018\,443 .$
+	\item  $ 8901 \cdot 5743  = 52\,018\,443 .$
 \end{enumerate}
 %$$\begin{aligned}
 %\text{(i)}  \quad &5783 \times 40\,162  = 233\,256\,846 , \\
@@ -326,16 +326,16 @@ $$
 con $\mcd(a,m)|b$
 
 
-\begin{enumerate}[a)]
-\item Encontrar, usando el algoritmo de Euclides, $r,s$ tales que 
+\begin{enumerate}[label=(\alph*)]
+\item  Encontrar, usando el algoritmo de Euclides, $r,s$ tales que 
 \begin{equation}\label{elc2}
 d =\mcd(a,m) = ra+sm.
 \end{equation}
-\item Como $d|b$, tenemos que $b = td$ y multiplicamos la ecuación (\ref{elc2}) por $t$: $$dt =  (rt)a+(st)m.$$
-\item $b = dt = (rt)a+(st)m \equiv (rt)a \pmod{m}$. 
+\item  Como $d|b$, tenemos que $b = td$ y multiplicamos la ecuación (\ref{elc2}) por $t$: $$dt =  (rt)a+(st)m.$$
+\item  $b = dt = (rt)a+(st)m \equiv (rt)a \pmod{m}$. 
 
 Luego $x_0 = rt$ es solución de la ecuación lineal de congruencia. 
-\item Toda solución de la ecuación lineal de congruencia es $x= x_0+ k(m/d)$ con $k \in \mathbb Z$.
+\item  Toda solución de la ecuación lineal de congruencia es $x= x_0+ k(m/d)$ con $k \in \mathbb Z$.
 \end{enumerate}
 
 %\vskip .3cm
@@ -349,8 +349,8 @@ Observemos que, en las hipótesis del teorema, si $\mcd(a,m) =1$, entonces siemp
 \end{ejemplo}
 \begin{proof}
 Hagamos, paso a paso, el procedimiento explicado anteriormente.
-\begin{enumerate}[(a)]
-\item 
+
+(a) 
 Usando  el algoritmo de Euclides obtenemos el  $\mcd(13,15)$.
 \begin{align*}
 15 &=  13 \cdot 1 + 2 \\
@@ -368,13 +368,15 @@ Es decir
 1 = 13\cdot 7 - 15\cdot 6. 
 \end{equation}
 
-\item Multiplicando la ecuación (\ref{eq1315}) por $7$ obtenemos
+(b) Multiplicando la ecuación (\ref{eq1315}) por $7$ obtenemos
 $$
 7 = 13\cdot 49 - 15\cdot 42. 
 $$
-\item Luego $13 \cdot 49 \equiv 7 \pmod{15}$, es decir $49$ es solución de la ecuación y todas las soluciones son de la forma 
+
+
+(c) Luego $13 \cdot 49 \equiv 7 \pmod{15}$, es decir $49$ es solución de la ecuación y todas las soluciones son de la forma 
  $x=49 + 15k$.
-\end{enumerate}
+
 Debemos ver ahora cuales soluciones $x$ cumplen $0\le x< 15$. La forma más sencilla de hacerlo es buscando por tanteo: $49+15(-1)=34$, $49+15(-2)=19$, , $49+15(-3)=4$, $49+15(-4)=-11$.
 Es decir la solución que buscamos es $x=4$.  
 \end{proof}
@@ -386,8 +388,8 @@ Es decir la solución que buscamos es $x=4$.
 50 \pmod{76}$ con $0\le x< 76$.
 \end{ejemplo}
 \begin{proof} Como antes, hagamos paso a paso el procedimiento explicado anteriormente.
-\begin{enumerate}[(a)]
-\item 
+
+(a)
 Usando  el algoritmo de Euclides obtenemos el  $\mcd(42,76)$.
 \begin{align*}
 76 &=  42 \cdot 1 + 34 \\
@@ -407,13 +409,14 @@ $$
 2 = (-9) \cdot 42 + 5 \cdot 76.
 $$
 
-\item $50 = 2\cdot 25$ y tenemos  que 
+(b) $50 = 2\cdot 25$ y tenemos  que 
 \begin{align*}
 50 &= (-9\cdot 25) \cdot 42 + (5 \cdot 25) \cdot 76 \\
 50 &= (-225) \cdot 42 + 125 \cdot 76
 \end{align*}
-\item Luego $x_0 = -225$ es una solución de la ecuación lineal de congruencia y todas las soluciones son de la forma $-225 + (76/2)k$, es decir $x = -225 + 38k$.
-\end{enumerate}
+
+(c) Luego $x_0 = -225$ es una solución de la ecuación lineal de congruencia y todas las soluciones son de la forma $-225 + (76/2)k$, es decir $x = -225 + 38k$.
+\vskip .1cm
 Debemos ver ahora cuales soluciones $x$ cumplen $0\le x< 76$. Como en el caso anterior podemos hacer esto por tanteo, pero en aquí la forma más sencilla de hacerlo es escribir las inecuaciones
 \begin{align*}
 0&\le -225 + 38k < 76 \\
@@ -429,7 +432,7 @@ Luego $k = 6$ o $k =7$ y entonces $x_1 = -225 + 38\cdot 6 = 3$ y $x_2 = -225 + 3
 \subsection*{\Large $\S$ Ejercicios}
 %\addcontentsline{toc}{subsection}{Ejercicios}
 Resolver las siguientes ecuaciones lineales de congruencia
-\begin{enumerate}[1)]
+\begin{enumerate}
 \item $2x \equiv 1 \pmod{7}$,
 
 \item $3\,970\, x \equiv 560 \pmod{2755}$.
@@ -445,9 +448,9 @@ El siguiente lema nos sirve de preparación para la demostración
 del Teorema (o fórmula) de Fermat.
 
 \begin{lema} \label{l4.3} Sea $p$ un número primo, entonces
-\begin{enumerate}[a)]
-\item $p|\binom{p}{r}$, con $0< r <p$,
-\item $(a+b)^p \equiv a^p+b^p \pmod{p}$.
+\begin{enumerate}[label=(\alph*)]
+\item  $p|\binom{p}{r}$, con $0< r <p$,
+\item  $(a+b)^p \equiv a^p+b^p \pmod{p}$.
 \end{enumerate}
 \end{lema}
 \begin{proof}
@@ -519,7 +522,7 @@ $$
 %\begin{subsection}{Ejercicios}
 \subsection*{\Large $\S$ Ejercicios}
 %\addcontentsline{toc}{subsection}{Ejercicios}
-\begin{enumerate}[1)]
+\begin{enumerate}
 \item Usar el teorema de Fermat para calcular el resto de dividir
 $3^{47}$ por $23$.
 
@@ -622,9 +625,9 @@ La existencia de $d$ está garantizada por el teorema \ref{elc} (ecuación linea
 
 %\vskip .3cm 
 El receptor de mensajes publicita la clave pública $(e,n)$. Obviamente no da a conocer ni $p$, ni $q$ y mantiene segura la clave privada $d$. Como mencionamos anteriormente, el envío del mensaje y su decodificación requiere dos pasos
-\begin{enumerate}[a)]
-\item El  emisor desea \emph{encriptar }un número $m \in \{0,\ldots,n-1\}$ y para ello calcula $c \equiv m^e \pmod{n}$ y  envía $c$ al receptor.
-\item El receptor desea \emph{desencriptar} el mensaje, es decir usando la clave pública $(e,n)$ y $c$ desea recuperar $m$: calcula $c^d \pmod{n}$ y veremos a continuación que este número es $m$. 
+\begin{enumerate}[label=(\alph*)]
+\item  El  emisor desea \emph{encriptar }un número $m \in \{0,\ldots,n-1\}$ y para ello calcula $c \equiv m^e \pmod{n}$ y  envía $c$ al receptor.
+\item  El receptor desea \emph{desencriptar} el mensaje, es decir usando la clave pública $(e,n)$ y $c$ desea recuperar $m$: calcula $c^d \pmod{n}$ y veremos a continuación que este número es $m$. 
 \end{enumerate}
 
 \begin{proposicion} \label{rsa}Si $m \in \{0,\ldots,n-1\}$ y $c = m^e \pmod{n}$, entonces $$m= c^d \pmod{n}.$$
@@ -705,13 +708,13 @@ Lo interesante de esto es que si el receptor envía $m$ (el mensaje) y $b$ (la c
 \begin{ejemplo}
 Como ya hemos mencionado, podemos ver que el RSA también puede ser usado para un sistema de \emph{autenticación}, es decir es posible comprobar quien es la persona que envía el mensaje. Veamos una forma de hacerlo: la persona $A$ tiene clave pública $(e,n)$ y clave privada $d$ y   la persona $B$  tiene clave pública $(e',n')$ y clave privada $d'$. 
 
-\begin{enumerate}[a)]
-\item La persona $B$ desea enviar un mensaje $m$ (en forma segura) a la persona $A$ y quiere certificar que el mensaje fue enviado por él.
-\item $B$ calcula $x \equiv m^{d'} \pmod{n'}$. Es decir encripta su mensaje usando su  clave privada.
-\item Ahora $B$ codifica $m$ y $x$ con la clave pública de $A$, es decir calcula $c \equiv m^{e} \pmod{n}$ e  $y \equiv x^e \pmod{n}$. 
-\item $B$ envía $c$ e $y$ al receptor $A$.
-\item La persona $A$ recupera $m$ y $x$ calculando  $m \equiv c^d \pmod{n}$ y  $x \equiv y^d \pmod{n}$. 
-\item $A$ comprueba que el mensaje  proviene de $B$ o, mejor dicho, proviene de la persona con clave pública $(e',n')$, verificando que $m \equiv x^{e'} \pmod{n'}$. 
+\begin{enumerate}[label=(\alph*)]
+\item  La persona $B$ desea enviar un mensaje $m$ (en forma segura) a la persona $A$ y quiere certificar que el mensaje fue enviado por él.
+\item  $B$ calcula $x \equiv m^{d'} \pmod{n'}$. Es decir encripta su mensaje usando su  clave privada.
+\item  Ahora $B$ codifica $m$ y $x$ con la clave pública de $A$, es decir calcula $c \equiv m^{e} \pmod{n}$ e  $y \equiv x^e \pmod{n}$. 
+\item  $B$ envía $c$ e $y$ al receptor $A$.
+\item  La persona $A$ recupera $m$ y $x$ calculando  $m \equiv c^d \pmod{n}$ y  $x \equiv y^d \pmod{n}$. 
+\item  $A$ comprueba que el mensaje  proviene de $B$ o, mejor dicho, proviene de la persona con clave pública $(e',n')$, verificando que $m \equiv x^{e'} \pmod{n'}$. 
 \end{enumerate}
 
 
@@ -721,12 +724,12 @@ Como ya hemos mencionado, podemos ver que el RSA también puede ser usado para u
 \section{Ejercicios}
 %\subsection*{\Large $\S$ Ejercicios}
 %\addcontentsline{toc}{subsection}{Ejercicios}
-\begin{enumerate}[1)]
+\begin{enumerate}
 \item Determinar todas las posibles soluciones de las congruencias
-\begin{enumerate}[a)]
-	\item $5x\equiv1 \pmod{11},$
+\begin{enumerate}
+	\item  $5x\equiv1 \pmod{11},$
 	
-	\item $5x\equiv 7 \pmod{15}.$
+	\item  $5x\equiv 7 \pmod{15}.$
 \end{enumerate}
 %$$
 %\text{(i)}\quad 5x\equiv1 \pmod{11},\qquad\, \text{(ii)}\quad
@@ -735,7 +738,7 @@ Como ya hemos mencionado, podemos ver que el RSA también puede ser usado para u
 \item Sin hacer demasiadas cuentas verifique que
 $192\,837\,465\,564\,738\,291$ es divisible por $11$.
 \item Resolver la ecuaciones
-\begin{enumerate}[a)]
+\begin{enumerate}
 \item $5x\equiv12 \pmod{13},$
 
 \item $x^2-x \equiv 1 \pmod{11}.$

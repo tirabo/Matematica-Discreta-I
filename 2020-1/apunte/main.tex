@@ -1,17 +1,9 @@
 % PDFLaTeX
-\documentclass[a4paper,12pt,twoside,spanish]{amsbook}
-%\documentclass[a4paper,11pt,twoside]{book}
-%\documentclass[a4paper,11pt,twoside,spanish]{amsbook}
-
+\documentclass[a4paper,12pt,twoside,spanish,reqno]{amsbook}
 %%%---------------------------------------------------
 
-
-\usepackage{etex}
-\tolerance=10000
-\renewcommand{\baselinestretch}{1.3}
-
-\renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
-\usepackage[T1]{fontenc}
+%\renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
+%\usepackage[T1]{fontenc}
 
 % Para hacer el  indice en linea de comando hacer 
 % makeindex main
@@ -21,11 +13,10 @@
 %\usepackage[varg]{txfonts}
 %\usepackage{ccfonts}
 %\usepackage[math]{iwona}
-%\usepackage[math]{kurier}
+\usepackage[math]{kurier}
 
-
+\usepackage{etex}
 \usepackage{t1enc}
-%\usepackage[spanish]{babel}
 \usepackage{latexsym}
 \usepackage[utf8]{inputenc}
 \usepackage{verbatim}
@@ -40,17 +31,25 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows}
 \usetikzlibrary{matrix}
-%\usetikzlibrary{graphs}
-%\usepackage{tikz-3dplot} %for tikz-3dplot functionality
-%\usepackage{pgfplots}
 \usepackage{mathtools}
 \usepackage{stackrel}
-\usepackage{enumerate}
+\usepackage{enumitem}
 \usepackage{tkz-graph}
 %\usepackage{makeidx}
-\makeindex
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+\usepackage{hypcap}
 
-%%%----------------------------------------------------------------------------
+
+
+%%% FORMATOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
 \usepackage[a4paper, top=3cm, left=3cm, right=2cm, bottom=2.5cm]{geometry}
 %% CONTROLADORES DE.
 % Tamaño de la hoja de impresión.
@@ -65,15 +64,47 @@
 %%%%\rightmargin 2.5cm
 %\topmargin 0.5 cm
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% CONTROLADORES DE ESTILO %%%
+%%%--------------------------------------------------------------------------
+%%% CAPÍTULOS 
+%%%--------------------------------------------------------------------------
+\usepackage{titlesec}%--
+\newcommand{\hsp}{\hspace{15pt}}
+\titleformat{\chapter}[hang]{\huge\bfseries}{{
+		\fontsize{6em}{6em}\selectfont
+		\thechapter}\hsp%\textcolor{}%
+	{\vrule height 4em width 3pt}\hsp}{0pt}{\huge\bfseries}
 
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=cyan,
-}
-\usepackage{hypcap}
+%--------------------------------------------------------------------------
+%--------------------------------------------------------------------------
+% SECCIONES 
+%--------------------------------------------------------------------------
+\usepackage{titlesec}
+\titleformat{\section}[frame]{\normalfont}%
+{\filright\footnotesize\enspace \large {\large SECCIÓN \thesection} \enspace}%
+{8pt}{\huge\bfseries\filcenter}
+%%%--------------------------------------------------------------------------	
+%%% algoritmos %%%
+%% Antes: "pip  install Pygments"
+%% Entrar a la configuración del texmaker o Kile y en órdenes de pdflatex poner
+%% pdflatex -shell-escape -synctex=1 -interaction=nonstopmode %.tex
+%\usepackage{minted}
+%\newminted{python}{frame=lines, mathescape} %con eso usar \begin{pythoncode} ... \end{pythoncode}
+%\usepackage{clrscode3e}
+%% nota, para sistener las fount si o si, se tienen que compilar con XeleTeX %%
+%-------------------------------
+%% INTRA TEXTO                %%
+\usepackage{setspace}
+%\setlength{\parindent}{0,7cm}% tamaño de sangria.
+\setlength{\parskip}{0,4cm} % separación entre parrafos.
+\renewcommand{\baselinestretch}{0.90}% separacion del interlineado
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\end{comment}
+%%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 
 \renewcommand{\thesection}{\thechapter.\arabic{section}}
@@ -198,57 +229,7 @@
 \newcommand{\principio}[1]{\vskip .3 cm \centerline{\sc #1} \vskip .3cm}
 \makeindex
 
-%\begin{comment}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% CONTROLADORES DE ESTILO %%%
-%%%--------------------------------------------------------------------------
-%%% CAPÍTULOS 
-%%%--------------------------------------------------------------------------
-\usepackage{titlesec}%--
- 	\newcommand{\hsp}{\hspace{15pt}}
- 		\titleformat{\chapter}[hang]{\huge\bfseries}{{
- 					\fontsize{6em}{6em}\selectfont
- 					\thechapter}\hsp%\textcolor{}%
- 					{\vrule height 4em width 3pt}\hsp}{0pt}{\huge\bfseries}
 
-%--------------------------------------------------------------------------
-%--------------------------------------------------------------------------
-% SECCIONES 
-%--------------------------------------------------------------------------
-\usepackage{titlesec}
- 	\titleformat{\section}[frame]{\normalfont}%
- 	{\filright\footnotesize\enspace \large {\large SECCIÓN \thesection} \enspace}%
- 	{8pt}{\huge\bfseries\filcenter}
-%%%--------------------------------------------------------------------------	
-
-
-
-%%% algoritmos %%%
-%% Antes: "pip  install Pygments"
-%% Entrar a la configuración del texmaker o Kile y en órdenes de pdflatex poner
-%% pdflatex -shell-escape -synctex=1 -interaction=nonstopmode %.tex
-%\usepackage{minted}
-%\newminted{python}{frame=lines, mathescape} %con eso usar \begin{pythoncode} ... \end{pythoncode}
-%\usepackage{clrscode3e}
-%% nota, para sistener las fount si o si, se tienen que compilar con XeleTeX %%
-
-
-%-------------------------------
-%% INTRA TEXTO                %%
-%% FOUNTS-SANGRIAS-ESPACIADOS %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\usepackage{fontspec} % cambiar de tipografia, compilar con Xelatex, Lualatex.
-%\setmainfont{Brandon Grotesque} % familia de tipografia de todo el documento.
-
-\usepackage{setspace}
-%\setlength{\parindent}{0,7cm}% tamaño de sangria.
-\setlength{\parskip}{0,4cm} % separación entre parrafos.
-\renewcommand{\baselinestretch}{0.90}% separacion del interlineado
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%													%%%%%%%%%%%%%%%
-%\end{comment}
 
 
 
@@ -261,10 +242,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% CUERPO DEL DOCUMENTO %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\makeindex
 \begin{document}
 \baselineskip=0.55truecm %original
-%\baselineskip=0.43truecm
+
 
 
 

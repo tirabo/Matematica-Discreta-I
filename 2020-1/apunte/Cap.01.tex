@@ -174,7 +174,7 @@ Algunos resultados similares pueden encontrarse en los siguientes ejercicios. Co
 \subsection*{\Large $\S$ Ejercicios}
 %\addcontentsline{toc}{subsection}{Ejercicios}
 
-\begin{enumerate}[1)]
+\begin{enumerate}
 \item Demostrar la regla $(a+b)c=ac+bc$, explicando cada paso.
 
 \item Como siempre $x^2$ denota $xx$. Demostrar que dados dos enteros $a$ y $b$ tal que $a+b \not=0$, entonces existe un único $c$ tal que $(a+b)c=
@@ -228,7 +228,7 @@ $$
 
 Esta claro que podemos definir los otros símbolos de orden $>$,
 $\le$ y $\ge$, en términos de los símbolos $<$ e $=$. Diremos que $m>n$ si  $n<m$, diremos que $m \le n$ si $m<n$ o $m=n$. Finalmente, diremos que $m \ge n$ si $m > n$ o $m=n$.  Es importante notar que el  axioma ({\bf I11}) tiene una versión valedera para estos nuevos símbolos.
-\begin{enumerate}[a)]
+\begin{enumerate}[label=(\alph*)]
 \item {\bf ($>$)} Si $a > b$ y $c>0$, entonces $ac > bc$.
 \item {\bf ($\le$)} Si $a \le b$ y $0 \le c$, entonces $ac \le bc$.
 \item {\bf ($\ge$)} Si $a\ge b$ y $c\ge 0$, entonces $ac \ge bc$.
@@ -237,7 +237,7 @@ Usando las definiciones de $\ge$, $<$, $>$ y el axioma ({\bf I11}) original es m
 
 \begin{proposicion}\label{prop-compatibilidad-negativa}
 	Sean $a, b, c \in \ZZ$.  
-	\begin{enumerate}[a)]
+	\begin{enumerate}[label=(\alph*)]
 		\item Si $c < 0$, entonces $0 < -c$.
 		\item Si $a< b$ y $c< 0$, entonces $ac > bc$. 
 	\end{enumerate}
@@ -452,7 +452,7 @@ El  absurdo  vino de suponer que existe $a \in \mathbb Z$ tal que   $0<a<1$.
 
 
 
-\begin{enumerate}[1)]
+\begin{enumerate}
 		\item Demostrar que $\ge$ es una relación de orden.
 		
 		\item Demostrar que dados cualesquiera $a,b,c \in \mathbb Z$ vale que si $a< b$ y $0\le c$, entonces $ac \le bc$. 
@@ -469,25 +469,13 @@ El  absurdo  vino de suponer que existe $a \in \mathbb Z$ tal que   $0<a<1$.
 si el conjunto $X$ tiene o no una cota inferior, y si la tiene,
 encontrar el mínimo.
 
-\begin{enumerate}[a)]
+\begin{enumerate}
 	\item $X = \{x \in \mathbb Z | x^2\le 16\}.$
 	
 	\item $X =\{x \in \mathbb Z | x=2y \text{\ para algún } y \in \mathbb Z\}.$
 	
 	\item $X =\{x \in \mathbb Z | x\le 100\,x\} .$
 \end{enumerate}
-%
-%
-%$$
-%\begin{aligned}
-%\text{(i)}\quad X &=\{x \in \mathbb Z | x^2\le 16\}. \\
-%\text{(ii)}\quad X &=\{x \in \mathbb Z | x=2y \text{\ para algún }
-%y \in
-%\mathbb Z\}. \\
-%\text{(iii)}\quad X &=\{x \in \mathbb Z | x\le 100x\} .
-%\end{aligned}
-%$$
-
 \item Un subconjunto $Y$ de $Z$ se dice que tiene una {\em cota superior}\index{cota superior} $c$ si $c\ge y$ para todo $y \in Y$. 
 Una cota superior que además es un elemento de $Y$ es llamada el {\em máximo} de
 $Y$. Usar el axioma ({\bf I12}) para demostrar que si $Y$ es no vacío
@@ -640,12 +628,12 @@ Por completitud,  definimos $x^0=1$.
 
 \subsection*{\Large $\S$ Ejercicios}
 %\addcontentsline{toc}{subsection}{Ejercicios}
-\begin{enumerate}[1)]
+\begin{enumerate}
 \item En el caso siguiente calcule (donde sea posible) los
 valores de $u_1$, $u_2$, $u_3$ y $u_4$ dados por las ecuaciones.
 Si no puede calcular los valores explicar porque la definición no
 esta bien.
-\begin{enumerate}[a)]
+\begin{enumerate}
 \item $u_1 = 1$,\qquad $u_2=1$,\qquad $u_n = u_{n-1} +2 u_{n-2}$,\qquad $n \ge 3$. 
 \item $u_1 = 1$,\qquad $u_n = u_{n-1} +2u_{n-2}$,\qquad $n \ge 2$. 
 \item $u_1 = 0$,\qquad $u_n = nu_{n-1}$,\qquad $n \ge 2$.
@@ -654,11 +642,11 @@ esta bien.
 $$
 u_1=2,\qquad u_n= 2^{u_{n-1}}, \qquad n\ge 2.
 $$
-?`Cuál es el primer valor de $n$ para el cual no se puede calcular
+¿Cuál es el primer valor de $n$ para el cual no se puede calcular
 $u_n$ usando una calculadora de bolsillo o de su celular?
 \item Escribir fórmulas explícitas para las expresiones $u_n$
 definidas por las siguientes ecuaciones.
-\begin{enumerate}[a)]
+\begin{enumerate}
 \item $u_1 = 1$,\qquad $u_n = u_{n-1} +3$,\qquad $n \ge 2$. 
 \item $u_1 = 1$,\qquad $u_n = n^2u_{n-1}$,\qquad $n \ge 2$.
 \end{enumerate}
@@ -699,7 +687,7 @@ Por lo tanto si el resultado es correcto cuando $n=k$, entonces lo es cuando $n=
 La esencia de este argumento es comúnmente llamada {\it principio de inducción}. Es una técnica poderosa, fácil de aplicar y la aplicaremos frecuentemente. Pero primero debemos examinar sus bases lógicas y para hacerlo necesitamos una formulación más general. Con $S$ denotemos al subconjunto de $\mathbb N$ para el cual el resultado es correcto: por supuesto, nuestra intención es probar que $S$ es todo $\mathbb N$. El primer paso es probar que $1$ pertenece a $S$, y luego demostraremos que si $k$ pertenece a $S$, también $k+1$. Entonces lo pensamos paso a paso, un procedimiento infinito, y concluimos que $S=\mathbb N$. Afortunadamente el pensarlo paso a paso no es esencial debido a que el principio de inducción es consecuencia de los axiomas que elegimos tan cuidadosamente para $\mathbb Z$ y $\mathbb N$. Más específicamente es consecuencia del axioma del buen orden.
 
 \begin{teorema}\label{t1.4} Supongamos que $S$ es un subconjunto de $\mathbb N$ que satisface las condiciones \index{principio de inducción}
-\begin{enumerate}[a)]
+\begin{enumerate}
 \item $1 \in S$,
 \item para cada $k \in \mathbb N$, si $ k \in S$ entonces $k+1\in S$.
 \end{enumerate}
@@ -731,7 +719,7 @@ $S$.
 
 El principio de inducción es útil para probar la veracidad de propiedades relativas a los
 números naturales. Por ejemplo, consideremos las siguientes propiedades $P(n)$, $Q(n)$ y $R(n)$:
-\begin{enumerate}[a)]
+\begin{enumerate}[label=(\alph*)]
 \item $P(n)$ es la propiedad: $2n -1 < n^2 + 1$,
 \item $Q(n)$ es la afirmación: si $n$ es par entonces $n$ es divisible por 4,
 \item $R(n)$ es la afirmación: $2n < n- 1$.
@@ -742,9 +730,9 @@ embargo, para verificar realmente que la propiedad $P(n)$ es verdadera para todo
 podemos hacerlo probando para cada $n$ en particular. Resulta entonces muy útil la siguiente
 versión equivalente del principio de inducción.
 \begin{teorema}\label{induccion2} Sea $P(n)$ una propiedad para $n \in \mathbb N$ tal que:
-\begin{enumerate}
-\item[a)] $P(1)$ es verdadera.
-\item[b)] Para todo $k \in \mathbb N$, $P(k)$ verdadera implica $P(k + 1)$ verdadera.
+\begin{enumerate}[label=(\alph*)]
+\item $P(1)$ es verdadera.
+\item Para todo $k \in \mathbb N$, $P(k)$ verdadera implica $P(k + 1)$ verdadera.
 \end{enumerate}
 Entonces $P(n)$ es verdadera para todo $n \in \mathbb N$.
 \end{teorema}
@@ -808,7 +796,7 @@ El siguiente teorema incorpora todas las modificaciones del principio de inducci
 \begin{teorema} Supongamos que $n_0$ es cualquier entero (no necesariamente positivo), y sea $X$
 el conjunto de enteros $n$ tal que $ n \ge n_0$. Sea $S$ un subconjunto de $X$
 que satisface las condiciones: \index{principio de inducción completa}
-\begin{enumerate}[a)]
+\begin{enumerate}[label=(\alph*)]
 \item $n_0 \in S$,
 \item si $h\in S$ para todo $h$ en el rango $n_0 \le h \le k$ entonces $k+1 \in S$.
 \end{enumerate}
@@ -833,7 +821,7 @@ por lo tanto tenemos $S= X$.
 Como se podrá observar, la demostración es muy similar a  la del teorema \ref{t1.4}. El teorema anterior lo podemos utilizar para la demostración de propiedades dependientes de números enteros.
 
 \begin{teorema}[Inducción completa]\label{ind-completa} Sea $n_0$ número entero y sea $P(n)$ una propiedad para $n \ge n_0$ tal que:
-\begin{enumerate}[a)]
+\begin{enumerate}[label=(\alph*)]
 \item $P(n_0)$ es verdadera.
 \item Si $P(h)$ verdadera para toda $h$ tal que $n_0 \le h \le k$ implica $P(k + 1)$ verdadera.
 \end{enumerate}
@@ -874,7 +862,7 @@ a^1 = a, \qquad a^{n+1} = a^{n}\cdot a \qquad \text{ para $n >1$.}
 Si $n,m \in \mathbb N$ verifiquemos las siguientes propiedades
 
 
-\begin{enumerate}[a)]
+\begin{enumerate}[label=(\alph*)]
 \item \label{pot+pot} $a^{n} \cdot a^m = a^{n+m}$.
 \item \label{potpot} $(a^n)^m = a^{nm}$
 \end{enumerate}
@@ -911,7 +899,7 @@ Probemos ahora (\ref{potpot}). Al igual que antes, Se fijará $n$ y se hará ind
 %\begin{subsection}{Ejercicios}
 \subsection*{\Large $\S$ Ejercicios}
 %\addcontentsline{toc}{subsection}{Ejercicios}
-\begin{enumerate}[1)]
+\begin{enumerate}
 \item Usar el principio de inducción para demostrar que
 $$
 1^2+2^2+\cdots +n^2 = \frac16 n(n+1)(2n +1)
@@ -942,9 +930,8 @@ inductiva, demostrar que el resultado vale para $n\ge n_0$.
 \item En los siguientes casos encontrar los valores apropiados de $n_0$
 para la base inductiva y demostrar que la afirmación es verdadera
 para todos los $n\ge n_0$.
-\begin{enumerate}[a)]
+\begin{enumerate}
 	\item $n^2 +6n + 9 \ge 0,$
-	
 	\item $n^3 \ge 6n^2.$
 \end{enumerate}
 %$$

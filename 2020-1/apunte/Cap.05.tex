@@ -163,7 +163,7 @@ $K_n$} como el grafo con $n$ vértices y en el cual cada par de vértices es ady
 \subsection*{\Large $\S$ Ejercicios}
 %\addcontentsline{toc}{subsection}{Ejercicios}
 
-\begin{enumerate}[1)]
+\begin{enumerate}
 \item A tres casas $A,B,C$ se les debe conectar el gas, el agua y la electricidad: $G,W,E$.
 Escribir la lista de adyacencia para el grafo que representa este
 problema y construir una representación pictórica del mismo.
@@ -351,7 +351,7 @@ isomorfismo.
 
 \subsection*{\Large $\S$ Ejercicios}\label{ejercicios5.2}
 %\addcontentsline{toc}{subsection}{Ejercicios}
-\begin{enumerate}[1)]
+\begin{enumerate}
 \item Probar que los grafos mostrados en la Fig. \ref{f5.5} no son isomorfos.
 
 \begin{figure}[ht]
@@ -530,13 +530,13 @@ Observar que los criterios vistos hasta ahora relativos a cantidad de vértices,
 %\begin{subsection}{Ejercicios}
 \subsection*{\Large $\S$ Ejercicios}\label{ejercicios5.3}
 %\addcontentsline{toc}{subsection}{Ejercicios}
-\begin{enumerate}[1)]
+\begin{enumerate}
 \item ¿Es posible que las siguientes listas sean las valencias de todos los vértices de un
 grafo? Si así lo fuera, dar una representación pictórica de tal
 grafo. (Recordar que hay a lo más una arista que una un par de
 vértices dados.)
 \begin{multicols}{2}
-	\begin{enumerate}[a)]
+	\begin{enumerate}
 		\item $2,2,2,3.$
 		
 		\item $1,2,2,3,4.$
@@ -632,10 +632,10 @@ una caminata, más corta,  entre $x$ e $y$. Podemos repetir este procedimiento h
 \end{definicion}
 
 Debido al lema que probamos más arriba, es sencillo verificar la siguientes propiedades: sea $G$ grafo y sean $x,y,z$ vértices de $G$, entonces
-\begin{enumerate}[a)]
-\item $x \sim x$ (reflexividad de $\sim$).
-\item $x \sim y$, entonces $y \sim x$ (simetría de $\sim$).
-\item $x \sim y$,  $y \sim z$, entonces  $x \sim z$ (transitividad  de $\sim$).
+\begin{enumerate}[label=(\alph*)]
+\item  $x \sim x$ (reflexividad de $\sim$).
+\item  $x \sim y$, entonces $y \sim x$ (simetría de $\sim$).
+\item  $x \sim y$,  $y \sim z$, entonces  $x \sim z$ (transitividad  de $\sim$).
 \end{enumerate}
 
 
@@ -914,7 +914,7 @@ En forma opuesta,  {\tt usados} es la lista de las aristas que ya han sida utili
 %\begin{subsection}{Ejercicios}
 \subsection*{\Large $\S$ Ejercicios}\label{ejercicios5.4}
 %\addcontentsline{toc}{subsection}{Ejercicios}
-\begin{enumerate}[1)]
+\begin{enumerate}
 \item Encontrar el número de componentes de el grafo cuya lista de adyacencia es
 $$
 \begin{matrix}
@@ -1232,7 +1232,7 @@ $$
 %\begin{subsection}{Ejercicios}
 \subsection*{\Large $\S$ Ejercicios}\label{ejercicios5.5}
 %\addcontentsline{toc}{subsection}{Ejercicios}
-\begin{enumerate}[1)]
+\begin{enumerate}
 \item \label{ejercicio5.5.1} Hay seis diferentes (es decir, no isomorfos entre si) árboles con
 seis vértices: hacer un dibujo de ellos.
 \item Sea $T=(V,E)$ un árbol con $|V| \ge 2$. Usando la propiedad (T4) y el teorema
@@ -1351,9 +1351,9 @@ del grafo es $3$.
 
 En general, para probar que el número cromático de un grafo dado
 es $k$, debemos hacer dos cosas:
-\begin{enumerate}[a)]
-\item encontrar una coloración de vértices usando $k$ colores;
-\item probar que ninguna coloración de vértices usa menos de $k$ colores.
+\begin{enumerate}[label=(\alph*)]
+\item  encontrar una coloración de vértices usando $k$ colores;
+\item  probar que ninguna coloración de vértices usa menos de $k$ colores.
 \end{enumerate}
 
 
@@ -1361,9 +1361,9 @@ es $k$, debemos hacer dos cosas:
 %\begin{subsection}{Ejercicios}
 \subsection*{\Large $\S$ Ejercicios}\label{ejercicios5.6}
 %\addcontentsline{toc}{subsection}{Ejercicios}
-\begin{enumerate}[1)]
+\begin{enumerate}
 \item \label{ejercicio5.6.1} Encontrar el número cromático de los siguientes grafos:
-\begin{enumerate}[a)]
+\begin{enumerate}
 	\item un grafo completo $K_n$;
 	
 	\item un grafo cíclico $C_{2r}$ con un número par de vértices;
@@ -1525,9 +1525,9 @@ estrategia greedy.
 
 \begin{teorema}\label{t5.7.1} Si $G$ es un grafo con valencia máxima
 $k$, entonces
-\begin{enumerate}[a)]
-\item $\chi(G)\le k+1$,
-\item Si $G$ es conexo y no regular , $\chi(G) \le k$.
+\begin{enumerate}[label=(\alph*)]
+\item  $\chi(G)\le k+1$,
+\item  Si $G$ es conexo y no regular , $\chi(G) \le k$.
 \end{enumerate}
 \end{teorema}
 \begin{proof}
@@ -1713,7 +1713,7 @@ obtenemos el resultado deseado.
 \subsection*{\Large $\S$ Ejercicios}\label{ejercicio5.7} 
 %\addcontentsline{toc}{subsection}{Ejercicios}
 	
-\begin{enumerate}[1)]
+\begin{enumerate}
 \item Encontrar órdenes de los vértices del grafo del cubo Fig. \ref{f5.12} 
 para los cuales el algoritmo greedy requiera $2, 3$ y $4$
 colores respectivamente.
@@ -1727,7 +1727,7 @@ que si $e_i(G) \le i+1$ para algún $i$, entonces $\chi(G) \le
 i+1$.
 \item El grafo $M_r$ ($r\ge 2$) se obtiene a partir del grafo cíclico $C_{2r}$ añadiendo
 aristas extras que unen los vértices opuestos. Probar que
-\begin{enumerate}[a)]
+\begin{enumerate}
 	\item $M_r$ es bipartito cuando $r$ es impar,
 	
 	\item $\chi(M_r)=3$ cuando $r$ es par y $r\not= 2$,
@@ -1742,7 +1742,7 @@ aristas extras que unen los vértices opuestos. Probar que
 
 
 \section{Ejercicios}
-\begin{enumerate}[1)]
+\begin{enumerate}
 \item ?`Para qué valores de $n$ es verdadero que el grafo completo $K_n$
 tiene una caminata euleriana.
 
@@ -1763,7 +1763,7 @@ que $G$ tiene un ciclo hamiltoniano.
 palabras de longitud $k$ en el alfabeto $\{0,1\}$ y cuyas aristas
 unen palabras que difieren en exactamente una posición. Probar
 que:
-\begin{enumerate}[a)]
+\begin{enumerate}
 	\item $Q_k$ es regular de valencia $k$,
 	
 	\item $Q_k$ es bipartito

@@ -43,6 +43,7 @@ demuestra que $(1-b)\cdot a\in R$ (en ambos casos es necesario controlar
 que el
  elemento es no negativo.)
 
+
 Ahora, como $R$ es un subconjunto no vacío de $\mathbb N_0$, tiene
 un mínimo $r$, y como $r$ esta en $R$ se sigue que $a=bq+r$ para
 algún $q$ en $\mathbb Z$. Además
@@ -78,8 +79,7 @@ $$
 
 
 \begin{ejemplo} {} 
-%\vskip .2cm
-${}^{}$
+
 \begin{itemize}
 \item Si $a=10$ y $b=3$, entonces $10 = 3 \cdot 3 +1$. Es decir $q= 3$, $r=1$. 
 \item Si $a=2$ y $b=5$, entonces $2 = 5 \cdot 0 +2$. Es decir $q= 0$, $r=2$. 
@@ -193,9 +193,9 @@ Luego $12488 = (30{\tt C}8)_{16}$.
 
 \subsection*{\Large $\S$ Ejercicios}
 %\addcontentsline{toc}{subsection}{Ejercicios}
-\begin{enumerate}[1)]
+\begin{enumerate}
 \item Encontrar $q$ y $r$ que satisfagan el teorema \ref{t1.5} cuando
-\begin{enumerate}[a)]
+\begin{enumerate}
 	\item $a = 1001$, \qquad $b = 11$;
 	
 	\item $a = 12345$, \qquad $b = 234$.
@@ -207,7 +207,7 @@ Luego $12488 = (30{\tt C}8)_{16}$.
 %$$
 
 \item Encontrar las representaciones de $(1985)_{10}$ en:
-\begin{enumerate}[a)]
+\begin{enumerate}
 	\item Base $2$,
 	
 	\item Base $5$,
@@ -216,7 +216,7 @@ Luego $12488 = (30{\tt C}8)_{16}$.
 \end{enumerate}
 
 \item  Encontrar las representación usual (base $10$) de:
-\begin{enumerate}[a)]
+\begin{enumerate}
 	\item $(11011101)_2$,
 	
 	\item $(4165)_7.$
@@ -250,7 +250,7 @@ $y$ divida a $x$\footnote{En algunos lenguajes de programación si $x,y$ son ent
 
 
 \begin{observacion}\label{prop-divide-a-propiedades} Veamos ahora alguna propiedades básicas de la relación ``divide a''. Sean $a,b,c$ enteros, entonces
-\begin{enumerate}[a)]
+\begin{enumerate}[label=(\alph*)]
 \item $1|a$,\qquad $a|0$,\qquad $a|\pm a$;
 \item si $a|b$, entonces $a|bc$ para cualquier $c$;
 \item si $a|b$ y $a|c$, entonces $a|(b+c)$;
@@ -280,7 +280,7 @@ $n/c=dt$ tenemos $d|(n/c)$, como queríamos demostrar.
 \end{proof}
 
 \begin{proposicion}\label{pm} Sean $a$ y $b$ enteros.
-\begin{enumerate}[a)]
+\begin{enumerate}[label=(\alph*)]
 \item Si  $ab=1$ entonces $a=b=1$ o $a=b=-1$. 
 \item \label{prop-pm-b}Si $x$ e $y$ son enteros tales que $x|y$ e $y|x$, entonces $x=y$ o $x=-y$.
 \end{enumerate}
@@ -309,7 +309,7 @@ Por el axioma de cancelación (cancelando $y$) obtenemos que $1 = qq'$. Por lo d
 
 Usar el principio de inducción para demostrar que, para todo $n\ge0$ 
 se cumplen;
-\begin{enumerate}[1)]
+\begin{enumerate}
 	\item $n^2+3n$ es divisible por $2$,
 	
 	\item $n^3+3n^2+2n$ es divisible por $6$. 
@@ -322,7 +322,7 @@ se cumplen;
 múltiplo}\label{1.7}
 
 \begin{definicion}\label{mcd} Si $a$ y $b$ son enteros algunos de ellos no nulo, decimos que un entero no negativo $d$ es un {\em máximo común divisor}\index{máximo común divisor}, o {\em mcd}, de $a$ y $b$ si
-\begin{enumerate}[a)]
+\begin{enumerate}[label=(\alph*)]
 \item\label{mcda} $ d|a$  y $d|b$;
 \item\label{mcdb}  si $ c|a $ y $c|b$ entonces $ c|d$.
 \end{enumerate}
@@ -423,9 +423,9 @@ Podemos enunciar las propiedades más sencillas del mcd en la siguiente proposic
 \end{proposicion}
 \begin{proof}
 	Estas propiedades son de demostración casi trivial, por ejemplo para demostrar que  $\mcd(1,b) = 1$ comprobamos que 1 cumple con la definición:
-	\begin{enumerate}
-		\item[({a})] $ 1|1$ y $1|b$;
-		\item[({b})] si $ c|1 $ y $c|b$ entonces $ c|1$,
+	\begin{enumerate}[label=(\alph*)]
+		\item $ 1|1$ y $1|b$;
+		\item si $ c|1 $ y $c|b$ entonces $ c|1$,
 	\end{enumerate}
 	propiedades que son obviamente verdaderas.
 	
@@ -439,9 +439,9 @@ La siguiente propiedad no es tan obvia y resulta muy importante.
 \end{propiedad}
 \begin{proof}
 	Sea $d =  \mcd(a,b-a)$, luego 
-	\begin{enumerate}
-		\item[({a})] $ d|a$ y $d|b -a$;
-		\item[({b})] si $ c|a $ y $c|b -a$ entonces $ c|d$.
+	\begin{enumerate}[label=(\alph*)]
+		\item $ d|a$ y $d|b -a$;
+		\item si $ c|a $ y $c|b -a$ entonces $ c|d$.
 	\end{enumerate}
 	Ahora bien, como  $ d|a$ y $d|b -a$, entonces $  d|a +(b -a) = b$. Es decir, para recalcar,
 	\begin{enumerate}
@@ -477,9 +477,9 @@ En  general no es sencillo encontrar todos los divisores de un número entero gr
 	\text{$c$ es divisor común de $a$ y $b$ si y sólo si $c$ es divisor común de $b$ y $r$.} \tag{*}
 	\end{equation}
 	Luego, sea $d = \mcd(a,b)$, probaremos que $d$ es el mcd entre $b$ y $r$:
-	\begin{enumerate}
-		\item[({a})] como $d|a$ y $d|b$, entonces por (*) tenemos que $ d|b$ y $d|r$;
-		\item[({b})] si $c|a $ y $c|r$ entonces por (*)  $c|a$ y $c|b$ y debido a que $d = \mcd(a,b)$, se deduce que $c|d$.
+	\begin{enumerate}[label=(\alph*)]
+		\item como $d|a$ y $d|b$, entonces por (*) tenemos que $ d|b$ y $d|r$;
+		\item si $c|a $ y $c|r$ entonces por (*)  $c|a$ y $c|b$ y debido a que $d = \mcd(a,b)$, se deduce que $c|d$.
 	\end{enumerate}
 	Al satisfacer ({a}) y ({b}), obtenemos que $d = \mcd(b,r)$.
 \end{proof}
@@ -670,7 +670,7 @@ esta demostrado.
 El  algoritmo explicado anteriormente para obtener el $\mcd(a,b)$ como combinación lineal entera $sa+tb$ no es muy sencillo de programar. Más aún, requiere terminar el cálculo del $\mcd$ usando el algoritmo de Euclides, para comenzar a calcular los coeficientes enteros $s,t$. Veremos a continuación un algoritmo sencillo de programar que nos devuelve $s$ y $t$. El algoritmo se basa en el siguiente resultado. 
 
 \begin{proposicion}\label{prop-alg-euclides-2} Sean, $a,b$ enteros, $b>0$, y $r_i, q_i$ los restos y cocientes obtenido en el algoritmo de Euclides (ver tabla \ref{tabla-AE}). En entonces, 
-\begin{enumerate}[a)]
+\begin{enumerate}[label=(\alph*)]
 	\item 	para $0 \le i \le k$,  existen $s_i, t_i \in \ZZ$ tal que
 	\begin{equation*}
 	r_i = s_ia + t_ib.
@@ -733,7 +733,7 @@ Con el uso de (b) de la proposición anterior, podemos escribir el algoritmo par
 \begin{definicion}\label{def-mcm}
 Si $a$ y $b$ son enteros decimos que un entero no negativo $m$ es el {\em
 mínimo común múltiplo}\index{mínimo común múltiplo}, o {\em mcm}, de $a$ y $b$ si
-\begin{enumerate}[a)]
+\begin{enumerate}[label=(\alph*)]
 \item $ a|m$ y $b|m$;
 \item si $ a|n $ y $b|n$ entonces $ m|n$.
 \end{enumerate}
@@ -789,7 +789,7 @@ coprimos, entonces $\mcm(a,b)=ab$.
 \subsection*{\Large $\S$ Ejercicios}
 %\addcontentsline{toc}{subsection}{Ejercicios}
 
-\begin{enumerate}[1)]
+\begin{enumerate}
 \item Encontrar el $\mcd$ de $721$ y $448$ y expresarlo en la forma
 $721m+448n$ con $m,n \in \mathbb Z$.
 \item\label{imp} Usar  proposición \ref{prop-d-comb-lin} para demostrar que si $a$, $b$ y $n$ son enteros no nulos, entonces
@@ -893,7 +893,7 @@ Veamos ahora alguna propiedades básicas de los números primos.
 
 \begin{observacion} \label{pdivpp}
 Sea $a \in \mathbb Z$ y $p$ primo. Entonces 
-\begin{enumerate}[a)]
+\begin{enumerate}[label=(\alph*)]
 \item  Si $p{\not|}a$, entonces $\mcd(a,p) = 1$.
 \item  Si $p$ y $p'$ son primos y $p|p'$ entonces $p=p'$.
 \end{enumerate}
@@ -940,7 +940,7 @@ unicidad.
 
 \begin{teorema}\label{t1.8} Sea $p$  un número  primo.
 
-\begin{enumerate}[a)] 
+\begin{enumerate}[label=(\alph*)]
 \item Si $p|xy$ entonces $p|x$ o $p|y$.
 \item $x_1,x_2,\ldots,x_n$ son enteros tales que
 $$
@@ -1122,7 +1122,7 @@ $$
 m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
 n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
 $$
-\begin{enumerate}[a)]
+\begin{enumerate}[label=(\alph*)]
 \item El mcd de $m$ y $n$ es $d=p_1^{k_1}p_2^{k_2}\ldots
 p_r^{k_r}$ donde, para cada $i$ en el rango $1\le i \le r$, $k_i$
 es el mínimo entre $e_i$ y $f_i$.
@@ -1159,7 +1159,7 @@ $$
 %\begin{subsection}{Ejercicios}% {\rm (continuación)}
 \subsection*{\Large $\S$ Ejercicios}
 %\addcontentsline{toc}{subsection}{Ejercicios}
-\begin{enumerate}[1)]
+\begin{enumerate}
 	\item Sean $m,n$ enteros con $m,n\ge 2$. Probar que,  $m$ y  $n$ son coprimos si y sólo si no comparten ningún primo en la factorización. 
 	
 	En otras palabras, sean  
@@ -1188,7 +1188,7 @@ es falsa: esto es, $n$ es primo pero $2^n-1$ no lo es.
 	
 	
 \section{Ejercicios}	
-\begin{enumerate}[1)]
+\begin{enumerate}
 \item Probar que $4^{2n}-1$ es divisible por $15$ para todo entero $n\ge
 1$.
 \item Encontrar el mcd entre $1320$ y $714$, y expresar el resultado en la
@@ -1220,7 +1220,7 @@ d=x_1a_1+x_2a_2+\cdots+x_na_n.
 $$
 
 \item Sea $n$ un entero con las siguientes propiedades: 
-\begin{enumerate}[a)]
+\begin{enumerate}[label=(\alph*)]
 	\item  la
 	descomposición prima de $n$ no tiene factores repetidos (es decir
 	$n$ es de cuadrado libre), 
