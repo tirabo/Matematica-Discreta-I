@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7380 64-bit) (preloaded format=pdflatex 2020.4.2)  2 NOV 2020 16:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7380 64-bit) (preloaded format=pdflatex 2020.4.2)  2 NOV 2020 16:20
 entering extended mode
 **c:/Users/tirab/Documents/GitHub/Matematica-Discreta-I/2020-1/apunte/main.tex
 (c:/Users/tirab/Documents/GitHub/Matematica-Discreta-I/2020-1/apunte/main.tex
@@ -1072,23 +1072,23 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [136] [137] [138] [139] [140] [141] [142] [143])
 No file main.ind.
 [144]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 370.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 370.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 371.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 371.
  (main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 370.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 370.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 371.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 371.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D363DE3D873B2AC6C139BF200F8FDC33;3307.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 370.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 371.
  ) 
 Here is how much of TeX's memory you used:
  22560 strings out of 480931
  407638 string characters out of 2909046
- 690360 words of memory out of 3000000
+ 690380 words of memory out of 3000000
  37077 multiletter control sequences out of 15000+200000
  648036 words of font info for 103 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
@@ -1096,7 +1096,7 @@ Here is how much of TeX's memory you used:
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
  <C:\Users\tirab\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\tirab\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk>{C:/Users/tirab/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/kurier/ex-kurier.enc}{C:/Users/tirab/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/kurier/rm-kurier.enc}{C:/Users/tirab/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/kurier/ec-kurier-sc.enc}{C:/Users/tirab/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/kurier/mi-kurier.enc}{C:/Users/tirab/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/kurier/ec-kurier.enc}{C:/Users/tirab/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/kurier/sy-kurier.enc}<C:/Users/tirab/AppData/Roaming/MiKTeX/2.9/fonts/type1/nowacki/kurier/kurierb.pfb><C:/Users/tirab/AppData/Roaming/MiKTeX/2.9/fonts/type1/nowacki/kurier/kurierr.pfb><C:/Users/tirab/AppData/Roaming/MiKTeX/2.9/fonts/type1/nowacki/kurier/kurierri.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/latxfont/lasy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (146 pages, 750449 bytes).
+Output written on main.pdf (146 pages, 750447 bytes).
 PDF statistics:
  1904 PDF objects out of 2073 (max. 8388607)
  714 named destinations out of 1000 (max. 500000)
