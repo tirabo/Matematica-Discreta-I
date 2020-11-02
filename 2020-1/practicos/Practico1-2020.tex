@@ -1,56 +1,80 @@
-\documentclass[12pt,spanish,makeidx]{amsbook}
-\tolerance=10000
-\renewcommand{\baselinestretch}{1.3}
+% PDFLaTeX
+\documentclass[a4paper,12pt,twoside,spanish,reqno]{amsbook}
+%%%---------------------------------------------------
 
+%\renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
+%\usepackage[T1]{fontenc}
 
+% Para hacer el  indice en linea de comando hacer 
+% makeindex main
+%% En http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf hay ejemplos de packages de fonts libres, como los siguientes:
+%\usepackage{cmbright}
+%\usepackage{pxfonts}
+%\usepackage[varg]{txfonts}
+%\usepackage{ccfonts}
+%\usepackage[math]{iwona}
+\usepackage[math]{kurier}
 
+\usepackage{etex}
 \usepackage{t1enc}
-\usepackage[spanish]{babel}
 \usepackage{latexsym}
 \usepackage[utf8]{inputenc}
 \usepackage{verbatim}
 \usepackage{multicol}
 \usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
 \usepackage{calc}         % From LaTeX distribution
 \usepackage{graphicx}     % From LaTeX distribution
-\usepackage{ifthen}       % From LaTeX distribution
-\usepackage{subfigure}    % From CTAN/macros/latex/contrib/supported/subfigure
-\usepackage{pst-all}      % From PSTricks
-\usepackage{pst-poly}     % From pstricks/contrib/pst-poly
-\usepackage{multido}      % From PSTricks
-\usepackage{fancyhdr}
+\usepackage{ifthen}
 \input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\usepackage{mathtools}
+\usepackage{stackrel}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+%\usepackage{makeidx}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+\usepackage{hypcap}
+\numberwithin{equation}{section}
+% http://www.texnia.com/archive/enumitem.pdf (para las labels de los enumerate)
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate, 1]{label={(\arabic*)}}
+\setlist[enumerate, 2]{label=\emph{\alph*)}}
 
 
-%% \theoremstyle{plain} %% This is the default
-\oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
-\headheight .3in \headsep .2in \footskip 0.5in
-\setlength{\textwidth}{16cm} %ancho para apunte
-\setlength{\textheight}{21cm} %largo para apunte
-%\leftmargin 2.5cm
-%\rightmargin 2.5cm
-\topmargin 0.5 cm
+%%% FORMATOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+\usepackage[a4paper, top=3cm, left=3cm, right=2cm, bottom=2.5cm]{geometry}
+\usepackage{setspace}
+%\setlength{\parindent}{0,7cm}% tamaño de sangria.
+\setlength{\parskip}{0,4cm} % separación entre parrafos.
+\renewcommand{\baselinestretch}{0.90}% separacion del interlineado
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\end{comment}
+%%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[LE,RO]{FAMAF}
-\fancyhead[RE,LO]{Matemática Discreta I}
-\fancyfoot[LE,RO]{\leftmark}
-\fancyfoot[RE,LO]{\thepage}
- 
-\renewcommand{\headrulewidth}{0.5pt}
-%\renewcommand{\footrulewidth}{0.5pt}
+
  
 
 
 
 \begin{document}
+\baselineskip=0.55truecm %original
 
 
+{\bf \begin{center}\large  Práctico 1 \\ Matemática Discreta I -- Año 2020/1 \\ FAMAF \end{center}}
 
-{\bf \begin{center} Práctico 1 \\ Matemática Discreta I -- Año 2020/1 \\ FAMAF \end{center}}
-
-\smallskip
+\vskip .5cm
 
 \begin{enumerate}
 
@@ -63,7 +87,7 @@
 \end{enumerate}
 
 
-\medskip
+\vskip .5cm
 
 \item Idem \ref{prob1}.
 
@@ -72,7 +96,7 @@
  \item $a<b\,$ y $\,c<0$ implican $\,b\cdot c<a\cdot c$
 \end{enumerate}
 
-\medskip
+\vskip .5cm
 
 \item  Probar las siguientes afirmaciones, justificando los pasos que realiza.
 \begin{enumerate}
@@ -83,7 +107,7 @@
 \end{enumerate}
 
 
-\smallskip
+\vskip .5cm
 
 
 \item Calcular evaluando las siguientes expresiones:
@@ -99,7 +123,7 @@
 
 
 
-\smallskip
+\vskip .5cm
 
 \item Calcular:
 \begin{multicols}{2}
@@ -114,7 +138,7 @@
 
 
 
-\smallskip
+\vskip .5cm
 
 
 
@@ -130,7 +154,7 @@
 
 
 
-\smallskip
+\vskip .5cm
 
 \item Analizar la validez de las siguientes afirmaciones:
 %\begin{multicols}{2}
@@ -141,12 +165,12 @@
 \end{enumerate}
 %\end{multicols}
 
-\smallskip
+\vskip .5cm
 
 \item Probar que $\sum_{i=0}^n 2^i = 2^{n+1} -1$ ($n \ge 0$). 
 
 
-\smallskip
+\vskip .5cm
 
 \item Probar las siguientes afirmaciones usando inducción en $n$:
 \begin{enumerate}
@@ -156,7 +180,7 @@
 	\item $\forall n \in {\mathbb N}$,\ $3^n \ge 1 + 2^n$.
 \end{enumerate}
 
-\smallskip
+\vskip .5cm
 
 
 \item Demostrar por inducción  las siguientes igualdades:
@@ -184,7 +208,7 @@
 
   \end{enumerate}
 
-\smallskip
+\vskip .5cm
 
 
 
@@ -192,17 +216,17 @@
 \item Hallar $n_0 \in {\mathbb N}$ tal que $\forall n \ge n_0$ se cumpla que $n^2 \ge 11 \cdot n + 3$.
 
 
-\medskip
+\vskip .5cm
 
 
 \item Sea $u_1=3$, $u_2=5$ y $u_n=3 u_{n-1} - 2 u_{n-2}$ con $n\in \mathbb N$, $n\geq 3$.
 Probar que $u_n=2^n+1$.
 
-\smallskip
+\vskip .5cm
 
 \item Sea $\{ u_n \}_{n \in \mathbb N}$ la sucesión definida por recurrencia como sigue: $u_1 = 9$, $u_2 = 33$, $u_n = 7u_{n-1} - 10u_{n-2}$, $\forall n \geq 3$. Probar que $u_n = 2^{n+1} + 5^n$, para todo $n \in \mathbb N$.
 
-\smallskip
+\vskip .5cm
 
 \item Sea $u_n$ definida recursivamente por: $u_1=2$, $u_n=2+\sum_{i=1}^{n-1}2^{n-2i}u_i \;\;\forall\; n >1$.
 \begin{enumerate}
@@ -210,7 +234,7 @@ Probar que $u_n=2^n+1$.
 	\item Proponga una fórmula para el término general $u_n$ y pruébela por inducción.
 \end{enumerate}
 
-\smallskip
+\vskip .5cm
 
 
 \item Las siguientes proposiciones no son válidas para todo $n \in {\mathbb N}$. Indicar en qué paso del principio de inducción falla la demostración:
@@ -223,7 +247,7 @@ Probar que $u_n=2^n+1$.
 \end{enumerate}
 \end{multicols}
 
-\smallskip
+\vskip .5cm
 
 \item Encuentre el error en los siguientes argumentos de inducción.
 \begin{enumerate}
@@ -239,7 +263,7 @@ entonces obtenemos que $5(k+1)+3$ es múltiplo de 5. Por lo tanto, por el princi
 de inducción, demostramos que $5n+3$ es múltiplo de 5 para todo $n\in \mathbb
 N$.
 
-\smallskip
+\vskip .5cm
 
 \item Sea $a\in\mathbb R$, con $a\neq 0$. Vamos a demostrar que para todo entero no negativo $n$, $a^n=1$.
 
