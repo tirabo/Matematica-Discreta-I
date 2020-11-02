@@ -1,0 +1,103 @@
+\indexentry{cota inferior|hyperpage}{11}
+\indexentry{mínimo|hyperpage}{11}
+\indexentry{axioma del buen orden|hyperpage}{11}
+\indexentry{principio de buena ordenación|hyperpage}{11}
+\indexentry{cota superior|hyperpage}{13}
+\indexentry{principio de inducción|hyperpage}{16}
+\indexentry{hipótesis inductiva|hyperpage}{17}
+\indexentry{principio de inducción completa|hyperpage}{18}
+\indexentry{cardinal de un conjunto|hyperpage}{23}
+\indexentry{producto cartesiano|hyperpage}{24}
+\indexentry{principio de las casillas|hyperpage}{29}
+\indexentry{permutación|hyperpage}{30}
+\indexentry{coeficiente binomial|hyperpage}{32}
+\indexentry{número combinatorio|hyperpage}{32}
+\indexentry{Teorema del binomio|hyperpage}{36}
+\indexentry{expresión binómica|hyperpage}{38}
+\indexentry{base (de un sistema de numeración)|hyperpage}{45}
+\indexentry{divisor|hyperpage}{46}
+\indexentry{divide|hyperpage}{47}
+\indexentry{múltiplo|hyperpage}{47}
+\indexentry{máximo común divisor|hyperpage}{48}
+\indexentry{coprimos|hyperpage}{50}
+\indexentry{algoritmo de Euclides|hyperpage}{53}
+\indexentry{mínimo común múltiplo|hyperpage}{56}
+\indexentry{número primo|hyperpage}{57}
+\indexentry{congruencia|hyperpage}{67}
+\indexentry{congruencia|hyperpage}{67}
+\indexentry{módulo $m$|hyperpage}{67}
+\indexentry{regla del nueve|hyperpage}{69}
+\indexentry{Ecuación lineal de congruencia|hyperpage}{70}
+\indexentry{Teorema de Fermat|hyperpage}{74}
+\indexentry{función de Euler|hyperpage}{75}
+\indexentry{Teorema de Euler|hyperpage}{75}
+\indexentry{RSA|hyperpage}{76}
+\indexentry{encriptar|hyperpage}{76}
+\indexentry{codificar|hyperpage}{76}
+\indexentry{criptografía simétrica|hyperpage}{76}
+\indexentry{criptografía asimétrica|hyperpage}{76}
+\indexentry{criptografía de clave pública|hyperpage}{76}
+\indexentry{redes|hyperpage}{81}
+\indexentry{grafo|hyperpage}{81}
+\indexentry{vértices de un grafo|hyperpage}{81}
+\indexentry{aristas de un grafo|hyperpage}{81}
+\indexentry{representación pictórica (de un grafo)|hyperpage}{81}
+\indexentry{vértices adyacentes|hyperpage}{83}
+\indexentry{lista de adyacencia|hyperpage}{83}
+\indexentry{grafo completo|hyperpage}{83}
+\indexentry{grafos isomorfos|hyperpage}{84}
+\indexentry{isomorfismo de grafos|hyperpage}{84}
+\indexentry{grafo de Petersen|hyperpage}{86}
+\indexentry{valencia de un vértice|hyperpage}{87}
+\indexentry{vértice impar|hyperpage}{87}
+\indexentry{vértice par|hyperpage}{87}
+\indexentry{handshaking lemma|hyperpage}{87}
+\indexentry{grafo regular|hyperpage}{87}
+\indexentry{grafo cíclico|hyperpage}{88}
+\indexentry{complemento de un grafo|hyperpage}{89}
+\indexentry{caminata|hyperpage}{89}
+\indexentry{camino|hyperpage}{89}
+\indexentry{ciclo|hyperpage}{89}
+\indexentry{longitud de un ciclo|hyperpage}{89}
+\indexentry{componente de un grafo|hyperpage}{90}
+\indexentry{grafo conexo|hyperpage}{90}
+\indexentry{Hamilton, W. R.|hyperpage}{92}
+\indexentry{ciclo hamiltoniano|hyperpage}{92}
+\indexentry{caminata euleriana|hyperpage}{92}
+\indexentry{árbol|hyperpage}{97}
+\indexentry{coloración de vértices|hyperpage}{101}
+\indexentry{número cromático|hyperpage}{101}
+\indexentry{algoritmo greedy (goloso)|hyperpage}{102}
+\indexentry{grafo bipartito|hyperpage}{104}
+\indexentry{grafo impar|hyperpage}{107}
+\indexentry{raíz|hyperpage}{109}
+\indexentry{árbol con raíz|hyperpage}{109}
+\indexentry{niveles de un árbol|hyperpage}{109}
+\indexentry{hoja|hyperpage}{109}
+\indexentry{vértice interno|hyperpage}{109}
+\indexentry{altura de un árbol con raíz|hyperpage}{109}
+\indexentry{padre de un vértice|hyperpage}{110}
+\indexentry{hijo de un vértice|hyperpage}{110}
+\indexentry{árbol binario|hyperpage}{110}
+\indexentry{árbol ternario|hyperpage}{110}
+\indexentry{árbol de decisión|hyperpage}{111}
+\indexentry{árbol expandido|hyperpage}{113}
+\indexentry{grafo con pesos|hyperpage}{114}
+\indexentry{función de pesos|hyperpage}{114}
+\indexentry{MST|hyperpage}{114}
+\indexentry{minimum spanning tree|hyperpage}{114}
+\indexentry{árbol expandido mínimo|hyperpage}{114}
+\indexentry{símbolo de Prüfer|hyperpage}{118}
+\indexentry{selección ordenada sin repetición|hyperpage}{119}
+\indexentry{notación cíclica|hyperpage}{121}
+\indexentry{permutación cíclica|hyperpage}{122}
+\indexentry{principio de inclusion y exclusion|hyperpage}{125}
+\indexentry{principio del tamiz|hyperpage}{125}
+\indexentry{Euler, Leonhard|hyperpage}{129}
+\indexentry{grafo planar|hyperpage}{135}
+\indexentry{fórmula de Euler|hyperpage}{136}
+\indexentry{caras de un grafo planar|hyperpage}{136}
+\indexentry{Teorema de Kuratowski|hyperpage}{140}
+\indexentry{género de un grafo|hyperpage}{141}
+\indexentry{Teorema de los cuatro colores|hyperpage}{141}
+\indexentry{Teorema de los cinco colores|hyperpage}{141}
