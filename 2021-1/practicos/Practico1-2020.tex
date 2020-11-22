@@ -1,0 +1,282 @@
+% PDFLaTeX
+\documentclass[a4paper,12pt,twoside,spanish,reqno]{amsbook}
+%%%---------------------------------------------------
+
+%\renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
+%\usepackage[T1]{fontenc}
+
+% Para hacer el  indice en linea de comando hacer 
+% makeindex main
+%% En http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf hay ejemplos de packages de fonts libres, como los siguientes:
+%\usepackage{cmbright}
+%\usepackage{pxfonts}
+%\usepackage[varg]{txfonts}
+%\usepackage{ccfonts}
+%\usepackage[math]{iwona}
+\usepackage[math]{kurier}
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\usepackage{mathtools}
+\usepackage{stackrel}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+%\usepackage{makeidx}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+\usepackage{hypcap}
+\numberwithin{equation}{section}
+% http://www.texnia.com/archive/enumitem.pdf (para las labels de los enumerate)
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate, 1]{label={(\arabic*)}}
+\setlist[enumerate, 2]{label=\emph{\alph*)}}
+
+
+%%% FORMATOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+\usepackage[a4paper, top=3cm, left=3cm, right=2cm, bottom=2.5cm]{geometry}
+\usepackage{setspace}
+%\setlength{\parindent}{0,7cm}% tamaño de sangria.
+\setlength{\parskip}{0,4cm} % separación entre parrafos.
+\renewcommand{\baselinestretch}{0.90}% separacion del interlineado
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\end{comment}
+%%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+ 
+
+
+
+\begin{document}
+\baselineskip=0.55truecm %original
+
+
+{\bf \begin{center}\large  Práctico 1 \\ Matemática Discreta I -- Año 2020/1 \\ FAMAF \end{center}}
+
+\vskip .5cm
+
+\begin{enumerate}
+
+
+\item\label{prob1} Demostrar las siguientes afirmaciones donde $a$, $b$, $c$ y $d$ son siempre números enteros. Justificar cada uno de los pasos en cada demostración indicando el axioma o resultado que utiliza.
+\begin{enumerate}
+\item  $a=-(-a)$
+\item  $a=b\,$ si y sólo si $\,-a=-b$
+\item  $a+a=a$ implica que  $a=0$.
+\end{enumerate}
+
+
+\vskip .5cm
+
+\item Idem \ref{prob1}.
+
+\begin{enumerate}
+ \item $0<a\,$ y $\,0<b\,$ implican $\,0<a\cdot b$
+ \item $a<b\,$ y $\,c<0$ implican $\,b\cdot c<a\cdot c$
+\end{enumerate}
+
+\vskip .5cm
+
+\item  Probar las siguientes afirmaciones, justificando los pasos que realiza.
+\begin{enumerate}
+  \item Si $0 < a$  y $\,0<b\,$ entonces $\,a<b\,$ si y sólo si $a^2<b^2$.
+  \item Si $a\neq 0$  entonces $a^2>0$.
+  \item Si $a\neq b$  entonces $a^2+b^2>0$.
+  \item Probar que si $a+c <b+c$ entonces $a<b$.
+\end{enumerate}
+
+
+\vskip .5cm
+
+
+\item Calcular evaluando las siguientes expresiones:
+\begin{multicols}{4}
+ \begin{enumerate}
+\item \quad $\displaystyle{\sum_{r=0}^4 r}$
+\item \quad $\displaystyle{\prod_{i=1}^5 i}$
+\item  \quad $\displaystyle{\sum_{k=-3}^{-1} \frac{1}{k(k+4)}}$
+\item \quad $\displaystyle{\prod_{n=2}^7 \frac{n}{n-1}}$
+\end{enumerate}
+\end{multicols}
+
+
+
+
+\vskip .5cm
+
+\item Calcular:
+\begin{multicols}{2}
+ \begin{enumerate}
+\item \quad $2^{10} - 2^{9}$
+\item \quad $3^2 2^5 - 3^5 2^2$
+\item \quad $(2^2)^n - (2^n)^2$
+\item \quad $(2^{2^n} + 1)  (2^{2^n} - 1)$
+\end{enumerate}
+\end{multicols}
+
+
+
+
+\vskip .5cm
+
+
+
+
+\item Dado un natural $m$, probar que $\forall n \in {\mathbb N} $; $x$, $y \in {\mathbb R}$, se cumple:
+\begin{multicols}{3}
+ \begin{enumerate}
+  \item $x^n \cdot x^m = x^{n+m}$
+\item $(x\cdot y)^n=x^n\cdot y^n$
+\item $(x^n)^m = x^{n\cdot m}$
+ \end{enumerate}
+\end{multicols}
+
+
+
+\vskip .5cm
+
+\item Analizar la validez de las siguientes afirmaciones:
+%\begin{multicols}{2}
+ \begin{enumerate}
+\item  $(2^{2^n})^{2^k} = 2^{2^{n+k}}$,  $n$, $k \in {\mathbb N}$.
+\item $(2^n)^2 = 4^n$, $n \in {\mathbb N}$.
+\item $2^{7+11} = 2^7 + 2^{11}$.
+\end{enumerate}
+%\end{multicols}
+
+\vskip .5cm
+
+\item Probar que $\sum_{i=0}^n 2^i = 2^{n+1} -1$ ($n \ge 0$). 
+
+
+\vskip .5cm
+
+\item Probar las siguientes afirmaciones usando inducción en $n$:
+\begin{enumerate}
+	\item $n^2\leq 2^n$ para todo $n\in{\mathbb N}$, $n>3$ .
+	%\item $n^3 \le 3^n$;\quad $\forall n \in {\mathbb N}$, $n\ge 3$ .
+	%\item $(n+1)^n < n^{n+1}$; $\forall n \in {\mathbb N}$, $n \ge 3$.
+	\item $\forall n \in {\mathbb N}$,\ $3^n \ge 1 + 2^n$.
+\end{enumerate}
+
+\vskip .5cm
+
+
+\item Demostrar por inducción  las siguientes igualdades:
+  \begin{enumerate}
+  \item  $\displaystyle{ \sum_{k=1}^n (a_k + b_k) = \sum_{k=1}^n a_k + \sum_{k=1}^n b_k}$, $n\in \mathbb N$.
+  \item  $\displaystyle{ \sum_{j=1}^n j = \frac{n(n+1)}{2}}$, $n\in \mathbb N$, $n\in \mathbb N$.
+  \item  $\displaystyle{ \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}}$, $n\in \mathbb N$.
+  \item  $\displaystyle{ \sum_{k=0}^n (2k+1) = (n+1)^2}$, $n\in \mathbb N_0$.
+  \item  $\displaystyle{ \sum_{i=1}^n i^3 = \left( \frac{n(n+1)}{2 }\right)^2}$, $n\in \mathbb N$.
+  \item  $\displaystyle{ \sum_{k=0}^n a^k = \frac{a^{n+1}-1}{a-1}}$, donde $a\in {\mathbb R}$, $a \neq 0,\ 1$, $n\in \mathbb N_0$.
+  \item  $\displaystyle{ \prod_{i=1}^n \frac{i+1}{i} = n+1}$, $n\in \mathbb N$.
+
+  \item $\displaystyle{ \sum_{i=1}^n \frac{1}{4i^2-1} = \frac{n}{2n+1}}$, $n\in \mathbb N$.
+
+  \item $\displaystyle{ \sum_{i=1}^n i^2\, /\, \sum_{j=1}^n j = \frac{2n+1}{3}}$, $n\in \mathbb N$.
+
+  \item $\displaystyle{ \prod_{i=2}^n \left(1-\frac{1}{i^2}\right) = \frac{n+1}{2n}}$, $n\in \mathbb N$ y $ n\ge 2$.
+
+  \item Si $a\in \mathbb R$ y $a\geq -1$, entonces $(1+a)^n\geq 1+n\cdot a$, $\forall \, n \in \mathbb N$.
+
+  \item Si $a_1,\dots,a_n \in \mathbb R$, entonces $\displaystyle{\sum_{k=1}^n a_{k}^{2}\leq \left(\sum_{k=1}^n |a_{k}|\right)^{2}}$, $n\in \mathbb N$.
+
+
+  \item Si $a_1,\dots,a_n \in \mathbb R$ y $0<a_i<1 \forall \, i$, entonces $(1-a_1)\cdots(1-a_n)\ge 1-a_1-\cdots -a_n$, $n\in \mathbb N$.
+
+  \end{enumerate}
+
+\vskip .5cm
+
+
+
+
+\item Hallar $n_0 \in {\mathbb N}$ tal que $\forall n \ge n_0$ se cumpla que $n^2 \ge 11 \cdot n + 3$.
+
+
+\vskip .5cm
+
+
+\item Sea $u_1=3$, $u_2=5$ y $u_n=3 u_{n-1} - 2 u_{n-2}$ con $n\in \mathbb N$, $n\geq 3$.
+Probar que $u_n=2^n+1$.
+
+\vskip .5cm
+
+\item Sea $\{ u_n \}_{n \in \mathbb N}$ la sucesión definida por recurrencia como sigue: $u_1 = 9$, $u_2 = 33$, $u_n = 7u_{n-1} - 10u_{n-2}$, $\forall n \geq 3$. Probar que $u_n = 2^{n+1} + 5^n$, para todo $n \in \mathbb N$.
+
+\vskip .5cm
+
+\item Sea $u_n$ definida recursivamente por: $u_1=2$, $u_n=2+\sum_{i=1}^{n-1}2^{n-2i}u_i \;\;\forall\; n >1$.
+\begin{enumerate}
+	\item Calcule $u_2$ y $u_3$.
+	\item Proponga una fórmula para el término general $u_n$ y pruébela por inducción.
+\end{enumerate}
+
+\vskip .5cm
+
+
+\item Las siguientes proposiciones no son válidas para todo $n \in {\mathbb N}$. Indicar en qué paso del principio de inducción falla la demostración:
+\begin{multicols}{4}
+\begin{enumerate}
+\item  $n=n^2$,
+\item  $n=n+1$,
+\item  $3^n = 3^{n+2}$,
+\item  $3^{3n} = 3^{n+2}$.
+\end{enumerate}
+\end{multicols}
+
+\vskip .5cm
+
+\item Encuentre el error en los siguientes argumentos de inducción.
+\begin{enumerate}
+\item  Demostraremos que $5n+3$ es múltiplo de 5 para todo $n\in \mathbb N$.
+
+Supongamos que $5k+3$ es múltiplo de 5, siendo $k\in \mathbb N$. Entonces existe
+$p\in \mathbb N$ tal que  $5k+3=5p$. Probemos que $5(k+1)+3$ es múltiplo de 5:
+Como
+$$
+5(k+1)+3=(5k+5)+3=(5k+3)+5=5p+5=5(p+1),
+$$
+entonces obtenemos que $5(k+1)+3$ es múltiplo de 5. Por lo tanto, por el principio
+de inducción, demostramos que $5n+3$ es múltiplo de 5 para todo $n\in \mathbb
+N$.
+
+\vskip .5cm
+
+\item Sea $a\in\mathbb R$, con $a\neq 0$. Vamos a demostrar que para todo entero no negativo $n$, $a^n=1$.
+
+Como $a^0=1$ por definición, la proposición es verdadera para $n=0$. Supongamos
+que para  un entero $k$, $a^m=1$ para $0\leq m \leq k$. Entonces
+$a^{k+1}= \frac{a^k a^k}{a^{k-1}}=\frac{1\cdot1}1=1$.
+Por lo tanto, el principio de inducción fuerte implica que $a^n=1$ para todo $n\in \mathbb N$.
+\end{enumerate}
+
+
+
+
+\end{enumerate}
+
+
+\end{document}

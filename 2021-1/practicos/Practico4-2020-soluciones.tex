@@ -1,0 +1,543 @@
+\documentclass[12pt,spanish,makeidx]{amsbook}
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+
+
+
+\usepackage{t1enc}
+\usepackage[spanish]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}       % From LaTeX distribution
+\usepackage{subfigure}    % From CTAN/macros/latex/contrib/supported/subfigure
+\usepackage{pst-all}      % From PSTricks
+\usepackage{pst-poly}     % From pstricks/contrib/pst-poly
+\usepackage{multido}      % From PSTricks
+\input{random.tex}        % From CTAN/macros/generic
+
+
+%% \theoremstyle{plain} %% This is the default
+\oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
+\headheight .3in \headsep .2in \footskip .2in
+\setlength{\textwidth}{16cm} %ancho para apunte
+\setlength{\textheight}{21cm} %largo para apunte
+%\leftmargin 2.5cm
+%\rightmargin 2.5cm
+\topmargin 0.5 cm
+
+\newcommand{\nc}{\newcommand}
+\nc{\RR}{\mathbb{R}} \nc{\HH}{\mathbb{H}} \nc{\CC}{\mathbb{C}} \nc{\ZZ}{\mathbb{Z}}
+\nc{\FF}{\mathbb{F}} \nc{\NN}{\mathbb{N}} \nc{\QQ}{\mathbb{Q}} \nc{\PP}{\mathbb{P}}
+
+\nc{\ben}{\begin{enumerate}} \nc{\een}{\end{enumerate}} \nc{\x}{\varphi}
+\nc{\vs}{\vspace{1cm}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{FAMAF}
+\fancyhead[RE,LO]{Matemática Discreta I}
+\fancyfoot[LE,RO]{\leftmark}
+\fancyfoot[RE,LO]{\thepage}
+
+\renewcommand{\headrulewidth}{0.5pt}
+%\renewcommand{\footrulewidth}{0.5pt}
+\newcommand{\rta}{\noindent\textit{Rta: }}
+\newcommand{\alt}{\noindent\textit{Rta alternativa: }}
+\newcommand{\md}[1]{{\,}\left(#1\right)}
+
+\begin{document}
+
+{\bf \begin{center} Práctico 4 \\ Matemática Discreta I -- Año 2020/1 \\ FAMAF \end{center}}
+
+{\bf \begin{center} Ejercicios resueltos \end{center}}
+
+\begin{enumerate}
+	\item  
+	\begin{enumerate}
+		\item Calcular el resto de la división de 1599 por 39 sin tener que hacer la división. \\(Ayuda: $1599=1600-1=40^2-1$).
+		
+		\rta $1599\equiv 1^2-1\md{ 39}$, por lo tanto el resto es 0.
+		
+		\item Lo mismo con el resto de 914 al dividirlo por 31.
+		
+		\rta $914=30^2+14\equiv (-1)^2+14 \md{ 31}$, por lo tanto el resto es 15.
+	\end{enumerate}
+	
+	
+	\smallskip
+	\item Sea $n\in\NN$. Probar que todo número de la forma $4^n-1$ es divisible por 3.
+	
+	\rta $4^n-1\equiv 1^n-1 \equiv 0 \md 3$ por lo tanto $3\vert 4^n-1$.
+	
+	\smallskip
+	\item Probar que el resto de dividir $n^2$ por 4 es igual a 0 si $n$ es par y 1 si $n$ es impar.
+		
+	\rta  Si $n=2k$, se tiene $n^2=4k^2$, por lo tanto $4\vert n^2$. Si $n=2k+1$, tenemos $n^2=4k^2+4k+1=4(k^2+k)+1$ y vale el resultado.
+	
+	%\smallskip
+	
+	%\item Probar que si las longitudes de los lados de un triángulo rectángulo son números enteros, entonces los catetos no pueden ser ambos impares.
+	
+	\smallskip
+	\item
+	\begin{enumerate}
+		\item
+		Probar las reglas de divisibilidad por 2, 3, 4, 5, 8, 9 y 11.% que no hayan sido probadas en el teórico.
+			
+		\rta 
+		
+		\textit{Regla del 2.} Si $n=\sum_{j=0}^ka_j10^j, n\equiv \sum_{j=1}^ka_j0^j+a_0 \md{2}$ por lo tanto es divisible por 2 si y solo si su dígito de unidades lo es, o sea si termina en 0, 2, 4, 6, 8.
+		
+		\textit{Regla del 3 y 9.} Como $10\equiv 1\md{3}, \sum_{j=0}^ka_j10^j\equiv\sum_{j=0}^ka_j1^j \md{3}$. Por lo tanto $3\vert n$ si y sólo si 3 divide a la suma de sus dígitos.
+		Notar que lo mismo pasa con 9 por ser $10\equiv 1\md{9}$.
+		
+		\textit{Regla del 4 y 8.} $10^j\equiv0 \md{4}$ si $j>1$ y $10^j\equiv0 \md{8}$ si $j>2$. Por lo tanto, al tomar congruencia de $n$ módulo 4 u 8, sólo quedan las dos últimas cifras en el primer caso y las 3 últimas en el segundo. Es decir $4\vert n$ si y sólo si $4\vert 10a_1 +a_0$ y $8\vert n$ si y sólo si $8\vert 100a_2+10a_1 +a_0$ .
+		
+		\textit{Regla del 11.} $10\equiv -1\md{11} \Rightarrow n=\sum_{j=0}^ka_j10^j\equiv \sum_{j=0}^ka_j(-1)^j$ Entonces $11\vert n$ si y sólo si 11 divide a la suma de los dígitos que están en lugar par menos la suma delos dígitos que están en lugar impar.
+		
+		
+		
+		
+		\item Decir por cuáles de los números del 2 al 11 son divisibles los siguientes números:
+		$$ \qquad 12342  \, \qquad   \qquad  5176 \, \qquad \qquad  314573\,  \qquad  \qquad  899.$$
+			
+		\rta  $12342 =2\cdot 3 \cdot 11^2\cdot 17$,  $5176=2^3 \cdot 647$, $314573= 7\cdot 44939$, $899$ no es divisible por ninguno de ellos.
+		
+	\end{enumerate}
+	
+	%\smallskip \item Hallar los restos posibles en la división de $n^2$ por 3.
+	
+	\smallskip
+	\item Sean $a$, $b$, $c$ números enteros, ninguno divisible por 3. Probar que 
+	$$a^2 + b^2 + c^2\equiv 0 \md 3.$$% es divisible por 3.
+		
+	\rta Si ninguno es divisible por 3 tenemos que $x^2\equiv1\md{3}$ para $x=,a,b,c$, por lo tanto la suma de los cuadrados será congruente a 3 módulo 3 y esto dice que $3\vert a^2+b^2+c^2$.
+	
+	
+	\smallskip
+	\item Hallar la cifra de las unidades y la de las decenas del número $7^{15}$.
+		
+	\rta Para encontrar dichas cifras tenemos que tomar congruencia módulo 100.
+	$7^{15}=(7^2)^77=(50-1)^77\equiv (50\cdot7-1)7 \md{100}$ donde hemos usado la fórmula binomial para $(50-1)^7$ y el hecho que $50^n\equiv 0 \md{100}$ para $n>1$. Finalmente $(50\cdot7-1)7\equiv (50-1)7\equiv 343\equiv43\md{100}$.
+	
+	
+	\smallskip
+	\item Hallar el resto en la división de $x$ por 5 y por 7 para:
+	\begin{enumerate}
+		\item $x=1^8 + 2^8 + 3^8 + 4^8 + 5^8 + 6^8 + 7^8 + 8^8$;
+			
+		\rta Sabemos que si $(a,5)=1$ se tiene $a^4\equiv 1 \md{5}$, luego cada sumando salvo $5^8$ es congruente a 1 módulo 5. 
+		Su suma da entonces $7\equiv 2 \md{5}$.
+		
+		También sabemos que $a^7\equiv a (7) \forall a$, por lo cual la suma es congruente a $\sum_{i=1}^8i^2$ módulo 8.
+		Esto es $1+4+2+2+4+1+0+1=15\equiv 1 \md{7}$.
+		
+		\item $x=3\cdot 11\cdot 17\cdot 71\cdot 101$.
+			
+		\rta $ x = 3 \cdot11\cdot17 \cdot 71 \cdot101\equiv 3 \cdot1 \cdot2 \cdot1 \cdot1\equiv 6\equiv 1 \md{5}$
+		
+		$ x = 3\cdot11\cdot17 \cdot 71 \cdot101\equiv 3\cdot4\cdot3\cdot1\cdot3\equiv 108\equiv 1 \md{7}$.
+		
+		
+	\end{enumerate}
+	%\end{multicols}
+	
+	\smallskip
+
+	
+	
+	\item Hallar todos los $x$ que satisfacen:
+	\begin{enumerate}
+		\item $x^2 \equiv1 \md{4}$\quad
+		
+		\rta Resolvemos primero para $0\le x\le3$ y luego sumamos un múltiplo de 4. Esto es $x= 1$ o $x=3$ y por lo tanto $x=1+4k$ o $x=3+4k$, lo cual también se puede escribir como $x=4k\pm 1$.
+		
+		\item$x^2  \equiv x\md{12}$ 
+		
+		\rta Soluciones menores que 12: $x=0, 1, 4, 9, 11.$ Luego el conjunto solución es $\{12k, 12k\pm1, 12k+4, 12k-3\}$.
+		
+		\item $x^2  \equiv 2\md{3}$\quad
+		
+	\rta 	No tiene soluciones pues $0^2=0, 1^2=1, 2^2\equiv 1 \md{3}$.
+		
+		\item $ x^2  \equiv 0\md{12}$
+		
+		\rta Soluciones menores que 12: $\{ 0, 6,\}$. Luego las soluciones son $\{12k, 12k+6\}$.
+		
+		\item $x^4  \equiv1\md{16}$\quad
+		
+		\rta Notemos que $x$ debe ser impar. Podemos tomar $-8\le x\le 8$, es decir $x\in \{-7, -5,-3, -1, 1, 3, 5, 7\}$.
+		Los cuadrados son $\{49, 25, 9, 1, 1,9, 25, 49\}$ que son congruentes módulo 16 a $\{1, 9, 9, 1, 1, 9, 9,1\}$
+		A su vez cuando elevamos estos al cuadrado, como $9^2=81\equiv 1\md{16}$ Tenemos que todo número impar es solución de la ecuación.
+		
+		Alternativamente podríamos elevar $2k+1$ a la cuarta con la f\'ormula binomial $\sum_{j=0}^4 \binom{4}{j}(2k)^j1^{4-j}=1+4\cdot 2k+6\cdot4k^2+4\cdot4k^3+16k^4= 1+8(k+3k^2)+16(k^3+k^4)\equiv 1+8(k+3k^2)\md{16}$.
+		Si observamos que $k(1+3k)$ siempre es par ya que es uno de los factores es par, tenemos que 
+		$(2k+1)^4\equiv 1+ 16(3k+1)k/2\equiv 1\md{16}$.
+		
+		\item $3x  \equiv 1 \md{5}$
+		
+		\rta Probamos con $x=0,1,2,3,4$ y vemos que $3\cdot2=6\equiv 1\md{5}$. Luego las soluciones son $x=5k+2$.
+	\end{enumerate}
+	
+	%\smallskip
+	\item Sean $a$, $b$, $m \in {\ZZ}$, $d>0$ tales que  \,$d\mid a$,\,  \,$d\mid b$\, y \,$d\mid m$. Probar que la ecuación $a\cdot x \equiv b\,( m)$ tiene 	solución si y sólo si la ecuación
+	\begin{equation*}
+		\frac{a}{d}\cdot x \equiv \frac{b}{d}\md{\frac{m}{d}}
+	\end{equation*}
+	tiene solución.
+		
+	\rta La ecuación $\frac{a}{d}\cdot x \equiv \frac{b}{d} \md{\frac{m}{d}}$
+	tiene solución si y sólo si $\frac{m}{d}\vert \frac{a}{d}\cdot x - \frac{b}{d}$ si y sólo si $\frac{a}{d}\cdot x - \frac{b}{d}=\frac{m}{d}q$ como $d\neq0$ multiplicando por $d$, esto ocurre si y sólo si $m\vert a \cdot x - b $, es decir, $a \cdot x \equiv b \md{m}$.
+	
+	\smallskip
+	
+	\item Resolver las siguientes ecuaciones:
+	\begin{enumerate}
+		\item $2x \equiv -21 \md{8}$ 
+		
+		Como el módulo es par, no hay solución pues el miembro de la derecha es par y el de la izquierda es impar.
+		
+		\item $2x \equiv -12 \md{7} $
+		
+		\rta  $-12 \equiv 2 \md{7}$, por lo tanto la ecuación es equivalente a $2x \equiv 2 \md{7}$. Evidentemente 1 es solución de la ecuación y como $1=(2,7)$ todas las soluciones son de la forma $x=1+7k, k\in\mathbb{Z}$.
+		
+		\item $3x \equiv 5 \md{4}.$
+		
+		\rta   $5 \equiv 1 \md{4}$, por lo tanto la ecuación es equivalente a $3x \equiv 1 \md{4}$. Probando se encuentra que 3 es solución y como $1=(4,3)$, todas las soluciones son de la forma $x=3+4k, k\in\mathbb{Z}$.
+	\end{enumerate}
+
+	\smallskip
+	\item Resolver la ecuación $221 x \equiv 85\md{340}$. Hallar todas las soluciones $x$ tales que $0 \le x < 340$.
+		
+	\rta Notemos que 221, 85 y 340 son divisibles por 17.  Sus respectivos cocientes son 13, 5 y 20.
+	Por el ejercicio 9 podemos entonces resolver $13x\equiv 5 \md{20}$. Las soluciones de esta ecuación deben ser múltiplos de 5 y menores que 20. Comprobamos que 5 es la única solución menor que 20.
+	las restantes son de la forma $20k+5$. Tenemos que el conjunto buscado es: $\{5, 25, 45, \dots,305, 325\}=\{5+20k,\}_{k=1}^{20}$.
+	
+	\smallskip
+	\item 
+	\begin{enumerate}
+		\item[(i)] Encontrar todas las soluciones de la ecuación en congruencia
+		$$36\,x\equiv 8 \md{20}$$
+		usando el método visto en clase.
+			
+		\rta 
+		\begin{align*}
+			36 &= 20 \times 1 + 16 \Rightarrow 16 = 36 -20\\
+			20 &= 16 \times 1 + 4 \Rightarrow 4 = 20 -16 \\
+			16 &= 4 \times 4 + 0.
+		\end{align*}
+		Luego $4 = (36,20)$. Como $4|8$ la ecuación tiene solución. Ahora bien,  
+		\begin{equation*}
+			4 = 20 -16 = 20 - (36 -20) = (-1)\cdot 36 + 2 \cdot 20,
+		\end{equation*}
+		por lo tanto, multiplicando por 2 la ecuación, tenemos que $8 = (-2) \cdot 36 + 4 \cdot 20$. Luego, 
+		\begin{equation*}
+			8 \equiv  (-2)\cdot 36\md{20},
+		\end{equation*}
+		y entonces $-2$ es solución y todas la soluciones sonde la forma $x = -2 + (20/4)k= -2 +5k$, con $k$ entero. 
+		
+		
+		
+		\item[(ii)] Dar todas las soluciones $x$ de la ecuación anterior tales que $-8 < x < 30$.	
+		
+		\rta  Como todas las soluciones son de la forma  $x = -2 +5k$, con $k$ entero, tomamos valores consecutivos de $k$ y observamos cuando $x=-2 +5k$ se encuentra en el rango  $-8 < x < 30$. Si  empezamos por $k=-3$, la solución es $x=-17$ y  las soluciones para ese $k$ y los siguientes son
+		\begin{equation*}
+			-17, -12, -7, -2, 3, 8, 13, 18, 23, 28, 33 
+		\end{equation*}
+		Por lo tanto la respuesta es $-7, -2, 3, 8, 13, 18, 23, 28$.
+		
+		 \alt Si queremos ser más sistemáticos planteamos las inecuaciones $-8 < -2 +5k < 30$. Sumando 2 y dividiendo por 5 en las inecuaciones, obtenemos $-6/5 < k < 32/5$ o equivalentemente $-1.2 < k < 6.4$, es decir que $k$ debe tomar los valores $-1, 0,1,2,3,4,5,6$ y por lo tanto $x = -2 +5k$ toma valores $-7, -2, 3, 8, 13, 18, 23, 28$.
+		
+	\end{enumerate}
+	
+	
+	\smallskip
+	\item 
+	\begin{enumerate}
+		\item[(i)] Encontrar todas las soluciones de la ecuación en congruencia
+		$$21\,x\equiv 6 \md{30}$$
+		usando el método visto en clase.
+			
+		\rta  $3=(21,30)$ y $3 = (-7)\cdot 21 + 5 \cdot 30$, por lo tanto $6 = (-14)\cdot 21 + 10 \cdot 30$. Haciendo congruencia módulo $30$ obtenemos: $6 \equiv (-14)\cdot 21\equiv 6\cdot 21 \md{30}$. Luego la ecuación  tiene como soluciones $x=6+(30/10)k= 6+ 10k$, con $k$ entero.
+		
+		\item[(ii)] Dar todas las soluciones $x$ de la ecuación anterior tales que $0 < x < 35$.
+			
+		\rta En base al punto anterior, $0 < x < 35$, es equivalente a $0 < 6 +10k < 35$. Restando 6 y luego dividiendo por 10 las inecuaciones, obtenemos $-6/10 < k < 29/10$ o bien $-0.6 < k < 2.9$, por lo tanto $k $ toma valores $0, 1,2$ y las soluciones son $6, 16, 26$.
+		
+	\end{enumerate}
+	
+	
+	\smallskip
+	\item Encontrar todas las soluciones de los siguientes sistemas de ecuaciones en congruencia 
+	
+	\vskip .3cm
+	\noindent
+	\begin{tabular}{ll}
+		$\begin{array}{r} a) \\ {}^{} \end{array}$
+		&
+		$\begin{array}{l}
+		4x\equiv 7 \md{11} \\
+		7x\equiv 8 \md{12}
+		\end{array}$
+	\end{tabular}
+	
+	\rta Para resolver la ecuación $4x\equiv 7 \md{11}$ observemos que $-1$  es solución. Como $1=(4,11)$ todas las soluciones de $4x\equiv 7 \md{11}$ son de la forma $x = -1 + 11k$, para $k$ entero. 	Ahora, debemos encontrar los $k \in \mathbb{Z}$ soluciones de la ecuación
+	\begin{equation*}\label{eq-sistema}
+	7(-1 + 11k)\equiv 8 \pmod{12}.
+	\end{equation*}
+	Expandiendo el lado izquierdo de la ecuación obtenemos
+	\begin{equation*}
+	7\times (-1) + 7\times 11 k\equiv -7 + 77 k\equiv 5 + 5k \md{12}.
+	\end{equation*}
+	Luego, debemos resolver $5 + 5k \equiv 8\md{12}$ o equivalentemente, $5k \equiv 3\md{12}$. Una solución a esta ecuación es $3$. Como $1 =(5,12)$, todas las soluciones son de la forma $k = 3 + 12 h$ con $h \in \mathbb{Z}$.
+	
+	La solución al sistema entonces será $x = -1 + 11k = -1 + 11( 3 + 12 h)$.  Es decir $x = 32 + 132 h$ para $h \in \mathbb{Z}$.
+	
+	
+	
+	\vskip .3cm
+	\noindent
+	\begin{tabular}{ll}
+		$\begin{array}{r} b) \\ {}^{} \\ {}^{} \end{array}$
+		&
+		$\begin{array}{l}
+		x \equiv -1 \md{7} \\
+		x \equiv 3 \md{10} \\
+		x \equiv -2 \md{11}.
+		\end{array}$
+	\end{tabular}
+	
+	\rta Las soluciones de la primera ecuación son $x=-1 + 7k$ para $k \in \mathbb{Z}$. Especializando estas soluciones en la segunda ecuación obtenemos $-1 + 7k \equiv 3 \md{10}$, lo que es equivalente a $7k \equiv 4 \md{10}$, cuyas soluciones son $k=2 + 10 h$ para $h \in \mathbb{Z}$. Luego las soluciones  para el sistema que forman las dos primeras ecuaciones son $x =  -1 + 7k = -1 + 7(2 + 10 h) = 13 + 70h$ para   $h \in \mathbb{Z}$.
+	
+	\noindent Finalmente, especificando estas soluciones en la tercera ecuación obtenemos 
+	$13+ 70 h\equiv -2 \md{11}$ o equivalentemente $70 h\equiv -15 \md{11}$ o bien $4 h\equiv 7 \md{11}$, cuyas soluciones son $h= -1 + 11t$ para  $t \in \mathbb{Z}$. Luego, $x = 13 + 70h = 13 + 70(-1 + 11t)= -57 + 770t$. 
+	
+	\noindent Concluyendo: las soluciones del sistema son $x = -57 + 770t$ para  $t \in \mathbb{Z}$. 
+	
+	\vskip .3cm
+	\noindent
+	\begin{tabular}{ll}
+		$\begin{array}{r} c) \\ {}^{} \\ {}^{}\end{array}$
+		&
+		$\begin{array}{l}
+		x \equiv -1 \md{2}\\
+		x \equiv 5 \md{9}\\
+		x \equiv -3 \md{7}.
+		\end{array}$
+	\end{tabular}
+	
+	\rta Las soluciones de la primera ecuación son $x=1 + 2k$ para $k \in \mathbb{Z}$. Especializando estas soluciones en la segunda ecuación obtenemos $1 + 2k \equiv 5 \md{9}$, lo que es equivalente a $2k \equiv 4 \md{9}$, cuyas soluciones son $k=2 + 9 h$ para $h \in \mathbb{Z}$. Luego las soluciones  para el sistema que forman las dos primeras ecuaciones son $x =  1 + 2k = 1 + 2(2 + 9 h)= 5 + 18 h$ para   $h \in \mathbb{Z}$.
+	
+	\noindent Finalmente, especificando estas soluciones en la tercera ecuación obtenemos 
+	$5+ 18 h\equiv -3 \md{7}$ o equivalentemente $18 h\equiv -8 \md{7}$ o bien $4 h\equiv 6 \md{7}$, cuyas soluciones son $h= 5 + 7t$ para  $t \in \mathbb{Z}$. Luego, $x =  5 + 18 h =  5 + 18(5 + 7t)= 95 + 126t$. 
+	
+	\noindent Concluyendo: las soluciones del sistema son $x = 95 + 126t$ para  $t \in \mathbb{Z}$. 
+	
+	
+	\smallskip
+	\item Dado $t \in {\ZZ}$, decimos que $t$ es {\it inversible módulo $m$} si existe $h \in {\ZZ}$ tal que $th\equiv 1\,(\ m)$.
+	\begin{enumerate}
+		\item ¿Es 5 inversible módulo 17?
+			
+		\rta Si, $5\cdot 7\equiv 1 \md{17}$
+		
+		%  \item ¿Existe algún $m$ tal que $m$ sea inversible módulo $m$?
+		\item Probar que $t$ es inversible módulo $m$, si y sólo si $(t,m)=1$.
+			
+		\rta Si $t$ es inversible módulo $m$ sea $h$ tal que $th\equiv 1 \md{m}$. Esto es $th-1=mq$, y por lo tanto $1=th-mq$, lo cual dice que $(t,m)=1$. Recíprocamente si $(t, m)=1$ existen enteros $h$ y $q$ tales que $1=th+mq$ y esto nos dice que $m$ divide a $1-th$ o sea $th\equiv 1 \md{m}$.
+		
+		\item Determinar los inversibles módulo $m$, para $m=11,12,16$.
+			
+		\rta $\{1,2,3,\dots, 9,10\}, \{1, 5, 7,11\} , \{1, 3, 5, 7, 9 ,11, 13, 15\}$.
+		
+	\end{enumerate}
+	
+	
+	
+	%\begin{enumerate}
+	%\item Dar la tabla de la suma y del producto en $\ZZ_2$, $\ZZ_3$ y $\ZZ_4$.
+	%  \item Probar que $\ZZ_m$ es un anillo.
+	% \end{enumerate}
+	
+	\smallskip
+	\item Encontrar los enteros cuyos cuadrados divididos por 19 dan resto 9.
+		
+	\rta Si resolvemos $x^2\equiv 9 \md{3} $ vemos que 3 y 16 son los únicos restos que son solución. Luego, todas las soluciones buscadas son $19k\pm3$. 
+	
+	
+	\smallskip
+	
+	\item Probar que todo número impar $a$ satisface: $a^4 \equiv 1\md{16}$, $a^8 \equiv 1\md{32}$, $a^{16}\equiv 1\md{64}$.\\ ¿Se puede asegurar que $a^{2^n} \equiv 1 \md{2^{n+2}}$?
+		
+	\rta Si $n=1$,  $a^2-1$ es divisible por 8 ya que $a^2-1 =(2k+1)^2-1=4k^2+4k=4k(k+1)$ y $2\vert k(k+1)$.
+	
+	Si $a^{2^n}\equiv 1 \md{2^{n+2}}$ entonces $2^{n+2}$ divide a $a^{2^n}-1$ multiplicando por $a^{2^n}+ 1$, que es par, tenemos que $2^{n+1+2}$ divide a $(a^{2^n}-1)(a^{2^n}+1)=a^{2^{n+1}}-1$.
+	
+	
+	\smallskip
+	
+\item Encontrar el resto en la división de $a$ por $b$ en los siguientes casos:
+\begin{enumerate}
+	\item $a = 11^{13}\cdot13^8 ; b = 12$;  \rta  $11^{13}\cdot13^8\equiv (-1)^{13}\cdot 1^8\equiv 11 \md{12}$.
+	
+	\item $a = 4^{1000}; b = 7$;  \rta  $4^{1000}=(4^6)^{166}4^4\equiv (4^2)^2\equiv 2^2 \md{12}$.
+	
+	\item $a = 123^{456}; b = 31$;  \rta  $123^{456}\equiv (-1)^{456}\equiv 1 \md{31}.$
+	
+	\item $a = 7^{83}; b = 10$.  \rta  $7^{83}= (7^4)^{20}7^3\equiv 1^{20}343\equiv 3 \md{10}$.
+\end{enumerate}
+	
+	%\smallskip
+	\item Obtener el resto en la división de $2^{21}$ por 13; de $3^8$ por 5 y de
+	$8^{25}$ por 127.
+		
+	\rta  $2^{21}=2^{13}2^8\equiv 2\cdot2^8 \md{13}$ Como $2^32^9= 2^{12}\equiv 1 \md{13}$, se tiene $82^9\equiv1 \md{13}$ y esto dice que $2^9\equiv 5 \md{13}$ ya que $8\cdot 5=3\cdot 13 +1$.
+	
+	$3^8=3^4\cdot 3^4\equiv 1\cdot1 \md{13}$.
+	
+	$8^{25}=2^{75}$ como $2^7=128\equiv1 \md{127}$; tenemos que $2^{75}=(2^7)^{10}2^5\equiv2^5 \md{127}$.
+	Por lo tanto $8^{25}\equiv32 \md{127}$
+	
+	%$$ \text{ (a)  $2^{21}$\, por \,13;\qquad
+	%$3^8$\, por \,5 $8^{25}$\, por \,127.}$$
+	
+	
+	%\smallskip
+	
+	%\item Hallar todos los enteros que satisfacen simultáneamente:
+	
+	%$x \equiv 1\ ( 3); $ \qquad $x \equiv 1 \ ( 5)$; \qquad $x \equiv 1\ ( 7)$.
+	
+	%\smallskip
+	%\item Hallar el menor entero positivo que satisface simultáneamente las siguientes congruencias:
+	
+	%$x\equiv 2\ ( 3)$; \qquad $x \equiv 3\ ( 5)$; \qquad $x \equiv 5\ (2)$.
+	
+	%\smallskip
+	
+	%\item Hallar 4 enteros consecutivos divisibles por \,5, 7, 9 y 11 respectivamente.
+	
+	\smallskip
+	\item \begin{enumerate}
+		\item Probar que no existen enteros no nulos tales que $x^2 + y^2 = 3z^2$.
+			
+		\rta Si $x, y, z$ fuesen solución y tuvieran un factor común $t$ es claro que también $x/t, y/t. z/t$ cumpliría las condiciones. Luego podemos asumir que $x, y, z$ no tienen factor en común salvo $\pm1$.
+		
+		Ahora bien, $0^2 \equiv 0\md{3}$, $1^2 \equiv 1\md{3}$ y $2^2 \equiv 1\md{3}$. Por lo tanto, si tomamos congruencia módulo 3 en ambos miembros vemos que la suma de dos cuadrados módulo 3 sólo puede ser 0 si ambos números son divisibles por 3. Luego $x=3a, y=3b$, y por lo tanto $x^2=9a^2, y^2=9b^2$. Podemos simplificar la ecuación y obtenemos $3a^2+3b^2=z^2$. Tomando congruencia módulo 3 nuevamente tenemos que 3 divide a $z^2$ y por lo tanto divide a $z$. Esto contradice el hecho que $x,y, z$ no tenían factor común. 
+		
+		\item Probar que no existen números racionales no nulos $a$, $b$, $r$ tales que $3(a^2 + b^2) = 7r^2$.
+			
+		\rta Aquí también podemos asumir que $a, b, r$ no tienen factores en común. Tomando congruencia módulo 3 vemos que 3 divide a $r$ o sea $r=3t, r^2=9t^2$. Reemplazando y simplificando tenemos $a^2+b^2=3t^2$, que sabemos por el inciso anterior que no tiene solución.
+		
+		
+	\end{enumerate}
+	
+	\smallskip
+	
+	%\item Cinco hombres recogieron en una isla un cierto número de cocos y resolvieron repartirlos al día siguiente. Durante la noche uno de ellos decidió separar su parte y para ello %dividió el total en cinco partes y dió un coco que sobraba a un mono y se fue a dormir. Enseguida otro de los hombres hizo lo mismo, dividiendo lo que había quedado por cinco, dando %un coco que sobraba a un mono y retirando su parte, se fue a dormir. Uno tras otro los tres restantes hicieron lo mismo, dándole a un mono el coco que sobraba. A la ma\~nana siguiente %repartieron los cocos restantes, dándole a un mono el coco sobrante.
+	%>Cuál es el número mínimo de cocos que se recogieron?
+	
+	%\smallskip
+	
+	%\item La producción diaria de huevos en una granja es inferior a 75.
+	%Cierto día el recolector informó que la cantidad de huevos recogida era tal que contando de a 3 sobraban 2, contando de a 5 sobraban 4 y
+	%contando de a 7 sobraban 5. El capataz, dijo que eso era imposible. >Qui\'en tenía razón? Justificar.
+	
+	%\smallskip
+	
+	\item Probar que si \,$(a,1001)=1$\, entonces \,$1001$\, divide a \,$a^{720}-1$.
+	
+	\rta Notemos que $1001=7\cdot11\cdot13$. Por lo tanto $(a, 1001) = 1$ implica $(a,7)=(a,11)=(a,13)=1$.
+	Entonces $a^6\equiv1 \md{7}; a^{10}\equiv1 \md{11}$ y $ a^{12}\equiv1 \md{13}$.
+	Por lo tanto $a^{720}=((a^6)^{10})^{12}\equiv 1 \md{7\cdot11\cdot13}$.
+	
+	\smallskip
+	
+	
+	\
+	
+	
+	\noindent (*): ejercicios opcionales de mayor dificultad.
+	
+	\smallskip
+	
+	\item (*) ¿Para qu\'e valores de \,$n$\, es \,$10^n-1$\, divisible por \,$11$?
+	
+	\rta Como $10\equiv -1 \md{11}$, se tiene $10^{n}-1\equiv(-1)^n-1 \md{11}$. Entonces $10^n-1$ es divisible por 11 si y solo si $n$ es par.
+	
+	\smallskip
+	
+	\item (*) Probar que para ningún $n\in\NN$ se puede partir el conjunto $\{n,n+1,\ldots, n+5\}$ en dos partes
+	disjuntas no vacías tales que los productos de los elementos que las integran sean iguales.
+	
+	\rta Notemos que si fuera posible dicha partición. el $n+2$ dividiría a ambos productos y uno de ellos no lo contiene.
+	Entonces $n+2$ debe dividir a $(n+2-2)(n+2-1)(n+2+1)(n+2+2)(n+2+3)$. Esto nos dice que $n+2$ debe dividir a 
+	$(-1)(-2)\cdot1\cdot2\cdot3=12$. Las posibilidades para $n+2$ son entonces: 1, 2, 3, 4, 6,12.
+	Pero 1 y 2 dan $n\le 0$ y las restantes dan $n\in \{1, 2, 4, 10\}$. Las primera no puede ser pues en el conjunto \{1,2,3,4,5,6\} hay un único elemento divisible por 5, que debería ser divisor de ambos productos de la partición.
+	La misma razón dice que $n$ no puede ser 2 ni 4. Finalmente si $n=10$, el conjunto sería $\{10,11,12,13,14,15\}$ que posee un único elemento divisible por 7 (el 14) y vale el mismo razonamiento que antes con 7 en lugar de 5.
+	
+	Alternativamente: Notemos que 7 divide a lo sumo a uno de los 6 números. Si $\prod_{i=0}^5(n+i)=u_1u_2$ con $u_1=u_2$, entonces 7 no divide a ninguno de los factores ya que si divide a un factor de $u_1$ divide a un factor de $u_2$. Tenemos así que las congruencias módulo 7 dan los 6 restos posibles y su producto 720 es congruente a 6 módulo 7. Pero entonces $u_1^2=u_1u_2\equiv 720\equiv 6 \md{7}$ se tendría que 6 es un cuadrado módulo 7 lo cual es falso.
+	
+	\smallskip
+	
+	\item (*) El número \,$2^{29}$\, tiene nueve dígitos y todos son distintos.
+	¿Cuál dígito falta? (No está permitido el uso de calculadora).
+	
+	\rta Primero nos planteamos la siguiente pregunta, ¿Cuánto suman sus dígitos? Si $2^{29} =  \sum_{i=0}^8 a_i10^i$, entonces  $\sum_{i=0}^8 a_i= \sum_{i=0}^9i-d$, donde $d$ es el dígito que falta.
+	Esto es $\sum_{i=0}^8 a_i= 45-d$. Además $2^{29} = \sum_{i=0}^8 a_i10^i \equiv \sum_{i=0}^8 a_i\md{9} $. 	Entonces si calculamos esta congruencia podemos obtener $d$: 
+	$2^{29}=(2^6)^42^5\equiv 2^5 \md{9}$ y $2^5\equiv 5 \md{9}$ por lo tanto $d\equiv -5 \md{9}$ o sea $d=4$ es el dígito faltante. 
+	
+\end{enumerate}
+
+
+
+
+
+
+\end{document}
+
+\
+
+\noindent {\bf Ejercicios de parciales y exámenes anteriores:}
+
+\
+
+\item Decidir si las siguientes afirmaciones son verdaderas o
+falsas. Justificar.
+
+\begin{enumerate}
+\item La suma de cuatro cuadrados siempre es múltiplo de cuatro.
+
+\item $7^{50}\equiv 10 \mod(13)$.
+
+\item Existe un número entero $x$ tal que $1001 x\equiv 104 \mod(39)$.
+
+\item Existe $n\in\NN$ tal que $4n+3$ es suma de dos cuadrados.
+
+\item $777^{151}\equiv 7 \mod(11)$.
+
+\item Existe un número entero $x$ tal que $1001\, x\equiv 131 \mod(39)$.
+
+\end{enumerate}
+
+\
+
+\item Sean $a,b\in\ZZ$.  Probar que si $11$ divide a $a^2+5b^2$ entonces $a$ y $b$ son
+tambi\'en divisibles por $11$.
+
+\
+
+\item  Hallar tres números naturales consecutivos mayores que $2000$ y divisibles por
+$2$, $7$ y $13$, respectivamente.
+
+\
+
+\item Hallar el resto de la división por $11$ de $(61162)^{53}$.
+\end{enumerate}
+\end{document}

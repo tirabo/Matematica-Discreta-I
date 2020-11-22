@@ -1,0 +1,139 @@
+
+
+\appendix
+\setcounter{chapter}{1}
+\renewcommand{\thechapter}{\Alph{chapter}}
+\chapter[El principio del tamiz]{El principio del tamiz} \label{principiodeltamiz}
+
+
+
+
+
+\begin{section}{El principio del tamiz}\label{Ap1.2}
+El principio más básico del conteo (proposición \ref{principiodeadicion}) dice que $|A \cup B|$ es la suma de $|A|$ y $|B|$, cuando $A$ y $B$ son conjuntos
+disjuntos. Si $A$ y $B$ no son disjuntos, cuando sumamos $|A|$ y $|B|$ estamos contando $A \cap B$ dos veces. Entonces, para obtener la respuesta correcta debemos restar $|A \cap B|$:
+$$
+|A \cup B| = |A|+|B| - |A \cap B|.
+$$
+
+Un método similar puede aplicarse a tres conjuntos. Cuando sumamos $|A|$, $|B|$ y $|C|$, los elementos de $A \cap B$, $B \cap C$, y $C \cap A$ son contados dos veces (si no están en los tres
+conjuntos). Para corregir esto, restamos $|A \cap B|$, $|B \cap C|$ y $|C \cap A|$. Pero ahora los elementos de $A \cap B \cap C$, contados originalmente tres veces, han sido descontados tres
+veces. Luego, para conseguir la respuesta correcta, debemos sumar $|A \cap B \cap C|$. Así
+$$
+|A \cup B\cup C|= \alpha_1-\alpha_2+\alpha_3,
+$$ 
+donde
+$$\gathered
+\alpha_1=|A|+|B|+|C|,\qquad \alpha_2= |A \cap B|+|B \cap C|+|C \cap A|, \\
+\alpha_3 = |A \cap B \cap C|.
+\endgathered
+$$
+
+
+
+
+Este resultado es un caso simple de lo que suele ser llamado, por razones obvias, el principio de inclusión y exclusión. También
+\index{principio de inclusion y exclusion} se lo llama el { \it principio del tamiz}.  \index{principio del tamiz}
+
+
+
+\begin{teorema}\label{tA1.2} Si $A_1,A_2,\ldots,A_n$ son conjuntos finitos, entonces
+$$ |A_1 \cup A_2 \cup \ldots \cup A_n|= \alpha_1-\alpha_2+\alpha_3 + \cdots +(-1)^n\alpha_n, $$ donde $\alpha_i$ es la suma de los 
+cardinales de las intersecciones de los conjuntos tomados de a $i$ por vez ($1\le i \le n$).
+\end{teorema}
+\begin{proof} Debemos demostrar que cada elemento $x$ de la unión hace una contribución neta de 1 al miembro de la derecha.
+Supongamos que $x$ pertenece a $k$ de los conjuntos $A_1, A_z,\ldots,A_n$. Entonces $x$ contribuye con $k$ en la suma $\alpha_1=|A_1|+\cdots+|A_n|$. En la suma $\alpha_2$, $x$ contribuye 1 en $|A_i \cap A_j|$ cuando $A_i$ y $A_j$ están entre los $k$ conjuntos que contienen a $x$. Existen $\binom{k}{2}$ de esos pares, por lo tanto $\binom{k}{2}$ es la contribución de $x$ a $\alpha_2$. En general la contribución de $x$ a $\alpha_i$ ($1 \le i \le n$) es $\binom{k}{i}$. Por lo tanto el total con que contribuye $x$ al lado derecho de la igualdad es 
+$$
+\binom{k}{1} -\binom{k}{2} + \cdots + (-1)^{k-1} \binom{k}{k},
+$$
+porque los términos con $i > k$ dan cero.
+
+Por el teorema del binomio aplicado a $(1-1)^k=0$, se deduce que la expresión de arriba  es igual a
+$\binom{k}{0}$, que vale $1$.
+\end{proof}
+
+Un corolario simple del teorema \ref{tA1.2} es a menudo más útil en la práctica. Supongamos que $X$ es un conjuntos finito y $A_1,A_2,\ldots,A_n$ son subconjuntos de $X$ (cuya unión no necesariamente es igual a $X$). Si $|X| = N$, entonces el número de elementos de $X$ que no están en ninguno de esos subconjuntos es
+$$\begin{aligned}
+|X-(A_1 \cup A_2 \cup \ldots \cup A_n)|&=
+|X|-|A_1 \cup A_2 \cup \ldots \cup A_n| \\
+&= N- \alpha_1 + \alpha_2 - \cdots + (-1)^n\alpha_n.
+\end{aligned}
+$$
+
+
+
+
+\begin{ejemplo} Hay $73$ estudiantes en el primer año de la Escuela de Artes de la universidad. De ellos, $52$ saben tocar el piano, $25$ el violín y $20$ la flauta; $17$ pueden tocar tanto el piano como el violín, $12$ el piano y la flauta; pero solo Juan Rictero puede tocar los tres instrumentos ?`Cuántos alumnos no saben tocar ninguno de esos instrumentos?
+\end{ejemplo}
+\begin{proof} Con $V$, $P$ y $F$ denotaremos los conjuntos de estudiantes que saben tocar el violín, el piano y la flauta
+respectivamente. Usando la información dada tenemos que $$
+\begin{aligned}
+\alpha_1&= |P| + |V| + |F|= 52+25+20=97 \\
+\alpha_2&= |P\cap V| + |V\cap F| + |P\cap F|=17+7+12=36 \\
+\alpha_3&= |P\cap V\cap F|= 1.
+\end{aligned}
+$$
+Por consiguiente, el número de estudiantes que o pertenecen a ninguno de los tres conjuntos $P$, $V$ y $F$ es
+$$
+73-97+36-1=11.
+$$
+\end{proof}
+
+\begin{ejemplo} Una secretaria ineficiente tiene $n$ cartas distintas y $n$ sobres con direcciones ?`De cuántas maneras puede
+ella arreglárselas para meter cada carta en un sobre equivocado? (Esto es comúnmente llamado el {\it problema del desarreglo} del
+cual hay varias formulaciones pintorescas.) 
+\end{ejemplo}
+
+
+\begin{proof} Podemos considerar cada carta y su correspondiente sobre  como si estuvieran etiquetadas con un entero $i$ en el rango $1 \le i \le n$. El acto de poner las cartas en los sobres puede describirse como una permutación $\pi$  de $\mathbb N_n$: $\pi(i)=j$ si la carta $i$ va en el sobre $j$. Necesitamos saber  el número de {\em desarreglos}, esto es, las permutaciones $\pi$ tales que
+$\pi(i)\not=i$ para todo $i$ en $\mathbb N_n$.
+
+Denotemos $A_i$ ($1 \le i \le n$) el subconjunto de $S_n$ (el conjunto de permutaciones de $\mathbb N_n$) que contiene aquellos $\pi$ tales que $\pi(i)=i$. Diremos que los elementos de $A_i$
+{\it fijan} $i$. Por el principio del tamiz, el número de desarreglos es 
+$$
+d_n= n! -\alpha_1+\alpha_2 - \cdots +(-1)^n\alpha_n,
+$$
+donde $\alpha_r$ es la suma de los cardinales de las intersecciones de los $A_i$ tomando r por vez. En otras palabras, $\alpha_r$ es el número de permutaciones que fijan $r$ símbolos
+dados, tomando todas las maneras de elegir los $r$ símbolos. Ahora hay $\binom{n}{r} $ maneras de elegir $r$ símbolos, y el número de permutaciones que los fijan es solo el número de permutaciones de
+los restantes $n-r$ símbolos, que es $(n-r)!$  Por lo tanto
+$$
+\alpha_r = \binom{n}{r} \cdot (n-r)! = \frac{n!}{r!},\qquad d_n=
+n!\left(1-\frac{1}{1!} + \frac{1}{2!}-\cdots
++(-1)^n\frac{1}{n!}\right). \nopagebreak$$
+\end{proof}
+
+%
+%\section}{Ejercicios}
+	
+\subsection*{\Large $\S$ Ejercicios}
+%\addcontentsline{toc}{subsection}{Ejercicios}\label{ejerciciosA1.2}
+\begin{enumerate}
+\item En una clase de $67$ estudiantes de matemática, $47$ leen francés, $35$ leen alemán y $23$ leen ambos lenguajes ?`Cuántos estudiantes no lee
+ninguno de los dos lenguajes? Si además $20$ leen ruso, de los
+cuales $12$ también leen francés, $11$ leen alemán y $5$ leen los tres
+lenguajes, ?`cuántos estudiantes no leen ninguno de los tres
+lenguajes?
+
+\item Encontrar el número de formas de ordenar las letras A, E, M, O, U, Y en
+una secuencia de tal forma que las palabras ME e YOU no aparezcan.
+
+\item
+Calcular el número $d_4$ de desarreglos de $\{1,2,3,4\}$ y escriba,
+en la notación cíclica, las permutaciones relevantes.
+
+\item Usar el principio de inducción para probar que la fórmula para
+$d_n$ satisface la recursión
+$$
+d_1=0, \quad d_2=1,\quad d_n= (n-1)(d_{n-1}+d_{n-2}) \ (n\ge 3).
+$$
+
+\item Probar que el número de desarreglos de $\{1,2,\ldots,n\}$ en el
+cual un objeto dado (digamos el $1$) está en un $2$-ciclo es
+$(n-1)d_{n-2}$. Utilizar esto para dar una prueba directa de la
+fórmula recursiva del ejercicio anterior.
+\end{enumerate}
+%\end{subsection}
+
+\end{section}
+
+

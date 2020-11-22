@@ -1,0 +1,373 @@
+% PDFLaTeX
+\documentclass[a4paper,12pt,twoside,spanish,reqno]{amsbook}
+%%%---------------------------------------------------
+
+%\renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
+%\usepackage[T1]{fontenc}
+
+% Para hacer el  indice en linea de comando hacer 
+% makeindex main
+%% En http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf hay ejemplos de packages de fonts libres, como los siguientes:
+%\usepackage{cmbright}
+%\usepackage{pxfonts}
+%\usepackage[varg]{txfonts}
+%\usepackage{ccfonts}
+%\usepackage[math]{iwona}
+\usepackage[math]{kurier}
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\usepackage{mathtools}
+\usepackage{stackrel}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+%\usepackage{makeidx}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+\usepackage{hypcap}
+
+\numberwithin{equation}{section}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate, 1]{label={(\arabic*)}}
+
+%%% FORMATOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+\usepackage[a4paper, top=3cm, left=3cm, right=2cm, bottom=2.5cm]{geometry}
+%% CONTROLADORES DE.
+% Tamaño de la hoja de impresión.
+% Tamaños de los laterales del documento. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% \theoremstyle{plain} %% This is the default
+%\oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
+%\headheight .3in \headsep .2in \footskip .2in
+%\setlength{\textwidth}{16cm} %ancho para apunte
+%\setlength{\textheight}{21cm} %largo para apunte
+%%%%\leftmargin 2.5cm
+%%%%\rightmargin 2.5cm
+%\topmargin 0.5 cm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% CONTROLADORES DE ESTILO %%%
+%%%--------------------------------------------------------------------------
+%%% CAPÍTULOS 
+%%%--------------------------------------------------------------------------
+\usepackage{titlesec}%--
+\newcommand{\hsp}{\hspace{15pt}}
+\titleformat{\chapter}[hang]{\huge\bfseries}{{
+		\fontsize{6em}{6em}\selectfont
+		\thechapter}\hsp%\textcolor{}%
+	{\vrule height 4em width 3pt}\hsp}{0pt}{\huge\bfseries}
+
+%--------------------------------------------------------------------------
+%--------------------------------------------------------------------------
+% SECCIONES 
+%--------------------------------------------------------------------------
+\usepackage{titlesec}
+\titleformat{\section}[frame]{\normalfont}%
+{\filright\footnotesize\enspace \large {\large SECCIÓN \thesection} \enspace}%
+{8pt}{\huge\bfseries\filcenter}
+%%%--------------------------------------------------------------------------	
+%%% algoritmos %%%
+%% Antes: "pip  install Pygments"
+%% Entrar a la configuración del texmaker o Kile y en órdenes de pdflatex poner
+%% pdflatex -shell-escape -synctex=1 -interaction=nonstopmode %.tex
+%\usepackage{minted}
+%\newminted{python}{frame=lines, mathescape} %con eso usar \begin{pythoncode} ... \end{pythoncode}
+%\usepackage{clrscode3e}
+%% nota, para sistener las fount si o si, se tienen que compilar con XeleTeX %%
+%-------------------------------
+%% INTRA TEXTO                %%
+\usepackage{setspace}
+%\setlength{\parindent}{0,7cm}% tamaño de sangria.
+\setlength{\parskip}{0,4cm} % separación entre parrafos.
+\renewcommand{\baselinestretch}{0.90}% separacion del interlineado
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\end{comment}
+%%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{proposicion}[teorema]{Proposici\'on}
+\newtheorem{corolario}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{propiedad}[teorema]{Propiedad}
+
+\theoremstyle{definition}
+
+\newtheorem{definicion}{Definici\'on}[section]
+\newtheorem{ejemplo}{Ejemplo}[section]
+\newtheorem{problema}{Problema}[section]
+\newtheorem{ejercicio}{Ejercicio}[section]
+\newtheorem{ejerciciof}{}[section]
+
+\theoremstyle{remark}
+\newtheorem{observacion}{Observaci\'on}[section]
+\newtheorem{obs}{Observaci\'on}[section]
+\newtheorem{nota}{Nota}[section]
+
+\renewcommand{\partname }{Parte }
+\renewcommand{\indexname}{Indice }
+\renewcommand{\figurename }{Figura }
+\renewcommand{\tablename }{Tabla }
+\renewcommand{\proofname}{Demostraci\'on}
+\renewcommand{\appendixname }{}
+\renewcommand{\contentsname }{Contenidos }
+\renewcommand{\chaptername }{}
+\renewcommand{\bibname }{Bibliograf\'\i a }
+
+
+
+
+\newcommand\Punto[2]{\rput(#1,#2){$\scriptstyle\bullet$}}
+\newcommand\Puntotz[2]{\node at (#1/10,#2/10+3) {$\scriptstyle\bullet$};}  %tikz
+% coloca un punto grueso en (#1,#2), coordenadas en mm
+
+\newcommand\BPunto[2]{\rput(#1,#2){$\bullet$}}
+\newcommand\BPuntotz[2]{\node at (#1/10,#2/10+3) {$\bullet$};}  %tikz
+% coloca un punto mas grande que el anterior
+
+% coloca frase #3 en 8pt en (#1,#2). Coordenadas en mm.
+\newcommand\poner[3]{\rput(#1,#2){#3}}
+\newcommand\ponertz[3]{\node at (#1/10,#2/10+3) {#3};} %tikz
+
+% hace una linea de x,y a x',y'
+\newcommand\linea[4]{\psline(#1,#2)(#3,#4)}
+\newcommand\lineatz[4]{\draw (#1/10,#2/10+3)-- (#3/10,#4/10+3);} %tikz
+
+% hace una linea mas gruesa de x,y a x',y'
+\newcommand\Blinea[4]{\psline[linewidth=2pt](#1,#2)(#3,#4)}
+\newcommand\Blineatz[4]{\draw[line width=2pt](#1/10,#2/10+3) -- (#3/10,#4/10+3);}
+
+
+
+
+
+
+
+
+\def\conc{+\hspace{-1.5ex}+\hspace{0.5ex}}
+\def\con{{\rm con}}
+\def\hn{\hspace{-0.2cm}}
+\def\h4n{\hspace{-0.4cm}}
+\def\impli{\Rightarrow}
+\def\ssi{\equiv}
+\def\disc{\not\ssi}
+\def\cons{\Leftarrow}
+\def\la{\leftarrow}
+\def\lt{\triangleleft}
+\def\lv{[\;\,]}
+\def\Max{ {\rm Max} }
+\def\Min{ {\rm Min} }
+\def\N{I\hspace{-0.8ex} N}
+\def\noi{\noindent}
+\def\R{I\hspace{-0.8ex} R}
+\def\ra{\rightarrow}
+\def\Rn{\R^{n}}
+\def\rt{\triangleright}
+%\def\tomar{\uparrow}
+\def\tomar{\hspace{-0.6ex}\uparrow\hspace{-0.6ex}}
+%\def\tirar{\downarrow}
+\def\tirar{\hspace{-0.6ex}\downarrow\hspace{-0.6ex}}
+\def\udo{ {\rm\bf\underline{do}} }
+\def\ufi{ {\rm\bf\underline{fi}} }
+\def\uif{ {\rm\bf\underline{if}} }
+\def\uod{ {\rm\bf\underline{od}} }
+\def\v3{\vspace{0.3cm}}
+\def\var{{\rm var}}
+\def\[{|\hspace{-0.2ex} [}
+\def\]{]\hspace{-0.2ex} |}
+\def\true{\mbox{\it true\ }}
+\def\false{\mbox{\it false\ }}
+
+\newcommand{\bag}[1]{ [\hspace{-0.4ex}[ #1 ]\hspace{-0.4ex}] }
+\newcommand{\abs}[1]{ [\hspace{-0.4ex}[ #1 ]\hspace{-0.4ex}] }
+%\newcommand{\binom}[2]{ \left(\hspace{-1.2ex}\begin{array}{c} #1 \\ #2 \end{array} \hspace{-1.2ex}\right) }
+\newcommand{\cau}[2]{\noi #1 \hspace{0.5cm}\{{\sl #2}\} }
+\newcommand{\causa}[2]{\vspace{0.15cm} \noi #1 \hspace{0.5cm} \{{\sl #2}\} \vspace{0.15cm}}
+\newcommand \RR{{\mathbb R}}
+\newcommand \ZZ{{\mathbb Z}}
+\newcommand \NN{{\mathbb N}}
+%\newcommand \supr{\displaystyle{\ \,{\mbox{\footnotesize S}}\hspace{-1.7ex}\bigcirc\, }}
+\newcommand \supr{\displaystyle{\ \,\vee \hspace{-1.9ex}\bigcirc\,}}
+\newcommand \infi{\displaystyle{\ \,\wedge\hspace{-1.9ex}\bigcirc\,}}
+%\newcommand \infi{\displaystyle{\ \,{\mbox{\footnotesize I}}\hspace{-1.5ex}\bigcirc\, }}
+\newcommand \mcd{\operatorname{mcd}}
+\newcommand \mcm{\operatorname{mcm}}
+\newcommand \sisolosi{\Leftrightarrow}
+
+
+\newcommand{\varx}{0} % variable para cambiar coordenada x
+\newcommand{\vary}{0} % variable para cambiar coordenada y
+\newcommand{\varc}{1} % variable para hacer homotecias
+
+\newcommand\flecha{\Rightarrow}
+
+\newcommand{\programa}[1]{  \vskip .5cm \noindent Programa: {\it #1} }
+\newcommand{\principio}[1]{\vskip .3 cm \centerline{\sc #1} \vskip .3cm}
+\makeindex
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% CUERPO DEL DOCUMENTO %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeindex
+\begin{document}
+\baselineskip=0.55truecm %original
+
+
+
+
+\pagenumbering{roman}
+
+\title{Matemática Discreta I \\ FAMAF  - UNC \\ Septiembre 2020 }
+
+\maketitle
+
+
+
+\author{
+${}^{}$
+\\${}^{}$
+\\${}^{}$
+\center{\textbf{AUTORES/COLABORADORES}} \\${}^{}$\\ 
+\flushleft 
+\begin{itemize}
+\item \textbf{Obra original:} coordinada y escrita por Alejandro Tiraboschi. 
+\item \textbf{Colaboración: } Daniel Penazzi, colaborador  de la sección ``El criptosistema RSA'' y autor principal del apéndice de grafos planares. Fernando Levstein colaborador en la sección ``Máximo común divisor y mínimo común múltiplo''.   
+\item \textbf{Correcciones y sugerencias:} Pedro Pury, Romina Arroyo, Leandro Cagliero, Fredy Restrepo, Patricia Kysbye. 
+\end{itemize}
+}
+
+
+
+
+
+
+%\address{FaMAF}
+%\subjclass{47A56, 47A10; Secondary 47A55, 47A70, 47A68, 47B15}
+%\date{July 19, 1992}
+%\translator{H. H. McFaden}
+
+
+
+\vskip 2cm 
+\thanks{
+\center{\textbf{LEER}} \\
+${}^{}$\\
+{\flushleft 
+Este material es distribuido bajo la licencia Creative Commons} \\
+{\center \textbf{Atribución--CompartirIgual 4.0 Internacional}}
+\\ 
+\center  lo cual significa 
+\\
+\flushleft
+ - En cualquier explotación de la obra autorizada por la licencia será necesario reconocer los autores, colaboradores, etc.\\
+ - La distribución de la obra u obras derivadas se debe hacer con una licencia igual a la que regula la obra original.\\
+${}^{}$
+\\
+Los detalles de la licencia pueden encontrarse en \href{https://creativecommons.org/licenses/by/4.0/deed.es}{Creative Commons}
+}
+
+
+
+\newpage
+
+\pagenumbering{arabic}
+
+\tableofcontents
+
+\chapter*{Prefacio} 
+Las siguientes notas se han utilizado para el dictado del curso  “Matemática Discreta I” del primer año de la carrera de ciencias de la computación de FAMAF-UNC. Han sido las notas principales en el dictado del año $2019$ y en algunos años anteriores (desde $1995$).  Las notas están basadas en diversas fuentes, principalmente en los libros “Discrete Mathematics” de N. Biggs y “Notas de Álgebra I” de E. Gentile, pero a lo largo de los años ha habido numerosas modificaciones y agregados por parte de los diferentes docentes de la cátedra. 
+
+El objetivo de las notas es tratar de explicar de una manera simple conceptos aritméticos y algebraicos  elementales, de tal forma que luego estos puedan ser utilizados como herramientas en la práctica profesional. En particular, uno de nuestros principales objetivos es el desarrollo de la madurez matemática y la habilidad para resolver problemas matemáticos relacionados con la artitmética,  conteo  y grafos. A nivel metodológico, el curso comienza con un enfoque formal pero intuitivo que se vuelve cada vez más riguroso a medida que aumenta el interés y las capacidades de abstracción de los alumnos. 
+
+
+
+Las notas se limitan casi exclusivamente al contenido dictado en el curso y las partes señaladas con (*) y los apéndices son optativos. 
+
+El  primer capítulo introduce a los alumnos al formalismo de los números enteros como sistema axiomático. En la  mitad final de este capítulo ses estudia el concepto de definición recursiva y se demuestra y aplica el principio de inducción.  En el segundo capítulo se estudian los principios de conteo  y diversas técnicas relacionadas a los mismos. Diferentes aspectos de la aritmética elemental son estudiados en el tercer y cuarto capítulo. Como aplicación de lo  aprendido en  estos dos capítulos se explica el algoritmo RSA. Finalmente, los capítulos 5 y 6 estudian la teoría de grafos y árboles, temas clásicos de la matemática discreta. 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% CAP1 =================
+    \input{Cap.01.tex}
+%%%=======================
+%%%=======================
+%%% CAP2 =================
+    \input{Cap.02.tex}
+%%%=======================
+%%%=======================
+%%% CAP3 =================
+   \input{Cap.03.tex}
+%%%=======================
+%%%=======================
+%%% CAP4 =================
+    \input{Cap.04.tex}
+%%%=======================
+%%%=======================
+%%% CAP5 =================
+    \input{Cap.05.tex}
+%%%=======================
+%%%=======================
+%%% CAP6 =================
+    \input{Cap.06.tex}
+%%%=======================
+%%%=======================
+%%% CAP7 =================
+    \input{Cap.07.tex}
+%%%=======================
+%%%=======================
+%%% CAP8 =================
+    \input{Cap.08.tex}
+%%%=======================
+%%%=======================
+%%% CAP9 =================
+    \input{Cap.09.tex}
+%%%=======================
+%%%=======================
+%%% CAP10 ================
+    \input{Cap.10.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\printindex
+
+\end{document}

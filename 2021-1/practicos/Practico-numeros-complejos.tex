@@ -1,0 +1,125 @@
+\documentclass[12pt,spanish,makeidx]{amsbook}
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+
+
+
+\usepackage{t1enc}
+\usepackage[spanish]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}       % From LaTeX distribution
+\usepackage{subfigure}    % From CTAN/macros/latex/contrib/supported/subfigure
+\usepackage{pst-all}      % From PSTricks
+\usepackage{pst-poly}     % From pstricks/contrib/pst-poly
+\usepackage{multido}      % From PSTricks
+\input{random.tex}        % From CTAN/macros/generic
+
+
+%% \theoremstyle{plain} %% This is the default
+\oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
+\headheight .3in \headsep .2in \footskip .2in
+\setlength{\textwidth}{16cm} %ancho para apunte
+\setlength{\textheight}{21cm} %largo para apunte
+%\leftmargin 2.5cm
+%\rightmargin 2.5cm
+\topmargin 0.5 cm
+
+\newcommand{\nc}{\newcommand}
+\nc{\RR}{\mathbb{R}} \nc{\HH}{\mathbb{H}} \nc{\CC}{\mathbb{C}} \nc{\ZZ}{\mathbb{Z}}
+\nc{\FF}{\mathbb{F}} \nc{\NN}{\mathbb{N}} \nc{\QQ}{\mathbb{Q}} \nc{\PP}{\mathbb{P}}
+\nc{\C}{\mathbb{C}}
+\nc{\ben}{\begin{enumerate}} \nc{\een}{\end{enumerate}} \nc{\x}{\varphi}
+\nc{\vs}{\vspace{1cm}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{FAMAF}
+\fancyhead[RE,LO]{Matemática Discreta I}
+\fancyfoot[LE,RO]{\leftmark}
+\fancyfoot[RE,LO]{\thepage}
+
+\renewcommand{\headrulewidth}{0.5pt}
+%\renewcommand{\footrulewidth}{0.5pt}
+
+
+
+
+\begin{document}
+	
+	{\bf \begin{center} Práctico Números Complejos \\ Matemática Discreta I -- Año 2019/2 \\ FAMAF \end{center}}
+	
+	\smallskip
+
+
+\begin{enumerate}
+
+\item
+Simplificar las siguientes expresiones:
+$$\begin{array}{ll}
+ \text{a) } \ \left(\dfrac{-3}{\frac{4}{5}+1}\right)^{-1}\cdot\left(\dfrac{4}{5}-1\right) + \dfrac{1}{3}, \quad &
+\text{ b)} \ \dfrac{a}{2\pi-6}(\pi-3)^2 -\dfrac{2a(\pi^2-9)}{\pi-3}.
+\end{array}$$
+
+\vspace{.5cm}
+
+
+\item Demostrar que  dados $z$, $z_1$, $z_2$ en $\C$ se cumple:
+\[ |\bar z|= |z|, \qquad |z_1 \, z_2|= |z_1| \, |z_2|. \]
+
+\vspace{.5cm}
+
+
+\item Sean $z=1+i$ y $w=\sqrt{2}-i$. Calcular:
+ \begin{enumerate}
+  \item $z^{-1}$; $1/w$; $z/w$; $w/z$.
+
+  \item $1+z+z^2+z^3+\dots+z^{2019}$.
+
+  \item $(z(z+w)^2-iz)/w$.
+ \end{enumerate}
+
+
+\vspace{.5cm}
+
+
+\item Sumar y multiplicar los siguientes pares de números complejos
+	\begin{enumerate}
+		\item $2+ 3i$ y $4$.
+		\item $2+ 3i$ y $4i$.
+		\item $1 + i$ y $ 1 -i$.
+		\item $3-2i$ y $1 +i$. 
+	\end{enumerate}
+
+\vspace{.5cm}
+
+
+ \item Expresar los siguientes n{\'u}meros complejos en la forma $a +i b$.
+ Hallar el m{\'o}dulo, argumento y conjugado de cada uno de ellos y graficarlos.
+
+ $$\begin{array}{lll}
+ \text{a) }\ 2e^{\mathrm{i}\pi}-i,  \quad & \text{ b)} \  i^3 - 2i^{-7} -1, \quad &\text{ c)}\ (-2+i) (1+2i).
+  \end{array}$$
+
+\vspace{.5cm}
+
+\item Sean $a,b\in\mathbb{C}$. Decidir si existe $z \in \mathbb{C}$ tal que:
+\begin{enumerate}
+  \item $z^2=b$. ?`Es \'unico? ?`Para qu\'e valores de $b$ resulta $z$ ser un n\'umero real?
+  \item $z$ es imaginario puro y $z^2=4$.
+  \item $z$ es imaginario puro y $z^2=-4$.
+\end{enumerate}
+
+
+\end{enumerate}
+
+\end{document}
+
+
+
