@@ -1,0 +1,125 @@
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+\input{random.tex}        
+%\usepackage{subfigure} 
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\usepackage{mathtools}
+\usepackage{stackrel}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+%\usepackage{makeidx}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+\usepackage{hypcap}
+\usepackage{nicematrix} %https://ctan.dcc.uchile.cl/macros/latex/contrib/nicematrix/nicematrix.pdf
+\tikzset{
+	every picture/.append style={
+		execute at begin picture={\deactivatequoting},
+		execute at end picture={\activatequoting}
+	}
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+
+
+
+\usepackage{polynom}
+
+\polyset{%
+	style=B,
+	delims={(}{)},
+	div=:
+}
+\numberwithin{equation}{section}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate, 1]{label={(\arabic*)}}
+\setlist[enumerate, 2]{label=\emph{\alph*)}}
+\setcounter{MaxMatrixCols}{20}
+
+ 
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{proposicion}[teorema]{Proposici\'on}
+\newtheorem{corolario}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{propiedad}[teorema]{Propiedad}
+\theoremstyle{definition}
+\newtheorem{definicion}[teorema]{Definici\'on}
+\newtheorem{ejemplo}[teorema]{Ejemplo}
+\newtheorem{resultado}[teorema]{Resultado}
+\newtheorem{problema}[teorema]{Problema}
+\newtheorem{ejercicio}[teorema]{Ejercicio}
+\newtheorem{ejerciciof}[teorema]{}
+\newtheorem{observacion}[teorema]{Observaci\'on}
+\newtheorem{obs}[teorema]{Observaci\'on}
+% sin numero
+\newtheorem*{ejemplo*}{Ejemplo}
+\newtheorem*{resultado*}{Resultado}
+\newtheorem*{problema*}{Problema}
+\newtheorem*{ejercicio*}{Ejercicio}
+\newtheorem*{ejerciciof*}{}
+\newtheorem*{observacion*}{Observaci\'on}
+\newtheorem*{obs*}{Observaci\'on}
+% En italica el nombre
+\theoremstyle{remark}
+\newtheorem{nota}[teorema]{Nota}
+\newtheorem*{nota*}{Nota}
+
+\usepackage[a4paper, left=3cm, right=4cm, bottom=2.5cm]{geometry}
+
+
+\renewcommand{\partname }{Parte }
+\renewcommand{\indexname}{Indice }
+\renewcommand{\figurename }{Figura }
+\renewcommand{\tablename }{Tabla }
+\renewcommand{\proofname}{Demostraci\'on}
+\renewcommand{\appendixname }{}
+\renewcommand{\contentsname }{Contenidos }
+\renewcommand{\chaptername }{}
+\renewcommand{\bibname }{Bibliograf\'\i a }
+
+
+\setcounter{MaxMatrixCols}{20}
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand\im{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\sen}{\operatorname{sen}}
+\newcommand \mcd{\operatorname{mcd}}
+\newcommand \mcm{\operatorname{mcm}}
+\newcommand \circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\newcommand\ponertz[3]{\node at (#1/10,#2/10+3) {#3};} %tikz % coloca frase #3 en 8pt en (#1,#2). Coordenadas en mm.
+\newcommand\lineatz[4]{\draw (#1/10,#2/10+3)-- (#3/10,#4/10+3);} %tikz % hace una linea de x,y a x',y'
+\newcommand{\varx}{0} % variable para cambiar coordenada x
+\newcommand{\vary}{0} % variable para cambiar coordenada y
+\newcommand{\varc}{1} % variable para hacer homotecias

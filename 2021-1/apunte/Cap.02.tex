@@ -6,10 +6,12 @@
 
 Intutivamente, diremos que un conjunto $A$ es finito si podemos contar la cantidad de elementos que tiene. En ese caso denotaremos $|A|$ la cantidad de elementos de $A$ y la llamaremos el {\em cardinal de $A$}\index{cardinal de un conjunto}.  
 
+Formalmente, un conjunto $A$ es finito y tiene  cardinal $n$  si existe una función $f: \{1,\ldots,n\} \to A$ biyectiva. Sin embargo,  a lo largo del curso usaremos sólo la definición intuitiva y  no formal de cardinal, más que suficiente para aprender los principios básicos de conteo.  
+
 \begin{section}{Principios básicos}
 
 
-\noindent\textbf{El principio de adición}
+\subsection*{El principio de adición}
 
 Se puede realizar una acción $X$ de $n$ formas distintas o, alternativamente, se puede realizar otra acción $Y$ de $m$ formas distintas. Entonces el número de formas de realizar la acción ``$X$ o $Y$'' es $n + m$.
 
@@ -68,14 +70,14 @@ Generalizar la fórmula de arriba a más conjuntos no es del todo sencillo y es 
 
 %\vskip .3cm
 
-\noindent\textbf{El principio de multiplicación}
+\subsection*{El principio de multiplicación}
 
 Suponga que una actividad consiste de $2$ etapas y la primera etapa puede ser realizada de $n_1$ maneras y la etapa $2$  puede realizarse de $n_2$  maneras, independientemente de como se ha hecho la etapa $1$. Entonces toda la actividad puede ser realizada de $n_1\cdot n_2$  formas distintas.
 
 
-\begin{ejemplo}
+\begin{ejemplo*}
 Supongamos que la persona del ejemplo \ref{cine} tiene suficiente tiempo y dinero para ir primero al cine y luego al teatro. Entonces tendrá  $3 \cdot 4=12$ formas distintas de hacer el paseo.
-\end{ejemplo}
+\end{ejemplo*}
 
 
 Formalmente, si $A,B$ conjuntos y definimos el {\em producto cartesiano}\index{producto cartesiano} entre $A$ y $B$ por
@@ -93,7 +95,7 @@ $$
 
 Un aplicación inmediata del principio de multiplicación  es que nos permite calcular la cantidad de selecciones ordenadas con repetición. 
 
-\begin{ejemplo} Sea  $X = [[ 1 , 3]] = \{ 1, 2, 3 \}$ ¿de cuántas formas se pueden elegir dos de estos números en forma ordenada?
+\begin{ejemplo*} Sea  $X = [[ 1 , 3]] = \{ 1, 2, 3 \}$ ¿de cuántas formas se pueden elegir dos de estos números en forma ordenada?
 Es decir, debemos elegir dos números $a$ y $b$ teniendo en cuenta que si $a\not=b$ no es lo mismo elegir $a$ y luego $b$ que $b$ y $a$.  
 
 Para no escribir demasiado vamos a adoptar una notación muy conveniente: si elegimos $a$ y $b$ en forma ordenada, denotamos $ab$. Entonces, en muy breve espacio seremos capaces de escribir todas las selecciones ordenadas de $2$ elementos del  conjunto  $[[ 1 , 3]]$:
@@ -124,7 +126,7 @@ El total de elecciones posibles $27 = 3^3$. Esto se justifica usando dos veces e
 Un diagrama arbolado ayuda a pensar.
 
 
-\begin{tikzpicture}[line width=1pt]	
+\begin{tikzpicture}[line width=1pt]    
 \lineatz{5}{-95}{28}{-35}
 \lineatz{5}{-95}{28}{-95}
 \lineatz{5}{-95}{28}{-155}
@@ -254,7 +256,7 @@ Un diagrama arbolado ayuda a pensar.
 
 Cada rama del árbol representa una selección ordenada de elementos de $[[1, 3]]$.
 
-\end{ejemplo}
+\end{ejemplo*}
 
 El razonamiento anterior  se puede extender:
 
@@ -265,21 +267,21 @@ Sean  $m,n \in \mathbb N$. Hay   $n^m$ formas posibles de elegir ordenadamente $
 La prueba de esta proposición se basa en aplicar el principio de multiplicación $m-1$ veces, es decir debemos hacer inducción sobre $m$ y usar el principio de multiplicación en el paso inductivo. 
 \end{proof}
 
-\begin{observacion} En el ejemplo denotamos $ [[ 1 , 3]] = \{ 1, 2, 3 \}$. En general, si  $n \in \mathbb N$ denotaremos  $[[ 1 , n]]$ al conjunto de los primeros $n$ números naturales. Es decir:
+\begin{observacion*} En el ejemplo denotamos $ [[ 1 , 3]] = \{ 1, 2, 3 \}$. En general, si  $n \in \mathbb N$ denotaremos  $[[ 1 , n]]$ al conjunto de los primeros $n$ números naturales. Es decir:
 $$
  [[ 1 , n]] = \{ 1, 2, \ldots,n\}.
 $$  
-\end{observacion}
+\end{observacion*}
 
-\begin{ejemplo}
+\begin{ejemplo*}
 ¿Cuántos números de cuatro dígitos pueden formarse con
 los dígitos $1, 2, 3, 4, 5, 6$?
 
 Por la proposición anterior es claro que hay $6^4$ números posibles.
-\end{ejemplo}
+\end{ejemplo*}
 
 
-\begin{ejemplo}
+\begin{ejemplo*}
 ¿Cuántos números de $5$ dígitos y capicúas pueden formarse
 con los números dígitos $1, 2, 3, 4, 5, 6, 7, 8$? Un número
 capicúa de cinco dígitos es de la forma
@@ -287,13 +289,13 @@ $$xyzyx$$
 Se reduce a ver cuántos números de tres dígitos pueden
 formarse con aquéllos dígitos.
 Exactamente $8^3$.
-\end{ejemplo}
+\end{ejemplo*}
 
 
 
  
 
-\begin{ejemplo} Sea $X$ un conjunto de $m$ elementos. Queremos contar cuántos subconjuntos tiene este conjunto. 
+\begin{ejemplo*} Sea $X$ un conjunto de $m$ elementos. Queremos contar cuántos subconjuntos tiene este conjunto. 
 Por ejemplo, si $X = \{ a, b, c \}$ los subconjuntos de $X$ son exactamente
 $$
 \emptyset, \{ a \} , \{ b \}, \{ c \}, \{ a, b \}, \{ a, c \}, \{ b, c \}, \{ a, b, c\}.
@@ -337,11 +339,7 @@ Si $X$ es un conjunto finito la proposición \ref{cardp} nos dice que
 $$
 \mathcal |P(X)| = 2^{|X|}
 $$
-\end{ejemplo}
-
-
-
-
+\end{ejemplo*}
 
 \end{section}
 
@@ -440,7 +438,11 @@ $$
 selecciones posibles. 
 
 
-Se puede demostrar que si $n < m$, no hay ninguna selección ordenada y  sin repetición de $m$ elementos  de un conjunto de $n$ elementos (lo cual se ve muy bien intuitivamente: si hay más personas que asientos, ¡alguien se quedará parado!). Este hecho es llamado el {\em principio de las casillas}\index{principio de las casillas} en la literatura.
+\begin{proposicion}[Principio de las casillas]
+    Si $n < m$, no hay ninguna selección ordenada y  sin repetición de $m$ elementos  de un conjunto de $n$ elementos.
+\end{proposicion}
+
+El principio de las casillas, también llamado \textit{principio del palomar} o \textit{principio de Dirichlet}, es intuitivamente trivial: si hay más personas que asientos, ¡alguien se quedará parado!. Su demostración no es difícil y se basa en la definición formal de conteo, con el uso de funciones biyectivas e inyectivas.
 
 \begin{proposicion}\label{prop1}
 Si $n \ge m$ entonces existen
@@ -449,11 +451,11 @@ Si $n \ge m$ entonces existen
 \end{equation}
 selecciones ordenadas y sin repetición de $m$ elementos de un conjunto de $n$ elementos.
 \end{proposicion}
-\begin{proof} La prueba es una generalización del razonamiento aplicado más arriba a los e\-jem\-plos: debemos seleccionar $m$-veces elementos de un conjunto que tiene $n$ elementos. La primera selección puede ser de cualquiera de los $n$ objetos; la segunda selección debe recaer en uno de los $n-1$ elementos restantes. De manera similar, hay $n-2$ posibilidades para la tercera selección, y así sucesivamente. Cuando hacemos la $m$-ésima selección, $m-1$ elementos ya han sido seleccionados, y entonces el elemento seleccionado debe ser uno de los $n-(m-1)$ elementos restantes. Por consiguiente el número total de
+\begin{proof} La prueba es una generalización del razonamiento aplicado más arriba en los e\-jem\-plos: debemos seleccionar $m$-veces elementos de un conjunto que tiene $n$ elementos. La primera selección puede ser de cualquiera de los $n$ objetos; la segunda selección debe recaer en uno de los $n-1$ elementos restantes. De manera similar, hay $n-2$ posibilidades para la tercera selección, y así sucesivamente. Cuando hacemos la $m$-ésima selección, $m-1$ elementos ya han sido seleccionados, y entonces el elemento seleccionado debe ser uno de los $n-(m-1)$ elementos restantes. Por consiguiente el número total de
 selecciones es el propuesto. 
 \end{proof}
 
-\begin{observacion}
+\begin{observacion*}
 El resultado anterior en particular nos dice que existen
 $$
 n \cdot (n - 1) \cdots (n - (n - 1)) = n \cdot (n - 1) \cdots 1 = n!
@@ -461,10 +463,8 @@ $$
 selecciones ordenadas y sin repetición de  $n$ elementos en un conjunto con $n$ elementos y esta podría ser una motivación natural del factorial.
 
 
-Las selecciones ordenadas y sin repetición de  $n$ elementos en un conjunto con $n$ elementos se denominan {\em permutaciones}\index{permutación} de grado $n$.
-
-Hay, pues, $n!$ permutaciones de grado $n$.
-\end{observacion}
+Las selecciones ordenadas y sin repetición de  $n$ elementos en un conjunto con $n$ elementos se denominan {\em permutaciones}\index{permutación} de grado $n$. Hay, pues, $n!$ permutaciones de grado $n$.
+\end{observacion*}
 
 Volviendo al resultado de la proposición \ref{prop1}, por ejemplo hay 
 \begin{itemize}
@@ -503,7 +503,7 @@ selecciones ordenadas y sin repetición de $m$ elementos de un conjunto de $n$ e
 %\end{align*}
 %\end{ejercicio}
 
-\begin{ejemplo}
+\begin{ejemplo*}
 Si en un colectivo hay $10$ asientos vacíos. ¿De cuántas formas
 pueden sentarse $7$ personas? Se trata de ver cuantas selecciones ordenadas y sin repetición de $7$ asientos entre $10$. 
 
@@ -511,10 +511,10 @@ Este número es
 $$
 10 \cdot 9 \cdot 8 \cdot 7 \cdot 6 \cdot 5 \cdot 4, \qquad \text{$7$ - factores.}
 $$
-\end{ejemplo}
+\end{ejemplo*}
 
 
-\begin{ejemplo}
+\begin{ejemplo*}
 ¿Cuántas permutaciones pueden formarse con las letras de
 {\em silvia}?
 
@@ -557,49 +557,35 @@ permutaciones de las letras de {\em a\-rri\-ve\-der\-ci} es
 $$
 \frac{11!}{3!  2!  2!}  
 $$
-\end{ejemplo}
+\end{ejemplo*}
 
 
-
-%\begin{subsection}{Ejercicios} 
-
-\subsection*{\Large $\S$ Ejercicios}
-%\addcontentsline{toc}{subsection}{Ejercicios}
-	Simplificar las siguientes expresiones, sea $n \in \mathbb N$
-	\begin{multicols}{2}
+\subsection*{$\S$ Ejercicios}
+    Simplificar las siguientes expresiones, sea $n \in \mathbb N$
+    \begin{multicols}{2}
 \begin{enumerate}
-	\item $\dfrac{n!}{( n - 2 ) !}$, \qquad si $n \geq 2$.
-	
-	\item $ \dfrac{(n + 2)!}{( n - 2 ) !}$, \qquad si $n \geq 2$.
-	
-	\item $\dfrac{n!}{(n-2)! 2!} $, \qquad si $n \geq 2$.
-	
-	\item $\dfrac{(n + 2)!}{n!}$.
-	
-	\item $\dfrac{(n-1)!}{(n + 2)!}$.
-\end{enumerate}			
-	\end{multicols}
-%\end{subsection}
+    \item $\dfrac{n!}{( n - 2 ) !}$, \qquad si $n \geq 2$.
+    
+    \item $ \dfrac{(n + 2)!}{( n - 2 ) !}$, \qquad si $n \geq 2$.
+    
+    \item $\dfrac{n!}{(n-2)! 2!} $, \qquad si $n \geq 2$.
+    
+    \item $\dfrac{(n + 2)!}{n!}$.
+    
+    \item $\dfrac{(n-1)!}{(n + 2)!}$.
+\end{enumerate}            
+    \end{multicols}
 
 \end{section}
 
 \begin{section}{Selecciones sin orden}
 
+Consideremos un conjunto $X$ finito de $n$ elementos. Nos proponemos averiguar cuántos subconjuntos de $m$ elementos hay en $X$.
 
+\begin{ejemplo*}
+Por ejemplo, sea $X = \{ 1, 2, 3, 4, 5 \}$ y nos interesan los subconjuntos de tres ele\-men\-tos. ¿Cuántos habrá? Una forma de individualizar un subconjunto de tres elementos en $X$, consiste en, primero, seleccionar  ordenadamente $3$ elementos de $[[ 1 , 5 ]]$. 
 
-
-Consideremos un conjunto $X$ finito de $n$ elementos.
-Nos proponemos averiguar cuántos subconjuntos de $m$ elementos
-hay en $X$.
-
-\begin{ejemplo}
-Por ejemplo, sea $X = \{ 1, 2, 3, 4, 5 \}$ y nos interesan los
-subconjuntos de tres ele\-men\-tos. ¿Cuántos habrá? Una forma
-de individualizar un subconjunto de tres elementos en $X$, consiste
-en, primero, seleccionar  ordenadamente $3$ elementos de $[[ 1 , 5 ]]$.
-
-Habría, a priori, $5 \cdot 4 \cdot 3$ subconjuntos pues ese es el número
-de selecciones ordenadas y sin repetición de $3$ elementos de $[[ 1 , 5 ]]$.
+Habría, a priori, $5 \cdot 4 \cdot 3$ subconjuntos pues ese es el número de selecciones ordenadas y sin repetición de $3$ elementos de $[[ 1 , 5 ]]$.
 
 Pero es claro que algunas de las selecciones ordenadas pueden determinar el mismo subconjunto. En efecto, por ejemplo, cualesquiera de las selecciones
 \begin{align*}
@@ -611,7 +597,7 @@ subconjuntos de $3$ elementos debe ser
 $$
 \frac{5 \cdot 4 \cdot 3}{3!} =  \frac{5!}{3! (5 - 3)!}
 $$
-\end{ejemplo}
+\end{ejemplo*}
 
 %\vskip .3cm
 
@@ -639,12 +625,12 @@ $$
 $$
 \end{definicion}
 
-\begin{observacion} Hay unos pocos números combinatorios que son fácilmente calculables: 
+\begin{observacion*} Hay unos pocos números combinatorios que son fácilmente calculables: 
 $$
 \binom{n}{0} = \binom{0}{0} = 1 \qquad \text{ y }\qquad  \binom{n}{1} = \binom{n}{n-1} = n. 
 $$
 Estos resultados se obtienen por aplicación directa de la definición (recordar que  $0! =1$). 
-\end{observacion}
+\end{observacion*}
 
 En resumen, tenemos la siguiente proposición.
 
@@ -658,14 +644,14 @@ $.
 
 Como vimos anteriormente el número combinatorio suele resultar de utilidad para resolver pro\-ble\-mas de conteo. Veamos un ejemplo.
 
-\begin{ejemplo}
+\begin{ejemplo*}
  ¿Cuántos comités pueden formarse de un conjunto de $6$ mujeres y $4$ hombres, si el comité debe estar compuesto por $4$ mujeres y $2$ hombres?
 
-{\sc Solución.} Debemos elegir $4$ mujeres entre $6$, y la cantidad de elecciones posibles es   $\binom{6}{4}$. Por otro lado, hay $ \binom{4}{2}$ formas de elegir $2$ hombres entre $4$. Luego, por el principio de multiplicación,  el resultado es
+\textsc{Solución.} Debemos elegir $4$ mujeres entre $6$, y la cantidad de elecciones posibles es   $\binom{6}{4}$. Por otro lado, hay $ \binom{4}{2}$ formas de elegir $2$ hombres entre $4$. Luego, por el principio de multiplicación,  el resultado es
 $$
 \binom{6}{3}\cdot \binom{4}{2} = \frac{6!}{2!4!}\cdot\frac{4!}{2!2!} = \frac{6\cdot 5}{2}\cdot\frac{4\cdot 3}{2} = 15 \cdot 6 = 90.
 $$
-\end{ejemplo}
+\end{ejemplo*}
 
 
 
@@ -694,7 +680,7 @@ ele\-men\-tos de un conjunto de $n$ elementos. Puesto que con cada subconjunto d
 
 %\vskip .3cm
 
-\begin{teorema}[Fórmula del triángulo de Pascal] \label{propcomb}
+\begin{teorema}[Fórmula del triángulo de Pascal] \label{teor-triangulo-de-pascal}
 Sean $m,n \in \mathbb N$, tal que $m \le n$. Entonces
 $$
 \binom{n+1}{m} = \binom{n}{m-1} + \binom{n}{m}  
@@ -730,7 +716,7 @@ $$
 
 Ahora supongamos que el resultado sea cierto  para $n \in \mathbb N$. Es decir, $\binom{n}{m} \in \mathbb N$ cualquiera sea $m$ tal que $0 \le m \le n$ (hipótesis inductiva). Probaremos entonces que 
 \begin{equation*}
-	\binom{n+1}{m} \in \mathbb N
+    \binom{n+1}{m} \in \mathbb N
 \end{equation*}
  para todo  $m \in \mathbb{N}$ tal que $0 \le m \le n+1$. 
  
@@ -738,7 +724,7 @@ Consideremos tres casos: $m=0$,\; $1 \le m \le n$\; y \;$m = n+1$.
 
 Si $m=0$, entonces
 \begin{equation*}
-	\binom{n+1}{m} = \binom{n+1}{0} =1 \in \mathbb N.
+    \binom{n+1}{m} = \binom{n+1}{0} =1 \in \mathbb N.
 \end{equation*}
 
 
@@ -749,14 +735,14 @@ $$
 Como 
 $\binom{n}{m-1}$  y $\binom{n}{m}$ pertenecen  a $\mathbb  N$ por la hipótesis inductiva, su suma es también un número natural, o sea 
 \begin{equation*}
-	\binom{n+1}{m}   \in \mathbb N
+    \binom{n+1}{m}   \in \mathbb N
 \end{equation*}
 para $1 \le m \le n$.
 
 
 Si $m = n+1$, entonces 
 \begin{equation*}
-	\binom{n+1}{n+1} = 1  \in \mathbb N.
+    \binom{n+1}{n+1} = 1  \in \mathbb N.
 \end{equation*}
 
 
@@ -785,7 +771,7 @@ binomiales inductivamente. Escribamos en forma de triángulo
 
 
 
-En virtud del teorema \ref{propcomb} cada término interior es
+En virtud del teorema \ref{teor-triangulo-de-pascal} cada término interior es
 suma de los dos términos inmediatos superiores. Los elementos
 en los lados valen 1 por lo tanto se puede calcular cualquiera
 de ellos.
@@ -820,7 +806,7 @@ $$
 y a veces nos piden desarrollar la formula para $(a+b)^4$ y
 potencias mayores de $a+b$. El resultado general que da una
 formula para $(a+b)^n$ es conocido como el
- {\it {teorema del binomio}}.  \index{Teorema del binomio}
+ \textit{{teorema del binomio}}.  \index{Teorema del binomio}
 
 \begin{teorema}\label{t3.6}
 Sea $n$ un entero positivo. El coeficiente del termino
@@ -860,17 +846,17 @@ $$
 \end{observacion}
 
 
-\begin{observacion}
-	Por la simetría del número binomial la  fórmula (\ref{eq-th-bin-1}) es equivalente a 
-	\begin{equation*}
-	(a+b)^n= \sum_{i=0}^{n}\binom{n}{n-i} a^{n-i}b^i.
-	\end{equation*}
-	Haciendo  el cambio de variable $i \leftrightarrow n-i$, se obtiene la fórmula equivalente
-	\begin{equation*}\label{eq-th-bin-2}
-	(a+b)^n= \sum_{i=0}^{n}\binom{n}{i} a^ib^{n-i}.
-	\end{equation*}
-	La fórmula anterior es también, muy utilizada para enunciar el teorema del binomio.
-\end{observacion}
+\begin{observacion*}
+    Por la simetría del número binomial la  fórmula (\ref{eq-th-bin-1}) es equivalente a 
+    \begin{equation*}
+    (a+b)^n= \sum_{i=0}^{n}\binom{n}{n-i} a^{n-i}b^i.
+    \end{equation*}
+    Haciendo  el cambio de variable $i \leftrightarrow n-i$, se obtiene la fórmula equivalente
+    \begin{equation*}\label{eq-th-bin-2}
+    (a+b)^n= \sum_{i=0}^{n}\binom{n}{i} a^ib^{n-i}.
+    \end{equation*}
+    La fórmula anterior es también, muy utilizada para enunciar el teorema del binomio.
+\end{observacion*}
 
 
 
@@ -883,11 +869,11 @@ $$
 Luego
 \begin{alignat*}2
 (a+b)^n&= (a+b)(a+b)^{n-1}&& \\
-& = (a+b)\left(\sum_{i=0}^{n-1} \binom{n-1}{i}a ^{n-1-i}b^{i}\right)&&\qquad \text{por hip. inductiva} \\
-&=\sum_{i=0}^{n-1} \binom{n-1}{i}a ^{n-i}b^{i}+\sum_{i=0}^{n-1} \binom{n-1}{i}a ^{n-1-i}b^{i+1}&& \qquad \text{propiedad distributiva}\\
-&=\sum_{i=0}^{n-1} \binom{n-1}{i}a ^{n-i}b^{i}+\sum_{i=1}^{n} \binom{n-1}{i-1}a ^{n-i}b^{i}&& \qquad \text{ver observación \ref{cvar}}\\
-&= a^n + \sum_{i=1}^{n-1}\left\{ \binom{n-1}{i}+\binom{n-1}{i-1}\right\}a ^{n-i}b^{i}+ b^n && \qquad \text{agrupar por potencias iguales}\\
-&= a^n + \sum_{i=1}^{n-1} \binom{n}{i}a ^{n-i}b^{i}+ b^n&&\qquad \text{por teorema 3.4.1} \\
+& = (a+b)\left(\sum_{i=0}^{n-1} \binom{n-1}{i}a ^{n-1-i}b^{i}\right)&&\qquad \text{(hip. ind.)} \\
+&=\sum_{i=0}^{n-1} \binom{n-1}{i}a ^{n-i}b^{i}+\sum_{i=0}^{n-1} \binom{n-1}{i}a ^{n-1-i}b^{i+1}&& \qquad \text{(distributiva)}\\
+&=\sum_{i=0}^{n-1} \binom{n-1}{i}a ^{n-i}b^{i}+\sum_{i=1}^{n} \binom{n-1}{i-1}a ^{n-i}b^{i}&& \qquad \text{( obs. \ref{cvar})}\\
+&= a^n + \sum_{i=1}^{n-1}\left\{ \binom{n-1}{i}+\binom{n-1}{i-1}\right\}a ^{n-i}b^{i}+ b^n && \qquad \text{}\\
+&= a^n + \sum_{i=1}^{n-1} \binom{n}{i}a ^{n-i}b^{i}+ b^n&&\qquad \text{(teor. \ref{teor-triangulo-de-pascal})} \\
 &= \sum_{i=0}^{n} \binom{n}{i}a ^{n-i}b^{i}.&&\text{}
 \end{alignat*}
 \end{proof}
@@ -896,12 +882,12 @@ Luego
 
 Los coeficientes en el desarrollo pueden ser calculados con el método recursivo usado para los números binomiales (triángulo de Pascal) o usando la formula. Por ejemplo,
 \begin{equation*}
-	\begin{aligned} (a+b)^6 &= \binom{6}{0} a^6 + \binom{6}{1} a^5 b
-	+\binom{6}{2}a^4b^2 +
-	\binom{6}{3}a^3b^3 \\
-	&\quad + \binom{6}{4}a^2b^4+\binom{6}{5}ab^5\binom{6}{6}b^6 \\
-	&=  a^6 + 6 a^5 b +15a^4b^2 + 20a^3b^3 + 15a^2b^4+6ab^5+ b^6.
-	\end{aligned}
+    \begin{aligned} (a+b)^6 &= \binom{6}{0} a^6 + \binom{6}{1} a^5 b
+    +\binom{6}{2}a^4b^2 +
+    \binom{6}{3}a^3b^3 \\
+    &\quad + \binom{6}{4}a^2b^4+\binom{6}{5}ab^5\binom{6}{6}b^6 \\
+    &=  a^6 + 6 a^5 b +15a^4b^2 + 20a^3b^3 + 15a^2b^4+6ab^5+ b^6.
+    \end{aligned}
 \end{equation*}
 
 
@@ -919,7 +905,7 @@ $$
 
 
 
-La expresión $a+b$ es conocida como un expresión {\it binómica}
+La expresión $a+b$ es conocida como un expresión \textit{binómica}
 porque tiene dos términos. Como los números  \index{expresión
 binómica} $\binom{n}{r}$ aparecen como los coeficientes en el
 desarrollo de $(a+b)^n$, generalmente se los llama, como ya fue dicho, 
@@ -935,27 +921,27 @@ Además de ser extremadamente útil en manipulaciones algebraicas,
 el teorema del binomio puede usarse para deducir identidades en
 que estén involucrados los números binomiales.
 
-\begin{ejemplo} Probemos que 
-	\begin{equation*}
-	\sum_{i=0}^{n}\binom{n}{i} = \binom{n}{0}+\binom{n}{1}+\binom{n}{3}+\cdots+\binom{n}{n}= 2^n.
-	\end{equation*}
-\end{ejemplo}
+\begin{ejemplo*} Probemos que 
+    \begin{equation*}
+    \sum_{i=0}^{n}\binom{n}{i} = \binom{n}{0}+\binom{n}{1}+\binom{n}{3}+\cdots+\binom{n}{n}= 2^n.
+    \end{equation*}
+\end{ejemplo*}
 \begin{proof}
-	Observar  que $1 + 1 = 2$, luego, por el teorema del binomio,
-	\begin{align*}
-		2^n = (1 +1)^n 
-		    &= \sum_{i=0}^{n} \binom{n}{i}1^{n-i}1^i \\
-		    &= \sum_{i=0}^{n} \binom{n}{i}1 \cdot 1 \\
-		    &= \sum_{i=0}^{n} \binom{n}{i}.
-	\end{align*} 
+    Observar  que $1 + 1 = 2$, luego, por el teorema del binomio,
+    \begin{align*}
+        2^n = (1 +1)^n 
+            &= \sum_{i=0}^{n} \binom{n}{i}1^{n-i}1^i \\
+            &= \sum_{i=0}^{n} \binom{n}{i}1 \cdot 1 \\
+            &= \sum_{i=0}^{n} \binom{n}{i}.
+    \end{align*} 
 \end{proof}
 
-\begin{ejemplo}Probemos que
+\begin{ejemplo*}Probemos que
 \begin{equation}\label{eqcuaddo}
 \binom{n}{0}^2+\binom{n}{1}^2+\binom{n}{3}^2+\cdots+\binom{n}{n}^2=
 \binom{2n}{n}.
 \end{equation}
-\end{ejemplo}
+\end{ejemplo*}
 \begin{proof}
 Usamos la igualdad
 \begin{equation*}\label{eqxn}
@@ -985,41 +971,37 @@ buscábamos.
 
 \vskip .3cm 
 
-\begin{observacion}[Definición de $0^0$] No hay consenso matemático en cual es el valor de $0^0$, pues dependiendo del contexto puede ser conveniente definir su valor de cierta forma o declarar su valor como \textit{indeterminado} (ver el artículo de Wikipedia  \href{https://es.wikipedia.org/wiki/Cero_a_la_cero}{Cero  a la cero}). 
-	
-	Sin embargo,  para su uso  en álgebra, así como en combinatoria se considera conveniente  definir  $0^0 =1$. ¿Cuál es la razón para darle este valor? Existen varias razones, pero una de las más importantes proviene del teorema del binomio. Observemos que por el teorema del binomio
-	\begin{equation*}
-		(1 +0)^n = \sum_{i=0}^{n}\binom{n}{i}1^{n-1} 0^i =  \sum_{i=0}^{n}\binom{n}{i} 0^i.
-	\end{equation*}
-	Es claro que para $i>0$, $0^i = 0 \cdot \ldots \cdot 0 =0$, luego la ecuación se reduce a
-	\begin{equation*}
-	1 = 1^n =  0^0.
-	\end{equation*}
-	No sería muy convincente enunciar el teorema del binomio con algunas excepciones poco naturales (como ser, exigir que $a$ y $b$ sean no nulos) y la formulación más general parece ser la correcta. Esta formulación exige que $0^0 =1$, como hemos visto más arriba.
-	
-	Una fundamentación extensa y rigurosa sobre la conveniencia de definir $0^0 =1$ se encuentra en el artículo de D. Knuth \textit{Two notes on notation} que se encuentra en \href{https://arxiv.org/abs/math/9205211}{https://arxiv.org/abs/math/9205211}.
-\end{observacion}
+\begin{observacion*}[Definición de $0^0$] No hay consenso matemático en cual es el valor de $0^0$, pues dependiendo del contexto puede ser conveniente definir su valor de cierta forma o declarar su valor como \textit{indeterminado} (ver el artículo de Wikipedia  \href{https://es.wikipedia.org/wiki/Cero_a_la_cero}{Cero  a la cero}). 
+    
+    Sin embargo,  para su uso  en álgebra, así como en combinatoria se considera conveniente  definir  $0^0 =1$. ¿Cuál es la razón para darle este valor? Existen varias razones, pero una de las más importantes proviene del teorema del binomio. Observemos que por el teorema del binomio
+    \begin{equation*}
+        (1 +0)^n = \sum_{i=0}^{n}\binom{n}{i}1^{n-1} 0^i =  \sum_{i=0}^{n}\binom{n}{i} 0^i.
+    \end{equation*}
+    Es claro que para $i>0$, $0^i = 0 \cdot \ldots \cdot 0 =0$, luego la ecuación se reduce a
+    \begin{equation*}
+    1 = 1^n =  0^0.
+    \end{equation*}
+    No sería muy convincente enunciar el teorema del binomio con algunas excepciones poco naturales (como ser, exigir que $a$ y $b$ sean no nulos) y la formulación más general parece ser la correcta. Esta formulación exige que $0^0 =1$, como hemos visto más arriba.
+    
+    Una fundamentación extensa y rigurosa sobre la conveniencia de definir $0^0 =1$ se encuentra en el artículo de D. Knuth \textit{Two notes on notation} que se encuentra en \href{https://arxiv.org/abs/math/9205211}{https://arxiv.org/abs/math/9205211}.
+\end{observacion*}
 
-%\begin{subsection}{Ejercicios}
-\subsection*{\Large $\S$ Ejercicios}\label{ej3.6.1}
-%\addcontentsline{toc}{subsection}{Ejercicios}	
 
-	
-	
+\subsection*{$\S$ Ejercicios}\label{ej3.6.1}
 \begin{enumerate}
 \item Desarrollar las fórmulas de $(1+x)^8$ y $(1-x)^8$.
 
 \item Calcular los coeficientes de:
 \begin{multicols}{2}
 \begin{enumerate}
-	\item $x^5$ en $(1+x)^{11}$;
-	
-	\item $a^2b^8 $ en $(a+b)^{10}$;
-	
-	\item $a^6 b^6$ en $(a^2 +b^3)^5$;
-	
-	\item $x^3$ en $(3+4x)^6$.
-\end{enumerate}	
+    \item $x^5$ en $(1+x)^{11}$;
+    
+    \item $a^2b^8 $ en $(a+b)^{10}$;
+    
+    \item $a^6 b^6$ en $(a^2 +b^3)^5$;
+    
+    \item $x^3$ en $(3+4x)^6$.
+\end{enumerate}    
 \end{multicols}
 \item Usar la identidad $(1+x)^m(1+x)^n=(1+x)^{m+n}$ para probar que
 $$
@@ -1028,15 +1010,10 @@ $$
 \binom{m}{r}\binom{n}{0}
 $$
 donde $m,n$ y $r$ son enteros positivos y, $m\ge r$, y $n \ge r$.
-%\end{enumerate}
-%\end{subsection}
-%\end{section}
-%\begin{section}{Ejercicios}
 \end{enumerate}
+\end{section}
 
-
-\section{Ejercicios}
-
+\begin{section}{Ejercicios}
 \begin{enumerate}
 
 \item Una ficha del juego de dominó puede ser representada con el símbolo $[x|y]$,
@@ -1066,13 +1043,13 @@ $$
 \item Desarrollar $(x+y)^9$ y $(x-y)^9$.
 
 \item Calcular el coeficiente de:
-\begin{multicols}{3}
+\begin{multicols}{2}
 \begin{enumerate}
-	\item $x^6$ en $(1+x)^{12}$;
-	
-	\item $a^3b^7$ en $(a+b)^{10}$;
-	
-	\item $a^4b^6$ en $(a^2+b)^8$
+    \item $x^6$ en $(1+x)^{12}$;
+    
+    \item $a^3b^7$ en $(a+b)^{10}$;
+    
+    \item $a^4b^6$ en $(a^2+b)^8$
 \end{enumerate}
 \end{multicols}
 %$$
@@ -1106,10 +1083,10 @@ $$
 \item  Sea $X$ un $n$-conjunto. Probar que
 
 \begin{enumerate}
-	\item existe un conjunto de $\binom{n-1}{k-1}$ $k$-subconjuntos de
+    \item existe un conjunto de $\binom{n-1}{k-1}$ $k$-subconjuntos de
 $X$ tales que cada par de ellos tiene intersección no vacía.
 
-	\item existe un conjunto de $\binom{n}{n^*}$ subconjuntos de $X$ 
+    \item existe un conjunto de $\binom{n}{n^*}$ subconjuntos de $X$ 
 con la propiedad que ninguno contiene a otro. Aquí $n^*$ es igual
 a $n/2$ si $n$ es par y a $\frac12(n-1)$ si $n$ es impar.
 \end{enumerate}

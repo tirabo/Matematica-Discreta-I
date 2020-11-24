@@ -8,16 +8,13 @@
 
 
 \begin{section}{Permutaciones}
-Recordemos  que una { {\em permutación}} de un conjunto finito no vacío $X$ es una biyección de $X$ en $X$. (Frecuentemente tomamos $X$ como $ [[1,n]]=\{1,2,\ldots,n\}$.) Por ejemplo una permutación
-típica de $[[1,5]]$ es la función $\alpha$ definida por las ecuación
+Recordemos  que una \textit{permutación} de un conjunto finito no vacío $X$ es una biyección de $X$ en $X$. (Frecuentemente tomamos $X$ como $ [[1,n]]=\{1,2,\ldots,n\}$.) Por ejemplo una permutación típica de $[[1,5]]$ es la función $\alpha$ definida por las ecuación
 $$
 \alpha(1)=2,\quad \alpha(2)=4,\quad \alpha(3)=5,\quad
 \alpha(4)=1,\quad \alpha(5)=3.
 $$
 
-Denotemos el conjunto de todas las permutaciones de $[[1,n]]$
-con $S_n$. Por ejemplo, $S_3$ contiene las $3!=6$ permutaciones
-siguientes:
+Denotemos el conjunto de todas las permutaciones de $[[1,n]]$ con $S_n$. Por ejemplo, $S_3$ contiene las $3!=6$ permutaciones siguientes:
 $$
 \begin{matrix} 1&2&3 \\ \downarrow&\downarrow&\downarrow\\1 &2 &
 3\end{matrix}\qquad
@@ -33,10 +30,7 @@ $$
 $$
 
 
-En la práctica, usualmente asignamos alguna interpretación concreta a un elemento de $S_n$. Como vimos en la sección \ref{permutaciones}, podemos usar la interpretación ``selecciones ordenadas sin
-repetición''  \index{selección ordenada sin repetición} donde, en este caso seleccionamos los elementos de $\{1,2,3,\ldots,n\}$ en algún orden hasta que no queda ninguno. Una interpretación
-relacionada es que una permutación efectúa un {\it reacomodamiento} de $\{1,2,3,\ldots,n\}$; por ejemplo, la permutación $\alpha$ vista más arriba efectúa el reacomodamiento
-de $12\,345$, en $24\,513$, así:
+En la práctica, usualmente asignamos alguna interpretación concreta a un elemento de $S_n$. Como vimos en la sección \ref{permutaciones}, podemos usar la interpretación ``selecciones ordenadas sin repetición''  \index{selección ordenada sin repetición} donde, en este caso seleccionamos los elementos de $\{1,2,3,\ldots,n\}$ en algún orden hasta que no queda ninguno. Una interpretación relacionada es que una permutación efectúa un \textit{reacomodamiento} de $\{1,2,3,\ldots,n\}$; por ejemplo, la permutación $\alpha$ vista más arriba  efectúa el reacomodamiento de $12\,345$, en $24\,513$, así:
 $$
 \begin{matrix} 1&2&3&4&5 \\
 \downarrow&\downarrow&\downarrow&\downarrow&\downarrow\\2 &4 &5 &1
@@ -45,8 +39,7 @@ $$
 $$
 En algunas circunstancias es conveniente mirar una permutación y el correspondiente reacomodamiento como la misma cosa, pero esto puede traer dificultades si debemos considerar sucesivos reacomodamientos. Es importante tener en cuenta que 
 $$
-\text{\it una permutación es una función con ciertas
-características.}
+\textit{una permutación es una función con ciertas características.}
 $$
 
 Cuando las permutaciones son tratadas como funciones es claro como deben combinarse. Consideremos $\alpha$ la permutación de $[[1,5]]$ antes mencionada, y sea $\beta$ la permutación de $[[1,5]]$ dada por 
@@ -100,12 +93,12 @@ Es conveniente tener una notación más compacta para las permutaciones. Conside
 $$
 \alpha(1)=2,\qquad \alpha(2)=4,\qquad \alpha(4)=1.
 $$
-Así $\alpha$ lleva $1$ a $2$, $2$ a $4$ y $4$ a $1$, y por esta razón decimos que los símbolos $1, 2, 4$ forma un {\it ciclo } (de longitud $3$). Del mismo modo, los símbolos $3$ y $5$ forman un ciclo de longitud $2$, y
+Así $\alpha$ lleva $1$ a $2$, $2$ a $4$ y $4$ a $1$, y por esta razón decimos que los símbolos $1, 2, 4$ forma un \textit{ciclo } (de longitud $3$). Del mismo modo, los símbolos $3$ y $5$ forman un ciclo de longitud $2$, y
 escribimos:
 $$
 \alpha=(1\,2\,4)(3\,5).
 $$
-Esta es la {\it notación cíclica} para $\alpha$. Cualquier \index{notación cíclica} permutación $\pi$ puede ser escrita cíclicamente de la siguiente manera:
+Esta es la \textit{notación cíclica} para $\alpha$. Cualquier \index{notación cíclica} permutación $\pi$ puede ser escrita cíclicamente de la siguiente manera:
 \begin{itemize}
 \item comencemos con algún símbolo (digamos el $1$) y veamos el efecto de $\pi$ sobre él y sus sucesores hasta que alcancemos el $1$
 nuevamente;
@@ -116,7 +109,7 @@ Por ejemplo, la permutación $\beta$ definida antes tiene la notación cíclica
 $$
 \beta=(1\,3)(2\,5)(4),
 $$
-donde observamos que el símbolo $4$ forma un ciclo ``degenerado'' por sí solo, puesto que $\beta(4)=4$. En algunas ocasiones podemos omitir estos ciclos de longitud 1 cuando escribimos una permutación en notación cíclica, puesto que corresponden a símbolos que no son afectados por la permutación. Sin embargo, usualmente es útil {\it no} adoptar esta convención hasta que uno se familiariza con la notación.
+donde observamos que el símbolo $4$ forma un ciclo ``degenerado'' por sí solo, puesto que $\beta(4)=4$. En algunas ocasiones podemos omitir estos ciclos de longitud 1 cuando escribimos una permutación en notación cíclica, puesto que corresponden a símbolos que no son afectados por la permutación. Sin embargo, usualmente es útil \textit{no} adoptar esta convención hasta que uno se familiariza con la notación.
 
 
 Aunque la representación de una permutación en notación cíclica es esencialmente única, hay dos manera obvias en las que podemos cambiar la notación sin alterar la permutación. Primero, cada ciclo puede empezar en cualquiera de sus símbolos; por ejemplo $(7\,8\,2\,1\,3)$ y $(1\,2\,7\,8\,2)$ describen el mismo ciclo. Segundo, el orden de los ciclos no es importante; por ejemplo $(1\,2\,4) (3\,5)$ y $(3\,5) (1\,2\,4)$ denotan la misma permutación. Pero las características importantes son el número de ciclos, la longitud del ciclo, y la disposición de los símbolos dentro de los ciclos, y éstas están determinadas de manera única. Por eso, la rotación cíclica nos dice bastantes cosas útiles sobre una permutación.
@@ -134,7 +127,7 @@ $$
 $$
 ?`Cuántas veces debe repetirse este procedimiento hasta que las cortas aparezcan dispuestas como estaban inicialmente?
 \end{ejemplo}
-\begin{proof} Sea $\pi$ la permutación que efectúa el reordenamiento; esto es $\pi(i) =j$ si la carta $j$ aparece en la posición previamente ocupada por la carta $i$. Trabajando con la notación cíclica para $\pi$ encontramos que
+\begin{proof}[Solución] Sea $\pi$ la permutación que efectúa el reordenamiento; esto es $\pi(i) =j$ si la carta $j$ aparece en la posición previamente ocupada por la carta $i$. Trabajando con la notación cíclica para $\pi$ encontramos que
 $$
 \pi=(1)(2\,\,5\,\,6\,\,10\,\,4)(3\,\,9\,\,11\,\,8\,\,7)(12).
 $$
@@ -144,9 +137,7 @@ reaparecerán en sus posiciones originales. Otra forma de expresar el resultado 
 \end{section}
 
 
-%\section{Ejercicios}
-\subsection*{\Large $\S$ Ejercicios}
-%\addcontentsline{toc}{subsection}{Ejercicios}
+\subsection*{$\S$ Ejercicios}
 \begin{enumerate}
 \item Escribir en notación cíclica la permutación que realiza el siguiente reordenamiento:
 $$
@@ -185,8 +176,7 @@ $$
 $$
 Probar que toda permutación de $[[1,n]]$ puede ser expresada en términos de $\tau_1,\tau_2,\ldots,\tau_{n-1}$. 
 
-\item Una permutación de $[[1,n]]$ que tenga solo un ciclo (necesariamente de longitud $n$) es llamada {\it cíclica}  \index{permutación cíclica}. Probar que hay $(n-1)!$ permutaciones cíclicas de $[[1,n]]$.
+\item Una permutación de $[[1,n]]$ que tenga solo un ciclo (necesariamente de longitud $n$) es llamada \textit{cíclica}  \index{permutación cíclica}. Probar que hay $(n-1)!$ permutaciones cíclicas de $[[1,n]]$.
 
-\item Un mazo de $52$ cartas es dividido en dos partes iguales y luego se alternan las cartas de una y otra parte. Es decir si la numeración original era $1,2,3,\ldots,54$, el nuevo orden es $1,27,2,28,\ldots$?`Cuántas veces se debe repetir este procedimiento para obtener de nuevo el mazo original? 
+\item Un mazo de $52$ cartas es dividido en dos partes iguales y luego se alternan las cartas de una y otra parte. Es decir si la numeración original era $1,2,3,\ldots,54$, el nuevo orden es $1,27,2,28,\ldots$ ¿Cuántas veces se debe repetir este procedimiento para obtener de nuevo el mazo original? 
 \end{enumerate}
-%\end{subsection}

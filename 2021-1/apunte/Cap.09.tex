@@ -4,60 +4,37 @@
 \renewcommand{\thechapter}{\Alph{chapter}}
  \chapter[La función de Euler]{La función de Euler}
 
-
  \begin{section}{La función de Euler} \label{A2.1 }
 
+ En esta sección probaremos un útil e importante teorema, usando sólo  los conceptos de conteo más básicos.
 
- En esta sección probaremos un útil e importante teorema, usando sólo
- los conceptos de conteo más básicos.
+ El teorema se refiere a las  propiedades de divisibilidad de los enteros. Recordemos que dos enteros $x$ e
+ $y$ son \textit{coprimos} si el $\mcd(x,y) = 1$. Por cada $n \ge 1$ sea  $\phi(n)$ el número de  enteros $x$ en el rango $1 \le x \le n$ tal que $x$ y $n$ son coprimos.  Podemos  calcular los primeros valores de $\phi(n)$ haciendo una tabla (tabla  \ref{tablaA2.1.1}).
 
- El teorema se refiere a las
- propiedades de divisibilidad de los enteros. Recordemos que dos enteros $x$ e
- $y$ son {\it coprimos} si el $\mcd(x,y) = 1$. Por cada $n \ge 1$ sea
- $\phi(n)$ el número de
- enteros $x$ en el rango $1 \le x \le n$ tal que $x$ y $n$ son coprimos.
- Podemos
- calcular los primeros valores de $\phi(n)$ haciendo una tabla (tabla
- \ref{tablaA2.1.1}).
-
-La función es llamada {\em función de Euler}, debido a Leonhard
-Euler  \index{Euler, Leonhard} ($1\,707-1\,783$). Cuando $n$ es primo,
-digamos $n=p$, cada uno de los enteros $1,2,\ldots,p-1$ es coprimo
-con $p$, entonces tenemos
+La función es llamada \textit{función de Euler}, debido a Leonhard Euler  \index{Euler, Leonhard} ($1\,707-1\,783$). Cuando $n$ es primo, digamos $n=p$, cada uno de los enteros $1,2,\ldots,p-1$ es coprimo con $p$, entonces tenemos 
 $$
 \phi(p)=p-1,\qquad\text{ $p$ primo.}
 $$
 
-
-
-
-% \vskip 3.cm
- \begin{table}
- %Tabla A2.1.1
-
- \begin{alignat*}3
- &n& \text{\quad Coprimos a $n$\quad }& &\phi(n)&\\
-&&&&&\\
- &1&1&&1& \\
- &2&1&&1& \\
- &3&1,2&&2& \\
- &4&1,3&&2& \\
- &5&1,2,3,4&&4& \\
- &6&1,5&&2& \\
- &7&1,2,3,4,5,6&&6& \\
- &8&1,3,5,7&&4&
- \end{alignat*}
-
-\caption{} \label{tablaA2.1.1}
+\begin{table}[h]
+\begin{center}
+       \begin{tabular}{r|r|r}
+              $n$&  Coprimos a $n$ \,&\,$\phi(n)$\\
+             \hline
+              $1$&$1$&$1$ \\
+              $2$&$1$&$1$ \\
+              $3$&$1$,$2$&$2$ \\
+              $4$&$1$,$3$&$2$ \\
+              $5$&$1$,$2$,$3$,$4$&$4$ \\
+              $6$&$1$,$5$&$2$ \\
+              $7$&$1$,$2$,$3$,$4$,$5$,$6$&$6$ \\
+              $8$&$1$,$3$,$5$,$7$&$4$
+       \end{tabular}
+\end{center}
+ \caption{Primeros valores de $\phi(n)$} \label{tablaA2.1.1}
 \end{table}
 
-
-
-
-Nuestra tarea ahora es probar un resultado respecto a la suma de
-los valores $\phi(d)$, donde los $d$ son todos los divisores de un
-número positivo $n$ dado. Por ejemplo, cuando $n=12$, lo divisores
-$d$ son $1$, $2$, $3$, $4$, $5$, $6$ y $12$, podemos ver que
+Nuestra tarea ahora es probar un resultado respecto a la suma de los valores $\phi(d)$, donde los $d$ son todos los divisores de un número positivo $n$ dado. Por ejemplo, cuando $n=12$, lo divisores $d$ son $1$, $2$, $3$, $4$, $5$, $6$ y $12$, podemos ver que
 \begin{align*}
 &\quad\phi(1)+\phi(2)+\phi(3)+\phi(4)+\phi(6)+\phi(12)\\
 &= 1 +1+2+2+2+4 \\
@@ -65,7 +42,6 @@ $d$ son $1$, $2$, $3$, $4$, $5$, $6$ y $12$, podemos ver que
 \end{align*}
 
 Debemos demostrar que la suma es siempre igual al entero $n$ dado.
-
 
 \begin{teorema}\label{tA2.1b} Para cualquier $n$ entero positivo,
 $$
@@ -80,182 +56,114 @@ $$
 
 
 \begin{table}
-%Tabla A2.1.2
-
-
-\begin{align*}
-&  &f &&1  &&2 &&3 &&4 &&5  &&6 &&7 &&8 &&9 &&10 &&11 &&12 && &\phi(d)\\
-&d &  &&   &&  &&  &&  &&   &&  &&  &&  &&  &&   &&   &&   && &   \\
-&1 &  &&12 &&  &&  &&  &&   &&  &&  &&  &&  &&   &&   &&   && &1  \\
-&2 &  &&6  &&  &&  &&  &&   &&  &&  &&  &&  &&   &&   &&   && &1  \\
-&3 &  &&4  &&8 &&  &&  &&   &&  &&  &&  &&  &&   &&   &&   && &2  \\
-&4 &  &&3  &&  &&9 &&  &&   &&  &&  &&  &&  &&   &&   &&   && &2  \\
-&6 &  &&2  &&  &&  &&  &&10 &&  &&  &&  &&  &&   &&   &&   && &2  \\
-&12&  &&1  &&  &&  &&  &&5  &&  &&7 &&  &&  &&   &&11 &&   && &4  \\
-&  &  &&   &&  &&  &&  &&   &&  &&  &&  &&  &&   &&   &&   && &12
-\end{align*}
-
+\begin{tabular}{rr|rrrrrrrrrrrrr|c}
+  &$f$ &$1$  &$2$ &$3$ &$4$ &$5$  &$6$ &$7$ &$8$ &$9$ &$10$ &$11$ &$12$ & &$\phi(d)$\\
+$d$ &  &   &  &  &  &   &  &  &  &  &   &   &   & &   \\\hline
+$1$ &  &$12$ &  &  &  &   &  &  &  &  &   &   &   & &$1$  \\
+$2$ &  &$6$  &  &  &  &   &  &  &  &  &   &   &   & &$1$  \\
+$3$ &  &$4$  &$8$ &  &  &   &  &  &  &  &   &   &   & &$2$  \\
+$4$ &  &$3$  &  &$9$ &  &   &  &  &  &  &   &   &   & &$2$  \\
+$6$ &  &$2$  &  &  &  &$10$ &  &  &  &  &   &   &   & &$2$  \\
+$12$&  &$1$  &  &  &  &$5$  &  &$7$ &  &  &   &$11$ &   & &$4$  \\
+  &  &   &  &  &  &   &  &  &  &  &   &   &   & &$12$
+\end{tabular}
 \caption{} \label{tablaA2.1.2}
 \end{table}
 
 
-La tabla \ref{tablaA2.1.2} muestra $S$ cuando $n=12$; la ``marca''
-que indica que $(d,f)$ pertenece a $S$ es un número cuya
-importancia explicaremos en seguida. Por lo general, el número de
-``marcas'' en la fila $d$ es el número de $f$'s en el rango $1\le
-f\le d$ que satisfacen que el $\mcd(d,f)=1$; esto es $\phi(d)$.
-Por lo tanto, contando $S$ por el método de las filas obtenemos
+La tabla \ref{tablaA2.1.2} muestra $S$ cuando $n=12$; la ``marca'' que indica que $(d,f)$ pertenece a $S$ es un número cuya importancia explicaremos en seguida. Por lo general, el número de ``marcas'' en la fila $d$ es el número de $f$'s en el rango $1\le f\le d$ que satisfacen que el $\mcd(d,f)=1$; esto es $\phi(d)$. Por lo tanto, contando $S$ por el método de las filas obtenemos
 $$
 |S| = \sum_{d|n} \phi(d).
 $$
-Para demostrar que $|S|=n$ debemos construir una biyección $\beta$
-de $S$ en $\mathbb N_n$. Dado un par $(d,f)$ en $S$, definimos
+Para demostrar que $|S|=n$ debemos construir una biyección $\beta$ de $S$ en $\mathbb N_n$. Dado un par $(d,f)$ en $S$, definimos
 $$
 \beta(d,f) = f n/d.
 $$
-En la tabla, $\beta(d,f)$ es la ``marca'' en la fila $d$ y la
-columna $f$. Como $d| n$, el valor de $\beta$, es un entero y como
-$1\le f\le d$, entonces $\beta(d,f)$ pertenece a $\mathbb N_n$.
+En la tabla, $\beta(d,f)$ es la ``marca'' en la fila $d$ y la columna $f$. Como $d| n$, el valor de $\beta$, es un entero y como $1\le f\le d$, entonces $\beta(d,f)$ pertenece a $\mathbb N_n$.
 
 Para probar que $\beta$ es una inyección observemos que
 $$
 \beta(d,f) = \beta(d',f') \quad \Rightarrow \quad fn/d = f'n/d'
 \quad \Rightarrow \quad fd'=f'd.
 $$
-Pero $f$ y $d$ son coprimos, así como también lo son $f'$ y $d'$,
-así que podemos concluir que $d=d'$ y $f=f'$.
+Pero $f$ y $d$ son coprimos, así como también lo son $f'$ y $d'$, así que podemos concluir que $d=d'$ y $f=f'$.
 
-Para demostrar que $\beta$ es una suryección, supongamos que nos
-dan un $x$ que pertenece a $\mathbb N_n$. Sea $g_x$ el mcd de $x$
-y $n$, y sea
+Para demostrar que $\beta$ es una suryección, supongamos que nos dan un $x$ que pertenece a $\mathbb N_n$. Sea $g_x$ el mcd de $x$ y $n$, y sea
 $$
 d_x = n/g_x, \qquad f_x = x /g_x.
 $$
-Puesto que $g_x$ es un divisor de $x$ y $n$, entonces $d_x$ y
-$f_x$ son enteros, y como $g_x$ es el mcd, $d_x$ y $f_x$ son
-coprimos. Ahora
+Puesto que $g_x$ es un divisor de $x$ y $n$, entonces $d_x$ y $f_x$ son enteros, y como $g_x$ es el mcd, $d_x$ y $f_x$ son coprimos. Ahora
 $$
 \beta(d_x,f_x) = f_x n/d_x = x,
 $$
-y por lo tanto $\beta$ es suryectiva.
-
-Luego $\beta$ es biyectiva y $|S|=n$, como queríamos demostrar.
+y por lo tanto $\beta$ es suryectiva.  Luego $\beta$ es biyectiva y $|S|=n$, como queríamos demostrar.
 \end{proof}
 
-%\begin{subsection}{Ejercicios}
-\subsection*{\Large $\S$ Ejercicios}
-%\addcontentsline{toc}{subsection}{Ejercicios}
+\subsection*{$\S$ Ejercicios}
 \begin{enumerate}
 \item Encontrar los valores de $\phi(19),\quad \phi(20),\quad \phi(21)$.
 
-\item Probar que si $x$ y $n$ son coprimos, entonces lo son $n-x$ y
-$n$. Deducir que $\phi(n)$ es par para todo $n \ge 3$.
+\item Probar que si $x$ y $n$ son coprimos, entonces lo son $n-x$ y $n$. Deducir que $\phi(n)$ es par para todo $n \ge 3$.
 
-\item Probar que, si $p$ es un primo y $m$ es un entero positivo,
-entonces un entero $x$ en el rango $1 \le x \le p^m$ {\it no} es
-coprimo a $p^m$ si y solo si es un múltiplo de $p$. Deducir que
-$\phi(p^m) = p^m - p^{m-1}$.
+\item Probar que, si $p$ es un primo y $m$ es un entero positivo, entonces un entero $x$ en el rango $1 \le x \le p^m$ \textit{no} es coprimo a $p^m$ si y solo si es un múltiplo de $p$. Deducir que $\phi(p^m) = p^m - p^{m-1}$.
 
-\item Encontrar un contraejemplo que confirme que es falsa la conjetura
-$\phi(ab)= \phi(a)\phi(b)$, para enteros cualesquiera $a$ y $b$.
-Trate de modificar la conjetura de tal forma que no pueda
-encontrar un contraejemplo.
+\item Encontrar un contraejemplo que confirme que es falsa la conjetura $\phi(ab)= \phi(a)\phi(b)$, para enteros cualesquiera $a$ y $b$. Trate de modificar la conjetura de tal forma que no pueda
+encontrar un contraejemplo. 
 
-\item Probar que para cualesquiera enteros positivos $n$ y $m$ se cumple:
+\item Probar que para cualesquiera enteros positivos $n$ y $m$ se cumple: 
 $$
 \phi(n^m) =n^{m-1}\phi(n).
 $$
 
 \item Calcular $\phi(1\,000)$ y $\phi(1\,001)$.
 \end{enumerate}
-%\end{subsection}
-
 
 \end{section}
 
 
 
-\begin{section}{Una aplicación aritmética del principio del
-tamiz}\label{Ap2.2} Por cientos de años los matemáticos han
-estudiado problemas sobre números primos y la fac\-to\-ri\-za\-ción de los
-enteros. Nuestra breve discusión sobre estos temas en los primeros
-capítulos debería haber convencido al lector de que estos
-problemas son difíciles, porque los primos mismos se encuentran
-irregularmente distribuidos, y porque no hay una forma directa de
-encontrar la factorización en primos de un entero dado. De todos
-modos, si se nos da la factorización en primos de un entero, es
-relativamente fácil responder ciertas preguntas sobre sus
-propiedades aritméticas. Supongamos, por ejemplo que queremos
-listar todos los divisores de un entero $n$ y sabemos que la
-factorización de $n$ es
+\begin{section}{Una aplicación aritmética del principio del tamiz}\label{Ap2.2} 
+Por cientos de años los matemáticos han estudiado problemas sobre números primos y la fac\-to\-ri\-za\-ción de los enteros. Nuestra breve discusión sobre estos temas en los primeros capítulos debería haber convencido al lector de que estos problemas son difíciles, porque los primos mismos se encuentran irregularmente distribuidos, y porque no hay una forma directa de encontrar la factorización en primos de un entero dado. De todos modos, si se nos da la factorización en primos de un entero, es relativamente fácil responder ciertas preguntas sobre sus propiedades aritméticas. Supongamos, por ejemplo que queremos listar todos los divisores de un entero $n$ y sabemos que la factorización de $n$ es
 $$
 n=p_1^{e_1}p_2^{e_2}\cdots p_r^{e_r}.
 $$
-Entonces un entero $d$ es divisor de $n$ si y solo si no tiene
-divisores primos distintos de los de $n$, y ningún primo divide
-más veces a $d$ que a $n$. Visto así, los divisores son
-precisamente los enteros que pueden escribirse de la forma
+Entonces un entero $d$ es divisor de $n$ si y solo si no tiene divisores primos distintos de los de $n$, y ningún primo divide más veces a $d$ que a $n$. Visto así, los divisores son precisamente los enteros que pueden escribirse de la forma
 $$
 d=p_1^{f_1}p_2^{f_2}\cdots p_r^{f_r},
 $$
-donde cada $f_i$ ($1\le i \le r$) satisface $0\le f_i \le e_i$.
-Por ejemplo dado que $60= 2^2 \cdot 3 \cdot 5$ podemos listar
-rápidamente todos los divisores de 60.
+donde cada $f_i$ ($1\le i \le r$) satisface $0\le f_i \le e_i$. Por ejemplo dado que $60= 2^2 \cdot 3 \cdot 5$ podemos listar rápidamente todos los divisores de 60.
 
+Un problema similar es encontrar el número de enteros $x$ en el rango $1 \le x \le n$ que son coprimos con $n$. En la sección \ref{A2.1 } denotamos este número con $\phi(n)$, el valor de la función $\phi$ de Euler en $n$. Ahora demostraremos que si la factorización en primos de $n$ es conocida, entonces $\phi(n)$ puede ser calculado por el principio del tamiz.
 
-Un problema similar es encontrar el número de enteros $x$ en el
-rango $1 \le x \le n$ que son coprimos con $n$. En la sección
-\ref{A2.1 } denotamos este número con $\phi(n)$, el valor de la
-función $\phi$ de Euler en $n$. Ahora demostraremos que si la
-factorización en primos de $n$ es conocida, entonces $\phi(n)$
-puede ser calculado por el principio del tamiz.
-
-\begin{ejemplo}?`Cuál es el valor de $\phi(60)$? En otras
-palabras, ?`cuántos enteros $x$ en el rango $1 \le x \le 60$
-satisfacen $\operatorname{mcd}(x,60)=1$?
-\end{ejemplo}
-\begin{proof} Sabemos que $60 =2^2 \cdot 3 \cdot 5$, así que
-podemos contar el números de enteros $x$ en el rango $1 \le x \le
-60$ que no son divisibles por $2$, $3$ o $5$. Con $A(2)$ denotemos el
-subconjunto de $\mathbb N_{60}$ que contiene los enteros que \it
-son \rm divisibles por $2$, con $A(2,3)$ aquellos que \it son \rm
-divisibles por $2$ y $3$, y así sucesivamente, entonces tenemos
+\begin{ejemplo*}¿Cuál es el valor de $\phi(60)$? En otras palabras, ¿cuántos enteros $x$ en el rango $1 \le x \le 60$ satisfacen $\operatorname{mcd}(x,60)=1$?
+\end{ejemplo*}
+\begin{proof}[Solución] Sabemos que $60 =2^2 \cdot 3 \cdot 5$, así que podemos contar el números de enteros $x$ en el rango $1 \le x \le 60$ que no son divisibles por $2$, $3$ o $5$. Con $A(2)$ denotemos el subconjunto de $\mathbb N_{60}$ que contiene los enteros que \textit{son} divisibles por $2$, con $A(2,3)$ aquellos que \textit{son} divisibles por $2$ y $3$, y así sucesivamente, entonces tenemos 
 $$\begin{aligned}
 \phi(60)&=60-|A(2) \cup A(3) \cup A(5)| \\
 &= 60-|A(2) + A(3) + A(5)| \\
 &\qquad+(|A(2,3) + |A(2,5)| + |A(3,5)|)-|A(2,3,5)|,
 \end{aligned}
 $$
-por el principio del tamiz. Ahora $|A(2)|$ es el número de
-múltiplos de $2$ en $\mathbb N_{60}$ que es $60 /2 = 30$. Del mismo
-modo $|A(2,3)|$ es el número de múltiplos de $2 \cdot 3$, que es
-$60 /(2\cdot 3) = 10$, y así siguiendo, por lo tanto
+por el principio del tamiz. Ahora $|A(2)|$ es el número de múltiplos de $2$ en $\mathbb N_{60}$ que es $60 /2 = 30$. Del mismo modo $|A(2,3)|$ es el número de múltiplos de $2 \cdot 3$, que es $60 /(2\cdot 3) = 10$, y así siguiendo, por lo tanto
 $$
 \phi(60) = 60 -(30+20+10)+(10+6+4)-2=16.
 $$
 \end{proof}
 
-El mismo método puede ser usado para dar una fórmula explícita
-para $\phi(n)$ en el caso general.
+El mismo método puede ser usado para dar una fórmula explícita para $\phi(n)$ en el caso general.
 
-
-\begin{teorema}\label{tA2.2} Sea $n \ge 2$ un entero cuya factorización
-es $n=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}$. Entonces
-$$
+\begin{teorema}\label{tA2.2} Sea $n \ge 2$ un entero cuya factorización es $n=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}$. Entonces $$
 \phi(n)=n\left(1-\frac{1}{p_1}\right)\left(1-\frac{1}{p_2}\right)\cdots\left(1-\frac{1}{p_r}\right).
 $$
 \end{teorema}
-\begin{proof} Denotemos $A_j$ el subconjunto de $\mathbb N_n$
-que contiene los múltiplos de $p_j$ ($1\le j \le r$). Entonces
+\begin{proof} Denotemos $A_j$ el subconjunto de $\mathbb N_n$ que contiene los múltiplos de $p_j$ ($1\le j \le r$). Entonces 
 $$
 \begin{aligned}
 \phi(n) &= n- |A_1 \cup A_2 \cup \cdots \cup A_r| \\
        &= n -\alpha_1+ \alpha_2- \cdots +(-1)^r\alpha_r
 \end{aligned}
 $$
-donde $\alpha_i$ es la suma de los cardinales de las
-intersecciones de los conjuntos tomados de a $i$. Una intersección
-típica como
+donde $\alpha_i$ es la suma de los cardinales de las intersecciones de los conjuntos tomados de a $i$. Una intersección típica como
 $$
 A_{j_1}\cup A_{j_2}\cup \cdots \cup A_{j_i}
 $$
@@ -263,8 +171,7 @@ contiene los múltiplos de $P= p_{j_1}\cdot p_{j_2}\cdots p_{j_i}$ en $\mathbb N
 $$
 P,2P,3P,\ldots,\left(\frac{n}{p}\right)P.
 $$
-Luego la cardinalidad de una intersección típica es $n/P$, y
-$\alpha_i$ es la suma de términos como
+Luego la cardinalidad de una intersección típica es $n/P$, y $\alpha_i$ es la suma de términos como
 $$
 \frac{n}{P}=
 n\left(\frac{1}{p_{j_1}}\right)\left(\frac{1}{p_{j_2}}\right)\cdots
@@ -282,6 +189,4 @@ $$
 \end{proof}
 
 
-
 \end{section}
-
