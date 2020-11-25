@@ -1,56 +1,81 @@
-\documentclass[12pt,spanish,makeidx]{amsbook}
-\tolerance=10000
-\renewcommand{\baselinestretch}{1.3}
+% PDFLaTeX
+\documentclass[a4paper,12pt,twoside,spanish,reqno]{amsbook}
+%%%---------------------------------------------------
 
+%\renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
+%\usepackage[T1]{fontenc}
 
+% Para hacer el  indice en linea de comando hacer 
+% makeindex main
+%% En http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf hay ejemplos de packages de fonts libres, como los siguientes:
+%\usepackage{cmbright}
+%\usepackage{pxfonts}
+%\usepackage[varg]{txfonts}
+%\usepackage{ccfonts}
+%\usepackage[math]{iwona}
+\usepackage[math]{kurier}
 
+\usepackage{etex}
 \usepackage{t1enc}
-\usepackage[spanish]{babel}
 \usepackage{latexsym}
 \usepackage[utf8]{inputenc}
 \usepackage{verbatim}
 \usepackage{multicol}
 \usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
 \usepackage{calc}         % From LaTeX distribution
 \usepackage{graphicx}     % From LaTeX distribution
-\usepackage{ifthen}       % From LaTeX distribution
-\usepackage{subfigure}    % From CTAN/macros/latex/contrib/supported/subfigure
-\usepackage{pst-all}      % From PSTricks
-\usepackage{pst-poly}     % From pstricks/contrib/pst-poly
-\usepackage{multido}      % From PSTricks
+\usepackage{ifthen}
 \input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\usepackage{mathtools}
+\usepackage{stackrel}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+%\usepackage{makeidx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage{hypcap}
+\numberwithin{equation}{section}
+% http://www.texnia.com/archive/enumitem.pdf (para las labels de los enumerate)
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate, 1]{label={(\arabic*)}}
+\setlist[enumerate, 2]{label=\emph{\alph*)}}
 
 
-%% \theoremstyle{plain} %% This is the default
-\oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
-\headheight .3in \headsep .2in \footskip .2in
-\setlength{\textwidth}{16cm} %ancho para apunte
-\setlength{\textheight}{21cm} %largo para apunte
-%\leftmargin 2.5cm
-%\rightmargin 2.5cm
-\topmargin 0.5 cm
+%%% FORMATOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+\usepackage[a4paper, top=3cm, left=3cm, right=2cm, bottom=2.5cm]{geometry}
+\usepackage{setspace}
+%\setlength{\parindent}{0,7cm}% tamaño de sangria.
+\setlength{\parskip}{0,4cm} % separación entre parrafos.
+\renewcommand{\baselinestretch}{0.90}% separacion del interlineado
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\end{comment}
+%%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[LE,RO]{FAMAF}
-\fancyhead[RE,LO]{Matemática Discreta I}
-\fancyfoot[LE,RO]{\leftmark}
-\fancyfoot[RE,LO]{\thepage}
-
-\renewcommand{\headrulewidth}{0.5pt}
-%\renewcommand{\footrulewidth}{0.5pt}
-
-
-
+\newcommand{\rta}{\noindent\textit{Rta: }} 
 
 \begin{document}
-	
-{\bf \begin{center} Práctico 2 \\ Matemática Discreta I -- Año 2020/1 \\ FAMAF \end{center}}
+    \baselineskip=0.55truecm %original
+    
+    
+{\bf \begin{center} Práctico 2 \\ Matemática Discreta I -- Año 2021/1 \\ FAMAF \end{center}}
 
 {\bf \begin{center} Ejercicios resueltos \end{center}}
 
 \begin{enumerate}
+\setlength\itemsep{1.1em}
+
 \item  La cantidad de dígitos o cifras de un número se cuenta a partir del primer dígito
 distinto de cero. Por ejemplo, 0035010 es un número de 5 dígitos.
 \begin{enumerate}
@@ -327,7 +352,7 @@ Alternativamente si conocemos la fórmula del binomio de Newton $(a+b)^n=\sum_{i
 
 
 \begin{center}
-	\textbf{Ejercicios adicionales (para repasar)}
+    \textbf{Ejercicios adicionales (para repasar)}
 \end{center}
 
 
@@ -357,31 +382,31 @@ manera tal que cada persona reciba al menos 3 libros?
 
 \noindent\textit{Rta:} Para cada libro tenemos dos posibles destinatarios, entonces hay $2^{14}$ formas de repartir 14 libros entre dos personas.  Las que dan menos de 3 libros a alguno de los dos son $\binom{14}{0}+\binom{14}{1}+\binom{14}{2}+\binom{14}{12}+\binom{14}{13}+\binom{14}{14}=1+14+91+91+14+1=212$. Si las restamos se tiene el resultado buscado: $2^{14}-212$.
 
-\smallskip
+
 
 \item
 Cecilia ha olvidado la contraseña de su correo electrónico, la cual est\'a formada por $11$ caracteres: $4$ d\'igitos y $7$ letras todos mezclados. ?`Cu\'al es el m\'aximo n\'umero de intentos que deber\'ia probar para entrar a su correo si:
 \begin{enumerate}
-	\item  tiene en cuenta que hay 26 letras?
-	
-	\textit{Rta:} Pensemos que tenemos 11 posiciones donde poner los caracteres de la contraseña. Hay $\binom{11}{7}$ formas de elegir 7 posiciones y ahí ponemos las letras de $26^7$ formas. En  las  posiciones que quedan ubicamos los 4 dígitos de $10^4$ formas. En total tenemos $\binom{11}{7}26^710^4$   contraseñas posibles de 7 letras y 4 dígitos.
-	
-	\item la letra B y el d\'igito 2 no pueden estar ambos en la contraseña?
-	
-	\textit{Rta:} Aquí debemos pensar en  tres casos mutuamente excluyentes: 1) la contraseña no tiene ni B ni 2, 2) la contraseña tiene B, pero no 2 y 3) la contraseña no tiene B pero tiene 2. Estos casos cubren todas las posibilidades,  encontrando  la solución en cada caso y sumándolas obtenemos la respuesta al ejercicio.
-	
-	1) En  este caso es como  el problema en \textit{a)} pero sin poder usar ni B, ni 2,  es decir teniendo 25 letras y 9 dígitos. La respuesta es $\binom{11}{7}25^79^4$.
-	
-	2) Tenemos 11 posiciones donde ubicar B. Una vez ubicado  B,  quedan 26 letras (todas) y 9 dígitos (no puede estar 2) y debemos poner 6 letras y 4 dígitos,  es decir tenemos $\binom{10}{6}26^69^4$ posibilidades. Luego el total es $11\binom{10}{6}26^69^4$
-	
-	3) Se hace parecido a 2): tenemos 11 posiciones donde ubicar 2. Una vez ubicado  2,  quedan 25 letras (no puede esta B) y 10 dígitos (todos) y debemos poner 7 letras y 3 dígitos,  es decir tenemos $\binom{10}{6}25^710^3$ posibilidades. Luego el total es $11\binom{10}{6}25^710^4$.
-	
-	Finalmente la  solución es :  $\binom{11}{7}25^79^4+11\binom{10}{6}26^69^4+11\binom{10}{6}25^710^4$.
-	
-	\item  recuerda que ha formado la clave de la siguiente manera: los primeros siete caracteres son una mezcla de las letras de su nombre (CECILIA), y los \'ultimos cuatro caracteres son una permutaci\'on de las cuatro cifras de su a\~no de nacimiento (1998)?
-	
-	\textit{Rta:} Como CECILIA es una palabra de longitud 7 formada por  las letras A, C, C,  E, I, I, L las permutaciones posibles son $\frac{7!}{2!2!}$. Las permutaciones de 1998  son $\frac{4!}{2!}$. Luego el toral de contraseñas posibles es   $\frac{7!}{2!2!}\frac{4!}{2!}$.
-	
+    \item  tiene en cuenta que hay 26 letras?
+    
+    \textit{Rta:} Pensemos que tenemos 11 posiciones donde poner los caracteres de la contraseña. Hay $\binom{11}{7}$ formas de elegir 7 posiciones y ahí ponemos las letras de $26^7$ formas. En  las  posiciones que quedan ubicamos los 4 dígitos de $10^4$ formas. En total tenemos $\binom{11}{7}26^710^4$   contraseñas posibles de 7 letras y 4 dígitos.
+    
+    \item la letra B y el d\'igito 2 no pueden estar ambos en la contraseña?
+    
+    \textit{Rta:} Aquí debemos pensar en  tres casos mutuamente excluyentes: 1) la contraseña no tiene ni B ni 2, 2) la contraseña tiene B, pero no 2 y 3) la contraseña no tiene B pero tiene 2. Estos casos cubren todas las posibilidades,  encontrando  la solución en cada caso y sumándolas obtenemos la respuesta al ejercicio.
+    
+    1) En  este caso es como  el problema en \textit{a)} pero sin poder usar ni B, ni 2,  es decir teniendo 25 letras y 9 dígitos. La respuesta es $\binom{11}{7}25^79^4$.
+    
+    2) Tenemos 11 posiciones donde ubicar B. Una vez ubicado  B,  quedan 26 letras (todas) y 9 dígitos (no puede estar 2) y debemos poner 6 letras y 4 dígitos,  es decir tenemos $\binom{10}{6}26^69^4$ posibilidades. Luego el total es $11\binom{10}{6}26^69^4$
+    
+    3) Se hace parecido a 2): tenemos 11 posiciones donde ubicar 2. Una vez ubicado  2,  quedan 25 letras (no puede esta B) y 10 dígitos (todos) y debemos poner 7 letras y 3 dígitos,  es decir tenemos $\binom{10}{6}25^710^3$ posibilidades. Luego el total es $11\binom{10}{6}25^710^4$.
+    
+    Finalmente la  solución es :  $\binom{11}{7}25^79^4+11\binom{10}{6}26^69^4+11\binom{10}{6}25^710^4$.
+    
+    \item  recuerda que ha formado la clave de la siguiente manera: los primeros siete caracteres son una mezcla de las letras de su nombre (CECILIA), y los \'ultimos cuatro caracteres son una permutaci\'on de las cuatro cifras de su a\~no de nacimiento (1998)?
+    
+    \textit{Rta:} Como CECILIA es una palabra de longitud 7 formada por  las letras A, C, C,  E, I, I, L las permutaciones posibles son $\frac{7!}{2!2!}$. Las permutaciones de 1998  son $\frac{4!}{2!}$. Luego el toral de contraseñas posibles es   $\frac{7!}{2!2!}\frac{4!}{2!}$.
+    
 \end{enumerate}
 
 

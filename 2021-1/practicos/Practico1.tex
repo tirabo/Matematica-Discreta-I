@@ -38,10 +38,10 @@
 %\usepackage{makeidx}
 \usepackage{hyperref}
 \hypersetup{
-	colorlinks=true,
-	linkcolor=blue,
-	filecolor=magenta,      
-	urlcolor=cyan,
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
 }
 \usepackage{hypcap}
 \numberwithin{equation}{section}
@@ -63,21 +63,17 @@
 %\end{comment}
 %%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
- 
-
-
+\newcommand{\rta}{\noindent\textit{Rta: }} 
 
 \begin{document}
-\baselineskip=0.55truecm %original
+    \baselineskip=0.55truecm %original
+    
 
+{\bf \begin{center}\large  Práctico 1 \\ Matemática Discreta I -- Año 2021/1 \\ FAMAF \end{center}}
 
-{\bf \begin{center}\large  Práctico 1 \\ Matemática Discreta I -- Año 2020/1 \\ FAMAF \end{center}}
-
-\vskip .5cm
 
 \begin{enumerate}
-
+ \setlength\itemsep{1.1em}
 
 \item\label{prob1} Demostrar las siguientes afirmaciones donde $a$, $b$, $c$ y $d$ son siempre números enteros. Justificar cada uno de los pasos en cada demostración indicando el axioma o resultado que utiliza.
 \begin{enumerate}
@@ -87,7 +83,7 @@
 \end{enumerate}
 
 
-\vskip .5cm
+
 
 \item Idem \ref{prob1}.
 
@@ -96,7 +92,7 @@
  \item $a<b\,$ y $\,c<0$ implican $\,b\cdot c<a\cdot c$
 \end{enumerate}
 
-\vskip .5cm
+
 
 \item  Probar las siguientes afirmaciones, justificando los pasos que realiza.
 \begin{enumerate}
@@ -107,7 +103,7 @@
 \end{enumerate}
 
 
-\vskip .5cm
+
 
 
 \item Calcular evaluando las siguientes expresiones:
@@ -123,7 +119,7 @@
 
 
 
-\vskip .5cm
+
 
 \item Calcular:
 \begin{multicols}{2}
@@ -138,7 +134,7 @@
 
 
 
-\vskip .5cm
+
 
 
 
@@ -154,7 +150,7 @@
 
 
 
-\vskip .5cm
+
 
 \item Analizar la validez de las siguientes afirmaciones:
 %\begin{multicols}{2}
@@ -165,22 +161,22 @@
 \end{enumerate}
 %\end{multicols}
 
-\vskip .5cm
+
 
 \item Probar que $\sum_{i=0}^n 2^i = 2^{n+1} -1$ ($n \ge 0$). 
 
 
-\vskip .5cm
+
 
 \item Probar las siguientes afirmaciones usando inducción en $n$:
 \begin{enumerate}
-	\item $n^2\leq 2^n$ para todo $n\in{\mathbb N}$, $n>3$ .
-	%\item $n^3 \le 3^n$;\quad $\forall n \in {\mathbb N}$, $n\ge 3$ .
-	%\item $(n+1)^n < n^{n+1}$; $\forall n \in {\mathbb N}$, $n \ge 3$.
-	\item $\forall n \in {\mathbb N}$,\ $3^n \ge 1 + 2^n$.
+    \item $n^2\leq 2^n$ para todo $n\in{\mathbb N}$, $n>3$ .
+    %\item $n^3 \le 3^n$;\quad $\forall n \in {\mathbb N}$, $n\ge 3$ .
+    %\item $(n+1)^n < n^{n+1}$; $\forall n \in {\mathbb N}$, $n \ge 3$.
+    \item $\forall n \in {\mathbb N}$,\ $3^n \ge 1 + 2^n$.
 \end{enumerate}
 
-\vskip .5cm
+
 
 
 \item Demostrar por inducción  las siguientes igualdades:
@@ -208,7 +204,7 @@
 
   \end{enumerate}
 
-\vskip .5cm
+
 
 
 
@@ -216,25 +212,25 @@
 \item Hallar $n_0 \in {\mathbb N}$ tal que $\forall n \ge n_0$ se cumpla que $n^2 \ge 11 \cdot n + 3$.
 
 
-\vskip .5cm
+
 
 
 \item Sea $u_1=3$, $u_2=5$ y $u_n=3 u_{n-1} - 2 u_{n-2}$ con $n\in \mathbb N$, $n\geq 3$.
 Probar que $u_n=2^n+1$.
 
-\vskip .5cm
+
 
 \item Sea $\{ u_n \}_{n \in \mathbb N}$ la sucesión definida por recurrencia como sigue: $u_1 = 9$, $u_2 = 33$, $u_n = 7u_{n-1} - 10u_{n-2}$, $\forall n \geq 3$. Probar que $u_n = 2^{n+1} + 5^n$, para todo $n \in \mathbb N$.
 
-\vskip .5cm
+
 
 \item Sea $u_n$ definida recursivamente por: $u_1=2$, $u_n=2+\sum_{i=1}^{n-1}2^{n-2i}u_i \;\;\forall\; n >1$.
 \begin{enumerate}
-	\item Calcule $u_2$ y $u_3$.
-	\item Proponga una fórmula para el término general $u_n$ y pruébela por inducción.
+    \item Calcule $u_2$ y $u_3$.
+    \item Proponga una fórmula para el término general $u_n$ y pruébela por inducción.
 \end{enumerate}
 
-\vskip .5cm
+
 
 
 \item Las siguientes proposiciones no son válidas para todo $n \in {\mathbb N}$. Indicar en qué paso del principio de inducción falla la demostración:
@@ -247,7 +243,7 @@ Probar que $u_n=2^n+1$.
 \end{enumerate}
 \end{multicols}
 
-\vskip .5cm
+
 
 \item Encuentre el error en los siguientes argumentos de inducción.
 \begin{enumerate}
@@ -263,7 +259,7 @@ entonces obtenemos que $5(k+1)+3$ es múltiplo de 5. Por lo tanto, por el princi
 de inducción, demostramos que $5n+3$ es múltiplo de 5 para todo $n\in \mathbb
 N$.
 
-\vskip .5cm
+
 
 \item Sea $a\in\mathbb R$, con $a\neq 0$. Vamos a demostrar que para todo entero no negativo $n$, $a^n=1$.
 
@@ -273,7 +269,15 @@ $a^{k+1}= \frac{a^k a^k}{a^{k-1}}=\frac{1\cdot1}1=1$.
 Por lo tanto, el principio de inducción fuerte implica que $a^n=1$ para todo $n\in \mathbb N$.
 \end{enumerate}
 
+\item* La \emph{sucesión de Fibonacci} se define recursivamente de la siguiente manera:
+$$
+u_1=1,\quad u_2=1,\quad u_{n+1}=u_{n}+u_{n-1}, \, n\geq 2.
+$$
+Los primeros términos de esta sucesión son: $1,1,2,3,5,8,13,\ldots$
 
+Demostrar por inducción que el término general de esta sucesión se puede calcular mediante la fórmula
+\[ u_n= \frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n-\left(\frac{1-\sqrt{5}}{2}\right)^n\right].\]
+(\textit{Ayuda:} usar que $\frac{1+\sqrt{5}}{2}$ y $\frac{1-\sqrt{5}}{2}$ son las raíces de la ecuación cuadrática $x^2-x-1=0$ y por lo tanto  $\left(\frac{1\pm\sqrt{5}}{2}\right)^{n+1} = \left(\frac{1\pm\sqrt{5}}{2}\right)^{n}+\left(\frac{1\pm\sqrt{5}}{2}\right)^{n-1}$).
 
 
 \end{enumerate}

@@ -1,0 +1,214 @@
+% PDFLaTeX
+\documentclass[a4paper,12pt,twoside,spanish,reqno]{amsbook}
+%%%---------------------------------------------------
+
+%\renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
+%\usepackage[T1]{fontenc}
+
+% Para hacer el  indice en linea de comando hacer 
+% makeindex main
+%% En http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf hay ejemplos de packages de fonts libres, como los siguientes:
+%\usepackage{cmbright}
+%\usepackage{pxfonts}
+%\usepackage[varg]{txfonts}
+%\usepackage{ccfonts}
+%\usepackage[math]{iwona}
+\usepackage[math]{kurier}
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\usepackage{mathtools}
+\usepackage{stackrel}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+%\usepackage{makeidx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage{hypcap}
+\numberwithin{equation}{section}
+% http://www.texnia.com/archive/enumitem.pdf (para las labels de los enumerate)
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate, 1]{label={(\arabic*)}}
+\setlist[enumerate, 2]{label=\emph{\alph*)}}
+
+
+%%% FORMATOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+\usepackage[a4paper, top=3cm, left=3cm, right=2cm, bottom=2.5cm]{geometry}
+\usepackage{setspace}
+%\setlength{\parindent}{0,7cm}% tamaño de sangria.
+\setlength{\parskip}{0,4cm} % separación entre parrafos.
+\renewcommand{\baselinestretch}{0.90}% separacion del interlineado
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\end{comment}
+%%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\rta}{\noindent\textit{Rta: }} 
+\newcommand \Z{{\mathbb Z}}
+\newcommand \N{{\mathbb N}}
+\newcommand \mcd{\operatorname{mcd}}
+\newcommand \mcm{\operatorname{mcm}}
+
+\begin{document}
+    \baselineskip=0.55truecm %original
+    
+
+{\bf \begin{center} Práctico 3 - Repaso \\ Matemática Discreta I -- Año 2021/1 \\ FAMAF\end{center}}
+
+
+
+
+\begin{enumerate}
+\setlength\itemsep{1.1em}
+
+\item Sea $p$ primo positivo. Probar que $(p,(p-1)!)=1$.
+
+
+
+\item Demostrar que $\forall n\in{\mathbb Z}$, $n>2$, existe $p$ primo tal que $n<p<n!$. (Ayuda: pensar qu\'e primos dividen a $n! - 1$.)
+
+
+
+
+
+\item Dado un entero $a>0$ fijo, caracterizar aquellos n\'umeros que al dividirlos por $a$ tienen cociente igual al resto.
+
+
+
+
+\item Probar que si $(a,4)=2$ y $(b,4)=2$ entonces $(a+b,4)=4$.
+
+
+\item Probar que si $a,b$ son coprimos entonces $(a+b,a-b)=1 \text{
+\'o } 2 $.
+
+
+
+
+
+
+
+\item Completar y demostrar:
+
+a) Si $a \in {\mathbb Z}$, entonces $[a,a]=\dots$
+
+b) Si $a$, $b \in {\mathbb Z}$, $[a,b]=b$ si y s\'olo si $\ldots$
+
+c) $(a,b)=[a,b]$ si y s\'olo si $\ldots$
+
+
+
+
+\item Probar que si $d$ es un divisor com\'un de $a$ y $b$, entonces $\dfrac{[a,b]}{d} = \left[\dfrac{a}{d},\dfrac{b}{d}\right]$.
+
+
+
+
+
+\item Probar que $(a+b,[a,b])=(a,b)$. %En particular, si dos n\'umeros son coprimos, tambi\'en lo son su suma y su producto.
+
+
+
+\item Probar que si $(a,b)=1$ y $n+2$ es un n\'umero primo, entonces $(a+b, a^2 + b^2 - nab) = 1$ \'o $n+2$.
+
+
+
+
+
+\item Si $a\cdot b$ es un cuadrado y $a$ y $b$ son coprimos, probar que $a$ y $b$ son cuadrados.
+
+
+
+\medskip
+
+\item Probar que $\sqrt 6$ es irracional.
+
+%\medskip
+
+%\item Probar que $2^{3n+4} + 7^{3n+1}$ es divisible por $9$, para todo $n \in {\mathbb N}$, $n$ impar.
+
+
+
+
+
+\medskip
+
+\item Hallar el menor m\'ultiplo de 168 que es un cuadrado.
+
+
+
+\medskip
+
+\item Probar que el producto de dos enteros consecutivos no nulos no es un cuadrado. (Ayuda: usar el Teorema Fundamental de la Aritm\'etica).
+
+\medskip
+
+
+
+\item ¿Existen enteros $m$ y $n$ tales que:
+
+a) $m^4=27$? \qquad \qquad b) $m^2 = 12n^2$? \qquad \qquad c) $m^3 = 47n^3$?
+
+
+
+
+
+\item Sean $a$ y $b$ enteros coprimos. Probar que
+\begin{enumerate}
+  \item $(a\cdot c, b)=(b,c)$, para todo entero $c$.
+  \item $a^m$ y $b^n$ son coprimos, para todo $m,n\in \mathbb N$.
+  \item $a+b$ y $a\cdot b$ son coprimos.
+\end{enumerate}
+
+
+
+
+
+
+\item ¿Cu\'al es la mayor potencia de $3$ que divide a $100!$? ¿En cu\'antos ceros termina el de\-sa\-rro\-llo decimal de $100!$?
+
+
+
+\item Determinar todos los $p\in\N$ tales que
+\[ p,\, p+2,\, p+6,\, p+8,\, p+12,\, p+14 \]
+sean todos primos.
+
+
+
+
+\item  Sea $\{f_n\}_{n\in\N}$ la sucesi\'on de Fibonacci, definida recursivamente por: $f_1=1,\, f_2=1$, $f_{n+1}=f_{n}+f_{n-1},\, n\geq 2$. Probar que:
+\begin{enumerate}
+\item $f_{3n}$ es par $\forall\, n\in\N$.
+\item $f_{3n+1}$ y $f_{3n+2}$ son impares $\forall\, n\in\N$.
+\item $f_{n+m}=f_mf_{n+1}+f_{m-1}f_n\; \forall n,m\in\N,\, m\geq 2$.
+\item $f_n\mid f_{nk}\;  \forall k\in\N$.
+\item $f_{n+1}f_{n-1}-f_n^2=(-1)^n\; \forall n\geq 2$.
+\item $(f_{n+1},f_n)=1\; \forall\, n\in\N$.
+\end{enumerate}
+
+
+
+\end{enumerate}
+
+\end{document}
+

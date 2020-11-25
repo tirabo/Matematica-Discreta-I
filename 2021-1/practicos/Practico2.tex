@@ -1,6 +1,18 @@
 % PDFLaTeX
 \documentclass[a4paper,12pt,twoside,spanish,reqno]{amsbook}
+%%%---------------------------------------------------
 
+%\renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
+%\usepackage[T1]{fontenc}
+
+% Para hacer el  indice en linea de comando hacer 
+% makeindex main
+%% En http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf hay ejemplos de packages de fonts libres, como los siguientes:
+%\usepackage{cmbright}
+%\usepackage{pxfonts}
+%\usepackage[varg]{txfonts}
+%\usepackage{ccfonts}
+%\usepackage[math]{iwona}
 \usepackage[math]{kurier}
 
 \usepackage{etex}
@@ -26,10 +38,10 @@
 %\usepackage{makeidx}
 \usepackage{hyperref}
 \hypersetup{
-	colorlinks=true,
-	linkcolor=blue,
-	filecolor=magenta,      
-	urlcolor=cyan,
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
 }
 \usepackage{hypcap}
 \numberwithin{equation}{section}
@@ -51,19 +63,18 @@
 %\end{comment}
 %%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand{\rta}{\noindent\textit{Rta: }} 
+
 \begin{document}
-	\baselineskip=0.55truecm %original
+    \baselineskip=0.55truecm %original
+    
 
 
-{\bf \begin{center} \large  Práctico 2 \\ Matemática Discreta I -- Año 2020/1 \\ FAMAF \end{center}}
+{\bf \begin{center} \large  Práctico 2 \\ Matemática Discreta I -- Año 2021/1 \\ FAMAF \end{center}}
 
-\vskip .5cm
 
 \begin {enumerate}
-%\item Contar las aplicaciones de $X_3=\{1,2,3\}$ en $X_4=\{1,2,3,4\}$.
-%Mostrar que hay $m^3$ aplicaciones de $X_3$ en $X_m=\{1,2,\dots,m\}$, con $m \ge 1$.
-
-%\
+\setlength\itemsep{1.1em}
 
 \item La cantidad de dígitos o cifras de un número se cuenta a partir del primer dígito distinto de cero. Por ejemplo, $0035010$ es un número de $5$ dígitos.
 \begin{enumerate}
@@ -74,19 +85,15 @@
 \item ¿Cuántos números capicúas de a lo sumo 5 dígitos hay?
 \end{enumerate}
 
-\vskip .5cm
 
 \item ¿Cuántos números de 6 cifras pueden formarse con los dígitos de 112200?
 
-\vskip .5cm
 
 \item ¿Cuántos números impares de cuatro cifras hay?
 
-\vskip .5cm
 
 \item ¿Cuántos números múltiplos de  5 y menores que 4999 hay?
 
-\vskip .5cm
 
 \item En los boletos viejos de ómnibus, aparecía un {\em número} de 5 cifras (en este caso podían empezar con 0), y uno tenía un {\it boleto capicúa} si el número lo era.
 \begin{enumerate}
@@ -94,102 +101,85 @@
 \item ¿Cuántos boletos había en los cuales no hubiera ningún dígito repetido?
 \end{enumerate}
 
-\vskip .5cm
 
 \item Las antiguas patentes de auto tenían una letra indicativa de la provincia y luego 6 dígitos. (En algunas provincias, Bs. As. y Capital, tenían 7 dígitos, pero ignoremos eso por el momento). Luego  vinieron patentes que tienen 3 letras y luego 3 dígitos. Finalmente, ahora las patentes tienen 2 letras, luego 3 dígitos y a continuación dos letras más ¿Cuántas patentes pueden hacerse con cada uno de los sistemas?
 
-\vskip .5cm
 
 \item Si uno tiene 8 CD distintos de Rock, 7 CD distintos de música clásica y 5 CD distintos de cuartetos,
 \begin{enumerate}
-	\item ¿Cuántas formas distintas hay de seleccionar un CD?
+    \item ¿Cuántas formas distintas hay de seleccionar un CD?
 
-	\item ¿Cuántas formas hay de seleccionar tres CD, uno de cada tipo?
+    \item ¿Cuántas formas hay de seleccionar tres CD, uno de cada tipo?
 
-	\item Un sonidista en una fiesta de casamientos planea poner 3 CD, uno a continuación de otro. ¿Cuántas formas distintas tiene de hacerlo si le han dicho que no mezcle más de dos estilos?
+    \item Un sonidista en una fiesta de casamientos planea poner 3 CD, uno a continuación de otro. ¿Cuántas formas distintas tiene de hacerlo si le han dicho que no mezcle más de dos estilos?
 \end{enumerate}
 
-\vskip .5cm
 
 \item Mostrar que si uno arroja un dado $n$ veces y suma todos los resultados obtenidos, hay $\dfrac{6^n}{2}$ formas distintas de obtener una suma par.
 
-\vskip .5cm
 
 \item ¿Cuántos enteros entre 1 y 10000 tienen exactamente un 7 y exactamente un 5 entre sus cifras?
 
-\vskip .5cm
 
 \item ¿Cuántos subconjuntos de $\{0,1,2,\dots,8,9\}$ contienen al menos un impar?
 
-\vskip .5cm
 
 \item El truco se juega con un mazo de 40 cartas, y se reparten 3 cartas a cada jugador. Obtener el 1 de espadas (el {\it macho}) es muy bueno. También lo es, por otros motivos, obtener un 7 y un 6 del mismo palo ({\it tener 33}). ¿Qué es más probable: obtener el macho, o tener 33?
 
-\vskip .5cm
 
 \item ¿Cuántos comités pueden formarse de un conjunto de 6 mujeres y 4 hombres, si el comité debe estar compuesto por 3 mujeres y 2 hombres?
 
-\vskip .5cm
 
 \item ¿De cuántas formas puede formarse un comité de 5 personas tomadas de un grupo de 11 personas entre las cuales hay 4 profesores y 7 estudiantes, si:
 \begin{enumerate}
-	\item No hay restricciones en la selección?
+    \item No hay restricciones en la selección?
 
-	\item El comité debe tener exactamente 2 profesores?
+    \item El comité debe tener exactamente 2 profesores?
 
-	\item El comité debe tener al menos 3 profesores?
+    \item El comité debe tener al menos 3 profesores?
 
-	\item El profesor $X$ y el estudiante $Y$ no pueden estar juntos en el comité?
+    \item El profesor $X$ y el estudiante $Y$ no pueden estar juntos en el comité?
 \end{enumerate}
 
-\vskip .5cm
 
 \item Si en un torneo de fútbol participan $2n$ equipos, probar que el número total de opciones posibles para la primera fecha es $1\cdot 3\cdot 5 \cdots (2n - 1)$. sugerencia: use un argumento por inducción. 
 
-\vskip .5cm
 
 \item En una clase hay $n$ chicas y $n$ chicos. Dar el número de maneras de ubicarlos en una fila de modo que todas las chicas estén juntas.
 
-\vskip .5cm
 
 \item ¿De cuántas maneras  distintas pueden sentarse 8 personas en una mesa circular?
 
-\vskip .5cm
 
 \item \begin{enumerate}
-	\item ¿De cuántas maneras distintas pueden sentarse 6 hombres y 6 mujeres en una mesa circular si nunca deben quedar dos mujeres juntas?
-	\item \'Idem, pero con 10 hombres y 7 mujeres.
+    \item ¿De cuántas maneras distintas pueden sentarse 6 hombres y 6 mujeres en una mesa circular si nunca deben quedar dos mujeres juntas?
+    \item \'Idem, pero con 10 hombres y 7 mujeres.
 \end{enumerate}
 
-\vskip .5cm
 
 \item 
 \begin{enumerate}
-	\item  ¿De cuántas formas distintas pueden ordenarse las letras de la palabra MATEMATICA
-	\item \'Idem con las palabras ALGEBRA, GEOMETRIA.
-	\item ¿De cuántas formas distintas pueden ordenarse las letras de la palabra MATEMATICA si se pide que las consonantes y las vocales se alternen?
+    \item  ¿De cuántas formas distintas pueden ordenarse las letras de la palabra MATEMATICA
+    \item \'Idem con las palabras ALGEBRA, GEOMETRIA.
+    \item ¿De cuántas formas distintas pueden ordenarse las letras de la palabra MATEMATICA si se pide que las consonantes y las vocales se alternen?
 \end{enumerate}
 
-\vskip .5cm
 
 \item ¿Cuántas diagonales tiene un polígono regular de $n$ lados?
 
-\vskip .5cm
 
 \item Dados $m$, $n$ y $k$ naturales tales que $m \le k \le n$, probar que se verifica
 \begin{equation*}
-	\binom{n}{k}\binom{k}{m} = \binom{n}{m}\binom{n-m}{k-m}.
+    \binom{n}{k}\binom{k}{m} = \binom{n}{m}\binom{n-m}{k-m}.
 \end{equation*}
 
 
-\vskip .5cm
 
 \item Probar que para todo $i$, $j$, $k \in {\mathbb N}_0$ vale
 \begin{equation*}
-	\binom{i + j + k}{i}\binom{j+k}{j} = \frac{(i+j+k)!}{i!j!k!}
+    \binom{i + j + k}{i}\binom{j+k}{j} = \frac{(i+j+k)!}{i!j!k!}
 \end{equation*}
 
-\vskip .5cm
 
 \item Demostrar que para todo $n \in \mathbb N$ vale:
 \begin{enumerate}
@@ -198,21 +188,19 @@
   \item $\displaystyle{\binom{n}{0} - \binom{n}{1} + \cdots + (-1)^n\binom{n}{n} = 0}$
   \end{enumerate}
 
-\vskip .5cm
 
 \item Probar que para todo natural $n$ vale que 
 \begin{equation*}
-	\binom{2n}{2} = 2 \binom{n}{2} + n^2.
+    \binom{2n}{2} = 2 \binom{n}{2} + n^2.
 \end{equation*}
 
 \end{enumerate}
 
-\vskip .5cm
 
 
 
 \begin{center}
-	\textbf{\large \S\, Ejercicios adicionales (para repasar)}
+    \textbf{\large \S\, Ejercicios adicionales (para repasar)}
 \end{center}
 
 
@@ -222,26 +210,23 @@
 Cada lista consta de $1$ Presidente, $1$ Tesorero y $2$ vocales.  ¿De cuántas
 formas puede hacerse?
 
-\vskip .5cm
 
 \item ¿De cuántas formas se pueden fotografiar $7$ matrimonios en una hilera,
 de tal forma que cada hombre aparezca al lado de su esposa?
 
-\vskip .5cm
 
 \item ¿De cuántas formas pueden distribuirse $14$ libros distintos entre dos
 personas de manera tal que cada persona reciba al menos $3$ libros?
 
-\vskip .5cm
 
 \item
 Cecilia ha olvidado la contraseña de su correo electrónico, la cual est\'a formada por $11$ caracteres: $4$ d\'igitos y $7$ letras todos mezclados. ?`Cu\'al es el m\'aximo n\'umero de intentos que deber\'ia probar para entrar a su correo si:
 \begin{enumerate}
-	\item  tiene en cuenta que hay 26 letras?
-	
-	\item la letra B y el d\'igito 2 no pueden estar ambos en la contraseña?
-	
-	\item  recuerda que ha formado la clave de la siguiente manera: los primeros siete caracteres son una mezcla de las letras de su nombre (CECILIA), y los \'ultimos cuatro caracteres son una permutaci\'on de las cuatro cifras de su a\~no de nacimiento (1998)?
+    \item  tiene en cuenta que hay 26 letras?
+    
+    \item la letra B y el d\'igito 2 no pueden estar ambos en la contraseña?
+    
+    \item  recuerda que ha formado la clave de la siguiente manera: los primeros siete caracteres son una mezcla de las letras de su nombre (CECILIA), y los \'ultimos cuatro caracteres son una permutaci\'on de las cuatro cifras de su a\~no de nacimiento (1998)?
 \end{enumerate}
 
 

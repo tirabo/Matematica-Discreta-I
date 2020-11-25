@@ -98,7 +98,7 @@ Una forma de demostrar este caso es  observando que $-(ab)$ es el inverso aditiv
 \begin{alignat*}2
 ab + a(-b) &=a(b-b) &\qquad &\text{axioma (\textbf{I5})} \\
 &=a0 &\qquad &\text{axioma (\textbf{I4})}\\
-&= 0 &\qquad &\text{ejercicio (\ref{ej0a})}.
+&= 0 &\qquad &\text{ejercicio \ref{ej0a}}.
 \end{alignat*}
 Es decir $a(-b)$ es el inverso aditivo de $ab$, luego por la unicidad del inverso aditivo axioma (\textbf{I6}), $a(-b)=-(ab)$.
 \end{proof}
@@ -363,7 +363,7 @@ Supongamos que existe un entero positivo $n$ para el cual $u_n$ no está definid
 
 El lector no debe desanimarse por el uso de argumentos tan retorcidos para establecer algo que es ``obviamente'' verdadero. En primer lugar, no debemos usar resultados ilegítimamente (sin demostrarlos), y en segundo lugar, el hecho de que el resultado sea ``obvio'' simplemente indica que estamos trabajando con la correcta representación mental de $\mathbb N$ y $\mathbb Z$. Una vez que hemos establecido esa representación sobre bases firmes podemos empezar a extendernos y obtener resultados que no sean tan ``obvios''.
 
-El método de definición recursiva aparecerá bastante seguido en el resto del apunte. Existen otras formas de este procedimiento que se ``esconden'' por su notación. ?`Qué significan las siguientes expresiones?
+El método de definición recursiva aparecerá bastante seguido en el resto del apunte. Existen otras formas de este procedimiento que se ``esconden'' por su notación. ¿Qué significan las siguientes expresiones?
 $$
 \sum_{r=1}^{n} 2r-1,\qquad 1+3+5+\cdots +(2n-1).
 $$
@@ -749,14 +749,15 @@ para todos los $n\ge n_0$.
 
         \item Sea $\{ u_n \}_{n \in \mathbb N}$ la sucesión definida por recurrencia como sigue: $u_1 = 9$, $u_2 = 33$, $u_n = 7u_{n-1} - 10u_{n-2}$, $\forall n \geq 3$. Probar que $u_n = 2^{n+1} + 5^n$, para todo $n \in \mathbb N$.
 
-        \item Sea $u_n$ definida recursivamente por: $u_1=2$, $u_n=2+\sum_{i=1}^{n-1}2^{n-2i}u_i \;\;\forall\; n >1$.
+        \item Sea $u_n$ definida recursivamente por: 
+        $$u_1=2,\;\; u_n=2+\sum_{i=1}^{n-1}2^{n-2i}u_i \;\;\forall\; n >1.$$
         \begin{enumerate}
             \item Calcule $u_2$ y $u_3$.
             \item Proponga una fórmula para el término general $u_n$ y pruébela por inducción.
         \end{enumerate}
 
         \item Las siguientes proposiciones no son válidas para todo $n \in {\mathbb N}$. Indicar en qué paso del principio de inducción falla la demostración:
-        \begin{multicols}{4}
+        \begin{multicols}{3}
         \begin{enumerate}
             \item  $n=n^2$,
             \item  $n=n+1$,
@@ -785,6 +786,16 @@ para todos los $n\ge n_0$.
             $a^{k+1}= \frac{a^k a^k}{a^{k-1}}=\frac{1\cdot1}1=1$.
             Por lo tanto, el principio de inducción fuerte implica que $a^n=1$ para todo $n\in \mathbb N$.
         \end{enumerate}
+
+        \item* La \emph{sucesión de Fibonacci} se define recursivamente de la siguiente manera:
+        $$
+        u_1=1,\quad u_2=1,\quad u_{n+1}=u_{n}+u_{n-1}, \, n\geq 2.
+        $$
+        Los primeros términos de esta sucesión son: $1,1,2,3,5,8,13,\ldots$
+
+        Demostrar por inducción que el término general de esta sucesión se puede calcular mediante la fórmula
+        \[ u_n= \frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n-\left(\frac{1-\sqrt{5}}{2}\right)^n\right].\]
+        (\textit{Ayuda:} usar que $\frac{1+\sqrt{5}}{2}$ y $\frac{1-\sqrt{5}}{2}$ son las raíces de la ecuación cuadrática $x^2-x-1=0$ y por lo tanto  $\left(\frac{1\pm\sqrt{5}}{2}\right)^{n+1} = \left(\frac{1\pm\sqrt{5}}{2}\right)^{n}+\left(\frac{1\pm\sqrt{5}}{2}\right)^{n-1}$).
     \end{enumerate}
 \end{section}
 
@@ -810,9 +821,9 @@ Se puede realizar una acción $X$ de $n$ formas distintas o, alternativamente, s
 
 
 Este principio es el más básico del conteo y más formalmente dice que si $A$ y $B$ son conjuntos finitos disjuntos, entonces 
-\begin{equation}\label{padd}
+\begin{equation*}
 |A \cup B| =|A|+|B|.
-\end{equation}
+\end{equation*}
 El principio es fácilmente generalizable a varios conjuntos.
 
 \begin{proposicion}\label{principiodeadicion}
@@ -1236,9 +1247,9 @@ El principio de las casillas, también llamado \textit{principio del palomar} o 
 
 \begin{proposicion}\label{prop1}
 Si $n \ge m$ entonces existen
-\begin{equation}\label{ordsinrep}
+\begin{equation*}
  n \cdot (n - 1) \cdots (n - (m - 1)), \qquad \text{$m$ - factores}
-\end{equation}
+\end{equation*}
 selecciones ordenadas y sin repetición de $m$ elementos de un conjunto de $n$ elementos.
 \end{proposicion}
 \begin{proof} La prueba es una generalización del razonamiento aplicado más arriba en los e\-jem\-plos: debemos seleccionar $m$-veces elementos de un conjunto que tiene $n$ elementos. La primera selección puede ser de cualquiera de los $n$ objetos; la segunda selección debe recaer en uno de los $n-1$ elementos restantes. De manera similar, hay $n-2$ posibilidades para la tercera selección, y así sucesivamente. Cuando hacemos la $m$-ésima selección, $m-1$ elementos ya han sido seleccionados, y entonces el elemento seleccionado debe ser uno de los $n-(m-1)$ elementos restantes. Por consiguiente el número total de
@@ -1279,9 +1290,9 @@ la siguiente manera:
 % \vskip .5cm
 
 \begin{proposicion}Si $n \ge m$ entonces existen
-\begin{equation}\label{ordsinrep2}
+\begin{equation*}
 \frac{n!}{(n - m)!}
-\end{equation}
+\end{equation*}
 selecciones ordenadas y sin repetición de $m$ elementos de un conjunto de $n$ elementos.
 \end{proposicion}
 
@@ -1593,15 +1604,10 @@ $$
 (a+b)^2 = a^2 +2ab +b^2, \qquad (a+b)^3 = a^3 + 3 a^2b +3ab^2 +
 b^3,
 $$
-y a veces nos piden desarrollar la formula para $(a+b)^4$ y
-potencias mayores de $a+b$. El resultado general que da una
-formula para $(a+b)^n$ es conocido como el
- \textit{{teorema del binomio}}.  \index{Teorema del binomio}
+y a veces nos piden desarrollar la formula para $(a+b)^4$ y potencias mayores de $a+b$. El resultado general que da una formula para $(a+b)^n$ es conocido como el  \textit{{teorema del binomio}}.  \index{Teorema del binomio}
 
 \begin{teorema}\label{t3.6}
-Sea $n$ un entero positivo. El coeficiente del termino
-$a^{n-r}b^r$ en el desarrollo de $(a+b)^n$ es el número binomial
-$\binom{n}{r}$. Explícitamente,
+Sea $n$ un entero positivo. El coeficiente del termino $a^{n-r}b^r$ en el desarrollo de $(a+b)^n$ es el número binomial $\binom{n}{r}$. Explícitamente, 
 \begin{equation*}
 (a+b)^n= \binom{n}{0} a^n + \binom{n}{1} a^{n-1}b+ \binom{n}{2}
 a^{n-2}b^2 + \cdots + \binom{n}{n} b^n,
@@ -1612,16 +1618,9 @@ o,  escrito en forma más concisa,
 \end{equation}
 
 \end{teorema}
-\begin{proof}(Primera) Considerar que ocurre cuando
-multiplicamos $n$ factores
-$$
-(a+b)(a+b) \cdots (a+b).
-$$
-Un término en el producto se obtiene seleccionando o bien $a$ o
-bien $ b$ de cada factor. El número de términos $a^{n-r}b^r$ es
-solo el número de formas de seleccionar $r$ $b$'s (y
-consecuentemente $n-r$ a's), y por definición éste es el número
-binomial $\binom{n}{r}$.
+\begin{proof}(Primera) Consideremos que ocurre cuando multiplicamos $n$ factores: $(a+b)(a+b) \cdots (a+b)$.
+
+Un término en el producto se obtiene seleccionando o bien $a$ o bien $ b$ de cada factor. El número de términos $a^{n-r}b^r$ es solo el número de formas de seleccionar $r$ $b$'s (y consecuentemente $n-r$ a's), y por definición éste es el número binomial $\binom{n}{r}$.
 \end{proof}
 
 
@@ -1650,9 +1649,7 @@ $$
 
 
 
-\begin{proof}[Demostración (*)](Segunda) Se hace por inducción en $n$. Si
-$n=1$, el resultado es trivial. Supongamos que el resultado es
-cierto para $n-1$, es decir,  de acuerdo  a la fórmula (\ref{eq-th-bin-1}),
+\begin{proof}[Demostración (*)](Segunda) Se hace por inducción en $n$. Si $n=1$, el resultado es trivial. Supongamos que el resultado es cierto para $n-1$, es decir,  de acuerdo  a la fórmula (\ref{eq-th-bin-1}),
 $$
 (a+b)^{n-1}=\sum_{i=0}^{n-1} \binom{n-1}{i}a ^{n-1-i}b^{i}.
 $$
@@ -1811,11 +1808,11 @@ donde $x$ e $y$ son miembros del conjunto $\{0,1,2,3,4,5,6\}$. Los números $x$
 e $y$ pueden ser iguales. Explicar por que el número total de fichas de dominó
 es $28$ y no $49$.
 
-\item ?`De cuántas formas se pueden elegir un casillero negro y uno blanco en
+\item ¿De cuántas formas se pueden elegir un casillero negro y uno blanco en
 un tablero de ajedrez de tal forma que los dos casilleros no estén ni en la misma
 fila ni en la misma columna?
 
-\item Suponer que en clase hay $m$ mujeres y $n$ varones. ?`De cuántas formas
+\item Suponer que en clase hay $m$ mujeres y $n$ varones. ¿De cuántas formas
 puedo ordenar a todos los alumnos en una hilera de manera que todas las mujeres
 queden juntas?
 
@@ -1857,7 +1854,7 @@ $$
 
 \item Se dibujan todas las posibles diagonales que conectan a un conjunto de $n$
 puntos en el círculo y se observa que no hay tres rectas que se cruzan en un
-mismo punto ?`Cuántos puntos internos de intersección hay?
+mismo punto ¿Cuántos puntos internos de intersección hay?
 
 \item Probar que el número de formas de distribuir $n$ bolas idénticas en $m$
 cajas con etiquetas, algunas de las cuales puede quedar vacía es
@@ -2349,8 +2346,8 @@ En  general no es sencillo encontrar todos los divisores de un número entero gr
     \end{equation}
     Luego, sea $d = \mcd(a,b)$, probaremos que $d$ es el mcd entre $b$ y $r$:
     \begin{enumerate}[label=\textit{\alph*)}]
-        \item\label{it.d=mcdbr} como $d|a$ y $d|b$, entonces por (*) tenemos que $ d|b$ y $d|r$;
-        \item\label{it.d=mcdab} si $c|a $ y $c|r$ entonces por (*)  $c|a$ y $c|b$ y debido a que $d = \mcd(a,b)$, se deduce que $c|d$.
+        \item\label{it.d=mcdbr} como $d|a$ y $d|b$, entonces por (\ref{eqmcd1}) tenemos que $ d|b$ y $d|r$;
+        \item\label{it.d=mcdab} si $c|a $ y $c|r$ entonces por (\ref{eqmcd1})  $c|a$ y $c|b$ y debido a que $d = \mcd(a,b)$, se deduce que $c|d$.
     \end{enumerate}
     Al satisfacer \ref{it.d=mcdbr} y \ref{it.d=mcdab}, obtenemos que $d = \mcd(b,r)$.
 \end{proof}
@@ -2615,10 +2612,10 @@ n= r\frac{a}{\mcd(a,b)}n + s\frac{b}{\mcd(a,b)}n.
 \end{equation} 
 Escribiendo $n=b'b=a'a$ ($a',b'$ en $\mathbb Z$) y haciendo los reemplazos en (\ref{clmcd2}), resulta
 finalmente
-\begin{equation}\label{clmcd3}
+\begin{equation*}
 n= rb'\frac{a b}{\mcd(a,b)}+sa'\frac{a b}{\mcd(a,b)}= \frac{a
 b}{\mcd(a,b)}(rb'+sa')
-\end{equation}
+\end{equation*}
 lo cual demuestra que $m$ divide a $n$.
 \end{proof}
 
@@ -2830,9 +2827,9 @@ y llamemos a esto $n_1$. Pero supusimos que $n_0$ tenía dos factorizaciones dif
 \end{proof}
 
 En la práctica a menudo reunimos los primos iguales en la factorización de $n$ y escribimos
-\begin{equation}\label{factpri}
+\begin{equation*}
 n=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},
-\end{equation}
+\end{equation*}
 donde $p_1,p_2,\ldots ,p_r$ son primos distintos y $e_1,e_2,\ldots,e_r$ son enteros positivos. Por ejemplo $ 7000 = 2^3 \cdot 5^3 \cdot 7$.
 
 La factorización prima nos dice que los números primos son los  ``ladrillos'' esenciales para  ``cons\-truir'' los números enteros usando multiplicaciones. Ahora bien, podría ocurrir que haya un número finitos de ellos y que podamos escribir cada número como producto de primos en forma muy sintética. Pero este no es el caso.
@@ -3217,7 +3214,7 @@ consecuencia el cálculo está errado.
 %\text{(ii)} \quad &2468 \cdot 13\,579 \equiv -3 \pmod{25}
 %\end{aligned}
 %$$
-\item Usar la regla del nueve para verificar que dos de las siguientes ecuaciones son falsas. ?`Qué se puede decir de la otra ecuación?
+\item Usar la regla del nueve para verificar que dos de las siguientes ecuaciones son falsas. ¿Qué se puede decir de la otra ecuación?
 \begin{enumerate}
     \item  $5\,783 \cdot 40\,162  = 233\,256\,846 ,$
     
@@ -3256,7 +3253,7 @@ $\mathbb Z$, pues cualquiera se $k \in \mathbb Z$, $2k-3$ es
 impar, luego no es divisible por $2$.
 
 Notemos además que si $x_0$ es solución de la ecuación
-\ref{ecuacionlineal}, también lo es $x_0+km$ de manera que si la
+(\ref{ecuacionlineal}), también lo es $x_0+km$ de manera que si la
 ecuación posee una solución, posee infinitas soluciones. Para
 evitar la ambigüedad de infinitas soluciones, nos limitaremos a
 considerar las soluciones tales que $0\le x < m$.
@@ -3277,7 +3274,7 @@ $$
 es decir $rb$ es solución de la ecuación. Veremos que el caso general se hace en forma análoga a lo anterior.
 
 \begin{teorema}\label{elc} Sean $a,b$ números enteros y $m$ un entero positivo y denotemos $d = \mcd(a,m)$. La  ecuación 
-\begin{equation}\label{elc}
+\begin{equation}\label{ecu.elc}
 ax \equiv b \pmod{m}
 \end{equation}
 admite solución si y sólo si $d|b$, y en este caso dada $x_0$ una solución, todas las soluciones son de la forma 
@@ -3306,7 +3303,7 @@ Por lo tanto hemos demostrado que la condición necesaria y
 suficiente para que la ecuación $ax\equiv b \pmod{m}$ admita una
 solución es que $\mcd(a,m)|b$.
 
-En el caso que $d|b$ veamos ahora cuales son todas las soluciones posibles de la ecuación \ref{elc}. Sean $x_1,x_2$ soluciones, es decir
+En el caso que $d|b$ veamos ahora cuales son todas las soluciones posibles de la ecuación (\ref{ecu.elc}). Sean $x_1,x_2$ soluciones, es decir
 \begin{align*}
 ax_1 &\equiv b \pmod{m} \\
 ax_2 &\equiv b \pmod{m},
@@ -3315,10 +3312,10 @@ entonces, restando miembro a miembro, obtenemos
 $$
 ax_1 -ax_2 \equiv b - b \equiv 0 \pmod{m}.
 $$
-Es decir, $x_1,x_2$ son soluciones de la ecuación \ref{elc} si y sólo si  $y = x_1 -x_2$ es solución de la ecuación lineal de congruencia
-\begin{equation}\label{elc0}
+Es decir, $x_1,x_2$ son soluciones de la ecuación (\ref{ecu.elc}) si y sólo si  $y = x_1 -x_2$ es solución de la ecuación lineal de congruencia
+\begin{equation*}
 ay \equiv 0 \pmod{m}.
-\end{equation}
+\end{equation*}
 
 Si $\mcd(a,m) =1$ es claro que la ecuación $ay \equiv 0 \pmod{m}$ tiene como solución todos los $y$ tales que $m|ay$. Como $m$ y $a$ son  coprimos, las soluciones son todos los $y$ tal $m|y$, es decir todos los múltiplos de $m$.
 
@@ -3339,7 +3336,7 @@ con $\mcd(a,m)|b$
 \begin{equation}\label{elc2}
 d =\mcd(a,m) = ra+sm.
 \end{equation}
-\item  Como $d|b$, tenemos que $b = td$ y multiplicamos la ecuación \ref{elc2} por $t$: $$dt =  (rt)a+(st)m.$$
+\item  Como $d|b$, tenemos que $b = td$ y multiplicamos la ecuación (\ref{elc2}) por $t$: $$dt =  (rt)a+(st)m.$$
 \item  $b = dt = (rt)a+(st)m \equiv (rt)a \pmod{m}$. 
 
 Luego $x_0 = rt$ es solución de la ecuación lineal de congruencia. 
@@ -3376,7 +3373,7 @@ Es decir
 1 = 13\cdot 7 - 15\cdot 6. 
 \end{equation}
 
-(b) Multiplicando la ecuación \ref{eq1315} por $7$ obtenemos
+(b) Multiplicando la ecuación (\ref{eq1315}) por $7$ obtenemos
 $$
 7 = 13\cdot 49 - 15\cdot 42. 
 $$
@@ -3473,7 +3470,7 @@ es un número entero, digamos $k$, luego
 k \cdot r!(p-r)! = p \cdot(p-1)!
 \end{equation}
 Como $p-1$, $r$ y $p-r$ son menores que $p$, entonces  $(p-1)!$, $r!$ y $(p-r)!$ son producto de números menores que $p$ y por lo tanto son producto de primos menores que $p$. 
-Por lo tanto, el primo $p$ no aparece en la descomposición prima de $(p-1)!$, $r!$ y $(p-r)!$. Por la igualdad de la ecuación \ref{binp}, $p$ debe ser factor de $k = \binom{p}{r}$, luego $p|\binom{p}{r}$.
+Por lo tanto, el primo $p$ no aparece en la descomposición prima de $(p-1)!$, $r!$ y $(p-r)!$. Por la igualdad de la ecuación (\ref{binp}), $p$ debe ser factor de $k = \binom{p}{r}$, luego $p|\binom{p}{r}$.
 
 \ref{it.lemafermat_b} Por el teorema del binomio (teorema \ref{t3.6}) sabemos que
 $$
@@ -3657,14 +3654,14 @@ Multiplicando esta ecuación por $m$ obtenemos
 \begin{equation}\label{rsa2}
 m^{1+k(p-1)(q-1)} \equiv m\pmod{p}. 
 \end{equation}
-Usando las ecuaciones \ref{rsa1} y \ref{rsa2} obtenemos:
+Usando las ecuaciones (\ref{rsa1}) y (\ref{rsa2}) obtenemos:
 \begin{equation}\label{rsa3}
 m^{ed} \equiv m\pmod{p} 
 \end{equation}
 Esto, si  $\operatorname{mcd}(m, p) = 1$. Pero si esto último no es cierto, entonces al ser $p$
-primo debemos tener $m \equiv 0\pmod{p}$ y en ese caso la ecuación \ref{rsa3} es trivial (dice que $0 \equiv 0$). Concuyendo, la ecuación \ref{rsa3} se cumple para todo $m$.
+primo debemos tener $m \equiv 0\pmod{p}$ y en ese caso la ecuación (\ref{rsa3}) es trivial (dice que $0 \equiv 0$). Concuyendo, la ecuación (\ref{rsa3}) se cumple para todo $m$.
 
-Obviamente la elección u orden de $p$ o $q$ es arbitraria, así que la ecuación  \ref{rsa3} también es verdadera si reemplazamos $p$ por $q$. Así que tenemos:
+Obviamente la elección u orden de $p$ o $q$ es arbitraria, así que la ecuación (\ref{rsa3}) también es verdadera si reemplazamos $p$ por $q$. Así que tenemos:
 $$p|(m^{ed}-m) \qquad \text{ y } \qquad q|(m^{ed}-m).$$
 Como $p$ y $q$ son primos distintos, entonces concluimos que $pq|(m^{ed}-m)$, es decir, $$m^{ed} \equiv m \pmod{pq}.$$
 \end{proof}
@@ -3754,7 +3751,7 @@ $192\,837\,465\,564\,738\,291$ es divisible por $11$.
 %\text{(i)}\quad 5x\equiv12 \pmod{13},\qquad\, \text{(ii)}\quad
 %x^2-x \equiv 1 \pmod{11}.
 %$$
-\item ?`Cuál es el último dígito de la representación en base $10$ de
+\item ¿Cuál es el último dígito de la representación en base $10$ de
 $7^{93}$.
 \item Usar que $1\,001=7\cdot 11 \cdot 13$ para construir una prueba
 para la división para los número $7$, $11$ y $13$ similar a la prueba
@@ -3828,7 +3825,7 @@ trabajar ``a mano'' con grafos relativamente pequeños. Más aún, esta represen
 
 
 \begin{ejemplo*} Mario y su mujer Abril dan una fiesta en la cual hay otras cuatro parejas de casados. Las
-parejas, cuando arriban, estrechan la mano a algunas personas, pero, naturalmente, no se estrechan la mano entre marido y mujer. Cuando la fiesta finaliza el profesor pregunta a los otros a cuantas personas han estrechado la mano, recibiendo $9$ respuestas diferentes. ?`Cuántas personas estrecharon la mano de Abril?
+parejas, cuando arriban, estrechan la mano a algunas personas, pero, naturalmente, no se estrechan la mano entre marido y mujer. Cuando la fiesta finaliza el profesor pregunta a los otros a cuantas personas han estrechado la mano, recibiendo $9$ respuestas diferentes. ¿Cuántas personas estrecharon la mano de Abril?
 \end{ejemplo*}
 \begin{proof}[Solución] Construyamos un grafo cuyos vértices son las personas que asisten a la fiesta. Las aristas del grafo son las  $\{x,y\}$ siempre y cuando $x$ e $y$ se hayan estrechado las manos. Puesto que hay nueve personas aparte de Mario, y que una persona puede estrechar a lo sumo a otras $8$ personas, se sigue que las $9$ respuestas diferentes que ha recibido el profesor deben ser $0, 1, 2, 3, 4, 5, 6, 7, 8.$
 Denotemos los vértices con estos números y usemos $M$ para Mario. Así obtenemos la representación pictórica de la Fig. \ref{f5.2}
@@ -3858,7 +3855,7 @@ Por cada entero positivo $n$ definimos el \textit{grafo completo  \index{grafo c
 
 \subsection*{$\S$ Ejercicios}
 \begin{enumerate}
-\item A tres casas $A,B,C$ se les debe conectar el gas, el agua y la electricidad: $G,W,E$. Escribir la lista de adyacencia para el grafo que representa este problema y construir una representación pictórica del mismo. ?`Puede usted encontrar un dibujo en el cual las líneas que representan las aristas no se crucen?
+\item A tres casas $A,B,C$ se les debe conectar el gas, el agua y la electricidad: $G,W,E$. Escribir la lista de adyacencia para el grafo que representa este problema y construir una representación pictórica del mismo. ¿Puede usted encontrar un dibujo en el cual las líneas que representan las aristas no se crucen?
 \item Los senderos de un jardín han sido diseñados dándoles forma de \textit{grafo rueda} $W_n$, cuyos vértices son $V=\{0,1,2,\ldots,n\}$ y sus aristas son
 $$
 \begin{aligned}
@@ -3866,7 +3863,7 @@ $$
 \{1,2\}.\qquad &\{2,3\},\ldots,\{n-1,n\},\qquad \{n,1\}.
 \end{aligned}
 $$
-Describir una ruta por los senderos de tal forma que empiece y termine en le vértice $0$ y que pase por cada vértice una sola vez. \item  ?`Para cuales valores de $n$ se puede hacer una representación pictórica
+Describir una ruta por los senderos de tal forma que empiece y termine en le vértice $0$ y que pase por cada vértice una sola vez. \item  ¿Para cuales valores de $n$ se puede hacer una representación pictórica
 de $K_n$ con la propiedad que las líneas que representan las aristas no se corten? 
 \item Un \textit{{$3$-ciclo}} en un grafo es un conjunto de tres vértices mutuamente adyacentes. Construir un grafo con cinco vértices y seis aristas que no contenga $3$-ciclos.
 \end{enumerate}
@@ -4120,7 +4117,7 @@ vértices dados.)
     \end{enumerate}
 \end{multicols}
 
-\item Si $G=(V,E)$ es un grafo, el \textit{complemento}\index{complemento de un grafo} $G^c$ de $G$ es el grafo cuyo conjunto de vértices es $V$ y cuyas aristas unen aquellos vértices que no son unidos por $G$. Si $G$ tiene $n$ vértices y sus valencias son $d_1,d_2,\ldots,d_n$, ?`cuáles son las valencias de $G^c$? 
+\item Si $G=(V,E)$ es un grafo, el \textit{complemento}\index{complemento de un grafo} $G^c$ de $G$ es el grafo cuyo conjunto de vértices es $V$ y cuyas aristas unen aquellos vértices que no son unidos por $G$. Si $G$ tiene $n$ vértices y sus valencias son $d_1,d_2,\ldots,d_n$, ¿cuáles son las valencias de $G^c$? 
 
 \item Encuentrar todos los grafos posibles (no isomorfos) que pueda, que sean regulares, $4$-valentes y con $7$ vértices. [Ayuda: considere el complemento de esos grafos.]
 
@@ -4422,7 +4419,7 @@ $$
 \end{matrix}
 $$
 ¿Es posible encontrar rutas para Leandro y Juan que satisfagan lo pedido en el ejemplo \ref{chunner}?
-\item Un ratón intenta comer un $3\cdot 3\cdot 3$ cubo de queso. Él comienza en una esquina y come un subcubo de $1\cdot 1\cdot 1$, para luego pasar a un subcubo  adyacente. ?`Podrá el ratón terminar de comer el queso en el centro?
+\item Un ratón intenta comer un $3\cdot 3\cdot 3$ cubo de queso. Él comienza en una esquina y come un subcubo de $1\cdot 1\cdot 1$, para luego pasar a un subcubo  adyacente. ¿Podrá el ratón terminar de comer el queso en el centro?
 \end{enumerate}
 %\end{subsection}
 
@@ -4698,7 +4695,7 @@ $$
 
 Un problema que se nos presenta frecuentemente en la vida moderna es aquel de confeccionar un horario para un conjunto de eventos de tal manera de evitar interferencias. Consideremos ahora un caso muy simple, que nos servirá de ejemplo para mostrar como la teoría de grafos puede ayudar al estudio de este problema.
 
-Supongamos que deseamos hacer un horario con seis cursos de una hora, $v_1,v_2,v_3,v_4,v_5,v_6$. Entre la audiencia potencial hay gente que desea asistir a $v_1$ y $v_2$, $v_1$ y $v_4$, $v_3$ y $v_5$, $v_2$ y $v_6$, $v_4$ y $v_5$, $v_5$ y $v_6$ y $v_1$ y $v_6$. ?`Cuántas horas son necesarias para poder confeccionar un horario en el cual no haya interferencias?
+Supongamos que deseamos hacer un horario con seis cursos de una hora, $v_1,v_2,v_3,v_4,v_5,v_6$. Entre la audiencia potencial hay gente que desea asistir a $v_1$ y $v_2$, $v_1$ y $v_4$, $v_3$ y $v_5$, $v_2$ y $v_6$, $v_4$ y $v_5$, $v_5$ y $v_6$ y $v_1$ y $v_6$. ¿Cuántas horas son necesarias para poder confeccionar un horario en el cual no haya interferencias?
 
 Podemos representar la situación por un grafo Fig. \ref{f5.10}. Los vértices corresponden a las seis clases, y las aristas indican las interferencias potenciales.
 
@@ -5069,7 +5066,7 @@ con valencia $3$ y ocho vértices.
 \item Probar que el grafo completo $K_{2n+1}$ es la unión de $n$ ciclos
 hamiltonianos sin aristas comunes.
 
-\item ?`Es posible para un caballo visitar todos los casilleros de un
+\item ¿Es posible para un caballo visitar todos los casilleros de un
 tablero de ajedrez exactamente una vez y volver al casillero
 original? Interpretar su respuesta en términos de ciclos
 hamiltonianos en un cierto grafo.
@@ -5478,7 +5475,7 @@ Esto nos dice que para encontrar un MST de un grafo deben hacerse alrededor de $
 
     \item Muestrar esquemáticamente todos los árboles expandidos del grafo completo $K_4$ (hay $16$).    
 
-    \item Usar el algoritmo greedy para encontrar un MST del grafo representado en la Fig. \ref{f6.5}. ?`Es en este caso el MST único?
+    \item Usar el algoritmo greedy para encontrar un MST del grafo representado en la Fig. \ref{f6.5}. ¿Es en este caso el MST único?
     \begin{figure}[ht]
     \begin{center}
     \begin{tikzpicture}[scale=1.8]
@@ -5689,7 +5686,7 @@ $$
 3& 7& 11\\
 4&8 & 12 \end{matrix}
 $$
-?`Cuántas veces debe repetirse este procedimiento hasta que las cortas aparezcan dispuestas como estaban inicialmente?
+¿Cuántas veces debe repetirse este procedimiento hasta que las cortas aparezcan dispuestas como estaban inicialmente?
 \end{ejemplo}
 \begin{proof}[Solución] Sea $\pi$ la permutación que efectúa el reordenamiento; esto es $\pi(i) =j$ si la carta $j$ aparece en la posición previamente ocupada por la carta $i$. Trabajando con la notación cíclica para $\pi$ encontramos que
 $$
@@ -5788,7 +5785,7 @@ $$\begin{aligned}
 \end{aligned}
 $$
 
-\begin{ejemplo*} Hay $73$ estudiantes en el primer año de la Escuela de Artes de la universidad. De ellos, $52$ saben tocar el piano, $25$ el violín y $20$ la flauta; $17$ pueden tocar tanto el piano como el violín, $12$ el piano y la flauta; pero solo Juan Rictero puede tocar los tres instrumentos ?`Cuántos alumnos no saben tocar ninguno de esos instrumentos?
+\begin{ejemplo*} Hay $73$ estudiantes en el primer año de la Escuela de Artes de la universidad. De ellos, $52$ saben tocar el piano, $25$ el violín y $20$ la flauta; $17$ pueden tocar tanto el piano como el violín, $12$ el piano y la flauta; pero solo Juan Rictero puede tocar los tres instrumentos ¿Cuántos alumnos no saben tocar ninguno de esos instrumentos?
 \end{ejemplo*}
 \begin{proof}[Solución] Con $V$, $P$ y $F$ denotaremos los conjuntos de estudiantes que saben tocar el violín, el piano y la flauta respectivamente. Usando la información dada tenemos que $$
 \begin{aligned}
@@ -5803,7 +5800,7 @@ $$
 $$
 \end{proof}
 
-\begin{ejemplo*} Una secretaria ineficiente tiene $n$ cartas distintas y $n$ sobres con direcciones ?`De cuántas maneras puede ella arreglárselas para meter cada carta en un sobre equivocado? (Esto es comúnmente llamado el \textit{problema del desarreglo} del cual hay varias formulaciones pintorescas.) 
+\begin{ejemplo*} Una secretaria ineficiente tiene $n$ cartas distintas y $n$ sobres con direcciones ¿De cuántas maneras puede ella arreglárselas para meter cada carta en un sobre equivocado? (Esto es comúnmente llamado el \textit{problema del desarreglo} del cual hay varias formulaciones pintorescas.) 
 \end{ejemplo*}
 
 
