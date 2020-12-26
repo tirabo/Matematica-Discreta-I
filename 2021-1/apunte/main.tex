@@ -1,5 +1,8 @@
 \documentclass[a4paper,12pt,twoside,spanish,reqno,dottedtoc]{scrbook}
 \usepackage[spanish,es-lcroman,es-nodecimaldot]{babel}
+
+\usepackage{imakeidx}  
+\makeindex  
 \input{classicthesis-config}
 \input{config-definiciones}
 
@@ -113,12 +116,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \cleardoublepage
 
-\input{contenido.tex}
+%\input{contenido.tex}
 
-\input{soluciones.tex}
-
-
-\end{document}
+%\input{soluciones.tex}
 
 \part{Números enteros y aritmética} 
 %%% CAP1 =================
@@ -148,21 +148,12 @@
 \appendix
 \part{Ap\'endices} 
 \setcounter{chapter}{0}
+\renewcommand{\thechapter}{\Alph{chapter}}
 %%%=======================
-%%% CAP7 =================
-    \input{Cap.07.tex}
+%%% Apéndices =================
+    \input{Cap.apendices.tex}
 %%%=======================
-%%%=======================
-%%% CAP8 =================
-    \input{Cap.08.tex}
-%%%=======================
-%%%=======================
-%%% CAP9 =================
-    \input{Cap.09.tex}
-%%%=======================
-%%%=======================
-%%% CAP10 ================
-    \input{Cap.10.tex}
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\part{\'Indice} 
+\addcontentsline{toc}{chapter}{Indice  alfabético}
+\printindex
 \end{document}

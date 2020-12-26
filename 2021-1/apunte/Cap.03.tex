@@ -1,0 +1,1082 @@
+\chapter[Divisibilidad]{Divisibilidad}\label{cap.divisibilidad}
+
+\begin{section}{Cociente y resto}\label{seccion-cociente-y-resto}
+Cuando somos chicos aprendemos que $6$ ``cabe'' cuatro veces en $27$ y
+el resto es $3$, o sea
+$$
+27=6 \cdot 4 + 3.
+$$
+Un punto importante es que el resto debe ser menor que 6. Aunque,
+también es verdadero que, por ejemplo
+$$
+27=6 \cdot 3 + 9,
+$$
+debemos tomar el menor valor para el resto, de forma que ``lo que
+queda'' sea un número no negativo lo más chico posible. El hecho de que el conjunto de
+posibles ``restos'' tenga un mínimo es una consecuencia del axioma
+del buen orden.
+
+\begin{teorema}\label{t1.5} Sean $a$ y $b$ números enteros
+cualesquiera con $b \in \mathbb N$, entonces existen enteros únicos $q$ y
+$r$ tales que
+$$
+a=b \cdot q + r\qquad\text{ y }\qquad 0\le r<b.
+$$
+\end{teorema}
+\begin{proof} Debemos aplicar el axioma del buen orden al
+conjunto de los ``restos''
+$$ R=\{x \in \mathbb N_0 | a = by + x \ \text{ para algún }\ y \in \mathbb Z\}.
+$$
+Primero demostraremos que $R$ no es vacío. Si $a\ge 0$ la igualdad
+$$
+a= b\cdot 0 + a
+$$
+demuestra que $a \in R$, mientras que si $a<0$ la igualdad
+$$
+a= b\cdot a + (1-b)\cdot a
+$$
+demuestra que $(1-b)\cdot a\in R$ (en ambos casos es necesario controlar
+que el
+ elemento es no negativo.)
+
+
+Ahora, como $R$ es un subconjunto no vacío de $\mathbb N_0$, tiene
+un mínimo $r$, y como $r$ esta en $R$ se sigue que $a=bq+r$ para
+algún $q$ en $\mathbb Z$. Además
+$$
+a=bq+r \Rightarrow a=b(q+1)+(r-b)
+$$
+de manera que si $r\ge b$ entonces $r-b$ esta en $R$. Pero $r-b$
+es menor que $r$, contradiciendo la definición de $r$ como el
+menor elemento de $R$. Como la suposición $r \ge b$ nos lleva a
+una contradicción, solo puede ocurrir que $ r<b$, como queríamos
+demostrar.
+
+%\vskip .3cm
+
+Es fácil ver que el cociente $q$ y el resto $r$ obtenidos en el
+teorema son únicos. Supongamos que $q'$ y $ r'$, también
+satisfacen las condiciones, esto es
+$$
+a=bq'+r' \qquad \text{ y } \qquad 0\le r' < b.
+$$
+Si $q>q'$, entonces $q-q' \ge 1$ y tenemos que
+$$
+r'=a-bq' = (a-bq)+b(q-q') \ge r+b.
+$$
+Como $r+b \ge b$, se sigue que $r'\ge b$ contradiciendo la segunda propiedad de $r'$. Por lo tanto la suposición $q'>q$ es falsa. El
+mismo argumento con $q$ y $q'$ intercambiados demuestra que $q<q'$
+también es falsa. Entonces debemos tener $q=q'$, y en consecuencia
+$ r=r'$, puesto que
+$$
+r=a-bq = a-bq'=r'.
+$$
+\end{proof}
+
+
+\begin{ejemplo*} {} 
+
+\begin{itemize}
+\item Si $a=10$ y $b=3$, entonces $10 = 3 \cdot 3 +1$. Es decir $q= 3$, $r=1$. 
+\item Si $a=2$ y $b=5$, entonces $2 = 5 \cdot 0 +2$. Es decir $q= 0$, $r=2$. 
+\item Si $a=-10$ y $b=3$, entonces $-10 = 3 \cdot (-4) +2$. Es decir $q= -4$, $r=2$. En algunos viejos compiladores del lenguaje $C$, la división entera estaba mal definida, pues consideraban, por ejemplo, $-10 = 3 \cdot (-3) -1$. Es decir, si el número a ser dividido era negativo, tomaban el resto también como un número negativo, lo cual no está de acuerdo al teorema \ref{t1.5}.  
+\item Si $a=-2$ y $b=3$, entonces $10 = 3 \cdot (-1) +1$. Es decir $q= -1$, $r=1$. 
+\end{itemize}
+\end{ejemplo*}
+
+\subsection*{$\S$ Desarrollos en base $b$, ($b \ge 2$)}
+%\addcontentsline{toc}{subsection}{Desarrollos en base $b$, ($b \ge 2$)}    
+    
+    
+Una consecuencia importante del teorema \ref{t1.5} es que
+justifica nuestro método usual de representación de enteros. 
+
+\begin{ejemplo*} Deseamos escribir el número $407$ con una expresión de la forma 
+$$
+407 = r_n5^n +r_{n-1} 5^{n-1}+\cdots + r_1 5 + r_0,
+$$
+con $0 \le r_i < 5$. Veamos que esto es posible y se puede hacer de forma algorítmica. La forma de hacerlo  es, primero, dividir el número original y los sucesivos cocientes por $5$:  
+\begin{alignat}2
+407 &=5\cdot 81 &+& 2 \label{b3}\\
+81 & = 5\cdot 16 &+& 1  \label{b4}\\
+16 & = 5\cdot 3 &+& 1  \label{b5}\\
+3 & = 5\cdot 0 &+& 3.
+\end{alignat}
+Observar entonces que
+\begin{alignat*}2
+407 &=5\cdot 81 + 2  &\qquad& \text{por (\ref{b3})}\\
+ &= 5\cdot (5\cdot 16 + 1) + 2  &\qquad& \text{por (\ref{b4})}\\
+ &= 5^2 \cdot 16+ 5\cdot 1 + 2 &\qquad& \text{}\\
+ &= 5^2 \cdot (5\cdot 3 + 1)+ 5\cdot 1 + 2   &\qquad& \text{por (\ref{b5})}\\
+ &= 5^3 \cdot 3+ 5^2 \cdot 1 + 5\cdot 1 + 2.  &\qquad& \text{}
+\end{alignat*}
+En este caso diremos que el desarrollo en base $5$ de $407$ es $3112$ o, resumidamente, $407 = (3112)_5$.  Observar que el desarrollo en base $5$ de $407$ viene dado por los restos de las divisiones sucesiva, leídos en forma ascendente.
+\end{ejemplo*}
+
+
+Sea $b \ge 2$ un número entero, llamado \textit{base}\index{base (de un sistema de numeración)} para los cálculos.
+Para cualquier entero positivo $x$ tenemos, por la aplicación
+repetida del teorema \ref{t1.5},
+\begin{alignat*}2
+x&=bq_0 &+& r_0 \\
+q_0 & = bq_1 &+&r_1 \\
+\cdots & \\
+q_{n-2} & = bq_{n-1} &+&r_{n-1} \\
+q_{n-1} & = bq_n &+&r_n.
+\end{alignat*}
+Aquí cada resto es uno de los enteros $0, 1,\ldots,b-1$, y paramos
+cuando $q_n=0$. Reemplazando sucesivamente los cocientes $q_i$, como lo hicimos en el ejemplo, obtenemos
+$$
+x=r_nb^n +r_{n-1} b^{n-1}+\cdots + r_1 b + r_0.
+$$
+Hemos representado $x$ (con respecto a la base $b$) por la
+secuencia de los restos, y escribimos $x=(r_nr_{n-1}\dots r_1
+r_0)_b$. Convencionalmente $b=10$ es la base para los cálculos
+hechos ``a mano'' y omitimos ponerle el subíndice, entonces
+tenemos la notación usual
+$$
+1984=(1\cdot 10^3 ) + (9\cdot 10^2 )+(8\cdot 10 ) + 4.
+$$
+
+
+
+Esta notación posicional requiere símbolos solo para los enteros
+$0, 1,\ldots,b-1$. La base $b=2$ es particularmente adaptable para
+los cálculos en computadoras porque los símbolos $0$ y $1$ pueden
+representarse físicamente por la ausencia o presencia de un pulso
+de electricidad o luz. 
+
+
+\begin{ejemplo*} ¿Cuál es la representación en base $2$ de
+$(109)_{10}$?
+\end{ejemplo*}
+\begin{proof} Dividiendo repetidamente por $2$ obtenemos
+$$\begin{aligned}
+109&=2\cdot 54+1\\ 54&=2\cdot 27+0\\ 27&=2\cdot 13+1\\ 13&=2\cdot 6+1\\
+6&=2\cdot 3+0 \\ 3&=2\cdot 1+1 \\1&=2\cdot 0+1
+\end{aligned}
+$$
+Por lo tanto
+$$ (109)_{10} = (1101101)_2.
+$$
+
+La base $16$ también es usada en computación pues se utiliza el byte como unidad básica de memoria y debido a que un byte puede tomar
+$2^8$ posibles valores, tenemos que $$2^8 = 2^4 \cdot 2^4 = 16 \cdot 16 = 1 \cdot 16^2 + 0 \cdot 16^1 + 0 \cdot 16^0.$$ Luego 
+ un byte puede representar $(100)_{16}$ valores. Más allá de la justificación, es claro que los dígitos disponibles (del $0$  al $9$) no nos alcanzan  para representar un  número en base $16$, pues se requieren $16$ símbolos. La convención usada es 
+ $$\texttt{A}=10,\quad \texttt{B}=11,\quad \texttt{C} =12,\quad \texttt{D} = 13,\quad \texttt{E} = 14,\quad \texttt{F} = 15.$$
+
+\begin{ejemplo*} Representemos  $12488$ en  base $16$.
+\begin{alignat*}2
+12488 &= 16 \cdot 780 &+&  8\\
+780 & = 16 \cdot 48 &+& 12\\
+48 & = 16\cdot 3 &+& 0\\
+3 & = 16 \cdot 0  &+& 3.
+\end{alignat*}
+Luego $12488 = (30\texttt{C}8)_{16}$.
+\end{ejemplo*}
+
+
+\end{proof}
+
+\subsection*{$\S$ Ejercicios}
+
+\begin{enumex}
+    \item Encontrar $q$ y $r$ que satisfagan el teorema \ref{t1.5} cuando
+    \begin{enumex}
+        \item $a = 1001$, \qquad $b = 11$;
+        
+        \item $a = 12345$, \qquad $b = 234$.
+    \end{enumex}
+
+    %$$
+    %\text{(i)}\quad a=1001,\,\,\, b=11; \qquad \text{(ii)}\quad
+    %a=12345,\,\,\, b=234.
+    %$$
+
+    \item Encontrar las representaciones de $(1985)_{10}$ en:
+    \begin{enumex}
+        \begin{minipage}{0.25\textwidth}
+            \item Base $2$,
+        \end{minipage}
+        \begin{minipage}{0.25\textwidth}
+            \item Base $5$,
+        \end{minipage}
+        \begin{minipage}{0.25\textwidth}
+            \item Base $11$.
+        \end{minipage}
+    \end{enumex}
+
+    \item  Encontrar las representación usual (base $10$) de:
+    \begin{enumex}
+        \begin{minipage}{0.25\textwidth}
+            \item $(11011101)_2$,
+        \end{minipage}
+        \begin{minipage}{0.25\textwidth}
+            \item $(4165)_7$.
+        \end{minipage}
+    \end{enumex} 
+\end{enumex}
+
+\end{section}
+
+
+\begin{section}{Divisibilidad}\label{seccion-divisivilidad}
+
+
+\begin{definicion}Dados dos enteros $x$ e $y$ decimos que $y$ es un \textit{divisor}\index{divisor} de $x$, y escribimos $y|x$, si
+$$
+x=yq\quad\text{ para algún }\quad q\in \mathbb Z.
+$$
+También decimos que $y$ es un \textit{factor} de $x$, que $y$ \textit{divide}\index{divide} a $x$, que $x$ es \textit{divisible} por $y$, y que $x$ es \textit{múltiplo}\index{múltiplo} de $y$.
+\end{definicion}
+
+Cuando $y|x$ podemos usar el símbolo $\frac{x}{y}$ (o $x/y$) para denotar el entero $q$ tal que $ x=yq$. Cuando $y$ no es un divisor de $x$ tenemos que asignar un nuevo significado a la fracción $x/y$, puesto que este número no es un entero. El lector indudablemente, esta familiarizado con las reglas para manejar
+fracciones, y usaremos esas reglas de tanto en tanto, pero es importante recordar que las fracciones no han sido aún formalmente definidas en el contexto de este apunte. Y es aún más importante recordar que $x/y$ no es un elemento de $\mathbb Z$ a menos que $y$ divida a $x$\footnote{En algunos lenguajes de programación si $x,y$ son enteros, entonces la operación $x/y$ devuelve el cociente entero $q$. No usaremos esa convención en este apunte.}.
+
+
+\begin{observacion}\label{prop-divide-a-propiedades} Veamos ahora alguna propiedades básicas de la relación ``divide a''. Sean $a,b,c$ enteros, entonces
+\begin{enumerate}[label=\textit{\alph*)}]
+\item\label{prop-divide-a-propiedades-item-1} $1|a$,\qquad $a|0$,\qquad $a|\pm a$;
+\item\label{prop-divide-a-propiedades-item-2} si $a|b$, entonces $a|bc$ para cualquier $c$;
+\item\label{prop-divide-a-propiedades-item-3} si $a|b$ y $a|c$, entonces $a|(b+c)$;
+\item\label{prop-divide-a-propiedades-item-4} si $a|b$ y $a|c$, entonces $a|(rb+sc)$ para cualesquiera $r,s \in \mathbb Z$.
+\end{enumerate}
+\begin{proof}
+La demostración de estos hechos es sencilla, por ejemplo \ref{prop-divide-a-propiedades-item-3}: como $a|b$, existe $q$ tal que $b = aq$. Análogamente, como $a|c$, existe $q'$ tal que $c = aq'$. Entonces $b+c = aq+aq' = a(q+q')$, luego $a|(b+c)$.  
+Las demás demostraciones se dejan como ejercicio para el lector. 
+\end{proof}
+\end{observacion}
+
+
+\begin{ejemplo*} Demostremos que si $c$, $d$ y $n$ son enteros tales
+que, $d|n$ y $c\left|\frac{n}{d}\right.$, entonces
+$$ c|n \quad\text{ y }\quad d\left|\frac{n}{c}\right.$$
+\end{ejemplo*}
+\begin{proof} Como $d|n$ existe un entero $s$ tal que $n=ds$, y
+$n/d$ denota al entero $s$. Puesto que $c|(n/d)$ existe un entero
+$t$ tal que
+$$s=\frac{n}{d} =ct.
+$$
+Se sigue que
+$$
+n=ds=d(ct)=c(dt)$$
+ entonces $c|n$ y $n/c$ denota al entero $dt$. Finalmente, como
+$n/c=dt$ tenemos $d|(n/c)$, como queríamos demostrar.
+\end{proof}
+
+\begin{proposicion}\label{pm} Sean $a$ y $b$ enteros.
+\begin{enumerate}[label=\textit{\alph*)}]
+\item \label{prop-pm-a} Si  $ab=1$ entonces $a=b=1$ o $a=b=-1$. 
+\item \label{prop-pm-b}Si $x$ e $y$ son enteros tales que $x|y$ e $y|x$, entonces $x=y$ o $x=-y$.
+\end{enumerate}
+\end{proposicion}
+\begin{proof}
+\
+
+\noindent \ref{prop-pm-a} Si $a$ o $b$ valen $0$, entonces $ab=0 \not=1$. Luego $a$ y $b$ son distintos de $0$. Si $a>0$ y $b<0$ por los axiomas de compatibilidad del orden con el producto $ab<0$. Lo mismo ocurre si $a<0$ y $b>0$.
+
+Es decir podemos suponer que o bien $a>0$ y $b>0$, o bien $a<0$ y $b<0$. 
+
+Si  $a>0$ y $b>0$, entonces  $a\ge 1$ y $b\ge 1$. Si $a=1$, como $ab =1$, tenemos que $b = 1$. Si $a>1$, como  $b>0$ por compatibilidad de $<$ con el producto tenemos que $ab>1$, lo cual no es cierto. Es decir, hemos probado que si  $a>0$ y $b>0$, entonces $a=1$ y $b=1$.
+
+Si  $a<0$ y $b<0$, entonces   $-a>0$ y $-b>0$ y $(-a)(-b) = ab =1$. Luego, por el párrafo de arriba, $-a=-b=1$ y en consecuencia $a=b=-1$.
+
+\vskip 0.1cm
+
+\noindent \ref{prop-pm-b} Sean $x,y$ tales que  $x|y$ e $y|x$. Como $x|y$, existe $q \in \mathbb Z$ tal que $y = qx$. Análogamente, como $y|x$ existe $q'$ tal que $x = q'y$. Luego
+$$y = qx = q(q'y) = (qq')y.$$
+Por el axioma de cancelación (cancelando $y$) obtenemos que $1 = qq'$. Por lo demostrado más arriba tenemos que, o bien $q=q'=1$ y en consecuencia $x=y$, o bien $q=q'=-1$ y en consecuencia $x=-y$. 
+\end{proof}
+
+\subsection*{$\S$ Ejercicios}
+\begin{enumex}
+    \item Usar el principio de inducción para demostrar que, para todo $n\ge0$ 
+    se cumplen;
+    \begin{enumex}
+        \item $n^2+3n$ es divisible por $2$,
+        
+        \item $n^3+3n^2+2n$ es divisible por $6$. 
+    \end{enumex}
+\end{enumex}
+
+\end{section}
+
+
+\begin{section}{El máximo común divisor y el mínimo común múltiplo}\label{seccion-maximo-comun-divisor-mcm}
+
+\begin{definicion}\label{mcd} Si $a$ y $b$ son enteros algunos de ellos no nulo, decimos que un entero no negativo $d$ es un \textit{máximo común divisor}\index{máximo común divisor}, o \textit{mcd}, de $a$ y $b$ si
+\begin{enumerate}[label=\textit{\alph*)}]
+\item\label{mcda} $ d|a$  y $d|b$;
+\item\label{mcdb}  si $ c|a $ y $c|b$ entonces $ c|d$.
+\end{enumerate}
+\end{definicion}
+La condición \ref{mcda} nos dice que $d$ es un común divisor de $a$ y $b$ y la condición \ref{mcdb} nos dice que cualquier divisor común de
+$a$ y $b$ es también divisor de $d$. Por ejemplo, $6$ es un divisor común de $60$ y $84$, pero no es el mayor divisor común, porque
+$12|60$ y $12|84$ pero $12{\not|}6$ (el símbolo significa ``no divide''.)
+
+
+
+\begin{ejemplo} \label{ejem-1-mcd}
+    Los divisores positivos comunes de 60  y 84 son 1, 2, 3, 6 y 12, luego aunque 6  es un divisor común, no satisface \ref{mcdb} de la definición, pues $12|60$ y $12|84$ pero $12{\not|}6$ (el símbolo significa ``no divide''). En este caso, 12  claramente es  el  máximo común divisor.
+\end{ejemplo}
+
+En el ejemplo anterior usamos dos enteros pequeños y no tuvimos problemas en encontrar el  máximo común divisor. Pero ¿qué pasaría si consideráramos dos enteros muy grandes? Consideremos las siguientes preguntas.
+\begin{itemize}
+    \item Dados $a,b \in \Z$ arbitrarios, alguno de ellos no nulo ¿existe el máximo común divisor? Si existe, ¿hay una forma eficiente de calcularlo?
+    \item  ¿Cuántos máximos común divisores puede tener un  par de enteros?
+\end{itemize}
+En  el desarrollo de esta sección responderemos estas preguntas. 
+
+
+\begin{teorema}
+    Dados $a,b \in \Z$, alguno de ellos no nulo, existe un único $d \in \Z$ que es el máximo común divisor. 
+\end{teorema}
+\begin{proof}
+    Sin pérdida de generalidad podemos suponer que  $a \ne 0$. Sea 
+    \begin{equation*}
+    S = \{m a+n b : m,n\in \Z, m a+n b>0\}.
+    \end{equation*}
+    Como  $a$ o $-a$ pertenecen a $S$, tenemos que  $S \not= \emptyset$, luego, por el principio de buena ordenación, $S$ tiene un  mínimo $d$. Probaremos ahora que  $d$  es un  máximo común divisor de $a$ y $b$. 
+    
+    \textit{Propiedad {\ref{mcdb}}.} Puesto  que $d \in S$,  existen $s, t \in \Z$ tal que $d = sa+tb$. Sea $c$ tal que $c|a$ y $c|b$, por \ref{prop-divide-a-propiedades-item-4} de la observación \ref{prop-divide-a-propiedades},  tenemos que $c|sa+tb$,  es decir $c|d$. 
+    
+    \textit{Propiedad {\ref{mcda}}.} Supongamos ahora que $d \not| a$,  entonces $|a| = qd + r$ con $0 < r <d$ y $q \ge 0$, luego $r = \pm a - qd = \pm a-q(sa+tb) = a(\pm1-qs) +(-qt)b$. Por lo tanto,  $r < d$  pertenece a $S$, contradiciendo  el hecho de que $d$  es un mínimo de $S$. La contradicción vino de suponer que  $d \not| a$, por lo tanto $d|a$. En  forma análoga podemos probar que $d|b$. 
+    
+    
+    \textit{Unicidad.} Sean $d$ y $d'$ dos enteros no negativos que satisfacen las propiedades de la definición del máximo común divisor, como $d'|a$, $d'|b$ y  $d$ satisface la propiedad {\ref{mcdb}} de la definición de mcd, se deduce que $d|d'$. Intercambiando  los papeles de $d$ y $d'$ se obtiene que $d'|d$. Luego, como $d,d'\ge 0$, por  proposición \ref{pm}\ref{prop-pm-b} se obtiene que $d=d'$.
+\end{proof}
+
+Si $a,b$ enteros,  alguno de ellos  no nulo,  denotaremos al máximo común divisor  de $a$ y $b$ por $\mcd(a,b)$, o en caso de no haber confusión por $(a,b)$.
+
+
+
+\begin{ejemplo*} Hallar   $\mcd(174,72)$.
+    \begin{proof}[Solución] ${^{}}$
+        
+        Divisores de 174: 1, 2, 3, 6, 29, 58, 87, 174
+        
+        Divisores de 72: 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, 72 
+        
+        Luego, $6$ es divisor común de 174 y 72, y todos los demás divisores comunes ($1$, $2$ y $3$) dividen a $6$. Por lo tanto $\mcd(174,72) =6$.
+    \end{proof}
+\end{ejemplo*}
+
+\begin{proposicion}\label{prop-d-comb-lin}
+    Sean $a,b \in \Z$, alguno de ellos no nulo. Entonces existen $s,t \in \Z$ tal que
+    \begin{equation*}
+    (a,b) = sa + tb. 
+    \end{equation*}
+\end{proposicion}
+\begin{proof}
+    Se deduce trivialmente de la demostración del teorema anterior. 
+\end{proof}
+
+\begin{corolario} Sean $a$ y $b$ enteros, $b$ no nulo, entonces
+    $$
+    (a,b) = 1 \Leftrightarrow \text{existen $s,t \in \mathbb Z$ tales que $1 = sa+tb$.}
+    $$
+\end{corolario}
+\begin{proof}
+    ($\Rightarrow$) Es consecuencia trivial de la proposición anterior.
+    
+    ($\Leftarrow$) Sea $d = (a,b)$, entonces $d|a$ y $d|b$ y por lo tanto $d|sa+tb$ para cualesquiera   $s,t \in \mathbb Z$.  En particular, la hipótesis implica que $d | 1$ y, en consecuencia $d =1$. 
+\end{proof}
+
+\begin{definicion}
+    Si el $(a,b)=1$ entonces decimos que $a$ y $ b$ son \textit{coprimos}\index{coprimos}.
+\end{definicion}
+
+
+
+
+
+
+
+
+
+
+Podemos enunciar las propiedades más sencillas del mcd en la siguiente proposición
+
+\begin{proposicion} Sean $a,b$ enteros con $a \not = 0$, entonces
+    \begin{enumerate}
+        \item $\mcd(b,a) = \mcd(a,b) = mcd(\pm a, \pm b)$,
+        \item si $a>0$,  $\mcd(a,0) = a$ y $\mcd(a,a) = a$,
+        \item $\mcd(1,b) = 1$.
+    \end{enumerate}
+\end{proposicion}
+\begin{proof}
+    Estas propiedades son de demostración casi trivial, por ejemplo para demostrar que  $\mcd(1,b) = 1$ comprobamos que 1 cumple con la definición:
+    \begin{enumerate}[label=\textit{\alph*)}]
+        \item $ 1|1$ y $1|b$;
+        \item si $ c|1 $ y $c|b$ entonces $ c|1$,
+    \end{enumerate}
+    propiedades que son obviamente verdaderas.
+    
+    1. y 2.  se dejan a cargo del lector. 
+\end{proof}
+
+La siguiente propiedad no es tan obvia y resulta muy importante. 
+
+\begin{propiedad}\label{propiedad1}
+    Si $a \not=0, b \in \mathbb Z$, entonces $\mcd(a,b) = \mcd(a,b-a)$. 
+\end{propiedad}
+\begin{proof}
+    Sea $d =  \mcd(a,b-a)$, luego 
+    \begin{enumerate}[label=\textit{\alph*)}]
+        \item $ d|a$ y $d|b -a$;
+        \item\label{cond-b-mcd} si $ c|a $ y $c|b -a$ entonces $ c|d$.
+    \end{enumerate}
+    Ahora bien, como  $ d|a$ y $d|b -a$, entonces $  d|a +(b -a) = b$. Es decir, para recalcar,
+    \begin{enumerate}
+        \item[\textit{(a')}] $ d|a$ y $d|b$.
+    \end{enumerate}
+    Por otro lado, si  $ c|a $ y $c|b$, entonces  $c|b -a$, luego por \ref{cond-b-mcd} tenemos que $c|d$. Es decir, 
+    \begin{enumerate}
+        \item[\textit{(b')}]si  $ c|a $ y $c|b$, entonces  $c|d$.
+    \end{enumerate}
+    Luego, por definición de mcd, obtenemos que $d = \mcd(a,b)$.
+\end{proof}
+
+La propiedad anterior nos provee un método práctico para encontrar el máximo común divisor entre dos números, como vemos en el siguiente ejemplo.
+
+\begin{ejemplo*} Encontrar el mcd entre 72 y 174.
+    \begin{proof}[Solución] Observar que 
+        \begin{align*}
+        \mcd(72, 174) &= \mcd(72,174-72) = \mcd(72,102) = \mcd(72,30) =  \mcd(42, 30) \\&= \mcd(12,30) = \mcd(12,18)= \mcd(12,6)= \mcd(6,6) = 6.  
+        \end{align*}
+    \end{proof}
+\end{ejemplo*} 
+
+En  general no es sencillo encontrar todos los divisores de un número entero grande. Por ejemplo, para los  números de más de cien dígitos no es posible,  en general, calcular sus divisores ni con las computadoras más poderosas de la actualidad. Por  lo tanto, no es factible calcular el  mcd de números grandes revisando todos los divisores comunes.  El algoritmo que nos provee la  propiedad \ref{propiedad1} nos da un método práctico y relativamente eficiente para calcular el mcd. Veremos a continuación un método similar pero mucho más eficiente para calcular el mcd de dos enteros no negativos $a,b$ con $b \not=0$. Este método esta basado en la técnica del cociente y el resto y depende del siguiente hecho.
+
+\begin{proposicion}\label{prop-alg-eucl} Sean  $a,b$ enteros no negativos con $b \not=0$, entonces 
+    \begin{equation}\label{bec}
+    a=bq+r\quad \Rightarrow \quad\mcd(a,b)=\mcd(b,r).
+    \end{equation}
+\end{proposicion}
+\begin{proof}
+    Para demostrar esto debemos observar que si $c$ divide $a$ y $b$, entonces también divide a $a-bq$; y como $a-bq=r$, tenemos que $c|r$. De este modo cualquier divisor común de $a$ y $b$ es también divisor común de $b$ y $r$.  Por otro lado si $c$ divide $b$ y $r$ también divide a $a=bq+r$. Es decir, 
+    \begin{equation}\label{eqmcd1}
+    \text{$c$ es divisor común de $a$ y $b$ si y sólo si $c$ es divisor común de $b$ y $r$.} \tag{*}
+    \end{equation}
+    Luego, sea $d = \mcd(a,b)$, probaremos que $d$ es el mcd entre $b$ y $r$:
+    \begin{enumerate}[label=\textit{\alph*)}]
+        \item\label{it.d=mcdbr} como $d|a$ y $d|b$, entonces por (\ref{eqmcd1}) tenemos que $ d|b$ y $d|r$;
+        \item\label{it.d=mcdab} si $c|a $ y $c|r$ entonces por (\ref{eqmcd1})  $c|a$ y $c|b$ y debido a que $d = \mcd(a,b)$, se deduce que $c|d$.
+    \end{enumerate}
+    Al satisfacer \ref{it.d=mcdbr} y \ref{it.d=mcdab}, obtenemos que $d = \mcd(b,r)$.
+\end{proof}
+
+La aplicación repetida de este simple hecho, en combinación con el algoritmo de división, nos da un método para calcular el mcd.
+
+\begin{ejemplo*} Encuentre el mcd de 2406 y 654.
+\end{ejemplo*}
+\begin{proof}[Solución] Tenemos
+    \begin{alignat*}3
+    \mcd(2406,654)&=\mcd(654,444)&\quad &\text{ porque }\quad& 2406&=654\cdot3+444,\\
+    &=\mcd(444,210)& &\text{ porque }\quad& 654&=444\cdot1+210,\\
+    &=\mcd(210,24)&& \text{ porque }\quad &444&=210\cdot2+24,\\
+    &=\mcd(24,18) && \text{ porque }\quad &210&=24\cdot8+18,\\
+    &=\mcd(18,6)  && \text{ porque }\quad &24 &=18\cdot1+6,\\
+    & =\mcd(6,0) = 6           &&\text{ porque }\quad&18&=6\cdot3 + 0
+    \end{alignat*}
+    
+\end{proof}
+
+Este ejemplo es un caso particular o una aplicación del algoritmo que nos permite calcular el máximo común divisor.
+
+
+
+
+
+%\vskip .1cm
+\begin{table}[htbp]
+\centering
+\fbox{\begin{minipage}{35em} 
+\vskip .2cm
+{\flushleft \textbf{Algoritmo de Euclides}}
+\vskip .2cm
+Por lo general, para calcular el mcd de enteros $a$ y $b$, con $b >0$, 
+ definimos $q_i$ y $r_i$ recursivamente  de la siguiente manera: $r_0 = a$, $r_1 = b$,  y 
+\begin{align*}
+&\text{($e_{1}$)}\qquad& r_0&=r_1 q_1 + r_2& &(0 < r_2<r_1)\\
+&\text{($e_{2}$)}\qquad& r_1&=r_2q_2 + r_3\quad{}\quad{}\quad{}& &(0 < r_3<r_2)  \\
+&\text{($e_{3}$)}\qquad& r_2&=r_3q_3 + r_4\quad{}\quad{}\quad{}& &(0 < r_4<r_3)  \\
+&\cdots&&\\
+&\text{($e_{i}$)}\qquad& r_{i-1}&=r_{i}q_{i} + r_{i+1}& &(0 < r_{i+1} <r_{i}) \\
+&\cdots&& \\
+&\text{($e_{k-1}$)}\qquad& r_{k-2}&=r_{k-1}q_{k-1} + r_{k}& &(0 < r_{k} <r_{k-1}) \\
+&\text{($e_{k}$)}\qquad& r_{k-1}&=r_{k}q_{k} + 0 ,&&  
+\end{align*}
+\vskip .cm
+\end{minipage}}
+\caption{Algoritmo de Euclides}
+\label{tabla-AE}
+\end{table}
+%\vskip .2cm 
+
+El proceso se detiene cuando uno de los restos $r_i$  es igual a $0$ y queda claro que el proceso debe detenerse, porque cada resto no nulo es positivo y estrictamente menor que el anterior.
+
+Este procedimiento es conocido como el \textit{algoritmo de Euclides}\index{algoritmo de Euclides}, debido al matemático griego Euclides ($300$ a. c.). Es extremadamente útil en la práctica, y tiene importantes consecuencias.
+
+
+\begin{teorema} Sean  $a$ y $b$ enteros con $b >0$, entonces el máximo común divisor existe y es el último resto no nulo obtenido en el algoritmo de Euclides (con la notación anterior es $r_k$). 
+\end{teorema}
+\begin{proof}
+Observar que aplicando repetidas veces la fórmula (\ref{bec}) obtenemos 
+\begin{multline*}
+r_k = \mcd(r_{k},0) = \mcd(r_{k-1},r_k) =\mcd(r_{k-2},r_{k-1}) = \cdots\\\cdots 
+=  \mcd(r_2,r_3) =  \mcd(r_1,r_2)  =  \mcd(r_0,r_1) = \mcd(a,b)  
+\end{multline*}
+\end{proof}
+
+
+\begin{observacion*}[*] El algoritmo de Euclides es fácilmente implementable en un lenguaje de programación. A continuación una versión del mismo en pseudocódigo. 
+
+\vskip .5cm
+%\centering
+\begin{minipage}{200pt}
+\noindent \textsc{Algoritmo de Euclides }
+%\vskip .2cm
+\begin{small}
+\begin{verbatim}
+# pre: a y b son números positivos
+# post: Obtenemos d = mcd(a,b)
+r(0), r(1) = a, b
+i = 1 
+while r(i) != 0:
+    r(i+1) = r(i-1) % r(i)   # a % b = resto de a / b
+    i = i + 1
+d = r(i-1)
+\end{verbatim}
+\end{small}
+\end{minipage}
+
+
+\end{observacion*}
+
+%\vskip .5cm
+
+
+Sean $a$ y $b$ enteros, $b$ no nulo y sea $d=\mcd(a,b)$. Entonces sabemos que existen enteros $s$ y $t$ tales que
+$$
+d=sa+tb.
+$$
+La idea ahora es calcular $s$ y $t$. En el caso que $b >0$, de acuerdo con el cálculo hecho antes $d=r_{k}$ y usando la  ecuación ($e_{k-1}$) tenemos
+$$
+r_{k}=r_{k-2} -r_{k-1}q_{k-1}.
+$$
+As{í}, $d$ puede escribirse en la forma $ d = s_{k}r_{k-2} +t_{k}r_{k-1}$,donde $s_{k}=1$ y $t_{k}=-q_{k-1}$ . Usando la ecuación  ($e_{k-2}$), sustituyendo $r_{k-1}$ en términos de $r_{k-3}$ y $r_{k-2}$ obtenemos
+$$
+d= s_{k}(r_{k-3}-r_{k-2}q_{k-2}) + t_{k}r_{k-3} =  s_{k-1}r_{k-3} +t_{k-1}r_{k-2}
+$$
+donde $s_{k-1} = s_{k} + t_{k} $ y $t_{k-1}= -s_{k}q_{k-2}$.  Aplicando  repetidas veces las ecuaciones del algoritmo de Euclides obtenemos, en general que 
+$$
+d =  s_{i}r_{i-2} +t_{i}r_{i-1}
+$$
+con  $s_{i}, t_{i} \in \mathbb Z$, para $2 \le i \le k$. En particular 
+$$
+d =  s_{2}r_{0} +t_{2}r_{1} = s_{2}a +t_{2}b.
+$$
+
+\begin{ejemplo*}
+     Encontrar usando el algoritmo de Euclides $d = \operatorname{mcd}( 470, 55)$ y expresar $d$  como combinación lineal entera entre  $470$ y $55$.
+\end{ejemplo*}
+\begin{proof}[Solución]
+    \begin{alignat*}4
+    470&=55 \cdot 8 +30&\quad\Rightarrow\quad &30 &=&470 + (-8)\cdot 55&\qquad (1)&\\
+    55&=30 \cdot 1 + 25&\quad\Rightarrow\quad &25 &=&55 +(-1)\cdot 30&\qquad (2)&\\
+    30&=25 \cdot 1+5&\quad\Rightarrow\quad &5 &=&30 +(-1) \cdot 25&\qquad (3)& \\
+    25&=5\cdot 5+0.&&&&&&
+    \end{alignat*}
+    Luego,  el máximo común divisor de $470$ y $55$ es $5$ y de las fórmulas anteriores obtenemos:
+    \begin{alignat*}3
+    5 &= 30 +(-1) \cdot 25& &\qquad \text{(por $(3)$)} && \\
+    &= 30 + (-1) \cdot (55 +(-1)\cdot 30) = 2 \cdot 30 + (-1) \cdot 55& &\qquad \text{(por $(2)$)}&& \\   
+    &=  2 \cdot (470 + (-8)\cdot 55) + (-1) \cdot 55 = 2 \cdot 470 +(-17)\cdot 55& &\qquad \text{(por $(1)$)}&&\\    
+    \end{alignat*}
+    De este modo, la expresión requerida $d=sa+tb$ es
+    $$
+    5=2 \cdot 470 +(-17)\cdot 55.
+    $$
+\end{proof}
+
+El hecho  de que el máximo común divisor de dos enteros $a$ y $b$ puede ser escrito como una combinación lineal entera de $a$ y $b$  (proposición \ref{prop-d-comb-lin}) es una herramienta de suma utilidad para trabajar en problemas relacionados con el mcd. Por ejemplo, todos estamos familiarizados con la idea de que una fracción puede reducirse al ``mínimo término'', o sea a la forma $a/b$ con $a$ y $b$ coprimos. El  siguiente ejemplo establece que esta forma es única, y como veremos, el hecho clave de la demostración es que podemos expresar
+a 1 como $sa+tb$.
+
+\begin{ejemplo*} Supongamos que $a$, $a'$, $b$, $b'$ son enteros
+positivos que satisfacen
+$$
+\text{(a) }\qquad ab'=a'b; \qquad\text{(b) }\qquad\mcd(a,b)=\mcd(a',b')=1.
+$$
+Entonces $a=a'$ y $b=b' $.
+
+(La condición ({a}) podría escribirse como $a/b=a'/b'$, pero
+preferimos usar esta forma que no asume ningún conocimiento sobre
+fracciones.)
+\end{ejemplo*}
+\begin{proof} Como el $\mcd (a,b) =1$ existen enteros $s$ y $t$
+tales que $sa+tb=1$. En consecuencia
+$$
+b'=(sa+tb)b' =sab'+tbb' \overset{(a)}{=} sa'b + tb'b = (sa'+tb')b,
+$$
+y por lo tanto $b|b'$. Por un argumento similar y usando el hecho
+de que el $\mcd(a',b')=1 $ deducimos que $b|b'$, por lo tanto
+$b=b'$ o $b=-b'$ y como $b $ y $b'$ son ambos positivos debemos
+tener $b=b'$ . Ahora de (a) deducimos que $a=a'$ y el resultado
+esta demostrado.
+\end{proof}
+
+
+\begin{observacion*}[*]
+El  algoritmo explicado anteriormente para obtener el $\mcd(a,b)$ como combinación lineal entera $sa+tb$ no es muy sencillo de programar. Más aún, requiere terminar el cálculo del $\mcd$ usando el algoritmo de Euclides, para comenzar a calcular los coeficientes enteros $s,t$. Veremos a continuación un algoritmo sencillo de programar que nos devuelve $s$ y $t$. El algoritmo se basa en el siguiente resultado. 
+
+\begin{proposicion}\label{prop-alg-euclides-2} Sean, $a,b$ enteros, $b>0$, y $r_i, q_i$ los restos y cocientes obtenido en el algoritmo de Euclides (ver tabla \ref{tabla-AE}). En entonces, 
+\begin{enumerate}[label=\textit{\alph*)}]
+    \item\label{it.algeuc1}     para $0 \le i \le k$,  existen $s_i, t_i \in \Z$ tal que
+    \begin{equation*}
+    r_i = s_ia + t_ib.
+    \end{equation*}
+    \item\label{it.algeuc2} $s_0, t_0 = 1, 0$ , $s_1, t_1 = 0, 1$ y 
+    \begin{equation}
+    s_{i} = s_{i-2} - q_{i-1}  s_{i-1}, \qquad t_{i} = t_{i-2} - q_{i-1}  t_{i-1},
+    \end{equation}
+    para $i \ge 2$.
+\end{enumerate}
+\end{proposicion}
+\begin{proof}
+    \ref{it.algeuc1} Lo haremos por inducción sobre $i$.
+    
+    Como $r_i$ se define con una recursión que se basa en los dos casos anteriores, el caso base debe hacerse en dos valores: $i=0$ e $i=1$, pero como  $r_0 = a$ (en este caso $s_0=1, s_1 =0$) y $r_1 =b$ (en este caso $s_0=0, s_1 =1$), se cumple el enunciado para el caso base. 
+    
+    \textit{Paso inductivo. } Si $i>1$, tenemos
+    \begin{align*}
+        r_i &= r_{i-2} + (-q_{i-1})r_{i-1}   \\
+             &= s_{i-2}a + t_{i-2}b +(-q_{i-1})(s_{i-1}a + t_{i-1}b)\qquad (\text{hipótesis inductiva}) \\
+             &= (s_{i-2}-q_{i-1}s_{i-1})a + (t_{i-2}-q_{i-1}t_{i-1}) b.   
+    \end{align*}
+    
+    \ref{it.algeuc2} Es claro por la demostración de \ref{it.algeuc1}. 
+\end{proof}
+
+Con el uso de \ref{it.algeuc2} de la proposición anterior, podemos escribir el algoritmo para obtener $s,t$ tal $\mcd(a,b) = sa+tb$ con el siguiente pseudocódigo. 
+
+\vskip .5cm
+%\centering
+\begin{minipage}{200pt}
+    \noindent \textsc{Algoritmo de Euclides 2}
+    \vskip .3cm
+    \begin{small}
+        \begin{verbatim}
+        # pre: a y b son números positivos
+        # post: Obtenemos s y t tal que mcd(a,b) = a*s + b*t
+        r[0], r[1] = a, b
+        s[0], t[0] = 1, 0
+        s[1], t[1] = 0, 1
+        i = 1 
+        while r[i] != 0:
+            # invariante: r[i] = a * s[i] + b * t[i]
+            q, r[i+1] = r[i-1] / r[i], r[i-1] % r[i]
+            s[i+1] = s[i-1] - s[i] * q
+            t[i+1] = t[i-1] - t[i] * q
+            i = i+1
+        s, t  = s[i-1], t[i-1]
+        \end{verbatim}
+    \end{small}
+\end{minipage}
+\end{observacion*}
+
+
+\subsection*{$\S$ Mínimo común múltiplo}
+
+
+\begin{definicion}\label{def-mcm}
+Si $a$ y $b$ son enteros decimos que un entero no negativo $m$ es el \textit{mínimo común múltiplo}\index{mínimo común múltiplo}, o \textit{mcm}, de $a$ y $b$ si
+\begin{enumerate}[label=\textit{\alph*)}]
+\item\label{it.defmcm1} $ a|m$ y $b|m$;
+\item\label{it.defmcm2} si $ a|n $ y $b|n$ entonces $ m|n$.
+\end{enumerate}
+\end{definicion}
+La condición \ref{it.defmcm1} nos dice que $m$ es múl\-ti\-plo común de $a$ y $b$, la condición \ref{it.defmcm2} nos dice que cualquier otro múltiplo de $a$ y $b$ también debe ser múltiplo de $m$. Por ejemplo hallemos el mínimo común múltiplo entre $8$ y $14$. Escribamos los múl\-ti\-plos de ambos números y busquemos el menor común a ambos. Los primeros múltiplos de $8$ son: $8,16,24,32,40,48,56,\ldots$. Los primeros múltiplos de $14$ son: $14,28,42,56,72,\ldots$. Luego se tiene $\mcm(8,14)=56$. Nos faltaría  comprobar que cualquier múltiplo de $8$ y $14$ es múltiplo de 56, pero eso se deduce fácilmente de los resultados que veremos a continuación.
+
+El siguiente teorema garantiza la existencia del mcm.
+
+\begin{teorema}\label{t1.7.2} Sean $a$ y $b$ enteros no nulos, entonces
+$$
+\mcm(a,b)=\frac{a b}{\mcd(a,b)}.
+$$
+\end{teorema}
+\begin{proof} Demostraremos que
+$$
+m=\frac{a b}{\mcd(a,b)}
+$$
+es el mínimo común múltiplo de $a$, $b$.
+
+Como
+$$
+m=\frac{a b}{\mcd(a,b)}=\frac{a}{\mcd(a,b)} b
+=a\frac{b}{\mcd(a,b)}
+$$
+resulta que $m$ es múltiplo de $a$ y $b$, y por lo tanto se satisface (a) de la definición de mínimo común múltiplo. Veamos ahora (b): sea $n \in \Z$ tal que  $a|n$ y $b|n$. Como  existen enteros $r,s$ tales que 
+\begin{equation}\label{clmcd}
+\mcd(a,b)=ra+sb,
+\end{equation} 
+dividiendo la ecuación (\ref{clmcd}) por $\mcd(a,b)$ y multiplicando por $n$, obtenemos la si\-guien\-te ecuación:
+\begin{equation}\label{clmcd2}
+n= r\frac{a}{\mcd(a,b)}n + s\frac{b}{\mcd(a,b)}n.
+\end{equation} 
+Escribiendo $n=b'b=a'a$ ($a',b'$ en $\mathbb Z$) y haciendo los reemplazos en (\ref{clmcd2}), resulta
+finalmente
+\begin{equation*}
+n= rb'\frac{a b}{\mcd(a,b)}+sa'\frac{a b}{\mcd(a,b)}= \frac{a
+b}{\mcd(a,b)}(rb'+sa')
+\end{equation*}
+lo cual demuestra que $m$ divide a $n$.
+\end{proof}
+
+En particular este resultado implica que si $a$ y $b$ son enteros
+coprimos, entonces $\mcm(a,b)=ab$.
+
+
+\begin{ejemplo*} Encontrar el  mcm de $8$ y $14$.
+    \begin{proof}[Solución] 
+        Es claro que $2 = \mcd(8,14)$, luego $\mcm(8,14) = 8 \cdot 14 / 2 = 56$. 
+    \end{proof}
+\end{ejemplo*}
+
+
+\subsection*{$\S$ Ejercicios}
+
+\begin{enumex}
+\item Encontrar el $\mcd$ de $721$ y $448$ y expresarlo en la forma
+$721m+448n$ con $m,n \in \mathbb Z$.
+\item\label{imp} Usar  proposición \ref{prop-d-comb-lin} para demostrar que si $a$, $b$ y $n$ son enteros no nulos, entonces
+$\mcd(na,nb)=n\mcd(a,b)$.
+\item Usar el  Ej. \ref{imp} para demostrar que si el
+$\mcd(a,b)=d$ , entonces
+$$
+\mcd\left(\frac{a}{d},\frac{b}{d}\right) =1.
+$$
+\item  Sean $a$ y $b$ enteros positivos y sea $d=\mcd(a,b)$. Probar que existen
+enteros $ x$ e $y$ que satisfacen la ecuación $ax+by=c$ si y solo
+si $d|c$.
+\item  Encontrar enteros $x$ e $y$ que satisfagan $966x+685y=70.$
+\end{enumex}
+
+\end{section}
+
+
+\begin{section}{Factorización en primos}\label{seccion-factorizacion-en-primos}
+
+\begin{definicion} Se dice que un entero positivo $p$ es \textit{primo}\index{número primo} si $p\ge 2$ y
+los únicos enteros positivos que dividen $p$ son 1 y $p$ mismo.
+\end{definicion}
+
+Luego si un entero $m\ge 2$ no es un primo si  y sólo si existe  $m_1$ divisor de $m$ tal que $m_1 \not= 1, m$,  es decir con $1 < m_1 < m$. Sea $m_2$ el cociente de $m$ por $m_1$: es claro que $m_2  \not= 1, m$ y por lo tanto $1 < m_2 < m$. Concluyendo, 
+
+\begin{center}
+    \textit{un entero $m\ge 2$ no es un primo si  y sólo si $m=m_1m_2$ donde $m_1$ y $m_2$ son enteros
+        estrictamente entre 1 y $m$.
+    }
+\end{center}
+
+Enfaticemos que de acuerdo a la definición, 1 \textit{no} es primo.
+
+Los primeros primos (los  menores que $100$) son
+\begin{center}
+    $2$, $3$, $5$, $7$, $11$, $13$, $17$, $19$, $23$, $29$, $31$, $37$, $41$, $43$, $47$, $53$, $59$, $61$, $67$, $71$, $73$, $79$, $83$, $89$ y $97$.
+\end{center}
+
+
+
+\begin{observacion*}[Criba de Eratóstenes *] Un forma de encontrar números primos es con la \emph{criba de Eratóstenes.} Es un algoritmo que permite hallar todos los números primos menores que un número natural dado $n$. Se forma una lista con todos los números naturales comprendidos entre $2$ y $n$, y se van tachando los números que no son primos de la siguiente manera: comenzando por el 2, se tachan todos sus múltiplos; comenzando de nuevo, cuando se encuentra un número entero que no ha sido tachado, ese número es declarado primo, y se procede a tachar todos sus múltiplos y así sucesivamente. El proceso termina cuando alcanzamos $n$. 
+
+Podemos expresar el algoritmo en pseudocódigo:
+
+\vskip .5cm
+%\centering
+\begin{minipage}{200pt}
+\noindent \textsc{Criba de Eratóstenes}
+\vskip .2cm 
+\begin{small}
+\begin{verbatim}
+# pre: n número natural
+# post: se obtiene ''primos'' la lista de números primos hasta n
+primos = lista vacía
+inter = lista de 2 a n  # en inter se tacharán los números compuestos 
+for i = 2 to n:
+    if i no está tachado en inter:
+        agregar i a primos
+        k = 2
+        while k * i <= n:
+            tachar k * i en la lista inter
+            k = k + 1
+\end{verbatim}
+\end{small}
+\end{minipage}
+
+\end{observacion*} 
+
+%\vskip .5 cm
+
+El lector debe estar casi totalmente familiarizado con la idea de que cualquier entero positivo puede
+expresarse como producto de primos: por ejemplo
+$$
+825=3\cdot 5\cdot 5\cdot 11.
+$$
+La existencia de esta factorización en primos para cualquier entero positivo es una consecuencia del axioma del buen orden.
+
+\begin{teorema}
+Todo  entero  mayor que $1$ es producto de números primos. 
+\end{teorema}                                                
+\begin{proof} Sea $B$ el conjunto de enteros positivos que no tienen una factorización en primos.
+
+Si $B$ no es vacío entonces, por el axioma del buen orden, tiene un mínimo $m$. Si $m$ fuera un primo $p$ entonces tendríamos la factorización trivial $m=p$; por lo tanto $m$ no es primo y existen $m_1,m_2$ enteros positivos con  $1<m_1<m$ y $1<m_2< m$ tal que $m=m_1m_2$.
+
+Como estamos suponiendo que $m$ es el menor entero ($\ge 2$) que no tiene factorización en primos, entonces $m_1$ y $m_2$ tienen factorización en primos. Pero entonces la ecuación $m=m_1m_2$ produce una factorización en primos de $m$, contradiciendo la suposición de que $m$ era un elemento de $B$. Por lo tanto $B$ debe ser vacío, y la afirmación esta probada.
+\end{proof}
+
+\begin{ejemplo*} 
+Encontremos la factorización en números primos de $201\,000$. Esto se hace di\-vi\-dien\-do  sucesivamente los números hasta llegar a factores primos:
+\begin{align*}
+201\,000 &= 201\cdot 1000 = 3\cdot 67\cdot 10\cdot 10\cdot 10\\ &=  3\cdot 67\cdot 2\cdot 5 \cdot 2\cdot 5 \cdot 2\cdot 5 \\&= 2^3\cdot 3\cdot 5^3\cdot 67.
+\end{align*}
+Como vimos más arriba $2, 3, 5$ y $67$ son  números primos y por lo tanto hemos obtenido la descomposición prima de $201\,000$.
+\end{ejemplo*}
+
+
+Veamos ahora alguna propiedades básicas de los números primos.
+
+\begin{observacion} \label{pdivpp}
+Sea $a \in \mathbb Z$ y $p$ primo. Entonces 
+\begin{enumerate}[label=\textit{\alph*)}]
+\item\label{it.propmcd_a}  Si $p{\not|}a$, entonces $\mcd(a,p) = 1$.
+\item\label{it.propmcd_b}  Si $p$ y $p'$ son primos y $p|p'$ entonces $p=p'$.
+\end{enumerate}
+\end{observacion}
+\begin{proof}
+\
+
+\noindent \ref{it.propmcd_a} Como los únicos divisores de $p$ son $p$ y $1$, y $p{\not|}a$, el único  divisor común de $p$ y $a$ es $1$.
+
+\noindent \ref{it.propmcd_b} $p'$ es primo, por lo tanto tiene sólo dos divisores positivos $1$ y $p'$. Como $p$ no es $1$, tenemos que  $p=p'$.
+\end{proof}
+
+Para encontrar la descomposición prima de un número, digamos $n$, debemos ir tomando todos los números menores a $n$ y comprobando si estos lo dividen o no. En lo que sigue veremos el criterio de la raíz, que se utiliza para comprobar si un número es primo en menos pasos que la comprobación directa.  
+
+\begin{lema} Si $n>0$ no es primo, entonces existe $m>0$ tal que $m|n$ y $m \le \sqrt{n}$.  
+\end{lema}
+\begin{proof}
+Si $n$ no es primo, entonces $n = m_1m_2$ con $1 < m_1,m_2 < n$. Supongamos que $m_1,m_2 > \sqrt n$, entonces $n = m_1m_2 >  \sqrt n\sqrt n = n$, lo cual es una contradicción. Por lo tanto, $m_1$ o $m_2$ debe ser menor o igual que $\sqrt n$ y por consiguiente encontramos un divisor de $n$ menor o igual a  $\sqrt n$. 
+\end{proof}
+
+\begin{proposicion}[Criterio de la raíz]\label{craiz}Sea $n\ge 2$. Si para todo $m$ tal que $1<m \le \sqrt{n}$ se cumple que $m{\not|}n$, entonces $n$ es primo.
+\end{proposicion}
+ \begin{proof}  Supongamos que $n$ no es primo, luego, por el lema anterior, existe $m$ tal que  $m|n$ y $1 < m \le \sqrt n$ y esto contradice nuestras hipótesis. La contradicción se produce al suponer que $n$ no es primo, por lo tanto $n$ es primo. 
+\end{proof}
+
+Este criterio reduce enormemente la cantidad de pruebas que debemos hacer para verificar si un número es primo.
+
+\begin{ejemplo*} Verifiquemos si $467$ es primo o no.
+\end{ejemplo*}
+\begin{proof}[Solución]
+     Observar primero que si no utilizamos el criterio de la raíz deberíamos hacer 465 divisiones: deberíamos comprobar si $m|467$ con  $1<m <467$. 
+    
+    Como $\sqrt{467} < 22$, por el criterio de la raíz, sólo debemos comprobar si $m|467$ para $2\le m \le 21$. Un sencilla comprobación (dividiendo) muestra que los números $2,3,\cdots,20,21$ no  dividen a $467$ y por  lo tanto $467$ es primo.
+\end{proof}
+
+
+
+La facilidad con la que establecemos la existencia de la factorización de primos conlleva dos dificultades importantes. Primero el problema de encontrar los factores primos no es de ningún modo directo; y segundo no es obvio que exista una \textit{única} factorización en primos para todo entero dado $n\ge 2$ . El siguiente resultado es un paso clave en la demostración de la unicidad.
+
+\begin{teorema}\label{t1.8} Sea $p$  un número  primo.
+
+\begin{enumerate}[label=\textit{\alph*)}]
+\item\label{it.pirreducible_a} Si $p|xy$ entonces $p|x$ o $p|y$.
+\item\label{it.pirreducible_b} $x_1,x_2,\ldots,x_n$ son enteros tales que
+$$
+p|x_1x_2\ldots x_n
+$$
+entonces $p|x_i$ para algún $x_i$ ($1\le i \le n$).
+\end{enumerate}
+\end{teorema}
+\begin{proof}
+\
+
+\ref{it.pirreducible_a}  Si $p|x$ ya está probado el resultado. Si $p{{\not|}}x$ entonces tenemos $\mcd(x,p)=1$. Por proposición \ref{prop-d-comb-lin}, existen enteros $r$ y $s$ tales que $rp+sx=1$. Por lo tanto tenemos 
+$$
+y = 1 \cdot y = (rp+sx)y =(ry)p+s(xy).
+$$
+Como $p|p$ y $p|xy$, entonces divide a ambos términos y se sigue que $p|y$. 
+
+\ref{it.pirreducible_b} Usemos el principio de inducción. El resultado es obviamente verdadero cuando $n=1$ (base inductiva). 
+
+Ahora, supongamos que el resultado es verdadero cuando $n=k$, es decir si $p|x_1x_2\ldots x_k$, entonces 
+$p|x_i$ para algún $i$ con $1\le i \le k$ (hipótesis inductiva).
+
+Debemos probar que si $p|x_1x_2\ldots x_{k}x_{k+1}$, entonces  $p|x_i$ para algún $x_i$ ($1\le i \le k+1$).
+
+Supongamos $p|x_1x_2\ldots x_{k}x_{k+1}$ y sea $x=x_1x_2\ldots x_k$. Si $p|x$ entonces, por la hipótesis inductiva, $p|x_i$ para algún $x_i$ en el rango $1\le i \le k$. Si $p{{\not|}}x$ entonces, por 1), se sigue que $p|x_{k+1}$. De este modo, en ambos casos $p$ divide uno de los $x_i$ ($1\le i\le k+1$). 
+\end{proof}
+
+Un error común es asumir que el teorema \ref{t1.8} se mantiene verdadero cuando reemplazamos el primo $p$ por un entero arbitrario . Pero esto claramente falso: por ejemplo 
+$$
+6| 3\cdot 8 \quad \text{ pero } \quad 6{\not|} 3 \quad \text{ y }\quad 6{\not|}8.
+$$
+Ejemplos como éste nos ayudan a entender que el teorema \ref{t1.8} expresa una propiedad muy significativa de los números primos. Además veremos que esta propiedad juega un papel crucial en el siguiente resultado, que a veces es llamado el \textit{Teorema Fundamental de la Aritmética}. 
+
+\begin{teorema}\label{t1.8.2} La factorización en primos de un entero positivo $n\ge 2$ es única, salvo el orden de los factores primos.
+\end{teorema}
+\begin{proof} Por el axioma del buen orden, si existe un entero para el cual el teorema es falso, entonces hay un entero mínimo $n_0\ge 0$ con esta propiedad. Supongamos entonces que 
+$$
+n_0= p_1p_2\ldots p_k\quad\text{ y }\quad n_0= p'_1p'_2\ldots p'_l,
+$$
+donde los $p_i$ ($1\le i \le k$) son primos, no necesariamente distintos, y los $p'_i$ ($1\le i \le l$) son primos, no necesariamente distintos. La primera ecuación implica que $p_1|n_0$, y la segunda ecuación implica que $p_1 | p'_1p'_2\ldots p'_l$. Por consiguiente por teorema \ref{t1.8} tenemos que $p_1|p'_j$ para algún $j$ ($1\le j \le l$). Reordenando la segunda factorización podemos asumir que $p_1 | p'_1$, y puesto que $p_1$ y $p'_1$ son primos, se sigue que $p_1=p'_1$ (observación \ref{pdivpp}-(3)). Luego por el axioma (\textbf{I7}), podemos cancelar los factores $p_1$ y $p'_1$, y obtener
+$$
+p_2p_3 \ldots p_k = p'_2p'_3 \ldots p'_l,
+$$
+y llamemos a esto $n_1$. Pero supusimos que $n_0$ tenía dos factorizaciones diferentes, y hemos cancelado el mismo número ($p_1=p'_1$) en ambas factorizaciones, luego $n_1$ tiene también dos factorizaciones primas diferentes. Esto contradice la definición de $n_0$ como el mínimo entero sin factorización única. Por lo tanto el teorema es verdadero para $n\ge 2$.
+\end{proof}
+
+En la práctica a menudo reunimos los primos iguales en la factorización de $n$ y escribimos
+\begin{equation*}
+n=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},
+\end{equation*}
+donde $p_1,p_2,\ldots ,p_r$ son primos distintos y $e_1,e_2,\ldots,e_r$ son enteros positivos. Por ejemplo $ 7000 = 2^3 \cdot 5^3 \cdot 7$.
+
+La factorización prima nos dice que los números primos son los  ``ladrillos'' esenciales para  ``cons\-truir'' los números enteros usando multiplicaciones. Ahora bien, podría ocurrir que haya un número finitos de ellos y que podamos escribir cada número como producto de primos en forma muy sintética. Pero este no es el caso.
+
+\begin{proposicion} Existen infinitos números primos. 
+\end{proposicion} 
+\begin{proof} Haremos la demostración por el absurdo: supongamos que existen en total $r$ números primos $p_1,p_2,\ldots, p_r$. Sea $n =  p_1p_2\ldots p_r+1$. Sea $p$ primo tal que $p|n$. Como la lista de primos es exhaustiva, existe $i$ con $1 \le i \le r$ tal que $p=p_i$. Ahora bien $p_i| n$ y $p_i|p_1p_2\ldots p_r$, luego $p_i|n-p_1p_2\ldots p_r =1$, lo cual es un absurdo que vino de suponer que el número de primos es finito.  
+\end{proof}
+
+
+
+\begin{ejemplo*} Probemos que si $m$ y $n$ son enteros tales que $m\ge 2$ y $n\ge 2$, entonces $m^2  \not=2n^2$.
+\end{ejemplo*}
+\begin{proof} Supongamos que la factorización prima de $n$ contiene al $2$ elevado a la $x$ (donde $x$ es cero si $2$ no es factor primo de $n$). Entonces $n=2^xh$, donde $h$ es producto de primos más grandes que $2$, luego 
+$$
+2n^2=2(2^xh)^2= 2^{2x+1}h^2.
+$$
+Por lo tanto $2$ está elevado a una potencia \textit{impar} en la factorización prima de $2n^2$.
+
+Por otro lado, si $m=2^yg$, donde $g$ es producto de primos mayores que $2$, entonces
+$$
+m^2= (2^yg)^2 = 2^{2y}g^2,
+$$
+luego $2$ está elevado a una potencia \textit{par} (posiblemente cero) en la factorización prima de $m^2$. se sigue entonces que de ser $m^2 = 2n^2$ deberíamos tener dos factorizaciones primas diferentes del mismo número entero, contradiciendo al teorema \ref{t1.8.2}. Entonces $m^2 \not= 2n^2$.
+\end{proof}
+
+Es claro que la conclusión del ejemplo  vale también si nosotros permitimos que alguno de los enteros $m$ o $n$ valga $1$. Luego podemos expresar el resultado diciendo que no hay enteros positivos $m$ y $n$ que cumplan 
+$$
+\left(\frac{m}{n}\right)^2 =2
+$$
+o equivalentemente, diciendo que la raíz cuadrada de $2$ no puede ser expresada como una fracción $m/n$.
+
+Una notación conveniente para nuestros propósitos será la siguiente: sean $m$ y $n$ dos enteros positivos, a veces es conveniente escribir la factorización prima de ambos números usando los mismos primos, y los primos que usamos son los que se encuentran en la factorización prima de ambos. Es decir  escribimos
+$$
+m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
+n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
+$$
+con $e_i,f_i \ge 0$ para $i=1,\ldots,r$ y $e_i$ o $f_i$ distinto de cero. 
+ 
+Veremos ahora un resultado que se puede deducir fácilmente del Teorema Fundamental de la Aritmética (TFA).
+
+\begin{proposicion} Sean $m,n \ge2$ con
+$$
+m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
+n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
+$$
+donde $p_i$ primo y $e_i,f_i \ge 0$ para $i=1,\ldots,r$. 
+
+Entonces $m|n$ si y sólo si $e_i \le f_i$ para todo $i$.
+\end{proposicion}
+\begin{proof}
+\
+    
+\noindent($\Rightarrow$) Por la descomposición de $m$ es claro que $p^{e_i}|m$. Como $m|n$ entonces   $p^{e_i}|n$. Es decir $n =  p^{e_i}u$. Es claro por TFA entonces que $e_i \le f_i$.
+%\vskip .2cm
+
+\noindent($\Leftarrow$) Como $e_i \le f_i$, tenemos que $p^{e_i}|p^{f_i}$, para $1 \le i \le r$.  Luego  $$p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}| p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.$$ Es decir $m|n$.
+\end{proof}
+
+
+%\begin{ejercicio} Sean $m,n$ enteros con $m,n\ge 2$. Entonces  $m$ y  $n$ son coprimos si y sólo si no comparten ningún primo en la factorización. 
+%
+%En otras palabras, sean  
+%$$
+%m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
+%n=q_1^{f_1}q_2^{f_2}\ldots q_s^{f_s},
+%$$ 
+%las descomposiciones primas de $m$ y $n$. Entonces  $\operatorname{mcd}(m,n) =1$ si y sólo si con $p_i \not= q_j$ para todos los $i,j$.  
+%\end{ejercicio}
+
+
+Ahora veremos que es es posible calcular el $\mcd$ y el $\mcm$ de un par de números sabiendo sus descomposiciones primas.
+
+\begin{proposicion}
+Sean $m$ y $n$ enteros positivos cuyas factorizaciones primas son
+$$
+m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
+n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
+$$
+\begin{enumerate}[label=\textit{\alph*)}]
+    \item\label{it.mcd_fact} El mcd de $m$ y $n$ es $d=p_1^{k_1}p_2^{k_2}\ldots p_r^{k_r}$ donde, para cada $i$ en el rango $1\le i \le r$, $k_i$ es el mínimo entre $e_i$ y $f_i$.
+    \item\label{it.mcm_fact} El mcm de $m$ y $n$ es $u=p_1^{h_1}p_2^{h_2}\ldots p_r^{h_r}$ donde, para cada $i$ en el rango $1\le i \le r$, $h_i$ es el máximo entre $e_i$ y $f_i$.
+    \end{enumerate}
+\end{proposicion}
+\begin{proof}
+\
+
+\ref{it.mcd_fact} Sea $c$ tal que $c|n$ y $c|m$, entonces los primos que intervienen en la factorización de $c$ son $p_1,\ldots,p_r$ y por lo tanto $c =  p_1^{t_1}p_2^{t_2}\ldots p_r^{t_r}$. Además, como $c|n$ y $c|m$ tenemos que $t_i \le e_i,f_i$ y por lo tanto $t_i \le k_i = \min(e_i,f_i)$. De esto se deduce que $c|p_1^{k_1}p_2^{k_2}\ldots p_r^{k_r}=d$. Por otro lado, es claro  que  $p_1^{k_1}p_2^{k_2}\ldots p_r^{k_r}$ divide a $m$ y $n$ y se deduce el resultado.
+
+\ref{it.mcm_fact}  Se deja como ejercicio. 
+\end{proof}
+
+
+\begin{observacion*} La proposición anterior nos puede llevar a pensar que una forma sencilla de encontrar el mcd y mcm  es usando la descomposición en factores primos de los números involucrados. Esto, en general, no es así para números grandes: no hay un método eficiente para encontrar la descomposición prima de un número grande. Esencialmente, el mejor método para encontrar un divisor de un número grande es el criterio de la raíz, es decir probando si algún número menor que la raíz del número original lo divide. El criterio de la raíz baja el número de comprobaciones de $n$ a $\sqrt{n}$ y eso no ayuda mucho cuando $n$ es grande.
+
+ Ahora bien, ¿qué es un ``número grande''? En la actualidad, por ejemplo, con todos los recursos computacionales de que se disponen no es posible factorizar números de $200$ dígitos o más.     
+\end{observacion*}
+
+
+\begin{ejemplo*}
+Encontremos el mcd y el mcm  de $825$ y $385$.
+
+Como $825 =  3\cdot 5^2\cdot 11$ y $385 = 5\cdot 7\cdot 11$, tenemos que
+$$
+\text{mcd}(825,385) = 5\cdot 11 = 55, \qquad \text{mcm}(825,385) = 3\cdot 5^2\cdot 7\cdot 11 = 5775.
+$$
+\end{ejemplo*}
+
+
+
+\subsection*{$\S$ Ejercicios}
+
+\begin{enumex}
+    \item Sean $m,n$ enteros con $m,n\ge 2$. Probar que,  $m$ y  $n$ son coprimos si y sólo si no comparten ningún primo en la factorización. 
+    
+    En otras palabras, sean  
+    $$
+    m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
+    n=q_1^{f_1}q_2^{f_2}\ldots q_s^{f_s},
+    $$ 
+    las descomposiciones primas de $m$ y $n$. Entonces  $\operatorname{mcd}(m,n) =1$ si y sólo si con $p_i \not= q_j$ para todos los $i,j$.  
+    
+\item Probar que si $m$ y $n$ son enteros positivos, tales que $m\ge 2$ y $n \ge 2$, y
+$m^2 = kn^2$, entonces $k$ es el cuadrado de un entero.
+
+\item Usar la identidad
+$$
+2^{rs} -1 = (2^r-1) (2^{(s-1)r}+2^{(s-2)r}+\cdots +2^r+1)
+$$
+para probar que si $2^n-1$ es primo, entonces $n$ es primo.
+
+\item Encontrar el mínimo $n$ para el cual la recíproca del ejercicio anterior
+es falsa: esto es, $n$ es primo pero $2^n-1$ no lo es.
+\end{enumex}
+
+\end{section}    
+    
+
