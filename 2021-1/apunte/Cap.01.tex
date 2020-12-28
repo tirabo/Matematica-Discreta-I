@@ -7,19 +7,19 @@ En este curso no nos preocupamos demasiado por el significado lógico y filosóf
 
 El punto de vista adoptado en este apunte es el señalado antes. Aceptamos sin reparo que existe un conjunto de objetos llamados \textit{enteros} conteniendo los enteros positivos y los negativos, y el cero, familiares en nuestra temprana educación y experiencia. El conjunto de enteros se denotará por el símbolo especial ${\mathbb Z}$. Las propiedades de ${\mathbb Z}$ serán dadas por una lista de axiomas, a partir de las cuales seremos capaces de deducir todos los resultados sobre números enteros que necesitaremos en las cuestiones subsiguientes. Empezaremos listando aquellos axiomas que tratan la suma y la multiplicación.
 
-Adoptaremos las notaciones usuales $a+b$ para la suma de dos enteros $a$ y $b$, y $a \times b$ (frecuentemente $a \cdot b$ o solo $ab$) para su producto. Pensamos en $+$ y $\times$ como \textit{operaciones} que a un par de enteros $a$ y $b$ les hacen corresponder un entero $a+b$ y otro $a\times b$. El hecho de que $a \times b$ y $a+b$ son enteros, y no algún objeto extra\~no como elefantes, es nuestra primera suposición axioma (\textbf{I1}).     
+Adoptaremos las notaciones usuales $a+b$ para la suma de dos enteros $a$ y $b$, y $a \cdot b$ (frecuentemente $ab$ o también $a \times b$) para su producto. Pensamos en $+$ y $\cdot$ como \textit{operaciones} que a un par de enteros $a$ y $b$ les hacen corresponder un entero $a+b$ y otro $a\cdot b$. El hecho de que $a \cdot b$ y $a+b$ son enteros, y no algún objeto extra\~no como elefantes, es nuestra primera suposición axioma (\textbf{I1}).     
 
 En la siguiente lista de axiomas $a$, $b$, $c$ denotan enteros arbitrarios, y $0$ y $1$ denotan enteros especiales que cumplen las propiedades especificadas más abajo.
 
 %\begin{enumerate}[label=\textbf{\arabic*)}, ref=\textbf{\arabic*}]
 \begin{enumerate}[label=\textbf{I\arabic*)}, ref=\textbf{I\arabic*}]
-\item \label{axioma-i1} $a+b$ y $ab$ pertenecen a ${\mathbb Z}$.
+\item \label{axioma-i1} $a+b$ y $a\cdot b$ pertenecen a ${\mathbb Z}$.
 \item \label{axioma-i2} {\em Conmutatividad.}\, $a+b = b+a$;\qquad $ab=ba$. 
-\item \label{axioma-i3} {\em Asociatividad.}\, $(a+b)+c = a+(b+c)$;\qquad $(ab)c = a(bc)$. 
-\item \label{axioma-i4} {\em Existencia de elemento neutro.}\, Existen números $0$, $1 \in \mathbb Z$ con $0\not=1$ tal que $a+0=a$;\qquad $a1=a$. 
-\item \label{axioma-i5} {\em Distributividad.}\, $a(b+c)=ab+ac$. 
+\item \label{axioma-i3} {\em Asociatividad.}\, $(a+b)+c = a+(b+c)$;\qquad $(a\cdot b)\cdot c = a\cdot (b\cdot c)$. 
+\item \label{axioma-i4} {\em Existencia de elemento neutro.}\, Existen números $0$, $1 \in \mathbb Z$ con $0\not=1$ tal que $a+0=a$;\qquad $a\cdot 1=a$. 
+\item \label{axioma-i5} {\em Distributividad.}\, $a\cdot (b+c)=a\cdot b+a\cdot c$. 
 \item \label{axioma-i6} {\em Existencia del inverso aditivo, también llamado opuesto.}\, Por cada $a$ en ${\mathbb Z}$ existe un único entero $-a$ en ${\mathbb Z}$ tal que $a+(-a)=0$. 
-\item \label{axioma-i7} {\em Cancelación.}\, Si $a$ es distinto de $0$ y $ab=ac$, entonces $b=c$. 
+\item \label{axioma-i7} {\em Cancelación.}\, Si $a$ es distinto de $0$ y $a\cdot b=a\cdot c$, entonces $b=c$. 
 \end{enumerate}
 
 
@@ -31,7 +31,7 @@ De forma análoga, usaremos la notación
 $$
 abc = (ab)c = a(bc).
 $$
-Debido a la ley de conmutatividad axioma (\textbf{I2}), es claro que  del axioma (\textbf{I4}) se deduce que  $0+a=a+0=a$ y $1a = a1=a$. Análogamente,  por  (\textbf{I2}) e  (\textbf{I6}) obtenemos que  $-a+a =    a+(-a)=0$.
+Debido a la ley de conmutatividad axioma (\textbf{I2}), es claro que  del axioma (\textbf{I4}) se deduce que  $0+a=a+0=a$ y $1\cdot a = a\cdot 1=a$. Análogamente,  por  (\textbf{I2}) e  (\textbf{I6}) obtenemos que  $-a+a =    a+(-a)=0$.
 
 Una propiedad que debemos mencionar es la siguiente: si $a,b, c \in \mathbb Z$  y $a=b$, entonces $a+c = b+c$ y $ac = bc$. Esto se debe a que la suma y el producto son operaciones que, como acabamos de decir, toman un par de enteros y  devuelven otro entero. Si $a=b$, entonces el  par $a,c$ es igual al par $b,c$ y por lo tanto devuelven la misma suma y el mismo producto. Esta propiedad no es un axioma, sino  una mera aplicación de la lógica formal. 
   
@@ -72,7 +72,7 @@ Tanto formalismo, como el usado en las  demostraciones realizadas en el ejemplo 
 $$
 a+0= a, \qquad a+0'=a
 $$
-para todo $a$ de $\mathbb Z$. 
+para todo $a$ de $\mathbb Z$.  Entonces $0= 0'$. 
 \end{ejemplo*}
 \begin{proof}
 \begin{alignat*}2
@@ -111,7 +111,7 @@ Algunos resultados similares pueden encontrarse en los siguientes ejercicios. Co
 \begin{enumex}
 \item Demostrar la regla $(a+b)c=ac+bc$, explicando cada paso.
 
-\item Como siempre $x^2$ denota $xx$. Demostrar que dados dos enteros $a$ y $b$ tal que $a+b \not=0$, entonces existe un único $c$ tal que $(a+b)c=
+\item Como siempre $x^2$ denota $x\cdot x$. Demostrar que dados dos enteros $a$ y $b$ tal que $a+b \not=0$, entonces existe un único $c$ tal que $(a+b)c=
 a^2 - b^2$.
 
 \item \label{ej-elem-neutro-prod}Probar que hay un único elemento neutro del producto.
@@ -376,7 +376,7 @@ n!=1 \cdot 2 \cdot 3 \cdots n,
 $$
 el significado es bastante claro para cualquiera. Pero para precisar (y hacerlo claro para una computadora) debemos usar las definiciones recursivas.
 
-\begin{definicion} Sea $n \in \N$ sean $a_i$  $1 \le i \le n$ una secuencia de números (enteros, reales, etc.). Entonces $\sum_{i=1}^{n} a_i$  denota la función recursiva definida  
+\begin{definicion} Sea $n \in \N$ sean $a_i$  para $1 \le i \le n$, una secuencia de números (enteros, reales, etc.). Entonces $\sum_{i=1}^{n} a_i$  denota la función recursiva definida  
     $$
     \sum_{i=1}^{1} a_i= a_1, \qquad \sum_{i=1}^{n} a_i = \sum_{i=1}^{n-1} a_i+ a_{n} \quad (n\ge 2).
     $$
@@ -448,10 +448,10 @@ Por lo tanto si el resultado es correcto cuando $n=k$, entonces lo es cuando $n=
 
 La esencia de este argumento es comúnmente llamada \textit{principio de inducción}. Es una técnica poderosa, fácil de aplicar y la aplicaremos frecuentemente. Pero primero debemos examinar sus bases lógicas y para hacerlo necesitamos una formulación más general. Con $S$ denotemos al subconjunto de $\mathbb N$ para el cual el resultado es correcto: por supuesto, nuestra intención es probar que $S$ es todo $\mathbb N$. El primer paso es probar que $1$ pertenece a $S$, y luego demostraremos que si $k$ pertenece a $S$, también $k+1$. Entonces lo pensamos paso a paso, un procedimiento infinito, y concluimos que $S=\mathbb N$. Afortunadamente el pensarlo paso a paso no es esencial debido a que el principio de inducción es consecuencia de los axiomas que elegimos tan cuidadosamente para $\mathbb Z$ y $\mathbb N$. Más específicamente es consecuencia del axioma del buen orden.
 
-\begin{teorema}[Principio de inducción]\label{t1.4} Supongamos que $S$ es un subconjunto de $\mathbb N$ que satisface las condiciones \index{principio de inducción}
-\begin{enumerate}
-\item $1 \in S$,
-\item para cada $k \in \mathbb N$, si $ k \in S$ entonces $k+1\in S$.
+\begin{teorema}[Principio de inducción]\label{teorema-principio-de-induccion} Supongamos que $S$ es un subconjunto de $\mathbb N$ que satisface las condiciones \index{principio de inducción}
+\begin{enumerate}[label=\textit{\alph*)}]
+\item\label{caso-base} $1 \in S$,
+\item\label{paso-inductivo} para cada $k \in \mathbb N$, si $ k \in S$ entonces $k+1\in S$.
 \end{enumerate}
 Entonces se sigue que $S=\mathbb N$.
 \end{teorema}
@@ -460,10 +460,10 @@ el conjunto complementario $S^{\text{c}}$ definido por
 $$
 S^{\text{c}}= \{ r \in \mathbb N | r\not\in S\}
 $$
- es no vacío. Por el axioma del buen orden, $S^{\text{c}}$ tiene un menor elemento $m$. Como $1$ pertenece a $S$, $m\not=1$. Se sigue que $m-1$ pertenece a $\mathbb N$ y como $m$ es el mínimo de $S^{\text{c}}$, $m-1$ debe pertenecer a $S$. Poniendo $k=m-1$ en la condición (b), concluimos que $m$ esta en $S$, lo cual contradice el hecho de que $m$ pertenece a $S^{\text{c}}$. De este modo, la suposición $S \not= \mathbb N$ nos lleva a un absurdo, y por lo tanto tenemos $S= \mathbb N$. 
+ es no vacío. Por el axioma del buen orden, $S^{\text{c}}$ tiene un menor elemento $m$. Como por \ref{caso-base} el $1$ pertenece a $S$, $m\not=1$. Se sigue que $m-1$ pertenece a $\mathbb N$ y como $m$ es el mínimo de $S^{\text{c}}$, $m-1$ debe pertenecer a $S$. Poniendo $k=m-1$ en la condición \ref{paso-inductivo}, concluimos que $m$ esta en $S$, lo cual contradice el hecho de que $m$ pertenece a $S^{\text{c}}$. De este modo, la suposición $S \not= \mathbb N$ nos lleva a un absurdo, y por lo tanto tenemos $S= \mathbb N$. 
  \end{proof}
 
-En la práctica, generalmente presentamos una ``demostración por inducción'' en términos más descriptivos. El hecho de que el resultado es verdadero cuando $n=1$ se llama \textit{base de la inducción} o \textit{caso base}, (b) es llamado  el {\em paso inductivo} y la suposición de que es verdadero cuando $n=k$ es llamada \textit{hipótesis inductiva}\index{hipótesis inductiva}. Cuando se utilizan estos términos, no es necesario introducir explícitamente el conjunto $S$.
+En la práctica, generalmente presentamos una ``demostración por inducción'' en términos más descriptivos. El hecho de que el resultado es verdadero cuando $n=1$ se llama \textit{base de la inducción} o \textit{caso base}, \ref{paso-inductivo} del teorema \ref{teorema-principio-de-induccion} es llamado  el {\em paso inductivo} y la suposición de que es verdadero cuando $n=k$ es llamada \textit{hipótesis inductiva}\index{hipótesis inductiva}. Cuando se utilizan estos términos, no es necesario introducir explícitamente el conjunto $S$.
 
 
 El principio de inducción es útil para probar la veracidad de propiedades relativas a los números naturales. Por ejemplo, consideremos las siguientes propiedades $P(n)$, $Q(n)$ y $R(n)$:
@@ -483,7 +483,7 @@ Entonces $P(n)$ es verdadera para todo $n \in \mathbb N$.
 \end{teorema}
 \begin{proof} Basta tomar
 $$S = \{n \in \mathbb N| P(n) \text{ es verdadera} \}.$$
-Entonces $S$ es un subconjunto de $\mathbb N$ y las condiciones \ref{it.ind1} y \ref{it.ind2} nos dicen que $1 \in S$ y  si $ k \in S$ entonces $k+1\in S$. Por el teorema \ref{t1.4} se sigue que $S= \mathbb N$, es decir que $P(n)$ es verdadera para todo $n$.
+Entonces $S$ es un subconjunto de $\mathbb N$ y las condiciones \ref{it.ind1} y \ref{it.ind2} nos dicen que $1 \in S$ y  si $ k \in S$ entonces $k+1\in S$. Por el teorema \ref{teorema-principio-de-induccion} se sigue que $S= \mathbb N$, es decir que $P(n)$ es verdadera para todo $n$.
 natural.
 \end{proof}
 
@@ -520,36 +520,36 @@ $$
 \noindent (\textit{Paso  inductivo})
  Supongamos que el resultado verdadero cuando $n=k$, o sea, que la hipótesis inductiva es $x_k = k(k+1)$. Entonces
 $$
-\begin{matrix} 
-x_{k+1} &= x_k + 2(k+1) \hfill &\qquad &\text{por la definición recursiva} \hfill \\
-&= k(k+1)+2(k+1) \hfill &\qquad &\text{por hipótesis inductiva}\hfill \\
-&= (k+1)(k+2). \hfill &
-\end{matrix}
+\begin{matrix*}[l]
+x_{k+1} &= x_k + 2(k+1) \hfill &\qquad &\text{(por la definición recursiva)} \hfill \\
+&= k(k+1)+2(k+1) \hfill &\qquad &\text{(por hipótesis inductiva)}\hfill \\
+&= (k+1)(k+2). \hfill  &\qquad &\text{(propiedad distributiva)}\hfill
+\end{matrix*}
 $$
 Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.
 \end{proof}
 
 
-Existen varias formas modificadas del principio de inducción. A veces es conveniente tomar como base inductiva el valor $n=0$, por otro lado puede ser apropiado tomar un valor como $2$ o $3$ porque los primeros casos pueden ser excepcionales. Cada problema debe ser tratado según sus características. Otra modificación útil es tomar como hipótesis inductiva la suposición de que el resultado es verdadero para todos los valores $n\le k$, más que para $n=k$ solamente. Esta formulación es llamada a veces el principio de inducción \textit{completa}. Todas esas modificaciones pueden justificarse con cambios triviales en la demostración del teorema \ref{t1.4}
+Existen varias formas modificadas del principio de inducción. A veces es conveniente tomar como base inductiva el valor $n=0$, por otro lado puede ser apropiado tomar un valor como $2$ o $3$ porque los primeros casos pueden ser excepcionales. Cada problema debe ser tratado según sus características. Otra modificación útil es tomar como hipótesis inductiva la suposición de que el resultado es verdadero para todos los valores $n\le k$, más que para $n=k$ solamente. Esta formulación es llamada \textit{el principio de inducción completa}. Todas esas modificaciones pueden justificarse con cambios triviales en la demostración del teorema \ref{teorema-principio-de-induccion}
 
 El siguiente teorema incorpora todas las modificaciones del principio de inducción mencionadas más arriba.
 
-\begin{teorema}[Principio de inducción completa] Supongamos que $n_0$ es cualquier entero (no necesariamente positivo), y sea $X$ el conjunto de enteros $n$ tal que $ n \ge n_0$. Sea $S$ un subconjunto de $X$ que satisface las condiciones: \index{principio de inducción completa}
+\begin{teorema}[Principio de inducción completa] Supongamos que $n_0$ es cualquier entero (no necesariamente positivo), y sea $\Z_{\ge n_0}$ el conjunto de enteros $n$ tal que $ n \ge n_0$. Sea $S$ un subconjunto de  $\Z_{\ge n_0}$ que satisface las condiciones: \index{principio de inducción completa}
 \begin{enumerate}[label=\textit{\alph*)}]
 \item\label{it.indcompleta_1} $n_0 \in S$,
 \item\label{it.indcompleta_n} si $h\in S$ para todo $h$ en el rango $n_0 \le h \le k$ entonces $k+1 \in S$.
 \end{enumerate}
-Entonces se sigue que $S=X$.
+Entonces se sigue que $S= \Z_{\ge n_0}$.
 \end{teorema}
 \begin{proof}[Demostración (*)]
-Si la conclusión es falsa, $S \not= X$ y el conjunto complementario (en $X$)  $S^{\text{c}}$ definido por
+Si la conclusión es falsa, $S \not=  \Z_{\ge n_0}$ y el conjunto complementario (en $X$)  $S^{\text{c}}$ definido por
 $$
-S^{\text{c}}= \{ r \in X | r\not\in S\}
+S^{\text{c}}= \{ r \in  \Z_{\ge n_0} | r\not\in S\}
 $$
-es no vacío. Como $X$ es un conjunto acotado inferiormente por $n_0$, por el axioma del buen orden, $S^{\text{c}}$ tiene un menor elemento $m$. Como $n_0$ pertenece a $S$, $m\not=n_0$. Se sigue que $m-1$ pertenece a $X$ y como $m$ es el mínimo de $S^{\text{c}}$, $m-1$ debe pertenecer a $S$. Poniendo $k=m-1$ en la condición \ref{it.indcompleta_n}, concluimos que $m$ esta en $S$, lo cual contradice el hecho de que $m$ pertenece a $S^{\text{c}}$. De este modo, la suposición $S \not= X$ nos lleva a un absurdo, y por lo tanto tenemos $S= X$.
+es no vacío. Como $ \Z_{\ge n_0}$ es un conjunto acotado inferiormente por $n_0$, por el axioma del buen orden, $S^{\text{c}}$ tiene un menor elemento $m$. Como $n_0$ pertenece a $S$, $m\not=n_0$. Se sigue que $m-1$ pertenece a $X$ y como $m$ es el mínimo de $S^{\text{c}}$, $m-1$ debe pertenecer a $S$. Poniendo $k=m-1$ en la condición \ref{it.indcompleta_n}, concluimos que $m$ esta en $S$, lo cual contradice el hecho de que $m$ pertenece a $S^{\text{c}}$. De este modo, la suposición $S \not=  \Z_{\ge n_0}$ nos lleva a un absurdo, y por lo tanto tenemos $S=  \Z_{\ge n_0}$.
 \end{proof}
 
-Como se podrá observar, la demostración es muy similar a  la del teorema \ref{t1.4}. El teorema anterior lo podemos utilizar para la demostración de propiedades dependientes de números enteros.
+Como se podrá observar, la demostración es muy similar a  la del teorema \ref{teorema-principio-de-induccion}. El teorema anterior lo podemos utilizar para la demostración de propiedades dependientes de números enteros.
 
 \begin{teorema}\label{ind-completa} Sea $n_0$ número entero y sea $P(n)$ una propiedad para $n \ge n_0$ tal que:
 \begin{enumerate}[label=\textit{\alph*)}]
@@ -572,13 +572,13 @@ Probemos que $u_n = 2^n + 1$, para todo $n \in  \mathbb N$.
 
 \noindent (\textit{Paso  inductivo}) Supongamos que $k \ge 2$ y el resultado  es cierto para los $h$ tales que  $1 \le h \le k$. Es decir que $u_h = 2^h+1$ para $1 \le h \le k$ y $k \ge 2$ (hipótesis inductiva), entonces
 $$
-\begin{matrix} u_{k+1} &= 3u_k -2u_{k-1} \hfill &\qquad &\text{por definición recursiva} \hfill \\
-&= 3(2^k+1)-2(2^{k-1}+1) \hfill &\qquad &\text{por hipótesis inductiva}\hfill \\
-&= 3\cdot 2^k+3-2\cdot 2^{k-1}-2 \hfill &\qquad & \\
-&= 3\cdot 2^k+1- 2^{k} \hfill &\qquad & \\
-&= 2\cdot 2^k+1 \hfill &\qquad & \\
-&= 2^{k+1}+1. \hfill &\qquad & 
-\end{matrix}
+\begin{matrix*}[l]u_{k+1} &=& 3u_k -2u_{k-1} \hfill &\qquad &\text{(por definición recursiva)} \hfill \\
+&=& 3(2^k+1)-2(2^{k-1}+1) \hfill &\qquad &\text{(por hipótesis inductiva)}\hfill \\
+&=& 3\cdot 2^k+3-2\cdot 2^{k-1}-2 \hfill &\qquad & \\
+&=& 3\cdot 2^k+1- 2^{k} \hfill &\qquad & \\
+&=& 2\cdot 2^k+1 \hfill &\qquad & \\
+&=& 2^{k+1}+1. \hfill &\qquad & 
+\end{matrix*}
 $$
 \end{proof}
 \end{ejemplo*}
@@ -599,27 +599,31 @@ Si $n,m \in \mathbb N$ verifiquemos las siguientes propiedades
 \begin{proof}[Solución] 
     Veamos la afirmación \ref{pot+pot}. Se fijará $n$ y se hará inducción sobre $m$. 
     
-    \noindent(\textit{Caso  base}) Debemos ver que $a^{n} \cdot a^1 = a^{n+1}$, lo cual es verdadero por la definición recursiva (\ref{potencia}). 
+    \noindent(\textit{Caso  base}) Debemos ver que $a^{n} \cdot a^1 = a^{n+1}$, lo cual es verdadero por la definición recursiva \eqref{potencia}. 
     
     \noindent (\textit{Paso  inductivo}) Supongamos que el resultado es verdadero para $m=k$, es decir que $a^{n} \cdot a^k = a^{n+k}$ (hipótesis inductiva). Veamos que  $a^{n} \cdot a^{k+1} = a^{n+k+1}$. Ahora bien, 
-    \begin{alignat*}2
-        a^{n} \cdot a^{k+1} &= a^{n} \cdot a^{k} \cdot a &\qquad  &\text{definición (\ref{potencia})} \\
-        &= a^{n+k} \cdot a &\qquad &\text{hipótesis inductiva} \\
-        &= a^{n+k+1} &\qquad  &\text{definición (\ref{potencia})}. 
-    \end{alignat*}
+    \begin{equation*}
+        \begin{matrix*}[l]
+            a^{n} \cdot a^{k+1} &=& a^{n} \cdot a^{k} \cdot a &\qquad  &\text{(definición \eqref{potencia})} \\
+            &=& a^{n+k} \cdot a &\qquad &\text{(hipótesis inductiva)} \\
+            &=& a^{n+k+1} &\qquad  &\text{(definición \eqref{potencia})}. 
+        \end{matrix*}
+    \end{equation*}
     
     Probemos ahora \ref{potpot}. Al igual que antes, Se fijará $n$ y se hará inducción sobre $m$.
     
-    \noindent(\textit{Caso  base}) Debemos ver que $(a^n)^1 = a^n$, lo cual es verdadero por la definición recursiva (\ref{potencia}). 
+    \noindent(\textit{Caso  base}) Debemos ver que $(a^n)^1 = a^n$, lo cual es verdadero por la definición recursiva \eqref{potencia}. 
     
     
     \noindent (\textit{Paso  inductivo}) Supongamos que el resultado es verdadero para $m=k$, es decir que  $(a^n)^k = a^{nk}$ (hipótesis inductiva). Veamos que  $(a^n)^{k+1} = a^{n(k+1)}$. 
-    \begin{alignat*}2
-        (a^n)^{k+1} &= (a^n)^{k} \cdot a^n &\qquad  &\text{definición (\ref{potencia})} \\
-        &= a^{nk} \cdot a^n &\qquad &\text{hipótesis inductiva} \\
-        &= a^{nk+n} &\qquad  &\text{por \ref{pot+pot}}\\
-        &= a^{n(k+1)}. &\qquad  &
-    \end{alignat*}
+    \begin{equation*}
+        \begin{matrix*}[l]
+        (a^n)^{k+1} &=& (a^n)^{k} \cdot a^n &\qquad  &\text{(definición \eqref{potencia})} \\
+        &=& a^{nk} \cdot a^n &\qquad &\text{(hipótesis inductiva)} \\
+        &=& a^{nk+n} &\qquad  &\text{(por \ref{pot+pot})}\\
+        &=& a^{n(k+1)}. &\qquad  &
+    \end{matrix*}
+\end{equation*}
 \end{proof}
 
 \subsection*{$\S$ Ejercicios}

@@ -260,12 +260,6 @@ Sean  $m,n \in \mathbb N$. Hay   $n^m$ formas posibles de elegir ordenadamente $
 La prueba de esta proposición se basa en aplicar el principio de multiplicación $m-1$ veces, es decir debemos hacer inducción sobre $m$ y usar el principio de multiplicación en el paso inductivo. 
 \end{proof}
 
-\begin{observacion*} Si  $n \in \mathbb N$, denotaremos  $[[ 1 , n]]$ al conjunto de los primeros $n$ números naturales. Es decir:
-$$
- [[ 1 , n]] = \{ 1, 2, \ldots,n\}.
-$$  
-\end{observacion*}
-
 \begin{ejemplo*}
 ¿Cuántos números de cuatro dígitos pueden formarse con
 los dígitos $1, 2, 3, 4, 5, 6$?
@@ -354,6 +348,10 @@ Por ejemplo
 4! &= 3!\cdot 4 = 6 \cdot 4 = 24. 
 \end{align*}
 
+Si  $n \in \mathbb N$, denotaremos  $[[ 1 , n]]$ al conjunto de los primeros $n$ números naturales. Es decir:
+$$
+ [[ 1 , n]] = \{ 1, 2, \ldots,n\}.
+$$  
 
 Ahora estudiaremos las selecciones ordenadas de $m$ elementos entre $n$ donde {\em no} se permite la repetición. Es decir si  el conjunto es $A= \{a_1,a_2,\ldots,a_n\}$, las selecciones deben ser del tipo 
 $$
@@ -575,7 +573,14 @@ $$
         \begin{minipage}{0.40\textwidth}
             \item $\dfrac{(n-1)!}{(n + 2)!}$.
         \end{minipage}
-    \end{enumex}            
+    \end{enumex}       
+    
+    \item
+        En este ejercicio decimos que una \textit{palabra} es una sucesión de letras (tenga sentido o no).
+        \begin{enumex}
+            \item ¿Cuántas palabras de 4 letras o  menos se pueden hacer con un alfabeto de 26 letras?
+            \item ¿De cuántas formas pueden ordenarse las letras de la palabra\newline PREPOTENTE?
+        \end{enumex}
 \end{enumex}
 
 \end{section}
@@ -607,7 +612,7 @@ En el caso general de subconjuntos de $m$ elementos de un
 conjunto de $n$ elementos ($m \le n$) podemos razonar en forma análoga. Cada
 subconjunto de $m$ elementos está determinado por una selección ordenada y todas las permutaciones de esta selección.
 
-Por lo tanto el número total de subconjunto de $m$ elementos
+\label{eleciones-sin-orden-sin-repeticion} Por lo tanto el número total de subconjunto de $m$ elementos
 de $X$ es
 $$
 \frac{n \cdot (n - 1) \cdots (n - (m - 1))}{m!} = \frac{n!}{(n - m)!\; m!}
@@ -634,29 +639,24 @@ $$
 Estos resultados se obtienen por aplicación directa de la definición (recordar que  $0! =1$). 
 \end{observacion*}
 
-En resumen, tenemos la siguiente proposición.
+Concluyendo, el razonamiento de la página \pageref{eleciones-sin-orden-sin-repeticion} se puede resumir en la siguiente proposición.
 
 \begin{proposicion}
 Sean $n, m \in \mathbb N_0$, $m \le n$, y supongamos que el conjunto $X$ tiene $n$ elementos.
-Entonces la cantidad de subconjuntos de $X$ con $m$ elementos es
-$
-\displaystyle\binom{n}{m}
-$.
+
+Entonces, la cantidad de subconjuntos de $X$ con $m$ elementos es $\displaystyle\binom{n}{m}$.
 \end{proposicion}
 
 Como vimos anteriormente el número combinatorio suele resultar de utilidad para resolver pro\-ble\-mas de conteo. Veamos un ejemplo.
 
 \begin{ejemplo*}
  ¿Cuántos comités pueden formarse de un conjunto de $6$ mujeres y $4$ hombres, si el comité debe estar compuesto por $4$ mujeres y $2$ hombres?
-
-\textsc{Solución.} Debemos elegir $4$ mujeres entre $6$, y la cantidad de elecciones posibles es   $\binom{6}{4}$. Por otro lado, hay $ \binom{4}{2}$ formas de elegir $2$ hombres entre $4$. Luego, por el principio de multiplicación,  el resultado es
-$$
-\binom{6}{3}\cdot \binom{4}{2} = \frac{6!}{2!4!}\cdot\frac{4!}{2!2!} = \frac{6\cdot 5}{2}\cdot\frac{4\cdot 3}{2} = 15 \cdot 6 = 90.
-$$
 \end{ejemplo*}
-
-
-
+\begin{proof}[Solución] Debemos elegir $4$ mujeres entre $6$, y la cantidad de elecciones posibles es   $\binom{6}{4}$. Por otro lado, hay $ \binom{4}{2}$ formas de elegir $2$ hombres entre $4$. Luego, por el principio de multiplicación,  el resultado es
+    $$
+    \binom{6}{3}\cdot \binom{4}{2} = \frac{6!}{2!4!}\cdot\frac{4!}{2!2!} = \frac{6\cdot 5}{2}\cdot\frac{4\cdot 3}{2} = 15 \cdot 6 = 90.
+    $$
+\end{proof}
 
 \begin{proposicion}[Simetría del número combinatorio]\label{simcomb}
 Sean $m,n \in \mathbb N_0$, tal que $m \le n$. Entonces
@@ -671,16 +671,14 @@ $$
 \end{proof}
 
 
-\begin{nota}
+\begin{observacion*}
 El hecho  de que 
 $$
 \binom{n}{m} = \binom{n}{n-m}.
 $$
 se puede interpretar en términos de subconjuntos:  $\displaystyle\binom{n}{m}$ es el número de subconjuntos de $m$
 ele\-men\-tos de un conjunto de $n$ elementos. Puesto que con cada subconjunto de $m$ ele\-men\-tos hay unívocamente asociado un subconjunto de $n - m$ elementos, su complemento en $X$, es claro que $\displaystyle\binom{n}{m} = \binom{n}{n-m}$.
-\end{nota}
-
-%\vskip .3cm
+\end{observacion*}
 
 \begin{teorema}[Fórmula del triángulo de Pascal] \label{teor-triangulo-de-pascal}
 Sean $m,n \in \mathbb N$, tal que $m \le n$. Entonces
@@ -695,7 +693,7 @@ El enunciado nos dice que debemos demostrar que
 \end{equation*}
 Hay varias forma de operar algebraicamente las expresiones y obtener el resultado. Nosotros partiremos de la expresión de la derecha y obtendremos la de la izquierda:
 \begin{align*}
-\frac{n!}{(n-m+1)!\,(m-1)!} +  \frac{n!}{(n-m)!\,m!} &= \frac{n!}{(n-m)!\,(m-1)!}\left(\frac{1}{(n-m+1)} +  \frac{1}{m}\right)\\
+\frac{n!}{(n-m+1)!\,(m-1)!} +  &\frac{n!}{(n-m)!\,m!}= \\&= \frac{n!}{(n-m)!\,(m-1)!}\left(\frac{1}{(n-m+1)} +  \frac{1}{m}\right)\\
 &= \frac{n!}{(n-m)!\,(m-1)!}\left(\frac{m+n-m+1}{(n-m+1)m} \right) \\
 & = \frac{n!}{(n-m)!\,(m-1)!}\left(\frac{n+1}{(n-m+1)m} \right) \\
 & = \frac{n!(n+1)}{(n-m)!(n-m+1)\,(m-1)!\,m}\\
@@ -716,7 +714,9 @@ $$
 \binom{1}{1}  = \binom{1}{0}  = 1 \in \mathbb N.
 $$
 
-Ahora supongamos que el resultado sea cierto  para $n \in \mathbb N$. Es decir, $\binom{n}{m} \in \mathbb N$ cualquiera sea $m$ tal que $0 \le m \le n$ (hipótesis inductiva). Probaremos entonces que 
+Ahora supongamos que el resultado sea cierto  para $n \in \mathbb N$. Es decir, $\displaystyle\binom{n}{m} \in \mathbb N$ cualquiera sea $m$ tal que $0 \le m \le n$ (hipótesis inductiva). 
+\vskip .2cm
+Probaremos entonces que 
 \begin{equation*}
     \binom{n+1}{m} \in \mathbb N
 \end{equation*}
@@ -729,13 +729,11 @@ Si $m=0$, entonces
     \binom{n+1}{m} = \binom{n+1}{0} =1 \in \mathbb N.
 \end{equation*}
 
-
 Si $1 \le m \le n$, entonces por el teorema anterior (en la segunda parte)
 $$
 \binom{n+1}{m} = \binom{n}{m-1} + \binom{n}{m}  
 $$
-Como 
-$\binom{n}{m-1}$  y $\binom{n}{m}$ pertenecen  a $\mathbb  N$ por la hipótesis inductiva, su suma es también un número natural, o sea 
+Como $\displaystyle\binom{n}{m-1}$  y $\displaystyle\binom{n}{m}$ pertenecen  a $\mathbb  N$ por la hipótesis inductiva, su suma es también un número natural, o sea 
 \begin{equation*}
     \binom{n+1}{m}   \in \mathbb N
 \end{equation*}
@@ -971,7 +969,7 @@ buscábamos.
     \end{equation*}
     No sería muy convincente enunciar el teorema del binomio con algunas excepciones poco naturales (como ser, exigir que $a$ y $b$ sean no nulos) y la formulación más general parece ser la correcta. Esta formulación exige que $0^0 =1$, como hemos visto más arriba.
     
-    Una fundamentación extensa y rigurosa sobre la conveniencia de definir $0^0 =1$ se encuentra en el artículo de D. Knuth \textit{Two notes on notation} que se encuentra en \href{https://arxiv.org/abs/math/9205211}{https://arxiv.org/abs/math/9205211}.
+    Una fundamentación extensa y rigurosa sobre la conveniencia de definir $0^0 =1$ puede leerse en el artículo de D. Knuth \textit{Two notes on notation} que se encuentra en \href{https://arxiv.org/abs/math/9205211}{https://arxiv.org/abs/math/9205211}.
 \end{observacion*}
 
 

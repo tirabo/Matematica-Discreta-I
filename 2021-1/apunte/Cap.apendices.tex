@@ -132,7 +132,7 @@ reaparecerán en sus posiciones originales. Otra forma de expresar el resultado 
 
 
 \subsection*{$\S$ Ejercicios}
-\begin{enumerate}
+\begin{enumex}
 \item Escribir en notación cíclica la permutación que realiza el siguiente reordenamiento:
 $$
 \begin{matrix} 1&2&3&4&5&6&7&8&9 \\
@@ -173,7 +173,7 @@ Probar que toda permutación de $[[1,n]]$ puede ser expresada en términos de $\
 \item Una permutación de $[[1,n]]$ que tenga solo un ciclo (necesariamente de longitud $n$) es llamada \textit{cíclica}  \index{permutación cíclica}. Probar que hay $(n-1)!$ permutaciones cíclicas de $[[1,n]]$.
 
 \item Un mazo de $52$ cartas es dividido en dos partes iguales y luego se alternan las cartas de una y otra parte. Es decir si la numeración original era $1,2,3,\ldots,54$, el nuevo orden es $1,27,2,28,\ldots$ ¿Cuántas veces se debe repetir este procedimiento para obtener de nuevo el mazo original? 
-\end{enumerate}
+\end{enumex}
 
 
 \chapter[El principio del tamiz]{El principio del tamiz} \label{ape.principio_del_tamiz}
@@ -252,7 +252,7 @@ n!\left(1-\frac{1}{1!} + \frac{1}{2!}-\cdots
 \end{proof}
 
 \subsection*{$\S$ Ejercicios}
-\begin{enumerate}
+\begin{enumex}
 \item En una clase de $67$ estudiantes de matemática, $47$ leen francés, $35$ leen alemán y $23$ leen ambos lenguajes ¿Cuántos estudiantes no lee ninguno de los dos lenguajes? Si además $20$ leen ruso, de los
 cuales $12$ también leen francés, $11$ leen alemán y $5$ leen los tres lenguajes, ¿cuántos estudiantes no leen ninguno de los tres lenguajes?
 
@@ -267,7 +267,7 @@ d_1=0, \quad d_2=1,\quad d_n= (n-1)(d_{n-1}+d_{n-2}) \ (n\ge 3).
 $$
 
 \item Probar que el número de desarreglos de $\{1,2,\ldots,n\}$ en el cual un objeto dado (digamos el $1$) está en un $2$-ciclo es $(n-1)d_{n-2}$. Utilizar esto para dar una prueba directa de la fórmula recursiva del ejercicio anterior.
-\end{enumerate}
+\end{enumex}
 
 \end{section}
 
@@ -370,7 +370,7 @@ y por lo tanto $\beta$ es suryectiva.  Luego $\beta$ es biyectiva y $|S|=n$, com
 \end{proof}
 
 \subsection*{$\S$ Ejercicios}
-\begin{enumerate}
+\begin{enumex}
 \item Encontrar los valores de $\phi(19),\quad \phi(20),\quad \phi(21)$.
 
 \item Probar que si $x$ y $n$ son coprimos, entonces lo son $n-x$ y $n$. Deducir que $\phi(n)$ es par para todo $n \ge 3$.
@@ -386,7 +386,7 @@ $$
 $$
 
 \item Calcular $\phi(1\,000)$ y $\phi(1\,001)$.
-\end{enumerate}
+\end{enumex}
 
 \end{section}
 
@@ -994,7 +994,7 @@ Kempe creyó que había sido capaz de probar que todo grafo planar que tuviera e
 
 El problema con la prueba de  Appel y Haken es que se basa en programas de computadora y entonces uno debe confiar en que no hay errores de programación. Incluso algunos matemáticos han dicho que la prueba contiene varios errores, pero  no han podido mostrarlos fehacientemente. 
 
-En  cierta manera esta polémica si diluyó en el año 2005 cuando Benjamin Werner y Georges Gonthier formalizaron una prueba del teorema con el asistente de pruebas Coq. Esto eliminó la necesidad de confiar en los diversos programas informáticos utilizados para verificar casos particulares; solo es necesario confiar en el kernel de Coq, el cual la comunidad científica considera que no debe tener errores. 
+En  cierta manera esta polémica si diluyó en el año 2005 cuando Benjamin Werner y Georges Gonthier formalizaron una prueba del teorema con el asistente de pruebas Coq. Esto eliminó la necesidad de confiar en los diversos programas informáticos utilizados para verificar casos particulares; solo es necesario confiar en el kernel de Coq, construido alrededor de un núcleo bien delimitado, el cual la comunidad científica considera que no debe tener errores. A esta altura está claro que esta prueba es mucho más confiable que la demostración de muchos teoremas importantes de la matemática de cientos de páginas propensos a errores humanos.
 
 La prueba con Coq se encuentra en el artículo de G. Gonthier ``Formal Proof—The Four-Color Theorem'', Notices of the American Mathematical Society, 55 (11): 1382–1393, MR 2463991 (2008).  
 

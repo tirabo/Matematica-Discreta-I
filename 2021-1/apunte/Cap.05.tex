@@ -496,11 +496,8 @@ El siguiente teorema resume los resultados sobre caminatas eulerianas. La demost
     El caso de un grafo donde todas las valencias son pares se puede reducir al anterior: si deseamos una caminata euleriana que empiece y termine en $v$, eliminamos una arista del grafo que contenga a $v$, digamos la arista $\{v,w\}$ (con lo cual queda un grafo  con solo dos vértices, $v$ y $w$, de valencia impar), aplicamos el caso  anterior, con lo cual hacemos una caminata euleriana que termina en  $w$, y terminamos la caminata agregando  la arista $\{v,w\}$. 
 \end{observacion}
 
-$$
-\forall X \subset \mathbb Z \wedge X \ne \emptyset \wedge (\exists a: \forall\, x \in X: a \le x) \Rightarrow (\exists b: \forall, x \in X :b \le x) \wedge (\forall)
-$$
 \begin{observacion}\label{obs-impar-a-par}
-    Análogamente,  el caso de un grafo  $G$ con dos valencias impares y todas las demás valencias pares  se puede reducir al caso en que todas las valencias son pares. Sean $p$ y $q$ los dos vértices de valencia impar,  entonces tenemos dos casos (1) $\{p,q\}$  es arista de $G$ y (2) $\{p,q\}$  no es arista de $G$.  En el caso (1),  eliminamos la arista  $\{p,q\}$  del grafo  y  nos queda un grafo  con todos los vértices de valencia par. Por lo tanto, hay un circuito euleriano de $p$  a $p$. Agregamos al final la arista $\{p,q\}$  y obtenemos una caminata euleriana de  $p$ a $q$. El caso (2) es un poco más complicado: agregamos al grafo $G$ la arista $\{p,q\}$ y obtenemos un grafo  con todos los vértices de valencia par. Luego  hay un circuito euleriano de $q$ a $q$. Podemos describir el circuito como
+    Recíprocamente,  el caso de un grafo  $G$ con dos valencias impares y todas las demás valencias pares  se puede reducir al caso en que todas las valencias son pares. Sean $p$ y $q$ los dos vértices de valencia impar,  entonces tenemos dos casos (1) $\{p,q\}$  es arista de $G$ y (2) $\{p,q\}$  no es arista de $G$.  En el caso (1),  eliminamos la arista  $\{p,q\}$  del grafo  y  nos queda un grafo  con todos los vértices de valencia par. Por lo tanto, hay un circuito euleriano de $p$  a $p$. Agregamos al final la arista $\{p,q\}$  y obtenemos una caminata euleriana de  $p$ a $q$. El caso (2) es un poco más complicado: agregamos al grafo $G$ la arista $\{p,q\}$ y obtenemos un grafo  con todos los vértices de valencia par. Luego  hay un circuito euleriano de $q$ a $q$. Podemos describir el circuito como
     $$
     q,v_1,\ldots,v_k,q,p,w_1,\ldots,w_r,q.
     $$
@@ -513,19 +510,17 @@ $$
 
 \subsection*{Algoritmo de Hierholzer}
 
-Más allá del resultado del teorema \ref{th-caminata-euleriana}, existe un algoritmo fácilmente implementable para encontrar circuitos eulerianos.
-
-C. Hierholzer (1840-1871) mostró, poco antes de su muerte, un algoritmo para encontrar un circuito euleriano  para cualquier grafo  con vértices de grado  par.
+C. Hierholzer (1840-1871) mostró, poco antes de su muerte, un algoritmo fácilmente implementable para encontrar un circuito euleriano  para cualquier grafo  con vértices de grado  par. El algoritmo de Hierholzer fue la primera demostración del teorema \ref{th-caminata-euleriana} para el caso  de grafos con vértices de grado par. Obviamente,  debido a la observación  \ref{obs-impar-a-par}, esto demuestra también el teorema para grafos con dos valencias impares.
 
 El  algoritmo es el siguiente: 
 \begin{enumerate}
-    \item (Paso 1) Elija cualquier vértice  inicial $v$ y haga una caminata  que no repita aristas y  que vuelva al vértice (de $v$ a $v$). No es posible quedarse atascado en ningún vértice que no sea $v$, porque el grado par de todos los vértices garantiza que, cuando se ingresa a un vértice $w$ (distinto de $v$) debe haber una  arista sin usar que nos permite dejar $w$. El recorrido formado de esta manera es un recorrido cerrado, pero puede no cubrir todos los vértices y aristas del grafo inicial.
-    \item (Paso iterativo) Mientras exista un vértice $u$ en la caminata ya realizada, pero que tenga aristas que no formen parte de la caminata, inicie otra caminata desde $u$ hasta $u$ siguiendo las aristas no utilizadas. Luego,  inserte esta  caminata a la caminata  anterior para formar una caminata nueva (más larga).
+    \item \textbf{Paso 1.} Elija cualquier vértice  inicial $v$ y haga una caminata  que no repita aristas y  que vuelva al vértice (de $v$ a $v$). 
+    
+    Observar que no es posible quedarse atascado en ningún vértice que no sea $v$, porque el grado par de todos los vértices garantiza que, cuando se ingresa a un vértice $w$ (distinto de $v$) debe haber una  arista sin usar que nos permite dejar $w$. El recorrido formado de esta manera es un recorrido cerrado, pero puede no cubrir todos los vértices y aristas del grafo inicial.
+    \item \textbf{Paso iterativo} Mientras exista un vértice $u$ en la caminata ya realizada, pero que tenga aristas que no formen parte de la caminata, inicie otra caminata desde $u$ hasta $u$ siguiendo las aristas no utilizadas. Luego,  inserte esta  caminata a la caminata  anterior para formar una caminata nueva (más larga).
 \end{enumerate}
 
 Puesto que suponemos que el grafo original es conexo, repetir el paso iterativo agotará todos las aristas del grafo.
-
-El algoritmo de Hierholzer fue la primera demostración del teorema \ref{th-caminata-euleriana} para el caso  de grafos con vértices de grado par. Obviamente,  debido a la observación  \ref{obs-impar-a-par}, esto demuestra también el teorema para grafos con dos valencias impares.
   
 \begin{ejemplo*} Dado  el  grafo de de la  Fig. \ref{f5.7.1}, encontremos una caminata euleriana con origen en $p$ y final en $r$. 
 
@@ -572,7 +567,7 @@ que es un circuito euleriano.
 
 
 
-\begin{observacion*}(*) Escribiremos en pseudocódigo el algoritmo para hallar un circuito euleriano en un grafo $G$ con $n$ vértices  de valencia par.
+\begin{observacion*} Escribiremos en pseudocódigo el algoritmo para hallar un circuito euleriano en un grafo $G$ con $n$ vértices  de valencia par.
     
 Tenemos una grafo $G$ con  $n$ vértices numerados $0,1,\ldots,n-1$,  $G$ se representa por  una lista de adyacencia, es decir $G[i]$  es la lista de vértices adyacentes a $i$.  Tomamos como comienzo del recorrido el vértice arbitrario $0$.
 
@@ -901,7 +896,7 @@ y eso nos garantizaría la equivalencia entre $P$, $Q$ y $R$. Si embargo, podemo
 $$
 P \Rightarrow Q,\qquad Q \Rightarrow R,\qquad R \Rightarrow P,
 $$  
-pues si queremos probar, por ejemplo $P \Leftrightarrow Q$, esto es equivalente a probar $P \Rightarrow Q$, ya sabido por hipótesis, y $Q \Rightarrow P$, que se deduce de $Q \Rightarrow R$, $R \Rightarrow P$ y la propiedad transitiva de $\Rightarrow$. 
+pues si queremos probar, por ejemplo $P \Leftrightarrow Q$, esto es equivalente a probar $P \Rightarrow Q$ y $Q \Rightarrow P$. La parte $P \Rightarrow Q$ ya ha sido probada y $Q \Rightarrow P$ se deduce de $Q \Rightarrow R$, $R \Rightarrow P$ y la propiedad transitiva de $\Rightarrow$. 
 
 Para el caso de cuatro proposiciones $P_1,P_2,P_3,P_4$ la economía de demostraciones es aún más drástica: para probar todas las equivalencias posibles de cuatro afirmaciones hacen falta 12 demostraciones (seis de ida y seis vuelta), pero alcanza haciendo sólo 4 demostraciones:
 $$
@@ -992,7 +987,7 @@ En general, para probar que el número cromático de un grafo dado es $k$, debem
     \item  probar que ninguna coloración de vértices usa menos de $k$ colores.
 \end{enumerate}
 
-\subsection*{$\S$ Ejercicios}\label{ejercicios5.6}
+\subsection*{$\S$ Ejercicios}
 \begin{enumex}
 \item \label{ejercicio5.6.1} Encontrar el número cromático de los siguientes grafos:
 \begin{enumex}
@@ -1137,8 +1132,7 @@ siguiendo. Puesto que $G$ es conexo, en determinado momento podremos listar todo
 Usando el mismo argumento que en la parte \ref{it.com_a} (pero para este orden) se sigue que el algoritmo greedy requerirá a lo más $k$ colores. Luego $\chi(G)\le k$. 
 \end{proof}
 
-La parte \ref{it.com_b} del teorema es falsa si permitimos que $G$ sea regular. El lector que haya respondido correctamente al ejercicio \ref{ejercicios5.6} \ref{ejercicio5.6.1} será capaz de dar dos ejemplos de este hecho: los grafos completos, y los grafos cíclicos de longitud impar, ambos requieren $k+1$ colores. Si
-embargo, puede ser demostrado que estos son los únicos contraejemplos.
+La parte \ref{it.com_b} del teorema es falsa si permitimos que $G$ sea regular. El lector que haya respondido correctamente al ejercicio \ref{ejercicio5.6.1} de la sección \ref{seccion-coloreo-de-vertices} será capaz de dar dos ejemplos de este hecho:  los grafos cíclicos de longitud impar tienen grado $2$ y número cromático  $3$ y los grafos completos de $k+1$ vértices tienen grado $k$ y número cromático $k+1$ colores. Si embargo, puede ser demostrado que estos son los únicos contraejemplos.
 
 Otra consecuencia útil del algoritmo greedy se refiere a grafos $G$ son $\chi(G)=2$. Para tales grafos, los conjuntos $V_1$ y $V_2$ de vértices de colores $1$ y $2$ respectivamente, forman una partición de $V$, con la propiedad que cada arista tiene un vértice en $V_1$ y el otro en $V_2$. Por esta razón, cuando $\chi(G)=2$, diremos que $G$ es \textit{bipartito}. \index{grafo bipartito} Una coloración de vértices con dos colores de un cubo se ilustra en la Fig. \ref{f5.12}, junto a un dibujo alternativo que enfatiza la naturaleza bipartita del grafo. Usualmente usaremos esta clase de dibujo cuando trabajemos con grafos bipartitos.
 
