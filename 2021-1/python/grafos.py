@@ -141,53 +141,14 @@ def circuito_euleriano(G, v = 0): #Algoritmo de Hierholzer
     #      Si no se ingresa v toma el valor 0
     # post: devuelve 'circuito' una lista de vertices que forma un circuito
     #       euleriano. El  circuito empieza en 0.
-    circuito = [0]  # caminata
-    libres = G
-    # libres representa las aristas no usadas en la caminata 
-    usados = []
-    for u in G:
-        usados.append([])
-    # usados:lista de adyacencia con los vértices de G y sin aristas  
-    # usados representa las aristas usadas en la caminata
-    tocados = [v]
-    # tocados representa los vértices por los cuales pasó la caminata
-    while enclibr(libres, tocados) != -1:
-       # enclibr: (listas de adyacencia, lista de vértices) -> vértices
-       # enclibr(lt, tc) devuelve j en tc tq lt[j] no es vacío. 
-       # En caso contrario, devuelve -1 (representa vacío) 
-       pos0 = enclibr(libres, tocados)
-       p0 = pos0
-       p1 = libres[pos0][0]
-       aux = [pos0] # será el circuito a partir de pos0
-       while p1 != pos0: # mientras no se vuelva al origen
-           # print('arista',p0,p1,libres)
-           aux.append(p1)  # agrega p1 a aux 
-           tocados.append(p1)  # agrega p1 a tocados
-           quitar_arista(libres, [p0, p1]) # quita de libres la arista 'p0, p1'
-           agregar_arista(usados, [p0, p1]) # agregar a usados la arista 'p0, p1'
-           # print(libres,usados)
-           p0 = p1 
-           p1 = libres[p0][0]
-       aux.append(aux[0]) # completa aux a circuito
-       quitar_arista(libres, [p0, p1]) # quita de libres la arista 'p0, p1'
-       agregar_arista(usados, [p0, p1]) # agregar a usados la arista 'p0, p1'
-       # print('fin w',p1,aux)
-       inserta_circuito(circuito, aux) # inserta aux en circuito
-       pos0 = enclibr(libres, tocados)  
-    return circuito 
-
-def circuito_euleriano_2(G):
-    # pre: G grafo con todos los vértices de valencia par 
-    # post: devuelve 'circuito' una lista de vértices que forma un circuito euleriano. 
-    #       El circuito empieza en 0 (y terminará en 0).
-    circuito = [0]  # inicio de la caminata
+    circuito = [v]  # inicio de la caminata
     libres = copiar_grafo(G) # aristas no utilizadas
     while  nro_aristas(libres) > 0:
         sub_cam = []   
         h = 0
-        while libres[h] == []:
+        while libres[h] == [] or h not in circuito:
             h = h + 1
-        # h = vértice donde libre[h] != [] (hay aristas libres)
+        # h = vértice en circuito donde libre[h] != [] (hay aristas libres)
         pos = circuito.index(h) # posición de la 1º ocurrencia de h
         p0 = h
         p1 = libres[h][0] 
@@ -205,7 +166,8 @@ def circuito_euleriano_2(G):
         # print('Libres;',libres)
     return circuito   
 
-print(circuito_euleriano_2(G))
+# print(circuito_euleriano(G,3))
+
     
 def caminata_euleriana_desde_a(G, v, w): 
     # pre: graph grafo donde v y w son vértices impares y todos demás pares
