@@ -86,14 +86,21 @@ def agregar_arista(lt, e):
         lt[e[0]].append(e[1]) 
         lt[e[1]].append(e[0]) 
 
+def nro_aristas(G):
+    # pre: G grafo
+    # post: devuelve el  número de aristas de G
+    k = 0
+    for u in G:
+        k = k + len(u)
+    return k // 2    
 
 # ALGORITMOS SOBRE GRAFOS
 
 
 # Grafos de prueba
 
-# Grafo 1
-# G = [[1,2,4,5],[0,2,4,5],[0,1,3,5],[2,4],[0,1,3,5],[0,1,2,4]]
+# Grafo 1 (el gran tour)
+G = [[1,2,4,5],[0,2,4,5],[0,1,3,5],[2,4],[0,1,3,5],[0,1,2,4]]
 
 # Grafo 2
 # G = [[3,4,5,6], [2,4], [1,5], [0,4], [0,1,3,5], [0,2,4,6], [0,5]]
@@ -108,7 +115,7 @@ def agregar_arista(lt, e):
 
 ## Inicio: Algoritmo de Hierholzer ##
 
-def enclibr(lt, tc): # necesaria pa circuitos eulerianos
+def enclibr(lt, tc): # necesaria para circuitos eulerianos
     # pre: lt lista de adyacencia, tc = lista de vértices,  
     # post: devuelve j en tocados tq libres[j] no es vacío.  
     ret = -1
@@ -168,6 +175,37 @@ def circuito_euleriano(G, v = 0): #Algoritmo de Hierholzer
        inserta_circuito(circuito, aux) # inserta aux en circuito
        pos0 = enclibr(libres, tocados)  
     return circuito 
+
+def circuito_euleriano_2(G):
+    # pre: G grafo con todos los vértices de valencia par 
+    # post: devuelve 'circuito' una lista de vértices que forma un circuito euleriano. 
+    #       El circuito empieza en 0 (y terminará en 0).
+    circuito = [0]  # inicio de la caminata
+    libres = copiar_grafo(G) # aristas no utilizadas
+    while  nro_aristas(libres) > 0:
+        sub_cam = []   
+        h = 0
+        while libres[h] == []:
+            h = h + 1
+        # h = vértice donde libre[h] != [] (hay aristas libres)
+        pos = circuito.index(h) # posición de la 1º ocurrencia de h
+        p0 = h
+        p1 = libres[h][0] 
+        while p1 != h: # mientras no se vuelva al origen
+            sub_cam.append(p1)  # agrega p1 a sub_cam 
+            libres[p0].remove(p1)
+            libres[p1].remove(p0) # quitar arista p0, p1 
+            p0 = p1 
+            p1 = libres[p0][0]
+        libres[p0].remove(h)
+        libres[h].remove(p0) # quitar arista p0, p1 
+        # print( circuito[: pos +1], sub_cam, circuito[pos :]) 
+        circuito = circuito[: pos + 1] +  sub_cam + circuito[pos :]
+        # print('Circuito:',circuito) 
+        # print('Libres;',libres)
+    return circuito   
+
+print(circuito_euleriano_2(G))
     
 def caminata_euleriana_desde_a(G, v, w): 
     # pre: graph grafo donde v y w son vértices impares y todos demás pares
@@ -226,14 +264,14 @@ def coloracion_vertices(G):
     # si j <= len(color), todavia no esta asignado el color a j
     colores = 0  # cantidad de colores utilizados
     for i in range(len(G)):
-        s = []  # conjunto de colores asignados a los vertices j (1 <= j < i) que son
+        S = []  # conjunto de colores asignados a los vertices j (1 <= j < i) que son
         # adyacentes a vi (comienza vacio)
         for j in range(i):  # recorre todos los vertices j < i
             if j in graph[i]:  # si j es adyacente a i
-                if color[j] not in s:
-                    s.append(color[j])  # agrega el color de j a s (si no estaba)
+                if color[j] not in S:
+                    S.append(color[j])  # agrega el color de j a s (si no estaba)
         k = 0
-        while k in s:
+        while k in S:
             k += 1
         color.append(k)  # k es el primer color que no esta en s. Asigna el color k a i
         if k + 1 > colores:
