@@ -3,14 +3,14 @@
 \begin{section}{Grafos y sus representaciones}\label{seccion-grafos}
 
 Los objetos a los cuales llamaremos \textit{grafos} son muy útiles en matemática discreta. Su nombre se deriva del hecho de que pueden ser entendidos con una notación gráfica (o pictórica), y en este aspecto solamente se parecen a los familiares gráficos de funciones que son estudiados en matemática elemental. Pero
-nuestros grafos son bastante diferentes de los gráficos de funciones y están más relacionados con objetos que en el lenguaje diario llamamos ``redes'' (networks).  \index{redes}
+nuestros grafos son bastante diferentes de los gráficos de funciones y están más relacionados con objetos que en el lenguaje diario llamamos \textit{redes} (networks).  \index{redes}
 
 Usaremos la siguiente definición en lo que sigue: dado un conjunto $X$ un \textit{$2$-subconjunto} es un subconjunto de $X$ de dos elementos.  
 
 \begin{definicion} Un \textit{grafo} $G$ consiste de un  \index{grafo} conjunto finito $V$, cuyos miembros son llamados  \textit{vértices},  \index{vértices de un grafo} y un conjunto de $2$-subconjuntos de $V$, cuyos miembros son llamados \textit{aristas}.  \index{aristas de un grafo} Nosotros usualmente escribiremos $G=(V,E)$ y diremos que $V$ es el \textit{conjunto de vértices} y $E$ es el \textit{conjunto de aristas}.
 \end{definicion}
 
-La restricción a un conjunto finito no es esencial, pero es conveniente para nosotros debido a que no consideraremos ``grafos'' infinitos en este apunte.
+La restricción a un conjunto finito no es esencial, pero es conveniente para nosotros debido a que no consideraremos ``grafos infinitos'' en este apunte.
 
 Un ejemplo típico de un grafo $G=(V,E)$ es dado por los conjuntos
 \begin{equation}\label{grafosimple}
@@ -77,7 +77,7 @@ $d$&$z$&&$c$&$d$\\
 \end{tabular}
 \end{center}
 
-Las listas de adyacencia son redundantes (cada arista está representada dos veces) pero como todo lenguaje de programación de alto nivel maneja la estructura tipo lista,  preferimos esta representación pues  un grafo  resulta ser como una lista de listas  o un  arreglo de listas.  
+Las listas de adyacencia son redundantes (cada arista está representada dos veces) pero como todo lenguaje de programación de alto nivel maneja la estructura tipo lista,  preferimos esta representación pues  un grafo  resulta ser una lista de listas  o un  arreglo de listas.  
 
 
 \begin{ejemplo*}
@@ -283,7 +283,7 @@ $$
 
 
 \begin{section}{Valencias de un grafo}\label{seccion-valencias-de-un-grafo}
-La \textit{{valencia}} de un vértice $v$ en un grafo $G=(V,E)$ es el \index{valencia de un vértice} número de aristas de $G$ que contienen a $v$. Usaremos la notación $\delta(v)$ para la valencia de $v$, formalmente
+La \textit{{valencia}} o \textit{grado} de un vértice $v$ en un grafo $G=(V,E)$ es el \index{valencia de un vértice} número de aristas de $G$ que contienen a $v$. Usaremos la notación $\delta(v)$ para la valencia de $v$, formalmente
 $$
 \delta(v)=|D_v|, \quad \text{ donde } \quad D_v=\{e \in E| v\in
 e\}.
@@ -307,10 +307,10 @@ Ahora cada término en la segunda suma es par, luego esta suma es un número par
 \begin{teorema} El número de vértices impares es par.
 \end{teorema}
 
-Este resultado es a veces llamado el ``handshaking lemma'' (handshake=estrechar la mano, darse la  \index{handshaking lemma} mano), debido a que se puede interpretar en términos de gente y darse la mano: dado un conjunto de personas, el número de personas que le ha dado la mano a un número impar de miembros del conjunto
+Este resultado es a veces llamado el ``handshaking lemma'' (handshak $=$ estrechar la mano, darse la  \index{handshaking lemma} mano), debido a que se puede interpretar en términos de gente y darse la mano: dado un conjunto de personas, el número de personas que le ha dado la mano a un número impar de miembros del conjunto
 es par. 
 
-Un grafo en el cual todos los vértices tienen la misma valencia $r$ se llama \textit{regular}  \index{grafo regular} (con valencia $r$), o \textit{$r$-valente.} En este caso, el resultado del teorema \ref{t5.3} se traduce
+Un grafo en el cual todos los vértices tienen la misma valencia $r$ se llama \textit{regular}  \index{grafo regular} (con valencia $r$), o \textit{$r$-valente,} o de \textit{grado $r$.} En este caso, el resultado del teorema \ref{t5.3} se traduce a
 $$
 r|V|=2|E|.
 $$
@@ -411,9 +411,9 @@ Debido al lema que probamos más arriba, es sencillo verificar la siguientes pro
 \end{enumerate}
 
 
-En un lenguaje formal, una relación que  cumple las tres propiedades anteriores es llamada una  \textit{relación de equivalencia} del conjunto, en este caso tenemos una relación de equivalencia del conjunto de vértices $V$ de $G$. 
+En un lenguaje formal, una relación que  cumple las tres propiedades anteriores es llamada una  \textit{relación de equivalencia}\index{relación de equivalencia} del conjunto, en este caso tenemos una relación de equivalencia del conjunto de vértices $V$ de $G$. Como ya vimos en el capítulo \ref{cap.aritmetica_modular}, página  \pageref{relacion-de-equivalencia}, la congruencia módulo es también una relación de equivalencia, y hay muchísimos ejemplos en matemática de estos tipos de relaciones. 
 
-Estas tres propiedades nos permiten partir a $V$ en conjuntos disjuntos: dos vértices están en el mismo conjunto si ellos pueden ser unidos por un camino, y están en conjuntos diferentes si no podemos encontrar tal camino. llamaremos a estos conjuntos disjuntos las \textit{clases de equivalencia de $\sim$}.
+Estas tres propiedades que posee la relación de equivalencia permiten partir a $V$ en conjuntos disjuntos: dos vértices están en el mismo conjunto si ellos pueden ser unidos por un camino, y están en conjuntos diferentes si no podemos encontrar tal camino. llamaremos a estos conjuntos disjuntos las \textit{clases de equivalencia de $\sim$}.\index{clases de equivalencia}
 
 \begin{definicion}Supongamos que $G=(V,E)$ es un grafo y que la partición de $V$ en las clases de equivalencia de $\sim$ es
 $$
@@ -533,12 +533,12 @@ $\delta(t)=4$, y $\delta(u)=2$,  es decir todos los vértices tienen grado par.
     \begin{tikzpicture}[scale=1]
     %\SetVertexSimple[Shape=circle,FillColor=white]
     \def\rvar{1.2}
-    \Vertex[x=0.00, y=-2.00, L=$3$]{$u$}
-    \Vertex[x=\rvar*1.90, y=-0.62, L=$2$]{$t$}
-    \Vertex[x=\rvar*1.18, y=1.62, L=$1$]{$q$}
-    \Vertex[x=-1.18*\rvar, y=1.62, L=$0$]{$p$}
-    \Vertex[x=-1.90*\rvar, y=-0.62, L=$4$]{$r$}
-    \Vertex[x=0, y=0, L=$5$]{$s$}
+    \Vertex[x=0.00, y=-2.00, L=$u$]{$u$} % 3
+    \Vertex[x=\rvar*1.90, y=-0.62, L=$t$]{$t$} % 2
+    \Vertex[x=\rvar*1.18, y=1.62, L=$q$]{$q$} % 1
+    \Vertex[x=-1.18*\rvar, y=1.62, L=$p$]{$p$} % 0
+    \Vertex[x=-1.90*\rvar, y=-0.62, L=$r$]{$r$} % 4
+    \Vertex[x=0, y=0, L=$s$]{$s$} % 5
     \Edges($u$,$t$,$q$,$p$)
     \Edges($r$,$u$)
     \Edges($s$,$t$)
@@ -571,58 +571,54 @@ que es un circuito euleriano.
     
 Tenemos una grafo $G$ con  $n$ vértices numerados $0,1,\ldots,n-1$,  $G$ se representa por  una lista de adyacencia, es decir $G[i]$  es la lista de vértices adyacentes a $i$.  Tomamos como comienzo del recorrido el vértice arbitrario $0$.
 
-Para no partir el algoritmo en dos páginas, lo incluiremos todo en la página siguiente. 
+Como ya mencionamos anteriormente, a un grafo $G$ lo representaremos por una lista de adyacencia. Supongamos que los vértices de $G$ son $0,\ldots,k$,  entonces $G[i] = [i_0,i_1,\ldots]$ serán los vértices adyacentes al vértice $i$.  
 
-\newpage
-%\vskip .4cm
+
+
+\vskip .4cm
 {%\centering
-\begin{minipage}{400pt}
-\noindent \textsc{Caminata euleriana } %revisar,  el algoritmo esta cmal
+\begin{minipage}{0.95\textwidth}
+\noindent \textsc{Caminata euleriana }
 \vskip .2cm
 \begin{small}
 \begin{verbatim}
-# pre: G grafo, 0 vértice de G 
-# post: devuelve 'circuito' una lista de vertices que forma una caminata
-#       euleriana. La caminata empieza en 0 (y terminará en 0).
-circuito = [0]  # caminata
-libres = G
-# libres representa las aristas no usadas en la caminata 
-usados = ista de adyacencia con los vértices de G y sin aristas 
-# usados:lista de adyacencia con los vértices de G y sin aristas  
-# usados representa las aristas usadas en la caminata
-tocados = [0]
-# tocados representa los vértices por los cuales pasó la caminata
-while enclibr(libres, tocados) != -1:
-   # enclibr: listas de adyacencia -> vértices
-   # enclibr(libres, tocados) devuelve j en tocados tq libres[j] no es vacío. 
-   # En caso contrario, devuelve -1 (representa vacío) 
-   pos0 = enclibr(libres, tocados)
-   p0 = pos0
-   p1 = libres[pos0][0]
-   aux = [pos0] # será el circuito a partir de pos0
-   while p1 != pos0: # mientras no se vuelva al origen
-      aux.append(p1)  # agrega p1 a aux 
-      tocados.append(p1)  # agrega p1 a tocados
-      quitar_arista(libres, [p0, p1]) # quita de libres la arista 'p0, p1'
-      agregar_arista(usados, [p0, p1]) # agregar a usados la arista 'p0, p1'
-      p0 = p1 
-      p1 = libres[p0][0]
-   aux.append(aux[0]) # completa aux a circuito
-   quitar_arista(libres, [p0, p1]) # quita de libres la arista 'p0, p1'
-   agregar_arista(usados, [p0, p1]) # agregar a usados la arista 'p0, p1'
-   inserta_circuito(circuito, aux) # inserta aux en circuito
-   pos0 = enclibr(libres, tocados)
-return circuito    
+# pre: G grafo con todos los vértices de valencia par 
+# post: devuelve 'circuito' una lista de vértices que forma una 
+#       caminata euleriana. 
+#       La caminata empieza en 0 (y terminará en 0).
+circuito = [0]  # inicio de la caminata
+libres = G # aristas no utilizadas
+while  nro_aristas(libres) > 0:
+    sub_cam = []   
+    h = 0
+    while libres[h] == []:
+        h = h + 1
+    # h = vértice donde libre[h] != [] (hay aristas libres)
+    pos = circuito.index(h) # posición de la 1º ocurrencia de h
+    p0 = h
+    p1 = libres[h][0] 
+    while p1 != h: # mientras no se vuelva al origen
+        sub_cam.append(p1)  # agrega p1 a sub_cam 
+        libres[p0].remove(p1)
+        libres[p1].remove(p0) # quitar arista p0, p1 
+        p0 = p1 
+        p1 = libres[p0][0]
+    libres[p0].remove(h)
+    libres[h].remove(p0) # quitar arista p0, h 
+    circuito = circuito[: pos + 1] +  sub_cam + circuito[pos :]
+    # inserta sub_cam en circuito
+return circuito
 \end{verbatim}
 \end{small}
 \end{minipage}
 }
+
 \vskip .4cm
 En todo  el programa \texttt{libres} es una lista de adyacencia que nos va dando las aristas no utilizadas. 
-Es decir si $w$ es un vértice \texttt{libres[w]} es una lista de los vértices $u$ tal que la arista $wu$ no ha sido utilizada. En forma opuesta,  \texttt{usados} es la lista de las aristas que ya han sida utilizadas. 
+Es decir si $w$ es un vértice \texttt{libres[w]} es una lista de los vértices $u$ tal que la arista $wu$ no ha sido utilizada.
 \end{observacion*}
 
-\newpage
+
 
 \subsection*{$\S$ Ejercicios}\label{ejercicios5.4}
 
@@ -1075,30 +1071,29 @@ Es bastante difícil encontrar el número cromático de un grafo dado. En realid
 
 El método consiste en asignar los colores de los vértices en orden, de tal manera que cada vértice recibe el primer color que no haya sido ya asignado a alguno de sus vecinos. En este algoritmo insistimos en hacer la mejor elección que podemos en cada paso, sin mirar más allá para ver si esta elección nos traerá problemas luego. Un algoritmo de esta clase se llama a menudo un \textit{algoritmo greedy (goloso)}.  \index{algoritmo greedy (goloso)}
 
-El algoritmo greedy para coloración de vértices es fácil de programar. Supóngase que hemos dado a los vértices algún orden $v_1,v_2,\ldots,v_n$. Asignemos el color $1$ a $v_1$; para cada $v_i$ ($2\le i \le n$) formamos el conjunto $S$ de colores asignados a los vértices $v_j$ ($1\le j <i$) que son adyacentes a
-$v_i$, y le damos a $v_i$ el primer color que no está en $S$. (En la práctica, pueden ser usados métodos más sofisticados de manejar los datos.)
+El algoritmo greedy para coloración de vértices es fácil de programar. Supóngase que hemos dado a los vértices algún orden $v_0,v_1,\ldots,v_n$. Asignemos el color $0$ a $v_0$ y luego le vamos asignando un color a los subsiguientes vértices: para cada $v_i$ ($1\le i \le n$) formamos el conjunto $S$ de colores asignados a los vértices $v_j$ ($0\le j <i$) que son adyacentes a $v_i$, y le damos a $v_i$ el primer color que no está en $S$. (En la práctica, pueden ser usados métodos más sofisticados de manejar los datos.)
 
 \vskip .5cm
 
-\begin{minipage}{400pt}
+\begin{minipage}{0.95\textwidth}
 \noindent \textsc{Algoritmo greedy para coloración de vértices }
 \vskip .2cm
 \begin{small}
 \begin{verbatim}
-# pre: 1,...,n los vértices de un grafo G
-# post: devuelve v[1],...,v[n] una coloración de G
-v[1] = 1 # asignamos el color 1 al vértice 1
-for i = 2 to n:
+# pre: 0,...,n los vértices de un grafo G
+# post: devuelve v[0],...,v[n] una coloración de G
+color = []  #  color[j] = c dirá que el color de j es c.
+for i = 0 to n:
     S = []  # S conjunto de colores asignados a los vértices j
             # (1 <= j <i) que son adyacentes a i (comienza vacío)
-    for j = 1 to i-1:
+    for j = 0 to i-1:
         if j es adyacente a i:
-           S.append(v[j])  # agrega el color de j a  S
-    k=1
+           S.append(color[j])  # agrega el color de j a  S
+    k = 0
     while k in S:
-        k = k+1
-    v[i] = k  # Asigna el color k a i, donde k es el primer color que 
-              # no esta en S. 
+        k = k + 1
+    color.append(k) # Asigna el color k a i, donde k es el primer 
+                    # color que no esta en S. 
 \end{verbatim}
 \end{small}
 \end{minipage}

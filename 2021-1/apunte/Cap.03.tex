@@ -135,17 +135,14 @@ r_0)_b$. Convencionalmente $b=10$ es la base para los cálculos
 hechos ``a mano'' y omitimos ponerle el subíndice, entonces
 tenemos la notación usual
 $$
-1984=(1\cdot 10^3 ) + (9\cdot 10^2 )+(8\cdot 10 ) + 4.
+1984= 1\cdot 10^3  + 9\cdot 10^2 + 8\cdot 10 + 4.
 $$
-
-
 
 Esta notación posicional requiere símbolos solo para los enteros
 $0, 1,\ldots,b-1$. La base $b=2$ es particularmente adaptable para
 los cálculos en computadoras porque los símbolos $0$ y $1$ pueden
 representarse físicamente por la ausencia o presencia de un pulso
 de electricidad o luz. 
-
 
 \begin{ejemplo*} ¿Cuál es la representación en base $2$ de
 $(109)_{10}$?
@@ -277,7 +274,7 @@ $n/c=dt$ tenemos $d|(n/c)$, como queríamos demostrar.
 
 Es decir podemos suponer que o bien $a>0$ y $b>0$, o bien $a<0$ y $b<0$. 
 
-Si  $a>0$ y $b>0$, entonces  $a\ge 1$ y $b\ge 1$. Si $a=1$, como $ab =1$, tenemos que $b = 1$. Si $a>1$, como  $b>0$ por compatibilidad de $<$ con el producto tenemos que $ab>1$, lo cual no es cierto. Es decir, hemos probado que si  $a>0$ y $b>0$, entonces $a=1$ y $b=1$.
+Si  $a>0$ y $b>0$, entonces  $a\ge 1$ y $b\ge 1$. Si $a=1$, como $ab =1$, tenemos que $b = 1 \cdot b = 1$. Si $a>1$, como  $b>0$ por compatibilidad de $<$ con el producto tenemos que $ab>1$, lo cual no es cierto. Es decir, hemos probado que si  $a>0$ y $b>0$, entonces $a=1$ y $b=1$.
 
 Si  $a<0$ y $b<0$, entonces   $-a>0$ y $-b>0$ y $(-a)(-b) = ab =1$. Luego, por el párrafo de arriba, $-a=-b=1$ y en consecuencia $a=b=-1$.
 
@@ -312,12 +309,12 @@ Por el axioma de cancelación (cancelando $y$) obtenemos que $1 = qq'$. Por lo d
 \end{definicion}
 La condición \ref{mcda} nos dice que $d$ es un común divisor de $a$ y $b$ y la condición \ref{mcdb} nos dice que cualquier divisor común de
 $a$ y $b$ es también divisor de $d$. Por ejemplo, $6$ es un divisor común de $60$ y $84$, pero no es el mayor divisor común, porque
-$12|60$ y $12|84$ pero $12{\not|}6$ (el símbolo significa ``no divide''.)
+$12|60$ y $12|84$ pero $12{\nodivide }6$ (el símbolo significa ``no divide''.)
 
 
 
 \begin{ejemplo} \label{ejem-1-mcd}
-    Los divisores positivos comunes de 60  y 84 son 1, 2, 3, 6 y 12, luego aunque 6  es un divisor común, no satisface \ref{mcdb} de la definición, pues $12|60$ y $12|84$ pero $12{\not|}6$ (el símbolo significa ``no divide''). En este caso, 12  claramente es  el  máximo común divisor.
+    Los divisores positivos comunes de 60  y 84 son 1, 2, 3, 6 y 12, luego aunque 6  es un divisor común, no satisface \ref{mcdb} de la definición, pues $12|60$ y $12|84$ pero $12{\nodivide }6$. En este caso, 12  claramente es  el  máximo común divisor.
 \end{ejemplo}
 
 En el ejemplo anterior usamos dos enteros pequeños y no tuvimos problemas en encontrar el  máximo común divisor. Pero ¿qué pasaría si consideráramos dos enteros muy grandes? Consideremos las siguientes preguntas.
@@ -340,10 +337,10 @@ En  el desarrollo de esta sección responderemos estas preguntas.
     
     \textit{Propiedad {\ref{mcdb}}.} Puesto  que $d \in S$,  existen $s, t \in \Z$ tal que $d = sa+tb$. Sea $c$ tal que $c|a$ y $c|b$, por \ref{prop-divide-a-propiedades-item-4} de la observación \ref{prop-divide-a-propiedades},  tenemos que $c|sa+tb$,  es decir $c|d$. 
     
-    \textit{Propiedad {\ref{mcda}}.} Supongamos ahora que $d \not| a$,  entonces $|a| = qd + r$ con $0 < r <d$ y $q \ge 0$, luego $r = \pm a - qd = \pm a-q(sa+tb) = a(\pm1-qs) +(-qt)b$. Por lo tanto,  $r < d$  pertenece a $S$, contradiciendo  el hecho de que $d$  es un mínimo de $S$. La contradicción vino de suponer que  $d \not| a$, por lo tanto $d|a$. En  forma análoga podemos probar que $d|b$. 
+    \textit{Propiedad {\ref{mcda}}.} Supongamos ahora que $d \nodivide  a$,  entonces $|a| = qd + r$ con $0 < r <d$ y $q \ge 0$, luego $r = \pm a - qd = \pm a-q(sa+tb) = a(\pm1-qs) +(-qt)b$. Por lo tanto,  $r < d$  pertenece a $S$, contradiciendo  el hecho de que $d$  es un mínimo de $S$. La contradicción vino de suponer que  $d \nodivide  a$, por lo tanto $d|a$. En  forma análoga podemos probar que $d|b$. 
     
     
-    \textit{Unicidad.} Sean $d$ y $d'$ dos enteros no negativos que satisfacen las propiedades de la definición del máximo común divisor, como $d'|a$, $d'|b$ y  $d$ satisface la propiedad {\ref{mcdb}} de la definición de mcd, se deduce que $d|d'$. Intercambiando  los papeles de $d$ y $d'$ se obtiene que $d'|d$. Luego, como $d,d'\ge 0$, por  proposición \ref{pm}\ref{prop-pm-b} se obtiene que $d=d'$.
+    \textit{Unicidad.} Sean $d$ y $d'$ dos enteros no negativos que satisfacen las propiedades de la definición del máximo común divisor, como $d'|a$, $d'|b$ y  $d$ satisface la propiedad {\ref{mcdb}} de la definición de mcd, se deduce que $d|d'$. Intercambiando  los papeles de $d$ y $d'$ se obtiene que $d'|d$. Luego, como $d,d'\ge 0$, por  proposición \ref{pm} \ref{prop-pm-b} se obtiene que $d=d'$.
 \end{proof}
 
 Si $a,b$ enteros,  alguno de ellos  no nulo,  denotaremos al máximo común divisor  de $a$ y $b$ por $\mcd(a,b)$, o en caso de no haber confusión por $(a,b)$.
@@ -492,28 +489,31 @@ Este ejemplo es un caso particular o una aplicación del algoritmo que nos permi
 %\vskip .1cm
 \begin{table}[htbp]
 \centering
-\fbox{\begin{minipage}{35em} 
-\vskip .2cm
-{\flushleft \textbf{Algoritmo de Euclides}}
-\vskip .2cm
-Por lo general, para calcular el mcd de enteros $a$ y $b$, con $b >0$, 
- definimos $q_i$ y $r_i$ recursivamente  de la siguiente manera: $r_0 = a$, $r_1 = b$,  y 
-\begin{align*}
-&\text{($e_{1}$)}\qquad& r_0&=r_1 q_1 + r_2& &(0 < r_2<r_1)\\
-&\text{($e_{2}$)}\qquad& r_1&=r_2q_2 + r_3\quad{}\quad{}\quad{}& &(0 < r_3<r_2)  \\
-&\text{($e_{3}$)}\qquad& r_2&=r_3q_3 + r_4\quad{}\quad{}\quad{}& &(0 < r_4<r_3)  \\
-&\cdots&&\\
-&\text{($e_{i}$)}\qquad& r_{i-1}&=r_{i}q_{i} + r_{i+1}& &(0 < r_{i+1} <r_{i}) \\
-&\cdots&& \\
-&\text{($e_{k-1}$)}\qquad& r_{k-2}&=r_{k-1}q_{k-1} + r_{k}& &(0 < r_{k} <r_{k-1}) \\
-&\text{($e_{k}$)}\qquad& r_{k-1}&=r_{k}q_{k} + 0 ,&&  
-\end{align*}
-\vskip .cm
+\fbox{\begin{minipage}{0.95\textwidth} 
+    \vskip .4cm
+    \begin{center}
+        \begin{minipage}{0.85\textwidth} 
+            {\flushleft \textbf{Algoritmo de Euclides}}
+            \vskip .2cm
+            Por lo general, para calcular el mcd de enteros $a$ y $b$, con $b >0$, 
+            definimos $q_i$ y $r_i$ recursivamente  de la siguiente manera: $r_0 = a$, $r_1 = b$,  y 
+            \begin{align*}
+            &\text{($e_{1}$)}\qquad& r_0&=r_1 q_1 + r_2& &(0 < r_2<r_1)\\
+            &\text{($e_{2}$)}\qquad& r_1&=r_2q_2 + r_3\quad{}\quad{}\quad{}& &(0 < r_3<r_2)  \\
+            &\text{($e_{3}$)}\qquad& r_2&=r_3q_3 + r_4\quad{}\quad{}\quad{}& &(0 < r_4<r_3)  \\
+            &\cdots&&\\
+            &\text{($e_{i}$)}\qquad& r_{i-1}&=r_{i}q_{i} + r_{i+1}& &(0 < r_{i+1} <r_{i}) \\
+            &\cdots&& \\
+            &\text{($e_{k-1}$)}\qquad& r_{k-2}&=r_{k-1}q_{k-1} + r_{k}& &(0 < r_{k} <r_{k-1}) \\
+            &\text{($e_{k}$)}\qquad& r_{k-1}&=r_{k}q_{k} + 0 ,&&  
+            \end{align*}
+        \end{minipage}
+    \end{center}
+    \vskip .4cm
 \end{minipage}}
 \caption{Algoritmo de Euclides}
 \label{tabla-AE}
 \end{table}
-%\vskip .2cm 
 
 El proceso se detiene cuando uno de los restos $r_i$  es igual a $0$ y queda claro que el proceso debe detenerse, porque cada resto no nulo es positivo y estrictamente menor que el anterior.
 
@@ -535,19 +535,19 @@ r_k = \mcd(r_{k},0) = \mcd(r_{k-1},r_k) =\mcd(r_{k-2},r_{k-1}) = \cdots\\\cdots
 
 \vskip .5cm
 %\centering
-\begin{minipage}{200pt}
+\begin{minipage}{0.95\textwidth}
 \noindent \textsc{Algoritmo de Euclides }
 %\vskip .2cm
 \begin{small}
 \begin{verbatim}
 # pre: a y b son números positivos
 # post: Obtenemos d = mcd(a,b)
-r(0), r(1) = a, b
+r[0], r[1] = a, b
 i = 1 
-while r(i) != 0:
-    r(i+1) = r(i-1) % r(i)   # a % b = resto de a / b
+while r[i] != 0:
+    r[i+1] = r[i-1] % r[i]   # a % b = resto de a / b
     i = i + 1
-d = r(i-1)
+d = r[i-1]
 \end{verbatim}
 \end{small}
 \end{minipage}
@@ -606,32 +606,38 @@ a 1 como $sa+tb$.
 
 \begin{ejemplo*} Supongamos que $a$, $a'$, $b$, $b'$ son enteros
 positivos que satisfacen
-$$
-\text{(a) }\qquad ab'=a'b; \qquad\text{(b) }\qquad\mcd(a,b)=\mcd(a',b')=1.
-$$
-Entonces $a=a'$ y $b=b' $.
+\begin{enumerate}[label=\textit{\alph*)}]
+    \begin{minipage}{0.40\textwidth}
+    \item\label{a/b=a'/b'} $ab'=a'b$;
+    \end{minipage}
+    \begin{minipage}{0.40\textwidth}
+    \item\label{mcd(a,b)=1} $\mcd(a,b)=\mcd(a',b')=1$.
+    \end{minipage}
+\end{enumerate}    
+Entonces $a=a'$ y $b=b'$.
 
-(La condición ({a}) podría escribirse como $a/b=a'/b'$, pero
+(La condición \ref{a/b=a'/b'} podría escribirse como $a/b=a'/b'$, pero
 preferimos usar esta forma que no asume ningún conocimiento sobre
 fracciones.)
 \end{ejemplo*}
-\begin{proof} Como el $\mcd (a,b) =1$ existen enteros $s$ y $t$
+\begin{proof} Como por \ref{mcd(a,b)=1} el $\mcd (a,b) =1$ existen enteros $s$ y $t$
 tales que $sa+tb=1$. En consecuencia
 $$
-b'=(sa+tb)b' =sab'+tbb' \overset{(a)}{=} sa'b + tb'b = (sa'+tb')b,
+b'=(sa+tb)b' =sab'+tbb' \overset{\ref{a/b=a'/b'}}{=} sa'b + tb'b = (sa'+tb')b,
 $$
 y por lo tanto $b|b'$. Por un argumento similar y usando el hecho
 de que el $\mcd(a',b')=1 $ deducimos que $b|b'$, por lo tanto
 $b=b'$ o $b=-b'$ y como $b $ y $b'$ son ambos positivos debemos
-tener $b=b'$ . Ahora de (a) deducimos que $a=a'$ y el resultado
+tener $b=b'$ . Ahora de \ref{a/b=a'/b'} deducimos que $a=a'$ y el resultado
 esta demostrado.
 \end{proof}
 
 
 \begin{observacion*}[*]
 El  algoritmo explicado anteriormente para obtener el $\mcd(a,b)$ como combinación lineal entera $sa+tb$ no es muy sencillo de programar. Más aún, requiere terminar el cálculo del $\mcd$ usando el algoritmo de Euclides, para comenzar a calcular los coeficientes enteros $s,t$. Veremos a continuación un algoritmo sencillo de programar que nos devuelve $s$ y $t$. El algoritmo se basa en el siguiente resultado. 
+\end{observacion*}
 
-\begin{proposicion}\label{prop-alg-euclides-2} Sean, $a,b$ enteros, $b>0$, y $r_i, q_i$ los restos y cocientes obtenido en el algoritmo de Euclides (ver tabla \ref{tabla-AE}). En entonces, 
+\begin{proposicion}\label{prop-alg-euclides-2} Sean, $a,b$ enteros, $b>0$, y $r_i, q_i$ los restos y cocientes obtenido en el algoritmo de Euclides (ver tabla \ref{tabla-AE}). Entonces, 
 \begin{enumerate}[label=\textit{\alph*)}]
     \item\label{it.algeuc1}     para $0 \le i \le k$,  existen $s_i, t_i \in \Z$ tal que
     \begin{equation*}
@@ -663,7 +669,7 @@ Con el uso de \ref{it.algeuc2} de la proposición anterior, podemos escribir el 
 
 \vskip .5cm
 %\centering
-\begin{minipage}{200pt}
+\begin{minipage}{0.90\textwidth}
     \noindent \textsc{Algoritmo de Euclides 2}
     \vskip .3cm
     \begin{small}
@@ -684,7 +690,7 @@ Con el uso de \ref{it.algeuc2} de la proposición anterior, podemos escribir el 
         \end{verbatim}
     \end{small}
 \end{minipage}
-\end{observacion*}
+
 
 
 \subsection*{$\S$ Mínimo común múltiplo}
@@ -734,8 +740,7 @@ b}{\mcd(a,b)}(rb'+sa')
 lo cual demuestra que $m$ divide a $n$.
 \end{proof}
 
-En particular este resultado implica que si $a$ y $b$ son enteros
-coprimos, entonces $\mcm(a,b)=ab$.
+En particular este resultado implica que si $a$ y $b$ son enteros coprimos, entonces $\mcm(a,b)=ab$.
 
 
 \begin{ejemplo*} Encontrar el  mcm de $8$ y $14$.
@@ -795,24 +800,25 @@ Podemos expresar el algoritmo en pseudocódigo:
 
 \vskip .5cm
 %\centering
-\begin{minipage}{200pt}
+\begin{minipage}{0.90\textwidth}
 \noindent \textsc{Criba de Eratóstenes}
 \vskip .2cm 
 \begin{small}
 \begin{verbatim}
 # pre: n número natural
 # post: se obtiene ''primos'' la lista de números primos hasta n
-primos = lista vacía
-inter = lista de 2 a n  # en inter se tacharán los números compuestos 
+primos = [] # lista vacía
+tachados = [] # lista de números tachados 
 for i = 2 to n:
-    if i no está tachado en inter:
-        agregar i a primos
+    if i not in tachados:
+        primos.append(i) # agregar i a primos
         k = 2
         while k * i <= n:
-            tachar k * i en la lista inter
+            tachados.append(k * i) # agrega k*i a tachados
             k = k + 1
 \end{verbatim}
 \end{small}
+\vskip .4cm
 \end{minipage}
 
 \end{observacion*} 
@@ -850,14 +856,14 @@ Veamos ahora alguna propiedades básicas de los números primos.
 \begin{observacion} \label{pdivpp}
 Sea $a \in \mathbb Z$ y $p$ primo. Entonces 
 \begin{enumerate}[label=\textit{\alph*)}]
-\item\label{it.propmcd_a}  Si $p{\not|}a$, entonces $\mcd(a,p) = 1$.
+\item\label{it.propmcd_a}  Si $p{\nodivide }a$, entonces $\mcd(a,p) = 1$.
 \item\label{it.propmcd_b}  Si $p$ y $p'$ son primos y $p|p'$ entonces $p=p'$.
 \end{enumerate}
 \end{observacion}
 \begin{proof}
 \
 
-\noindent \ref{it.propmcd_a} Como los únicos divisores de $p$ son $p$ y $1$, y $p{\not|}a$, el único  divisor común de $p$ y $a$ es $1$.
+\noindent \ref{it.propmcd_a} Como los únicos divisores de $p$ son $p$ y $1$, y $p{\nodivide }a$, el único  divisor común de $p$ y $a$ es $1$.
 
 \noindent \ref{it.propmcd_b} $p'$ es primo, por lo tanto tiene sólo dos divisores positivos $1$ y $p'$. Como $p$ no es $1$, tenemos que  $p=p'$.
 \end{proof}
@@ -870,7 +876,7 @@ Para encontrar la descomposición prima de un número, digamos $n$, debemos ir t
 Si $n$ no es primo, entonces $n = m_1m_2$ con $1 < m_1,m_2 < n$. Supongamos que $m_1,m_2 > \sqrt n$, entonces $n = m_1m_2 >  \sqrt n\sqrt n = n$, lo cual es una contradicción. Por lo tanto, $m_1$ o $m_2$ debe ser menor o igual que $\sqrt n$ y por consiguiente encontramos un divisor de $n$ menor o igual a  $\sqrt n$. 
 \end{proof}
 
-\begin{proposicion}[Criterio de la raíz]\label{craiz}Sea $n\ge 2$. Si para todo $m$ tal que $1<m \le \sqrt{n}$ se cumple que $m{\not|}n$, entonces $n$ es primo.
+\begin{proposicion}[Criterio de la raíz]\label{craiz}Sea $n\ge 2$. Si para todo $m$ tal que $1<m \le \sqrt{n}$ se cumple que $m{\nodivide }n$, entonces $n$ es primo.
 \end{proposicion}
  \begin{proof}  Supongamos que $n$ no es primo, luego, por el lema anterior, existe $m$ tal que  $m|n$ y $1 < m \le \sqrt n$ y esto contradice nuestras hipótesis. La contradicción se produce al suponer que $n$ no es primo, por lo tanto $n$ es primo. 
 \end{proof}
@@ -903,7 +909,7 @@ entonces $p|x_i$ para algún $x_i$ ($1\le i \le n$).
 \begin{proof}
 \
 
-\ref{it.pirreducible_a}  Si $p|x$ ya está probado el resultado. Si $p{{\not|}}x$ entonces tenemos $\mcd(x,p)=1$. Por proposición \ref{prop-d-comb-lin}, existen enteros $r$ y $s$ tales que $rp+sx=1$. Por lo tanto tenemos 
+\ref{it.pirreducible_a}  Si $p|x$ ya está probado el resultado. Si $p{{\nodivide }}x$ entonces tenemos $\mcd(x,p)=1$. Por proposición \ref{prop-d-comb-lin}, existen enteros $r$ y $s$ tales que $rp+sx=1$. Por lo tanto tenemos 
 $$
 y = 1 \cdot y = (rp+sx)y =(ry)p+s(xy).
 $$
@@ -916,12 +922,12 @@ $p|x_i$ para algún $i$ con $1\le i \le k$ (hipótesis inductiva).
 
 Debemos probar que si $p|x_1x_2\ldots x_{k}x_{k+1}$, entonces  $p|x_i$ para algún $x_i$ ($1\le i \le k+1$).
 
-Supongamos $p|x_1x_2\ldots x_{k}x_{k+1}$ y sea $x=x_1x_2\ldots x_k$. Si $p|x$ entonces, por la hipótesis inductiva, $p|x_i$ para algún $x_i$ en el rango $1\le i \le k$. Si $p{{\not|}}x$ entonces, por 1), se sigue que $p|x_{k+1}$. De este modo, en ambos casos $p$ divide uno de los $x_i$ ($1\le i\le k+1$). 
+Supongamos $p|x_1x_2\ldots x_{k}x_{k+1}$ y sea $x=x_1x_2\ldots x_k$. Si $p|x$ entonces, por la hipótesis inductiva, $p|x_i$ para algún $x_i$ en el rango $1\le i \le k$. Si $p{{\nodivide }}x$ entonces, por 1), se sigue que $p|x_{k+1}$. De este modo, en ambos casos $p$ divide uno de los $x_i$ ($1\le i\le k+1$). 
 \end{proof}
 
 Un error común es asumir que el teorema \ref{t1.8} se mantiene verdadero cuando reemplazamos el primo $p$ por un entero arbitrario . Pero esto claramente falso: por ejemplo 
 $$
-6| 3\cdot 8 \quad \text{ pero } \quad 6{\not|} 3 \quad \text{ y }\quad 6{\not|}8.
+6| 3\cdot 8 \quad \text{ pero } \quad 6{\nodivide } 3 \quad \text{ y }\quad 6{\nodivide }8.
 $$
 Ejemplos como éste nos ayudan a entender que el teorema \ref{t1.8} expresa una propiedad muy significativa de los números primos. Además veremos que esta propiedad juega un papel crucial en el siguiente resultado, que a veces es llamado el \textit{Teorema Fundamental de la Aritmética}. 
 
@@ -946,7 +952,7 @@ donde $p_1,p_2,\ldots ,p_r$ son primos distintos y $e_1,e_2,\ldots,e_r$ son ente
 
 La factorización prima nos dice que los números primos son los  ``ladrillos'' esenciales para  ``cons\-truir'' los números enteros usando multiplicaciones. Ahora bien, podría ocurrir que haya un número finitos de ellos y que podamos escribir cada número como producto de primos en forma muy sintética. Pero este no es el caso.
 
-\begin{proposicion} Existen infinitos números primos. 
+\begin{proposicion}[Teorema de Euclides] Existen infinitos números primos. 
 \end{proposicion} 
 \begin{proof} Haremos la demostración por el absurdo: supongamos que existen en total $r$ números primos $p_1,p_2,\ldots, p_r$. Sea $n =  p_1p_2\ldots p_r+1$. Sea $p$ primo tal que $p|n$. Como la lista de primos es exhaustiva, existe $i$ con $1 \le i \le r$ tal que $p=p_i$. Ahora bien $p_i| n$ y $p_i|p_1p_2\ldots p_r$, luego $p_i|n-p_1p_2\ldots p_r =1$, lo cual es un absurdo que vino de suponer que el número de primos es finito.  
 \end{proof}
@@ -1062,7 +1068,7 @@ $$
     m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
     n=q_1^{f_1}q_2^{f_2}\ldots q_s^{f_s},
     $$ 
-    las descomposiciones primas de $m$ y $n$. Entonces  $\operatorname{mcd}(m,n) =1$ si y sólo si con $p_i \not= q_j$ para todos los $i,j$.  
+    las descomposiciones primas de $m$ y $n$ con $e_i,f_j > 0$. Entonces  $\operatorname{mcd}(m,n) =1$ si y sólo si con $p_i \not= q_j$ para todos los $i,j$.  
     
 \item Probar que si $m$ y $n$ son enteros positivos, tales que $m\ge 2$ y $n \ge 2$, y
 $m^2 = kn^2$, entonces $k$ es el cuadrado de un entero.
@@ -1075,6 +1081,12 @@ para probar que si $2^n-1$ es primo, entonces $n$ es primo.
 
 \item Encontrar el mínimo $n$ para el cual la recíproca del ejercicio anterior
 es falsa: esto es, $n$ es primo pero $2^n-1$ no lo es.
+
+\item Para $n \in \N$ sea $q_n$ el factor primo más pequeño de $n! + 1$. 
+    \begin{enumex}
+        \item Probar que $q_n >n$.
+        \item Probar, usando el resultado del item anterior, que existen infinitos números primos (demostración de Hermite). 
+    \end{enumex}
 \end{enumex}
 
 \end{section}    
