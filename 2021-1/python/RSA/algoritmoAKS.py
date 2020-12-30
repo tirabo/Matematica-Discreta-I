@@ -6,9 +6,9 @@ import bases
 
 
 """
-Metodo binario para exponencicion modular
+Método binario para exponenciacion modular
 Ver: 'Right-to-left binary method' en https://en.wikipedia.org/wiki/Modular_exponentiation
-Se desea calular b**e % m
+Se desea calcular b**e % m
 1) Se calcula la expresion binaria de e
 Si e en base 2 es a_{n}...a_0, entonces
 e = \sum_{i=0}^{n} a_i 2^i

@@ -603,7 +603,7 @@ while nro_aristas(libres) > 0:
         p0 = p1 
         p1 = libres[p0][0]
     libres.remove({p0, h}) # quitar arista p0, h 
-    circuito = circuito[:pos+1] +  sub_cam + circuito[pos:]
+    circuito = circuito[:pos+1] + sub_cam + circuito[pos:]
 return circuito   
 \end{verbatim}
 \end{small}
