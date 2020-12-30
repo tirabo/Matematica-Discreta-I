@@ -587,27 +587,24 @@ Como ya mencionamos anteriormente, a un grafo $G$ lo representaremos por una lis
 #       caminata euleriana. 
 #       La caminata empieza en 0 (y terminará en 0).
 circuito = [0]  # inicio de la caminata
-libres = G # aristas no utilizadas
-while  nro_aristas(libres) > 0:
+libres = copiar_grafo(G) # aristas no utilizadas
+while nro_aristas(libres) > 0:
     sub_cam = []   
     h = 0
-    while libres[h] == []:
+    while libres[h] == [] or h not in circuito:
         h = h + 1
-    # h = vértice donde libre[h] != [] (hay aristas libres)
+    # h = vértice en circuito y libre[h] != [] (hay aristas libres)
     pos = circuito.index(h) # posición de la 1º ocurrencia de h
     p0 = h
     p1 = libres[h][0] 
     while p1 != h: # mientras no se vuelva al origen
         sub_cam.append(p1)  # agrega p1 a sub_cam 
-        libres[p0].remove(p1)
-        libres[p1].remove(p0) # quitar arista p0, p1 
+        libres.remove({p0,p1}) # quitar arista p0, p1 
         p0 = p1 
         p1 = libres[p0][0]
-    libres[p0].remove(h)
-    libres[h].remove(p0) # quitar arista p0, h 
-    circuito = circuito[: pos + 1] +  sub_cam + circuito[pos :]
-    # inserta sub_cam en circuito
-return circuito
+    libres.remove({p0, h}) # quitar arista p0, h 
+    circuito = circuito[:pos+1] +  sub_cam + circuito[pos:]
+return circuito   
 \end{verbatim}
 \end{small}
 \end{minipage}

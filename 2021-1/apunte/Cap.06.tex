@@ -301,8 +301,6 @@ como queríamos demostrar.
 
 En forma más detallada, el algoritmo puede ser implementado con el siguiente pseudocódigo:
 
-\vskip .5cm
-
 \begin{minipage}{0.95\textwidth}
 \noindent \textsc{Algoritmo de Prim}
 \vskip .2cm
@@ -311,26 +309,29 @@ En forma más detallada, el algoritmo puede ser implementado con el siguiente ps
 # pre: G grafo con vértices 0,...,n y pesos w(i,j)
 #      (w(i,j) = infinito si ij no es arista de G)
 # post: devuelve F un MST de G
-S = [0] # lista de vértices utilizados en el MST (comienza con 0)
-Q = [1,...,n]  # lista de vértices aún no utilizados en el MST
-L = [[1,0,p1],...,[n,0,pn]]]  # con pi = w(i,0)
-# se irá modificando L de tal forma que si Q = [u0,...,ur], 
-# L  = [[u0,v0,p0],...,[ur,vr,pr]] donde 
-# vi = vértice en S adyacente a ui tal que w(ui,vi) es mínimo, 
-# pi = w(ui,vi)
-F = [[],...,[]] # grafo con vértices 0,...,n y sin aristas.
+Q = [1,,...,n]  # lista de vértices aún no utilizados en el MST
+S = [0] # lista de vértices ya utilizados en el MST
+# L = [[k, 0, pesos[k][0]] : k en Q] 
+# L se ira modificando de tal forma que si
+# Q = [u0,...,uk] no utilizados en F 
+# S = utilizados en F
+# L  = [[ui,vi,w(ui,vi)]: 0 <= i <= k, vi in S tq w(ui,vi) mínimo]
+F[i] = [],  0 <= i <= n # grafo con vértices 0,...,n y sin aristas.
 while Q != []:
-    uk = vértice en Q tal que pk = w(uk,vk) es mínimo
-    F[uk].append(vk)
-    F[vk].append(uk) # agrega arista uk vk a F
-    Q = Q - {uk}
-    S.append(uk)
-    L = L - {[uk,vk,pk]}
-    for [ui,vi,pi] in L:
-        if w(ui,uk) < pi:
-            vi = uk
-            pi = w(ui,uk)
-    # el for modifica L
+    L.sort(por coordenada 2) # ordena L por pesos 
+    [u,v,p] = L[0]
+    # u en Q, v en S, tal que p = w(u,v) es mínimo
+    F.agregar_arista({u, v})
+    L.remove([u, v, w(u,v)])
+    Q.remove(u)
+    S.append(u)
+    for i in range(len(L)):
+        u' = L[i][0]
+        if w[u'][u] < L[i][2]:
+            L[i][1] = u
+            L[i][2] = w[u'][u]
+    # el for actualiza la lista L
+return F
 \end{verbatim}
 \end{small}
 \end{minipage}
