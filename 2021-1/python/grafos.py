@@ -265,16 +265,26 @@ def peso_max(w):
     return resultado
 
 
-def w_infty(w):
-    # pre: w es una lista de pesos de las aristas de un grafo
-    # post: devuelve w donde reemplaza el peso 0 por peso_max(w) +100 ('= infinito')
-    u = copy.deepcopy(w)
-    pinfty = peso_max(w) + 100
-    for i in range(len(w)):
-        for j in range(len(w[i])):
-            if w[i][j] == 0:
-                u[i][j] = pinfty
-    return u
+def pesos_std(G, w):
+    # pre: G grafo. w es un diccionario donde las keys son aristas [i,j] de G con i < j y los valores son pesos.
+    # post: devuelve pesos una lista doble donde pesos[i][j] es es el peso en la arista {i,j} y si no están
+    # conectados pone "infinito"
+    pinfty = 10000
+    pesos = []
+    for i in range(len(G)):
+        pesos.append([])
+        for j in range(len(G)):
+            if i==j:
+                pesos[i].append(pinfty)
+            else:
+                pesos[i].append(pinfty)
+    for i in range(len(G)):
+        for j in range(len(G)):
+            if i < j:
+                if j in w[i].keys():
+                    pesos[i][j] = w[i][j]
+                    pesos[j][i] = w[i][j]
+    return (G, pesos)
 
 
 def peso_std(graph):
@@ -291,43 +301,48 @@ def peso_std(graph):
     return w
 
 def prim(graph, w):
-    #  pre: graph grafo con vertices 0,...,n-1 y pesos w[i][j]. n >= 1.
-    # (w[i][j] = infinito si ij no es arista de G)
+    #  pre: graph grafo con vertices 0,...,n-1 
+    # Si i < j y ij arista  w[i][j] peso arista ij.
     # post: devuelve un MST de graph
     n = len(graph)
-    S = [0]  # lista de vertices utilizados en el MST (comienza con el primero)
     Q = []
+    
     for i in range(1, n):
         Q.append(i)  
-    # Q es la lista de vertices aun no utilizados en el MST
-    # print(Q)
+    # Q = [1,...,n-1] es la lista de vertices aun no utilizados en el MST
+    S = [0]
     L = []
-    w = w_infty(w)
-    for i in Q:
-        L.append([i, 0, w[i][0]])
-    # L = [[1, 0, p2], ..., [n-1, 0, p(n-1)]]]  con pi = w(i,0)
-    # se ira modificando L de tal forma que si Q = [u0,...,ur],
-    # L = [[u0,v0,p0],...,[ur,vr,pr]] donde  vi = vertice en S adyacente a ui tal que w(ui,vi) es minimo, pi = w(ui,vi)
+    G = graph
+    pesos = pesos_std(G, w)[1] # para todo ij pesos[i[j] = paso arista ij
+    # pesos pone peso infinito a vértices no conectados
+    for k in Q:
+        L.append([k, 0, pesos[0][k]])
+    # print(L)
+    # L = [[k, 0, pesos[k][0]] : k en Q] 
+    
+    # L = [[u0,v0,p0],...,[ur,vr,pr]] donde  vi = vertice en S adyacente a ui tal que pi = pesos(ui,vi) es mínimo
     F = []
-    for i in range(len(graph)):
+    for i in range(len(G)):
         F.append([])
     # F  grafo con vertices 0,...,n-1 y sin aristas.
     wF = 0 # wF es la suma del peso de todas las aristas de F
     while Q != []:
-        # print 'L :', L
+        # print('L :', L)
         L.sort(key=lambda x: x[2]) # ordena L por pesos
         [uk,vk,pk] = L[0]
         # print uk,vk,pk
         # uk = vertice en Q tal que pk = w(uk,vk) es minimo
         agregar_arista(F, [uk, vk])
-        wF = wF + w[uk][vk]
-        S.append(uk)
+        # print([uk,vk],F)
+        wF = wF + pesos[uk][vk]
         Q.remove(uk)
+        S.append(uk)
         L.remove([uk, vk, pk])
         for i in range(len(L)):
-            if w[L[i][0]][uk] < L[i][2]:
+            u = L[i][0]
+            if pesos[u][uk] < L[i][2]:
                 L[i][1] = uk
-                L[i][2] = w[L[i][0]][uk]
+                L[i][2] = pesos[u][uk]
             # el for modifica L
     return (F, wF)
 
@@ -335,18 +350,32 @@ def prim(graph, w):
 
 G = [[1,2,3,4],[0,2,3,4],[0,1,3,4],[0,1,2,4],[0,1,2,3]]
 G = grafo(G)
-w = [[0, 6, 8, 6, 3],[6, 0, 2, 4, 5],[8, 2, 0, 5, 7],[6, 4, 5, 0, 7],[3, 5, 7, 7, 0]]
+W = {} # W[i][j] = peso arista ij (para i < j)
+W[0] = {1:6, 2:8, 3:6, 4:2}
+W[1] = {2:2, 3:4, 4:5}
+W[2] = {3:5, 4:7}
+W[3] = {4:7}
+W[4] = {}
 
+"""
 G = [[1, 2, 3], [0, 2, 4], [0, 1, 3, 4, 5, 6], [0, 2, 6], [1, 2, 5, 7, 8], [2, 4, 6, 8], [2, 3, 5, 8, 9],
      [4, 8, 10], [4, 5, 6, 7, 9, 10], [6, 8, 10], [7, 8, 9]]
 G = grafo(G)
-w = [[0, 2, 8, 1, 0, 0, 0, 0, 0, 0, 0], [2, 0, 6, 0, 1, 0, 0, 0, 0, 0, 0], [8, 6, 0, 7, 0, 0, 0, 0, 0, 0, 0],
-     [1, 0, 7, 0, 0, 0, 9, 0, 0, 0, 0], [0, 1, 5, 0, 0, 3, 0, 2, 9, 0, 0], [0, 0, 1, 0, 3, 0, 4, 0, 6, 0, 0],
-     [0, 0, 2, 9, 0, 4, 0, 0, 3, 1, 0], [0, 0, 0, 0, 2, 0, 0, 0, 7, 0, 9], [0, 0, 0, 0, 9, 6, 3, 7, 0, 1, 2],
-     [0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 4], [0, 0, 0, 0, 0, 0, 0, 9, 2, 4, 0]]
-
-# (F, wF) = prim(G,w)
-# print(F)
-# print(wF)
+W = {} # W[i][j] = peso arista ij (para i < j)
+W[0] = {1:2, 2:8, 3:1}
+W[1] = {2:6, 4:1}
+W[2] = {3:7, 4:5, 5:4, 6:2}
+W[3] = {6:9}
+W[4] = {5:3, 7:2, 8:9}
+W[5] = {6:4, 8:6}
+W[6] = {8:3, 9:1}
+W[7] = {8:7, 10:9}
+W[8] = {9:1, 10:2}
+W[9] = {10:4}
+W[10] = {}
+"""
+(F, wF) = prim(G,W)
+print(F)
+print(wF)
 
 ## FIN: Algoritmo de Prim ##
