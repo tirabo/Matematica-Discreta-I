@@ -9,7 +9,7 @@ import bases
 Método binario para exponenciacion modular
 Ver: 'Right-to-left binary method' en https://en.wikipedia.org/wiki/Modular_exponentiation
 Se desea calcular b**e % m
-1) Se calcula la expresion binaria de e
+1) Se calcula la expresión binaria de e
 Si e en base 2 es a_{n}...a_0, entonces
 e = \sum_{i=0}^{n} a_i 2^i
 2) Entonces b**e = (b**(2**n))**a_n * ...*(b**(2**0))*a_0

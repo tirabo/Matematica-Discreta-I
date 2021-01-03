@@ -59,6 +59,8 @@
 %\setlength{\parindent}{0,7cm}% tamaño de sangria.
 \setlength{\parskip}{0,4cm} % separación entre parrafos.
 \renewcommand{\baselinestretch}{0.90}% separacion del interlineado
+\setlist[1]{topsep=8pt,itemsep=.4cm,partopsep=4pt, parsep=4pt} %espacios nivel 1 listas
+\setlist[2]{itemsep=.15cm}  %espacios nivel 2 listas
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\end{comment}
 %%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -151,19 +153,19 @@ tiene soluci\'on.
 
 \item 
 \begin{enumerate}
-    \item[(i)] Encontrar todas las soluciones de la ecuaci\'on en congruencia
+    \item Encontrar todas las soluciones de la ecuaci\'on en congruencia
     $$36\,x\equiv 8 \quad (20)$$
     usando el método visto en clase.
-    \item[(ii)] Dar todas las soluciones $x$ de la ecuaci\'on anterior tales que $-8 < x < 30$.
+    \item Dar todas las soluciones $x$ de la ecuaci\'on anterior tales que $-8 < x < 30$.
 \end{enumerate}
 
 
 \item 
 \begin{enumerate}
-\item[(i)] Encontrar todas las soluciones de la ecuaci\'on en congruencia
+\item Encontrar todas las soluciones de la ecuaci\'on en congruencia
 $$21\,x\equiv 6 \quad (30)$$
 usando el método visto en clase.
-\item[(ii)] Dar todas las soluciones $x$ de la ecuaci\'on anterior tales que $0 < x < 35$.
+\item Dar todas las soluciones $x$ de la ecuaci\'on anterior tales que $0 < x < 35$.
 \end{enumerate}
 
 
@@ -192,25 +194,24 @@ usando el método visto en clase.
 
 
 \item Encontrar el resto en la divisi\'on de $a$ por $b$ en los siguientes casos:
-\begin{multicols}{2}
  \begin{enumerate}
+\begin{minipage}{0.40 \textwidth}
 \item $a=11^{13}\cdot 13^8$; \quad $b=12$;
+\end{minipage}
+\begin{minipage}{0.40 \textwidth}
 \item $a=4^{1000}$;\quad $b=7$;
+\end{minipage}
+
+\begin{minipage}{0.40 \textwidth}
 \item $a=123^{456}$; \quad  $b=31$;
+\end{minipage}
+\begin{minipage}{0.40 \textwidth}
 \item $a=7^{83}$;\quad  $b=10$.
+\end{minipage}
 \end{enumerate}
-\end{multicols}
-
-%\item Obtener el resto en la divisi\'on de $2^{21}$ por 13; de $3^8$ por 5 y de
- $8^{25}$ por 127.
-%$$ \text{ (a)  $2^{21}$\, por \,13;\qquad
- %$3^8$\, por \,5 $8^{25}$\, por \,127.}$$
 
 
-%
-%\item Hallar todos los enteros que satisfacen simult\'aneamente:
-
-%$x \equiv 1\ ( 3); $ \qquad $x \equiv 1 \ ( 5)$; \qquad $x \equiv 1\ ( 7)$.
+\item Obtener el resto en la divisi\'on de $2^{21}$ por 13; de $3^8$ por 5 y de  $8^{25}$ por 127.
 
 %%\item Hallar el menor entero positivo que satisface simult\'aneamente las siguientes congruencias:
 
@@ -235,30 +236,34 @@ usando el método visto en clase.
 
 %
 \item Probar que si \,$(a,1001)=1$\, entonces \,$1001$\, divide a \,$a^{720}-1$.
+\end{enumerate}
 
 
 
+\subsection*{$\S$ Ejercicios de repaso} Los ejercicios marcados con ${}^{(*)}$ son de mayor dificultad.
 
-\
+\begin{enumerate}[resume]
+\item Dada la ecuación de congruencia
+$$14\,x\equiv 10 \, (26),$$
+hallar todas las soluciones en el intervalo $[-20,10]$. Hacerlo con el método usado en la teórica.
+\item Dada la ecuación de congruencia
+$$21\,x\equiv 15 \, (39),$$
+hallar todas las soluciones en el intervalo $[-10,30]$. Hacerlo con el método usado en la teórica. 
 
+\item Hallar todos los enteros que satisfacen simultáneamente:
 
-\noindent (*): ejercicios opcionales de mayor dificultad.
+$x \equiv 1\ ( 3); $ \qquad $x \equiv 1 \ ( 5)$; \qquad $x \equiv 1\ ( 7)$.
 
+\item${}^{(*)}$  ¿Para qué valores de \,$n$\, es \,$10^n-1$\, divisible por \,$11$?
 
-\item (*) ¿Para qu\'e valores de \,$n$\, es \,$10^n-1$\, divisible por \,$11$?
+\item${}^{(*)}$ Probar que para ning\'un $n\in\mathbb N$ se puede partir el conjunto $\{n,n+1,\ldots, n+5\}$ en dos partes disjuntas no vacías tales que los productos de los elementos que las integran sean iguales.
 
-
-
-\item (*) Probar que para ning\'un $n\in\mathbb N$ se puede partir el conjunto $\{n,n+1,\ldots, n+5\}$ en dos partes
-disjuntas no vac\'\i as tales que los productos de los elementos que las integran sean iguales.
-
-
-\item (*) El n\'umero \,$2^{29}$\, tiene nueve cifras y todas distintas.
-¿Cu\'al d\'\i gito falta? (No est\'a permitido el uso de calculadora).
-
-
+\item${}^{(*)}$  El número \,$2^{29}$\, tiene nueve cifras y todas distintas.
+¿Cuál dígito falta? (No está permitido el uso de calculadora).
 
 \end{enumerate}
+
+
 
 
 

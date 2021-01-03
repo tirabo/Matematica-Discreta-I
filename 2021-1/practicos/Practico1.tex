@@ -59,6 +59,8 @@
 %\setlength{\parindent}{0,7cm}% tamaño de sangria.
 \setlength{\parskip}{0,4cm} % separación entre parrafos.
 \renewcommand{\baselinestretch}{0.90}% separacion del interlineado
+\setlist[1]{topsep=8pt,itemsep=.4cm,partopsep=4pt, parsep=4pt} %espacios nivel 1 listas
+\setlist[2]{itemsep=.15cm}  %espacios nivel 2 listas
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\end{comment}
 %%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -71,10 +73,9 @@
 
 {\bf \begin{center}\large  Práctico 1 \\ Matemática Discreta I -- Año 2021/1 \\ FAMAF \end{center}}
 
+%\begin{enumerate}[topsep=8pt,itemsep=.4cm,partopsep=4pt, parsep=4pt]
 
 \begin{enumerate}
- \setlength\itemsep{1.1em}
-
 \item\label{prob1} Demostrar las siguientes afirmaciones donde $a$, $b$, $c$ y $d$ son siempre números enteros. Justificar cada uno de los pasos en cada demostración indicando el axioma o resultado que utiliza.
 \begin{enumerate}
 \item  $a=-(-a)$
@@ -107,37 +108,38 @@
 
 
 \item Calcular evaluando las siguientes expresiones:
-\begin{multicols}{4}
- \begin{enumerate}
+\begin{enumerate}
+\begin{minipage}{0.40 \textwidth}
 \item \quad $\displaystyle{\sum_{r=0}^4 r}$
+\end{minipage}
+\begin{minipage}{0.40 \textwidth}
 \item \quad $\displaystyle{\prod_{i=1}^5 i}$
+ \end{minipage}
+
+\begin{minipage}{0.40 \textwidth}
 \item  \quad $\displaystyle{\sum_{k=-3}^{-1} \frac{1}{k(k+4)}}$
+\end{minipage}
+\begin{minipage}{0.40 \textwidth}
 \item \quad $\displaystyle{\prod_{n=2}^7 \frac{n}{n-1}}$
+\end{minipage}
 \end{enumerate}
-\end{multicols}
-
-
-
-
-
 
 \item Calcular:
-\begin{multicols}{2}
  \begin{enumerate}
+\begin{minipage}{0.40 \textwidth}
 \item \quad $2^{10} - 2^{9}$
+\end{minipage}
+\begin{minipage}{0.40 \textwidth}
 \item \quad $3^2 2^5 - 3^5 2^2$
+\end{minipage}
+
+\begin{minipage}{0.40 \textwidth}
 \item \quad $(2^2)^n - (2^n)^2$
+\end{minipage}
+\begin{minipage}{0.40 \textwidth}
 \item \quad $(2^{2^n} + 1)  (2^{2^n} - 1)$
+\end{minipage}
 \end{enumerate}
-\end{multicols}
-
-
-
-
-
-
-
-
 
 \item Dado un natural $m$, probar que $\forall n \in {\mathbb N} $; $x$, $y \in {\mathbb R}$, se cumple:
 \begin{multicols}{3}
@@ -148,36 +150,14 @@
  \end{enumerate}
 \end{multicols}
 
-
-
-
-
 \item Analizar la validez de las siguientes afirmaciones:
-%\begin{multicols}{2}
  \begin{enumerate}
 \item  $(2^{2^n})^{2^k} = 2^{2^{n+k}}$,  $n$, $k \in {\mathbb N}$.
 \item $(2^n)^2 = 4^n$, $n \in {\mathbb N}$.
 \item $2^{7+11} = 2^7 + 2^{11}$.
 \end{enumerate}
-%\end{multicols}
-
-
 
 \item Probar que $\sum_{i=0}^n 2^i = 2^{n+1} -1$ ($n \ge 0$). 
-
-
-
-
-\item Probar las siguientes afirmaciones usando inducción en $n$:
-\begin{enumerate}
-    \item $n^2\leq 2^n$ para todo $n\in{\mathbb N}$, $n>3$ .
-    %\item $n^3 \le 3^n$;\quad $\forall n \in {\mathbb N}$, $n\ge 3$ .
-    %\item $(n+1)^n < n^{n+1}$; $\forall n \in {\mathbb N}$, $n \ge 3$.
-    \item $\forall n \in {\mathbb N}$,\ $3^n \ge 1 + 2^n$.
-\end{enumerate}
-
-
-
 
 \item Demostrar por inducción  las siguientes igualdades:
   \begin{enumerate}
@@ -187,6 +167,49 @@
   \item  $\displaystyle{ \sum_{k=0}^n (2k+1) = (n+1)^2}$, $n\in \mathbb N_0$.
   \item  $\displaystyle{ \sum_{i=1}^n i^3 = \left( \frac{n(n+1)}{2 }\right)^2}$, $n\in \mathbb N$.
   \item  $\displaystyle{ \sum_{k=0}^n a^k = \frac{a^{n+1}-1}{a-1}}$, donde $a\in {\mathbb R}$, $a \neq 0,\ 1$, $n\in \mathbb N_0$.
+
+  \end{enumerate}
+
+\item Hallar $n_0 \in {\mathbb N}$ tal que $\forall n \ge n_0$ se cumpla que $n^2 \ge 11 n + 3$.
+
+\item Sea $u_1=3$, $u_2=5$ y $u_n=3 u_{n-1} - 2 u_{n-2}$ con $n\in \mathbb N$, $n\geq 3$.
+Probar que $u_n=2^n+1$.
+
+\item Sea $\{ u_n \}_{n \in \mathbb N}$ la sucesión definida por recurrencia como sigue: $u_1 = 9$, $u_2 = 33$, $u_n = 7u_{n-1} - 10u_{n-2}$, $\forall n \geq 3$. Probar que $u_n = 2^{n+1} + 5^n$, para todo $n \in \mathbb N$.
+
+\item Sea $u_n$ definida recursivamente por: $u_1=2$, $u_n=2+\sum_{i=1}^{n-1}2^{n-2i}u_i \;\;\forall\; n >1$.
+\begin{enumerate}
+    \item Calcule $u_2$ y $u_3$.
+    \item Proponga una fórmula para el término general $u_n$ y pruébela por inducción.
+\end{enumerate}
+
+\item  Sea $\{a_n\}_{n\in\mathbb N_0}$ la sucesi\'on definida recursivamente por
+$$\begin{cases}
+a_0=1, \\a_1=1, \\a_{n} = 3a_{n-1}+(n-1)(n-3)a_{n-2}, \text{ para $n\geq 2$}.
+\end{cases}$$
+Probar que $a_n=n!$ para todo $n\in \mathbb N_0$.
+
+\item Sea $\{a_n\}_{n\in\mathbb N_0}$ la sucesi\'on definida recursivamente por
+$$\begin{cases}
+   a_0=0, \\a_1=7, \\a_{n} = 5a_{n-1}+6a_{n-2}, \text{ para $n\geq 2$}.
+  \end{cases}$$
+Probar que $a_n=6^n + (-1)^{n+1}$ para todo $n\in \mathbb N_0$.
+
+\item Las siguientes proposiciones no son válidas para todo $n \in {\mathbb N}$. Indicar en qué paso del principio de inducción falla la demostración:
+\begin{multicols}{4}
+\begin{enumerate}
+\item  $n=n^2$,
+\item  $n=n+1$,
+\item  $3^n = 3^{n+2}$,
+\item  $3^{3n} = 3^{n+2}$.
+\end{enumerate}
+\end{multicols}
+\end{enumerate}
+\subsection*{$\S$ Ejercicios de repaso} Los ejercicios marcados con ${}^{(*)}$ son de mayor dificultad.
+
+\begin{enumerate}[resume]
+\item Demostrar por inducción  las siguientes igualdades:
+  \begin{enumerate}
   \item  $\displaystyle{ \prod_{i=1}^n \frac{i+1}{i} = n+1}$, $n\in \mathbb N$.
 
   \item $\displaystyle{ \sum_{i=1}^n \frac{1}{4i^2-1} = \frac{n}{2n+1}}$, $n\in \mathbb N$.
@@ -204,48 +227,19 @@
 
   \end{enumerate}
 
+  \item   Sea $\{a_n\}_{n\in\mathbb N}$ la sucesión definida recursivamente por
+  $$\begin{cases}
+  a_1=1, \\a_2=2, \\a_{n} = (n-2)a_{n-1}+2(n-1)a_{n-2}, \text{ para $n\geq 3$}.
+  \end{cases}$$
+  Probar que $a_n=n!$ para todo $n\in \mathbb N$.
 
+  \item   Sea $\{a_n\}_{n\in\mathbb N_0}$ la sucesión definida recursivamente por
+  $$\begin{cases}
+     a_0=0, \\a_1=5, \\a_{n} = a_{n-1}+6a_{n-2}, \text{ para $n\geq 2$}.
+    \end{cases}$$
+  Probar que $a_n=3^n + (-1)^{n+1}2^n$ para todo $n\in \mathbb N_0$.
 
-
-
-
-\item Hallar $n_0 \in {\mathbb N}$ tal que $\forall n \ge n_0$ se cumpla que $n^2 \ge 11 \cdot n + 3$.
-
-
-
-
-
-\item Sea $u_1=3$, $u_2=5$ y $u_n=3 u_{n-1} - 2 u_{n-2}$ con $n\in \mathbb N$, $n\geq 3$.
-Probar que $u_n=2^n+1$.
-
-
-
-\item Sea $\{ u_n \}_{n \in \mathbb N}$ la sucesión definida por recurrencia como sigue: $u_1 = 9$, $u_2 = 33$, $u_n = 7u_{n-1} - 10u_{n-2}$, $\forall n \geq 3$. Probar que $u_n = 2^{n+1} + 5^n$, para todo $n \in \mathbb N$.
-
-
-
-\item Sea $u_n$ definida recursivamente por: $u_1=2$, $u_n=2+\sum_{i=1}^{n-1}2^{n-2i}u_i \;\;\forall\; n >1$.
-\begin{enumerate}
-    \item Calcule $u_2$ y $u_3$.
-    \item Proponga una fórmula para el término general $u_n$ y pruébela por inducción.
-\end{enumerate}
-
-
-
-
-\item Las siguientes proposiciones no son válidas para todo $n \in {\mathbb N}$. Indicar en qué paso del principio de inducción falla la demostración:
-\begin{multicols}{4}
-\begin{enumerate}
-\item  $n=n^2$,
-\item  $n=n+1$,
-\item  $3^n = 3^{n+2}$,
-\item  $3^{3n} = 3^{n+2}$.
-\end{enumerate}
-\end{multicols}
-
-
-
-\item Encuentre el error en los siguientes argumentos de inducción.
+\item${}^{(*)}$ Encuentre el error en los siguientes argumentos de inducción.
 \begin{enumerate}
 \item  Demostraremos que $5n+3$ es múltiplo de 5 para todo $n\in \mathbb N$.
 
@@ -259,8 +253,6 @@ entonces obtenemos que $5(k+1)+3$ es múltiplo de 5. Por lo tanto, por el princi
 de inducción, demostramos que $5n+3$ es múltiplo de 5 para todo $n\in \mathbb
 N$.
 
-
-
 \item Sea $a\in\mathbb R$, con $a\neq 0$. Vamos a demostrar que para todo entero no negativo $n$, $a^n=1$.
 
 Como $a^0=1$ por definición, la proposición es verdadera para $n=0$. Supongamos
@@ -269,7 +261,7 @@ $a^{k+1}= \frac{a^k a^k}{a^{k-1}}=\frac{1\cdot1}1=1$.
 Por lo tanto, el principio de inducción fuerte implica que $a^n=1$ para todo $n\in \mathbb N$.
 \end{enumerate}
 
-\item* La \emph{sucesión de Fibonacci} se define recursivamente de la siguiente manera:
+\item${}^{(*)}$ La \emph{sucesión de Fibonacci} se define recursivamente de la siguiente manera:
 $$
 u_1=1,\quad u_2=1,\quad u_{n+1}=u_{n}+u_{n-1}, \, n\geq 2.
 $$
