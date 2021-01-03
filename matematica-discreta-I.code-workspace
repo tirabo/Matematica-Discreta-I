@@ -5,6 +5,14 @@
 		}
 	],
 	"settings": {
-		"cSpell.enabled": true
+		"cSpell.enabled": true,
+		"cSpell.words": [
+			"'olo",
+			"'on",
+			"s",
+			"s\\'olo",
+			"soluci",
+			"soluci\\'on"
+		]
 	}
 }
