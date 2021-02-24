@@ -889,29 +889,24 @@ vértices posible y llamémosle $G$. Por el lema anterior, existe un vértice $x
 
 \begin{figure}[h]
     \begin{center}
-\begin{tikzpicture}[scale=0.5]
-\SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
-\Vertex[x=0.00, y=0]{0}
-\Vertex[x=0.5, y=2]{1}
-\Vertex[x=4, y=1.5]{2}
-\Vertex[x=3, y=-1.4]{3}
-\Vertex[x=0.5, y=-2]{4}
-\Vertex[x=-3, y=0]{5}
-\draw (-0.5, 0.4) node {$x$};
-\draw (-0.1, 2) node {$y$};
-\draw (1.4, 2) node {$(1)$};
-\draw (3.4, 1.7) node {$z$};
-\draw (4.8, 1.7) node {$(2)$};
-\draw (2.4, -1.6) node {$u$};
-\draw (3.8, -1.6) node {$(3)$};
-\draw (-0.2, -2) node {$w$};
-\draw (1.3, -2) node {$(4)$};
-\draw (-3.4,0.5) node {$t$};
-\draw (-2.3, 0.5) node {$(5)$};
+\begin{tikzpicture}[scale=0.6,]
+%\SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+\Vertex[x=0.00, y=0, L=$0$]{0}
+\Vertex[x=0.5, y=2, L=$1$]{1}
+\Vertex[x=4, y=1.5, L=$2$]{2}
+\Vertex[x=3, y=-1.4, L=$3$]{3}
+\Vertex[x=0.5, y=-2, L=$4$]{4}
+\Vertex[x=-3, y=0, L=$5$]{5}
+\draw (-0.9, 0.6) node {$x$};
+\draw (-0.6, 2) node {$y$};
+\draw (2.9, 1.7) node {$z$};
+\draw (2.0, -1.6) node {$u$};
+\draw (-0.7, -2) node {$w$};
+\draw (-3.9,0.5) node {$t$};
 \Edges(0,1,0,2,0,3,0,4,0,5)
 \end{tikzpicture} 
 \end{center}
-\caption{}\label{fA4.11}
+\caption{$x$ es un vértice de valencia $5$ en el grafo planar.}\label{fA4.11}
 \end{figure}
 
 Supongamos primero que no haya, entre $y$ y $u$, ningún camino tal que el color de todos sus vértices sea $1$ o $3$. Entonces, podemos cambiarle el color a $y$, de color $1$ a color $3$. Además, a los vértices adyacentes a $y$ que tengan color $3$, les cambiamos el color de $3$ a $1$. A los vértices adyacentes a estos, que tengan color $1$, los cambiamos a $3$, y así sucesivamente. Después de realizar todos estos cambios, todavía tenemos un coloreo propio. Ahora bien, como estamos suponiendo que no hay ningún camino de
@@ -921,9 +916,9 @@ Así pues, existe un camino con todos los vértices de color $1$ y $3$ entre $y$
 
 \begin{figure}[h]
     \begin{center}
-    \begin{tikzpicture}[scale=0.5]
-    \draw[-,line width=1pt,dashed] (0.5,2) -- (5,2.5) -- (5.5,1)-- (5.5,0.2) -- (3, -1.4) ;
-    \draw[-,line width=1pt,dashed] (4,1.5) -- (6,0.5) -- (6.5,-0.5)-- (5.5,-2.3) -- (0.5, -2) ;
+    \begin{tikzpicture}[scale=0.6]
+    \draw[-,line width=1pt,dashed] (0.5,2) -- (2.5,3)-- (5,2.5) -- (5.5,1)-- (5.5,0.2) -- (3, -1.4) ;
+    \draw[-,line width=1pt,dashed] (4,1.5) -- (6,0.5) -- (6.5,-0.5)-- (5.5,-2.3) --(3,-2.8) -- (0.5, -2) ;
     \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
     \Vertex[x=0.00, y=0]{0}
     \Vertex[x=0.5, y=2]{1}
