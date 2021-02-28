@@ -542,8 +542,8 @@ r_k = \mcd(r_{k},0) = \mcd(r_{k-1},r_k) =\mcd(r_{k-2},r_{k-1}) = \cdots\\\cdots
 \begin{verbatim}
 # pre: a y b son números positivos
 # post: Obtenemos d = mcd(a,b)
-k, t = a, b
-while t != 0:
+i, j = a, b
+while j != 0:
     # invariante: mcd(a, b) = mcd(i, j)
     resto = i % j  # i = q * j + resto
     i = j
