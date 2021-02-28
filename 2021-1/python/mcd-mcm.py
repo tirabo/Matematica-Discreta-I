@@ -13,7 +13,7 @@ def mcd(a: int, b: int) -> int:
         i = j
         j = resto
     return i
-    
+
 def mcm(a: int,b: int) -> int:
     # pre: a y b son números positivos
     # post: obtenemos  mcm(a,b) o 0 si a==0==b
