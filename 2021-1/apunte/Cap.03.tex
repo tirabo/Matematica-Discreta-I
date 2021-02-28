@@ -536,26 +536,30 @@ r_k = \mcd(r_{k},0) = \mcd(r_{k-1},r_k) =\mcd(r_{k-2},r_{k-1}) = \cdots\\\cdots
 \vskip .5cm
 %\centering
 \begin{minipage}{0.95\textwidth}
-\noindent \textsc{Algoritmo de Euclides }
+\noindent \textsc{Algoritmo de Euclides }\label{cod-alg-de-euclides}
 %\vskip .2cm
 \begin{small}
 \begin{verbatim}
 # pre: a y b son números positivos
 # post: Obtenemos d = mcd(a,b)
-r[0], r[1] = a, b
-i = 1 
-while r[i] != 0:
-    r[i+1] = r[i-1] % r[i]   # a % b = resto de a / b
-    i = i + 1
-d = r[i-1]
+k, t = a, b
+while t != 0:
+    # invariante: mcd(a, b) = mcd(i, j)
+    resto = i % j  # i = q * j + resto
+    i = j
+    j = resto
+return i
 \end{verbatim}
 \end{small}
 \end{minipage}
-
-
+\vskip .2cm
+Observar que en el ciclo \texttt{while} los valores que se obtienen en cada repetición  son $i' = j$, $j' =  i \% \,j$, luego 
+$$
+i = q \cdot j + j' \; \Rightarrow\;  \mcd(i,j) = \mcd(j,j') = \mcd(i',j').
+$$
 \end{observacion*}
 
-%\vskip .5cm
+\vskip .2cm
 
 
 Sean $a$ y $b$ enteros, $b$ no nulo y sea $d=\mcd(a,b)$. Entonces sabemos que existen enteros $s$ y $t$ tales que
@@ -668,28 +672,62 @@ El  algoritmo explicado anteriormente para obtener el $\mcd(a,b)$ como combinaci
 Con el uso de \ref{it.algeuc2} de la proposición anterior, podemos escribir el algoritmo para obtener $s,t$ tal $\mcd(a,b) = sa+tb$ con el siguiente pseudocódigo. 
 
 \vskip .5cm
+
 %\centering
 \begin{minipage}{0.90\textwidth}
     \noindent \textsc{Algoritmo de Euclides 2}
-    \vskip .3cm
     \begin{small}
         \begin{verbatim}
-        # pre: a y b son números positivos
-        # post: Obtenemos s y t tal que mcd(a,b) = a*s + b*t
-        r[0], r[1] = a, b
-        s[0], t[0] = 1, 0
-        s[1], t[1] = 0, 1
-        i = 1 
-        while r[i] != 0:
-            # invariante: r[i] = a * s[i] + b * t[i]
-            q, r[i+1] = r[i-1] / r[i], r[i-1] % r[i]
-            s[i+1] = s[i-1] - s[i] * q
-            t[i+1] = t[i-1] - t[i] * q
-            i = i+1
-        s, t  = s[i-1], t[i-1]
+# pre: a y b son números positivos
+# post: Obtenemos s y t tal que mcd(a,b) = a*s + b*t
+r[0], r[1] = a, b
+s[0], t[0], s[1], t[1] = 1, 0, 0, 1
+i = 1 
+while r[i] != 0:
+    # invariante: r[i-1] = a * s[i-1] + b * t[i-1]
+    #             y  mcd(a, b) = mcd(r[i-1], r[i])
+    q, r[i+1] = r[i-1] // r[i], r[i-1] % r[i]
+    s[i+1] = s[i-1] - s[i] * q
+    t[i+1] = t[i-1] - t[i] * q
+    i = i+1
+s, t  = s[i-1], t[i-1]
         \end{verbatim}
     \end{small}
 \end{minipage}
+
+Sin  embargo, este algoritmo no es muy conveniente,  a nivel de eficiencia de memoria, pues las variables \texttt{r}, \texttt{s} y \texttt{t} van guardando series de valores en forma innecesaria. 
+
+Una versión mejorada, aunque menos legible,  es la siguiente. 
+\vskip .5cm
+
+%\centering
+\begin{minipage}{0.90\textwidth}
+    \noindent \textsc{Algoritmo de Euclides 2 (versión 2)}
+    \begin{small}
+        \begin{verbatim}
+# pre: a y b son números positivos
+# post: Obtenemos s y t tal que mcd(a,b) = a*s + b*t
+r0, r1 = a, b
+s0, t0, s1, t1 = 1, 0, 0, 1
+i = 1 
+while r1 != 0:
+    # invariante: r0 = a * s0 + b * t0  y
+    #             mcd(a, b) = mcd(r0, r1)
+    resto = r0 % r1
+    q, r0, r1 = r0 // r1, r1, resto
+    s1p, t1p = s1, t1
+    s1, s0 = s0 - s1 * q, s1p
+    t1, t0 = t0 - t1 * q, t1p
+    i = i+1
+s, t  = s0, t0
+        \end{verbatim}
+    \end{small}
+\end{minipage}
+\vskip .2cm
+Este último código y el de la página \pageref{cod-alg-de-euclides} son códigos válidos en Python 3 y pueden ser incorporados a un programa escrito en ese lenguaje.
+
+
+\vskip .2cm
 
 
 
