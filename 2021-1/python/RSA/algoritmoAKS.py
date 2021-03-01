@@ -4,20 +4,24 @@ from polynomial import Polynomial as poly
 import time
 import bases
 
+"""
+## Método binario para exponenciacion modular
 
+Ver: _Right-to-left binary method_ en    
+[https://en.wikipedia.org/wiki/Modular_exponentiation](https://en.wikipedia.org/wiki/Modular_exponentiation)
+
+Sean `b, e, m` enteros positivos se desea calcular `b**e % m`
+1.  Se calcula la expresión binaria de `e`. 
+Si `e` en base 2 es `a_{n}...a_{0}`, entonces
+        e = \sum_{i=0}^{n} a_i * 2**i
+2. Entonces 
+        b**e = \prod_{i=0}^{n} b**{a_i * 2**i} 
+             = \prod_{i=0}^{n} (b**(2**i))**a_i.
+3. Usando lo anterior `c = b**e % m` se calcula recursivamente:
+        c = (b**(2**0))**a_0 % m        (caso base)
+        c = c * (b**(2**i))**a_i % m    (paso i)
 """
-Método binario para exponenciacion modular
-Ver: 'Right-to-left binary method' en https://en.wikipedia.org/wiki/Modular_exponentiation
-Se desea calcular b**e % m
-1) Se calcula la expresión binaria de e
-Si e en base 2 es a_{n}...a_0, entonces
-e = \sum_{i=0}^{n} a_i 2^i
-2) Entonces b**e = (b**(2**n))**a_n * ...*(b**(2**0))*a_0
-luego se calcula primero
-c = (b**(2**0))*a_0 % m y luego se hace
-c = c*(b**(2**1))*a_1 % m
-y asi sucesivamente
-"""
+
 
 
 def pot_modulo_poly_entero(b, e, m ):
