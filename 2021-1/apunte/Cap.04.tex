@@ -614,10 +614,10 @@ donde $d$ es la clave privada que solo $A$ conoce.
 
 %\vskip .3cm 
 
-Dados primos distintos $p$ y $q$ suficientemente grandes tomamos $n = pq$. 
+Sean  $p$ y $q$ primos distintos suficientemente . 
 \begin{itemize}
-    \item  La \emph{clave pública} es $n$ y $e$ con $1 < e < (p-1)(q-1)$ tal que $\operatorname{mcd}(e, (p-1)(q-1)) = 1$. 
-    \item  La \emph{clave privada} es un $d$ tal que $ed \equiv 1 \pmod{(p-1)(q-1)}$ y $0 \le d <(p-1)(q-1)$.
+    \item  La \emph{clave pública} es $(n, e)$ con $n = pq$ y $e$ tal que $1 < e < (p-1)(q-1)$ y $\operatorname{mcd}(e, (p-1)(q-1)) = 1$. 
+    \item  La \emph{clave privada} es un entero $d$ tal que $ed \equiv 1 \pmod{(p-1)(q-1)}$ y $0 \le d <(p-1)(q-1)$.
 \end{itemize}
 
 
@@ -639,10 +639,10 @@ La existencia de $d$ está garantizada por el teorema \ref{elc} (ecuación linea
 \subsection*{Encriptar y desencriptar mensajes}
 
 %\vskip .3cm 
-El receptor de mensajes publicita la clave pública $(e,n)$. Obviamente no da a conocer ni $p$, ni $q$ y mantiene segura la clave privada $d$. Como mencionamos anteriormente, el envío del mensaje y su decodificación requiere dos pasos
+El receptor de mensajes publicita la clave pública $(n,e)$. Obviamente no da a conocer ni $p$, ni $q$ y mantiene segura la clave privada $d$. Como mencionamos anteriormente, el envío del mensaje y su decodificación requiere dos pasos
 \begin{enumerate}[label=\textit{\alph*)}]
 \item  El  emisor desea \emph{encriptar }un número $m \in \{0,\ldots,n-1\}$ y para ello calcula $c \equiv m^e \pmod{n}$ y  envía $c$ al receptor.
-\item  El receptor desea \emph{desencriptar} el mensaje, es decir usando la clave pública $(e,n)$ y $c$ desea recuperar $m$: calcula $c^d \pmod{n}$ y veremos a continuación que este número es $m$. 
+\item  El receptor desea \emph{desencriptar} el mensaje, es decir usando la clave pública $(n, e)$ y $c$, desea recuperar $m$: calcula $c^d \pmod{n}$ y veremos a continuación que este número es $m$. 
 \end{enumerate}
 
 \subsection*{Demostración del método}
@@ -695,7 +695,7 @@ Tomemos entonces $e = 7$.
 
 Usando el algoritmo de Euclides obtenemos $1 = 2\cdot 2\,160 + (-617)\cdot 7$. Luego, podemos tomar $d = 2\,160 -617 =1\,543$. 
 
-Por lo tanto el receptor tiene clave pública $(7,2\,263)$ y conserva en secreto  su clave privada $1\,543$
+Por lo tanto el receptor tiene clave pública $(2\,263, 7)$ y conserva en secreto  su clave privada $1\,543$
 
 - Supongamos que el emisor ha nacido en el año $1993$ y quiere enviarle en secreto al receptor su año de nacimiento. Entonces encripta el año haciendo 
 $$
