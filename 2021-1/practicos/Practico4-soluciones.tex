@@ -63,7 +63,7 @@
 %\end{comment}
 %%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\rta}{\noindent\textit{Rta: }} 
+\newcommand{\rta}{\vskip.1cm\noindent\textit{Rta: }} 
 \newcommand \Z{{\mathbb Z}}
 \newcommand \N{{\mathbb N}}
 \newcommand \mcd{\operatorname{mcd}}
@@ -479,13 +479,34 @@
     Entonces $a^6\equiv1 \equiv{7}; a^{10}\equiv1 \equiv{11}$ y $ a^{12}\equiv1 \equiv{13}$.
     Por lo tanto $a^{720}=((a^6)^{10})^{12}\equiv 1 \equiv{7\cdot11\cdot13}$.
     
+    \item Sea $p$ primo impar. 
+\begin{enumerate}
+    \item Probar que las únicas raíces cuadradas de 1 módulo $p$,  son $1$ y $-1$ módulo $p$. Es decir, probar que $x^2 \equiv 1 \pmod{p}$, entonces  $x \equiv \pm1 \pmod{p}$.
     
+    \rta   $x^2 \equiv 1 \pmod{p}$ $\Rightarrow$  $x^2 - 1 \equiv 0 \pmod{p}$, como $x^2 -1 = (x-1)(x+1)$, obtenemos  $ (x-1)(x+1) \equiv 0 \pmod{p}$. Esto quiere decir  que $p|  (x-1)(x+1)$. Como $p$  es primo, $p | x -1$ o $p| x +1$, es decir 
+    \begin{align*}
+        x -1 \equiv 0 \pmod{p} \;\;&\vee \;\; x +1 \equiv 0 \pmod{p} \quad \Leftrightarrow  \\
+        x  \equiv 1 \pmod{p} \;\;&\vee \;\; x  \equiv -1 \pmod{p}.
+    \end{align*}
+
+    \item Sea  $p = d \cdot 2^s + 1$ donde $d$ es impar. Dado $a$ entero tal que $0 < a <p$, probar que 
+    \begin{itemize}
+        \item $a^{d} \equiv 1 \pmod{p}$, o
+        \item $a^{2^r\cdot\, d} \equiv -1 \pmod{p}$  para algún $r$ tal que $0 \le r < s$.
+    \end{itemize}
+    \rta Consideremos la sucesión $a^{2^s \cdot d}, a^{2^{s-1} \cdot d}, \dots, a^{2d}, a^d$. La demostración la haremos usando el teorema de Fermat,  el resultado del inciso anterior y  observando que cada término de la sucesión es el cuadrado del siguiente.
+    \begin{itemize}
+        \item Por el teorema de Fermat  $a^{2^s \cdot d} = a^{p-1} \equiv 1 \pmod{p}$. Luego $(a^{2^{s-1} \cdot d})^2 \equiv 1 \pmod{p}$ y por lo tanto $a^{2^{s-1} \cdot d}$ es una raíz cuadrada de $1$ módulo $p$. Por  el inciso anterior entonces  $a^{2^{s-1} \cdot d} \equiv \pm 1 \pmod{p}$.
+        \item Si  $a^{2^{s-1} \cdot d} \equiv - 1 \pmod{p}$, listo,  en caso contrario  $a^{2^{s-1} \cdot d} \equiv 1 \pmod{p}$,  luego $(a^{2^{s-2} \cdot d})^2 \equiv 1 \pmod{p}$ y por lo tanto $a^{2^{s-2} \cdot d}$ es una raíz cuadrada de $1$ módulo $p$. Por  el inciso anterior entonces  $a^{2^{s-2} \cdot d} \equiv \pm 1 \pmod{p}$.
+        \item Iterando el razonamiento anterior concluimos que alguno de los términos de la sucesión $ a^{2^{r} \cdot d}$  es congruente   a $-1$ módulo $p$ o bien todos los términos son congruentes a $1$,  en particular $a^{d} \equiv 1 \pmod{p}$.
+    \end{itemize}
+    
+\end{enumerate}
     
     
     \
     
-    
-    \noindent (*): ejercicios opcionales de mayor dificultad.
+    \subsection*{$\S$ Ejercicios de repaso} Los ejercicios marcados con ${}^{(*)}$ son de mayor dificultad.
     
     
     
@@ -562,4 +583,6 @@ $2$, $7$ y $13$, respectivamente.
 
 \item Hallar el resto de la división por $11$ de $(61162)^{53}$.
 \end{enumerate}
+
+
 \end{document}
