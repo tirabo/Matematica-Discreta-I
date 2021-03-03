@@ -709,7 +709,6 @@ Una versión mejorada, aunque menos legible,  es la siguiente.
 # post: Obtenemos s y t tal que mcd(a,b) = a*s + b*t
 r0, r1 = a, b
 s0, t0, s1, t1 = 1, 0, 0, 1
-i = 1 
 while r1 != 0:
     # invariante: r0 = a * s0 + b * t0  y
     #             mcd(a, b) = mcd(r0, r1)
@@ -718,7 +717,6 @@ while r1 != 0:
     s1p, t1p = s1, t1
     s1, s0 = s0 - s1 * q, s1p
     t1, t0 = t0 - t1 * q, t1p
-    i = i+1
 s, t  = s0, t0
         \end{verbatim}
     \end{small}
