@@ -24,7 +24,7 @@ Si `e` en base 2 es `a_{n}...a_{0}`, entonces
 
 
 
-def pot_modulo_poly_entero(b, e, m ):
+def pot_modulo_poly_entero(b: list(), e: int, m: int ):
     # pre: b es polinomio; e  y m  enteros no negativos
     # post: devuelve b**e % m (cada coeficiente se hace % m). Se usa el metodo binario
     result = poly([0])

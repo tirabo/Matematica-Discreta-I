@@ -1,6 +1,6 @@
 import math
 import random 
-import sys
+# import sys
 
 # sys.setrecursionlimit(10000)
 # print('rec lim', sys.getrecursionlimit())
@@ -22,8 +22,10 @@ Si `d` en base 2 es `d_n...d_0`, entonces
         c = c * (a**(2**i))**d_i % m    (paso i)
 """
 
-def pot_mod(a: int, d: int, n: int):
+def pot_mod(a: int, d: int, n: int) -> int:
+    # pre: a, d >= 0, n > 0
     # post: devuelve a**d % n calculado por el método binario de exponenciacion modular
+    assert a >= 0 and d >= 0 and n > 0, 'a, d o n no cumplen  la precondicion'
     c = 1
     d1, r1 = (d // 2), d % 2 # d = d1 * 2 + r1 => a**d = (a**2)**d1 * a**r1
     a1 = a
@@ -32,9 +34,9 @@ def pot_mod(a: int, d: int, n: int):
         r1 =  d1 % 2
         d1 = d1 // 2
     c = c * a1**r1 % n
-    return c
+    return c 
 
-# print(pot_mod(2,4,15)) # 1
+print(pot_mod(2,4,15)) # 1
 # print(pot_mod(7, 385, 11)) # 10
 # print(pot_mod(5,1125899986842625, 100000037 )) # 98770120
 
@@ -72,6 +74,7 @@ o
 def pot2(n: int) -> tuple[int, int]:
     # pre: n > 0, n impar
     # post: devuelve s, d tal n = 2**s * d + 1,  con d impar.
+    assert n > 0 and n % 2 == 1
     u, m = (n -1) % 2, (n - 1) // 2
     s = 0
     while u == 0:
@@ -83,6 +86,7 @@ def pot2(n: int) -> tuple[int, int]:
 
 def fpp(n: int, a:int) -> bool:
     # pre: n >2, n impar, 0 < a < n
+    assert n > 2 and n % 2 == 1 and 0 < a and a < n
     # post: devuelve True si n es FPP respecto a a. False en caso contrario
     
     # n = 2**s * d  + 1. Calculamos d y s 
@@ -145,7 +149,7 @@ return True
 """
 
 
-def test_Miller_Rabin_d(n):
+def test_Miller_Rabin_d(n: int) -> bool:
     # post: devuelve True si n es primo y False en caso contrario
     d = (n - 1) // 2
     s = 1
@@ -178,7 +182,9 @@ n1 = 10**15+37
 
 n1 = 2074722246773485207821695222107608587480996474721117292752992589912196684750549658310084416732550077
 n2 = 2367495770217142995264827948666809233066409497699870112003149352380375124855230068487109373226251983
-print(test_Miller_Rabin_d(n1))
+# print(test_Miller_Rabin_d(n1))
+k = 50 # 50 dice 0.99... (30 9's) probabilidad de ser primo
+print(test_Miller_Rabin(n1, k)) 
 
 
 

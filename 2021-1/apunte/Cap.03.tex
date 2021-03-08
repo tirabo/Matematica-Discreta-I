@@ -715,8 +715,7 @@ while r1 != 0:
     resto = r0 % r1
     q, r0, r1 = r0 // r1, r1, resto
     s1p, t1p = s1, t1
-    s1, s0 = s0 - s1 * q, s1p
-    t1, t0 = t0 - t1 * q, t1p
+    s0, t0, s1, t1 =  s1p, t1p, s0 - s1 * q, t0 - t1 * q
 s, t  = s0, t0
         \end{verbatim}
     \end{small}
