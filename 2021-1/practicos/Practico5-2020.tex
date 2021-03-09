@@ -1,0 +1,603 @@
+\documentclass[12pt,spanish,makeidx]{amsbook}
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+
+
+
+\usepackage{t1enc}
+\usepackage[spanish]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}       % From LaTeX distribution
+\usepackage{subfigure}    % From CTAN/macros/latex/contrib/supported/subfigure
+\usepackage{tikz}
+\usepackage{tkz-graph}
+\usepackage{tikz-3dplot} %for tikz-3dplot functionality
+\usepackage{pgfplots}
+\usetikzlibrary{graphs}
+\usetikzlibrary{matrix}
+\input{random.tex}        % From CTAN/macros/generic
+
+
+%% \theoremstyle{plain} %% This is the default
+\oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
+\headheight .3in \headsep .2in \footskip .2in
+\setlength{\textwidth}{16cm} %ancho para apunte
+\setlength{\textheight}{21cm} %largo para apunte
+%\leftmargin 2.5cm
+%\rightmargin 2.5cm
+\topmargin 0.5 cm
+
+
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage{hypcap}
+
+\newcommand\itemitem[1]{\item[#1]}
+
+
+\newcommand{\ExampleSubFigure}[2][0.3333]{%
+\subfigure[Example #2]{%
+  \begin{minipage}[t]{#1\textwidth}
+    \parbox[b]{\textwidth}{%
+      \centering
+      \input{lgc/#2.inl}}
+  \end{minipage}}}
+
+
+%% \theoremstyle{plain} %% This is the default
+\oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
+\headheight .3in \headsep .2in \footskip .2in
+\setlength{\textwidth}{16cm} %ancho para apunte
+\setlength{\textheight}{21cm} %largo para apunte
+%\leftmargin 2.5cm
+%\rightmargin 2.5cm
+\topmargin 0.5 cm
+
+
+
+%% \theoremstyle{plain} %% This is the default
+
+
+
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+
+
+
+
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{proposicion}[teorema]{Proposici\'on}
+\newtheorem{corolario}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+
+\theoremstyle{definition}
+
+\newtheorem{definicion}{Definici\'on}[section]
+\newtheorem{ejemplo}{Ejemplo}[section]
+\newtheorem{problema}{Problema}[section]
+\newtheorem{ejercicio}{Ejercicio}[section]
+\newtheorem{ejerciciof}{}[section]
+
+\theoremstyle{remark}
+\newtheorem{observacion}{Observaci\'on}[section]
+\newtheorem{nota}{Nota}[section]
+
+
+
+\renewcommand{\abstractname}{Resumen}
+\renewcommand{\partname }{Parte }
+\renewcommand{\indexname}{Indice }
+\renewcommand{\figurename }{Figura }
+\renewcommand{\tablename }{Tabla }
+\renewcommand{\proofname}{Demostraci\'on}
+\renewcommand{\refname }{Referencias }
+\renewcommand{\appendixname }{Ap\'endice }
+\renewcommand{\contentsname }{Contenidos }
+\renewcommand{\chaptername }{Cap\'\i tulo }
+\renewcommand{\bibname }{Bibliograf\'\i a }
+
+
+
+
+
+\def\conc{+\hspace{-1.5ex}+\hspace{0.5ex}}
+\def\con{{\rm con}}
+\def\hn{\hspace{-0.2cm}}
+\def\h4n{\hspace{-0.4cm}}
+\def\impli{\Rightarrow}
+\def\ssi{\equiv}
+\def\disc{\not\ssi}
+\def\cons{\Leftarrow}
+\def\la{\leftarrow}
+\def\lt{\triangleleft}
+\def\lv{[\;\,]}
+\def\Max{ {\rm Max} }
+\def\Min{ {\rm Min} }
+\def\N{I\hspace{-0.8ex} N}
+\def\noi{\noindent}
+\def\R{I\hspace{-0.8ex} R}
+\def\ra{\rightarrow}
+\def\Rn{\R^{n}}
+\def\rt{\triangleright}
+%\def\tomar{\uparrow}
+\def\tomar{\hspace{-0.6ex}\uparrow\hspace{-0.6ex}}
+%\def\tirar{\downarrow}
+\def\tirar{\hspace{-0.6ex}\downarrow\hspace{-0.6ex}}
+\def\udo{ {\rm\bf\underline{do}} }
+\def\ufi{ {\rm\bf\underline{fi}} }
+\def\uif{ {\rm\bf\underline{if}} }
+\def\uod{ {\rm\bf\underline{od}} }
+\def\v3{\vspace{0.3cm}}
+\def\var{{\rm var}}
+\def\[{|\hspace{-0.2ex} [}
+\def\]{]\hspace{-0.2ex} |}
+\def\true{\mbox{\it true\ }}
+\def\false{\mbox{\it false\ }}
+
+\newcommand{\bag}[1]{ [\hspace{-0.4ex}[ #1 ]\hspace{-0.4ex}] }
+\newcommand{\abs}[1]{ [\hspace{-0.4ex}[ #1 ]\hspace{-0.4ex}] }
+%\newcommand{\binom}[2]{ \left(\hspace{-1.2ex}\begin{array}{c} #1 \\ #2 \end{array} \hspace{-1.2ex}\right) }
+\newcommand{\cau}[2]{\noi #1 \hspace{0.5cm}\{{\sl #2}\} }
+\newcommand{\causa}[2]{\vspace{0.15cm} \noi #1 \hspace{0.5cm} \{{\sl #2}\} \vspace{0.15cm}}
+\newcommand \RR{{\mathbb R}}
+\newcommand \ZZ{{\mathbb Z}}
+\newcommand \NN{{\mathbb N}}
+%\newcommand \supr{\displaystyle{\ \,{\mbox{\footnotesize S}}\hspace{-1.7ex}\bigcirc\, }}
+\newcommand \supr{\displaystyle{\ \,\vee \hspace{-1.9ex}\bigcirc\,}}
+\newcommand \infi{\displaystyle{\ \,\wedge\hspace{-1.9ex}\bigcirc\,}}
+%\newcommand \infi{\displaystyle{\ \,{\mbox{\footnotesize I}}\hspace{-1.5ex}\bigcirc\, }}
+\newcommand \mcd{\operatorname{mcd}}
+\newcommand \mcm{\operatorname{mcm}}
+\newcommand \sisolosi{\Leftrightarrow}
+
+
+
+
+
+
+\newcommand\flecha{\Rightarrow}
+
+\newcommand{\programa}[1]{  \vskip .5cm \noindent Programa: {\it #1} }
+\newcommand{\principio}[1]{\vskip .3 cm \centerline{\sc #1} \vskip .3cm}
+
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{FAMAF}
+\fancyhead[RE,LO]{Matemática Discreta I}
+\fancyfoot[LE,RO]{\leftmark}
+\fancyfoot[RE,LO]{\thepage}
+ 
+\renewcommand{\headrulewidth}{0.5pt}
+%\renewcommand{\footrulewidth}{0.5pt}
+ 
+
+
+
+\begin{document}
+
+{\bf \begin{center} Práctico 5 \\ Matemática Discreta I -- Año 2020/1 \\ FAMAF \end{center}}
+
+\medskip
+
+
+
+
+\begin{enumerate}
+
+\item  ¿Cuántas aristas tiene el  grafo completo $K_n$? ¿Para cuáles valores de $n$ se puede encontrar un dibujo de $K_n$ con la propiedad que las líneas representan las aristas sin cruzarse?
+
+
+\medskip
+\item Encuentre un isomorfismo entre los grafos por las siguientes listas. (Ambas listas especifican versiones de un famoso grafo conocida como {\it grafo de Petersen}.)
+$$
+\begin{matrix}
+a&b&c&d&e&f&g&h&i&j\\ \hline
+b&a&b&c&d&a&b&c&d&e\\
+e&c&d&e&a&h&i&j&f&g\\
+f&g&h&i&j&i&j&f&g&h
+\end{matrix}
+\qquad \begin{matrix}
+0&1&2&3&4&5&6&7&8&9\\ \hline
+1&2&3&4&5&0&1&0&2&6\\
+5&0&1&2&3&4&4&3&5&7\\
+7&6&8&7&6&8&9&9&9&8
+\end{matrix}
+$$
+
+\medskip
+\item
+\begin{enumerate}
+\item Encuentre todos los grafos de 5 vértices y 2 aristas no isomorfos entre sí.
+ \item ¿Cuál es el máximo número de aristas que puede tener un grafo de 5 vértices?
+\end{enumerate}
+
+\medskip
+
+\item Para cada una de las siguientes secuencias, encuentre un grafo que tenga exactamente las valencias indicadas o demuestre que tal grafo no existe:
+\begin{multicols}{3}
+\begin{enumerate}
+\item $3,3,1,1$
+\item $3,2,2,1$
+\item $3,3,2,2,1,1$
+\item $4,1,1,1,1$
+\item $7,3,3,3,2,2$
+\item $4,1,1,1$
+\end{enumerate}
+\end{multicols}
+
+\medskip
+
+\item Demuestre que los siguientes pares de grafos son isomorfos (encuentre un isomorfismo):
+
+
+
+
+
+\begin{tabular}{ll}
+	${}^{}$ \qquad &
+\begin{tikzpicture}[scale=1]
+\draw (-1,2) node {(a)};
+\SetVertexSimple[Shape=circle, FillColor=white,MinSize=8 pt]
+\SetVertexNoLabel
+\Vertex[]{A}
+\Vertex[x=1.5,y=0]{B}
+\Vertex[x=3,y=0]{C}
+\Vertex[x=1.5,y=1.5]{D}
+\Vertex[x=1.5,y=-1.5]{E}
+%
+\Edges(A,D,C,E,A)
+\Edges(A,B,C)
+\Edges(D,B)
+
+\Vertex[x=4.5,y=0.5]{2}
+\Vertex[x=6,y=0.5]{3}
+\Vertex[x=7.5,y=0.5]{4}
+\Vertex[x=4.5,y=-1]{5}
+\Vertex[x=6,y=-1]{6}
+\Edge[style={bend left}](2)(4)
+\Edges(2,3,4,6,5,2)
+\Edges(4,3,6)
+\end{tikzpicture}
+\end{tabular}
+
+
+
+\begin{tabular}{ll}
+	${}^{}$ \qquad &
+	\begin{tikzpicture}[scale=1]
+	\draw (-1,1) node {(b)};
+	\SetVertexSimple[Shape=circle, FillColor=white,MinSize=8 pt]
+	%\SetVertexNoLabel
+	\Vertex[x=0,y=0]{A}
+	\Vertex[x=1.5,y=0.8]{B}
+	\Vertex[x=3,y=0]{C}
+	\Vertex[x=1.5,y=-0.8]{D}
+	\Vertex[x=0,y=-0.8]{E}
+	\Vertex[x=1.5,y=0]{F}
+	\Vertex[x=3,y=-0.8]{G}
+	\Vertex[x=1.5,y=-1.6]{H}
+	%
+	\Edges(A,B,C,D,A)
+	\Edges(E,F,G,H,E)
+	\Edges(A,E)
+	\Edges(B,F)
+	\Edges(C,G)
+	\Edges(D,H)
+
+	
+	\Vertex[x=4.5,y=0]{1}
+	\Vertex[x=5.5,y=0]{2}
+	\Vertex[x=6.5,y=0]{3}
+	\Vertex[x=7.5,y=0]{4}
+	\Vertex[x=4.5,y=-1]{5}
+	\Vertex[x=5.5,y=-1]{6}
+	\Vertex[x=6.5,y=-1]{7}
+	\Vertex[x=7.5,y=-1]{8}
+	\Edge[style={bend left}](1)(4)
+	\Edges(1,2,3,4,8,7,6,5,1)
+	\Edges(2,6,7,3)
+	\Edge[style={bend right}](5)(8)
+	\end{tikzpicture}
+\end{tabular}
+
+
+
+
+\medskip
+
+\item Sean $G=(V,E)$ y $G^{\prime}=(V^{\prime},E^{\prime})$ dos grafos y sea $\alpha :V \mapsto V^{\prime}$ una función tal que $\delta (v)=\delta (\alpha (v)) \;\;\forall\,\; v \in V$.
+\begin{enumerate}
+	\item ¿Puede afirmar que $\alpha $ es un isomorfismo?.
+	\item ¿Puede afirmarlo si $|V|=3$ ó 4?.
+\end{enumerate}
+
+
+
+\item Encuentre una función del grafo $A$ al $B$ que preserve valencias. ¿Es un isomorfismo?.
+
+
+\begin{tabular}{llll}
+	$A:$ & &\qquad$B:$& \\
+	 &
+	\begin{tikzpicture}[scale=1]
+	\SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+	\Vertex[x=0,y=0]{A}
+	\Vertex[x=3,y=0]{B}
+	\Vertex[x=3,y=-3]{C}
+	\Vertex[x=0,y=-3]{D}
+	\Vertex[x=1,y=-1]{E}
+	\Vertex[x=2,y=-1]{F}
+	\Vertex[x=2,y=-2]{G}
+	\Vertex[x=1,y=-2]{H}
+	\Edges(A,B,C,D,A)
+	\Edges(E,F)
+	\Edges(G,H)
+	\Edges(A,E,G,C)
+	\Edges(B,F,H,D)
+	\end{tikzpicture}
+	&
+	& \begin{tikzpicture}[scale=1]
+	\SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+	\Vertex[x=0,y=0]{A}
+	\Vertex[x=3,y=0]{B}
+	\Vertex[x=3,y=-3]{C}
+	\Vertex[x=0,y=-3]{D}
+	\Vertex[x=1,y=-1]{E}
+	\Vertex[x=2,y=-1]{F}
+	\Vertex[x=2,y=-2]{G}
+	\Vertex[x=1,y=-2]{H}
+	\Edges(A,B,C,D,A)
+	\Edges(E,F,G,H,E)
+	\Edges(A,E)
+	\Edges(B,F)
+	\Edges(C,G)
+	\Edges(H,D)
+	\end{tikzpicture}
+\end{tabular}
+
+
+
+\item Pruebe que si $G$ es un grafo con más de un vértice, entonces existen dos vértices con la misma valencia.
+
+
+
+\item Si $G=(V,E)$ grafo,  el \textit{grafo complemento}  es $G' = (V,E')$, donde $E'$ son todos los 2-subconjuntos de $V$ que no están en $E$. Es decir, el grafo complemento tiene los mismos vértices que el grafo original y todas las aristas que le faltan a $G$ para ser grafo completo. 
+\begin{enumerate}
+	\item  Halle el complemento de los siguientes grafos:
+	
+
+
+	\begin{tikzpicture}[scale=1]
+	
+	\SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+	
+	\draw (-0.8,0) node {(a)};
+	\Vertex[x=0,y=0]{A}
+	\Vertex[x=0,y=-1]{B}
+	\Edges(A,B)
+	
+	
+    \draw (1.2,0) node {(b)};
+	\Vertex[x=2,y=0]{A}
+	\Vertex[x=3,y=-0.5]{B}
+	\Vertex[x=2,y=-1]{C}
+	\Edges(A,B,C,A)
+	
+	\draw (4.2,0) node {(b)};
+	\Vertex[x=5,y=0]{A}
+	\Vertex[x=6.5,y=0]{B}
+	\Vertex[x=6.5,y=-1.5]{C}
+	\Vertex[x=5,y=-1.5]{D}
+	\Edges(A,B,C,D,A,C)
+	
+	\draw (7.2,0) node {(b)};
+	\Vertex[x=8,y=-1]{A}
+	\Vertex[x=9.5,y=0]{B}
+	\Vertex[x=11,y=0]{C}
+	\Vertex[x=12.5,y=-1]{D}
+	\Vertex[x=11,y=-2]{E}
+	\Vertex[x=9.5,y=-2]{F}
+	\Edges(A,B,C,D,E,F,A)
+	\Edges(B,C,E,F,B)
+	\Edges(A,C)
+
+	\end{tikzpicture}
+
+	
+
+\medskip
+
+	\item  Si $V=\{ v_1 \dots v_n \} $ y $\delta (v_i)=d_i \;\;\forall\,\; i=1,\dots , n\,$, calcule las valencias de el grafo complemento.
+\end{enumerate}
+
+\medskip
+
+
+
+
+\item Pruebe que los siguientes grafos no son isomorfos:
+
+
+\begin{tabular}{llll}
+	&
+	\begin{tikzpicture}[scale=1]
+	\SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+	\Vertex[x=0.00, y=2.00]{a}
+	\Vertex[x=2., y=-1.50]{b}
+	\Vertex[x=-2., y=-1.50]{c}
+	\Edges(a,b,c,a)
+	\Vertex[x=0.00, y=0.85]{1}
+	\Vertex[x=1., y=-0.9]{2}
+	\Vertex[x=-1., y=-0.9]{3}
+	\Edges(1,2,3,1)
+	\Edges(a,1,3,c,b,2)
+	\end{tikzpicture}
+	&
+	\qquad
+	& 
+	\begin{tikzpicture}[scale=0.65]
+	\SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+	%
+	\Vertex[x=3.00, y=0.00]{1}
+	\Vertex[x=1.50, y=2.60]{2}
+	\Vertex[x=-1.50, y=2.60]{3}
+	\Vertex[x=-3.00, y=0.00]{4}
+	\Vertex[x=-1.50, y=-2.60]{5}
+	\Vertex[x=1.50, y=-2.60]{6}
+	\Edges(1,2,3,4,5,6,1)
+	\Edges(1,4) \Edges(3,6) \Edges(2,5)
+	\end{tikzpicture}
+\end{tabular}
+
+
+
+\medskip
+
+\item
+
+\item Dados los siguientes grafos:
+
+\begin{tikzpicture}[scale=0.8]
+%\SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+
+\draw (-0.8,0.2) node {(1)};
+\Vertex[x=0,y=-1.5, L=$a$]{A} %\draw (-0.50,-1.5) node {$a$};
+\Vertex[x=1.5,y=0, L=$b$]{B}  %\draw (1,0) node {$b$};
+\Vertex[x=3,y=-1.5, L=$c$]{C}
+\Vertex[x=1.5,y=-3, L=$d$]{D}
+\Vertex[x=1.5,y=-1.5, L=$e$]{E}
+\Edges(A,B,C,D,A)
+\Edges(A,E,C)
+\Edges(B,E,D)
+
+\draw (4.2,0.2) node {(2)};
+\Vertex[x=5,y=-1.5]{1}
+\Vertex[x=6.5,y=0]{2}
+\Vertex[x=8.5,y=-1.5]{3}
+\Vertex[x=5.7,y=-2.5]{4}
+\Vertex[x=7.7,y=-2.7]{5}
+\Edges(1,2,3,4,1,5)
+\Edges(1,3)
+\Edges(2,4)
+
+\draw (10,0.2) node {(3)};
+\Vertex[x=12.8,y=0]{1}
+\Vertex[x=11.8,y=-1.2]{2}
+\Vertex[x=3+10.8,y=-1.2]{3}
+\Vertex[x=0+10.8,y=-2.4]{4}
+\Vertex[x=4+10.8,y=-2.4]{5}
+\Vertex[x=1+10.8,y=-3.6]{6}
+\Vertex[x=3+10.8,y=-3.6]{7}
+\Vertex[x=2+10.8,y=-3.8]{8}
+\Edges(1,6,8,7,1)
+\Edges(3,2,7,8,6,4,5)
+\end{tikzpicture} 
+
+\begin{tikzpicture}[scale=0.8]
+\draw (-0.8,-5.5) node {(4)};
+\Vertex[x=0+0.2,y=0-5.9]{1}
+\Vertex[x=3+0.2,y=0-5.9]{2}
+\Vertex[x=3+0.2,y=-3-5.9]{3}
+\Vertex[x=1.5+0.2,y=-3-5.9]{4}
+\Vertex[x=0+0.2,y=-3-5.9]{5}
+\Edges(1,2,3,4,5,1)
+\Edges(2,4,1,3)
+
+\draw (4.2,-5.3) node {(5)};
+\Vertex[x=0+5,y=-1.5-5.9, L=$a$]{A}
+\Vertex[x=1.5+5,y=0-5.9, L=$b$]{B}
+\Vertex[x=3+5,y=-1.5-5.9, L=$c$]{C}
+\Vertex[x=1.5+5,y=-3-5.9, L=$d$]{D}
+\Vertex[x=1.5+5,y=-1.5-5.9, L=$e$]{E}
+\Edges(A,B,C,D,A)
+\Edges(A,E,C)
+
+
+\draw (10,-5.3) node {(6)};
+\Vertex[x=0+5+5.8,y=-1.5-5.9, L=$a$]{A}
+\Vertex[x=1.5+5+5.8,y=0-5.9, L=$b$]{B}
+\Vertex[x=3+5+5.8,y=-1.5-5.9, L=$c$]{C}
+\Vertex[x=1.5+5+5.8,y=-3-5.9, L=$d$]{D}
+\Vertex[x=1.5+5+5.8,y=-1.5-5.9, L=$e$]{E}
+\Edges(A,B,C,E,A,D,E)
+\end{tikzpicture} 
+
+\begin{tikzpicture}[scale=0.7]
+\draw (-0.8,-10) node {(7)};
+\Vertex[x=2,y=-11]{1}
+\Vertex[x=4,y=-11]{2}
+\Vertex[x=6,y=-11]{3}
+\Vertex[x=0,y=-13]{4}
+\Vertex[x=5,y=-14]{5}
+\Vertex[x=6.3,y=-13]{6}
+\Vertex[x=2,y=-15]{7}
+\Vertex[x=8,y=-15]{8}
+\Vertex[x=3,y=-16]{9}
+\Vertex[x=7,y=-16]{10}
+\Vertex[x=3,y=-18]{11}
+\Vertex[x=5,y=-18]{12}
+\Edges(1,6,12,9,1)
+\Edges(4,2,5)
+\Edges(3,7,11,10,8,3)
+\end{tikzpicture} 
+
+
+
+\begin{enumerate}
+\item Determine en cada caso si existen subgrafos completos de más de 2 vértices.
+\item Para el grafo (1), dé todos los caminos que unen $a$ con $b$.
+\item Dé caminatas eulerianas en los grafos (4), (5) y (6).
+\item Para (2) y (3), decir si existen ciclos hamiltonianos.
+\item Determinar cuales de los siguientes pares de grafos son isomorfos:
+
+ (i) (4) y (2),\quad
+
+ (ii) (5) y (6), \quad
+
+ (iii) (5) y (1).
+
+
+
+\item Halle las componentes conexas del grafo (7).
+\end{enumerate} 
+
+\medskip
+
+\item Dado el siguiente grafo
+$$
+\begin{matrix}
+0&1&2&3&4&5&6&7&8\\ \hline
+1&0&1&0&3&0&1&0&1\\
+3&2&3&2&5&4&5&2&3\\
+5&6&7&4&&6&7&6&5\\
+7&8&&8&&8&&8&7.
+\end{matrix}
+$$
+encuentre un ciclo hamiltoniano (si existe). Determine si existe una caminata euleriana y en caso de ser así encuentre una. 
+
+\medskip
+
+\item Un ratón intenta comer un $3\times 3\times 3$ cubo de queso. Él comienza en una esquina y come un subcubo de $1\times 1\times 1$, para luego pasar a un subcubo adyacente. ¿Podrá el ratón terminar de comer el queso en el centro?
+
+
+\item Dé todos los árboles de 5 vértices no isomorfos.
+
+
+
+\end{enumerate}
+\end{document}
