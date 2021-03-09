@@ -59,18 +59,17 @@
 %\setlength{\parindent}{0,7cm}% tamaño de sangria.
 \setlength{\parskip}{0,4cm} % separación entre parrafos.
 \renewcommand{\baselinestretch}{0.90}% separacion del interlineado
+\setlist[1]{topsep=8pt,itemsep=.4cm,partopsep=4pt, parsep=4pt} %espacios nivel 1 listas
+\setlist[2]{itemsep=.15cm}  %espacios nivel 2 listas
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\end{comment}
 %%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\rta}{\noindent\textit{Rta: }} 
-\newcommand \Z{{\mathbb Z}}
-\newcommand \N{{\mathbb N}}
-\newcommand \mcd{\operatorname{mcd}}
-\newcommand \mcm{\operatorname{mcm}}
 
 \begin{document}
     \baselineskip=0.55truecm %original
+    
     
 {\bf \begin{center} Práctico 3 \\ Matemática Discreta I -- Año 2021/1 \\ FAMAF \end{center}}
 
@@ -78,7 +77,7 @@
 
 
 \begin{enumerate}
-\setlength\itemsep{1.1em}
+%\setlength\itemsep{1.1em}
 
 \item Hallar el cociente y el resto de la divisi\'on de:
 \begin{enumerate}
@@ -215,6 +214,21 @@ $m=8, r\in\{0,1,4\}$; $m=11, r\in\{0,1,4,9,5,3\}$.
     $(10101101)_2 + (10011)_2$  \rta  $(11000000)_2$.
 \end{enumerate}
 
+\item Expresar en  base $5$:  $(1503)_6 + (1111)_2$.  
+
+\rta  Primero pasamos ambos números a base $10$: 
+\begin{itemize}
+    \item $(1503)_6$: $1 \times 6^3+ 5 \times 6^2+0 \times 6^1+3 \times 6^0=1  \times 216+ 5 \times 36 +3=399$.
+    \item $(1111)_2$:  $2^3+2^2+2^1+2^0= 8+4+2+1=15$. 
+\end{itemize}
+Ahora los sumamos $399+15= 414$. Finalmente,  escribimos $414$ en  base $5$. 
+\begin{align*}
+    414 &= 5 \times 82 + 4 \\
+    82 &= 5 \times 16 + 2 \\
+    16 &= 5 \times 3 + 1 \\
+    3 &= 5 \times 0  +3.
+\end{align*}
+Luego  $(1503)_6 + (1111)_2 = (3124)_5$
 
 \item Sean $a$, $b$, $c \in {\mathbb Z}$. Demostrar las siguientes afirmaciones:
 \begin{enumerate}
@@ -364,10 +378,10 @@ Ahora bien,
 
 
 
-\item Probar que para todo $n \in {\mathbb Z}$, $n^2 + 2$ no es divisible por 4.
+\item Probar que para todo $n \in {\mathbb Z}$, $n^2 + 2$ no es divisible por $4$.
 
-\rta Si $n$ es impar $n^2+2$ es impar y por lo tanto no es divisible por 4.
-Si $n$ es par $n^2$ es divisible por 4 y como 4 no divide a 2 entonces no divide a $n^2+2$ .
+\rta Si $n$ es impar $n^2+2$ es impar y por lo tanto no es divisible por $4$.
+Si $n$ es par $n^2$ es divisible por $4$. Supongamos que $4| n^2+2$,  como $4|n^2$, tenemos que  $4| n^2+2- n^2 = 2$,  absurdo,  que vino de suponer que  $4| n^2+2$.
 
 
 \item Probar que todo entero impar que no es múltiplo de 3, es de la forma $6m\pm 1$, con $m$ entero.
@@ -391,7 +405,17 @@ Si $n$ es par $n^2$ es divisible por 4 y como 4 no divide a 2 entonces no divide
     \begin{equation*}
         \binom{n}{4} = \frac{n!}{(n-4)!4!} = \frac{n(n-1)(n-2)(n-3)}{4!}.
     \end{equation*}
-    Por un teorema de la teórica sabemos que $\displaystyle\binom{n}{4}$ es un número entero, por lo tanto $ \displaystyle\frac{n(n-1)(n-2)(n-3)}{4!}$ es entero, lo cual quiere decir que $$4! | n(n-1)(n-2)(n-3)$$ (y $4! = 24$). 
+    Por un teorema de la teórica sabemos que $\displaystyle\binom{n}{4}$ es un número entero, por lo tanto $$ \displaystyle\frac{n(n-1)(n-2)(n-3)}{4!}$$ es entero, lo cual quiere decir que $4! | n(n-1)(n-2)(n-3)$ (y $4! = 24$). 
+
+    \item Probar que el producto de $m$  enteros consecutivos es divisible por $m!$.
+    
+    \rta el producto de $m$ enteros consecutivos es de la forma $n(n-1)(n-2)(n-3)\ldots(n-m+1)$. Ahora bien,
+    \begin{equation*}
+        \binom{n}{m} = \frac{n!}{(n-m)!m!} = \frac{n(n-1)(n-2)(n-3)\ldots(n-m+1)}{m!}.
+    \end{equation*}
+    Por un teorema de la teórica sabemos que $\displaystyle\binom{n}{m}$ es un número entero, por lo tanto 
+    $$ \frac{n(n-1)(n-2)(n-3)\ldots(n-m+1)}{m!}$$ 
+    es entero, lo cual quiere decir que $$m! | n(n-1)(n-2)(n-3)\ldots(n-m+1).$$ 
     
 \end{enumerate}
 
@@ -406,15 +430,71 @@ En el caso de 3 tenemos tenemos que los restos de cuadrados posibles son 0 y 1 y
 
 
 
-\item Encontrar $(7469,2464)$, $(2689,4001)$, $(2447,-3997)$, $(-1109,-4999)$.
+\item Encontrar
+\begin{enumerate}
 
-\noindent\textit{Rta 1: }  $7469=3\cdot 2464+ 77$, $2464= 32\cdot77$ Por lo tanto $(2469,2464)=77$.
+      \item $(7469,2464)$.
+      
+      \rta 
+      \begin{align*}
+        7469 &= 2464 \cdot 3 + 77 \\
+        2464 &= 77 \cdot 32 +0.
+    \end{align*}
+    Luego, $(2469,2464)=77$.
+    %$7469=3\cdot 2464+ 77$, $2464= 32\cdot77$ Por lo tanto $(2469,2464)=77$.
 
-\noindent\textit{Rta 2: }  $4001=2689+ 1312$, $2689=2\cdot 1312+65$,  $1312=20\cdot 65+12$,  $65=5\cdot 12+5$,  $12=2\cdot 5+2$, $ 5=2\cdot 2+1$. Por lo tanto$ (2689, 4001)=1$.
+      \item  $(2689,4001)$.
+      
+      \rta
+      \begin{align*}
+        4001 &= 2689 \cdot 1  + 1312 \\
+        2689 &= 1312 \cdot 2 + 65 \\
+        1312 &= 65 \cdot 20 + 12 \\
+        65 &= 12 \cdot 5 + 5 \\
+        12 &= 5 \cdot 2 + 2 \\
+        5 &= 2 \cdot 2 + 1 \\
+        2 &= 2 \cdot 1 + 0.
+    \end{align*}
+    Por lo tanto, $ (2689, 4001)=1$.
+    %$4001=2689+ 1312$, $2689=2\cdot 1312+65$,  $1312=20\cdot 65+12$,  $65=5\cdot 12+5$,  $12=2\cdot 5+2$, $ 5=2\cdot 2+1$. Por lo tanto$ (2689, 4001)=1$.
 
-\noindent\textit{Rta 3: } $-3997=(-2)2447+897$,  $2447=2\cdot 897+653$,  $897=653+244$,  $653=2\cdot244+165$, $244=165+79$,  $165=2\cdot79+7$, $79=11\cdot7+2$, $7=3\cdot+1$. Por lo tanto $(2447,-3997)=1$.
+      \item  $(2447,-3997)$.
+      
+      \rta Es lo mismo calcular  $(2447,3997)$
+      \begin{align*}
+        3997 &= 2447 \cdot 1  + 1550 \\
+        2447 &= 1550 \cdot 1 + 897 \\
+        1550 &= 897 \cdot 1 + 653 \\
+        897 &= 653 \cdot 1 + 244 \\
+        653 &= 244 \cdot 2 + 165 \\
+        244 &= 165 \cdot 1 + 79 \\
+        165 &= 79 \cdot 2 + 2 \\
+        79 &= 2 \cdot 39 + 1 \\
+        2 &= 1 \cdot 2 + 0.
+    \end{align*}
+    Por lo tanto, $(2447,-3997)=1$.
+    %$-3997=(-2)2447+897$,  $2447=2\cdot 897+653$,  $897=653+244$,  $653=2\cdot244+165$, $244=165+79$,  $165=2\cdot79+7$, $79=11\cdot7+2$, $7=3\cdot+1$. Por lo tanto $(2447,-3997)=1$.
 
-\noindent\textit{Rta 4: } $4999=4\cdot1109+ 563; 1109=2\cdot 563-17; 563=33\cdot 17+2; 17=8\cdot 2+1$. Por lo tanto $(-1109,-4999)=1$.
+      \item $(-1109,-4999)$.
+      
+      \rta Es lo mismo calcular  $(1109,3997)$
+      \begin{align*}
+        3997 &= 1109 \cdot 3  + 670 \\
+        1109 &= 670 \cdot 1  + 439 \\
+        670 &= 439 \cdot 1  + 231 \\
+        439 &= 231 \cdot 1  + 208 \\
+        208 &= 23 \cdot 9  + 1 \\
+        23 &= 1 \cdot 23  + 0 \\
+    \end{align*}
+    Por lo tanto, $(-1109,-4999)=1$.
+      
+      %$4999=4\cdot1109+ 563; 1109=2\cdot 563-17; 563=33\cdot 17+2; 17=8\cdot 2+1$. Por lo tanto $(-1109,-4999)=1$.
+
+  \end{enumerate}
+
+
+
+
 
 
 \item
@@ -498,18 +578,6 @@ números dados, para cada uno de  los siguientes pares de números:
 
 
 
-\item Probar que si $n \in {\mathbb Z}$, entonces los números $2n+1$ y $\dfrac{n(n+1)}{2}$ son coprimos.
-
-\rta Si $a$ es coprimo con $b$ y con $c$ entonces $a$ es coprimo con $bc$, ya que un primo que divida a $b\cdot c$ debe dividir a $b$ o a $c$ y entonces no puede dividir a $a$. Como $2n+1$ es coprimo con $n$ y con $n+1$ entonces es coprimo con $n(n+1)$ y por lo tanto es coprimo con $\frac{n(n+1)}{2}$.
-
-Más explícitamente: $1=2n+1-2\cdot n; 1=2(n+1)-(2n+1) \Rightarrow (2n+1,n)=1=(2n+1, n+1)$.
-Entonces  $1=(2n+1-2\cdot n)(2(n+1)-(2n+1))=(2n+1)(1+2n)-4n(n+1)=(2n+1)(1+2n)-8\frac{n(n+1)}{2}$ y esto implica $2n+1$ y $\frac{n(n+1)}{2}$ son coprimos.
-
-\noindent\textit{Rta Alternativa: } si $p$ es un primo que divide a $\frac{n(n+1)}{2}, p$ debe dividir a $n(n+1)$ y por ser primo debe dividir a $n$ o a $n+1$. Si además se pide que $p\vert 2n+1$ que es coprimo con $n$ y $n+1$, entonces $p\vert 1$ absurdo.
-
-
-
-
 \item Encontrar todos los enteros positivos $a$ y $b$ tales que $(a,b)=10$ y $[a,b]=100$.
 
 \rta Es claro que $(a/10,b/10)=1$ y $[a/10,b/10] = 10$. Como $[a/10,b/10] = \displaystyle\frac{(a/10)(b/10)}{(a/10,b/10)}= (a/10)(b/10)$,  tenemos que $(a/10)(b/10) = 10$, por lo tanto $\{a/10,b/10\}\in \{\{1,10\},\{2.5\}\}$. Es decir, $a=10, b=100$ ó $a=20, b=50$ ó al revés.
@@ -548,11 +616,70 @@ Entonces  $1=(2n+1-2\cdot n)(2(n+1)-(2n+1))=(2n+1)(1+2n)-4n(n+1)=(2n+1)(1+2n)-8\
  
 
 
+ \item Probar que si $n \in {\mathbb Z}$, entonces los números $2n+1$ y $n(n+1)$ son coprimos.
+
+ \rta Supongamos que existe  $p$ primo tal que $p| 2n+1$ y $p | n(n+1)$. 
+ 
+ Como $p | n(n+1)$,  entonces $p|n$ o $p| n+1$. 
+ 
+ \textit{Caso 1: $p|n$.}  Como $p|n$ y $p| 2n +1$ $\Rightarrow$ $p| (2n +1) -2n = 1$,  absurdo. 
+ 
+ \textit{Caso 2: $p|n+1$.}  Como $p|n +1$ y $p| 2n +1$ $\Rightarrow$ $p| 2(n+1) - (2n +1) = 1$,  absurdo. 
+ 
+ Es decir, en cualquier caso llegamos a un absurdo. El absurdo vino de suponer que  existe  $p$ primo tal que $p| 2n+1$ y $p | n(n+1)$. Por lo tanto,  no hay ningún primo que divida a  $2n+1$ y $n(n+1)$ y  eso claramente implica que no hay ningún número positivo distinto de $1$  que divida a  $2n+1$ y $n(n+1)$ y,  en consecuencia, $2n+1$ y $n(n+1)$ son coprimos.
+ 
+
 \item Si $a\cdot b$ es un cuadrado y $a$ y $b$ son coprimos, probar que $a$ y $b$ son cuadrados.
 
 \rta  Si un primo $p$ divide a $a$ entonces divide a $ab$ y por ser este un cuadrado $p^2\vert ab$, por ser coprimos $p$ no divide a $b$ y entonces $p^2$ debe dividir a $a$. El resultado se sigue por el principio de buen orden tomando el $ab$ más chico que contradice la proposición y considerando $ab/p^2, a/p^2, b$.
 
 
+\item 
+\begin{enumerate}
+    \item Probar  que $\sqrt{5}$ no es un número racional.     
+    
+    \rta Supongamos que  $\sqrt{5}$ es racional, es decir $\sqrt{5} = \displaystyle \frac{n}{m}$, luego $5 =\sqrt{5}^2 =\displaystyle \frac{n^2}{m^2}$ y haciendo pasaje de término obtenemos $5m^2 = n^2$. Sea $m = 5^rm_1$ y $n = 5^sn_1$ donde $m_1,n_1$ no tienen el primo 5 en su descomposición en factores primos (es decir $(5,m_1) = (5,n_1) = 1$). Luego $5m^2 = 5 \cdot 5^{2r}m_1^2= 5^{2r+1}m_1$ y $n^2 = 5^{2s}n_1^2$, y por lo tanto $5^{2r+1}m_1 =   5^{2s}n_1^2$. Por la unicidad de la escritura en la descomposición prima,  tenemos que  $5^{2r+1}= 5^{2s}$ y por lo tanto  ${2r+1}= {2s}$, lo cual es absurdo. El absurdo vino de suponer que   $\sqrt{5}$ es un número racional.
+    \item Probar  que $\sqrt{15}$ no es un número racional.      
+    
+    \rta Como en el ejercicio anterior debemos ver que $15m^2 = n^2$ nos lleva a un absurdo. Ahora bien si $m = 5^rm_1$ y $n = 5^sn_1$ con $5$ coprimo con $m_1$ y $n_1$, tenemos que  $5^{2r+1}3m_1 =   5^{2s}n_1^2 \Rightarrow 2r+1 = 2s$, absurdo.
+    \item Probar  que $\sqrt{8}$ no es un número racional.     
+    
+    \rta En  este caso  suponemos que $\sqrt{8} =n/m$, luego $ 8m^2 = n^2$. Si $m = 2^rm_1$ y $n = 2^sn_1$ con $(2,m_1) = (2,n_1) = 1$, tenemos  que $2^3 \cdot 2^{2r} m_1^2 = 2^{2s}n_1^2$, por lo tanto $2^{2r+3} m_1^2 = 2^{2s}n_1^2$. Luego $2r+3 = 2s$ lo cual es absurdo pues un impar no puede ser igual a un par.  
+    \item Probar  que $\sqrt[3]{4}$ no es un número racional.     
+    
+    \rta Si fuera racional tendríamos $\sqrt[3]{4} = n/m$ y  por lo tanto (elevando al cubo) $4 =n^3/m^3$, o equivalentemente,   $2^2m^3 = n^3$. Si $m = 2^rm_1$ y $n = 2^sn_1$ con $(2,m_1) = (2,n_1) = 1$, tenemos  $2^2m^3 = 2^2\cdot 2^{3r}m_1^3 =2^{3r+2}m_1^3$ y      $n^3 =2^{3s}n_1^3 $. Por  lo tanto  $3r+2 = 3s$ lo cual es absurdo, pues $3r+2$ no es múltiplo de 3 y $3s$ sí lo es.
+\end{enumerate}
+
+
+\item  
+\begin{enumerate}
+    \item Probar  que $\sqrt[4]{54}$ no es racional. 
+    
+    \rta supongamos que  $\sqrt[4]{54}$ es racional, entonces  $\sqrt[4]{54} = \frac{m}{n}$. Por lo tanto,
+    $$
+    54 = \sqrt[4]{54}^4 = \left(\frac{m}{n}\right)^4 = \frac{m^4}{n^4}.
+    $$
+    Luego,
+    $$
+    54 n^4 = m^4. 
+    $$ 
+
+    Ahora bien $54 = 2 \cdot 3^3$ y sea $m = 2^s m_0$ con $2$ y $m_0$ coprimos y $n = 2^r n_0$ con $2$ y $n_0$ coprimos. En particular, $m_0,n_0$  no tienen el primo $2$  en su descomposición. Por lo tanto, 
+    $$
+    54 n^4 = m^4  \;\Leftrightarrow\;   2 \cdot 3^3 \cdot 2^{4r} n_0^4 = 2^{4s} m_0^4
+    \;\Leftrightarrow\;  2^{4r+1} \cdot 3^3  n_0^4 = 2^{4s} m_0^4.
+    $$ 
+    Como  $m_0^4,n_0^4$  no tienen el primo $2$  en su descomposición,  debe ser $2^{4r+1} = 2^{4s}$ y por lo tanto $4r+1 = 4s$, lo cual es absurdo pues $4 | 4s$ y $4 \not| 4r+1$. El absurdo vino de suponer que $\sqrt[4]{54}$ es racional. 
+
+    \item Probar no existen $m, n$ tal que $21 n^5 = m^5$. 
+    
+    \rta  Supongamos que existen $m, n$ tal que $21 n^5 = m^5$.  $21 = 3 \cdot 7$ y sea $m = 3^s m_0$ con $3$ y $m_0$ coprimos y $n = 3^r n_0$ con $3$ y $n_0$ coprimos. En particular, $m_0,n_0$  no tienen el primo $3$  en su descomposición. Por lo tanto, 
+    $$
+    21 n^5 = m^5  \;\Leftrightarrow\;   3\cdot 7 \cdot 3^{5r} n_0^5 =3^{5s} m_0^5
+    \;\Leftrightarrow\; 3^{5r+1} \cdot 7  n_0^5 = 3^{5s} m_0^5.
+    $$ 
+    Como  $m_0^5,n_0^5$  no tienen el primo $3$, por la unicidad de la descomposición en factores primos,    debe ser $3^{5r+1} = 3^{5s}$ y por lo tanto $5r+1 = 5s$, lo cual es absurdo pues $5 | 5s$ y $5 \not| 5r+1$. El absurdo vino de suponer que  existen $m, n$ tal que $21 n^5 = m^5$. 
+\end{enumerate}
 
 \item Probar que si $p_k$ es el $k$-\'esimo primo positivo entonces $$p_{k+1}\leq p_1\cdot p_2\cdot \cdots \cdot p_k+1$$
 
@@ -561,22 +688,6 @@ Entonces  $1=(2n+1-2\cdot n)(2(n+1)-(2n+1))=(2n+1)(1+2n)-4n(n+1)=(2n+1)(1+2n)-8\
  
  
  
- \item 
- \begin{enumerate}
-     \item Probar  que $\sqrt{5}$ no es un número racional.     
-     
-     \rta Supongamos que  $\sqrt{5}$ es racional, es decir $\sqrt{5} = \displaystyle \frac{n}{m}$, luego $5 =\sqrt{5}^2 =\displaystyle \frac{n^2}{m^2}$ y haciendo pasaje de término obtenemos $5m^2 = n^2$. Sea $m = 5^rm_1$ y $n = 5^sn_1$ donde $m_1,n_1$ no tienen el primo 5 en su descomposición en factores primos (es decir $(5,m_1) = (5,n_1) = 1$). Luego $5m^2 = 5 \cdot 5^{2r}m_1^2= 5^{2r+1}m_1$ y $n^2 = 5^{2s}n_1^2$, y por lo tanto $5^{2r+1}m_1 =   5^{2s}n_1^2$. Por la unicidad de la escritura en la descomposición prima,  tenemos que  $5^{2r+1}= 5^{2s}$ y por lo tanto  ${2r+1}= {2s}$, lo cual es absurdo. El absurdo vino de suponer que   $\sqrt{5}$ es un número racional.
-     \item Probar  que $\sqrt{15}$ no es un número racional.      
-     
-     \rta Como en el ejercicio anterior debemos ver que $15m^2 = n^2$ nos lleva a un absurdo. Ahora bien si $m = 5^rm_1$ y $n = 5^sn_1$ con $5$ coprimo con $m_1$ y $n_1$, tenemos que  $5^{2r+1}3m_1 =   5^{2s}n_1^2 \Rightarrow 2r+1 = 2s$, absurdo.
-     \item Probar  que $\sqrt{8}$ no es un número racional.     
-     
-     \rta En  este caso  suponemos que $\sqrt{8} =n/m$, luego $ 8m^2 = n^2$. Si $m = 2^rm_1$ y $n = 2^sn_1$ con $(2,m_1) = (2,n_1) = 1$, tenemos  que $2^3 \cdot 2^{2r} m_1^2 = 2^{2s}n_1^2$, por lo tanto $2^{2r+3} m_1^2 = 2^{2s}n_1^2$. Luego $2r+3 = 2s$ lo cual es absurdo pues un impar no puede ser igual a un par.  
-     \item Probar  que $\sqrt[3]{4}$ no es un número racional.     
-     
-     \rta Si fuera racional tendríamos $\sqrt[3]{4} = n/m$ y  por lo tanto (elevando al cubo) $4 =n^3/m^3$, o equivalentemente,   $2^2m^3 = n^3$. Si $m = 2^rm_1$ y $n = 2^sn_1$ con $(2,m_1) = (2,n_1) = 1$, tenemos  $2^2m^3 = 2^2\cdot 2^{3r}m_1^3 =2^{3r+2}m_1^3$ y      $n^3 =2^{3s}n_1^3 $. Por  lo tanto  $3r+2 = 3s$ lo cual es absurdo, pues $3r+2$ no es múltiplo de 3 y $3s$ sí lo es.
- \end{enumerate}
-
 
 
 \item Calcular el máximo común divisor y el mínimo común múltiplo de los siguientes pares de números usando la descomposición en números primos. 

@@ -59,19 +59,16 @@
 %\setlength{\parindent}{0,7cm}% tamaño de sangria.
 \setlength{\parskip}{0,4cm} % separación entre parrafos.
 \renewcommand{\baselinestretch}{0.90}% separacion del interlineado
+\setlist[1]{topsep=8pt,itemsep=.4cm,partopsep=4pt, parsep=4pt} %espacios nivel 1 listas
+\setlist[2]{itemsep=.15cm}  %espacios nivel 2 listas
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\end{comment}
 %%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\rta}{\noindent\textit{Rta: }} 
-\newcommand \Z{{\mathbb Z}}
-\newcommand \N{{\mathbb N}}
-\newcommand \mcd{\operatorname{mcd}}
-\newcommand \mcm{\operatorname{mcm}}
 
 \begin{document}
-    \baselineskip=0.55truecm %original
-    
+    \baselineskip=0.55truecm %original    
 
 {\bf \begin{center} Práctico 3 - Repaso \\ Matemática Discreta I -- Año 2021/1 \\ FAMAF\end{center}}
 
@@ -189,21 +186,21 @@ a) $m^4=27$? \qquad \qquad b) $m^2 = 12n^2$? \qquad \qquad c) $m^3 = 47n^3$?
 
 
 
-\item Determinar todos los $p\in\N$ tales que
+\item Determinar todos los $p\in\mathbb N$ tales que
 \[ p,\, p+2,\, p+6,\, p+8,\, p+12,\, p+14 \]
 sean todos primos.
 
 
 
 
-\item  Sea $\{f_n\}_{n\in\N}$ la sucesi\'on de Fibonacci, definida recursivamente por: $f_1=1,\, f_2=1$, $f_{n+1}=f_{n}+f_{n-1},\, n\geq 2$. Probar que:
+\item  Sea $\{f_n\}_{n\in\mathbb N}$ la sucesi\'on de Fibonacci, definida recursivamente por: $f_1=1,\, f_2=1$, $f_{n+1}=f_{n}+f_{n-1},\, n\geq 2$. Probar que:
 \begin{enumerate}
-\item $f_{3n}$ es par $\forall\, n\in\N$.
-\item $f_{3n+1}$ y $f_{3n+2}$ son impares $\forall\, n\in\N$.
-\item $f_{n+m}=f_mf_{n+1}+f_{m-1}f_n\; \forall n,m\in\N,\, m\geq 2$.
-\item $f_n\mid f_{nk}\;  \forall k\in\N$.
+\item $f_{3n}$ es par $\forall\, n\in\mathbb N$.
+\item $f_{3n+1}$ y $f_{3n+2}$ son impares $\forall\, n\in\mathbb N$.
+\item $f_{n+m}=f_mf_{n+1}+f_{m-1}f_n\; \forall n,m\in\mathbb N,\, m\geq 2$.
+\item $f_n\mid f_{nk}\;  \forall k\in\mathbb N$.
 \item $f_{n+1}f_{n-1}-f_n^2=(-1)^n\; \forall n\geq 2$.
-\item $(f_{n+1},f_n)=1\; \forall\, n\in\N$.
+\item $(f_{n+1},f_n)=1\; \forall\, n\in\mathbb N$.
 \end{enumerate}
 
 
