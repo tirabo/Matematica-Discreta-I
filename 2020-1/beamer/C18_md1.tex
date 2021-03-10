@@ -1,0 +1,384 @@
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
+\usetheme{CambridgeUS}
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+%\usepackage{makeidx}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usepackage[customcolors]{hf-tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\tikzset{
+	every picture/.append style={
+		execute at begin picture={\deactivatequoting},
+		execute at end picture={\activatequoting}
+	}
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+\usepackage{mathtools}
+\usepackage{stackrel}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+\usepackage{polynom}
+\polyset{%
+	style=B,
+	delims={(}{)},
+	div=:
+}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate]{label={(\arabic*)}}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+\setbeamertemplate{itemize item}{$\circ$}
+\setbeamertemplate{enumerate items}[default]
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand\sgn{\operatorname{sgn}}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\figurename }{Figura}
+
+\include{definiciones}
+
+\newcommand{\nc}{\newcommand}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\nc{\FF}{{\mathbb F}} \nc{\NN}{{\mathbb N}} \nc{\QQ}{{\mathbb Q}}
+\nc{\PP}{{\mathbb P}} \nc{\DD}{{\mathbb D}} \nc{\Sn}{{\mathbb S}}
+\nc{\uno}{\mathbb{1}} \nc{\BB}{{\mathbb B}} \nc{\An}{{\mathbb A}}
+
+\nc{\ba}{\mathbf{a}} \nc{\bb}{\mathbf{b}} \nc{\bt}{\mathbf{t}}
+\nc{\bB}{\mathbf{B}}
+
+\nc{\cP}{\mathcal{P}} \nc{\cU}{\mathcal{U}} \nc{\cX}{\mathcal{X}}
+\nc{\cE}{\mathcal{E}} \nc{\cS}{\mathcal{S}} \nc{\cA}{\mathcal{A}}
+\nc{\cC}{\mathcal{C}} \nc{\cO}{\mathcal{O}} \nc{\cQ}{\mathcal{Q}}
+\nc{\cB}{\mathcal{B}} \nc{\cJ}{\mathcal{J}} \nc{\cI}{\mathcal{I}}
+\nc{\cM}{\mathcal{M}} \nc{\cK}{\mathcal{K}}
+
+\nc{\fD}{\mathfrak{D}} \nc{\fI}{\mathfrak{I}} \nc{\fJ}{\mathfrak{J}}
+\nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+
+
+\title[Clase 18 - Congruencia 3]{Matemática Discreta I \\ Clase 18 - Congruencia 3}
+%\author[A. Tiraboschi]{Alejandro Tiraboschi}
+\institute[]{\normalsize FAMAF / UNC
+	\\[\baselineskip] ${}^{}$
+	\\[\baselineskip]
+}
+\date[19/05/2020]{19 de mayo de 2020}
+
+
+
+
+\begin{document}
+	
+	\frame{\titlepage} 
+	
+	\begin{frame}\frametitle{El Teorema (pequeño) de Fermat}
+		El siguiente lema nos sirve de preparación para la demostración
+		del Teorema (o fórmula) de Fermat.
+		
+		\vskip .4cm \pause 
+		\begin{lema} \label{l4.3} Sea $p$ un número primo, entonces
+			\begin{enumerate}
+				\item[(a)] $p|\binom{p}{r}$, con $0< r <p$, \vskip .4cm \pause 
+				\item[(b)] $(a+b)^p \equiv a^p+b^p \pmod{p}$. 
+			\end{enumerate}
+		\end{lema}
+		
+	\end{frame}
+	
+	
+	\begin{frame}
+		\begin{proof} \pause 
+			\noindent({a})  Escribamos el número binomial de otra forma: 
+			$$
+			\binom{p}{r}=\frac{p!}{r!(p-r)!}=p\cdot\,\frac{(p-1)!}{r!(p-r)!},
+			$$ \pause 
+			luego 
+			\begin{equation*}\label{binp}
+				\binom{p}{r} \cdot r!(p-r)! = p \cdot(p-1)!.
+			\end{equation*}\pause 
+			Por lo tanto, 
+			\vskip .2cm 
+			\begin{enumerate}
+				\item[(1)] $p | \binom{p}{r} \cdot r!(p-r)!$. Además, \pause 
+				\vskip .3cm 
+				
+				\item[(2)] $r < p$ $\Rightarrow$ $p \not| r!$. \vskip .3cm \pause 
+				
+				\item[(3)] $r >0$ $\Rightarrow$ $p-r < p$ $\Rightarrow$ $p \not| (p-r)!$.
+			\end{enumerate}
+			
+			
+			
+			
+			
+		\end{proof}
+	\end{frame}
+	
+	\begin{frame}
+		
+		De (1), (2) y (3),  
+		
+		\begin{equation*}
+			p | \binom{p}{r} \cdot r!(p-r)!\qquad \wedge \qquad p \not| r!(p-r)!
+		\end{equation*}\pause 
+		
+		por lo tanto ($p$ es primo)
+		\begin{equation*}
+			p | \binom{p}{r}.
+		\end{equation*}
+		\vskip .3cm \pause 
+		\noindent({b}) Por el teorema del binomio sabemos que
+		$$
+		(a+b)^p =\sum_{i=0}^{p} \binom{p}{i} a^ib^{p-i}.
+		$$\pause 
+		Por ({a}) es claro que $ \binom{p}{i} a^ib^{p-i}\equiv 0 \pmod{p}$,
+		si $0<i<p$.
+		\vskip .3cm \pause 
+		Luego se deduce el resultado.
+		\qed
+	\end{frame}
+	
+	\begin{frame}
+		El siguiente es el llamado teorema de Fermat.
+		
+		\begin{teorema}\label{t4.3} Sea $p$ un número primo y $a$ número
+			entero. Entonces
+			$$
+			a^p\equiv a\pmod{p}.
+			$$
+		\end{teorema}\pause 
+		\begin{proof} \pause 
+			
+			Dividiremos la demostración en 2 casos (1) $a\ge 0$, (2)  $a < 0$.
+			\vskip .3cm\pause 
+			{(1) $a\ge 0$.} 	Por inducción sobre $a$. 
+			\vskip .3cm
+			\textit{Caso base $a=0$.} $0^p\equiv 0\pmod{p}$,  es trivial.
+			\vskip .3cm
+			
+			
+		\end{proof}
+	\end{frame}
+	
+	
+	\begin{frame}
+		\textit{Paso  inductivo.} Si $k \ge 0$, la hipótesis inductiva es:
+		\begin{equation}
+			k^p \equiv k \pmod{p}. \tag{HI}
+		\end{equation}
+		
+		Debemos probar,
+		\begin{equation}
+			(k+1)^p \equiv k+1 \pmod{p}. \tag{T}
+		\end{equation}
+		\pause 
+		Ahora bien,
+		\begin{align*}
+			(k+1)^p &\equiv   k^p + 1^p \pmod{p}&\quad&(\text{por (b) del  lema}) \\
+			&\equiv k +1 \pmod{p}&\quad&(\text{por HI}).  \\
+		\end{align*}
+		Es  decir $(k+1)^p \equiv  k+1 \pmod{p}$,  que es lo que queríamos probar.
+	\end{frame}
+	
+	
+	
+	
+	
+	\begin{frame}
+		
+		
+		{(2) $a<0$.} \pause	Como $a<0$, entonces $-a>0$, luego por (1): 
+		
+		$(-a)^p \equiv -a \pmod{p}$ o,  equivalentemente
+		\begin{equation}\label{eq:fermat-menos-1}
+			(-1)^pa^p \equiv (-1)a \pmod{p}
+		\end{equation}
+		
+		\pause 
+		Ahora bien,
+		\vskip .3cm 
+		
+		$p>2$, entonces $(-1)^p=-1$,  en particular  $(-1)^p \equiv -1 \pmod{p}$.
+		
+		\vskip .3cm 
+		$p=2$, entonces $(-1)^p=1$, pero como $1\equiv -1 \pmod{2}$, $(-1)^p \equiv -1 \pmod{p}$.
+		\vskip .3cm 
+		\pause 
+		Luego  $(-1)^p \equiv -1 \pmod{p}$ para todo $p$ primo y la ecuación (\ref{eq:fermat-menos-1}) es equivalente a:
+		\begin{equation*}\label{eq:fermat-menos}
+			(-1)a^p \equiv (-1)a \pmod{p}
+		\end{equation*}
+		\vskip .3cm \pause 
+		Multiplicando por $-1$ la ecuación  obtenemos $a^p \equiv a \pmod{p}$. \qed
+		
+		
+	\end{frame}
+	
+	
+	\begin{frame}
+		Supongamos que $a$ y $p$ son coprimos, por Fermat 
+		$$
+		p|(a^p 	-a)=a(a^{(p-1)} -1).
+		$$
+		
+		Como $p$ no divide a $a$, tenemos que $p|(a^{(p-1)} -1)$, \pause es decir 
+		\vskip .4cm 
+		\begin{teorema}
+			Si  $a$ y $p$ coprimos y $p$ es primo, entonces  
+			$$a^{(p-1)}\equiv 1\pmod{p}.
+			$$
+		\end{teorema}
+		
+		\vskip .3cm \pause 
+		Este último enunciado es también conocido como teorema de Fermat.
+	\end{frame}
+	
+	\begin{frame}
+		
+		
+		\begin{definicion} Sea $n \ge 1$, La \textit{función de Euler} se define
+			\begin{equation*}
+				\phi(n) := |\{x: \operatorname{mcd}(x,n) \wedge 1 \le x < n \}|.
+			\end{equation*}
+		\end{definicion}
+		\vskip .3cm 
+		El 	teorema de Fermat, 2° versión, admite la siguiente generalización, llamada
+		teorema de Euler: 
+		\vskip .3cm 
+		\begin{teorema}
+			Si $n$ un entero
+			positivo y $a$ un número entero coprimo con $n$, entonces
+			$$
+			a^{\phi(n)} \equiv 1\pmod{n}.
+			$$
+		\end{teorema}
+		
+		
+	\end{frame}
+	
+	\begin{frame}
+		\begin{ejemplo}
+			Usar el teorema de Fermat, 2° versión, para calcular el resto de dividir $3^{47}$ por $23$.
+		\end{ejemplo}
+		
+		\begin{solucion}
+			Podemos calcular $3^i \equiv a_i \pmod{23}$ para $0 \le i <23$. Como alguno se va a repetir, podemos usar eso para hacer el cálculo.
+			\vskip .3cm 
+			El teorema de Fermat nos evita unos cuantos pasos.
+			\vskip .3cm 
+			Como $23$ es un  número  primo (y  es coprimo con 3)
+			$$
+			3^{22} \equiv 1 \pmod{23},
+			$$
+			Luego
+			\begin{equation*}
+				3^{47} \equiv  3^{22\cdot 2 + 3} \equiv  3^{22\cdot 2} 3^3\equiv  ( 3^{22})^2 3^3\equiv    3^3\equiv   27 \equiv  4 \pmod{23}
+			\end{equation*}
+			Luego  el resto de dividir $3^{47}$ por $23$ es $4$. \qed
+			
+		\end{solucion}
+	\end{frame}
+	
+	\begin{frame}\frametitle{Algoritmo RSA}
+		Dados primos distintos $p$ y $q$ suficientemente grandes tomamos $n = pq$. 
+		\begin{itemize}
+			\item[$\circ$]  Sea $e$ con $1 < e < (p-1)(q-1)$ tal que $$\operatorname{mcd}(e, (p-1)(q-1)) = 1.$$
+			\item[$\circ$]  Sea $d$ tal $0 \le d <(p-1)(q-1)$ y que $$ed \equiv 1 \pmod{(p-1)(q-1)}.$$ 
+		\end{itemize}
+		
+		\begin{proposicion} Si $0 \le m <n$, entonces
+			$$m\equiv m^{ed} \pmod{n}.$$
+		\end{proposicion} 
+		
+		
+	\end{frame}
+	
+	
+	\begin{frame}\frametitle{Algoritmo RSA - procedimiento}
+		
+		Decimos que:
+		\begin{itemize}
+			\item[$\circ$]  $(e,n)$ es la \textit{clave pública.}
+			\item[$\circ$]  $d$ es la \textit{clave privada.}
+		\end{itemize}
+		
+		\vskip .2cm	
+		$A$ le quiere enviar  un mensaje encriptado a $B$.
+		\vskip .2cm			 
+		\textbf{Preliminares}
+		
+		\begin{enumerate}
+			\item[$\circ$] $A$ conoce la clave pública $(e,n)$. 
+			\item[$\circ$] $B$ conoce la clave pública y una clave privada $d$. 
+		\end{enumerate}
+		\vskip .2cm	
+		\textbf{Protocolo }
+		
+		\begin{enumerate}
+			\item[$\circ$] $A$  le quiere enviar el mensaje $m$  a $B$. 
+			\item[$\circ$] $A$ calcula $c \equiv m^e \pmod{n}$ y  le envía $c$ a $B$
+			\item[$\circ$] $B$ descifra el mensaje:  $c^d \equiv (m^e)^d \equiv m \pmod{n}$.
+		\end{enumerate}
+		
+	\end{frame}
+	
+	
+	\begin{frame}
+		
+		\begin{observacion}
+			
+			
+			\begin{itemize}
+				\item[$\circ$]\vskip .4cm	
+				Los dos primos $p$ y $q$ deberían tener alrededor de $100$ dígitos cada uno (longitud considerada segura en este momento).
+				\item[$\circ$]\vskip .4cm	
+				El número $e$ puede elegirse pequeño y se selecciona haciendo prueba y error con el algoritmo de Euclides, es decir probando hasta encontrar un $e$ tal que $\operatorname{mcd}(e, (p-1)(q-1)) = 1$.
+				\item[$\circ$]\vskip .4cm	
+				La existencia de $d$ está garantizada por  la ecuación lineal de congruencia), pues $e$ y $(p-1)(q-1)$ son coprimos.
+			\end{itemize}
+			
+		\end{observacion}
+	\end{frame}
+	
+	
+	
+\end{document}
+

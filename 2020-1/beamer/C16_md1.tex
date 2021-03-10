@@ -1,0 +1,366 @@
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
+\usetheme{CambridgeUS}
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+%\usepackage{makeidx}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usepackage[customcolors]{hf-tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\tikzset{
+	every picture/.append style={
+		execute at begin picture={\deactivatequoting},
+		execute at end picture={\activatequoting}
+	}
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+\usepackage{mathtools}
+\usepackage{stackrel}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+\usepackage{polynom}
+\polyset{%
+	style=B,
+	delims={(}{)},
+	div=:
+}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate]{label={(\arabic*)}}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+\setbeamertemplate{itemize item}{$\circ$}
+\setbeamertemplate{enumerate items}[default]
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand\sgn{\operatorname{sgn}}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\figurename }{Figura}
+
+\include{definiciones}
+
+\newcommand{\nc}{\newcommand}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\nc{\FF}{{\mathbb F}} \nc{\NN}{{\mathbb N}} \nc{\QQ}{{\mathbb Q}}
+\nc{\PP}{{\mathbb P}} \nc{\DD}{{\mathbb D}} \nc{\Sn}{{\mathbb S}}
+\nc{\uno}{\mathbb{1}} \nc{\BB}{{\mathbb B}} \nc{\An}{{\mathbb A}}
+
+\nc{\ba}{\mathbf{a}} \nc{\bb}{\mathbf{b}} \nc{\bt}{\mathbf{t}}
+\nc{\bB}{\mathbf{B}}
+
+\nc{\cP}{\mathcal{P}} \nc{\cU}{\mathcal{U}} \nc{\cX}{\mathcal{X}}
+\nc{\cE}{\mathcal{E}} \nc{\cS}{\mathcal{S}} \nc{\cA}{\mathcal{A}}
+\nc{\cC}{\mathcal{C}} \nc{\cO}{\mathcal{O}} \nc{\cQ}{\mathcal{Q}}
+\nc{\cB}{\mathcal{B}} \nc{\cJ}{\mathcal{J}} \nc{\cI}{\mathcal{I}}
+\nc{\cM}{\mathcal{M}} \nc{\cK}{\mathcal{K}}
+
+\nc{\fD}{\mathfrak{D}} \nc{\fI}{\mathfrak{I}} \nc{\fJ}{\mathfrak{J}}
+\nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+
+
+\title[Clase 16 - Congruencia ]{Matemática Discreta I \\ Clase 16 - Congruencia 1}
+%\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
+\institute[]{\normalsize FAMAF / UNC
+	\\[\baselineskip] ${}^{}$
+	\\[\baselineskip]
+}
+\date[12/05/2020]{12 de mayo de 2020}
+
+
+
+
+\begin{document}
+	
+	\frame{\titlepage} 
+	
+	\begin{frame}
+		
+		\begin{definicion} Sean $a$ y $b$ enteros y $m$ un
+			entero positivo. Diremos que $a$ es {\em congruente} a $b$
+			{\textit{módulo}} $m$, y escribimos 
+			$$
+			a \equiv b \pmod{m}
+			$$
+			si $a-b$ es divisible or $m$.
+		\end{definicion}
+		
+		Observar que 
+		
+		$$a\equiv 0 \pmod{m} \Leftrightarrow m|a\qquad\qquad$$ 
+		y que 
+		$$\qquad\qquad a\equiv b \pmod{m}\Leftrightarrow a-b\equiv 0 \pmod{m}.$$ 
+	\end{frame}
+	
+	\begin{frame}
+		
+		
+		\begin{proposicion}
+			Sean $a$ y $b$ enteros y $m$ un entero positivo. Entonces $a\equiv b \pmod{m}$ si  y sólo si
+			$a$ y $b$ tienen el mismo resto en la división por $m$.
+		\end{proposicion}
+		\begin{proof}
+			Si $a=mh+r$ y $b=mk+s$, con $0 \le r,s <m$, podemos suponer,
+			sin perdida de generalidad, que $r \le s$, luego
+			$$
+			b-a= m(k-h) + (s-r) \qquad \text{con $0\le s - r < m$}.
+			$$
+			Se sigue que $s-r$ es el resto de dividir $b-a$ por $m$.
+			
+			Luego si $a\equiv b \pmod{m}$, el resto de dividir   $b-a$ por $m$ es 0, y por lo tanto $s-r=0$ y $s=r$.
+			
+			Si $a$ y $b$ tienen el mismo resto en la división por $m$, entonces  $a=mh+r$ y $b=mk+r$, luego $a-b = m(h-k)$ que es divisible por $m$. \qed
+		\end{proof}
+	\end{frame}
+	
+	
+	\begin{frame}
+		Así como separamos $\mathbb Z$ en los números pares e
+		impares, la propiedad anterior nos permite expresar $\mathbb Z$
+		como una unión disjunta de $m$ subconjuntos. 
+		
+		\vskip .4cm
+		
+		Es decir si 
+		
+		$$
+		\mathbb  Z_{[r]} =\{x \in \mathbb Z: \text{el resto de dividir $x$ por $m$ es $r$}\},
+		$$
+		\vskip .4cm
+		entonces dado $m \in \mathbb N$, 
+		
+		$$
+		\mathbb Z= \mathbb Z_{[0]}\cup \mathbb Z_{[1]}\cup \cdots\cup \mathbb Z_{[m-1]}.
+		$$
+	\end{frame}
+	
+	
+	\begin{frame}
+		Es fácil verificar que la {congruencia módulo} $m$ verifica las
+		siguientes propiedades\vskip .2cm
+		\begin{enumerate}
+			\item[a)]
+			Es {\it {reflexiva}} es decir $x\equiv x\pmod{m}$.\vskip .2cm
+			\item[b)]
+			Es {\it {simétrica}}, es decir si $x \equiv y \pmod{m}$, entonces\vskip .2cm
+			$y \equiv x \pmod{m}$.
+			\item[c)]
+			Es {\it { transitiva}}, es decir si $x\equiv y \pmod{m}$ e
+			$y\equiv z \pmod{m}$, entonces $x\equiv z \pmod{m}$.
+		\end{enumerate}
+		\begin{proof}
+			a)  $x-x = 0$  y por lo tanto divisible por $m$. 
+			\vskip .2cm
+			b)  $x-y=km$, entonces 	$y-x=(-k)m$.
+			\vskip .2cm
+			c)  $x-y=km$ y $y-z=lm$, $\Rightarrow$
+			$x-z=(x-y)+(y-z)=(k+l)m$.
+			
+			\qed
+		\end{proof}
+	\end{frame}
+	
+	
+	\begin{frame}
+		La utilidad de las congruencias reside principalmente en el hecho
+		de que son compatibles con las operaciones aritméticas.
+		Específicamente, tenemos el siguiente teorema.
+		
+		\begin{teorema}\label{t4.1} Sea $m$ un entero positivo y sean $x_1$, $x_2$,
+			$y_1$, $y_2$ enteros tales que
+			$$
+			x_1 \equiv x_2 \pmod{m}, \qquad y_1 \equiv y_2 \pmod{m}.
+			$$
+			Entonces
+			\begin{enumerate}
+				\item[a)] $ x_1+ y_1 \equiv x_2+ y_2 \pmod{m}$,
+				\item[b)] $x_1 y_1 \equiv x_2 y_2 \pmod{m}$,
+				\item[c)] Si $x \equiv y \pmod{m}$  y $j \in  \mathbb N$, entonces $x^j \equiv y^j \pmod{m}$.
+			\end{enumerate}
+		\end{teorema}
+		
+	\end{frame}
+	
+	
+	\begin{frame}
+		\begin{proof}
+			
+			\noindent(a) Por hipótesis $\exists x,y$ tq $x_1-x_2=mx$ e $y_1-y_2=my$. Luego, 
+			$$
+			\begin{aligned}
+				(x_1+y_1)-(x_2+y_2) &= (x_1-x_2)+ (y_1 -y_2) \\
+				&= mx +my \\
+				&= m(x+y),
+			\end{aligned}
+			$$
+			y por consiguiente el lado izquierdo es divisible por $m$.
+			\vskip .2cm
+			\noindent (b)  Aquí tenemos
+			$$
+			\begin{aligned}
+				x_1y_1-x_2y_2 &=  x_1y_1-x_2y_1+ x_2y_1-x_2y_2 \\
+				&= (x_1-x_2)y_1+ x_2(y_1 -y_2) \\
+				&= mxy_1 +x_2my \\
+				&= m(xy_1+x_2y),
+			\end{aligned}
+			$$
+			y de nuevo el lado izquierdo es divisible por $m$.
+			
+		\end{proof}
+	\end{frame}
+	
+	
+	\begin{frame}
+		
+		\noindent (c)  Lo haremos por inducción sobre $j$. 
+		\vskip .2cm
+		Es claro que si $j=1$ el resultado es verdadero. 
+		\vskip .2cm
+		Supongamos ahora que el resultado vale para $j-1$, es decir
+		$$
+		x^{j-1} \equiv y^{j-1} \pmod{m}.
+		$$
+		Como $x \equiv y \pmod{m}$,  por   { (b)} tenemos que 
+		$$
+		x^{j-1}x \equiv y^{j-1}y  \pmod{m},
+		$$
+		es decir 
+		$$
+		x^j \equiv y^j \pmod{m}.
+		$$
+		\qed
+	\end{frame}
+	
+	
+	\begin{frame}\frametitle{Regla del  nueve}
+		\begin{proposicion}
+			Sea $(x_nx_{n-1}\ldots x_0)_{10}$ la
+			representación del entero positivo $x$ en base $10$, entonces
+			$$
+			x \equiv x_0+x_1+\cdots+x_n \pmod{9}
+			$$
+		\end{proposicion}
+		\begin{proof}
+			Observemos:  $10\equiv 1\pmod{9}$ $\Rightarrow$  $10^k\equiv 1^k \equiv 1\pmod{9}$. 
+			\vskip .2cm
+			Por la definición de representación en base $10$, tenemos que 
+			$$x=x_0 + 10x_1+ \cdots+10^nx_n,$$ 
+			\vskip .2cm
+			Luego,  $x_k10^k \equiv x_k \pmod{9}$ y  entonces $x \equiv
+			x_0+x_1+\cdots+x_n \pmod{9}$.
+		\end{proof}
+		\qed
+	\end{frame}
+	
+	
+	\begin{frame}
+		\begin{corolario} 	Sea $x = (x_nx_{n-1}\ldots x_0)_{10}$, entonces
+			$$
+			9|x\quad  \Leftrightarrow\quad 9|  x_0+x_1+\cdots+x_n.
+			$$
+		\end{corolario}
+		\begin{proof}
+			Por la proposición anterior 
+			\begin{equation}
+				x \equiv x_0+x_1+\cdots+x_n \pmod{9} \tag{*}
+			\end{equation}
+			Entonces,
+			\begin{align*}
+				9|x \quad& \Leftrightarrow \quad	x \equiv 0 \pmod{9}& &\text{(por hipótesis)} \\
+				& \Leftrightarrow \quad	x_0+x_1+\cdots+x_n  \equiv 0 \pmod{9}& &\text{(por (*))} \\	
+				& \Leftrightarrow  \quad 9 |	x_0+x_1+\cdots+x_n.  & &\quad\quad\quad\quad\quad\qed
+			\end{align*}
+		\end{proof}
+	\end{frame}
+	
+	
+	\begin{frame}
+		
+		\begin{ejemplo}Probar que \quad $54\,321 \cdot 98\,765\not= 5\,363\,013\,565$.
+		\end{ejemplo}
+		\begin{proof}
+			Módulo 9:
+			\begin{equation*}
+				\begin{matrix*}[l]
+					54\,321 & \equiv& 5 +4 +3+2+1 & \equiv& 15 & \equiv& 6 \pmod{9} \\
+					98\,765 & \equiv& 9+8+ 7+6+5 & \equiv&  35  & \equiv& 8 \pmod{9} 
+				\end{matrix*}
+			\end{equation*}
+			Entonces 
+			\begin{equation*}
+				54\,321 \cdot 98\,765 \equiv 6\cdot 8  \equiv 48  \equiv 4+8 \equiv 12 \equiv 3 \pmod{9} 
+			\end{equation*}
+			Mientras que 
+			$$
+			5\,363\,013\,565  \equiv 5+3+6+3+0+1+3+5+6+5  \equiv37   \equiv 1 \pmod{9} 
+			$$
+			Luego  $54\,321 \cdot 98\,765\not= 5\,363\,013\,565$. \qed
+			
+		\end{proof}
+		
+	\end{frame}
+	
+	
+	\begin{frame}
+		\begin{ejemplo}
+			Sea $x = (x_nx_{n-1}\ldots x_0)_{10}$, entonces
+			$$
+			4 |x\quad  \Leftrightarrow\quad 4 |  2x_1 + x_0.
+			$$
+		\end{ejemplo}\vskip -.5cm
+		\begin{proof}
+			Aquí tenemos que $10  \equiv 2 \pmod{4}$, luego  $10^2  \equiv 4  \equiv 0 \pmod{4}$. 
+			\vskip .2cm
+			Por lo tanto $10^k    \equiv 0 \pmod{4}$ para $k > 1$. 
+			\vskip .2cm
+			Luego 
+			\begin{equation*}
+				x \equiv x_n10^n + x_{n-1}10^{n-1}+\cdots+ x_{2}10^{2}+ x_{1}10 + x_0 \equiv 2 x_{1} + x_0 \pmod{4}.
+			\end{equation*}
+			Luego
+			\begin{equation*}
+				4 | x  \;\Leftrightarrow \; x \equiv 0 \pmod{4}  \; \Leftrightarrow  \; 2 x_{1} + x_0  \equiv 0 \pmod{4}   \; \Leftrightarrow  \;4 | 2 x_{1} + x_0 .\qed
+			\end{equation*}
+			
+		\end{proof}
+	\end{frame}
+	
+	
+	
+\end{document}
+
