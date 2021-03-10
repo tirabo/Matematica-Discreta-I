@@ -1,0 +1,331 @@
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
+\usetheme{CambridgeUS}
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+%\usepackage{makeidx}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usepackage[customcolors]{hf-tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\tikzset{
+	every picture/.append style={
+		execute at begin picture={\deactivatequoting},
+		execute at end picture={\activatequoting}
+	}
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+\usepackage{mathtools}
+\usepackage{stackrel}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+\usepackage{polynom}
+\polyset{%
+	style=B,
+	delims={(}{)},
+	div=:
+}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate]{label={(\arabic*)}}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+\setbeamertemplate{itemize item}{$\circ$}
+\setbeamertemplate{enumerate items}[default]
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand\sgn{\operatorname{sgn}}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\figurename }{Figura}
+
+\include{definiciones}
+
+\newcommand{\nc}{\newcommand}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\nc{\FF}{{\mathbb F}} \nc{\NN}{{\mathbb N}} \nc{\QQ}{{\mathbb Q}}
+\nc{\PP}{{\mathbb P}} \nc{\DD}{{\mathbb D}} \nc{\Sn}{{\mathbb S}}
+\nc{\uno}{\mathbb{1}} \nc{\BB}{{\mathbb B}} \nc{\An}{{\mathbb A}}
+
+\nc{\ba}{\mathbf{a}} \nc{\bb}{\mathbf{b}} \nc{\bt}{\mathbf{t}}
+\nc{\bB}{\mathbf{B}}
+
+\nc{\cP}{\mathcal{P}} \nc{\cU}{\mathcal{U}} \nc{\cX}{\mathcal{X}}
+\nc{\cE}{\mathcal{E}} \nc{\cS}{\mathcal{S}} \nc{\cA}{\mathcal{A}}
+\nc{\cC}{\mathcal{C}} \nc{\cO}{\mathcal{O}} \nc{\cQ}{\mathcal{Q}}
+\nc{\cB}{\mathcal{B}} \nc{\cJ}{\mathcal{J}} \nc{\cI}{\mathcal{I}}
+\nc{\cM}{\mathcal{M}} \nc{\cK}{\mathcal{K}}
+
+\nc{\fD}{\mathfrak{D}} \nc{\fI}{\mathfrak{I}} \nc{\fJ}{\mathfrak{J}}
+\nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+
+\title[Clase 17 - Congruencia ]{Matemática Discreta I \\ Clase 17 - Congruencia 2}
+%\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
+\institute[]{\normalsize FAMAF / UNC
+	\\[\baselineskip] ${}^{}$
+	\\[\baselineskip]
+}
+\date[14/05/2020]{14 de mayo de 2020}
+
+
+
+
+\begin{document}
+	
+	\frame{\titlepage} 
+	
+	\begin{frame}\frametitle{Ecuación lineal de congruencia}
+		Estudiaremos el problema de encontrar los $x \in \mathbb Z$ tal que
+		
+		\begin{equation}\label{ecuacionlineal}
+			ax \equiv b \pmod{m}.
+		\end{equation}
+		
+		\pause
+		
+		Una ecuación como 	(\ref{ecuacionlineal}) es llamada una \textit{ecuación lineal de congruencia.}
+		\vskip .4cm\pause
+		El problema no siempre admite solución. 
+		\vskip .4cm
+		\pause
+		Por  ejemplo, \,$2x\equiv 3 \pmod{2}$\, no posee ninguna solución en
+		$\mathbb Z$, pues cualquiera se $k \in \mathbb Z$, $2k-3$ es
+		impar, luego no es divisible por $2$.
+		\vskip .4cm\pause
+		Notemos además que si $x_0$ es solución de la ecuación
+		(\ref{ecuacionlineal}), también lo es $x_0+km$ de manera que si la
+		ecuación posee una solución, posee infinitas soluciones. 
+		
+		
+	\end{frame}
+	
+	
+	\begin{frame}
+		
+		\begin{ejemplo} La solución general de la ecuación $3x\equiv 7
+			\pmod{11}$ es $6+k11$ con $k \in \mathbb Z$.
+		\end{ejemplo}\vskip .2cm\pause
+		\begin{proof} Si probamos con los enteros $x$ tal que  $0\le x < 11$, veremos que la ecuación admite una única solución, a saber $x=6$. 
+			\vskip .2cm\pause
+			
+			Otras soluciones se obtienen tomando $6+11k$. \pause 
+			\vskip .2cm
+			Por otra parte si $u$ es también solución de la ecuación, se tiene 
+			$$
+			3u \equiv 7 \hskip -.3cm\pmod{11},\quad 3 \cdot 6 \equiv 7\hskip -.3cm \pmod{11} \quad \Rightarrow \quad 3u \equiv 3\cdot 6\hskip -.3cm \pmod{11}.
+			$$
+			\pause Por lo tanto $3(u-6)$ es múltiplo de $11$. 
+			\vskip .2cm\pause
+			
+			Como $11$ no divide a $3$ se tiene que $11|(u-6)$, o sea $u=6+11k$. \qed
+		\end{proof}
+	\end{frame}
+	
+	
+	\begin{frame}
+		\begin{ejemplo} Encontrar $0 \le x < 109$ solución  de la ecuación $74x\equiv 5 \pmod{109}$.
+		\end{ejemplo}\pause
+		\begin{proof} \pause
+			
+			\begin{itemize}
+				\item[$\circ$] $1 =(74,109)$, por lo tanto, existen $s,t \in \mathbb Z$ tal que
+				\begin{equation}\label{eq:elc1}
+					1  = s \cdot 74 + t\cdot 109
+				\end{equation}
+				\vskip .2cm\pause
+				\item[$\circ$] Luego,
+				\begin{equation}\label{eq:elc2}
+					1  \equiv  s \cdot 74\pmod{109}.
+				\end{equation} \vskip .2cm\pause
+				\item[$\circ$] Multiplicando  por $5$ la ecuación (\ref{eq:elc2}), obtenemos
+				\begin{equation}\label{eq:elc3}
+					5 \equiv  (5s) \cdot 74 \pmod{109}.
+				\end{equation}
+				Eso  implica que $5s$ es solución de  $74x\equiv 5 \pmod{109}$.
+			\end{itemize}
+			
+			
+		\end{proof}
+	\end{frame}
+	
+	
+	\begin{frame}
+		Obtengamos entonces la ecuación (\ref{eq:elc1}).\pause
+		\begin{alignat}3
+			109 &= 74 \cdot 1 + 35& \qquad&\Rightarrow& \qquad 35 &= 109 - 74 \label{eq:cle1}\\ 
+			74 &=  35\cdot 2 +4 & \qquad&\Rightarrow& \qquad 4 &= 74 - 35\cdot 2 \label{eq:cle2}\qquad\\
+			35 &= 4 \cdot 8 + 3& \qquad&\Rightarrow& \qquad  3 &= 35 - 4 \cdot 8 \label{eq:cle3}  \\
+			4 &=  3\cdot 1 + 1& \qquad&\Rightarrow& \qquad 1 &= 4 - 3\label{eq:cle4}\\
+			3 &=  1\cdot 3  +0 & \qquad&& \qquad  &
+		\end{alignat}
+		\pause	Luego,\pause
+		\begin{align*}
+			1 & \overset{(\ref{eq:cle4})}{=} 4 -3 \overset{(\ref{eq:cle3})}{=} 4 - ( 35 - 4 \cdot 8) \\
+			&=  9 \cdot 4 - 35 \\
+			& \overset{(\ref{eq:cle2})}{=} 9 \cdot (74 - 35\cdot 2) - 35  = 9 \cdot  74 + (-18) \cdot 35 - 35 \\
+			&= 9 \cdot  74 + (-19) \cdot 35 \\
+			& \overset{(\ref{eq:cle1})}{=}  9 \cdot  74 + (-19) \cdot (109 - 74) \\ %= 9 \cdot  74 + (-19) \cdot 109 + 19 \cdot 74 \\
+			&= 28 \cdot  74 + (-19) \cdot 109 .
+		\end{align*}
+	\end{frame}
+	
+	
+	\begin{frame}
+		Recordemos que debemos resolver la ecuación
+		\begin{equation*}
+			74x\equiv 5 \pmod{109}.
+		\end{equation*}
+		\pause Como 
+		\begin{equation*}
+			1 = 28 \cdot  74 + (-19) \cdot 109,
+		\end{equation*}
+		\pause tenemos
+		\begin{equation*}
+			1  \equiv 28 \cdot  74\pmod{109}.
+		\end{equation*}
+		\pause Por lo tanto, 
+		\begin{equation*}
+			5 \equiv (5 \cdot28)  74\pmod{109}.
+		\end{equation*}
+		\vskip .3cm
+		\pause Es decir, $140$ es solución y $31 = 140 -109$ también lo es, pues \linebreak $109 \equiv 0\pmod{109}$. 
+		\vskip .3cm
+		Luego 
+		$$5 \equiv 31 \cdot  74\pmod{109} \qquad \text{y} \qquad0 \le 31 < 109.\qed $$
+	\end{frame}
+	
+	
+	\begin{frame}
+		Analicemos ahora la situación general de la ecuación $ ax\equiv b\pmod{m}$. 
+		\vskip .3cm 
+		\begin{teorema}\label{elc} Sean $a,b$ números enteros y $m$ un entero positivo y denotemos $d =\operatorname{mcd}(a,m)$. La  ecuación 
+			\begin{equation}\label{elc}
+				ax \equiv b \pmod{m}
+			\end{equation}
+			admite solución si y sólo si $d|b$, y en este caso dada $x_0$ una solución, todas las soluciones son de la forma 
+			$$x = x_0 + k n,\qquad \mbox{ con } k \in \mathbb Z \mbox{ y } n = {\frac{m}{d}} $$
+		\end{teorema}
+	\end{frame}
+	
+	
+	\begin{frame}
+		\begin{proof}
+			($\Leftarrow$) Muy  similar al ejemplo anterior. \pause Como 
+			\begin{equation*}
+				d = s \cdot  a +t \cdot m,\qquad \text{para algunos $s,t \in \mathbb Z$,}
+			\end{equation*}
+			\pause tenemos
+			\begin{equation*}
+				d  \equiv s \cdot  a\pmod{m}.
+			\end{equation*}
+			\pause Como  $d|b$, tenemos $b = d q$. Por lo tanto, 
+			\begin{equation*}
+				b = d q \equiv qs \cdot  a\pmod{m}.
+			\end{equation*}
+			Es decir 
+			\begin{equation*}
+				a(qs)  \equiv b\pmod{m}.
+			\end{equation*}
+			\vskip .3cm
+			\pause Es decir, $x_0 = qs$ es solución de $ax \equiv b \pmod{m}$. 
+		\end{proof}
+	\end{frame}
+	
+	
+	\begin{frame}
+		Veamos ahora que si $n = {\frac{m}{d}}$ y $k \in \mathbb Z$, entonces $x_0 + kn$ también es solución.
+		\vskip .3cm
+		Es decir
+		\begin{equation*}
+			a(x_0 + kn) \equiv b \pmod{m}.
+		\end{equation*} \pause
+		
+		Como $d|a$ $\Rightarrow$ $a = dr$, luego $akn = dr\frac{m}{d} = rm \equiv 0 \pmod{m}$. 
+		\vskip .3cm\pause
+		Luego
+		$$
+		a(x_0 + kn) \equiv 	ax_0 + akn \equiv	ax_0 \equiv b \pmod{m}.
+		$$
+		\vskip .6cm\pause
+		($\Rightarrow$) Ver apunte. 
+		
+	\end{frame}
+	
+	
+	\begin{frame}
+		\begin{proposicion}
+			Sean $a$, $b$, $m \in {\mathbb Z}$, $d>0$ tales que  \,$d\mid a$,\,  \,$d\mid b$\, y \,$d\mid m$. Entonces, 
+			\begin{equation*}
+				ax \equiv b\,({m}) \quad \Leftrightarrow\quad\frac{a}{d} x \equiv \frac{b}{d}\,\left(\frac{m}{d}\right).
+			\end{equation*}
+			\vskip -.4cm
+		\end{proposicion} \pause
+		\begin{proof} \pause
+			\vskip -.8cm
+			\begin{align*}
+				a x \equiv b\,({m}) &\Leftrightarrow m| ax -b \\&\Leftrightarrow  a x -b = m \cdot q   \\
+				&\Leftrightarrow \frac{a}{d} x -\frac{b}{d} =\frac{m}{d}\cdot q   \\
+				&\Leftrightarrow \frac{a}{d} x \equiv \frac{b}{d}\,\left(\frac{m}{d}\right)\qquad  
+			\end{align*}
+			\qed
+		\end{proof}
+	\end{frame}
+	
+	
+	\begin{frame}
+		La proposición anterior nos permite reducir las ecuaciones al caso $	ax \equiv b\,({m})$ con $(a,m)=1$. \pause
+		
+		\vskip .4cm
+		
+		\begin{ejemplo}
+			Encontrar todos los $x \in \mathbb Z$ tales que
+			\begin{equation}
+				6x \equiv 30 \pmod{42}. \tag{*}
+			\end{equation}
+		\end{ejemplo} \pause \vskip -.4cm
+		\begin{solucion} \pause
+			Como $6 =(6,42)$ y $6|30$, la ecuación (*) tiene solución y tenemos que 
+			\begin{equation*}
+				6x \equiv 30 \pmod{42} \quad \Leftrightarrow \quad 	x \equiv 5 \pmod{7}.
+			\end{equation*}
+			Una solución obvia es $x_0 =5$, luego todas las soluciones son $x= 5 + 7k$, $k \in \mathbb Z$.\qed
+		\end{solucion}
+	\end{frame}
+	
+	
+\end{document}
+
