@@ -1,0 +1,425 @@
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
+\usetheme{CambridgeUS}
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+%\usepackage{makeidx}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usepackage[customcolors]{hf-tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\tikzset{
+	every picture/.append style={
+		execute at begin picture={\deactivatequoting},
+		execute at end picture={\activatequoting}
+	}
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+\usepackage{mathtools}
+\usepackage{stackrel}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+\usepackage{polynom}
+\polyset{%
+	style=B,
+	delims={(}{)},
+	div=:
+}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate]{label={(\arabic*)}}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+\setbeamertemplate{itemize item}{$\circ$}
+\setbeamertemplate{enumerate items}[default]
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand\sgn{\operatorname{sgn}}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\figurename }{Figura}
+
+\include{definiciones}
+
+
+\newcommand{\nc}{\newcommand}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\nc{\FF}{{\mathbb F}} \nc{\NN}{{\mathbb N}} \nc{\QQ}{{\mathbb Q}}
+\nc{\PP}{{\mathbb P}} \nc{\DD}{{\mathbb D}} \nc{\Sn}{{\mathbb S}}
+\nc{\uno}{\mathbb{1}} \nc{\BB}{{\mathbb B}} \nc{\An}{{\mathbb A}}
+
+\nc{\ba}{\mathbf{a}} \nc{\bb}{\mathbf{b}} \nc{\bt}{\mathbf{t}}
+\nc{\bB}{\mathbf{B}}
+
+\nc{\cP}{\mathcal{P}} \nc{\cU}{\mathcal{U}} \nc{\cX}{\mathcal{X}}
+\nc{\cE}{\mathcal{E}} \nc{\cS}{\mathcal{S}} \nc{\cA}{\mathcal{A}}
+\nc{\cC}{\mathcal{C}} \nc{\cO}{\mathcal{O}} \nc{\cQ}{\mathcal{Q}}
+\nc{\cB}{\mathcal{B}} \nc{\cJ}{\mathcal{J}} \nc{\cI}{\mathcal{I}}
+\nc{\cM}{\mathcal{M}} \nc{\cK}{\mathcal{K}}
+
+\nc{\fD}{\mathfrak{D}} \nc{\fI}{\mathfrak{I}} \nc{\fJ}{\mathfrak{J}}
+\nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+
+\title[Clase 2 - Orden]{Matemática Discreta I \\ Clase 2 - Ordenando los enteros}
+%\author[A. Tiraboschi]{Alejandro Tiraboschi}
+\institute[]{\normalsize FAMAF / UNC
+	\\[\baselineskip] ${}^{}$
+	\\[\baselineskip]
+}
+\date[18/03/2020]{18 de marzo  de 2021}
+
+
+
+\begin{document}
+
+
+\frame{\titlepage} 
+
+%\frame{\frametitle{Índice}\tableofcontents} 
+
+
+\begin{frame}
+    \frametitle{}
+
+    \begin{itemize}
+        \item El orden natural de los enteros es tan importante como sus propiedades aritméticas. \vskip .4cm
+        \item Expresamos la idea de orden formalmente diciendo que existe una relación que indicamos ``$<$''.\vskip .4cm
+        \item Solo cuatro axiomas se necesitan para especificar las propiedades básicas del símbolo $<$. 
+    \end{itemize}
+
+    \vskip .4cm\vskip .4cm
+
+    \begin{observacion}
+    Si $a, b \in \Z$, $a < b$ se lee: 
+    \begin{center}
+        \textit{$a$ es menor que $b$ } \;o también \; \textit{$b$ es mayor que $a$}.
+    \end{center}
+    \end{observacion}
+
+
+    
+
+    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Axiomas de orden}
+
+    \begin{enumerate}[label=\textbf{I\arabic*)}, ref=\textbf{I\arabic*}]
+        \item \label{axioma-i8} {\em Ley de tricotomía.}\, Vale una y sólo una de las relaciones
+    siguientes:
+    $$
+    a<b, \qquad a = b, \qquad b < a.
+    $$
+    \item \label{axioma-i9} {\em Ley transitiva.}\, Si $a< b$ y $b < c$, entonces $a<c$.
+    \item \label{axioma-i10} {\em Compatibilidad de la suma con el orden.}\, Si $a < b$, entonces $a+c < b+c$. 
+    \item \label{axioma-i11} {\em Compatibilidad del producto con el orden.}\, Si $a< b$ y $0< c$, entonces $ac < bc$. 
+    \end{enumerate}
+
+    \vskip 2cm
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+    Esta claro que podemos definir los otros símbolos de orden $>$, $\le$ y $\ge$, en términos de los símbolos $<$ e $=$. 
+    \vskip 1cm
+    \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
+    \begin{beamercolorbox}[wd=\textwidth,rounded=true,shadow=true]{postit}%
+        \begin{itemize}
+            \item \textbf{($>$)} Diremos que $m>n$ si  $n<m$.\vskip .4cm
+            \item \textbf{($\le$)} Diremos que $m \le n$ si $m<n$ o $m=n$. \vskip .4cm
+            \item \textbf{($\ge$)} Diremos que $m \ge n$ si $m > n$ o $m=n$.\vskip .4cm
+        \end{itemize}
+    \end{beamercolorbox}
+    \vskip 2cm
+
+
+    
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+    
+    Es importante notar que el  axioma (\textbf{I11}) tiene una versión valedera para estos nuevos símbolos.\vskip 0.5cm
+    \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
+    \begin{beamercolorbox}[wd=\textwidth,rounded=true,shadow=true]{postit}%
+    \begin{itemize}
+    \item \textbf{($>$)} Si $a > b$ y $c>0$, entonces $ac > bc$.\vskip .4cm
+    \item \textbf{($\le$)} Si $a \le b$ y $0 \le c$, entonces $ac \le bc$.\vskip .4cm
+    \item \textbf{($\ge$)} Si $a\ge b$ y $c\ge 0$, entonces $ac \ge bc$.\vskip .4cm
+    \end{itemize}
+    \end{beamercolorbox}
+    \vskip 0.5cm
+    Usando las definiciones de $\ge$, $<$, $>$ y el axioma (\textbf{I11}) original es muy sencillo demostrar estas variantes.
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+    
+    El axioma (\textbf{I11}) tiene nuevas variante cuando consideramos la multiplicación de una desigualdád por enteros negativos.
+
+    \vskip .5cm
+    
+\begin{proposicion}\label{prop-compatibilidad-negativa}
+    Sean $a, b, c \in \Z$.  
+    \begin{enumerate}[label=\textit{\alph*)}]
+        \item\label{it.cmenor0} Si $c < 0$, entonces $0 < -c$.
+        \item\label{it.amenorb} Si $a< b$ y $c< 0$, entonces $ac > bc$. 
+    \end{enumerate}
+\end{proposicion}
+
+\vskip .5cm
+
+La demostración pueden verla en el apunte (proposición 1.2.1). 
+
+\vskip 0.5cm
+
+Usando  esta proposición y la definición  de $>$, $\le$, $\ge$ podemos hacer más variantes del  axioma (\textbf{I11}) ($16$ en total). Todas ellas bastante obvias.
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+    \begin{ejemplo}
+        Sean $a, b, c \in \Z$. Entonces, 
+        $$
+        a\ge  b\; \wedge\; c < 0 \quad \Rightarrow \quad ac \le bc. 
+        $$
+    \end{ejemplo}
+
+    \begin{proof}
+        Como $a\ge  b$,  tenemos que $ a >b$ o $a=b$. 
+        \vskip 0.5cm
+        Si $a>b$,  entonces $b < a$. Como  $c < 0$ $\Rightarrow$ $bc > ac$ $\Rightarrow$  $ac < bc$ $\Rightarrow$ $ac \le bc$.
+        \vskip 0.5cm
+        Si $a=b$,  entonces  $ac = bc$ $\Rightarrow$ $ac \le bc$. \qed
+    \end{proof}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+    Ya hemos usado (en axioma \textbf{I4}) el símbolo $\not=$ que denota  ``{\em no} es igual a '' o bien ``es distinto a''.   En  general, cuando tachemos un símbolo, estamos indicando la negación de la relación que define. Por ejemplo, $a\not< b$ denota ``$a$ {\em no} es menor que $b$''. 
+
+\begin{observacion*} Demostremos que  $a\not< b$ es equivalente a $a\ge b$: por la ley de tricotomía axioma (\textbf{I8}) tenemos que solo vale una y solo una de las siguientes afirmaciones
+$$
+a<b, \qquad a = b, \qquad b < a.
+$$
+Como  $a\not< b$, entonces vale una de las dos afirmaciones siguientes, $a=b$ o $b<a$, es decir  vale que $a \ge b$. De forma análoga se prueba que $a\not\le b$ si  y sólo si $a>b$, $a\not> b$ si  y sólo si $a \le b$ y $a\not\ge b$ si  y sólo si $a<b$.
+
+\end{observacion*}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{$\le$ es una relación de orden}        
+    
+    Sean  $a$, $b$ y $c$  enteros arbitrarios. Es posible demostrar las siguiente propiedades de $\le$:  
+    \vskip .5cm
+        \begin{enumerate}
+        \item[\textbf{O1)}] {\em Reflexividad.}\, $a \le a$.
+        \item[\textbf{O2)}] {\em Antisimetría.}\, Si $a \le b$ y $b \le a$, entonces $a=b$.
+        \item[\textbf{O3)}] {\em Transitividad.}\, Si $a\le b$ y $b\le c$, entonces $a \le c$.
+        \end{enumerate}
+
+        \vskip .5cm
+
+        Las demostraciones no son difíciles y las dejamos como ejercicios (se encuentran en el apunte). 
+
+        \vskip .5cm
+
+        Una relación que satisfaga las tres propiedades anteriores (reflexividad, antisimetría y transitividad) es llamada {\em una relación de orden}. 
+        
+        \vskip .5cm
+
+        Observar que $<$ {\em no} es una relación de orden, en el sentido de la definición anterior. 
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+    
+
+    A primera vista podría parecer que ya tenemos todas las propiedades que necesitamos de $\mathbb Z$, pero, sorprendentemente, aún falta un axioma de vital importancia. 
+    \vskip .5cm
+
+    Observemos, que todos los axiomas que enunciamos también  los cumplen los números racionales $\Q$ y los números  reales $\R$. 
+    \vskip .5cm
+    ¿Cuál es la diferencia \textit{fundamental} entre $\Z$ y $\Q$ o  $\R$? 
+    \vskip .5cm
+    \begin{figure}[ht]
+        \begin{center}
+        \begin{tikzpicture}[line width=1pt]    
+        \draw (-4.0,0) -- (4.0,0); 
+        \foreach \x in {-7,...,7}
+        \draw [fill] (\x/2,0) circle [radius=0.05];
+        \end{tikzpicture}
+        \end{center}
+        \caption{El dibujo correcto de $\mathbb Z$.}\label{f1.2}
+    \end{figure}
+    
+    \begin{figure}[ht]    
+        \begin{center}
+        \begin{tikzpicture}[line width=1pt]    
+        \draw (-4.0,0) -- (4.0,0); 
+        \foreach \x in {-7,...,0}
+        \draw [fill] (\x/2,0) circle [radius=0.05];
+        \foreach \x in {0.05,0.1,0.2,0.4,0.8,1.6,3.2}
+        \draw [fill] (\x,0) circle [radius=0.05];
+        \end{tikzpicture}
+        \end{center}
+        \caption{El dibujo incorrecto de $\mathbb Z$.}\label{f1.3}
+    \end{figure}
+    \label{dibujo-de-z}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Axioma de buena ordenación}
+    
+    Supongamos que $X$ es un subconjunto de $\mathbb Z$; entonces diremos que el entero $b$ es una {\em cota inferior}\index{cota inferior} de $X$ si
+$$
+b\le x \qquad \text{ para todo } \ x \in X.
+$$
+
+\vskip .5cm
+Algunos subconjuntos no tienen cotas inferiores: por ejemplo, el conjunto de los enteros negativos $-1, -2, -3, \ldots$, claramente no tiene cota inferior. 
+
+\vskip .5cm
+\begin{definicion}
+    Una cota inferior de un conjunto $X$ que es a su vez es un elemento de $X$, es conocido como el {\em mínimo}\index{mínimo} de X.
+\end{definicion}
+
+\vskip 1cm
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Axioma de buena ordenación}
+    Nuestro último axioma para $\mathbb Z$ afirma algo que es (aparentemente) una propiedad obvia.
+    \vskip .5cm
+\begin{enumerate}
+\item[\textbf{I12)}] Si $X$ es un subconjunto de $\mathbb Z$ que no es vacío y tiene una cota inferior, entonces $X$ tiene un mínimo.
+\end{enumerate}
+\vskip .8cm
+El axioma (\textbf{I12}) es conocido como el     \textit{axioma de buena ordenación}  o  \textit{axioma del buen orden} o  \textit{principio de buena ordenación}.
+\vskip .8cm
+Observar que $\Q$ o $\R$ con $<$ \textit{no} satisfacen el axioma de buena ordenación. 
+\vskip .8cm
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+    El hecho de que haya espacios vacíos entre los enteros nos lleva a decir que el conjunto $\mathbb Z$ es \textit{discreto} y es esta propiedad la que da origen al nombre ``matemática discreta''. 
+    \vskip .5cm
+
+    
+    En cálculo y análisis, los procesos de límite son de fundamental importancia, y es preciso usar aquellos sistemas numéricos que son \textit{continuos}, en vez de los discretos.
+
+    \vskip .5cm
+
+    Repitamos los gráficos de la p. \ref{dibujo-de-z}
+
+    \vskip .5cm
+    \begin{figure}[ht]
+        \begin{center}
+        \begin{tikzpicture}[line width=1pt]    
+        \draw (-4.0,0) -- (4.0,0); 
+        \foreach \x in {-7,...,7}
+        \draw [fill] (\x/2,0) circle [radius=0.05];
+        \end{tikzpicture}
+        \end{center}
+        \caption{El dibujo correcto de $\mathbb Z$.}
+    \end{figure}
+    
+    \begin{figure}[ht]    
+        \begin{center}
+        \begin{tikzpicture}[line width=1pt]    
+        \draw (-4.0,0) -- (4.0,0); 
+        \foreach \x in {-7,...,0}
+        \draw [fill] (\x/2,0) circle [radius=0.05];
+        \foreach \x in {0.05,0.1,0.2,0.4,0.8,1.6,3.2}
+        \draw [fill] (\x,0) circle [radius=0.05];
+        \end{tikzpicture}
+        \end{center}
+        \caption{El dibujo incorrecto de $\mathbb Z$.}
+    \end{figure}
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+    El siguiente resultado es obvio, pero  debe ser demostrado. 
+    \vskip .5cm
+
+    
+
+
+\begin{proposicion}\label{prop-0-menor-que-1}
+$1$ es el menor entero mayor que $0$.
+\end{proposicion}
+
+\vskip .5cm
+
+Es posible hacer la demostración con las herramientas que ya poseemos (si no ¡faltaría algún axioma!). 
+
+\vskip .5cm
+
+Sin embargo, la demostración es relativamente compleja y el estudiante interesado la puede ver en el apunte. 
+
+
+\vskip 1cm
+\end{frame}
+
+
+
+\end{document}
+
