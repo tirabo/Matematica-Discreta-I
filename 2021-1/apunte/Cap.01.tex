@@ -14,12 +14,12 @@ En la siguiente lista de axiomas $a$, $b$, $c$ denotan enteros arbitrarios, y $0
 %\begin{enumerate}[label=\textbf{\arabic*)}, ref=\textbf{\arabic*}]
 \begin{enumerate}[label=\textbf{I\arabic*)}, ref=\textbf{I\arabic*}]
 \item \label{axioma-i1} $a+b$ y $a\cdot b$ pertenecen a ${\mathbb Z}$.
-\item \label{axioma-i2} {\em Conmutatividad.}\, $a+b = b+a$;\qquad $ab=ba$. 
-\item \label{axioma-i3} {\em Asociatividad.}\, $(a+b)+c = a+(b+c)$;\qquad $(a\cdot b)\cdot c = a\cdot (b\cdot c)$. 
-\item \label{axioma-i4} {\em Existencia de elemento neutro.}\, Existen números $0$, $1 \in \mathbb Z$ con $0\not=1$ tal que $a+0=a$;\qquad $a\cdot 1=a$. 
-\item \label{axioma-i5} {\em Distributividad.}\, $a\cdot (b+c)=a\cdot b+a\cdot c$. 
-\item \label{axioma-i6} {\em Existencia del inverso aditivo, también llamado opuesto.}\, Por cada $a$ en ${\mathbb Z}$ existe un único entero $-a$ en ${\mathbb Z}$ tal que $a+(-a)=0$. 
-\item \label{axioma-i7} {\em Cancelación.}\, Si $a$ es distinto de $0$ y $a\cdot b=a\cdot c$, entonces $b=c$. 
+\item \label{axioma-i2} \textit{Conmutatividad.}\, $a+b = b+a$;\qquad $ab=ba$. 
+\item \label{axioma-i3} \textit{Asociatividad.}\, $(a+b)+c = a+(b+c)$;\qquad $(a\cdot b)\cdot c = a\cdot (b\cdot c)$. 
+\item \label{axioma-i4} \textit{Existencia de elemento neutro.}\, Existen números $0$, $1 \in \mathbb Z$ con $0\not=1$ tal que $a+0=a$;\qquad $a\cdot 1=a$. 
+\item \label{axioma-i5} \textit{Distributividad.}\, $a\cdot (b+c)=a\cdot b+a\cdot c$. 
+\item \label{axioma-i6} \textit{Existencia del inverso aditivo, también llamado opuesto.}\, Por cada $a$ en ${\mathbb Z}$ existe un único entero $-a$ en ${\mathbb Z}$ tal que $a+(-a)=0$. 
+\item \label{axioma-i7} \textit{Cancelación.}\, Si $a \ne 0$ y $a\cdot b=a\cdot c$, entonces $b=c$. 
 \end{enumerate}
 
 
@@ -42,8 +42,8 @@ $$-(-n) = n.$$
 \end{ejemplo}
 \begin{proof} El axioma \ref{axioma-i6} nos dice que $-(-n)$ es el único número que sumado a $-n$, da cero.  Por lo tanto, para demostrar que $-(-n) = n$ basta ver que $(-n)+n=0$. Esto se cumple puesto que 
 \begin{alignat*}2
-(-n)+n&=n+(-n) &\qquad &\text{axioma \ref{axioma-i2}} \\
-&=0&\qquad &\text{axioma \ref{axioma-i6}}
+(-n)+n&=n+(-n) &\qquad &\text{(axioma \ref{axioma-i2})} \\
+&=0&\qquad &\text{(axioma \ref{axioma-i6})}
 \end{alignat*}
 Por lo tanto  $(-n)+n=0$.
 \end{proof}
@@ -64,39 +64,39 @@ $$m-(-n)=m+(-(-n)).$$
 Por el ejemplo \ref{Ej.opuesto_opuesto} sabemos que $-(-n)=n$ y por lo tanto $m-(-n)=m+(-(-n))=m+n$.
 \end{proof}
 
-Tanto formalismo, como el usado en las  demostraciones realizadas en el ejemplo anterior, puede ser tedioso, pero nos permiten comenzar a comprender la estructura de una demostración formal. 
+Tanto formalismo, como el usado en las  demostraciones realizadas en el ejemplo anterior, puede ser tedioso, pero nos permite comenzar a comprender la estructura de una demostración formal. 
 
 
 
-\begin{ejemplo*} Supongamos que existen dos enteros $0$ y $0'$ ambos cumpliendo el  axioma \ref{axioma-i4}, esto es
+\begin{proposicion} Supongamos que existen dos enteros $0$ y $0'$ ambos cumpliendo el  axioma \ref{axioma-i4}, esto es
 $$
 a+0= a, \qquad a+0'=a
 $$
 para todo $a$ de $\mathbb Z$.  Entonces $0= 0'$. 
-\end{ejemplo*}
+\end{proposicion}
 \begin{proof}
 \begin{alignat*}2
-0 &= 0 + 0'&\qquad &\text{axioma \ref{axioma-i4} aplicado a $0$ y con $0'$ como neutro} \\
-&=0'+0&\qquad &\text{axioma \ref{axioma-i2}}\\
-&= 0' &\qquad &\text{axioma \ref{axioma-i4} aplicado a $0'$ y con $0$ como neutro}.
+0 &= 0 + 0'&\qquad &\text{(axioma \ref{axioma-i4} aplicado a $0$ y con $0'$ como neutro)} \\
+&=0'+0&\qquad &\text{(axioma \ref{axioma-i2})}\\
+&= 0' &\qquad &\text{(axioma \ref{axioma-i4} aplicado a $0'$ y con $0$ como neutro)}.
 \end{alignat*}
 \end{proof}
 
 
-El ejemplo anterior nos demuestra que hay un único elemento elemento que cumple el axioma \ref{axioma-i4} en lo que respecta a la suma. A este elemento lo denotamos $0$ y lo denominamos el {\em elemento neutro de la suma}. Lo mismo podemos probar con el elemento neutro respecto al producto (ver ejercicio \ref{ej-elem-neutro-prod}),  es decir hay un único elemento,  denotado $1$, que satisface el axioma \ref{axioma-i4} en lo que se refiere al producto. A  este elemento lo llamamos el {\em elemento neutro del producto}.  
+El resultado anterior nos demuestra que hay un único elemento elemento que cumple el axioma \ref{axioma-i4} en lo que respecta a la suma. A este elemento lo denotamos $0$ y lo denominamos el \textit{elemento neutro de la suma}. Lo mismo podemos probar con el elemento neutro respecto al producto (ver ejercicio \ref{ej-elem-neutro-prod}),  es decir hay un único elemento,  denotado $1$, que satisface el axioma \ref{axioma-i4} en lo que se refiere al producto. A  este elemento lo llamamos el \textit{elemento neutro del producto}.  
 
-\begin{ejemplo*} (Regla de los signos) Veamos que  si $a,b \in \mathbb Z$ entonces
+\begin{proposicion}[Regla de los signos] Veamos que  si $a,b \in \mathbb Z$ entonces
 $$
 (-a)(-b) = ab ,\qquad a(-b) = (-a)b = -(ab).
 $$
-\end{ejemplo*}
+\end{proposicion}
 \begin{proof}
 Veremos que  $a(-b) = -(ab)$. Los otros casos se dejan como ejercicio para el lector.
 
 Una forma de demostrar este caso es  observando que $-(ab)$ es el inverso aditivo de $ab$ y comprobando que $a(-b)$ es también inverso aditivo de $ab$. Luego, por unicidad del inverso aditivo, de deduce que $a(-b) = -(ab)$. 
 \begin{alignat*}2
 ab + a(-b) &=a(b-b) &\qquad &\text{axioma \ref{axioma-i5}} \\
-&=a0 &\qquad &\text{axioma \ref{axioma-i4}}\\
+&=a\cdot 0 &\qquad &\text{axioma \ref{axioma-i4}}\\
 &= 0 &\qquad &\text{ejercicio \ref{ej0a}}.
 \end{alignat*}
 Es decir $a(-b)$ es el inverso aditivo de $ab$, luego por la unicidad del inverso aditivo axioma \ref{axioma-i6}, $a(-b)=-(ab)$.
@@ -109,6 +109,7 @@ Algunos resultados similares pueden encontrarse en los siguientes ejercicios. Co
 \subsection*{$\S$ Ejercicios}
 
 \begin{enumex}
+
 \item Demostrar la regla $(a+b)c=ac+bc$, explicando cada paso.
 
 \item Como siempre $x^2$ denota $x\cdot x$. Demostrar que dados dos enteros $a$ y $b$ tal que $a+b \not=0$, entonces existe un único $c$ tal que $(a+b)c=
@@ -119,15 +120,16 @@ a^2 - b^2$.
 \item \label{ej0a}
 La siguiente es una demostración de la fórmula $0x=0$ usando solo los axiomas planteados antes. Escribir la demostración completa, explicando que axioma es usado en cada paso.
 $$\begin{aligned}
-0x &= (0+0)x &\qquad &\mbox{axioma (.....)}\\  
-&=0x+0x. &\qquad &\mbox{axioma (.....)}
+0x &= (0+0)x &\qquad &\mbox{(axioma .....)}\\  
+&=0x+0x. &\qquad &\mbox{(axioma .....)}
 \end{aligned}$$
 Luego $0x =0x+0x$. Sumando $-0x$ a ambos miembros de la igualdad, obtenemos 
 $$\begin{aligned}
 0x +(-0x) &= 0x+0x+(-0x) &\qquad &\mbox{(usando lógica formal)}\\  
-0 &= 0x+0 &\qquad &\mbox{axioma (.....), dos veces}\\  
-0 &=0x. &\qquad &\mbox{axioma (.....)}
+0 &= 0x+0 &\qquad &\mbox{(axioma .....  dos veces)}\\  
+0 &=0x. &\qquad &\mbox{(axioma .....)}
 \end{aligned}$$
+
 \end{enumex}
 
 \end{section}
@@ -142,14 +144,14 @@ Solo cuatro axiomas se necesitan para especificar las propiedades básicas del s
 
 \begin{enumerate}[label=\textbf{I\arabic*)}, ref=\textbf{I\arabic*}]
     \setcounter{enumi}{7}
-    \item \label{axioma-i8} {\em Ley de tricotomía.}\, Vale una y sólo una de las relaciones
+    \item \label{axioma-i8} \textit{Ley de tricotomía.}\, Vale una y sólo una de las relaciones
 siguientes:
 $$
 a<b, \qquad a = b, \qquad b < a.
 $$
-\item \label{axioma-i9} {\em Ley transitiva.}\, Si $a< b$ y $b < c$, entonces $a<c$.
-\item \label{axioma-i10} {\em Compatibilidad de la suma con el orden.}\, Si $a < b$, entonces $a+c < b+c$. 
-\item \label{axioma-i11} {\em Compatibilidad del producto con el orden.}\, Si $a< b$ y $0< c$, entonces $ac < bc$. 
+\item \label{axioma-i9} \textit{Ley transitiva.}\, Si $a< b$ y $b < c$, entonces $a<c$.
+\item \label{axioma-i10} \textit{Compatibilidad de la suma con el orden.}\, Si $a < b$, entonces $a+c < b+c$. 
+\item \label{axioma-i11} \textit{Compatibilidad del producto con el orden.}\, Si $a< b$ y $0< c$, entonces $ac < bc$. 
 \end{enumerate}
 
 
@@ -176,7 +178,7 @@ Usando las definiciones de $\ge$, $<$, $>$ y el axioma \ref{axioma-i11} original
 
 \end{proof}
 
-Ya hemos usado (en axioma \ref{axioma-i4}) el símbolo $\not=$ que denota  ``{\em no} es igual a '' o bien ``es distinto a''.   En  general, cuando tachemos un símbolo, estamos indicando la negación de la relación que define. Por ejemplo, $a\not< b$ denota ``$a$ {\em no} es menor que $b$''. 
+Ya hemos usado (en axiomas \ref{axioma-i4} e \ref{axioma-i7}) el símbolo $\not=$ que denota  ``\textit{no} es igual a '' o bien ``es distinto a''. En  general, cuando tachamos un símbolo, estamos indicando la negación de la relación que define. Por ejemplo, $a\not< b$ denota ``$a$ \textit{no} es menor que $b$''. 
 
 \begin{observacion*} Demostremos que  $a\not< b$ es equivalente a $a\ge b$: por la ley de tricotomía axioma \ref{axioma-i8} tenemos que solo vale una y solo una de las siguientes afirmaciones
 $$
@@ -190,9 +192,9 @@ Como  $a\not< b$, entonces vale una de las dos afirmaciones siguientes, $a=b$ o 
 \begin{ejemplo}\label{relaciondeorden}
 Demostremos las siguiente propiedades de $\le$. Sean  $a$, $b$ y $c$  enteros arbitrarios,  entonces
 \begin{enumerate}
-\item[\textbf{O1)}] {\em Reflexividad.}\, $a \le a$.
-\item[\textbf{O2)}] {\em Antisimetría.}\, Si $a \le b$ y $b \le a$, entonces $a=b$.
-\item[\textbf{O3)}] {\em Transitividad.}\, Si $a\le b$ y $b\le c$, entonces $a \le c$.
+\item[\textbf{O1)}] \textit{Reflexividad.}\, $a \le a$.
+\item[\textbf{O2)}] \textit{Antisimetría.}\, Si $a \le b$ y $b \le a$, entonces $a=b$.
+\item[\textbf{O3)}] \textit{Transitividad.}\, Si $a\le b$ y $b\le c$, entonces $a \le c$.
 \end{enumerate}
 \begin{proof}
 \
@@ -216,13 +218,13 @@ Demostremos las siguiente propiedades de $\le$. Sean  $a$, $b$ y $c$  enteros ar
 \end{proof}
 \end{ejemplo}
 
-Una relación que satisfaga las tres propiedades anteriores (reflexividad, antisimetría y transitividad) es llamada {\em una relación de orden}. Observar que $<$ {\em no} es una relación de orden, en el sentido de la definición anterior. 
+Una relación que satisfaga las tres propiedades anteriores (reflexividad, antisimetría y transitividad) es llamada \textit{una relación de orden}. Observar que $<$ \textit{no} es una relación de orden, en el sentido de la definición anterior. 
 
-A primera vista podría parecer que ya tenemos todas las propiedades que necesitamos de $\mathbb Z$, pero, sorprendentemente, aún falta un axioma de vital importancia. Supongamos que $X$ es un subconjunto de $\mathbb Z$; entonces diremos que el entero $b$ es una {\em cota inferior}\index{cota inferior} de $X$ si
+A primera vista podría parecer que ya tenemos todas las propiedades que necesitamos de $\mathbb Z$, pero, sorprendentemente, aún falta un axioma de vital importancia. Supongamos que $X$ es un subconjunto de $\mathbb Z$; entonces diremos que el entero $b$ es una \textit{cota inferior}\index{cota inferior} de $X$ si
 $$
 b\le x \qquad \text{ para todo } \ x \in X.
 $$
-Algunos subconjuntos no tienen cotas inferiores: por ejemplo, el conjunto de los enteros negativos $-1, -2, -3, \ldots$, claramente no tiene cota inferior. Por otro lado, el conjunto $S$ denotado por los números resaltados en la Fig. \ref{f1.1} tiene muchas cotas inferiores. Una mirada rápida nos dice que $-9$ por ejemplo es una cota inferior, mientras que una inspección más minuciosa revela que $-7$ es la ``mejor'' cota inferior, pues en realidad pertenece a $S$. En general, una cota inferior de un conjunto $X$ que es a su vez es un elemento de $X$, es conocido como el {\em mínimo}\index{mínimo} de X.
+Algunos subconjuntos no tienen cotas inferiores: por ejemplo, el conjunto de los enteros negativos $-1, -2, -3, \ldots$, claramente no tiene cota inferior. Por otro lado, el conjunto $S$ denotado por los números resaltados en la Fig. \ref{f1.1} tiene muchas cotas inferiores. Una mirada rápida nos dice que $-9$ por ejemplo es una cota inferior, mientras que una inspección más minuciosa revela que $-7$ es la ``mejor'' cota inferior, pues en realidad pertenece a $S$. En general, una cota inferior de un conjunto $X$ que es a su vez es un elemento de $X$, es conocido como el \textit{mínimo}\index{mínimo} de X.
 
 %\vskip .3cm
 
@@ -297,6 +299,9 @@ La desigualdad $0<a_0^2<1$ dice que $a_0^2\in X$ pero la desigualdad $a_0^2<a_0$
 
 \subsection*{$\S$ Ejercicios}
 \begin{enumex}
+
+    \item Sean $a, b \in \Z$ tal que $a,b \ne 0$. Probar que $ab \ne 0$. (Ayuda: considerar primero el caso  $a>0$ y $b >0$). 
+    
     \item Demostrar que $\ge$ es una relación de orden.
         
     \item Demostrar que dados cualesquiera $a,b,c \in \mathbb Z$ vale que si $a< b$ y $0\le c$, entonces $ac \le bc$. 
@@ -315,7 +320,7 @@ La desigualdad $0<a_0^2<1$ dice que $a_0^2\in X$ pero la desigualdad $a_0^2<a_0$
         \item $X =\{x \in \mathbb Z | x=2y \text{\ para algún } y \in \mathbb Z\}.$
         \item $X =\{x \in \mathbb Z | x\le 100\,x\} .$
     \end{enumerate}
-    \item Un subconjunto $Y$ de $Z$ se dice que tiene una {\em cota superior}\index{cota superior} $c$ si $c\ge y$ para todo $y \in Y$.  Una cota superior que además es un elemento de $Y$ es llamada el {\em máximo} de $Y$. Usar el axioma \ref{axioma-i12} para demostrar que si $Y$ es no vacío y tiene una cota superior, entonces tiene máximo. [Ayuda: aplicar el axioma al conjunto cuyos elementos son $-y$ ($y \in Y$).]
+    \item Un subconjunto $Y$ de $Z$ se dice que tiene una \textit{cota superior}\index{cota superior} $c$ si $c\ge y$ para todo $y \in Y$.  Una cota superior que además es un elemento de $Y$ es llamada el \textit{máximo} de $Y$. Usar el axioma \ref{axioma-i12} para demostrar que si $Y$ es no vacío y tiene una cota superior, entonces tiene máximo. [Ayuda: aplicar el axioma al conjunto cuyos elementos son $-y$ ($y \in Y$).]
 
     \item Los enteros $n$ que satisfacen $1 \le n \le 25$ están acomodados en forma arbitraria en un arreglo cuadrado de cinco filas y cinco columnas. Se selecciona el máximo  de cada fila, y se denota $s$ al mínimo entre ellos. De manera similar, el mínimo de cada columna es seleccionado y $t$ denota al máximo entre ellos. Demostrar que $s\ge t$ y de un ejemplo en el cual $s\not=t$.
 \end{enumex}
@@ -466,7 +471,7 @@ $$
  es no vacío. Por el axioma del buen orden, $S^{\text{c}}$ tiene un menor elemento $m$. Como por \ref{caso-base} el $1$ pertenece a $S$, $m\not=1$. Se sigue que $m-1$ pertenece a $\mathbb N$ y como $m$ es el mínimo de $S^{\text{c}}$, $m-1$ debe pertenecer a $S$. Poniendo $k=m-1$ en la condición \ref{paso-inductivo}, concluimos que $m$ esta en $S$, lo cual contradice el hecho de que $m$ pertenece a $S^{\text{c}}$. De este modo, la suposición $S \not= \mathbb N$ nos lleva a un absurdo, y por lo tanto tenemos $S= \mathbb N$. 
  \end{proof}
 
-En la práctica, generalmente presentamos una ``demostración por inducción'' en términos más descriptivos. El hecho de que el resultado es verdadero cuando $n=1$ se llama \textit{base de la inducción} o \textit{caso base}, \ref{paso-inductivo} del teorema \ref{teorema-principio-de-induccion} es llamado  el {\em paso inductivo} y la suposición de que es verdadero cuando $n=k$ es llamada \textit{hipótesis inductiva}\index{hipótesis inductiva}. Cuando se utilizan estos términos, no es necesario introducir explícitamente el conjunto $S$.
+En la práctica, generalmente presentamos una ``demostración por inducción'' en términos más descriptivos. El hecho de que el resultado es verdadero cuando $n=1$ se llama \textit{base de la inducción} o \textit{caso base}, \ref{paso-inductivo} del teorema \ref{teorema-principio-de-induccion} es llamado  el \textit{paso inductivo} y la suposición de que es verdadero cuando $n=k$ es llamada \textit{hipótesis inductiva}\index{hipótesis inductiva}. Cuando se utilizan estos términos, no es necesario introducir explícitamente el conjunto $S$.
 
 
 El principio de inducción es útil para probar la veracidad de propiedades relativas a los números naturales. Por ejemplo, consideremos las siguientes propiedades $P(n)$, $Q(n)$ y $R(n)$:
@@ -491,7 +496,7 @@ natural.
 \end{proof}
 
 
-En la notación del teorema anterior, \ref{it.ind1} es llamado  el {\em caso base}, \ref{it.ind2} es llamado el  {\em paso inductivo} y $P(k)$ es llamada la {\em hipótesis inductiva}. El paso inductivo  consiste en probar que $P(k) \Rightarrow P(k + 1)$ o, equivalentemente, podemos suponer $P(k)$ verdadera y a partir de ella probar $P(k + 1)$. 
+En la notación del teorema anterior, \ref{it.ind1} es llamado  el \textit{caso base}, \ref{it.ind2} es llamado el  \textit{paso inductivo} y $P(k)$ es llamada la \textit{hipótesis inductiva}. El paso inductivo  consiste en probar que $P(k) \Rightarrow P(k + 1)$ o, equivalentemente, podemos suponer $P(k)$ verdadera y a partir de ella probar $P(k + 1)$. 
 
 
 \begin{ejemplo}\label{ejemplo141} Sea $a\in \mathbb Z$ tal que $0<a$. Probemos que $0<a^n$ para todo $n \in \mathbb N$.
