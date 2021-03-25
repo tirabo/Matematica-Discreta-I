@@ -1,8 +1,8 @@
-\documentclass{beamer} 
-%\documentclass[handout]{beamer} % sin pausas
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
 \usetheme{CambridgeUS}
 
-\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 \usepackage{etex}
 \usepackage{t1enc}
@@ -21,6 +21,7 @@
 \usepackage{subfigure} 
 \usepackage{tikz}
 \usepackage[customcolors]{hf-tikz}
+\usepackage[most]{tcolorbox}
 \usetikzlibrary{arrows}
 \usetikzlibrary{matrix}
 \tikzset{
@@ -100,7 +101,7 @@
 	\\[\baselineskip] ${}^{}$
 	\\[\baselineskip]
 }
-\date[02/04/2020]{31 de marzo   de 2020}
+\date[25/03/2021]{25 de marzo   de 2021}
 
 
 
@@ -125,11 +126,11 @@
 	$$
 	1+3+5+\cdots+(2n-1).
 	$$
-	
+	\pause
 	Por la definición recursiva de la sumatoria,  tenemos que 
 	\begin{equation*}
 	a_1 = 1, \;\text{  y } \; a_n = a_{n-1} + 2n-1,
-	\end{equation*}
+	\end{equation*}\pause
 	
 	
 	Analicemos los primero valores
@@ -145,13 +146,13 @@
 
 
 \begin{frame}	
-	Entonces, podemos conjeturar que
+	Entonces, podemos conjeturar que\pause
 	$$
 	1+3+5+\cdots+(2n-1) = n^2.
 	$$
-	
+	\pause
 	Para convencernos de que la fórmula es ciertamente correcta procedemos de la siguiente manera: cuando $n=1$ puesto que
-	$1=1^2$.
+	$1=1^2$.\pause
 	Supongamos que es correcta para un valor específico
 	de $n$, digamos para $n=k$, de modo que
 	$$
@@ -164,26 +165,27 @@
 
 \begin{frame}
 		Podemos usar esto para simplificar la expresión definida
-	recursivamente a la izquierda cuando $n$ es igual a $k+1$,
+	recursivamente a la izquierda cuando $n$ es igual a $k+1$,\pause
 	$$
 	\begin{aligned}
 	1+3+5+\cdots+(2k+1) &= 1+3+5+\cdots+(2k-1) +(2k+1) \\
 	&=k^2 +(2k+1) \\
 	&=(k+1)^2.
 	\end{aligned}
-	$$
-	Por lo tanto si el resultado es correcto cuando $n=k$, entonces lo es cuando $n=k+1$. Se comienza observando que si es correcto cuando $n=1$, debe ser por lo tanto correcto cuando $n=2$. Con el mismo argumento como es correcto cuando $n=2$ debe serlo cuando $n=3$. Continuando de esta forma veremos que es correcto para todos los enteros positivos $n$.
+	$$\pause
+	Por lo tanto si el resultado es correcto cuando $n=k$, entonces lo es cuando $n=k+1$. \pause Se comienza observando que si es correcto cuando $n=1$, debe ser por lo tanto correcto cuando $n=2$. Con el mismo argumento como es correcto cuando $n=2$ debe serlo cuando $n=3$. Continuando de esta forma veremos que es correcto para todos los enteros positivos $n$.
 \end{frame}
 
 \begin{frame}
 		
 	La esencia de este argumento es comúnmente llamada {\it principio de inducción}.
-	
+	\pause
 	\medskip 
 	
 	 Con $S$ denotemos al subconjunto de $\mathbb N$ para el cual el resultado es correcto: por supuesto, nuestra intención es probar que $S$ es todo $\mathbb N$. 
+	 \pause
 	 
-	 \medskip 
+     \vskip .8cm
 	 
 	%\begin{teorema}\label{t1.4} 
 	{\color{blue} Teorema }
@@ -234,7 +236,7 @@
 		
 		 De este
 		modo, la suposición $S \not= \mathbb N$ nos lleva a un absurdo, y
-		por lo tanto tenemos $S= \mathbb N$.
+		por lo tanto tenemos $S= \mathbb N$. \qed
 	%\end{proof}
 \end{frame}
 
@@ -242,7 +244,7 @@
 
 	
 	El principio de inducción es útil para probar la veracidad de propiedades relativas a los
-	números naturales. Por ejemplo, consideremos la siguiente propiedade $P(n)$:
+	números naturales. Por ejemplo, consideremos la siguiente propieda de $P(n)$:
 	\medskip 
 	\begin{itemize}
 		\item $P(n)$ es la propiedad: $2n -1 < n^2 + 1$,
@@ -259,8 +261,7 @@
 	
 	
 	
-	%\begin{teorema}[Principio de inducción] 
-	{\color{blue} Teorema (Principio de inducción)}
+	\begin{teorema}[(Principio de inducción)] 
 	\vskip .2cm 
 	{\it Sea $P(n)$ una propiedad para $n \in \mathbb N$ tal que:
 		\begin{enumerate}
@@ -268,21 +269,21 @@
 			\item[b)] Para todo $k \in \mathbb N$, $P(k)$ verdadera implica $P(k + 1)$ verdadera.
 		\end{enumerate}
 		Entonces $P(n)$ es verdadera para todo $n \in \mathbb N$. }
-	%\end{teorema}
-	\vskip .2cm 
+	\end{teorema}
+	\vskip .2cm \pause
 %\begin{proof}[Demostración] 
 	{\color{blue} Demostración.}
 	\vskip .2cm 
-	{\it 
+
 	\pause
 	 Basta tomar
 	$$S = \{n \in \mathbb N| P(n) \text{ es verdadera} \}.$$ \pause
 	Entonces $S$ es un subconjunto de $\mathbb N$ y las condiciones (a) y (b) nos dicen que $1 \in S$ y  si $ k \in S$ entonces $k+1\in S$. 
-	
+	\vskip .2cm 
 	\pause Por el teorema anterior se sigue que $S= \mathbb N$, es decir que $P(n)$ es verdadera para todo $n$.
-	natural.
+	natural.\qed
 	
-	\vskip 1cm}
+	\vskip 1cm
 %\end{proof}
 	 
 	
@@ -310,9 +311,7 @@
 
 \begin{frame}
 		
-	%\begin{ejemplo} 
-	{\color{blue}Ejemplo}
-	\vskip .2cm 
+	\begin{ejemplo} 
 	El entero $x_n$ esta definido recursivamente por
 		$$
 		x_1=2, \qquad x_n=x_{n-1} +2n, \qquad n\ge 2.
@@ -321,37 +320,42 @@
 		$
 		x_n = n(n+1)  \text{ para todo } n\in \mathbb N.
 		$
-	%\end{ejemplo}
-	\vskip .2cm
-%\begin{proof}[Demostración]
-	{\color{blue} Demostración.}
-	\vskip 3.5cm
-	
-	${}^{}$
-%\end{proof}
+	\end{ejemplo}
+	\vskip .2cm\pause
+\begin{proof}
+	\noindent({\it Caso  base}) El resultado es verdadero
+		cuando $n=1$ pues $ 2 = 1 \cdot 2$.
+    	\vskip .6cm\pause
+		\setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
+    \hskip 2cm\begin{beamercolorbox}[wd=0.7\textwidth,rounded=true,shadow=true]{postit}
+        \textit{\quad Caso base $n=1$:\quad $x_1 = 2 = 1\cdot 2 = n(n+1)$}
+\end{beamercolorbox}
+		\medskip\pause
+\end{proof}
 
 \end{frame}
 
 \begin{frame}
 
-	%\begin{proof}[Demostración]
-		\vskip .2cm
-	%\begin{proof}[Demostración]
-	{\color{blue} Demostración.}\pause
-			\vskip .2cm
-		\noindent({\it Caso  base}) El resultado es verdadero
-		cuando $n=1$ pues $ 2 = 1 \cdot 2$.
-		
-		\medskip\pause
-		
+\begin{proof}
 		\noindent ({\it Paso  inductivo})
 		Supongamos que el resultado verdadero cuando $n=k$, o
 		sea, que 
-		\begin{center}
-			$x_k = k(k+1)$ hipótesis inductiva (HI).
-		\end{center}
-		
+        \vskip .2cm
+        \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
+        \hskip 1.8cm \begin{beamercolorbox}[wd=0.55\textwidth,rounded=true,shadow=true]{postit}
+			\; $x_k = k(k+1)$ hipótesis inductiva (HI).
+        \end{beamercolorbox}
 		\pause
+        \vskip .2cm
+        En el paso inductivo queremos probar que 
+        \vskip .2cm
+        \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
+        \hskip 1.8cm \begin{beamercolorbox}[wd=0.65\textwidth,rounded=true,shadow=true]{postit}
+			\; $x_k = k(k+1)$ \; $\Rightarrow$ \; $x_{k+1} = (k+1)(k+2)$.
+        \end{beamercolorbox}
+		\pause
+        \vskip .2cm
 	 Entonces
 
 		\medskip
@@ -363,25 +367,25 @@
 		&$=$& $(k+1)(k+2).$&\qquad &$\text{($(k+1)$ factor común)}$
 		\end{tabular}
 		\medskip
+		\pause
 		
-		
-		Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.
-	%\end{proof}
+		Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.\qed
+	\end{proof}
 	
 \end{frame}
 
 \begin{frame}
 		
 	Existen varias formas modificadas del principio de inducción. A veces es conveniente tomar como base inductiva el valor $n=0$, por otro lado puede ser apropiado tomar un valor como $2$ o $3$ porque los primeros casos pueden ser excepcionales. 
-	
+	\pause
 	\medskip
 	
 	Cada problema debe ser tratado según sus características. 
-	
+	\pause
 	\medskip
 	
 	Otra modificación útil es tomar como hipótesis inductiva la suposición de que el resultado es verdadero para todos los valores $n\le k$, más que para $n=k$ solamente.
-	
+	\pause
 	\medskip
 	
 	Esta formulación es llamada a veces el {\it principio de inducción completa}. Todas esas modificaciones pueden justificarse con cambios triviales en la demostración del principio de inducción.
@@ -391,7 +395,7 @@
 \begin{frame}	
 	El siguiente teorema incorpora todas las modificaciones del principio de inducción mencionadas más arriba.
 
-
+    \pause
 	\medskip
 	
 
@@ -414,40 +418,60 @@
 
 \begin{frame}		
 	
-	%\begin{ejemplo}
-		{\color{blue} Ejemplo}	
-	$$u_1 = 3,\qquad u_2 = 5,\qquad u_n = 3u_{n-1}- 2u_{n-2},\qquad  n \ge 3.$$
+	\begin{ejemplo}
+		$$u_1 = 3,\qquad u_2 = 5,\qquad u_n = 3u_{n-1}- 2u_{n-2},\qquad  n \ge 3.$$
 		Probemos que $u_n = 2^n + 1$, para todo $n \in  \mathbb N$.
-	%\end{ejemplo}
-		%\begin{proof}[Solución] 
-		\vskip .2cm	
+	\end{ejemplo}
 		{\color{blue} Solución.}
 		\vskip .2cm	
 		\pause
 			
-			\noindent({\it Caso  base}) $n= 1$ :  $3 = 2^1+1$ \checkmark, \qquad   $n=2$ :  $ 5 =2^2+1$ \checkmark.\pause
+			\noindent({\it Caso  base})
+            
+            \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
+        \hskip 2.5cm\begin{beamercolorbox}[wd=0.65\textwidth,rounded=true,shadow=true]{postit}
+            $n= 1$ :  $3 = 2^1+1$ \checkmark, \qquad   $n=2$ :  $ 5 =2^2+1$ \checkmark.
+            \end{beamercolorbox} \pause
 			
-			\medskip
+			\vskip.4cm
 			
 			\noindent ({\it Paso  inductivo}) Hipótesis inductiva:
-			$$
-			u_h = 2^h+1 \text{ para } 1 \le h \le k \text{  y } k \ge 2 \text{ (HI), }
-			$$ 
+            \vskip.2cm
+            \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
+            \hskip 2.5cm\begin{beamercolorbox}[wd=0.65\textwidth,rounded=true,shadow=true]{postit}
+			\quad $u_h = 2^h+1$  para  $1 \le h \le k$   y  $k \ge 2$  (HI),  
+        \end{beamercolorbox}
 			\pause
-			entonces,
+            \vskip.2cm
+			 Luego debemos probar que:
 			
-			\begin{tabular}{llll}
-			$u_{k+1}$ &$= 3u_k -2u_{k-1}$ &\qquad &{(por definición recursiva)}  \\
-				&$= 3(2^k+1)-2(2^{k-1}+1)$  &\qquad &{(por hipótesis inductiva)} \\
-				&= $3\cdot 2^k+3-2\cdot 2^{k-1}-2$ &\qquad & \\
-				&= $3\cdot 2^k+1- 2^{k}$  &\qquad & \\
-				&= $2\cdot 2^k+1$  &\qquad & \\
-				&= $2^{k+1}+1.$  &\qquad & 
-			\end{tabular}
+		
 
 		%\end{proof}
 	
 	
+\end{frame}
+
+\begin{frame}
+    \frametitle{}
+    \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
+    \hskip 0.5cm\begin{beamercolorbox}[wd=0.9\textwidth,rounded=true,shadow=true]{postit}
+        \quad $u_h = 2^h+1$  para  $1 \le h \le k$  (HI) \quad $\Rightarrow$ \quad
+        $u_{k+1}=2^{k+1}+1.$  
+    \end{beamercolorbox}	\pause
+    \vskip.5cm
+    Se  comienza con el término izquierdo de lo que se quiere probar y  se obtiene el derecho. 	\pause
+    \vskip.4cm
+    \begin{tabular}{llll}
+        $u_{k+1}$ &$= 3u_k -2u_{k-1}$ &\qquad &{(por definición recursiva)}  \\[0.2cm].
+            &$= 3(2^k+1)-2(2^{k-1}+1)$  &\qquad &{(por hipótesis inductiva)} \\[0.2cm]
+            &= $3\cdot 2^k+3-2\cdot 2^{k-1}-2$ &\qquad & \\[0.2cm]
+            &= $3\cdot 2^k+1- 2^{k}$  &\qquad & \\[0.2cm]
+            &= $2\cdot 2^k+1$  &\qquad & \\[0.2cm]
+            &= $2^{k+1}+1.$  &\qquad & 
+        \end{tabular}
+
+\qed
 \end{frame}
 
 \end{document}
