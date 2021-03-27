@@ -1,9 +1,12 @@
 {
 	"folders": [
-		{
-			"path": "."
-		}
-	],
+        {
+            "path": "."
+        },
+        {
+            "path": "G:\\Mi unidad\\MD1-2021-1\\tareas"
+        }
+    ],
 	"settings": {
 		"cSpell.enabled": true,
 		"cSpell.words": [
