@@ -110,6 +110,133 @@
 
 \frame{\titlepage} 
 
+\begin{frame}\frametitle{} 
+
+    \begin{ejercicio}[(Serie aritmética)]\label{serie-aritmetica}
+        Probar que 
+        $$
+        1 + 2+ 3 + \cdots + n = \frac{n(n+1)}{2},
+        $$
+        para $n \in \N$.
+    \end{ejercicio}
+
+    \vskip .2cm\pause
+    \begin{proof}
+        \vskip .4cm 
+        \noindent({\it Caso  base}) El resultado es verdadero
+            cuando $n=1$ pues $ 1 = \frac{1 \cdot (1+1)}{2}$.
+        
+        \vskip .4cm 
+
+    \end{proof}
+	
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+    \begin{proof}
+		\noindent ({\it Paso  inductivo})
+		Supongamos que el resultado verdadero cuando $n=k$, o
+		sea, que 
+        $$
+        \sum_{i=0}^{k} i = \frac{k(k+1)}{2}\quad \text{hipótesis inductiva (HI).}
+        $$
+        \vskip .4cm
+        En el paso inductivo queremos probar que 
+        $$
+        \sum_{i=0}^{k} i = \frac{k(k+1)}{2} \; \Rightarrow \;    \sum_{i=0}^{k+1} i =\frac{(k+1)(k+2)}{2}.
+        $$
+\vskip 1cm
+	
+	\end{proof}
+\end{frame}
+
+\begin{frame}
+    \frametitle{}
+
+    Entonces
+
+    \medskip
+    
+    
+    \begin{tabular}{lllll}
+        $\displaystyle\sum_{i=0}^{k+1} i$ &$=$& $\displaystyle\sum_{i=0}^{k} i + (k+1)$ &\qquad &$\text{(por la definición recursiva)}$ \\[0.6cm]
+    &$=$& $\displaystyle\frac{k(k+1)}{2}+(k+1)$ &\qquad &$\text{(por hipótesis inductiva)}$ \\[0.6cm]
+    &$=$& $\displaystyle(k+1)(\frac{k}{2}+1))$ &\qquad &$\text{($(k+1)$ factor común)}$ \\[0.6cm]
+    &$=$& $\displaystyle(k+1)\frac{(k+2)}{2}.$&\qquad &\\[0.6cm]
+    &$=$& $\displaystyle\frac{(k+1)(k+2)}{2}.$&\qquad &
+    \end{tabular}
+    \medskip
+    \pause
+    
+    Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.\qed
+
+\end{frame}
+
+\begin{frame}\frametitle{} 
+
+    \begin{ejercicio}[(Serie geométrica)]\label{serie-geometrica}
+        Probar que 
+        $$
+        1 + q+ q^2 + \cdots + q^n = \sum_{i=0}^{n} q^i = \frac{q^{n+1}-1}{q -1},
+        $$
+        para $n \in \N_0$, $q >0$ y $q \ne 1$.
+    \end{ejercicio}
+
+    \vskip .2cm\pause
+    \begin{proof}
+        \vskip .4cm 
+        \noindent({\it Caso  base}) El resultado es verdadero
+            cuando $n=0$ pues 
+            $$q^0 = 1 =  \frac{q^{0+1}-1}{q -1}.$$
+        
+        \vskip .4cm 
+
+    \end{proof}
+	
+\end{frame}
+
+\begin{frame}
+    \frametitle{}
+    \begin{proof}
+		\noindent ({\it Paso  inductivo})
+		Supongamos que el resultado verdadero cuando $n=k$, o
+		sea, que 
+        $$
+        \sum_{i=0}^{k} q^i = \frac{q^{k+1}-1}{q -1},\quad \text{hipótesis inductiva (HI).}
+        $$
+        \vskip .4cm
+        En el paso inductivo queremos probar que 
+        $$
+        \sum_{i=0}^{k} q^i = \frac{q^{k+1}-1}{q -1} \quad \Rightarrow \quad   \sum_{i=0}^{k+1} q^i = \frac{q^{k+2}-1}{q -1}.
+        $$
+\vskip 1cm
+	
+	\end{proof}
+\end{frame}
+
+\begin{frame}
+    \frametitle{}
+
+    Entonces
+
+    \medskip
+    
+    
+    \begin{tabular}{lllll}
+        $\displaystyle\sum_{i=0}^{k+1} q^i $ &$=$& $\displaystyle\sum_{i=0}^{k} q^i  + q^{k+1}$ &\qquad &$\text{(por la definición recursiva)}$ \\[0.6cm]
+    &$=$& $\displaystyle\ \frac{q^{k+1}-1}{q -1}+ q^{k+1}$ &\qquad &$\text{(por hipótesis inductiva)}$ \\[0.6cm]
+    &$=$& $\displaystyle\ \frac{q^{k+1}-1+ (q-1) q^{k+1}}{q -1}$ &\qquad & \\[0.6cm]
+    &$=$& $\displaystyle\ \frac{q^{k+1}-1+ q\cdot q^{k+1}- q^{k+1}}{q -1}$ &\qquad &\\[0.6cm]
+    &$=$& $\displaystyle\ \frac{q^{k+2}-1}{q -1}$ &\qquad &
+    \end{tabular}
+    \medskip
+    \pause
+    
+    Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.\qed
+
+\end{frame}
 
 \begin{frame}\frametitle{} 
 
@@ -120,340 +247,117 @@
         $$
         para $n \in \N$.
     \end{ejercicio}
-
-	
-	
-\end{frame}
-
-
-\begin{frame}	
-	Entonces, podemos conjeturar que\pause
-	$$
-	1+3+5+\cdots+(2n-1) = n^2.
-	$$
-	\pause
-	Para convencernos de que la fórmula es ciertamente correcta procedemos de la siguiente manera: cuando $n=1$ puesto que
-	$1=1^2$.\pause
-	Supongamos que es correcta para un valor específico
-	de $n$, digamos para $n=k$, de modo que
-	$$
-	1+3+5+\cdots+(2k-1) = k^2.
-	$$
-
-
-
-\end{frame}
-
-\begin{frame}
-		Podemos usar esto para simplificar la expresión definida
-	recursivamente a la izquierda cuando $n$ es igual a $k+1$,\pause
-	$$
-	\begin{aligned}
-	1+3+5+\cdots+(2k+1) &= 1+3+5+\cdots+(2k-1) +(2k+1) \\
-	&=k^2 +(2k+1) \\
-	&=(k+1)^2.
-	\end{aligned}
-	$$\pause
-	Por lo tanto si el resultado es correcto cuando $n=k$, entonces lo es cuando $n=k+1$. \pause Se comienza observando que si es correcto cuando $n=1$, debe ser por lo tanto correcto cuando $n=2$. Con el mismo argumento como es correcto cuando $n=2$ debe serlo cuando $n=3$. Continuando de esta forma veremos que es correcto para todos los enteros positivos $n$.
-\end{frame}
-
-\begin{frame}
-		
-	La esencia de este argumento es comúnmente llamada {\it principio de inducción}.
-	\pause
-	\medskip 
-	
-	 Con $S$ denotemos al subconjunto de $\mathbb N$ para el cual el resultado es correcto: por supuesto, nuestra intención es probar que $S$ es todo $\mathbb N$. 
-	 \pause
-	 
-     \vskip .8cm
-	 
-	%\begin{teorema}\label{t1.4} 
-	{\color{blue} Teorema }
-	\vskip .2cm 
-	{\it
-		Supongamos que $S$ es un subconjunto de $\mathbb N$ que satisface las condiciones \index{principio de inducción}
-		\begin{enumerate}
-			\item[a)] $1 \in S$,
-			\item[b)] para cada $k \in \mathbb N$, si $ k \in S$ entonces $k+1\in S$.
-		\end{enumerate}
-		Entonces se sigue que $S=\mathbb N$.
-}
-	%\end{teorema}
-\end{frame}
-
-\begin{frame}
-
-
-	%\begin{proof}[Demostración]
-	
-	{\color{blue} Demostración.}
-	\vskip .2cm 
-		Si la conclusión es falsa, $S \not= \mathbb N$ y
-		el conjunto complementario $S^{\text{c}}$ definido por
-		$$
-		S^{\text{c}}= \{ r \in \mathbb N | r\not\in S\}
-		$$
-		es no vacío. \pause 
-		
-		\medskip 
-		
-		Por el axioma del buen orden, $S^{\text{c}}$ tiene un menor
-		elemento (mínimo) $m$. 
-		
-		\pause\medskip 
-		
-		Como $1$ pertenece a $S$, $m\not=1$. Se sigue que
-		$m-1$ pertenece a $\mathbb N$ y como $m$ es el mínimo de
-		$S^{\text{c}}$, $m-1$ debe pertenecer a $S$.
-		
-		\pause\medskip 
-		
-		 Poniendo $k=m-1$ en
-		la condición (b), concluimos que $m$ esta en $S$, lo cual
-		contradice el hecho de que $m$ pertenece a $S^{\text{c}}$.
-		
-		\pause\medskip 
-		
-		 De este
-		modo, la suposición $S \not= \mathbb N$ nos lleva a un absurdo, y
-		por lo tanto tenemos $S= \mathbb N$. \qed
-	%\end{proof}
-\end{frame}
-
-\begin{frame}	
-
-	
-	El principio de inducción es útil para probar la veracidad de propiedades relativas a los
-	números naturales. Por ejemplo, consideremos la siguiente propieda de $P(n)$:
-	\medskip 
-	\begin{itemize}
-		\item $P(n)$ es la propiedad: $2n -1 < n^2 + 1$,
-	\end{itemize}
-\medskip 
-	Intuitivamente notamos que $P(n)$ es verdadera para cualquier $n$ natural y lo podemos probar usando el siguiente teorema: 
-	\medskip 
-
-
-
-\end{frame}
-
-\begin{frame}	
-	
-	
-	
-	\begin{teorema}[(Principio de inducción)] 
-	\vskip .2cm 
-	{\it Sea $P(n)$ una propiedad para $n \in \mathbb N$ tal que:
-		\begin{enumerate}
-			\item[a)] $P(1)$ es verdadera.
-			\item[b)] Para todo $k \in \mathbb N$, $P(k)$ verdadera implica $P(k + 1)$ verdadera.
-		\end{enumerate}
-		Entonces $P(n)$ es verdadera para todo $n \in \mathbb N$. }
-	\end{teorema}
-	\vskip .2cm \pause
-%\begin{proof}[Demostración] 
-	{\color{blue} Demostración.}
-	\vskip .2cm 
-
-	\pause
-	 Basta tomar
-	$$S = \{n \in \mathbb N| P(n) \text{ es verdadera} \}.$$ \pause
-	Entonces $S$ es un subconjunto de $\mathbb N$ y las condiciones (a) y (b) nos dicen que $1 \in S$ y  si $ k \in S$ entonces $k+1\in S$. 
-	\vskip .2cm 
-	\pause Por el teorema anterior se sigue que $S= \mathbb N$, es decir que $P(n)$ es verdadera para todo $n$.
-	natural.\qed
-	
-	\vskip 1cm
-%\end{proof}
-	 
-	
-\end{frame}
-
-\begin{frame}	
-
-	
-		En la práctica, generalmente presentamos una ``demostración por
-	inducción'' en términos más descriptivos. 
-	
-	\medskip
-	
-	En la notación del teorema anterior, 
-	\medskip
-	\begin{itemize}
-		\item (a) es llamado  el {\em caso base},
-		\item  (b) es llamado el  {\em paso inductivo} y
-		\item  $P(k)$ es llamada la {\em hipótesis inductiva}.
-	\end{itemize}
-	\medskip
-	 El paso inductivo  consiste en probar que $P(k) \Rightarrow P(k + 1)$ o, equivalentemente, podemos suponer $P(k)$ verdadera y a partir de ella probar $P(k + 1)$. 
-	
-\end{frame}
-
-\begin{frame}
-		
-	\begin{ejemplo} 
-	El entero $x_n$ esta definido recursivamente por
-		$$
-		x_1=2, \qquad x_n=x_{n-1} +2n, \qquad n\ge 2.
-		$$
-		Demostremos que  \qquad 
-		$
-		x_n = n(n+1)  \text{ para todo } n\in \mathbb N.
-		$
-	\end{ejemplo}
-	\vskip .2cm\pause
 \begin{proof}
-	\noindent({\it Caso  base}) El resultado es verdadero
-		cuando $n=1$ pues $ 2 = 1 \cdot 2$.
-    	\vskip .6cm\pause
-		\setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
-    \hskip 2cm\begin{beamercolorbox}[wd=0.7\textwidth,rounded=true,shadow=true]{postit}
-        \textit{\quad Caso base $n=1$:\quad $x_1 = 2 = 1\cdot 2 = n(n+1)$}
-\end{beamercolorbox}
-		\medskip\pause
+    Para probar esto primero debemos usar el resultado de la página \ref{serie-aritmetica} que nos dice  que 
+    $$
+    (1 + 2+ 3 + \cdots + n)^2 = \left(\sum_{i=1}^n i\right)^2 = \left(\frac{n(n+1)}{2}\right)^2 = \frac{n^2(n+1)^2}{4}.
+    $$
+    Luego debemos probar que 
+    $$
+    \sum_{i=1}^{n} i^3 =  \frac{n^2(n+1)^2}{4}.
+    $$
 \end{proof}
-
 \end{frame}
+
 
 \begin{frame}
+    \frametitle{}
+    \begin{proof}
+        \vskip .4cm 
+        \noindent({\it Caso  base}) El resultado es verdadero
+            cuando $n=1$ pues 
+            $$ \sum_{i=1}^{1} i^3 = 1\quad \text{y}\quad\frac{1^2(1+1)^2}{4} =\frac{4}{4} =1.$$
+        
+        \vskip .4cm 
+        \noindent ({\it Paso  inductivo})
+		Debemos probar que si $k \ge 1$, 
+        $$
+        \sum_{i=0}^{k} i^3 = \frac{k^2(k+1)^2}{4} \;\; \text{ (HI) }\quad \Rightarrow \quad    \sum_{i=0}^{k+1} i^3 =\frac{(k+1)^2(k+2)^2}{4}.
+        $$
+    \end{proof}
+    
 
-\begin{proof}
-		\noindent ({\it Paso  inductivo})
-		Supongamos que el resultado verdadero cuando $n=k$, o
-		sea, que 
-        \vskip .2cm
-        \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
-        \hskip 1.8cm \begin{beamercolorbox}[wd=0.55\textwidth,rounded=true,shadow=true]{postit}
-			\; $x_k = k(k+1)$ hipótesis inductiva (HI).
-        \end{beamercolorbox}
-		\pause
-        \vskip .2cm
-        En el paso inductivo queremos probar que 
-        \vskip .2cm
-        \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
-        \hskip 1.8cm \begin{beamercolorbox}[wd=0.65\textwidth,rounded=true,shadow=true]{postit}
-			\; $x_k = k(k+1)$ \; $\Rightarrow$ \; $x_{k+1} = (k+1)(k+2)$.
-        \end{beamercolorbox}
-		\pause
-        \vskip .2cm
-	 Entonces
-
-		\medskip
-		
-		
-		\begin{tabular}{lllll}
-		$x_{k+1}$ &$=$& $x_k + 2(k+1)$ &\qquad &$\text{(por la definición recursiva)}$ \\
-		&$=$& $k(k+1)+2(k+1)$ &\qquad &$\text{(por hipótesis inductiva)}$ \\
-		&$=$& $(k+1)(k+2).$&\qquad &$\text{($(k+1)$ factor común)}$
-		\end{tabular}
-		\medskip
-		\pause
-		
-		Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.\qed
-	\end{proof}
-	
 \end{frame}
+
 
 \begin{frame}
-		
-	Existen varias formas modificadas del principio de inducción. A veces es conveniente tomar como base inductiva el valor $n=0$, por otro lado puede ser apropiado tomar un valor como $2$ o $3$ porque los primeros casos pueden ser excepcionales. 
-	\pause
-	\medskip
-	
-	Cada problema debe ser tratado según sus características. 
-	\pause
-	\medskip
-	
-	Otra modificación útil es tomar como hipótesis inductiva la suposición de que el resultado es verdadero para todos los valores $n\le k$, más que para $n=k$ solamente.
-	\pause
-	\medskip
-	
-	Esta formulación es llamada a veces el {\it principio de inducción completa}. Todas esas modificaciones pueden justificarse con cambios triviales en la demostración del principio de inducción.
-	
-\end{frame}
-
-\begin{frame}	
-	El siguiente teorema incorpora todas las modificaciones del principio de inducción mencionadas más arriba.
-
+    \frametitle{}
+    
+    \begin{tabular}{lllll}
+        $\displaystyle\sum_{i=0}^{k+1} i^3$ &$=$& $\displaystyle\sum_{i=0}^{k} i^3 + (k+1)^3$ &\qquad &$\text{(por la definición recursiva de $\sum$ )}$ \\[0.6cm]
+    &$=$& $\displaystyle\frac{k^2(k+1)^2}{4}+(k+1)^3$ &\quad &$\text{(por hipótesis inductiva)}$ \\[0.6cm]
+    &$=$& $\displaystyle(k+1)^2(\frac{k^2}{4}+(k+1)))$ &\quad &$\text{($(k+1)^2$ factor común)}$ \\[0.6cm]
+    &$=$& $\displaystyle(k+1)^2\frac{(k^2+4k+4)}{4}.$&\quad &\\[0.6cm]
+    &$=$& $\displaystyle\frac{(k+1)^2(k+2)^2}{4}.$&\quad &
+    \end{tabular}
+    \medskip
     \pause
-	\medskip
-	
+    
+    Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.\qed
 
-	
-	%\begin{teorema}[Inducción completa]\label{ind-completa} 
-	{\color{blue} Teorema (Inducción completa)}
-	\vskip .2cm	
-		Sea $n_0$ número entero y sea $P(n)$ una propiedad para $n \ge n_0$ tal que:
-		\begin{enumerate}
-			\item[a)] $P(n_0)$ es verdadera.
-			\item[b)] Si $P(h)$ verdadera para toda $h$ tal que $n_0 \le h \le k$ implica $P(k + 1)$ verdadera.
-		\end{enumerate}
-		Entonces $P(n)$ es verdadera para todo $n \ge n_0$.
-	%\end{teorema}
-
-	
-\end{frame}
-
-
-
-\begin{frame}		
-	
-	\begin{ejemplo}
-		$$u_1 = 3,\qquad u_2 = 5,\qquad u_n = 3u_{n-1}- 2u_{n-2},\qquad  n \ge 3.$$
-		Probemos que $u_n = 2^n + 1$, para todo $n \in  \mathbb N$.
-	\end{ejemplo}
-		{\color{blue} Solución.}
-		\vskip .2cm	
-		\pause
-			
-			\noindent({\it Caso  base})
-            
-            \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
-        \hskip 2.5cm\begin{beamercolorbox}[wd=0.65\textwidth,rounded=true,shadow=true]{postit}
-            $n= 1$ :  $3 = 2^1+1$ \checkmark, \qquad   $n=2$ :  $ 5 =2^2+1$ \checkmark.
-            \end{beamercolorbox} \pause
-			
-			\vskip.4cm
-			
-			\noindent ({\it Paso  inductivo}) Hipótesis inductiva:
-            \vskip.2cm
-            \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
-            \hskip 2.5cm\begin{beamercolorbox}[wd=0.65\textwidth,rounded=true,shadow=true]{postit}
-			\quad $u_h = 2^h+1$  para  $1 \le h \le k$   y  $k \ge 2$  (HI),  
-        \end{beamercolorbox}
-			\pause
-            \vskip.2cm
-			 Luego debemos probar que:
-			
-		
-
-		%\end{proof}
-	
-	
 \end{frame}
 
 \begin{frame}
     \frametitle{}
-    \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
-    \hskip 0.5cm\begin{beamercolorbox}[wd=0.9\textwidth,rounded=true,shadow=true]{postit}
-        \quad $u_h = 2^h+1$  para  $1 \le h \le k$  (HI) \quad $\Rightarrow$ \quad
-        $u_{k+1}=2^{k+1}+1.$  
-    \end{beamercolorbox}	\pause
-    \vskip.5cm
-    Se  comienza con el término izquierdo de lo que se quiere probar y  se obtiene el derecho. 	\pause
-    \vskip.4cm
-    \begin{tabular}{llll}
-        $u_{k+1}$ &$= 3u_k -2u_{k-1}$ &\qquad &{(por definición recursiva)}  \\[0.2cm].
-            &$= 3(2^k+1)-2(2^{k-1}+1)$  &\qquad &{(por hipótesis inductiva)} \\[0.2cm]
-            &= $3\cdot 2^k+3-2\cdot 2^{k-1}-2$ &\qquad & \\[0.2cm]
-            &= $3\cdot 2^k+1- 2^{k}$  &\qquad & \\[0.2cm]
-            &= $2\cdot 2^k+1$  &\qquad & \\[0.2cm]
-            &= $2^{k+1}+1.$  &\qquad & 
-        \end{tabular}
 
-\qed
+    
+
 \end{frame}
 
+
+\begin{frame}
+    \frametitle{}
+
+    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+    
+
+\end{frame}
 \end{document}
 
