@@ -822,11 +822,11 @@ Hacer este cálculo  directamente no nos da un resultado satisfactorio, ni siqui
 $$
         x^2 \cdot 5^s \cdot c\equiv c'  \pmod{100000037}
 $$
-donde $0 \le x, c, c' < 100000037$ y $s = 0, 1$. La clave es que cada uno de estos cálculos se realiza con facilidad. 
+donde $0 \le x, c, c' < 100000037$ y $s = 0, 1$. La clave es que no son muchos pasos y que en cada uno de ellos los cálculos se pueden hacer con facilidad. 
 
-La fórmula de la proposición \ref{prop-exp-mod} nos muestra como fácilmente podemos obtener una fórmula recursiva para la exponenciación modular:  sea $n> 0$, definimos $\modulo$ el \textit{operador módulo} de tal forma que $a \modulo n$ devuelve el resto de dividir $a$ por $n$. También definimos $\cociente$ el \textit{operador cociente} de tal forma que $ a \cociente n$ es el cociente entero de dividir $a$ por $n$. Entonces,  la ecuación \eqref{eq-pmod-2} es equivalente a 
+La fórmula de la proposición \ref{prop-exp-mod} nos muestra como casi inmediátamente podemos obtener una fórmula recursiva para la exponenciación modular:  sea $n> 0$, definimos $\modulo$ el \textit{operador módulo} de tal forma que $a \modulo n$ devuelve el resto de dividir $a$ por $n$. También definimos $\cociente$ el \textit{operador cociente} de tal forma que $ a \cociente n$ es el cociente entero de dividir $a$ por $n$. Entonces,  la ecuación \eqref{eq-pmod-2} es equivalente a 
 $$
-a^d \modulo n \quad = \quad  a_0^{d_0}  a^r \modulo n,
+a^d \modulo n \; = \;  a_0^{d_0}  a^r \modulo n,
 $$
 donde $a_0 = a^2 \modulo n$, $d_0 = d \cociente 2$ y $r = d \modulo 2$. Por lo tanto,  
 la función recursiva 
@@ -856,7 +856,7 @@ def f(a, d):
 
 \vskip .2cm 
 
-En pseudocódigo la versión iterativa de la exponenciacion modular se puede describir de la siguiente forma. 
+En pseudocódigo una versión iterativa de la exponenciacion modular se puede describir de la siguiente forma. 
 
 \begin{minipage}{0.90\textwidth}
     \vskip .5cm
@@ -882,7 +882,7 @@ def exp_modular(a, d, n):
 
 \subsection*{Pruebas de primalidad}
 
-En la implementación del  criptosistema RSA  es fundamental el uso de primos de grandes dimensiones, por ejemplo de más de $100$  dígitos. Ahora bien,  tratar de  demostrar que un número  (grande) es primo buscando sus divisores es imposible con una arquitectura de computadoras determinística,  como lo son las computadoras actuales. Justamente en la dificultad de la descomposición prima se basa la fortaleza del criptosistema RSA. 
+En la implementación del  criptosistema RSA  es fundamental el uso de primos de grandes dimensiones, por ejemplo de más de $100$  dígitos. Ahora bien,  tratar de  demostrar que un número  (grande) es primo buscando sus divisores es imposible con una arquitectura de computadoras determinística,  como la es la de las computadoras actuales. Justamente en la dificultad de la descomposición prima se basa la fortaleza del criptosistema RSA. 
 
 Sin embargo,  veremos en esta parte del apunte  que hay algoritmos que permiten determinar en forma probabilística si un número es primo o no. Mencionaremos al final de esta subsección algoritmos que determinan eficientemente y en forma determinística si un número es primo a o no. 
 
@@ -891,11 +891,13 @@ El algoritmo que veremos es el test de primalidad Miller-Rabin probabilístico. 
 
 Este test es ampliamente utilizado en la práctica (en RSA, por ejemplo) y es una de las pruebas más simples y rápidas conocidas.
 
-Dado $m$ un entero positivo.
+Describamos en forma amplia el método del test: dado $m$ un entero positivo.
 \begin{itemize}
     \item Si le hacemos el test a $m$ y no supera la prueba, entonces el número no es primo. 
     \item Si hacemos $k$ veces el test y $m$ supera las $k$ pruebas, entonces  $m$ tiene la probabilidad $1 - ( 1 / 4^k)$ de ser primo. 
 \end{itemize}
+
+El test de  Miller-Rabín se basa en comprobar $k$ veces (para un $k$ dado) si el número es fuertemente probable primo respecto a una base. Veamos a continuación las definiciones necesarias para comprender este concepto. 
 
 \begin{definicion}
     Sea $n > 2$ un entero impar, entonces $n = 2^s \cdot d + 1$ con $d$ impar. Sea $a$ entero  tal que $0 < a < n$. Entonces diremos que $n$ es \textit{fuertemente probable primo (FPP) respecto a la base $a$} si se cumple
@@ -935,7 +937,7 @@ Ahora bien, también es cierto el recíproco (que no demostraremos): un número 
 
 Por otro lado, un número $n$ que es FPP respecto alguna base $ 0 < a < n$ podría ser compuesto, pero hay una probabilidad mayor que $0.75$ de que sea primo. La verificación con diferentes bases de que un número es FPP acerca a $1$ la probabilidad de que el número sea primo.  
 
-El test probabilístico de primalidad de Miller-Rabin se basa en las observaciones realizadas más arriba: sea $n$ entero positivo impar entonces, $n = 2s \cdot d + 1$ con $d$ impar, y sea $k$ entero positivo.  
+El test probabilístico de primalidad de Miller-Rabin se basa en las observaciones realizadas más arriba: sea $n$ entero positivo impar y sea $k$ entero positivo.  
 \begin{enumerate}
     \item\label{mr-p1} Elegir al  azar $a$ entero tal que $0 < a < n$.
     \item\label{mr-p2} Verificar que  $n$ es FPP respecto a la base $a$.
