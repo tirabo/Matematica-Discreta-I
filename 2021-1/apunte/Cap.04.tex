@@ -882,12 +882,12 @@ def exp_modular(a, d, n):
 
 \subsection*{Pruebas de primalidad}
 
-En la implementación del  criptosistema RSA  es fundamental el uso de primos de grandes dimensiones, por ejemplo de más de $100$  dígitos. Ahora bien,  tratar de  demostrar que un número  (grande) es primo buscando sus divisores es imposible con una arquitectura de computadoras determinística,  como lo son las computadoras actuales. Justamente en eso se basa la fortaleza del criptosistema RSA. 
+En la implementación del  criptosistema RSA  es fundamental el uso de primos de grandes dimensiones, por ejemplo de más de $100$  dígitos. Ahora bien,  tratar de  demostrar que un número  (grande) es primo buscando sus divisores es imposible con una arquitectura de computadoras determinística,  como lo son las computadoras actuales. Justamente en la dificultad de la descomposición prima se basa la fortaleza del criptosistema RSA. 
 
 Sin embargo,  veremos en esta parte del apunte  que hay algoritmos que permiten determinar en forma probabilística si un número es primo o no. Mencionaremos al final de esta subsección algoritmos que determinan eficientemente y en forma determinística si un número es primo a o no. 
 
 
-El primer  algoritmo que veremos es el test de primalidad Miller-Rabin probabilístico. Como su nombre lo indica  es una prueba probabilística de primalidad: un algoritmo que determina si un número dado es probable que sea primo.
+El algoritmo que veremos es el test de primalidad Miller-Rabin probabilístico. Como su nombre lo indica  es una prueba probabilística de primalidad: un algoritmo que determina si un número dado es probable que sea primo.
 
 Este test es ampliamente utilizado en la práctica (en RSA, por ejemplo) y es una de las pruebas más simples y rápidas conocidas.
 
@@ -908,13 +908,13 @@ Dado $m$ un entero positivo.
 Con la aplicación del teorema de Fermat y la ecuación lineal de congruencia probaremos  que todo número primo es FPP respecto a cualquier base. El contrarrecíproco de esta afirmación nos dice que un número que no es FPP respecto a alguna base es compuesto.
 
 \begin{lema}
-    Sea $p$  un primo impar, entonces las únicas raíces cuadradas de $1$ modulo $p$ son $1$ y $-1$. Es decir, 
+    Sea $n$  un primo impar, entonces las únicas raíces cuadradas de $1$ modulo $n$ son $1$ y $-1$. Es decir, 
     $$
-    x^2 \equiv 1 \pmod{p}  \quad \Rightarrow\quad x \equiv \pm 1 \pmod{p}.
+    x^2 \equiv 1 \pmod{n}  \quad \Rightarrow\quad x \equiv \pm 1 \pmod{n}.
     $$
 \end{lema}
 \begin{proof}
-    Sea $x$ tal que $x^2 \equiv 1 \pmod{p}$, luego $x^2 - 1 \equiv 0 \pmod{p}$, como $x^2 -1 = (x-1)(x+1)$, obtenemos  $(x-1)(x+1) \equiv 0 \pmod{p}$. Esto quiere decir  que $p|  (x-1)(x+1)$. Como $p$  es primo, $p | x -1$ o $p| x +1$, es decir $x  \equiv 1 \pmod{p}$  o $x  \equiv -1 \pmod{p}$.
+    Sea $x$ tal que $x^2 \equiv 1 \pmod{n}$, luego $x^2 - 1 \equiv 0 \pmod{n}$, como $x^2 -1 = (x-1)(x+1)$, obtenemos  $(x-1)(x+1) \equiv 0 \pmod{n}$. Esto quiere decir  que $n|  (x-1)(x+1)$. Como $n$  es primo, $n | x -1$ o $n| x +1$, es decir $x  \equiv 1 \pmod{n}$  o $x  \equiv -1 \pmod{n}$.
 \end{proof}
 
 \begin{teorema}
@@ -942,7 +942,7 @@ El test probabilístico de primalidad de Miller-Rabin se basa en las observacion
     \item\label{mr-p3} Repetir \ref{mr-p1} y \ref{mr-p2} $k$ veces.
 \end{enumerate}
 
-Si $n$ es FPP las $k$ veces,  entonces decimos que $n$ supera el test probabilístico de primalidad de Miller-Rabin y tiene la probabilidad $1 - ( 1 / 4^k)$ de ser primo (y lo consideramos primo).  
+Si $n$ es FPP las $k$ veces,  entonces decimos que $n$ supera el test probabilístico de primalidad de Miller-Rabin y tiene probabilidad $1 - ( 1 / 4^k)$ de ser primo (y lo consideramos primo).  
 
 Mostramos a continuación una implementación en pseudocódigo. 
 
@@ -956,7 +956,7 @@ def test_Miller_Rabin(n: int, k: int) -> bool:
     s, d = satisfacen n = 2**s * d + 1
     repetir k veces:
         a = entero al azar entre 2 y n-1
-        fpp = False # fuertemente primo en base a
+        fpp = False # suponemos n no es fuertemente primo en base a
         if 1 == a**d % n:
             fpp = True
         else:
@@ -964,9 +964,10 @@ def test_Miller_Rabin(n: int, k: int) -> bool:
             while r <= s and fpp == False:
                 if n - 1 == a**(2**r * d) % n:
                     fpp = True
-            if fpp == False: # si no pasa la prueba
+                r = r + 1
+            if fpp == False: # si n no pasa la prueba
                 return False
-    return True # si pasó las k pruebas
+    return True # n pasó las k pruebas
             \end{verbatim}
         \end{small}
     \end{minipage}
