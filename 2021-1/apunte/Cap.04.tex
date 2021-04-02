@@ -796,7 +796,7 @@ Utilizando la idea de escribir el exponente en base $2$, se puede obtener un alg
     a^d \equiv a^{d_0\cdot 2 + r} \equiv  (a^2)^{d_0}  a^r  \equiv  a_0^{d_0}  a^r \pmod n.
     $$
 \end{proof}
- La clave en la fórmula \eqref{eq-pmod-2} es que el exponente del término de la derecha es la mitad  que el del término de la izquierda. 
+ La clave en la fórmula \eqref{eq-pmod-2} es que el exponente $d_0$ del término de la derecha es la mitad  que el exponente $d$ del término de la izquierda. 
 
 \begin{ejemplo*}
 Supongamos que queremos calcular $r$ tal que 
@@ -824,7 +824,7 @@ $$
 $$
 donde $0 \le x, c, c' < 100000037$ y $s = 0, 1$. La clave es que cada uno de estos cálculos se realiza con facilidad. 
 
-La fórmula de la proposición \ref{prop-exp-mod} nos muestra como fácilmente podemos obtener una fórmula recursiva para la exponenciación modular:  sea $n> 0$, definimos $\modulo$ el \textit{operador módulo} de tal forma que $a \modulo n$ devuelve el resto de dividir $a$ por $n$. También definimos a $\cociente$ el \textit{operador cociente} de tal forma que $ a \cociente n$ es el cociente de dividir $a$ por $n$. Entonces, por la proposición \ref{prop-exp-mod} se cumple que 
+La fórmula de la proposición \ref{prop-exp-mod} nos muestra como fácilmente podemos obtener una fórmula recursiva para la exponenciación modular:  sea $n> 0$, definimos $\modulo$ el \textit{operador módulo} de tal forma que $a \modulo n$ devuelve el resto de dividir $a$ por $n$. También definimos $\cociente$ el \textit{operador cociente} de tal forma que $ a \cociente n$ es el cociente entero de dividir $a$ por $n$. Entonces,  la ecuación \eqref{eq-pmod-2} es equivalente a 
 $$
 a^d \modulo n \quad = \quad  a_0^{d_0}  a^r \modulo n,
 $$
@@ -863,19 +863,18 @@ En pseudocódigo la versión iterativa de la exponenciacion modular se puede des
     \noindent \textsc{Exponenciación modular}
     \begin{small}
         \begin{verbatim}
-# pre: a, d >= 0, n > 0
-# post: calcula em = a**d % n utilizando el método binario 
-#       de exponenciacion modular
-em = 1
-cociente, resto = (d // 2), d % 2 
-# d = cociente * 2 + resto => a**d = (a**2)**cociente * a**resto
-a0 = a
-while cociente > 0:
-    # invariante: a**d % n = em * a0**cociente * a0**resto 
-    a0, em  = a0**2 % n, em * a**resto % n
-    resto =  cociente % 2
-    cociente = cociente // 2
-em = em * a0**resto % n
+def exp_modular(a, d, n):
+    # pre: a, d >= 0, n > 0
+    # post: calcula em = a**d % n utilizando el método binario 
+    #       de exponenciacion modular
+    a0, em, cociente, resto = a, 1, d, 0
+    while cociente > 0:
+        # invariante: (a**d) % n = (em * a0**cociente) % n
+        resto = cociente % 2
+        cociente = cociente // 2
+        em = (em * a0**resto) % n
+        a0 = a0**2 % n
+    return em
         \end{verbatim}
     \end{small}
 \end{minipage}
@@ -962,7 +961,7 @@ def test_Miller_Rabin(n: int, k: int) -> bool:
             fpp = True
         else:
             r = 0
-            while r  <= s and fpp == False:
+            while r <= s and fpp == False:
                 if n - 1 == a**(2**r * d) % n:
                     fpp = True
             if fpp == False: # si no pasa la prueba
