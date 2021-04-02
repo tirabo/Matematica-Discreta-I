@@ -104,18 +104,6 @@ distinto de cero. Por ejemplo, 0035010 es un número de 5 dígitos.
 
 \medskip
 
-\item¿Cuántos números de 6 cifras pueden formarse con los dígitos de 112200?
-
-\noindent\textit{Rta:} Si no consideramos que la primera cifra no debe ser cero tenemos que llenar 6 casillas con dichos dígitos.
-Tenemos que seleccionar 2 casillas entre las 6 para poner los unos y 2 entre las cuatro que quedan para poner los 2. En las dos restantes van los ceros. Así quedan $  \frac{6!}{2!4!}\frac{4!}{2!2!}\frac{2!}{2!0!}$. A estos debemos restar los que comienzan con cero, es decir $\frac{5!}{2!3!}\frac{3!}{2!1!}\frac{1!}{1!0!}$. Queda $90 -30=60$.
-
-Otra forma de pensarlo es que tenemos que armar todas las permutaciones de seis objetos de los cuales se repiten tres de ellos dos veces cada uno (tenemos tres pares de objetos). Esto da $\frac{6!}{2!2!2!}=90$. A esto debemos retarle como antes todas las permutaciones que comienzan con un 0. esto es $\frac{5!}{2!2!1!}=30$.
-
-Otra forma de pensarlo sería notar que la cantidad de números que empiezan con 1 es igual a la cantidad de números que empiezan con 2, porque en cada caso tengo que ordenar 5 objetos donde hay dos repeticiones de dos de esos objetos. Entonces el total de combinaciones sería $2.(5!/(2*2))$ .
-
-\medskip
-
-
 \item ¿Cuántos números impares de cuatro cifras hay?
 
 \noindent\textit{Rta:} La primera cifra tiene 9 posibilidades, la última tiene 5 posibilidades y las dos restantes 10. Por lo tanto, se tienen $9\times 5\times 10^2=4500$.
@@ -288,6 +276,18 @@ si se pide que las consonantes y las vocales se alternen?
 
 \noindent\textit{Rta:} Tenemos 5 vocales y 5 consonantes, al alternarlos tendremos $5!5!$A esto hay que multiplicarlo por 2 ya que se puede empezar con vocal o consonante y dividirlo por las repeticiones y nos quedan $\frac{5!5!2}{3!2!2!}=1200$.
 \end{enumerate}
+
+\medskip
+
+
+\item¿Cuántos números de 6 cifras pueden formarse con los dígitos de 112200?
+
+\noindent\textit{Rta:} Si no consideramos que la primera cifra no debe ser cero tenemos que llenar 6 casillas con dichos dígitos.
+Tenemos que seleccionar 2 casillas entre las 6 para poner los unos y 2 entre las cuatro que quedan para poner los 2. En las dos restantes van los ceros. Así quedan $  \frac{6!}{2!4!}\frac{4!}{2!2!}\frac{2!}{2!0!}$. A estos debemos restar los que comienzan con cero, es decir $\frac{5!}{2!3!}\frac{3!}{2!1!}\frac{1!}{1!0!}$. Queda $90 -30=60$.
+
+Otra forma de pensarlo es que tenemos que armar todas las permutaciones de seis objetos de los cuales se repiten tres de ellos dos veces cada uno (tenemos tres pares de objetos). Esto da $\frac{6!}{2!2!2!}=90$. A esto debemos retarle como antes todas las permutaciones que comienzan con un 0. esto es $\frac{5!}{2!2!1!}=30$.
+
+Otra forma de pensarlo sería notar que la cantidad de números que empiezan con 1 es igual a la cantidad de números que empiezan con 2, porque en cada caso tengo que ordenar 5 objetos donde hay dos repeticiones de dos de esos objetos. Entonces el total de combinaciones sería $2.(5!/(2*2))$ .
 
 \medskip
 

@@ -54,7 +54,7 @@ def desc_prima(n: int) -> list[int]:
 
 print(criba(25))
 # print(len(criba(10**8))) # esto ya toma mucho tiempo 
-print(primos_hasta(1024))
-print(criba_primos(1024))
-print(desc_prima(1024))
+print(len(primos_hasta(1024000)))
+print(len(criba_primos(1024000)))
+# print(desc_prima(1024))
 

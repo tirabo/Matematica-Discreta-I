@@ -745,3 +745,239 @@ Como ya hemos mencionado, podemos ver que el RSA también puede ser usado para u
 \end{ejemplo*}
 
 \end{section}
+
+\begin{section}{Método binario para exponenciacion modular (*)}
+
+    Vimos en la sección anterior que para implementar el criptosistema RSA  es esencial tener una forma eficiente de calcular exponenciación modular,  es decir tener la capacidad de calcular el resto de dividir por cierto número la potencia muy grande de otro número. 
+
+    Más explícitamente, sean $a, d, n$ enteros positivos se desea calcular $r$ tal que $a^d \equiv r \pmod{n}$ con  $0 \le r < n$. En  otras palabras,  se desea calcular el resto de de dividir $a^d$ por $n$. Estaríamos tentados de calcular $a^d$ y luego hacer la congruencia módulo $n$, pero cuando $d$ es grande, por ejemplo $d > 10^{20}$, este cálculo es imposible para cualquier computador. 
+
+    Para realizar este cálculo, $a^d \equiv r \pmod{n}$, podemos hacer los siguientes pasos:
+    \begin{enumerate}
+        \item Se calcula la expresión binaria de $d$. 
+        Si $d$ en base $2$ es $d_m...d_0$, entonces
+        $$d = \sum_{i=0}^{m} d_i \cdot  2^i.$$
+        Por lo tanto, 
+        \begin{align*}
+        a^d &= \prod_{i=0}^{m} a^{d_i \cdot 2^i} \\ 
+                     &= \prod_{i=0}^{m} (a^{2^i})^{d_i}.
+        \end{align*}
+        \item 
+        Podemos calcular $c_i \equiv a^{2^i} \pmod{n}$ recursivamente:
+        \begin{itemize}
+            \item $a  \equiv a^{2^0} \pmod{n}$, caso base $i =0$. 
+            \item $a^{2^{i+1}}  \equiv r^2 \pmod{n}$,  donde $r  \equiv a^{2^i} \pmod{n}$  ($i \ge 0$).
+        \end{itemize}
+        \item $a^d  \equiv  \prod_{i=0}^{m} {c_i}^{d_i}\pmod{n}$.
+    \end{enumerate}
+
+El cálculo anterior es eficiente, pero es un poco largo y confuso a la hora de implementarlo en un lenguaje de programación. 
+Sin embargo, como hemos visto más arriba, si $a^2 \equiv a_0 \pmod{n}$, obtenemos la igualdad
+$$
+a^{2^i} = a^{2\cdot 2^{i-1}} = (a^{2})^{2^{i-1}} \equiv a_0^{2^{i-1}} \pmod{n}.
+$$ 
+Luego,  en $i$ pasos podemos obtener el valor $a^{2^i} \pmod{n}$.
+
+Utilizando la idea de escribir el exponente en base $2$, se puede obtener un algoritmo eficiente y más simple en su implementación.
+
+\begin{proposicion}\label{prop-exp-mod}
+    Sea $n \in \N$ y $a,d \in \N_0$ y sean
+    \begin{itemize}
+        \item $a_0 < n$ tal que $a^2 \equiv a_0 \pmod{n}$, y
+        \item $d_0, r$ tales que $d = d_0\cdot 2 + r$ ($0 \le r <n$),
+    \end{itemize}
+    entonces
+    \begin{equation}\label{eq-pmod-2}
+        a^d \equiv  a_0^{d_0}  a^r \pmod n.
+    \end{equation}
+\end{proposicion}
+\begin{proof}
+    $$
+    a^d \equiv a^{d_0\cdot 2 + r} \equiv  (a^2)^{d_0}  a^r  \equiv  a_0^{d_0}  a^r \pmod n.
+    $$
+\end{proof}
+ La clave en la fórmula \eqref{eq-pmod-2} es que el exponente del término de la derecha es la mitad  que el del término de la izquierda. 
+
+\begin{ejemplo*}
+Supongamos que queremos calcular $r$ tal que 
+$$3^{9} \equiv r\; \pmod 5.$$
+En  este caso, podríamos hacer este cálculo  directamente, pero mostraremos como es el método para ejemplificar. Lo  que haremos es lo siguiente: como $9 = 2\cdot 4 + 1$, tenemos por la fórmula \eqref{eq-pmod-2} que 
+\begin{align*}
+    3^9  &\equiv (3^2)^4 \cdot 3^1 \pmod{5}& &(9 = 4 \cdot 2 +1) \\
+            &\equiv 4^4 \cdot 3 \pmod{5}   && (3^2 \equiv 4) \\% 3^2 \pmod{5} \equiv 9 \pmod{5} \equiv 4
+            &\equiv (4^2)^2\cdot 3^0 \cdot 3 \pmod{5}&& (4 = 2\cdot 2 +0) \\
+            &\equiv 1^2 \cdot 3 \pmod{5}    && (4^2 \equiv 1)\\% 4^2 \pmod{5} \equiv 16 \pmod{5} \equiv 1
+            &\equiv 3 \pmod{5}&&
+\end{align*}
+Observemos,  que  siempre estamos trabajando con números pequeños,  en cambio si hicieramos el cálculo directamente  tendríamos que hacer 
+$$3^{9} = 19683 \equiv 3\; \pmod 5$$
+que es una cuenta un poco más complicada que el cálculo anterior.
+\end{ejemplo*}
+
+Supongamos ahora que queremos calcular 
+$$
+         5^{1125899986842625} \equiv r \pmod{100000037},
+$$
+Hacer este cálculo  directamente no nos da un resultado satisfactorio, ni siquiera con un programa de computadora. Pueden hacer el intento con un lenguaje de programación, Python por ejemplo, y verán que el programa no termina. Ahora bien, como $1125899986842625 < 2^{51}$, usando el método de la fórmula \ref{eq-pmod-2} necesitaremos alrededor de $50$ pasos del tipo 
+$$
+        x^2 \cdot 5^s \cdot c\equiv c'  \pmod{100000037}
+$$
+donde $0 \le x, c, c' < 100000037$ y $s = 0, 1$. La clave es que cada uno de estos cálculos se realiza con facilidad. 
+
+La fórmula de la proposición \ref{prop-exp-mod} nos muestra como fácilmente podemos obtener una fórmula recursiva para la exponenciación modular:  sea $n> 0$, definimos $\modulo$ el \textit{operador módulo} de tal forma que $a \modulo n$ devuelve el resto de dividir $a$ por $n$. También definimos a $\cociente$ el \textit{operador cociente} de tal forma que $ a \cociente n$ es el cociente de dividir $a$ por $n$. Entonces, por la proposición \ref{prop-exp-mod} se cumple que 
+$$
+a^d \modulo n \quad = \quad  a_0^{d_0}  a^r \modulo n,
+$$
+donde $a_0 = a^2 \modulo n$, $d_0 = d \cociente 2$ y $r = d \modulo 2$. Por lo tanto,  
+la función recursiva 
+\begin{align*}
+    f(a,0) &= 1&&(a \in \N) \\
+    f(a,d) &= [f(a^2 \modulo n, d \cociente 2) \cdot a^{d \modulo 2}] \modulo  n&&(a \in \N, d > 0) \\
+\end{align*}  
+calcula $a^d \modulo n$. 
+
+Esta función es fácilmente trasladable a pseudocódigo. 
+
+\begin{minipage}{0.90\textwidth}
+    \vskip .5cm
+    \noindent \textsc{Exponenciación modular recursiva}
+    \begin{small}
+        \begin{verbatim}
+def f(a, d):
+    if d == 0:
+        return 1
+    else:
+        return (f(a**2 % n, d // 2) * a**(d % 2)) % n
+        \end{verbatim}
+    \end{small}
+\end{minipage}
+\vskip .2cm
+
+
+\vskip .2cm 
+
+En pseudocódigo la versión iterativa de la exponenciacion modular se puede describir de la siguiente forma. 
+
+\begin{minipage}{0.90\textwidth}
+    \vskip .5cm
+    \noindent \textsc{Exponenciación modular}
+    \begin{small}
+        \begin{verbatim}
+# pre: a, d >= 0, n > 0
+# post: calcula em = a**d % n utilizando el método binario 
+#       de exponenciacion modular
+em = 1
+cociente, resto = (d // 2), d % 2 
+# d = cociente * 2 + resto => a**d = (a**2)**cociente * a**resto
+a0 = a
+while cociente > 0:
+    # invariante: a**d % n = em * a0**cociente * a0**resto 
+    a0, em  = a0**2 % n, em * a**resto % n
+    resto =  cociente % 2
+    cociente = cociente // 2
+em = em * a0**resto % n
+        \end{verbatim}
+    \end{small}
+\end{minipage}
+\vskip .2cm
+
+\subsection*{Pruebas de primalidad}
+
+En la implementación del  criptosistema RSA  es fundamental el uso de primos de grandes dimensiones, por ejemplo de más de $100$  dígitos. Ahora bien,  tratar de  demostrar que un número  (grande) es primo buscando sus divisores es imposible con una arquitectura de computadoras determinística,  como lo son las computadoras actuales. Justamente en eso se basa la fortaleza del criptosistema RSA. 
+
+Sin embargo,  veremos en esta parte del apunte  que hay algoritmos que permiten determinar en forma probabilística si un número es primo o no. Mencionaremos al final de esta subsección algoritmos que determinan eficientemente y en forma determinística si un número es primo a o no. 
+
+
+El primer  algoritmo que veremos es el test de primalidad Miller-Rabin probabilístico. Como su nombre lo indica  es una prueba probabilística de primalidad: un algoritmo que determina si un número dado es probable que sea primo.
+
+Este test es ampliamente utilizado en la práctica (en RSA, por ejemplo) y es una de las pruebas más simples y rápidas conocidas.
+
+Dado $m$ un entero positivo.
+\begin{itemize}
+    \item Si le hacemos el test a $m$ y no supera la prueba, entonces el número no es primo. 
+    \item Si hacemos $k$ veces el test y $m$ supera las $k$ pruebas, entonces  $m$ tiene la probabilidad $1 - ( 1 / 4^k)$ de ser primo. 
+\end{itemize}
+
+\begin{definicion}
+    Sea $n > 2$ un entero impar, entonces $n = 2^s \cdot d + 1$ con $d$ impar. Sea $a$ entero  tal que $0 < a < n$. Entonces diremos que $n$ es \textit{fuertemente probable primo (FPP) respecto a la base $a$} si se cumple
+    \begin{itemize}
+        \item $a^{d} \equiv 1 \pmod{n}$, o
+        \item $a^{2^r\cdot\, d} \equiv -1 \pmod{n}$  para algún $r$ tal que $0 \le r < s$.
+    \end{itemize}
+\end{definicion}
+
+Con la aplicación del teorema de Fermat y la ecuación lineal de congruencia probaremos  que todo número primo es FPP respecto a cualquier base. El contrarrecíproco de esta afirmación nos dice que un número que no es FPP respecto a alguna base es compuesto.
+
+\begin{lema}
+    Sea $p$  un primo impar, entonces las únicas raíces cuadradas de $1$ modulo $p$ son $1$ y $-1$. Es decir, 
+    $$
+    x^2 \equiv 1 \pmod{p}  \quad \Rightarrow\quad x \equiv \pm 1 \pmod{p}.
+    $$
+\end{lema}
+\begin{proof}
+    Sea $x$ tal que $x^2 \equiv 1 \pmod{p}$, luego $x^2 - 1 \equiv 0 \pmod{p}$, como $x^2 -1 = (x-1)(x+1)$, obtenemos  $(x-1)(x+1) \equiv 0 \pmod{p}$. Esto quiere decir  que $p|  (x-1)(x+1)$. Como $p$  es primo, $p | x -1$ o $p| x +1$, es decir $x  \equiv 1 \pmod{p}$  o $x  \equiv -1 \pmod{p}$.
+\end{proof}
+
+\begin{teorema}
+    Si $n$ es un primo impar, entonces $n$ es probable primo fuerte para cualquier base  $a$ ($0 < a < n$).
+\end{teorema}
+\begin{proof}
+    Consideremos la sucesión $a^{2^s \cdot d}, a^{2^{s-1} \cdot d}, \dots, a^{2d}, a^d$ y  observemos que cada término de la sucesión es el cuadrado del siguiente.
+
+     Por el teorema de Fermat,  $a^{2^s \cdot d} = a^{n-1} \equiv 1 \pmod{n}$. Luego $(a^{2^{s-1} \cdot d})^2 \equiv 1 \pmod{n}$ y por lo tanto $a^{2^{s-1} \cdot d}$ es una raíz cuadrada de $1$ módulo $n$. Por el lema anterior obtenemos  que  $a^{2^{s-1} \cdot d} \equiv \pm 1 \pmod{n}$.
+
+     Si  $a^{2^{s-1} \cdot d} \equiv - 1 \pmod{n}$, obtenemos el resultado.  En caso contrario  $a^{2^{s-1} \cdot d} \equiv 1 \pmod{n}$,  luego $(a^{2^{s-2} \cdot d})^2 \equiv 1 \pmod{n}$ y por lo tanto $a^{2^{s-2} \cdot d}$ es una raíz cuadrada de $1$ módulo $n$ y en consecuencia  $a^{2^{s-2} \cdot d} \equiv \pm 1 \pmod{n}$. 
+
+     Iterando el razonamiento anterior concluimos que alguno de los términos de la sucesión $ a^{2^{r} \cdot d}$  es congruente   a $-1$ módulo $n$ o bien todos los términos son congruentes a $1$,  en particular $a^{d} \equiv 1 \pmod{n}$, con lo cual $n$ resulta ser probable primo fuerte.   
+\end{proof}
+
+
+Ahora bien, también es cierto el recíproco (que no demostraremos): un número $n$ que es FPP respecto a todas las bases $ 0 < a < n$ es primo. Podríamos intentar ver que un número es primo  probando que es FPP para cualquier base, pero este cálculo es computacionalmente imposible para primos grandes.  
+
+Por otro lado, un número $n$ que es FPP respecto alguna base $ 0 < a < n$ podría ser compuesto, pero hay una probabilidad mayor que $0.75$ de que sea primo. La verificación con diferentes bases de que un número es FPP acerca a $1$ la probabilidad de que el número sea primo.  
+
+El test probabilístico de primalidad de Miller-Rabin se basa en las observaciones realizadas más arriba: sea $n$ entero positivo impar entonces, $n = 2s \cdot d + 1$ con $d$ impar, y sea $k$ entero positivo.  
+\begin{enumerate}
+    \item\label{mr-p1} Elegir al  azar $a$ entero tal que $0 < a < n$.
+    \item\label{mr-p2} Verificar que  $n$ es FPP respecto a la base $a$.
+    \item\label{mr-p3} Repetir \ref{mr-p1} y \ref{mr-p2} $k$ veces.
+\end{enumerate}
+
+Si $n$ es FPP las $k$ veces,  entonces decimos que $n$ supera el test probabilístico de primalidad de Miller-Rabin y tiene la probabilidad $1 - ( 1 / 4^k)$ de ser primo (y lo consideramos primo).  
+
+Mostramos a continuación una implementación en pseudocódigo. 
+
+
+    \begin{minipage}{0.90\textwidth}
+        \vskip .4cm
+        \noindent \textsc{Test de primalidad de Miller-Rabin}
+        \begin{small}
+            \begin{verbatim}
+def test_Miller_Rabin(n: int, k: int) -> bool:
+    s, d = satisfacen n = 2**s * d + 1
+    repetir k veces:
+        a = entero al azar entre 2 y n-1
+        fpp = False # fuertemente primo en base a
+        if 1 == a**d % n:
+            fpp = True
+        else:
+            r = 0
+            while r  <= s and fpp == False:
+                if n - 1 == a**(2**r * d) % n:
+                    fpp = True
+            if fpp == False: # si no pasa la prueba
+                return False
+    return True # si pasó las k pruebas
+            \end{verbatim}
+        \end{small}
+    \end{minipage}
+
+    \vskip .2cm
+Observemos que el test de primalidad de Miller-Rabin hace uso de la exponenciación modular y por lo tanto debe ser implementado usando el método binario de exponenciación modular. 
+
+El test de Miller-Rabin probabilístico se deriva del test de Miller: asumiendo que es válida la Hipótesis de Riemman, sea $n$ entero positivo,  si comprobamos que $n$ es FPP en base $a$ con $2 < a < 2\ln(n)^2$,  entonces $n$  es primo.  
+
+El test de Miller no se utiliza en la práctica. Para la mayoría de los propósitos, el uso adecuado de la prueba probabilística de Miller-Rabin es mucho más rápida y brinda suficente seguridad del resultado. Para fines teóricos que requieren un algoritmo de tiempo polinomial determinista, el test de Miller fue reemplazado por la prueba de primalidad de  Agrawal–Kayal–Saxena  (AKS), que no se basa en suposiciones no probadas.
+
+
+\end{section}

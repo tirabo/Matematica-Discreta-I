@@ -26,19 +26,38 @@ def pot_mod(a: int, d: int, n: int) -> int:
     # pre: a, d >= 0, n > 0
     # post: devuelve a**d % n calculado por el método binario de exponenciacion modular
     assert a >= 0 and d >= 0 and n > 0, 'a, d o n no cumplen  la precondicion'
-    c = 1
-    d1, r1 = (d // 2), d % 2 # d = d1 * 2 + r1 => a**d = (a**2)**d1 * a**r1
-    a1 = a
-    while d1 > 0:
-        a1, c  = a1**2 % n, c * a1**r1 % n
-        r1 =  d1 % 2
-        d1 = d1 // 2
-    c = c * a1**r1 % n
-    return c 
+    em = 1
+    cociente, resto = (d // 2), d % 2 
+    # d = cociente * 2 + resto => a**d = (a**2)**cociente * a**resto
+    a0 = a
+    while cociente > 0:
+        a0, em  = a0**2 % n, em * a0**resto % n
+        resto =  cociente % 2
+        cociente = cociente // 2
+    em = em * a0**resto % n
+    return em
 
+"""
+# Pruebas
 print(pot_mod(2,4,15)) # 1
+print(pot_mod(7, 385, 11)) # 10
+print(pot_mod(5,1125899986842625, 100000037 )) # 98770120
+"""
+def pot_mod_recursivo(a: int, d: int, n: int) -> int:
+    pot = 0
+    if d == 0:
+        pot = 1
+    else:
+        pot = (pot_mod_recursivo(a**2 % n, d // 2, n) * a**(d % 2) ) % n
+    return pot
+
+# print(pot_mod(7, 2, 11)) # 5
+# print(pot_mod_recursivo(7, 2, 11)) # 5
 # print(pot_mod(7, 385, 11)) # 10
-# print(pot_mod(5,1125899986842625, 100000037 )) # 98770120
+# print(pot_mod_recursivo(7, 385, 11)) # 10
+# # a = 5,  d = 25000009 , n =100000037
+# print(pot_mod(5,25000009, 100000037 )) # 44612474
+# print(pot_mod_recursivo(5,25000009, 100000037 )) # 44612474
 
 
 def base2(n: int) -> str:
@@ -49,10 +68,6 @@ def base2(n: int) -> str:
     return n2
 
 
-# print(pot_mod(7, 2, 11)) # 5
-# print(pot_mod(7, 385, 11)) # 10
-# a = 5,  d = 25000009 , n =100000037
-# print(pot_mod(5,25000009, 100000037 ))
 
 """
 Test  no deterministico  de primalidad de  Miller Rabin 
@@ -97,7 +112,6 @@ def fpp(n: int, a:int) -> bool:
     else:
         r = 0
         while r  <= s and ret == False:
-            # print(r)
             if n - 1 == pot_mod(a, 2**r * d, n):
                 ret = True
             r = r +1
@@ -108,30 +122,32 @@ def test_Miller_Rabin(n: int, k: int) -> bool:
     # post: hace a n el test de  Miller-Rabin  k veces. 
     # Devuelve True si n es fuertemente probablemente primo (si pasa el test k veces)
     # Devuelve False si n no es fuertemente probablemente primo (y por lo tanto compuesto) 
-    ret = False
     (s, d) = pot2(n)
     print('Verificando si  %d = 2**%d * %d + 1  es primo' % (n, s, d))
-    for i in range(k):
+    for _ in range(k):
         a = random.randrange(2, n) # entero al azar entre 2 y n-1
-        # print(i, a, d,n)
+        fpp = False # fuertemente primo en base a  
         if 1 == pot_mod(a, d, n):
-            ret = True
+            fpp = True
         else:
             r = 0
-            while r  <= s and ret == False:
-                # print(r)
+            while r  <= s and fpp == False:
                 if n - 1 == pot_mod(a, 2**r * d, n):
-                    ret = True
+                    fpp = True
                 r = r +1
-    return ret
+        if fpp == False: # si no pasa la prueba
+            return False
+    # si pasó las k pruebas
+    return True
 
-"""
-print(test_Miller_Rabin(31, 4)) # True
-print(test_Miller_Rabin(351, 10)) # probablemente False
-print(test_Miller_Rabin(10**8+37, 5)) # True
-print(test_Miller_Rabin(2074722246773485207821695222107608587480996474721117292752992589912196684750549658310084416732550077, 100)) # True
-print(test_Miller_Rabin(323000000000023902000000000442187, 100)) # False (probablemente)
-"""
+
+# Pruebas
+# print(test_Miller_Rabin(221,100)) # False
+# print(test_Miller_Rabin(351, 10)) # probablemente False
+# print(test_Miller_Rabin(10**8+37, 5)) # True
+# print(test_Miller_Rabin(2074722246773485207821695222107608587480996474721117292752992589912196684750549658310084416732550077, 100)) # True
+# print(test_Miller_Rabin(323000000000023902000000000442187, 100)) # False (probablemente)
+
 
 """
 Test deterministico  de primalidad de  Miller Rabin (asume la Hipotesis de Riemman)
@@ -173,19 +189,23 @@ def test_Miller_deterministico(n: int) -> bool:
             return False
     return True
 
+def main():
+    """
+    #n1 = 10**10+79
+    n1 = 10**15+37
+    #n1 = 43
+    #n1 = 45
+    print(test_Miller_deterministico(n1))
+    
+    n1 = 2074722246773485207821695222107608587480996474721117292752992589912196684750549658310084416732550077
+    n2 = 2367495770217142995264827948666809233066409497699870112003149352380375124855230068487109373226251983
+    print(test_Miller_deterministico(n1))
+    k = 50 # 50 dice 0.99... (30 9's) probabilidad de ser primo
+    print(test_Miller_Rabin(n1, k)) 
+    """
 
-#n1 = 10**10+79
-n1 = 10**15+37
-#n1 = 43
-#n1 = 45
-#print(test_Miller_deterministico(n1))
-
-n1 = 2074722246773485207821695222107608587480996474721117292752992589912196684750549658310084416732550077
-n2 = 2367495770217142995264827948666809233066409497699870112003149352380375124855230068487109373226251983
-# print(test_Miller_deterministico(n1))
-k = 50 # 50 dice 0.99... (30 9's) probabilidad de ser primo
-print(test_Miller_Rabin(n1, k)) 
-
+if __name__ == "__main__":
+    main()
 
 
 
