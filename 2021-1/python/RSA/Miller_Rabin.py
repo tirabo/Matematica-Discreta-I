@@ -26,23 +26,23 @@ def pot_mod(a: int, d: int, n: int) -> int:
     # pre: a, d >= 0, n > 0
     # post: devuelve a**d % n calculado por el método binario de exponenciacion modular
     assert a >= 0 and d >= 0 and n > 0, 'a, d o n no cumplen  la precondicion'
-    em = 1
-    cociente, resto = (d // 2), d % 2 
-    # d = cociente * 2 + resto => a**d = (a**2)**cociente * a**resto
-    a0 = a
+    a0, em, cociente, resto = a, 1, d, 0
     while cociente > 0:
-        a0, em  = a0**2 % n, em * a0**resto % n
+        #print('inv:',(a**d)%n, (em * a0**cociente) %n)
         resto =  cociente % 2
         cociente = cociente // 2
-    em = em * a0**resto % n
+        em = (em * a0**resto) % n
+        a0  = a0**2 % n
     return em
 
 """
 # Pruebas
+print(pot_mod(5,13,7)) # 5
 print(pot_mod(2,4,15)) # 1
 print(pot_mod(7, 385, 11)) # 10
 print(pot_mod(5,1125899986842625, 100000037 )) # 98770120
 """
+
 def pot_mod_recursivo(a: int, d: int, n: int) -> int:
     pot = 0
     if d == 0:
@@ -58,6 +58,7 @@ def pot_mod_recursivo(a: int, d: int, n: int) -> int:
 # # a = 5,  d = 25000009 , n =100000037
 # print(pot_mod(5,25000009, 100000037 )) # 44612474
 # print(pot_mod_recursivo(5,25000009, 100000037 )) # 44612474
+# print(pot_mod(7, 2074722246773485207821695222107608587480996474721117292752992589912196684750549658310084416732550077, 38540007))
 
 
 def base2(n: int) -> str:
@@ -123,7 +124,7 @@ def test_Miller_Rabin(n: int, k: int) -> bool:
     # Devuelve True si n es fuertemente probablemente primo (si pasa el test k veces)
     # Devuelve False si n no es fuertemente probablemente primo (y por lo tanto compuesto) 
     (s, d) = pot2(n)
-    print('Verificando si  %d = 2**%d * %d + 1  es primo' % (n, s, d))
+    # print('Verificando si  %d = 2**%d * %d + 1  es primo' % (n, s, d))
     for _ in range(k):
         a = random.randrange(2, n) # entero al azar entre 2 y n-1
         fpp = False # fuertemente primo en base a  
@@ -142,11 +143,11 @@ def test_Miller_Rabin(n: int, k: int) -> bool:
 
 
 # Pruebas
-# print(test_Miller_Rabin(221,100)) # False
-# print(test_Miller_Rabin(351, 10)) # probablemente False
-# print(test_Miller_Rabin(10**8+37, 5)) # True
-# print(test_Miller_Rabin(2074722246773485207821695222107608587480996474721117292752992589912196684750549658310084416732550077, 100)) # True
-# print(test_Miller_Rabin(323000000000023902000000000442187, 100)) # False (probablemente)
+print(test_Miller_Rabin(221,100)) # False
+print(test_Miller_Rabin(351, 10)) # probablemente False
+print(test_Miller_Rabin(10**8+37, 5)) # True
+print(test_Miller_Rabin(2074722246773485207821695222107608587480996474721117292752992589912196684750549658310084416732550077, 100)) # True
+print(test_Miller_Rabin(323000000000023902000000000442187, 100)) # False (probablemente)
 
 
 """
