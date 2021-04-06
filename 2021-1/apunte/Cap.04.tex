@@ -693,23 +693,23 @@ Como $p$ y $q$ son primos distintos, entonces concluimos que $pq|(m^{ed}-m)$, es
 Busquemos ahora un $e$:  tenemos que $ (p-1)(q-1)= 30\cdot 72 = 2\,160$. Vemos que $2$, $3$, $5$ dividen a $2\,160$, pero $7$ es coprimo con $2\,160$. 
 Tomemos entonces $e = 7$.
 
-Usando el algoritmo de Euclides obtenemos $1 = 2\cdot 2\,160 + (-617)\cdot 7$. Luego, podemos tomar $d = 2\,160 -617 =1\,543$. 
+Usando el algoritmo de Euclides obtenemos $1 = 2\cdot 2\,160 + (-617)\cdot 7$. Luego, $-617$  es solución de $7x \equiv 1 \pmod{2\,160}$, pero como queremos que la solución sea positiva menor que $2\,160$, podemos tomar $d = 2\,160 -617 =1\,543$. 
 
 Por lo tanto el receptor tiene clave pública $(2\,263, 7)$ y conserva en secreto  su clave privada $1\,543$
 
 - Supongamos que el emisor ha nacido en el año $1993$ y quiere enviarle en secreto al receptor su año de nacimiento. Entonces encripta el año haciendo 
 $$
-1\,993^7 \equiv 1\,417 \pmod{2\,160},
+1\,993^7 \equiv 10 \pmod{2\,263},
 $$   
 y envía, por una vía insegura, por ejemplo un email, el número $1\,417$ al receptor.
 
 - El receptor calcula
 $$
-1\,417^{1\,543} \pmod{2\,160}
+10^{1\,543} \pmod{2\,263}
 $$ 
-y obtiene nuevamente $1\,993$ (si quiere convencerse de esto ingrese \texttt{(1\,417\^{}1\,543) mod 2\,160} a la ventana de búsqueda de \href{https://www.wolframalpha.com}{Wolfram Alpha}).
+y obtiene nuevamente $1\,993$ (si quiere convencerse de esto ingrese \texttt{10\^{}1\,543 mod 2\,263} en la ventana de búsqueda de \href{https://www.wolframalpha.com}{Wolfram Alpha}).
 
-Pese a que el cálculo de desencriptado (en este caso $1\,417^{1\,543} \pmod{2\,160}$) puede parecer costoso computacionalmente, hay métodos eficientes para hacerlo. 
+Pese a que el cálculo de desencriptado (en este caso $10^{1\,543} \pmod{2\,263}$) puede parecer costoso computacionalmente, hay métodos eficientes para hacerlo como veremos en la sección \ref{seccion-exponenciacion-modular}. 
 
 \end{ejemplo*}
 
@@ -746,7 +746,7 @@ Como ya hemos mencionado, podemos ver que el RSA también puede ser usado para u
 
 \end{section}
 
-\begin{section}{Método binario para exponenciacion modular (*)}
+\begin{section}{Método binario para exponenciacion modular (*)}\label{seccion-exponenciacion-modular}
 
     Vimos en la sección anterior que para implementar el criptosistema RSA  es esencial tener una forma eficiente de calcular exponenciación modular,  es decir tener la capacidad de calcular el resto de dividir por cierto número la potencia muy grande de otro número. 
 
@@ -829,14 +829,13 @@ $$
 a^d \modulo n \; = \;  a_0^{d_0}  a^r \modulo n,
 $$
 donde $a_0 = a^2 \modulo n$, $d_0 = d \cociente 2$ y $r = d \modulo 2$. Por lo tanto,  
-la función recursiva 
+la función $f(a, d) = a^d \modulo n$,  se puede obtener a partir de la siguiente recursión: 
 \begin{align*}
     f(a,0) &= 1&&(a \in \N) \\
-    f(a,d) &= [f(a^2 \modulo n, d \cociente 2) \cdot a^{d \modulo 2}] \modulo  n&&(a \in \N, d > 0) \\
+    f(a,d) &= [f(a^2 \modulo n, d \cociente 2) \cdot a^{d \modulo 2}] \modulo  n&&(a \in \N, d > 0). \\
 \end{align*}  
-calcula $a^d \modulo n$. 
 
-Esta función es fácilmente trasladable a pseudocódigo. 
+Esta función recursiva es fácilmente trasladable a pseudocódigo. 
 
 \begin{minipage}{0.90\textwidth}
     \vskip .5cm

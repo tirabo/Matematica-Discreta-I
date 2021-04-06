@@ -366,37 +366,7 @@
         \end{equation*}
 
         
-        \item Sea $u_n$ definida recursivamente por: $u_1=2$, $u_n=2+\sum_{i=1}^{n-1}2^{n-2i}u_i \;\;\forall\; n >1$.
-        \begin{enumerate}
-            \item Calcule $u_2$ y $u_3$.
-            
-            \rta $u_2 = 2+\sum_{i=1}^{1}2^{2-2i}u_i = 2+2^{2-2}u_1 = 2 + u_1 = 4$.
-            
-            $u_3 = 2+\sum_{i=1}^{2}2^{3-2i}u_i = 2+2^{3-2}u_1 + 2^{3-4}u_2=2+2^12 + 2^{-1}4 = 8$.
-            
-            \item Proponga una fórmula para el término general $u_n$ y pruébela por inducción.
-            
-            \rta Calculemos el cuarto témino de la sucesión: $u_4 =  2+\sum_{i=1}^{3}2^{4-2i}u_i = 2+2^{4-2}u_1 + 2^{4-4}u_2 + 2^{4-6}u_3= 2+2^2 2 + 2^{0}4 + 2^   {-2}8 = 16$. 
-            
-            Entonces tenemos que $u_1 = 2 = 2^1$, $u_2 = 4 = 2^2$, $u_3 = 8 = 2^3$. Esto nos indica que debería ser $u_n = 2^n$.  y lo haremos por inducción completa. 
-            
-            \textit{(Caso base) } Para $n=2$, por \textit{a)}, se cumple $u_2 = 4 =2^2$. 
-            
-            \textit{(Paso inductivo) } Supongamos que $k \ge 1$ y el resultado  es cierto para los $h$ tales que  $1 \le h \le k$,  es decir $u_h=2^h$ para $1 \le h \le k$. Debemos probar que $u_{k+1} = 2^{k+1}$. Ahora bien
-            \begin{equation*}
-            \qquad\qquad\begin{matrix}
-            u_{k+1} &=& 2+\sum_{i=1}^{k+1-1}2^{k+1-2i}u_i \hfill &\quad \text{(por definición recursiva)} \hfill \\[4pt]
-            &=& 2+\sum_{i=1}^{k}2^{k+1-2i}u_i \hfill &\hfill\\[4pt]
-            &=& 2+\sum_{i=1}^{k}2^{k+1-2i}2^i \hfill &\quad \text{(por hipótesis inductiva)}\hfill \\[4pt]
-            &=& 2+\sum_{i=1}^{k}2^{k+1-2i+ i} \hfill  & \hfill\\[4pt]
-            &=& 2+\sum_{i=1}^{k}2^{k+1-i} \hfill  & \hfill\\[4pt]
-            &=& 2+\sum_{j=1}^{k}2^{j} \hfill  &\quad \text{(cambio de variables $j =k +1-i$)}\hfill \\[4pt]
-            &=& 2+2^{k+1} -2 \hfill  &\quad \text{(por ej. \ref{ej-suma-2-ala-n} o su generalización, ej. \ref{ej-serie-geometrica})}\hfill \\[4pt]
-            &=& 2^{k+1} \hfill  &\quad \hfill
-            \end{matrix}
-            \end{equation*} 
-        \end{enumerate}
-
+    
         
         \item  Sea $\{a_n\}_{n\in\mathbb N_0}$ la sucesión definida recursivamente por
         $$\begin{cases}
@@ -446,7 +416,48 @@
         \end{matrix}
         \end{equation*}
 
+        \item Sea $u_n$ definida recursivamente por: $u_1=2$, $u_n=2+\sum_{i=1}^{n-1}2^{n-2i}u_i \;\;\forall\; n >1$.
+        \begin{enumerate}
+            \item Calcule $u_2$ y $u_3$.
             
+            \rta $u_2 = 2+\sum_{i=1}^{1}2^{2-2i}u_i = 2+2^{2-2}u_1 = 2 + u_1 = 4$.
+            
+            $u_3 = 2+\sum_{i=1}^{2}2^{3-2i}u_i = 2+2^{3-2}u_1 + 2^{3-4}u_2=2+2^12 + 2^{-1}4 = 8$.
+            
+            \item Proponga una fórmula para el término general $u_n$ y pruébela por inducción.
+            
+            \rta Calculemos el cuarto témino de la sucesión: $u_4 =  2+\sum_{i=1}^{3}2^{4-2i}u_i = 2+2^{4-2}u_1 + 2^{4-4}u_2 + 2^{4-6}u_3= 2+2^2 2 + 2^{0}4 + 2^   {-2}8 = 16$. 
+            
+            Entonces tenemos que $u_1 = 2 = 2^1$, $u_2 = 4 = 2^2$, $u_3 = 8 = 2^3$. Esto nos indica que debería ser $u_n = 2^n$.  y lo haremos por inducción completa. 
+            
+            \textit{(Caso base) } Para $n=2$, por \textit{a)}, se cumple $u_2 = 4 =2^2$. 
+            
+            \textit{(Paso inductivo) } Supongamos que $k \ge 1$ y el resultado  es cierto para los $h$ tales que  $1 \le h \le k$,  es decir $u_h=2^h$ para $1 \le h \le k$. Debemos probar que $u_{k+1} = 2^{k+1}$. Ahora bien
+            \begin{equation*}
+            \qquad\qquad\begin{matrix}
+            u_{k+1} &=& 2+\sum_{i=1}^{k+1-1}2^{k+1-2i}u_i \hfill &\quad \text{(por definición recursiva)} \hfill \\[4pt]
+            &=& 2+\sum_{i=1}^{k}2^{k+1-2i}u_i \hfill &\hfill\\[4pt]
+            &=& 2+2(\sum_{i=1}^{k}2^{k-2i}u_i) \hfill &\hfill\\[4pt]
+            \end{matrix}
+            \end{equation*}
+            Observar  que  $u_k= 2+\sum_{i=1}^{k-1}2^{k-2i}u_i$, luego 
+            \begin{equation*}
+                \sum_{i=1}^{k-1}2^{k-2i}u_i = u_k -2. \tag{*}
+            \end{equation*}
+            Por lo tanto,
+            \begin{equation*}
+                \qquad\qquad\begin{matrix}
+                u_{k+1} &=& 2+2(\sum_{i=1}^{k}2^{k-2i}u_i) \hfill &\hfill\\[4pt]
+                &=& 2+2(\sum_{i=1}^{k-1}2^{k-2i}u_i + 2^{k-2k}u_k) \hfill &\quad \text{(por def. recursiva de $\sum$)} \\[4pt]
+                &=& 2+2( u_k -2 + 2^{-k}u_k) \hfill &\quad \text{(por (*))}\hfill \\[4pt]
+                &=& 2+2( 2^k -2 + 2^{-k}2^k) \hfill &\quad \text{(por (HI))}\hfill \\[4pt]
+                &=& 2+2( 2^k -1) \hfill &\quad\hfill \\[4pt]
+                &=& 2+2\cdot 2^k - 2 \hfill &\quad\hfill \\[4pt]
+                &=& 2^{k+1} \hfill &\quad\hfill \\[4pt]
+                \end{matrix}
+                \end{equation*}
+        \end{enumerate}
+
         
         \item Las siguientes proposiciones no son válidas para todo $n \in {\mathbb N}$. Indicar en qué paso del principio de inducción falla la demostración:
             \begin{enumerate}
@@ -473,7 +484,7 @@
 
 
         \end{enumerate}
-
+        \begin{comment}
         \subsection*{$\S$ Ejercicios de repaso} Los ejercicios marcados con ${}^{(*)}$ son de mayor dificultad.
         
         \begin{enumerate}[resume]
@@ -800,7 +811,7 @@
 
         
 \end{enumerate}
-    
+\end{comment}
     
 
 

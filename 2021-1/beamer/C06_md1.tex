@@ -1,6 +1,7 @@
 %\documentclass{beamer} 
 \documentclass[handout]{beamer} % sin pausas
 \usetheme{CambridgeUS}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 \usepackage{etex}
 \usepackage{t1enc}
@@ -42,7 +43,6 @@
 }
 \renewcommand\labelitemi{$\circ$}
 \setlist[enumerate]{label={(\arabic*)}}
-%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 \setbeamertemplate{itemize item}{$\circ$}
 \setbeamertemplate{enumerate items}[default]
 \definecolor{links}{HTML}{2A1B81}
@@ -299,12 +299,14 @@ El razonamiento anterior  se puede extender:
 	{\it  Sean  $m,n \in \mathbb N$. Hay   $n^m$ formas posibles de elegir ordenadamente $m$ elementos de un conjunto de $n$ elementos.}
 %\end{proposicion}
 \vskip .5cm \pause
-{\color{blue} Idea de la prueba.}
+{\color{blue} Idea de la prueba.} \pause
 \vskip .2cm
 %\begin{proof}[Idea de la prueba]
 	La prueba de esta proposición se basa en aplicar el principio de multiplicación $m-1$ veces, 
 	\vskip .2cm
 	A nivel formal,  debemos hacer inducción sobre $m$ y usar el principio de multiplicación en el paso inductivo. 
+
+    \qed
 %\end{proof}
 
 \end{frame}
