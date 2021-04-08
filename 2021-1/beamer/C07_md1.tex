@@ -1,6 +1,7 @@
 %\documentclass{beamer} 
 \documentclass[handout]{beamer} % sin pausas
 \usetheme{CambridgeUS}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 \usepackage{etex}
 \usepackage{t1enc}
@@ -42,7 +43,6 @@
 }
 \renewcommand\labelitemi{$\circ$}
 \setlist[enumerate]{label={(\arabic*)}}
-%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 \setbeamertemplate{itemize item}{$\circ$}
 \setbeamertemplate{enumerate items}[default]
 \definecolor{links}{HTML}{2A1B81}
@@ -111,17 +111,17 @@
 
 
 \begin{frame}	\frametitle{Selecciones ordenadas sin repetición}
-	$X$ finito de $n$ elementos. 
+	$X$ finito de $n$ objetos. 
 	
 	\vskip .2cm
 	\begin{center}
-		{\it ¿De cuántas formas podemos elegir $m$ elementos de $X$ en forma ordenada?}
+		{\it ¿De cuántas formas podemos elegir $m$ objetos de $X$ en forma ordenada?}
 	\end{center}
 	\vskip .3cm		\pause 
 	%\begin{proposicion} 
 	{\color{blue}Ejemplo}
 	\vskip .2cm
-	Elegir en forma ordenada 2 elementos del conjunto $X = \{ a,b,c\}$,\pause {} tenemos \quad $ ab,\quad ac,\quad ba,\quad bc,\quad ca,\quad cb,$ \quad 
+	Elegir en forma ordenada y sin repetición 2 elementos del conjunto $X = \{ a,b,c\}$,\pause {} tenemos \quad $ ab,\quad ac,\quad ba,\quad bc,\quad ca,\quad cb,$ \quad 
 	6  elecciones.
 	
 	\vskip .5cm	\pause
@@ -167,15 +167,18 @@
 	5 \cdot 4 \cdot 3
 	$$
 	selecciones posibles. 
-	
-	\pause
-	
+\end{frame}
+
+
+\begin{frame}	    
+
+
 	\vskip .3cm	
 	%\begin{proposicion} 
-	{\color{blue}Proposición}
+	{\color{blue}Proposición}\label{ordsinrep}
 	\vskip .2cm
 	{\it Si $n \ge m$ entonces existen
-		\begin{equation*}\label{ordsinrep}
+		\begin{equation*}
 		n \cdot (n - 1) \cdots (n - m + 1), \qquad \text{($m$ - factores)}
 		\end{equation*}
 		selecciones ordenadas y sin repetición de $m$ elementos de un conjunto de $n$ elementos.}
@@ -191,22 +194,22 @@
 	\vskip .2cm
 	
 	Si  hay 10 personas ¿De cuántas formas puedo  hacer una fila de 7 personas?
-	\vskip .2cm
-	{\color{blue}Solución.}
+	\vskip .2cm\pause
+	{\color{blue}Solución.}\pause
 	\vskip .2cm
 	Razonando,
 	\vskip .3cm	
 	\begin{tabular}{llrl}
-		$1^{\circ}$ puesto &$\to$ & 10 &posibilidades \\
-		$2^{\circ}$ puesto &$\to$ & 9 &posibilidades\\
-		$3^{\circ}$ puesto &$\to$ & 8 &posibilidades \\
-		$4^{\circ}$ puesto &$\to$ & 7 &posibilidades \\
-		$5^{\circ}$ puesto &$\to$ & 6 &posibilidades\\
-		$6^{\circ}$ puesto &$\to$ & 5 &posibilidades \\
-		$7^{\circ}$ puesto &$\to$ & 4 &posibilidades \\
+		$1^{\circ}$ puesto &$\to$ & 10 &posibilidades \\\pause
+		$2^{\circ}$ puesto &$\to$ & 9 &posibilidades\\\pause
+		$3^{\circ}$ puesto &$\to$ & 8 &posibilidades \\\pause
+		$4^{\circ}$ puesto &$\to$ & 7 &posibilidades \\\pause
+		$5^{\circ}$ puesto &$\to$ & 6 &posibilidades\\\pause
+		$6^{\circ}$ puesto &$\to$ & 5 &posibilidades \\\pause
+		$7^{\circ}$ puesto &$\to$ & 4 &posibilidades \\\pause
 	\end{tabular}
 	\vskip .3cm	
-	La solución es entonces $10 \cdot 9  \cdot 8\cdot 7\cdot 6\cdot 5\cdot 4$.
+	La solución es entonces $10 \cdot 9  \cdot 8\cdot 7\cdot 6\cdot 5\cdot 4$.\qed
 	
 \end{frame}
 
@@ -218,36 +221,82 @@
 	\vskip .2cm
 	
 	Si  hay 10 personas ¿De cuántas formas puedo  hacer una fila de 7 personas?
-	\vskip .2cm
-	{\color{blue}Solución (aplicando la proposición).}
+	\vskip .2cm\pause
+	{\color{blue}Solución (aplicando la proposición de p. \ref{ordsinrep}).}\pause
 	\vskip .2cm
 	\begin{tabular}{llr}
-		Cantidad  de elementos: &$\to$ & $n = 10$ \\
-		Cantidad  de elecciones: &$\to$ & $m = 7$ 
+		Cantidad  de elementos: &$\to$ & $n = 10$ \\\pause
+		Cantidad  de elecciones: &$\to$ & $m = 7$ \pause
 	\end{tabular}
-	\vskip .3cm	
+	\vskip .3cm	\pause
 	Por lo tanto, $n-m+1 = 10 - 7 +1  = 4$.
-	\vskip .3cm	
+	\vskip .3cm	\pause
 	La solución es entonces: $10 \cdot 9  \cdot 8\cdot 7\cdot 6\cdot 5\cdot 4$.
 	
 	\vskip .5cm	 \pause
 	
 	Observar que
-	\begin{equation*}
-	10 \cdot 9  \cdot 8\cdot 7\cdot 6\cdot 5\cdot 4 = \frac{10 \cdot 9  \cdot 8\cdot 7\cdot 6\cdot 5\cdot 4\cdot 3\cdot 2\cdot1}{3\cdot 2\cdot1} = \frac{10!}{3!}.
-	\end{equation*}
+	\begin{align*}
+	10 \cdot 9  \cdot 8\cdot 7\cdot 6\cdot 5\cdot 4 &= \frac{10 \cdot 9  \cdot 8\cdot 7\cdot 6\cdot 5\cdot 4\cdot 3\cdot 2\cdot1}{3\cdot 2\cdot1} = \frac{10!}{3!} \\
+    &= \frac{10!}{(10 -7)!}.
+	\end{align*}\qed
 	
+\end{frame}
+
+
+\begin{frame}	
+
+    {\color{blue}Ejemplo}
+	\vskip .2cm
+	¿Cómo elegir 4 elementos entre $n$?
+	\vskip .2cm\pause
+	{\color{blue}Solución.}\pause
+	\vskip .2cm
+	Razonando,
+	\vskip .3cm	
+	\begin{tabular}{llrl}
+		$1^{\circ}$ puesto &$\to$ & n-1 &posibilidades \\\pause
+		$2^{\circ}$ puesto &$\to$ & n-2 &posibilidades\\\pause
+		$3^{\circ}$ puesto &$\to$ & n-3 &posibilidades \\\pause
+		$4^{\circ}$ puesto &$\to$ & n-4 &posibilidades \\\pause
+	\end{tabular}
+
+	La solución es entonces 
+    \begin{align*}
+        (n-1)  (n-2)  (n-3) (n-4) &= \frac{(n-1) (n-2)  (n-3)(n-4) (n-5)!}{(n-5)!}\\
+        &=\frac{n!}{(n-5)!}
+    \end{align*}
+    \qed
+
 \end{frame}
 
 \begin{frame}
 	En general
-	\begin{align*}
-	n \cdot (n-1)  \cdots (n - m +1) &= \frac{	n \cdot (n-1)\cdots (n - m + 1) \cdot (n-m) \cdots 2 \cdot 1 }{(n-m) \cdots 2 \cdot  1 } \\&= \frac{n!}{(n-m)!}.
-	\end{align*}	
-	\vskip .3cm	
+	\begin{equation*}
+	n \cdot (n-1)  \cdots (n - m +1) = \frac{	n \cdot (n-1)\cdots (n - m + 1) \cdot (n-m) \cdots 2 \cdot 1 }{(n-m) \cdots 2 \cdot  1 }.
+	\end{equation*}
+    \vskip .5cm	\pause
+    Es decir 
+
+    \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
+    \hskip 1.8cm \begin{beamercolorbox}[wd=0.65\textwidth,rounded=true,shadow=true]{postit}
+        \begin{equation*}
+        n \cdot (n-1)  \cdots (n - m +1) =  \frac{n!}{(n-m)!}.
+    \end{equation*}
+    \end{beamercolorbox}    
+
+
+	\vskip 1cm	\pause
 	Por lo tanto podemos reescribir la proposición en forma mas compacta:
-	\vskip .5cm	
-	%\begin{proposicion} 
+
+    
+\end{frame}
+
+
+
+\begin{frame}
+
+
 	{\color{blue}Proposición}
 	\vskip .2cm
 	{\it Si $n \ge m$ entonces existen
@@ -272,16 +321,16 @@
 	¿De cuántas formas pueden sentarse $3$ personas? 
 	
 	
+	\vskip .2cm\pause
+	{\color{blue}Solución}\pause
 	\vskip .2cm
-	{\color{blue}Solución}
-	\vskip .2cm
-	Se trata de ver cuantas selecciones ordenadas y sin repetición de $3$ asientos entre $9$. 
-	\vskip .2cm
-	Primero hagámoslo usando el principio de multiplicación:
+	Se trata de ver cuantas selecciones ordenadas y sin repetición hay de $3$ asientos entre $9$. 
+	\vskip .2cm\pause
+	Primero hagámoslo usando el principio de multiplicación:\pause
 	\vskip .2cm
 	\begin{itemize}
-		\item 1° persona: 9 lugares posibles. Total: 9
-		\item 2° persona: 8 lugares posibles. Total: $9 \times 8$
+		\item 1° persona: 9 lugares posibles. Total: 9\pause
+		\item 2° persona: 8 lugares posibles. Total: $9 \times 8$\pause
 		\item 3° persona: 7 lugares posibles. Total: $9\times 8\times 7$.
 	\end{itemize}
 	
@@ -296,7 +345,7 @@
 	$$
 	%\end{ejemplo}
 	\vskip .2cm
-	
+	\pause
 	Podríamos haberlo hecho directamente por la proposición: elegir  3 elementos entre 9 son
 	\vskip .2cm
 	\begin{align*}
@@ -305,7 +354,7 @@
 	&= 9  \cdot 8\cdot 7
 	\end{align*}
 	posibilidades.
-	
+	\qed
 \end{frame}
 
 
@@ -319,10 +368,10 @@
 	\frac{n!}{0!}= n!
 	$$
 	selecciones ordenadas y sin repetición de  $n$ elementos en un conjunto con $n$ elementos. 
-	\vskip .4cm
+	\vskip .4cm\pause
 	
 	Las selecciones ordenadas y sin repetición de  $n$ elementos en un conjunto con $n$ elementos se denominan {\em permutaciones} de grado $n$.
-		\vskip .4cm
+		\vskip .4cm\pause
 	Hay, pues, $n!$ permutaciones de grado $n$.
 	\vskip .4cm
 
@@ -342,8 +391,8 @@ Por lo tanto,  la respuesta es $n!$. \pause
 {\color{blue}Ejemplo.}
 \vskip .2cm
 Dado el conjunto $\mathbb I_4 = \{1,2,3,4 \}$ ¿cuántas permutaciones de los elementos de $\mathbb I_4 $ hay?
-\vskip .2cm
-{\color{blue}Solución.} $4!$.
+\vskip .2cm\pause
+{\color{blue}Solución.}\pause $4!$.\qed
 \end{frame}
 
 
@@ -356,7 +405,7 @@ Dado el conjunto $\mathbb I_4 = \{1,2,3,4 \}$ ¿cuántas permutaciones de los el
 		{\em silvia}?
 		\pause
 		\vskip .2cm
-		{\color{blue}Solución}
+		{\color{blue}Solución}\pause
 		\vskip .2cm
 		Afirmamos que se pueden formar  $\displaystyle{\frac{6!}{2!}}$ palabras usando las letras de {\em silvia}.
 		
@@ -370,7 +419,7 @@ Dado el conjunto $\mathbb I_4 = \{1,2,3,4 \}$ ¿cuántas permutaciones de los el
 		\cdots \text{\em i } \cdots  \text{\em i' }  \cdots \\
 		\cdots \text{\em i' } \cdots  \text{\em i } \cdots
 		\end{align*}
-		coinciden, por lo tanto tengo que dividir por $2$ el número total de permutaciones.
+		coinciden, por lo tanto tengo que dividir por $2$ el número total de permutaciones: $6! / 2! = 360$.\qed
 		
 \end{frame}
 
@@ -391,9 +440,9 @@ Dado el conjunto $\mathbb I_4 = \{1,2,3,4 \}$ ¿cuántas permutaciones de los el
 		\vskip .2cm
 		Como hay $4!$ permutaciones de las letras $a_1$, $a_2$, $a_3$, $a_4$, y
 		$2!$ de $n_1$, $n_2$ el número buscado es 
-		$
-		\frac{10!}{ 4!2!}
-		$.
+		$$
+		\frac{10!}{ 4!2!}.
+		$$
 		
 
 \end{frame}
