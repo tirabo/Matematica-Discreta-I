@@ -1,0 +1,272 @@
+% PDFLaTeX
+\documentclass[a4paper,12pt,twoside,spanish]{amsbook}
+%\documentclass[a4paper,11pt,twoside]{book}
+%\documentclass[a4paper,11pt,twoside,spanish]{amsbook}
+
+%%%---------------------------------------------------
+
+
+\usepackage{etex}
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+
+\renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
+
+% Para hacer el  indice en linea de comando hacer
+% makeindex main
+%% En http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf hay ejemplos de packages de fonts libres, como los siguientes:
+%\usepackage{cmbright}
+%\usepackage{pxfonts}
+%\usepackage[varg]{txfonts}
+%\usepackage{ccfonts}
+%\usepackage[math]{iwona}
+%\usepackage[math]{kurier}
+
+
+\usepackage{t1enc}
+%\usepackage[spanish]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+%\usetikzlibrary{graphs}
+%\usepackage{tikz-3dplot} %for tikz-3dplot functionality
+%\usepackage{pgfplots}
+\usepackage{mathtools}
+\usepackage{stackrel}
+\usepackage{enumerate}
+\usepackage{tkz-graph}
+%\usepackage{makeidx}
+\makeindex
+
+%%%----------------------------------------------------------------------------
+\usepackage[a4paper, top=3cm, left=3cm, right=2cm, bottom=2.5cm]{geometry}
+%% CONTROLADORES DE.
+% Tamaño de la hoja de impresión.
+% Tamaños de los laterales del documento.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% \theoremstyle{plain} %% This is the default
+%\oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
+%\headheight .3in \headsep .2in \footskip .2in
+%\setlength{\textwidth}{16cm} %ancho para apunte
+%\setlength{\textheight}{21cm} %largo para apunte
+%%%%\leftmargin 2.5cm
+%%%%\rightmargin 2.5cm
+%\topmargin 0.5 cm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,
+	urlcolor=cyan,
+}
+\usepackage{hypcap}
+
+%----------------------------------------------------------------------------------------------------------------------
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+
+%-----------------------------------------------------------------------------------------------------------------------
+
+
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{proposicion}[teorema]{Proposici\'on}
+\newtheorem{corolario}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{propiedad}[teorema]{Propiedad}
+
+\theoremstyle{definition}
+
+\newtheorem{definicion}{Definici\'on}[section]
+\newtheorem{ejemplo}{Ejemplo}[section]
+\newtheorem{problema}{Problema}[section]
+\newtheorem{ejercicio}{Ejercicio}[section]
+\newtheorem{ejerciciof}{}[section]
+
+\theoremstyle{remark}
+\newtheorem{observacion}{Observaci\'on}[section]
+\newtheorem{nota}{Nota}[section]
+
+\renewcommand{\partname }{Parte }
+\renewcommand{\indexname}{Indice }
+\renewcommand{\figurename }{Figura }
+\renewcommand{\tablename }{Tabla }
+\renewcommand{\proofname}{Demostraci\'on}
+\renewcommand{\appendixname }{}
+\renewcommand{\contentsname }{Contenidos }
+\renewcommand{\chaptername }{}
+\renewcommand{\bibname }{Bibliograf\'\i a }
+
+
+
+
+
+
+\begin{document}
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+
+%\frame{\titlepage}
+
+
+\begin{center}
+	{\Large Matemática Discreta I - 2020/1}
+	
+	{\Large Tarea 10}
+\end{center}
+\vskip .4cm
+	\noindent{\color{blue}Ejercicio.} \ Dados los siguientes grafos:
+
+\vspace{-2cm}\begin{figure}[h]
+	\centering
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\clip(-4.630210027906974,-3.7534003348837173) rectangle (13.62467369302325,6.642878734883723);
+\draw [line width=2pt] (2.5,3)-- (4.5,3);
+\draw [line width=2pt] (8,3)-- (10,3);
+\draw [line width=2pt] (7,1.2679491924311226)-- (8,3);
+\draw [line width=2pt] (7,1.2679491924311226)-- (11,1.267949192431121);
+\draw [line width=2pt] (11,1.267949192431121)-- (10,3);
+\draw [line width=2pt] (7,1.2679491924311226)-- (8,-0.46410161513775505);
+\draw [line width=2pt] (8,-0.46410161513775505)-- (11,1.267949192431121);
+\draw [line width=2pt] (7,1.2679491924311226)-- (10,-0.4641016151377557);
+\draw [line width=2pt] (10,-0.4641016151377557)-- (11,1.267949192431121);
+\draw [line width=2pt] (8,-0.46410161513775505)-- (8,3);
+\draw [line width=2pt] (-4,1.2679491924311226)-- (-1,3);
+\draw [line width=2pt] (-1,3)-- (0,1.267949192431121);
+\draw [line width=2pt] (0,1.267949192431121)-- (-4,1.2679491924311226);
+\draw [line width=2pt] (-4,1.2679491924311226)-- (-3,-0.46410161513775505);
+\draw [line width=2pt] (-3,-0.46410161513775505)-- (0,1.267949192431121);
+\draw [line width=2pt] (-4,1.2679491924311226)-- (-1,-0.4641016151377557);
+\draw [line width=2pt] (-1,-0.4641016151377557)-- (0,1.267949192431121);
+\draw [line width=2pt] (1.5,1.2679491924311226)-- (4.5,3);
+\draw [line width=2pt] (4.5,3)-- (5.5,1.267949192431121);
+\draw [line width=2pt] (5.5,1.267949192431121)-- (1.5,1.2679491924311226);
+\draw [line width=2pt] (1.5,1.2679491924311226)-- (2.5,3);
+\draw [line width=2pt] (1.5,1.2679491924311226)-- (2.5,-0.46410161513775505);
+\draw [line width=2pt] (2.5,-0.46410161513775505)-- (5.5,1.267949192431121);
+\draw [line width=2pt] (-4,1.2679491924311226)-- (-1.2,1.9607695154586726);
+\draw [line width=2pt] (-1.2,1.9607695154586726)-- (-1,3);
+\draw [line width=2pt] (5.5,1.267949192431121) -- (2.7,0.5751288694035712);
+\draw [line width=2pt] (2.7,0.5751288694035712)-- (1.5,1.2679491924311226);
+\draw (-3.9957914232558114,3.8186926883720957) node[anchor=north west] {(1)};
+\draw (1.5093248558139538,3.8186926883720957) node[anchor=north west] {(2)};
+\draw (6.993976018604649,3.8186926883720957) node[anchor=north west] {(3)};
+\begin{scriptsize}
+\draw [fill=black] (-1,3) circle (2.5pt);
+\draw[color=black] (-0.8441635162790686,3.3) node {B};
+\draw [fill=black] (2.5,3) circle (2.5pt);
+\draw[color=black] (2.65537136744186,3.3) node {H};
+\draw [fill=black] (4.5,3) circle (2.5pt);
+\draw[color=black] (4.660952762790696,3.3) node {I};
+\draw [fill=black] (8,3) circle (2.5pt);
+\draw[color=black] (8.160487646511625,3.3) node {P};
+\draw [fill=black] (10,3) circle (2.5pt);
+\draw[color=black] (10.166069041860462,3.3) node {R};
+\draw [fill=uuuuuu] (-4,1.2679491924311226) circle (2.5pt);
+\draw[color=uuuuuu] (-4.036721655813952,1.6) node {A};
+\draw [fill=black] (-3,-0.46410161513775505) circle (2.5pt);
+\draw[color=black] (-2.829279795348835,-0.018516613953485167) node {F};
+\draw [fill=black] (-1,-0.4641016151377557) circle (2.5pt);
+\draw[color=black] (-0.6804425860465104,-0.30502824186046185) node {D};
+\draw [fill=black] (0,1.267949192431121) circle (2.5pt);
+\draw[color=black] (0.15862718139534965,1.6) node {C};
+\draw [fill=black] (1.5,1.2679491924311226) circle (2.5pt);
+\draw[color=black] (1.4274643906976747,1.6) node {G};
+\draw [fill=black] (2.5,-0.46410161513775505) circle (2.5pt);
+\draw[color=black] (2.8600225302325577,-0.5096794046511596) node {L};
+\draw [fill=black] (5.5,1.267949192431121) circle (2.5pt);
+\draw[color=black] (5.663743460465114,1.6) node {J};
+\draw [fill=black] (7,1.2679491924311226) circle (2.5pt);
+\draw[color=black] (6.809789972093021,1.6) node {M};
+\draw [fill=black] (8,-0.46410161513775505) circle (2.5pt);
+\draw[color=black] (8.5,-0.4073538232558107) node {N};
+\draw [fill=black] (10,-0.4641016151377557) circle (2.5pt);
+\draw[color=black] (10.32978997209302,-0.30502824186046185) node {Q};
+\draw [fill=black] (11,1.267949192431121) circle (2.5pt);
+\draw[color=black] (11.168859739534879,1.6) node {O};
+\draw [fill=black] (2.7,0.5751288694035712) circle (2.5pt);
+\draw[color=black] (2.5,0.9024136186046543) node {K};
+\draw [fill=black] (-1.2,1.9607695154586726) circle (2.5pt);
+\draw[color=black] (-0.9055588651162778,1.884739200000003) node {E};
+\end{scriptsize}
+\end{tikzpicture}
+\end{figure}
+
+\vspace{-2.5cm}\begin{enumerate}
+		%\item[(a)(20 pts)] En el grafo $(1)$, ¿existen \textbf{subgrafos completos} de tres vértices? \ ¿y de 4 vértices? En caso
+%                           de existir, exhibir al menos un subgrafo; en caso contrario, justificar la no existencia.
+		\item[(a) (25 pts)] En el grafo $(2)$, determine si existe una \textbf{caminata euleriana}, y en caso de ser así, encuentre una.
+        \item[(b) (25 pts)] Dé un \textbf{ciclo hamiltoniano} en el grafo $(3)$.
+        \item[(c) (50 pts)] Determinar cuales de los siguientes pares de grafos son isomorfos. En el caso de ser isomorfos, especifique un isomorfismo;
+                           en caso contrario, justificar por que no son isomorfos.
+
+                           (i) (1) y (2).\quad
+
+                           (ii) (2) y (3).
+	\end{enumerate}
+\vskip .2cm
+\begin{comment}
+
+\noindent{\color{blue}Solución.}
+
+
+
+
+
+\noindent\text{{1.}} Primero calculamos en base 10 el número  $(25332)_6$:
+ \begin{align*}
+	(25032)_6 &= 2 \cdot 6^4+5 \cdot 6^3+0\cdot 6^2+ 3 \cdot 6^1+ 2 \cdot 6^0\\
+	 &= 2 \cdot 1296+ 5 \cdot 216 + 0\cdot 36 + 3\cdot6 + 2 \\
+	& = 2592 + 1080 + 0  + 18 +2  \\
+	&= 3692.
+\end{align*}
+Ahora lo convertimos a  base 8:
+\begin{equation*}
+	\begin{matrix*}[r]
+	3692 &=& 8 \cdot 461& + &4\\
+	461 &=&  8 \cdot 57& + &5\\
+	57 &=&  8 \cdot 7& + &1\\
+	7 &=&  8 \cdot 0& + &7
+	\end{matrix*}
+\end{equation*}
+Luego, la respuesta es $(20332)_4 = (7154)_8$.
+	
+\vskip .4cm	
+\noindent{2.} Calculamos primero en base 10 los números $(4321)_5$ y $(302)_5$.
+\vskip .2cm
+$(4321)_5 = 4 \cdot 5^3+3\cdot 5^2+ 2\cdot 5^1+ 1 \cdot 5^0 =  4 \cdot 125+3\cdot 25+ 2\cdot 5+ 1 = 586$.
+\vskip .2cm
+$(302)_5 =3\cdot 5^2+ 0\cdot 5^1+ 2 \cdot 5^0 =  3\cdot 25+ 0\cdot 5+ 2 = 77$.
+\vskip .2cm
+Ahora restamos $586 -77= 509$. Al resultado  obtenido lo convertimos a base 5:
+\begin{equation*}
+\begin{matrix*}[r]
+509 &=& 5 \cdot 101& + &4\\
+101 &=& 5 \cdot 20& + &1\\
+20 &=&  5 \cdot 4& + &0\\
+4 &=&  5 \cdot 0& + &4.
+\end{matrix*}
+\end{equation*}
+Luego $509 = (4014)_5$ y por lo tanto,
+\begin{equation*}
+	(4321)_5 - (302)_5 = (4014)_5.
+\end{equation*}
+\end{comment}
+\end{document}
+
