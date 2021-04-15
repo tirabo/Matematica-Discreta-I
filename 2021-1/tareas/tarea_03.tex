@@ -12,7 +12,7 @@
 
 \renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
 
-% Para hacer el  indice en linea de comando hacer 
+% Para hacer el  indice en linea de comando hacer
 % makeindex main
 %% En http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf hay ejemplos de packages de fonts libres, como los siguientes:
 %\usepackage{cmbright}
@@ -35,7 +35,7 @@
 \usepackage{graphicx}     % From LaTeX distribution
 \usepackage{ifthen}
 \input{random.tex}        % From CTAN/macros/generic
-\usepackage{subfigure} 
+\usepackage{subfigure}
 \usepackage{tikz}
 \usetikzlibrary{arrows}
 \usetikzlibrary{matrix}
@@ -53,7 +53,7 @@
 \usepackage[a4paper, top=3cm, left=3cm, right=2cm, bottom=2.5cm]{geometry}
 %% CONTROLADORES DE.
 % Tamaño de la hoja de impresión.
-% Tamaños de los laterales del documento. 
+% Tamaños de los laterales del documento.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% \theoremstyle{plain} %% This is the default
 %\oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
@@ -69,7 +69,7 @@
 \hypersetup{
 	colorlinks=true,
 	linkcolor=blue,
-	filecolor=magenta,      
+	filecolor=magenta,
 	urlcolor=cyan,
 }
 \usepackage{hypcap}
@@ -117,7 +117,7 @@
 \renewenvironment{ejercicio}% environment name
 {% begin code
 	\par\vskip .5cm%
-	{\noindent\color{blue}Ejercicio}%
+	{\noindent\color{blue}Ejercicios}%
 	\vskip .2cm
 }%
 {%
@@ -136,21 +136,26 @@
 
 \begin{document}
 
-%\frame{\titlepage} 
+%\frame{\titlepage}
 
 
 \tarea{3}
 
 \begin{ejercicio}
 	\begin{enumerate}
-		\item[1.]  (50 pts) En un colectivo hay 10 asientos vacíos ¿De cuántas formas pueden sentarse 6 personas en los 10 asientos vacíos?
+        \item[1.] (50 pts) Para participar en un torneo de tenis de dobles mixtos (parejas de un hombre y una mujer), es necesario presentar 
+        un equipo de 3 parejas, debiéndose elegir los jugadores entre los integrantes de un grupo constituido por 6 hombres y 3 mujeres. 
+         ¿De cuántas maneras puede seleccionarse el equipo?
+		
+       \vskip .2cm
+        
 		\item[2.] (50 pts) ¿De cuántas formas pueden ordenarse las letras de la palabra\newline PRIMERAMENTE?
 	\end{enumerate}
 \end{ejercicio}
 	
 \begin{comment}
 \begin{solucion}
-	\noindent 1. La pregunta del ejercicio es equivalente a ¿cuántas palabras de 1, 2,3 o 4 letras se pueden hacer con un alfabeto de 26 letras? Es decir podemos separar en 4 casos (disjuntos) palabras de 1 letra, de 2 letras,  de 3 letras  o de 4 letras. Cada caso  es una selección ordenada con repetición. 
+	\noindent 1. La pregunta del ejercicio es equivalente a ¿cuántas palabras de 1, 2,3 o 4 letras se pueden hacer con un alfabeto de 26 letras? Es decir podemos separar en 4 casos (disjuntos) palabras de 1 letra, de 2 letras,  de 3 letras  o de 4 letras. Cada caso  es una selección ordenada con repetición.
 	
 	\textbf{1 letra.} 26 palabras.
 	
@@ -164,9 +169,9 @@
 	
 	\vskip .4cm
 	
-	\noindent 2. La palabra PREPOTENTE es una palabra de longitud 10, donde la E se repite 3 veces, la P y la T se repiten 2 veces y luego están  la R, la O y  la N  una sola vez cada una. 
+	\noindent 2. La palabra PREPOTENTE es una palabra de longitud 10, donde la E se repite 3 veces, la P y la T se repiten 2 veces y luego están  la R, la O y  la N  una sola vez cada una.
 	
-	Luego, la solución es 
+	Luego, la solución es
 	$$
 	\frac{10!}{3!2!2!}.
 	$$

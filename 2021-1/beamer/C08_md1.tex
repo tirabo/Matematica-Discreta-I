@@ -1,6 +1,7 @@
 %\documentclass{beamer} 
 \documentclass[handout]{beamer} % sin pausas
 \usetheme{CambridgeUS}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 \usepackage{etex}
 \usepackage{t1enc}
@@ -42,7 +43,7 @@
 }
 \renewcommand\labelitemi{$\circ$}
 \setlist[enumerate]{label={(\arabic*)}}
-%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+
 \setbeamertemplate{itemize item}{$\circ$}
 \setbeamertemplate{enumerate items}[default]
 \definecolor{links}{HTML}{2A1B81}
@@ -114,7 +115,7 @@
 		$X$ finito de $n$ elementos. 
 		\begin{center}
 			{\it ¿Cuántos subconjuntos de $m$ elementos hay en $X$?}
-		\end{center}
+		\end{center} \pause
 		
 		\vskip .4cm
 		{\color{blue}Ejemplo}
@@ -125,9 +126,9 @@
 		
 		\vskip .2cm \pause
 		
-		{\color{blue}Solución.}
+		{\color{blue}Solución.} \pause
 		\vskip .2cm
-		Contemos directamente: \pause
+		Contemos directamente: 
 		
 		$\{1,2,3\}$, $\{1,2,4\}$, $\{1,2,5\}$, $\{1,3,4\}$, $\{1,3,5\}$, $\{1,4,5\}$,
 		
@@ -231,8 +232,8 @@
 		\vskip .4cm \pause
 		
 		\begin{itemize}
-			\item Tenemos $\displaystyle \frac{n!}{(n-m)!}$  selecciones ordenadas de $m$ elementos entre $n$.
-			\item La cantidad de permutaciones de $m$ elementos es $m!$, luego,
+			\item Tenemos $\displaystyle \frac{n!}{(n-m)!}$  selecciones ordenadas de $m$ elementos entre $n$. \pause
+			\item La cantidad de permutaciones de $m$ elementos es $m!$, luego, \pause
 			\item hay  $\displaystyle \frac{n!}{(n-m)!m!}$ subconjuntos de $m$ elementos. 
 		\end{itemize}
 		
@@ -305,12 +306,14 @@
 		{\color{blue}Ejemplo}
 		\vskip .3cm
 		¿Cuántos comités pueden formarse de un conjunto de $6$ mujeres y $4$ hombres, si el comité debe estar compuesto por $4$ mujeres y $2$ hombres?
-		\vskip .3cm
+		\vskip .3cm \pause
 		{\color{blue}Solución} \pause
-		\vskip .2cm Debemos elegir $4$ mujeres entre $6$, y la cantidad de elecciones posibles es   $\binom{6}{4}$. Por otro lado, hay $ \binom{4}{2}$ formas de elegir $2$ hombres entre $4$. Luego, por el principio de multiplicación,  el resultado es
-		$$
-		\binom{6}{3}\cdot \binom{4}{2} = \frac{6!}{2!4!}\cdot\frac{4!}{2!2!} = \frac{6\cdot 5}{2}\cdot\frac{4\cdot 3}{2} = 15 \cdot 6 = 90.
-		$$
+		\vskip .2cm Debemos elegir $4$ mujeres entre $6$, y la cantidad de elecciones posibles es   $\displaystyle\binom{6}{4}$. Por otro lado, hay $ \displaystyle\binom{4}{2}$ formas de elegir $2$ hombres entre $4$. Luego, por el principio de multiplicación,  el resultado es
+		\begin{align*}
+            \binom{6}{4}\cdot \binom{4}{2} &= \frac{6!}{(6-4)!4!}\cdot\frac{4!}{(4-2)!2!}= \frac{6!}{2!4!}\cdot\frac{4!}{2!2!} = \frac{6\cdot 5}{2}\cdot\frac{4\cdot 3}{2} \\[0.3cm] & = 15 \cdot 6= 90.
+        \end{align*}
+		
+	
 		\vskip .3cm
 	\end{frame}
 	
@@ -323,14 +326,14 @@
 		{\it	Sean $m,n \in \mathbb N_0$, tal que $m \le n$. Entonces
 			$$
 			\binom{n}{m} = \binom{n}{n-m}.
-			$$}
+			$$} \pause  
 		{\color{blue} Demostración.} \pause  
 		\begin{align*}
 			\binom{n}{n-m} &= \frac{n!}{(n-(n-m))!\,(n-m)!} \\
 			&=  \frac{n!}{m!\,(n-m)!} \\
 			&=    \frac{n!}{(n-m)!\,m!}=  \binom{n}{m}.
 		\end{align*}
-		
+		\qed
 		
 		
 		
@@ -343,9 +346,8 @@
 		$$
 		\binom{n}{m} = \binom{n}{n-m}.
 		$$
-		se puede interpretar en términos de subconjuntos:  $\displaystyle\binom{n}{m}$ es el número de subconjuntos de $m$
-		ele\-men\-tos de un conjunto de $n$ elementos. 
-		\vskip .2cm
+		se puede interpretar en términos de subconjuntos:  $\displaystyle\binom{n}{m}$ es el número de subconjuntos de $m$ ele\-men\-tos de un conjunto de $n$ elementos. 
+		\vskip .2cm\pause  
 		
 		Puesto que con cada subconjunto de $m$ ele\-men\-tos hay unívocamente asociado un subconjunto de $n - m$ elementos, su complemento en $X$, es claro que $$\displaystyle\binom{n}{m} = \binom{n}{n-m}.$$
 		
@@ -363,9 +365,9 @@
 			$$
 			\binom{n}{m-1} + \binom{n}{m}   = \binom{n+1}{m} 
 			$$
-		}
+		}\pause  
 		
-		{\color{blue} Demostración.}
+		{\color{blue} Demostración.}\pause  
 		\vskip .2cm
 		
 		El enunciado nos dice que debemos demostrar que 
@@ -379,37 +381,32 @@
 	
 	\begin{frame}
 		
-		Veamos unos pocos ejemplos de la fórmula $\binom{n}{m-1} + \binom{n}{m}   = \binom{n+1}{m}$ o  equivalentemente.
+		Veamos unos pocos ejemplos de la fórmula $\binom{n}{m-1} + \binom{n}{m}   = \binom{n+1}{m}$ o  equivalentemente (dando vuelta la igualdad).
 		$$
 		\binom{n+1}{m} = \binom{n}{m-1} + \binom{n}{m} .
 		$$
-		\vskip .3cm
-		
-		$$
-		\binom{4}{2} = \binom{3}{1} + \binom{3}{2} = 3+3 =6.
-		$$
-		
-		\vskip .3cm
-		
-		\begin{align*}
-			\binom{5}{2} &= \binom{4}{1} + \binom{4}{2} = 4 + 6 = 10, \\ 
-			\binom{5}{3} &= \binom{4}{2} + \binom{4}{3} = 6 + 4 = 10.
-		\end{align*}
-		
-		
+		\vskip .3cm \pause  
+
+        \begin{block}{Ejemplos}
+        \begin{align*}
+            \binom{4}{2} &= \binom{3}{1} + \binom{3}{2} = 3+3 =6. \\[.5cm]
+            \binom{5}{2} &= \binom{4}{1} + \binom{4}{2} = 4 + 6 = 10, \\[.3cm]
+            \binom{5}{3} &= \binom{4}{2} + \binom{4}{3} = 6 + 4 = 10.
+        \end{align*}
+    \end{block}
 		
 	\end{frame}
 	
 	\begin{frame}
 		El teorema precedente permite calcular los coeficientes binomiales:
-		
+		\pause  
 		\begin{align*}
 			&& && && && && &\binom{0}{0}& && && && && &&  \\
 			&& && && && &\binom{1}{0}& && &\binom{1}{1}& && && && &&  \\
 			&& && && &\binom{2}{0}& && &\binom{2}{1}& && &\binom{2}{2}& && && &&  \\
 			&& && &\binom{3}{0}& && &\binom{3}{1}& && &\binom{3}{2}& && &\binom{3}{3}& && &&  \\
 			&& &\binom{4}{0}& && &\binom{4}{1}& && &\binom{4}{2}& && &\binom{4}{3}& && &\binom{4}{4}& && 
-		\end{align*}
+		\end{align*}\pause  
 		Cada término interior es suma de los dos términos inmediatos superiores. 
 		
 		Los elementos en los lados valen 1.
@@ -418,7 +415,7 @@
 	
 	
 	\begin{frame}
-		Escribamos los valores de cada fila:
+		Escribamos los valores de cada fila:\pause  
 		\begin{align*}
 			&& && && && && &1& && && && && &&  \\
 			&& && && && &1& && &1& && && && &&  \\
@@ -429,7 +426,7 @@
 		
 		\vskip .2cm
 		El  triángulo es denominado \emph{triángulo de Pascal}. 
-		\vskip .2cm
+		\vskip .2cm\pause  
 		Entre las propiedades que cuenta el triángulo de Pascal está la de ser simétrico respecto al eje vertical central, como consecuencia de la simetría de los números combinatorios. 
 	\end{frame}
 	
