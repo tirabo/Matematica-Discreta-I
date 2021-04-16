@@ -410,7 +410,7 @@
 
 
 
-    \item \label{ej-kn} ¿Cuántas aristas tiene el  grafo completo $K_n$? ¿Para cuáles valores de $n$ se puede encontrar un dibujo de $K_n$ con la propiedad que las líneas representan las aristas sin cruzarse?
+    \item \label{ej-kn} ¿Cuántas aristas tiene el  grafo completo $K_n$? ¿Para qué valores de $n$ se puede afirmar que $K_n$ es planar?
     
     \rta En un grafo  completo de $n$ vértices podemos contar las aristas de la siguiente manera: del primer vértice salen $n-1$ aristas, del segundo salen $n-2$ pues no debemos contar la arista al primer vértice, del tercer vértice salen $n-3$ aristas (no contamos la que van al primero y al segundo), y así sucesivamente. Concluyendo, la cantidad de aristas es 
     \begin{equation*}
@@ -433,8 +433,86 @@
         \end{tikzpicture}
     \end{center}
     Sin embargo, no hay forma de dibujar $K_5$ sin cruces entre las aristas. La demostración de este hecho no es sencilla y debemos convencernos tratando (y fracasando) de hacer un dibujo de $K_5$ sin cruces entre aristas.
+
+    Para $n >5$ es claro que si $K_5$ no es planar, como $K_5$ es un subgrafo de $K_n$,  entonces $K_n$ no puede ser planar. 
     
     
+    \item Para cada una de las siguientes secuencias, encuentre un grafo que tenga exactamente las valencias indicadas o demuestre que tal grafo no existe:
+    \begin{enumerate}
+        \item $3,3,1,1$
+        
+        \rta Como la suma de valencias $3+3+1+1 = 8$, el grafo debe tener 4 aristas. Como hay 4 vértices y dos de ellos tienen valencia 3, digamos $a$ y $b$, de esos vértices salen aristas que llegan a todos los otros vértices. Es decir tenemos la siguiente situación:
+        
+        \begin{center}
+            \begin{tikzpicture}[scale=1]
+            %\SetVertexSimple[Shape=circle, FillColor=white,MinSize=8 pt]
+            %\SetVertexNoLabel
+            \Vertex[x=0,y=0]{$a$}
+            \Vertex[x=2,y=0]{$b$}
+            \Vertex[x=2,y=-2]{$c$}
+            \Vertex[x=0,y=-2]{$d$}
+            
+            %
+            \Edges($a$,$b$,$a$,$c$,$a$,$d$)
+            \Edges($b$,$c$,$b$,$d$)
+            
+            \end{tikzpicture}
+        \end{center}
+        
+        Por lo tanto, los dos vértices restantes tiene valencia $\ge 2$, lo cual nos dice que no puede haber un grafo con valencias $3,3,1,1$.
+        
+        \item $3,2,2,1$
+        
+        \rta  Un grafo que cumple con esa secuencia es:
+        
+        \begin{center}
+            \begin{tikzpicture}[scale=1]
+            \SetVertexSimple[Shape=circle, FillColor=white]
+            \SetVertexNoLabel
+            \Vertex[x=0,y=0]{$a$}
+            \Vertex[x=2,y=0]{$b$}
+            \Vertex[x=2,y=-2]{$c$}
+            \Vertex[x=0,y=-2]{$d$}
+            
+            %
+            \Edges($a$,$b$,$a$,$c$,$a$,$d$)
+            \Edges($b$,$d$)
+            
+            \end{tikzpicture}
+        \end{center}
+        
+        \item $3,3,2,2,1,1$
+        
+        \rta El grafo  tiene 6 vértices y $12/2 = 6$ aristas:
+        \vskip .3cm
+        \begin{center}
+            \begin{tikzpicture}[scale=0.65]
+            \SetVertexSimple[Shape=circle,FillColor=white]
+            %
+            \Vertex[x=3.00, y=0.00]{1}
+            \Vertex[x=1.50, y=2.60]{2}
+            \Vertex[x=-1.50, y=2.60]{3}
+            \Vertex[x=-3.00, y=0.00]{4}
+            \Vertex[x=-1.50, y=-2.60]{5}
+            \Vertex[x=1.50, y=-2.60]{6}
+            \Edges(1,2,3,4,1)
+            \Edges(1,4) \Edges(3,5) \Edges(2,6)
+            \end{tikzpicture}
+        \end{center}
+        
+        \item $4,1,1,1,1$
+        
+        \rta  El grafo  tiene 5 vértices y $8/2 = 4$ aristas. El único grafo posible es el cual desde un vértice salen 4 aristas a los otros vértices.
+        
+        \item $7,3,3,3,2,2$ 
+        
+        \rta El grafo tendría 6 vértices, por lo tanto la valencia máxima podría ser 5 y es imposible que uno de los vértices tenga valencia 7.
+        
+        \item $4,1,1,1$
+        
+        \rta Como la suma de las valencias $4+1+1+1 =7$ es impar, no existe un grafo con esas valencias.  
+    \end{enumerate}
+
         
     \item Encuentre un isomorfismo entre los grafos por las siguientes listas. (Ambas listas especifican versiones de un famoso grafo conocida como {\it grafo de Petersen}.)
     $$
@@ -562,82 +640,6 @@
     
     
     
-    \item Para cada una de las siguientes secuencias, encuentre un grafo que tenga exactamente las valencias indicadas o demuestre que tal grafo no existe:
-    \begin{enumerate}
-        \item $3,3,1,1$
-        
-        \rta Como la suma de valencias $3+3+1+1 = 8$, el grafo debe tener 4 aristas. Como hay 4 vértices y dos de ellos tienen valencia 3, digamos $a$ y $b$, de esos vértices salen aristas que llegan a todos los otros vértices. Es decir tenemos la siguiente situación:
-        
-        \begin{center}
-            \begin{tikzpicture}[scale=1]
-            %\SetVertexSimple[Shape=circle, FillColor=white,MinSize=8 pt]
-            %\SetVertexNoLabel
-            \Vertex[x=0,y=0]{$a$}
-            \Vertex[x=2,y=0]{$b$}
-            \Vertex[x=2,y=-2]{$c$}
-            \Vertex[x=0,y=-2]{$d$}
-            
-            %
-            \Edges($a$,$b$,$a$,$c$,$a$,$d$)
-            \Edges($b$,$c$,$b$,$d$)
-            
-            \end{tikzpicture}
-        \end{center}
-        
-        Por lo tanto, los dos vértices restantes tiene valencia $\ge 2$, lo cual nos dice que no puede haber un grafo con valencias $3,3,1,1$.
-        
-        \item $3,2,2,1$
-        
-        \rta  Un grafo que cumple con esa secuencia es:
-        
-        \begin{center}
-            \begin{tikzpicture}[scale=1]
-            \SetVertexSimple[Shape=circle, FillColor=white]
-            \SetVertexNoLabel
-            \Vertex[x=0,y=0]{$a$}
-            \Vertex[x=2,y=0]{$b$}
-            \Vertex[x=2,y=-2]{$c$}
-            \Vertex[x=0,y=-2]{$d$}
-            
-            %
-            \Edges($a$,$b$,$a$,$c$,$a$,$d$)
-            \Edges($b$,$d$)
-            
-            \end{tikzpicture}
-        \end{center}
-        
-        \item $3,3,2,2,1,1$
-        
-        \rta El grafo  tiene 6 vértices y $12/2 = 6$ aristas:
-        \vskip .3cm
-        \begin{center}
-            \begin{tikzpicture}[scale=0.65]
-            \SetVertexSimple[Shape=circle,FillColor=white]
-            %
-            \Vertex[x=3.00, y=0.00]{1}
-            \Vertex[x=1.50, y=2.60]{2}
-            \Vertex[x=-1.50, y=2.60]{3}
-            \Vertex[x=-3.00, y=0.00]{4}
-            \Vertex[x=-1.50, y=-2.60]{5}
-            \Vertex[x=1.50, y=-2.60]{6}
-            \Edges(1,2,3,4,1)
-            \Edges(1,4) \Edges(3,5) \Edges(2,6)
-            \end{tikzpicture}
-        \end{center}
-        
-        \item $4,1,1,1,1$
-        
-        \rta  El grafo  tiene 5 vértices y $8/2 = 4$ aristas. El único grafo posible es el cual desde un vértice salen 4 aristas a los otros vértices.
-        
-        \item $7,3,3,3,2,2$ 
-        
-        \rta El grafo tendría 6 vértices, por lo tanto la valencia máxima podría ser 5 y es imposible que uno de los vértices tenga valencia 7.
-        
-        \item $4,1,1,1$
-        
-        \rta Como la suma de las valencias $4+1+1+1 =7$ es impar, no existe un grafo con esas valencias.  
-    \end{enumerate}
-
     
 
     \item Demuestre que los siguientes pares de grafos son isomorfos (encuentre un isomorfismo):
