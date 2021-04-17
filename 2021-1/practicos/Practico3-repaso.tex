@@ -117,7 +117,7 @@ $$
 Esta ecuación nos dice que $4| a+b$, luego $(a+b,4)=4$.
 
 \item Probar que si $a,b$ son coprimos entonces $(a+b,a-b)=1 \text{
-\'o } 2 $.
+ó } 2 $.
 
 \rta Si $a+b$ y $a-b$ no tienen un primo en común que los divida, entonces $(a+b,a-b)=1 $ y el ejercicio está resuelto. 
 
@@ -174,7 +174,7 @@ $a = (a,b)=[a,b]$.
 
 \vskip .4cm
 
-\item Probar que si $d$ es un divisor com\'un de $a$ y $b$, entonces $\dfrac{[a,b]}{d} = \left[\dfrac{a}{d},\dfrac{b}{d}\right]$.
+\item\label{mcm-abd} Probar que si $d$ es un divisor común de $a$ y $b$, entonces $\dfrac{[a,b]}{d} = \left[\dfrac{a}{d},\dfrac{b}{d}\right]$.
 
 \rta 
 
@@ -192,21 +192,44 @@ $$
 $$
 
 
-\item Probar que $(a+b,[a,b])=(a,b)$. %En particular, si dos n\'umeros son coprimos, tambi\'en lo son su suma y su producto.
+\item Probar que $(a+b,[a,b])=(a,b)$. %En particular, si dos números son coprimos, también lo son su suma y su producto.
 
+\rta Primero hagamos el caso $(a,b)=1$. En este caso $[a,b] = ab/(a,b) = ab$, Por lo tanto debemos probar que si $(a,b)=1$,  entonces $(a+b,ab) =1$. 
 
+Supongamos que exista $p$ primo  tal que $p| a+b$ y $p| ab$. Como $p|ab$,  entonces $p|a$ o $p|b$, consideremos que $p|a$ (el otro caso es simétrico),  como $p|a+b$, entonces $p| a+b-a=b$. Es deir,  concluimos que $p|a$ y $p|b$, lo cual es absurdo pues $(a,b)= 1$. El absurdo vino de suponer que existía $p$ primo tal que  $p| a+b$ y $p| ab$. Por lo tanto $(a+b,ab) =1$.
 
-\item Probar que si $(a,b)=1$ y $n+2$ es un n\'umero primo, entonces $(a+b, a^2 + b^2 - nab) = 1$ \'o $n+2$.
+Ahora hagamos el caso en  que  $(a,b)=d > 1$. 
 
+Ahora bien,
+\begin{equation*}
+    \frac{1}{d}(a+b,[a,b]) = \left(\frac{a}{d}+\frac{b}{d},\frac{[a,b]}{d}\right)  \stackrel{Ej \ref{mcm-abd}}{=}
+    \left(\frac{a}{d}+\frac{b}{d},\left[\dfrac{a}{d},\dfrac{b}{d}\right]\right)  =1
+\end{equation*}   
+Está última igualdad se deduce del caso anterior (hemos visto anteriormente  que $(a/d, b/d)=1$). Por lo tanto,
+\begin{equation*}
+    \frac{1}{d}(a+b,[a,b]) = 1 \quad \Rightarrow \quad (a+b,[a,b]) = d = (a,b).
+\end{equation*}  
 
+\item Probar que si $(a,b)=1$ y $n+2$ es un número primo, entonces $(a+b, a^2 + b^2 - nab) = 1$ ó $n+2$.
 
+\rta Si  $(a+b, a^2 + b^2 - nab) = 1$, listo. En  caso contrario  existe $p$ primo tal que $p|a+b$ y $p| a^2 + b^2 - nab$. 
+
+Como $p|a+b$ $\Rightarrow$ $p|(a+b)^2 = a^2 +2ab +b^2$.
+
+Como $p|(a+b)^2 = a^2 +2ab +b^2$ y  $p| a^2 + b^2 - nab$, entonces  
+$$p| ( a^2 +2ab +b^2) - (a^2 + b^2 - nab)= (n+2)ab.$$
+
+Com $p$ es primo y $p|(n+2)ab$ $\Rightarrow$ $p|n+2$ o $p|a$ o $p|b$.
+
+Si $p|a$, como $p|a+b$ $\Rightarrow$ $p | (a+b) -a= b$, luego $(a,b) > 1$,  absurdo. También se llega,  en forma análoga, a un absurdo si $p|b$. 
+
+Luego, $p|n+2$ y por  lo tanto el mcd de $a+b$ y $a^2 + b^2 - nab$ es divisible por $p$. Como $n+2$  es primo, los únicos divisores que tiene son $1$ y el mismo, por lo tanto $p=n+2$.  Cualquier primo que divide a $a+b$ y $a^2 + b^2 - nab$ divide  a $(a+b, a^2 + b^2 - nab)$ y  viceversa. Por lo tanto, hemos probado que $d=p^k$. 
+
+Ahora bien,  razonando como antes podemos ver que $p^k| (n+2)ab$, pero como $p\not|a$ y $p\not|b$ $\Rightarrow$  $p^k| (n+2) = p$ $\Rightarrow$ $k=1$; y por lo tanto $d= n+2$. 
 
 
 \item Si $a\cdot b$ es un cuadrado y $a$ y $b$ son coprimos, probar que $a$ y $b$ son cuadrados.
 
-
-
-\medskip
 
 \item Probar que $\sqrt 6$ es irracional.
 
@@ -216,27 +239,16 @@ $$
 
 
 
+\item Hallar el menor múltiplo de 168 que es un cuadrado.
 
 
-\medskip
-
-\item Hallar el menor m\'ultiplo de 168 que es un cuadrado.
-
-
-
-\medskip
-
-\item Probar que el producto de dos enteros consecutivos no nulos no es un cuadrado. (Ayuda: usar el Teorema Fundamental de la Aritm\'etica).
-
-\medskip
+\item Probar que el producto de dos enteros consecutivos no nulos no es un cuadrado. (Ayuda: usar el Teorema Fundamental de la Aritmética).
 
 
 
 \item ¿Existen enteros $m$ y $n$ tales que:
 
 a) $m^4=27$? \qquad \qquad b) $m^2 = 12n^2$? \qquad \qquad c) $m^3 = 47n^3$?
-
-
 
 
 
@@ -248,12 +260,7 @@ a) $m^4=27$? \qquad \qquad b) $m^2 = 12n^2$? \qquad \qquad c) $m^3 = 47n^3$?
 \end{enumerate}
 
 
-
-
-
-
-\item ¿Cu\'al es la mayor potencia de $3$ que divide a $100!$? ¿En cu\'antos ceros termina el de\-sa\-rro\-llo decimal de $100!$?
-
+\item ¿Cuál es la mayor potencia de $3$ que divide a $100!$? ¿En cuántos ceros termina el de\-sa\-rro\-llo decimal de $100!$?
 
 
 \item Determinar todos los $p\in\mathbb N$ tales que
@@ -261,9 +268,7 @@ a) $m^4=27$? \qquad \qquad b) $m^2 = 12n^2$? \qquad \qquad c) $m^3 = 47n^3$?
 sean todos primos.
 
 
-
-
-\item  Sea $\{f_n\}_{n\in\mathbb N}$ la sucesi\'on de Fibonacci, definida recursivamente por: $f_1=1,\, f_2=1$, $f_{n+1}=f_{n}+f_{n-1},\, n\geq 2$. Probar que:
+\item  Sea $\{f_n\}_{n\in\mathbb N}$ la sucesión de Fibonacci, definida recursivamente por: $f_1=1,\, f_2=1$, $f_{n+1}=f_{n}+f_{n-1},\, n\geq 2$. Probar que:
 \begin{enumerate}
 \item\label{fib-a} $f_{3n}$ es par $\forall\, n\in\mathbb N$.
 \item\label{fib-b} $f_{3n+1}$ y $f_{3n+2}$ son impares $\forall\, n\in\mathbb N$.
@@ -274,60 +279,89 @@ sean todos primos.
 \end{enumerate}
 
 \rta 
+\begin{enumerate}
+    \item[\ref{fib-a}] Demostraremos el resultado por inducción. 
 
-\ref{fib-a} Demostraremos el resultado por inducción. 
+    Caso base $n=1$. En este caso $f_3 = f_2 + f_1 = 2$, es par.
+    
+    Paso inductivo. Sea $n>1$. Supongamos que $f_{3(n-1)}$ es par (HI) y probemos que $f_{3n}$ es par: 
+    \begin{align*}
+        f_{3n} & = f_{3n-1} + f_{3n-2} \\
+               & = f_{3n-2} + f_{3n-3} + f_{3n-2} \\
+               & = 2 f_{3n-2} + f_{3(n-1)}. 
+    \end{align*}
+    Por (HI), $f_{3(n-1)}$ es par  y claramente $ 2 f_{3n-2}$  es par, luego $f_{3n}$ es par.
+    \item[\ref{fib-b}] También demostraremos este caso por inducción. Lo que debemos demostrar es 
+    $$
+    P(n) : \text{``$f_{3n+1}$ y $f_{3n+2}$ son impares $\forall\, n\in\mathbb N$''}
+    $$
+    
+    Caso base $n=1$. En este caso $f_{3n+1}$ y $f_{3n+2}$ son $f_{4}$ y $f_{5}$ y $f_4 = f_3+f_2 = 2 +1 =3$, $f_5 = f_4 +f_3 =3 +2 =5$, ambos impares. 
+    
+    Paso  inductivo.  Sea $n>1$. Supongamos que $f_{3(n-1)+1} = f_{3n-2}$ y $f_{3(n-1)+2} = f_{3n-1}$ son impares (HI), probemos que  $f_{3n+1}$ y $f_{3n+2}$ son impares. 
+    Ahora bien, 
+    $$
+    f_{3n+1} = f_{3n+1 -1} + ,f_{3n+1 -2} =f_{3n} + f_{3n-1}.
+    $$
+    Por el inciso anterior $f_{3n}$  es par y por (HI) $f_{3n-1}$ es impar. Como la suma de un par y un impar es impar, resulta que $f_{3n+1}$ es impar. Con un razonamiento análogo probamos que $f_{3n+2}$  es impar:  
+    $$
+    f_{3n+2} = f_{3n+2 -1} + ,f_{3n+2 -2} =f_{3n +1} + f_{3n}.
+    $$
+    Por lo tanto, $f_{3n+2}$  es la suma de un impar y un par, y en consecuencia es impar. 
+    
+    \item[\ref{fib-c}] También lo hacemos por inducción. El paso inductivo es:
+    \begin{align*}
+        f_{n+m} &= f_{n+m -1} +f_{n+m-2}&&\text{(Definición recursiva de $f$)} \\
+                &= f_{m-1}f_{n+1}+f_{m-2}f_{n}  + f_{m-2}f_{n+1}+f_{m-3}f_{n}&&\text{((HI) dos veces)} \\
+                &= (f_{m-1}f_{n+1}  + f_{m-2}f_{n+1})+(f_{m-2}f_{n}+f_{m-3}f_{n})&& \\
+                &= (f_{m-1} + f_{m-2})f_{n+1}+(f_{m-2}+f_{m-3})f_{n}&& \\
+                &= f_{m}f_{n+1}+f_{m-1}f_{n}.&&\text{(Definición recursiva de $f$)}
+    \end{align*}
+    
+    \item[\ref{fib-d}]
+    También lo hacemos por inducción. El paso inductivo es: por el inciso anterior
+    $$
+    f_{nk} = f_{n(k-1) + n} =  f_{n}f_{n(k-1)+1}+f_{n-1}f_{n(k-1)},
+    $$
+    Por (HI), $f_{n(k-1)} = hf_n$, luego
+    $$
+    f_{nk} =  f_{n}f_{n(k-1)+1}+hf_{n-1}f_n =  f_{n}(f_{n(k-1)+1}+hf_{n-1}),
+    $$
+    y por consiguiente $f_{n}| f_{nk}$. 
+    
+    \item[\ref{fib-e}] También lo hacemos por inducción. El paso inductivo es:
+    \begin{align*}
+        f_{n+1}f_{n-1}-f_n^2 &= (f_{n} +f_{n-1})f_{n-1}-f_n^2 \\
+        &= f_{n}f_{n-1} +f_{n-1}^2-f_n^2 \\
+    \end{align*}
+    Por (HI), $f_{n}f_{n-2}-f_{n-1}^2=(-1)^{n-1}$, luego $$f_{n-1}^2= f_{n}f_{n-2}-(-1)^{n-1} = f_{n}f_{n-2}+(-1)^{n} .$$ Por lo tanto, 
+    \begin{align*}
+        f_{n+1}f_{n-1}-f_n^2 &= f_{n}f_{n-1} +f_{n-1}^2-f_n^2&& \\
+        &= f_{n}f_{n-1} +f_{n}f_{n-2}+(-1)^{n} -f_n^2&&\text{(HI)} \\
+        &= f_{n}(f_{n-1} +f_{n-2})+(-1)^{n} -f_n^2&& \\
+        &= f_{n}f_n+(-1)^{n} -f_n^2 &&\text{(Def. rec. de $f$)}\\
+        &= (-1)^{n}
+    \end{align*}
+    
+    \item[\ref{fib-f}] Lo  hacemos por inducción sobre $n$. 
+    
+    Caso base $n=1$. En este caso $(f_2,f_1) = (1,1) = 1$.
+    
+    Paso inductivo. Supongamos que el para $n>1$  se cumple 
+    \begin{equation*}
+        (f_n, f_{n-1}) =1\qquad (HI).
+    \end{equation*}
+    Probaremos que $(f_{n+1}, f_{n}) =1$. 
+    
+    Sea $d$  entero positivo tal que $d|f_{n+1}$ y  $d|f_{n}$. Como $d|f_{n+1}$ y $f_{n+1} = f_n + f_{n-1}$, $d| f_n + f_{n-1}$ $\Rightarrow$ (pues $d|f_{n}$), $d| f_n + f_{n-1} -f_n =  f_{n-1}$.
+    
+    Por lo tanto, $d|f_{n}$. y $d|f_{n-1}$. Por (HI) $\Rightarrow$ $d=1$. Probamos que todo divisor de $f_{n+1}$ y $f_{n}$ es $1$, por lo tanto $(f_{n+1}, f_{n}) =1$. 
+\end{enumerate}
 
-Caso base $n=1$. En este caso $f_3 = f_2 + f_1 = 2$, es par.
 
-Paso inductivo. Sea $n>1$. Supongamos que $f_{3(n-1)}$ es par (HI) y probemos que $f_{3n}$ es par: 
-\begin{align*}
-    f_{3n} & = f_{3n-1} + f_{3n-2} \\
-           & = f_{3n-2} + f_{3n-3} + f_{3n-2} \\
-           & = 2 f_{3n-2} + f_{3(n-1)}. 
-\end{align*}
-Por (HI), $f_{3(n-1)}$ es par  y claramente $ 2 f_{3n-2}$  es par, luego $f_{3n}$ es par.
 
-\ref{fib-b} También demostraremos este caso por inducción. Lo que debemos demostrar es 
-$$
-P(n) : \text{``$f_{3n+1}$ y $f_{3n+2}$ son impares $\forall\, n\in\mathbb N$''}
-$$
 
-Caso base $n=1$. En este caso $f_{3n+1}$ y $f_{3n+2}$ son $f_{4}$ y $f_{5}$ y $f_4 = f_3+f_2 = 2 +1 =3$, $f_5 = f_4 +f_3 =3 +2 =5$, ambos impares. 
 
-Paso  inductivo.  Sea $n>1$. Supongamos que $f_{3(n-1)+1} = f_{3n-2}$ y $f_{3(n-1)+2} = f_{3n-1}$ son impares (HI), probemos que  $f_{3n+1}$ y $f_{3n+2}$ son impares. 
-Ahora bien, 
-$$
-f_{3n+1} = f_{3n+1 -1} + ,f_{3n+1 -2} =f_{3n} + f_{3n-1}.
-$$
-Por el inciso anterior $f_{3n}$  es par y por (HI) $f_{3n-1}$ es impar. Como la suma de un par y un impar es impar, resulta que $f_{3n+1}$ es impar. Con un razonamiento análogo probamos que $f_{3n+2}$  es impar:  
-$$
-f_{3n+2} = f_{3n+2 -1} + ,f_{3n+2 -2} =f_{3n +1} + f_{3n}.
-$$
-Por lo tanto, $f_{3n+2}$  es la suma de un impar y un par, y en consecuencia es impar. 
-
-\ref{fib-c}
-\begin{align*}
-    f_{n+m} &= f_{n+m -1} +f_{n+m-2} \\
-            &= f_{m-1}f_{n+1}+f_{m-2}f_{n}  + f_{m-2}f_{n+1}+f_{m-3}f_{n} \\
-            &= (f_{m-1}f_{n+1}  + f_{m-2}f_{n+1})+(f_{m-2}f_{n}+f_{m-3}f_{n}) \\
-            &= (f_{m-1} + f_{m-2})f_{n+1}+(f_{m-2}+f_{m-3})f_{n} \\
-            &= f_{m}f_{n+1}+f_{m-1}f_{n}.
-\end{align*}
-
-\ref{fib-d}
-Por el inciso anterior
-$$
-f_{nk} = f_{n(k-1) + n} =  f_{n}f_{n(k-1)+1}+f_{n-1}f_{n(k-1)},
-$$
-Por (HI), $f_{n(k-1)} = hf_n$, luego
-$$
-f_{nk} =  f_{n}f_{n(k-1)+1}+hf_{n-1}f_n =  f_{n}(f_{n(k-1)+1}+hf_{n-1}),
-$$
-y por consiguiente $f_{n}| f_{nk}$. 
-
-\ref{fib-e}
-
-\ref{fib-f}
 \end{enumerate}
 
 \end{document}
