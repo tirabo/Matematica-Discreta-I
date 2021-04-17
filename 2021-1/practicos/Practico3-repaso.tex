@@ -80,46 +80,116 @@
 
 \item Sea $p$ primo positivo. Probar que $(p,(p-1)!)=1$.
 
+\rta Supongamos que  $(p,(p-1)!)>1$,  como el único divisor de $p$ además del $1$ es $p$, esto quiere decir que  $(p,(p-1)!)=p$ y por lo tanto $p|(p-1)!$.
+
+Ahora bien, recodemos que si  $p$ primo, entonces
+$$
+p | a_1\cdot a_2 \cdot \cdots \cdot a_k \quad \Rightarrow\quad p| a_i \; \text{ para algún $i$ tal que $1 \le i \le k$}.
+$$
+Luego,
+$$
+p | (p-1)! = 1\cdot 2 \cdots (p-1) \quad \Rightarrow\quad p| i \; \text{ para algún $i$ tal que $1 \le i \le p-1$}.
+$$
+Es decir, $p|i$ con $i < p$, absurdo.
 
 
-\item Demostrar que $\forall n\in{\mathbb Z}$, $n>2$, existe $p$ primo tal que $n<p<n!$. (Ayuda: pensar qu\'e primos dividen a $n! - 1$.)
+\item Demostrar que $\forall n\in{\mathbb Z}$, $n>2$, existe $p$ primo tal que $n<p<n!$. (Ayuda: pensar qué primos dividen a $n! - 1$.)
+
+\rta Si $n! - 1$ es primo,  el ejercicio está demostrado. Si  $n! - 1$ no es primo, entonces existe un primo $p$ tal que $p| n! - 1$. Ahora bien, $p\not| i$ para $1 \le i \le n$, pues si $p|i$ $\Rightarrow$    $p| n!$  $\Rightarrow$  $p| (n! - 1) -n = -1$,  absurdo. 
+
+Por lo tanto, $p$ primo, $p \ne 1,2, \ldots, n$ y  $p| n! - 1$,  esto implica que $p$ primo, $p > n$ y  $p <  n!$, lo cual prueba el resultado.
 
 
 
+\item Dado un entero $a>0$ fijo, caracterizar aquellos números que al dividirlos por $a$ tienen cociente igual al resto.
 
+\rta Sea $b$ que cumpla con lo que pide el enunciado del ejercicio, es decir $b = a \cdot r + r$ y $0 \le r < b$. por lo tanto  $b = (a+1) r$ con  $0 \le r < b$. Como $a>0$,  es claro que si $b=(a+1)r$,  entonces $r < b$. 
 
-\item Dado un entero $a>0$ fijo, caracterizar aquellos n\'umeros que al dividirlos por $a$ tienen cociente igual al resto.
-
-
+Concluyendo:  los  números que al dividirlos por $a$ tienen cociente igual al resto son de la forma $(a+1)r$,  con $0 \le r$. 
 
 
 \item Probar que si $(a,4)=2$ y $(b,4)=2$ entonces $(a+b,4)=4$.
 
+\rta Dividamos $a$ y $b$ por $4$, y enemos $a = 4k+ r$, $b = 4t + s$ con $ 0 \le r,s < 4$. Ahora bien como  $(a,4)=2$ y $(b,4)=2$, $4$ no divide ni $a$, ni a $b$, por  lo tanto $0 < r,s$. Por otro lado, como $2$ divide a $a$ y $b$,  entonces $r,s \not= 1,3$. Todo esto implica que $r=s=2$. Es decir, $a = 4k+ 2$, $b = 4t + 2$. Luego 
+$$
+a + b =  ( 4k+ 2) + ( 4t + 2) = 4(k+t) +4 = 4(k+t+1). 
+$$
+Esta ecuación nos dice que $4| a+b$, luego $(a+b,4)=4$.
 
 \item Probar que si $a,b$ son coprimos entonces $(a+b,a-b)=1 \text{
 \'o } 2 $.
 
+\rta Si $a+b$ y $a-b$ no tienen un primo en común que los divida, entonces $(a+b,a-b)=1 $ y el ejercicio está resuelto. 
+
+En caso contrario, sea $p$ primo tal que $p | a+b$ y $p|a-b$, luego 
+\begin{align*}
+    p|  (a+b) + (a-b) &= 2a \quad \stackrel{\text{$p$ es primo}}{\Longrightarrow} \quad p|2 \;\vee\; p|a \\
+    p|  (a+b) - (a-b) &= 2b \quad \stackrel{\text{$p$ es primo}}{\Longrightarrow} \quad p|2 \;\vee\; p|b. \\
+\end{align*} 
+Como $a$ y $b$ son coprimos, no tienen un primo en común que los divida, es decir no puede ocurrir  que  $p | b$ y $p|b$. Por lo tanto $p|2$ (por lo de arriba),  es decir $p =2$. Esto nos dice que  $a+b$ y $a-b$ son divisibles por $2$. Tomenos $n = (a+b)/2$ y $m = (a-b)/2$  (son números enteros porque  $a+b$ y $a-b$ son divisibles por $2$). Sea $q$ primo tal que $q|n$ y $q|m$. Entonces, 
+\begin{align*}
+    q| n+m =  \frac{a+b}{2} + \frac{a-b}{2} &= a  \\
+    q| n-m =  \frac{a+b}{2} - \frac{a-b}{2} &= b .\\
+\end{align*} 
+Es  decir, $q$ primo y $q|a$ y $q|b$, pero esto no puede ocurrir pues $a$ y $b$ coprimos. 
 
 
+Luego
+$$
+( \frac{a+b}{2}, \frac{a-b}{2}) =1 \qquad \Rightarrow\qquad (a+b,a-b) =2.
+$$
 
 
+\item Sean $a,b$ enteros no nulos. Completar y demostrar:
 
+a)  $[a,a]=?$
 
-\item Completar y demostrar:
+b)  $[a,b]=b$ si y solo si $\ldots$
 
-a) Si $a \in {\mathbb Z}$, entonces $[a,a]=\dots$
+c) $(a,b)=[a,b]$ si y solo si $\ldots$
 
-b) Si $a$, $b \in {\mathbb Z}$, $[a,b]=b$ si y s\'olo si $\ldots$
+\rta 
 
-c) $(a,b)=[a,b]$ si y s\'olo si $\ldots$
+a)  $[a,a]=|a|$
 
+\textit{Demostración.} Supongamos que $a > 0$. Si $m$  es el mcm de $a$ y $a$,  entonces $m$  es el menor múltiplo positivo de  $a$,  es decir $m=a$. Si $a<0$, entonces $-a>0$ y aplicando el razonamiento anterior  $[-a,-a]=-a = |a|$. Como $[a,a]= [-a,-a]$ obtenemos que  $[a,a]=|a|$. 
 
+\vskip .2cm 
 
+b)  $[a,b]=b$ si y solo si $b>0$ y $a|b$. 
+
+\textit{Demostración.} ($\Rightarrow$) Como $b$  es un mcm, por definición de mcm $b> 0$. Por otro  lado, de nuevo por definición de mcm, $a|b$.
+
+($\Leftarrow$) $b>0$ y $a|b$, $b|b$, luego $b$ es un múltiplo positivo de $a$ y $b$ y como todo múltiplo  de $b$ es mayor o igual a $b$, $b$  es el mcm. 
+
+\vskip .2cm 
+c) $(a,b)=[a,b]$ si y solo si $a = \pm b$.
+
+\textit{Demostración.} Supongamos que ambos son positivos (en caso contrario usamos que $(a,b) = (\pm a,\pm b)$ y $[a,b] = [\pm a,\pm b]$). 
+
+($\Rightarrow$) Sea $ k = (a,b)=[a,b]$. Como $k = (a,b)$, $k \ge a, b$. Como  $k = [a,b]$, $k \le a, b$: En consecuencia $a \le k \le a$ y $b \le k \le b$ $\Rightarrow$ $a=k=b$.
+
+($\Leftarrow$) Si $a=b$,  entonces $(a,b) = (a,a) =a$ y $[a,b] =[a,a] =a$, por lo tanto 
+$a = (a,b)=[a,b]$. 
+
+\vskip .4cm
 
 \item Probar que si $d$ es un divisor com\'un de $a$ y $b$, entonces $\dfrac{[a,b]}{d} = \left[\dfrac{a}{d},\dfrac{b}{d}\right]$.
 
+\rta 
 
-
+$$
+\dfrac{[a,b]}{d} = \dfrac{ab/(a,b)}{d} = \dfrac{ab}{d(a,b)}.
+$$
+Por otro lado, 
+$$
+\left[\dfrac{a}{d},\dfrac{b}{d}\right] = \frac{(a/d)(b/d)}{(a/d,b/d)} =  
+\frac{ab/d^2}{(a,b)/d} = \frac{ab/d}{(a,b)} = \dfrac{ab}{d(a,b)}.
+$$
+En la última fórmula usamos la propiedad 
+$$
+\dfrac{(a,b)}{d} = \left(\dfrac{a}{d},\dfrac{b}{d}\right).
+$$
 
 
 \item Probar que $(a+b,[a,b])=(a,b)$. %En particular, si dos n\'umeros son coprimos, tambi\'en lo son su suma y su producto.
@@ -195,16 +265,69 @@ sean todos primos.
 
 \item  Sea $\{f_n\}_{n\in\mathbb N}$ la sucesi\'on de Fibonacci, definida recursivamente por: $f_1=1,\, f_2=1$, $f_{n+1}=f_{n}+f_{n-1},\, n\geq 2$. Probar que:
 \begin{enumerate}
-\item $f_{3n}$ es par $\forall\, n\in\mathbb N$.
-\item $f_{3n+1}$ y $f_{3n+2}$ son impares $\forall\, n\in\mathbb N$.
-\item $f_{n+m}=f_mf_{n+1}+f_{m-1}f_n\; \forall n,m\in\mathbb N,\, m\geq 2$.
-\item $f_n\mid f_{nk}\;  \forall k\in\mathbb N$.
-\item $f_{n+1}f_{n-1}-f_n^2=(-1)^n\; \forall n\geq 2$.
-\item $(f_{n+1},f_n)=1\; \forall\, n\in\mathbb N$.
+\item\label{fib-a} $f_{3n}$ es par $\forall\, n\in\mathbb N$.
+\item\label{fib-b} $f_{3n+1}$ y $f_{3n+2}$ son impares $\forall\, n\in\mathbb N$.
+\item\label{fib-c} $f_{n+m}=f_{m}f_{n+1}+f_{m-1}f_{n}\; \forall n,m\in\mathbb N,\, m\geq 2$.
+\item\label{fib-d} $f_n\mid f_{nk}\;  \forall k\in\mathbb N$.
+\item\label{fib-e} $f_{n+1}f_{n-1}-f_n^2=(-1)^n\; \forall n\geq 2$.
+\item\label{fib-f} $(f_{n+1},f_n)=1\; \forall\, n\in\mathbb N$.
 \end{enumerate}
 
+\rta 
 
+\ref{fib-a} Demostraremos el resultado por inducción. 
 
+Caso base $n=1$. En este caso $f_3 = f_2 + f_1 = 2$, es par.
+
+Paso inductivo. Sea $n>1$. Supongamos que $f_{3(n-1)}$ es par (HI) y probemos que $f_{3n}$ es par: 
+\begin{align*}
+    f_{3n} & = f_{3n-1} + f_{3n-2} \\
+           & = f_{3n-2} + f_{3n-3} + f_{3n-2} \\
+           & = 2 f_{3n-2} + f_{3(n-1)}. 
+\end{align*}
+Por (HI), $f_{3(n-1)}$ es par  y claramente $ 2 f_{3n-2}$  es par, luego $f_{3n}$ es par.
+
+\ref{fib-b} También demostraremos este caso por inducción. Lo que debemos demostrar es 
+$$
+P(n) : \text{``$f_{3n+1}$ y $f_{3n+2}$ son impares $\forall\, n\in\mathbb N$''}
+$$
+
+Caso base $n=1$. En este caso $f_{3n+1}$ y $f_{3n+2}$ son $f_{4}$ y $f_{5}$ y $f_4 = f_3+f_2 = 2 +1 =3$, $f_5 = f_4 +f_3 =3 +2 =5$, ambos impares. 
+
+Paso  inductivo.  Sea $n>1$. Supongamos que $f_{3(n-1)+1} = f_{3n-2}$ y $f_{3(n-1)+2} = f_{3n-1}$ son impares (HI), probemos que  $f_{3n+1}$ y $f_{3n+2}$ son impares. 
+Ahora bien, 
+$$
+f_{3n+1} = f_{3n+1 -1} + ,f_{3n+1 -2} =f_{3n} + f_{3n-1}.
+$$
+Por el inciso anterior $f_{3n}$  es par y por (HI) $f_{3n-1}$ es impar. Como la suma de un par y un impar es impar, resulta que $f_{3n+1}$ es impar. Con un razonamiento análogo probamos que $f_{3n+2}$  es impar:  
+$$
+f_{3n+2} = f_{3n+2 -1} + ,f_{3n+2 -2} =f_{3n +1} + f_{3n}.
+$$
+Por lo tanto, $f_{3n+2}$  es la suma de un impar y un par, y en consecuencia es impar. 
+
+\ref{fib-c}
+\begin{align*}
+    f_{n+m} &= f_{n+m -1} +f_{n+m-2} \\
+            &= f_{m-1}f_{n+1}+f_{m-2}f_{n}  + f_{m-2}f_{n+1}+f_{m-3}f_{n} \\
+            &= (f_{m-1}f_{n+1}  + f_{m-2}f_{n+1})+(f_{m-2}f_{n}+f_{m-3}f_{n}) \\
+            &= (f_{m-1} + f_{m-2})f_{n+1}+(f_{m-2}+f_{m-3})f_{n} \\
+            &= f_{m}f_{n+1}+f_{m-1}f_{n}.
+\end{align*}
+
+\ref{fib-d}
+Por el inciso anterior
+$$
+f_{nk} = f_{n(k-1) + n} =  f_{n}f_{n(k-1)+1}+f_{n-1}f_{n(k-1)},
+$$
+Por (HI), $f_{n(k-1)} = hf_n$, luego
+$$
+f_{nk} =  f_{n}f_{n(k-1)+1}+hf_{n-1}f_n =  f_{n}(f_{n(k-1)+1}+hf_{n-1}),
+$$
+y por consiguiente $f_{n}| f_{nk}$. 
+
+\ref{fib-e}
+
+\ref{fib-f}
 \end{enumerate}
 
 \end{document}

@@ -13,7 +13,7 @@ Claramente esta definición se puede extender a cualquier entero positivo $m$.
 $$
 a \equiv b \pmod{m}
 $$
-si $a-b$ es divisible or $m$.
+si $a-b$ es divisible por $m$.
 \end{definicion}
 
 Observar que $a\equiv 0 \pmod{m}$ si  y sólo si $m|a$ y que $a\equiv b \pmod{m}$ si y sólo si $a-b\equiv 0 \pmod{m}$. 
@@ -117,6 +117,8 @@ x^j \equiv y^j \pmod{m}.
 $$
 \end{proof}
 
+
+Veremos ahora una aplicación interesante de las congruencias y  sus propiedades. 
 
 \begin{proposicion}\label{prop412}
 Sea $(x_nx_{n-1}\ldots x_0)_{10}$ la representación del entero positivo $x$ en base $10$, entonces
@@ -818,11 +820,11 @@ Supongamos ahora que queremos calcular
 $$
          5^{1125899986842625} \equiv r \pmod{100000037},
 $$
-Hacer este cálculo  directamente no nos da un resultado satisfactorio, ni siquiera con un programa de computadora. Pueden hacer el intento con un lenguaje de programación, Python por ejemplo, y verán que el programa no termina. Ahora bien, como $1125899986842625 < 2^{51}$, usando el método de la fórmula \ref{eq-pmod-2} necesitaremos alrededor de $50$ pasos del tipo 
+Hacer este cálculo  directamente no nos da un resultado satisfactorio, ni siquiera con un programa de computadora. Pueden hacer el intento con un lenguaje de programación, Python por ejemplo, y verán que el programa no termina. Ahora bien, como $1125899986842625 < 2^{51}$, usando el método de la fórmula \ref{eq-pmod-2} necesitaremos alrededor de $50$ pasos del tipo: dados $x,c,s$ tal que $0 \le x, c, < 100000037$ y $s = 0, 1$,  encontrar $c'$ tal que:
 $$
         x^2 \cdot 5^s \cdot c\equiv c'  \pmod{100000037}
 $$
-donde $0 \le x, c, c' < 100000037$ y $s = 0, 1$. La clave es que no son muchos pasos y que en cada uno de ellos los cálculos se pueden hacer con facilidad. 
+con $0 \le c' < 100000037$. La clave es que no son muchos pasos y que en cada uno de ellos los cálculos se pueden hacer con facilidad. 
 
 La fórmula de la proposición \ref{prop-exp-mod} nos muestra como casi inmediátamente podemos obtener una fórmula recursiva para la exponenciación modular:  sea $n> 0$, definimos $\modulo$ el \textit{operador módulo} de tal forma que $a \modulo n$ devuelve el resto de dividir $a$ por $n$. También definimos $\cociente$ el \textit{operador cociente} de tal forma que $ a \cociente n$ es el cociente entero de dividir $a$ por $n$. Entonces,  la ecuación \eqref{eq-pmod-2} es equivalente a 
 $$
@@ -919,7 +921,7 @@ Con la aplicación del teorema de Fermat y la ecuación lineal de congruencia pr
 \end{proof}
 
 \begin{teorema}
-    Si $n$ es un primo impar, entonces $n$ es probable primo fuerte para cualquier base  $a$ ($0 < a < n$).
+    Si $n$ es un primo impar, entonces $n$ es FPP para cualquier base  $a$ con $0 < a < n$.
 \end{teorema}
 \begin{proof}
     Consideremos la sucesión $a^{2^s \cdot d}, a^{2^{s-1} \cdot d}, \dots, a^{2d}, a^d$ y  observemos que cada término de la sucesión es el cuadrado del siguiente.

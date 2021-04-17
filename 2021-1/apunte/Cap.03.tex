@@ -732,7 +732,7 @@ Este último código y el de la página \pageref{cod-alg-de-euclides} son códig
 
 
 \begin{definicion}\label{def-mcm}
-Si $a$ y $b$ son enteros decimos que un entero no negativo $m$ es el \textit{mínimo común múltiplo}\index{mínimo común múltiplo}, o \textit{mcm}, de $a$ y $b$ si
+Sean $a$ y $b$  enteros no nulos. Decimos que un entero positivo $m$ es el \textit{mínimo común múltiplo}\index{mínimo común múltiplo}, o \textit{mcm}, de $a$ y $b$ si
 \begin{enumerate}[label=\textit{\alph*)}]
 \item\label{it.defmcm1} $ a|m$ y $b|m$;
 \item\label{it.defmcm2} si $ a|n $ y $b|n$ entonces $ m|n$.
@@ -1079,7 +1079,7 @@ $$
 
 \begin{observacion*} La proposición anterior nos puede llevar a pensar que una forma sencilla de encontrar el mcd y mcm  es usando la descomposición en factores primos de los números involucrados. Esto, en general, no es así para números grandes: no hay un método eficiente para encontrar la descomposición prima de un número grande. Esencialmente, el mejor método para encontrar un divisor de un número grande es el criterio de la raíz, es decir probando si algún número menor que la raíz del número original lo divide. El criterio de la raíz baja el número de comprobaciones de $n$ a $\sqrt{n}$ y eso no ayuda mucho cuando $n$ es grande.
 
- Ahora bien, ¿qué es un ``número grande''? En la actualidad, por ejemplo, con todos los recursos computacionales de que se disponen no es posible factorizar números de $200$ dígitos o más.     
+ Ahora bien, ¿qué es un ``número grande''? En la actualidad, por ejemplo, con todos los recursos computacionales de que se disponen, no es posible factorizar números de $200$ dígitos o más. Por lo tanto, no podríamos encontrar el mcd  de dos números de $200$ dígitos o más a partir de la factorización prima de ambos. Sin embargo,  con el algoritmo de Euclides el mcd de estos números se obtendría en pocos segundos.     
 \end{observacion*}
 
 
