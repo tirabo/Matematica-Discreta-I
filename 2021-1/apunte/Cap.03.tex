@@ -325,27 +325,48 @@ En el ejemplo anterior usamos dos enteros pequeños y no tuvimos problemas en en
 En  el desarrollo de esta sección responderemos estas preguntas. 
 
 
+\begin{proposicion}
+    Sean $a$ y $b$ números enteros, algunos de ellos no nulo, entonces el mcd, si existe,  es único. 
+\end{proposicion}
+\begin{proof}
+    Sean $d$ y $d'$ dos enteros no negativos que satisfacen las propiedades de la definición del máximo común divisor, como $d'|a$, $d'|b$ y  $d$ satisface la propiedad {\ref{mcdb}} de la definición de mcd, se deduce que $d|d'$. Intercambiando  los papeles de $d$ y $d'$ se obtiene que $d'|d$. Luego, $d|d'$, $d'|d$ y $d,d'\ge 0$, entonces, por  proposición \ref{pm} \ref{prop-pm-b}, se obtiene que $d=d'$.
+\end{proof}
+
+\begin{definicion} Sean $a,b$ enteros, entonces dados $s,t \in \Z$ diremos que
+    $$
+    sa+tb
+    $$ 
+    es una  \textit{combinación lineal entera} de $a$ y $b$. 
+\end{definicion}
+
+\begin{observacion*} Sean $a,b \in \Z$, alguno de ellos no nulo, y $d$ un máximo común divisor de $a$ y $b$. Entonces, $d$ divide a cualquier combinación lineal entera de $a$ y $b$. Esto es una consecuencia directa de la observación \ref{prop-divide-a-propiedades} \ref{prop-divide-a-propiedades-item-4}.
+\end{observacion*}
+
 \begin{teorema}
-    Dados $a,b \in \Z$, alguno de ellos no nulo, existe un único $d \in \Z$ que es el máximo común divisor. 
+    Sean $a,b \in \Z$, alguno de ellos no nulo. Sea $d$ el mínimo entre todas las combinaciones lineales enteras positivas de $a$ y $b$.  Entonces,  $d$ es el máximo común divisor de $a$ y $b$. 
 \end{teorema}
 \begin{proof}
     Sin pérdida de generalidad podemos suponer que  $a \ne 0$. Sea 
     \begin{equation*}
-    S = \{m a+n b : m,n\in \Z, m a+n b>0\}.
+    S = \{m a+n b : m,n\in \Z, m a+n b>0\},
     \end{equation*}
-    Como  $a$ o $-a$ pertenecen a $S$, tenemos que  $S \not= \emptyset$, luego, por el principio de buena ordenación, $S$ tiene un  mínimo $d$. Probaremos ahora que  $d$  es un  máximo común divisor de $a$ y $b$. 
+    el conjunto de las combinaciones lineales positivas de $a$ y $b$. Como  $a$ o $-a$ pertenecen a $S$, tenemos que  $S \not= \emptyset$, luego, por el principio de buena ordenación, $S$ tiene un  mínimo $d$. Probaremos ahora que  $d$  es un  máximo común divisor de $a$ y $b$. 
     
     \textit{Propiedad {\ref{mcdb}}.} Puesto  que $d \in S$,  existen $s, t \in \Z$ tal que $d = sa+tb$. Sea $c$ tal que $c|a$ y $c|b$, por \ref{prop-divide-a-propiedades-item-4} de la observación \ref{prop-divide-a-propiedades},  tenemos que $c|sa+tb$,  es decir $c|d$. 
     
     \textit{Propiedad {\ref{mcda}}.} Supongamos ahora que $d \nodivide  a$,  entonces $|a| = qd + r$ con $0 < r <d$ y $q \ge 0$, luego $r = \pm a - qd = \pm a-q(sa+tb) = a(\pm1-qs) +(-qt)b$. Por lo tanto,  $r < d$  pertenece a $S$, contradiciendo  el hecho de que $d$  es un mínimo de $S$. La contradicción vino de suponer que  $d \nodivide  a$, por lo tanto $d|a$. En  forma análoga podemos probar que $d|b$. 
-    
-    
-    \textit{Unicidad.} Sean $d$ y $d'$ dos enteros no negativos que satisfacen las propiedades de la definición del máximo común divisor, como $d'|a$, $d'|b$ y  $d$ satisface la propiedad {\ref{mcdb}} de la definición de mcd, se deduce que $d|d'$. Intercambiando  los papeles de $d$ y $d'$ se obtiene que $d'|d$. Luego, como $d,d'\ge 0$, por  proposición \ref{pm} \ref{prop-pm-b} se obtiene que $d=d'$.
 \end{proof}
 
-Si $a,b$ enteros,  alguno de ellos  no nulo,  denotaremos al máximo común divisor  de $a$ y $b$ por $\mcd(a,b)$, o en caso de no haber confusión por $(a,b)$.
 
+Si $a,b$ enteros,  alguno de ellos  no nulo,  denotaremos al máximo común divisor  de $a$ y $b$ por $\mcd(a,b)$ o, en caso de no haber confusión, por $(a,b)$.
 
+\begin{observacion}\label{obs-mcd-divisores} Sean $a,b$ enteros,  alguno de ellos  no nulo, y $a', b'$ otro par de enteros tal que se cumple la propiedad:
+    $$
+    c |a \; \wedge\;  c| b \quad \Leftrightarrow \quad  c |a' \; \wedge\;  c| b', 
+    $$
+    es decir, $c$  es divisor de $a$ y $b$ si y solo si es divisor de $a'$ y $b'$. Entonces,  $\mcd(a,b) = \mcd(a',b')$. 
+    
+\end{observacion}
 
 \begin{ejemplo*} Hallar   $\mcd(174,72)$.
     \begin{proof}[Solución] ${^{}}$
@@ -358,17 +379,17 @@ Si $a,b$ enteros,  alguno de ellos  no nulo,  denotaremos al máximo común divi
     \end{proof}
 \end{ejemplo*}
 
-\begin{proposicion}\label{prop-d-comb-lin}
+\begin{corolario}\label{prop-d-comb-lin}
     Sean $a,b \in \Z$, alguno de ellos no nulo. Entonces existen $s,t \in \Z$ tal que
     \begin{equation*}
     (a,b) = sa + tb. 
     \end{equation*}
-\end{proposicion}
+\end{corolario}
 \begin{proof}
-    Se deduce trivialmente de la demostración del teorema anterior. 
+    Se deduce trivialmente del teorema anterior. 
 \end{proof}
 
-\begin{corolario} Sean $a$ y $b$ enteros, $b$ no nulo, entonces
+\begin{corolario} Sean $a$ y $b$ enteros uno de ellos no nulo, entonces
     $$
     (a,b) = 1 \Leftrightarrow \text{existen $s,t \in \mathbb Z$ tales que $1 = sa+tb$.}
     $$
@@ -380,11 +401,22 @@ Si $a,b$ enteros,  alguno de ellos  no nulo,  denotaremos al máximo común divi
 \end{proof}
 
 \begin{definicion}
-    Si el $(a,b)=1$ entonces decimos que $a$ y $ b$ son \textit{coprimos}\index{coprimos}.
+    Si $(a,b)=1$ entonces decimos que $a$ y $ b$ son \textit{coprimos}\index{coprimos}.
 \end{definicion}
 
 
-
+\begin{ejemplo*}
+    Sean $a$ y $b$ enteros coprimos y $c \in \Z$, entonces,
+    $$
+    a|c \; \wedge \; b|c  \quad \Rightarrow \quad ab|c.
+    $$
+\end{ejemplo*}
+\begin{proof}[Solución] como $a$ y $b$ son coprimos, existen $s,t \in \Z$ tales que $1 = sa+tb$. Por lo tanto,  multiplicando por $c$ la ecuación,  obtenemos $c = csa + ctb$. Como $a|c$, tenemos que $c/a \in \Z$, y 
+$$
+\frac{c}{a} = \frac{csa + ctb}{a} = cs + (\frac{c}{a})tb.
+$$ 
+Como $b|c$ y $b|b$, entonces $b |cs +(c/a)tb =c/a$, luego $(c/a)/b$ entero,  es decir $ab|c$.     
+\end{proof}
 
 
 
@@ -452,16 +484,7 @@ En  general no es sencillo encontrar todos los divisores de un número entero gr
     \end{equation}
 \end{proposicion}
 \begin{proof}
-    Para demostrar esto debemos observar que si $c$ divide $a$ y $b$, entonces también divide a $a-bq$; y como $a-bq=r$, tenemos que $c|r$. De este modo cualquier divisor común de $a$ y $b$ es también divisor común de $b$ y $r$.  Por otro lado si $c$ divide $b$ y $r$ también divide a $a=bq+r$. Es decir, 
-    \begin{equation}\label{eqmcd1}
-    \text{$c$ es divisor común de $a$ y $b$ si y sólo si $c$ es divisor común de $b$ y $r$.} \tag{*}
-    \end{equation}
-    Luego, sea $d = \mcd(a,b)$, probaremos que $d$ es el mcd entre $b$ y $r$:
-    \begin{enumerate}[label=\textit{\alph*)}]
-        \item\label{it.d=mcdbr} como $d|a$ y $d|b$, entonces por (\ref{eqmcd1}) tenemos que $ d|b$ y $d|r$;
-        \item\label{it.d=mcdab} si $c|a $ y $c|r$ entonces por (\ref{eqmcd1})  $c|a$ y $c|b$ y debido a que $d = \mcd(a,b)$, se deduce que $c|d$.
-    \end{enumerate}
-    Al satisfacer \ref{it.d=mcdbr} y \ref{it.d=mcdab}, obtenemos que $d = \mcd(b,r)$.
+    Para demostrar esto debemos observar que si $c$ divide $a$ y $b$, entonces también divide a $a-bq$; y como $a-bq=r$, tenemos que $c|r$. De este modo cualquier divisor común de $a$ y $b$ es también divisor común de $b$ y $r$.  Por otro lado si $c$ divide $b$ y $r$ también divide a $a=bq+r$. Es decir, $c$ es divisor común de $a$ y $b$ si y sólo si $c$ es divisor común de $b$ y $r$. Por lo tanto, por observación \ref{obs-mcd-divisores}, obtenemos que $d = \mcd(b,r)$.
 \end{proof}
 
 La aplicación repetida de este simple hecho, en combinación con el algoritmo de división, nos da un método para calcular el mcd.
@@ -546,9 +569,8 @@ i, j = a, b
 while j != 0:
     # invariante: mcd(a, b) = mcd(i, j)
     resto = i % j  # i = q * j + resto
-    i = j
-    j = resto
-return i
+    i, j = j, resto
+d = i
 \end{verbatim}
 \end{small}
 \end{minipage}
