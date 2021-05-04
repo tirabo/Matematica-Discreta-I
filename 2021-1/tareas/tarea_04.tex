@@ -12,7 +12,7 @@
 
 \renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
 
-% Para hacer el  indice en linea de comando hacer 
+% Para hacer el  indice en linea de comando hacer
 % makeindex main
 %% En http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf hay ejemplos de packages de fonts libres, como los siguientes:
 %\usepackage{cmbright}
@@ -35,7 +35,7 @@
 \usepackage{graphicx}     % From LaTeX distribution
 \usepackage{ifthen}
 \input{random.tex}        % From CTAN/macros/generic
-\usepackage{subfigure} 
+\usepackage{subfigure}
 \usepackage{tikz}
 \usetikzlibrary{arrows}
 \usetikzlibrary{matrix}
@@ -53,7 +53,7 @@
 \usepackage[a4paper, top=3cm, left=3cm, right=2cm, bottom=2.5cm]{geometry}
 %% CONTROLADORES DE.
 % Tamaño de la hoja de impresión.
-% Tamaños de los laterales del documento. 
+% Tamaños de los laterales del documento.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% \theoremstyle{plain} %% This is the default
 %\oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
@@ -69,7 +69,7 @@
 \hypersetup{
 	colorlinks=true,
 	linkcolor=blue,
-	filecolor=magenta,      
+	filecolor=magenta,
 	urlcolor=cyan,
 }
 \usepackage{hypcap}
@@ -110,14 +110,14 @@
 
 \newcommand{\tarea}[1]{
 	\begin{center}
-		{\Large Matemática Discreta I - 2020/1} \vskip.4cm
+		{\Large Matemática Discreta I - 2021/1} \vskip.4cm
 		{\Large Tarea #1}\vskip .4cm
 \end{center}}
 
 \renewenvironment{ejercicio}% environment name
 {% begin code
 	\par\vskip .5cm%
-	{\noindent\color{blue}Ejercicio}%
+	{\noindent\color{blue}Ejercicios}%
 	\vskip .2cm
 }%
 {%
@@ -136,7 +136,7 @@
 
 \begin{document}
 	
-	%\frame{\titlepage} 
+	%\frame{\titlepage}
 	
 	
 	\tarea{4}
@@ -147,13 +147,13 @@
                 \item (20 pts) Si no hay restricciones.
                 \item (30 pts) Si debe haber tres picas y dos corazones.
                 \item (30 pts) Si debe haber al menos una carta de cada palo.
-                %\item (30 pts) Si de haber al menos $3$ picas.  
-            \end{enumerate} 
-            
+                %\item (30 pts) Si de haber al menos $3$ picas.
+            \end{enumerate}
+
            \vskip .2cm
 
-            
-            \item[2.] (20 pts) Probar la siguiente igualdad:
+
+            \item[2.] (20 pts) Sea $n\in\mathbb{N}$.  Probar la siguiente igualdad:
             $$
             n = \frac{n! + (n+2)! - n(n+2)(n-1)!}{n!+(n-1)!+(n+1)!}.
             $$
@@ -180,7 +180,7 @@
 		\noindent (c) Primero  elegimos los cargos a ser ocupados por los 3 hombres: para el primer hombre hay 5 posibilidades, para el segundo 4 y para el tercero 3. Es decir el total de posibles asignaciones de cargos a los 3 hombres es $5\cdot 4\cdot 3= 60$.
 		
 		
-		Quedan dos cargos libres (los que dejaron libres los hombres). Para el  primer cargo hay 5 posibilidades y para el segundo hay 4. Luego el total de posibilidades para los dos cargos restantes es $5 \cdot 4 = 20$. 
+		Quedan dos cargos libres (los que dejaron libres los hombres). Para el  primer cargo hay 5 posibilidades y para el segundo hay 4. Luego el total de posibilidades para los dos cargos restantes es $5 \cdot 4 = 20$.
 		
 		Concluyendo, por el principio de multiplicación, hay
 		$$
@@ -205,16 +205,16 @@
 		
 		(d)\textit{ Segunda forma. }En  este ejercicio podemos pensar en  el  "complemento" es decir (1) calculamos todas las posibilidades,  después (2) calculamos cuando \textbf{A} y \textbf{E} están juntos y luego el resultado será (1) - (2).
 
- (1) Todas las posible elecciones es elegir 5 entre 8, en orden sin repetición (el primero director,  el segundo subdirector, etc.) la solución es entonces 
+ (1) Todas las posible elecciones es elegir 5 entre 8, en orden sin repetición (el primero director,  el segundo subdirector, etc.) la solución es entonces
  $$
  \frac{8!}{(8-5)!} = \frac{8!}{3!} = 8 \cdot 7 \cdot 6 \cdot 5 \cdot 4 = 6720.
- $$ 
- 
+ $$
+
  (2) Primero elegimos un cargo para \textbf{A}, son  5 posibilidades, después un cargo para \textbf{B}, son 4 posibilidades. Luego quedan tres cargos para 6 personas (selecciones de 3 entre 6, en orden, sin repetición), son $6 \cdot 5 \cdot 4 =120$ posibilidades. el  total es entonces
  $$
 5 \cdot 4 \cdot 120 = 2400.
- $$ 
- 
+ $$
+
  De (1) y (2) se deduce que las posibles formas de elegir el comité (con cargos) donde \textbf{A} y \textbf{E} no estén juntos es
  $$
  6720 - 2400 = \colorbox{lightgray}{4320}.

@@ -22,10 +22,10 @@
 \usetikzlibrary{arrows}
 \usetikzlibrary{matrix}
 \tikzset{
-	every picture/.append style={
-		execute at begin picture={\deactivatequoting},
-		execute at end picture={\activatequoting}
-	}
+    every picture/.append style={
+        execute at begin picture={\deactivatequoting},
+        execute at end picture={\activatequoting}
+    }
 }
 \usetikzlibrary{decorations.pathreplacing,angles,quotes}
 \usetikzlibrary{shapes.geometric}
@@ -36,9 +36,9 @@
 \usepackage{tkz-graph}
 \usepackage{polynom}
 \polyset{%
-	style=B,
-	delims={(}{)},
-	div=:
+    style=B,
+    delims={(}{)},
+    div=:
 }
 \renewcommand\labelitemi{$\circ$}
 \setlist[enumerate]{label={(\arabic*)}}
@@ -96,193 +96,193 @@
 \title[Clase 15 - Factorización en primos]{Matemática Discreta I \\ Clase 15 - Factorización en primos 2}
 %\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
 \institute[]{\normalsize FAMAF / UNC
-	\\[\baselineskip] ${}^{}$
-	\\[\baselineskip]
+    \\[\baselineskip] ${}^{}$
+    \\[\baselineskip]
 }
-\date[07/05/2020]{7 de mayo de 2020}
+\date[06/05/2021]{6 de mayo de 2021}
 
 
 
 
 \begin{document}
-	
-	\frame{\titlepage} 
-	
-	\begin{frame}
-		\begin{proposicion} Existen infinitos números primos. 
-		\end{proposicion} \pause
-		\begin{proof}\pause Haremos la demostración por el absurdo. 
-			\vskip .3cm
-			Sean  $p_1,p_2,\ldots, p_r$ todos los números primos. 
-			\vskip .3cm
-			Sea $n =  p_1p_2\ldots p_r+1$. 
-			\vskip .3cm
-			
-			Sea $p$ primo tal que $p|n$ $\Rightarrow$ existe $i$  tal que $p=p_i$. 
-			\vskip .3cm
-			Ahora bien $p_i| n$ y $p_i|p_1p_2\ldots p_r$, luego $p_i|n-p_1p_2\ldots p_r =1$. Absurdo.  
-			
-			\qed
-		\end{proof}
-		
-	\end{frame}
-	
-	\begin{frame}
-		
-		\begin{ejemplo} Probemos que si $m$ y $n$ son enteros tales que
-			$m\ge 2$ y $n\ge 2$, entonces $m^2 \not=2n^2$.
-		\end{ejemplo}\pause
-		\begin{proof} \vskip -.6cm\pause
-			$$ n = 2^{x}p_2^{e_2}\ldots p_r^{e_r}\text{\quad ($p_i$ todos primos diferentes a 2.)} $$
-			$$ n^2 = 2^{2x}p_2^{2e_2}\ldots p_r^{2e_r}$$
-			\begin{equation}
-				\colorbox{lightgray}{$2n^2= 2^{2x+1}p_2^{2e_2}\ldots p_r^{2e_r}.$ }\tag{*}
-			\end{equation}
-			
-			$$
-			m = 2^{y}q_2^{f_2}\ldots q_s^{f_s}\text{\quad ($q_i$ todos primos diferentes a 2.)}
-			$$
-			\begin{equation}
-				\colorbox{lightgray}{$m^2 = 2^{2y}q_2^{2f_2}\ldots q_s^{2f_s}$} \tag{**}
-			\end{equation}
-			
-			Por unicidad de la descomposición, (*) $\ne$ (**), es decir $m^2 \not=2n^2$.\qed
-			
-		\end{proof}
-		
-	\end{frame}
-	
-	
-	\begin{frame}
-		\begin{observacion}
-			El  ejemplo anterior nos dice que 
-			$$
-			m^2 \not=2n^2\quad \Rightarrow \quad \frac{m^2}{n^2}\not=2 \quad \Rightarrow \quad \left(\frac{m}{n}\right)^2\not=2 \quad \Rightarrow \quad \frac{m}{n}\not=\sqrt{2}. 
-			$$
-			
-			Es decir $\sqrt{2}$ \textit{no es un número racional.}
-		\end{observacion}
-	\end{frame}
-	
-	\begin{frame}\frametitle{Notación}
-		
-		Sean $m$ y $n$ dos enteros positivos, a veces es conveniente escribir la factorización prima de ambos números usando los mismos primos.
-		
-		Los primos que usamos son los que se encuentran en la factorización prima de ambos:
-		$$
-		m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
-		n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
-		$$
-		con $e_i,f_i \ge 0$ para $i=1,\ldots,r$ y $e_i$ o $f_i$ distinto de cero. 
-		\pause
-		\begin{ejemplo}
-			168 y 495. \pause Tenemos que
-			\begin{equation*}
-				168 = 2^3 \cdot 3^1 \cdot 7^1, \qquad 495 = 3^2 \cdot 5^1 \cdot 11^1
-			\end{equation*}
-			Luego 
-			\begin{align*}
-				168 &= 2^3 \cdot 3^1 \cdot 5^0\cdot 7^1\cdot 11^0, \\
-				495 &= 2^0 \cdot3^2 \cdot 5^1 \cdot 7^0 \cdot 11^1
-			\end{align*}
-		\end{ejemplo}
-		
-	\end{frame}
-	
-	
-	\begin{frame}
-		Veremos ahora un resultado que se puede deducir fácilmente del Teorema Fundamental de la Aritmética (TFA).\pause 
-		
-		\begin{proposicion} Sean $m,n \ge2$ con
-			$$
-			m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
-			n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
-			$$
-			donde $p_i$ primo y $e_i,f_i \ge 0$ para $i=1,\ldots,r$. 
-			
-			Entonces $m|n$ si y sólo si $e_i \le f_i$ para todo $i$.
-		\end{proposicion}\pause 
-		\begin{proof}\pause 
-			\noindent($\Rightarrow$) Por la descomposición de $m$ es claro que $p^{e_i}|m$. Como $m|n$ entonces   $p^{e_i}|n$. Es decir $n =  p^{e_i}u$. Es claro por TFA entonces que $e_i \le f_i$.
-			\vskip .2cm
-			
-			\noindent($\Leftarrow$) Como $e_i \le f_i$, tenemos que $p^{e_i}|p^{f_i}$, para $1 \le i \le r$.  Luego  $$p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}| p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.$$ Es decir $m|n$.
-		\end{proof}
-		
-	\end{frame}
-	
-	
-	\begin{frame}
-		
-		Ahora veremos que es posible calcular el $\operatorname{mcd}$ y el $\operatorname{mcm}$ de un par de números sabiendo sus descomposiciones primas.
-		
-		\begin{proposicion}
-			Sean $m$ y $n$ enteros positivos cuyas factorizaciones primas son
-			$$
-			m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
-			n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
-			$$
-			\begin{enumerate}
-				\item[a)] El mcd de $m$ y $n$ es $d=p_1^{k_1}p_2^{k_2}\ldots
-				p_r^{k_r}$ donde, para cada $i$ en el rango $1\le i \le r$, $k_i$
-				es el mínimo entre $e_i$ y $f_i$.\vskip .2cm
-				\item[b)] El mcm de $m$ y $n$ es $u=p_1^{h_1}p_2^{h_2}\ldots
-				p_r^{h_r}$ donde, para cada $i$ en el rango $1\le i \le r$, $h_i$
-				es el máximo entre $e_i$ y $f_i$.
-			\end{enumerate}
-		\end{proposicion}
-	\end{frame}
-	
-	
-	\begin{frame}
-		\begin{proof}
-			\
-			
-			\noindent(a)  Es claro  que  $d = p_1^{k_1}p_2^{k_2}\ldots p_r^{k_r}$ divide a $m$ y $n$.
-			
-			\vskip .3cm
-			Sea $c$ tal que $c|n$ y $c|m$, entonces los primos que intervienen en la factorización de $c$ son $p_1,\ldots,p_r$ y por lo tanto 
-			$$
-			c =  p_1^{t_1}p_2^{t_2}\ldots p_r^{t_r}.
-			$$
-			
-			Además, como $c|n$ y $c|m$ tenemos que $t_i \le e_i,f_i$ y por lo tanto $t_i \le k_i = \min(e_i,f_i)$. 
-			
-			\vskip .3cm
-			
-			De esto se deduce que $c|p_1^{k_1}p_2^{k_2}\ldots p_r^{k_r}=d$. 
-			
-			\vskip .6cm
-			\noindent(b) Se deja como ejercicio. 
-			
-			\qed
-		\end{proof}
-		
-	\end{frame}
-	
-	
-	\begin{frame}
-		
-		\begin{ejemplo}
-			Encontremos el mcd y el mcm  de $168$ y $495$.
-			\vskip .2cm
-			Ya habíamos visto que 
-			\begin{align*}
-				168 &= 2^3 \cdot 3^1 \cdot 5^0\cdot 7^1\cdot 11^0, \\
-				495 &= 2^0 \cdot3^2 \cdot 5^1 \cdot 7^0 \cdot 11^1
-			\end{align*}
-			
-			Luego 
-			
-			\begin{align*}
-				\text{mcd}(168,495) &= 2^0 \cdot 3^1 \cdot 5^0\cdot 7^0\cdot 11^0 = 3, \\
-				\text{mcm}(168,495) &= 2^3 \cdot3^2 \cdot 5^1 \cdot 7^1 \cdot 11^1.
-			\end{align*}
-			
-		\end{ejemplo}
-		
-	\end{frame}
-	
-	
+    
+    \frame{\titlepage} 
+    
+    \begin{frame}
+        \begin{proposicion} Existen infinitos números primos. 
+        \end{proposicion} \pause
+        \begin{proof}\pause Haremos la demostración por el absurdo. 
+            \vskip .3cm
+            Sean  $p_1,p_2,\ldots, p_r$ todos los números primos. 
+            \vskip .3cm
+            Sea $n =  p_1p_2\ldots p_r+1$. 
+            \vskip .3cm
+            
+            Sea $p$ primo tal que $p|n$ $\Rightarrow$ existe $i$  tal que $p=p_i$. 
+            \vskip .3cm
+            Ahora bien $p_i| n$ y $p_i|p_1p_2\ldots p_r$, luego $p_i|n-p_1p_2\ldots p_r =1$. Absurdo.  
+            
+            \qed
+        \end{proof}
+        
+    \end{frame}
+    
+    \begin{frame}
+        
+        \begin{ejemplo} Probemos que si $m$ y $n$ son enteros tales que
+            $m\ge 2$ y $n\ge 2$, entonces $m^2 \not=2n^2$.
+        \end{ejemplo}\pause
+        \begin{proof} \vskip -.6cm\pause
+            $$ n = 2^{x}p_2^{e_2}\ldots p_r^{e_r}\text{\quad ($p_i$ todos primos diferentes a 2.)} $$
+            $$ n^2 = 2^{2x}p_2^{2e_2}\ldots p_r^{2e_r}$$
+            \begin{equation}
+                \colorbox{lightgray}{$2n^2= 2^{2x+1}p_2^{2e_2}\ldots p_r^{2e_r}.$ }\tag{*}
+            \end{equation}
+            
+            $$
+            m = 2^{y}q_2^{f_2}\ldots q_s^{f_s}\text{\quad ($q_i$ todos primos diferentes a 2.)}
+            $$
+            \begin{equation}
+                \colorbox{lightgray}{$m^2 = 2^{2y}q_2^{2f_2}\ldots q_s^{2f_s}$} \tag{**}
+            \end{equation}
+            
+            Por unicidad de la descomposición, (*) $\ne$ (**), es decir $m^2 \not=2n^2$.\qed
+            
+        \end{proof}
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        \begin{observacion}
+            El  ejemplo anterior nos dice que 
+            $$
+            m^2 \not=2n^2\quad \Rightarrow \quad \frac{m^2}{n^2}\not=2 \quad \Rightarrow \quad \left(\frac{m}{n}\right)^2\not=2 \quad \Rightarrow \quad \frac{m}{n}\not=\sqrt{2}. 
+            $$
+            
+            Es decir $\sqrt{2}$ \textit{no es un número racional.}
+        \end{observacion}
+    \end{frame}
+    
+    \begin{frame}\frametitle{Notación}
+        
+        Sean $m$ y $n$ dos enteros positivos, a veces es conveniente escribir la factorización prima de ambos números usando los mismos primos.
+        
+        Los primos que usamos son los que se encuentran en la factorización prima de ambos:
+        $$
+        m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
+        n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
+        $$
+        con $e_i,f_i \ge 0$ para $i=1,\ldots,r$ y $e_i$ o $f_i$ distinto de cero. 
+        \pause
+        \begin{ejemplo}
+            168 y 495. \pause Tenemos que
+            \begin{equation*}
+                168 = 2^3 \cdot 3^1 \cdot 7^1, \qquad 495 = 3^2 \cdot 5^1 \cdot 11^1
+            \end{equation*}
+            Luego 
+            \begin{align*}
+                168 &= 2^3 \cdot 3^1 \cdot 5^0\cdot 7^1\cdot 11^0, \\
+                495 &= 2^0 \cdot3^2 \cdot 5^1 \cdot 7^0 \cdot 11^1
+            \end{align*}
+        \end{ejemplo}
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        Veremos ahora un resultado que se puede deducir fácilmente del Teorema Fundamental de la Aritmética (TFA).\pause 
+        
+        \begin{proposicion} Sean $m,n \ge2$ con
+            $$
+            m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
+            n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
+            $$
+            donde $p_i$ primo y $e_i,f_i \ge 0$ para $i=1,\ldots,r$. 
+            
+            Entonces $m|n$ si y sólo si $e_i \le f_i$ para todo $i$.
+        \end{proposicion}\pause 
+        \begin{proof}\pause 
+            \noindent($\Rightarrow$) Por la descomposición de $m$ es claro que $p^{e_i}|m$. Como $m|n$ entonces   $p^{e_i}|n$. Es decir $n =  p^{e_i}u$. Es claro por TFA entonces que $e_i \le f_i$.
+            \vskip .2cm
+            
+            \noindent($\Leftarrow$) Como $e_i \le f_i$, tenemos que $p^{e_i}|p^{f_i}$, para $1 \le i \le r$.  Luego  $$p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}| p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.$$ Es decir $m|n$.
+        \end{proof}
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        Ahora veremos que es posible calcular el $\operatorname{mcd}$ y el $\operatorname{mcm}$ de un par de números sabiendo sus descomposiciones primas.
+        
+        \begin{proposicion}
+            Sean $m$ y $n$ enteros positivos cuyas factorizaciones primas son
+            $$
+            m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
+            n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
+            $$
+            \begin{enumerate}
+                \item[a)] El mcd de $m$ y $n$ es $d=p_1^{k_1}p_2^{k_2}\ldots
+                p_r^{k_r}$ donde, para cada $i$ en el rango $1\le i \le r$, $k_i$
+                es el mínimo entre $e_i$ y $f_i$.\vskip .2cm
+                \item[b)] El mcm de $m$ y $n$ es $u=p_1^{h_1}p_2^{h_2}\ldots
+                p_r^{h_r}$ donde, para cada $i$ en el rango $1\le i \le r$, $h_i$
+                es el máximo entre $e_i$ y $f_i$.
+            \end{enumerate}
+        \end{proposicion}
+    \end{frame}
+    
+    
+    \begin{frame}
+        \begin{proof}
+            \
+            
+            \noindent(a)  Es claro  que  $d = p_1^{k_1}p_2^{k_2}\ldots p_r^{k_r}$ divide a $m$ y $n$.
+            
+            \vskip .3cm
+            Sea $c$ tal que $c|n$ y $c|m$, entonces los primos que intervienen en la factorización de $c$ son $p_1,\ldots,p_r$ y por lo tanto 
+            $$
+            c =  p_1^{t_1}p_2^{t_2}\ldots p_r^{t_r}.
+            $$
+            
+            Además, como $c|n$ y $c|m$ tenemos que $t_i \le e_i,f_i$ y por lo tanto $t_i \le k_i = \min(e_i,f_i)$. 
+            
+            \vskip .3cm
+            
+            De esto se deduce que $c|p_1^{k_1}p_2^{k_2}\ldots p_r^{k_r}=d$. 
+            
+            \vskip .6cm
+            \noindent(b) Se deja como ejercicio. 
+            
+            \qed
+        \end{proof}
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        \begin{ejemplo}
+            Encontremos el mcd y el mcm  de $168$ y $495$.
+            \vskip .2cm
+            Ya habíamos visto que 
+            \begin{align*}
+                168 &= 2^3 \cdot 3^1 \cdot 5^0\cdot 7^1\cdot 11^0, \\
+                495 &= 2^0 \cdot3^2 \cdot 5^1 \cdot 7^0 \cdot 11^1
+            \end{align*}
+            
+            Luego 
+            
+            \begin{align*}
+                \text{mcd}(168,495) &= 2^0 \cdot 3^1 \cdot 5^0\cdot 7^0\cdot 11^0 = 3, \\
+                \text{mcm}(168,495) &= 2^3 \cdot3^2 \cdot 5^1 \cdot 7^1 \cdot 11^1.
+            \end{align*}
+            
+        \end{ejemplo}
+        
+    \end{frame}
+    
+    
 \end{document}
 

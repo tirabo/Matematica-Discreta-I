@@ -12,7 +12,7 @@
 
 \renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
 
-% Para hacer el  indice en linea de comando hacer 
+% Para hacer el  indice en linea de comando hacer
 % makeindex main
 %% En http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf hay ejemplos de packages de fonts libres, como los siguientes:
 %\usepackage{cmbright}
@@ -35,7 +35,7 @@
 \usepackage{graphicx}     % From LaTeX distribution
 \usepackage{ifthen}
 \input{random.tex}        % From CTAN/macros/generic
-\usepackage{subfigure} 
+\usepackage{subfigure}
 \usepackage{tikz}
 \usetikzlibrary{arrows}
 \usetikzlibrary{matrix}
@@ -53,7 +53,7 @@
 \usepackage[a4paper, top=3cm, left=3cm, right=2cm, bottom=2.5cm]{geometry}
 %% CONTROLADORES DE.
 % Tamaño de la hoja de impresión.
-% Tamaños de los laterales del documento. 
+% Tamaños de los laterales del documento.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% \theoremstyle{plain} %% This is the default
 %\oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
@@ -67,10 +67,10 @@
 
 \usepackage{hyperref}
 \hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=cyan,
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,
+	urlcolor=cyan,
 }
 \usepackage{hypcap}
 
@@ -109,85 +109,86 @@
 
 
 \newcommand{\tarea}[1]{
-    \begin{center}
-        {\Large Matemática Discreta I - 2020/1} \vskip.4cm
-        {\Large Tarea #1}\vskip .4cm
+	\begin{center}
+		{\Large Matemática Discreta I - 2021/1} \vskip.4cm
+		{\Large Tarea #1}\vskip .4cm
 \end{center}}
 
 \renewenvironment{ejercicio}% environment name
 {% begin code
-    \par\vskip .5cm%
-    {\noindent\color{blue}Ejercicio}%
-    \vskip .2cm
+	\par\vskip .5cm%
+	{\noindent\color{blue}Ejercicios}%
+	\vskip .2cm
 }%
 {%
-    \vskip .2cm}% end code
+	\vskip .2cm}% end code
 
 
 \newenvironment{solucion}% environment name
 {% begin code
-    \par\vskip .2cm%
-    {\noindent\color{blue}Solución}%
-    \vskip .2cm
+	\par\vskip .2cm%
+	{\noindent\color{blue}Solución}%
+	\vskip .2cm
 }%
 {%
-    \vskip .2cm}% end code
+	\vskip .2cm}% end code
 
 
 \begin{document}
 
-%\frame{\titlepage} 
+%\frame{\titlepage}
 
 
 \tarea{5}
 
 \begin{ejercicio}
-    \begin{enumerate}
-        \item[1.] Convertir a base $5$ el número $(20732)_8$. (50 pts)
-        \item[2.] Calcular  la resta $(4351)_8 - (362)_8$ y expresarla en base $8$. (50 pts)
-    \end{enumerate}
+	\begin{enumerate}
+		\item[1.] (25 pts) Convertir a base $2$ el número $345$. 
+		\item[2.] (25 pts) Convertir a base $10$ el número $(203112)_4$. 
+		\item[3.] (50 pts) Calcular  la resta $(4351)_8 -(2310)_4$ y expresarla en base $5$. 
+	\end{enumerate}
 \end{ejercicio}
 
 \begin{comment}
 \begin{solucion}
-    \noindent\text{{1.}} Primero calculamos en base 10 el número  $(20332)_5$:
-    \begin{align*}
-    (20332)_5 &= 2 \cdot 5^4+0 \cdot 5^3+3\cdot 5^2+ 3 \cdot 5^1+ 2 \cdot 5^0\\
-    &=  2 \cdot 625+0 \cdot 125+3\cdot 25+ 3 \cdot 5+ 2\\
-    & = 1250 + 0 + 75  + 15 +2  \\
-    &= 1342.
-    \end{align*}
-    Ahora lo convertimos a  base 8:
-    \begin{equation*}
-    \begin{matrix*}[r]
-    1342 &=& 8 \cdot 167& + &6\\
-    167 &=&  8 \cdot 20& + &7\\
-    20 &=&  8 \cdot 2& + &4\\
-    2 &=&  8 \cdot 0& + &2
-    \end{matrix*}
-    \end{equation*}
-    Luego, la respuesta es $(20332)_5 = (2476)_8$.
-    
-    \vskip .4cm    
-    \noindent{2.} Calculamos primero en base 10 los números $(4321)_5$ y $(302)_5$.
-    \vskip .2cm
-    $(4321)_5 = 4 \cdot 5^3+3\cdot 5^2+ 2\cdot 5^1+ 1 \cdot 5^0 =  4 \cdot 125+3\cdot 25+ 2\cdot 5+ 1 = 586$.
-    \vskip .2cm
-    $(302)_5 =3\cdot 5^2+ 0\cdot 5^1+ 2 \cdot 5^0 =  3\cdot 25+ 0\cdot 5+ 2 = 77$.
-    \vskip .2cm
-    Ahora restamos $586 -77= 509$. Al resultado  obtenido lo convertimos a base 5:
-    \begin{equation*}
-    \begin{matrix*}[r]
-    509 &=& 5 \cdot 101& + &4\\
-    101 &=& 5 \cdot 20& + &1\\
-    20 &=&  5 \cdot 4& + &0\\
-    4 &=&  5 \cdot 0& + &4.
-    \end{matrix*}
-    \end{equation*}
-    Luego $509 = (4014)_5$ y por lo tanto, 
-    \begin{equation*}
-    (4321)_5 - (302)_5 = (4014)_5.
-    \end{equation*}
+	\noindent\text{{1.}} Primero calculamos en base 10 el número  $(20332)_5$:
+	\begin{align*}
+	(20332)_5 &= 2 \cdot 5^4+0 \cdot 5^3+3\cdot 5^2+ 3 \cdot 5^1+ 2 \cdot 5^0\\
+	&=  2 \cdot 625+0 \cdot 125+3\cdot 25+ 3 \cdot 5+ 2\\
+	& = 1250 + 0 + 75  + 15 +2  \\
+	&= 1342.
+	\end{align*}
+	Ahora lo convertimos a  base 8:
+	\begin{equation*}
+	\begin{matrix*}[r]
+	1342 &=& 8 \cdot 167& + &6\\
+	167 &=&  8 \cdot 20& + &7\\
+	20 &=&  8 \cdot 2& + &4\\
+	2 &=&  8 \cdot 0& + &2
+	\end{matrix*}
+	\end{equation*}
+	Luego, la respuesta es $(20332)_5 = (2476)_8$.
+	
+	\vskip .4cm	
+	\noindent{2.} Calculamos primero en base 10 los números $(4321)_5$ y $(302)_5$.
+	\vskip .2cm
+	$(4321)_5 = 4 \cdot 5^3+3\cdot 5^2+ 2\cdot 5^1+ 1 \cdot 5^0 =  4 \cdot 125+3\cdot 25+ 2\cdot 5+ 1 = 586$.
+	\vskip .2cm
+	$(302)_5 =3\cdot 5^2+ 0\cdot 5^1+ 2 \cdot 5^0 =  3\cdot 25+ 0\cdot 5+ 2 = 77$.
+	\vskip .2cm
+	Ahora restamos $586 -77= 509$. Al resultado  obtenido lo convertimos a base 5:
+	\begin{equation*}
+	\begin{matrix*}[r]
+	509 &=& 5 \cdot 101& + &4\\
+	101 &=& 5 \cdot 20& + &1\\
+	20 &=&  5 \cdot 4& + &0\\
+	4 &=&  5 \cdot 0& + &4.
+	\end{matrix*}
+	\end{equation*}
+	Luego $509 = (4014)_5$ y por lo tanto,
+	\begin{equation*}
+	(4321)_5 - (302)_5 = (4014)_5.
+	\end{equation*}
 \end{solucion}
 \end{comment}
 \end{document}
