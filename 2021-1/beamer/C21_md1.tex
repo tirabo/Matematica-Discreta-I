@@ -93,14 +93,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
 
 
-
-\title[Clase 21 - Grafos 3]{Matemática Discreta I \\ Clase 21 - Grafos 3}
+\title[Clase 22 - Grafos 4]{Matemática Discreta I \\ Clase 22 - Grafos 4}
 %\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
 \institute[]{\normalsize FAMAF / UNC
 	\\[\baselineskip] ${}^{}$
 	\\[\baselineskip]
 }
-\date[02/06/2020]{28 de mayo de 2020}
+\date[04/06/2020]{2 de junio de 2020}
 
 
 
@@ -109,184 +108,147 @@
 	
 	\frame{\titlepage} 
 	
+	\begin{frame}\frametitle{Los puentes de Könisberg}
+		
+		{\color{blue}Pregunta}%
+	\vskip .2cm
+			¿Es posible cruzar todos los puentes pasando  una y solo una vez por cada uno? 		Leonhard Euler (1707-1783).
 	
-	
-	
-	\begin{frame}
-		Una aplicación importante de la noción de valencia es en el problema de determinar si dos grafos son o no isomorfos. 
 		
-		\vskip .6cm
-		
-		Si 	$\alpha:V_1 \to  V_2$ es un isomorfismo entre $G_1$ y $G_2$, y $\alpha(v)=w$, entonces cada arista que contiene a $v$ se transforma en una arista que contiene a $w$. 
-		
-		\vskip .6cm
-		
-		En consecuencia $\delta(v)=\delta(w)$. Por otro lado, si $G_1$ tiene un vértice $x$, con valencia $\delta(x)=\delta_0$, y $G_2$ no tiene vértices	con valencia $\delta_0$, entonces $G_1$ y $G_2$ no pueden ser	isomorfos. 
-		
-		
-		
-		
-		
-		
-		
+		\begin{figure}
+			\includegraphics[scale=0.12]{images/konisberg_hc.png}
+		\end{figure}
 		
 	\end{frame}
 	
 	
+	\begin{frame}\frametitle{Los puentes de Könisberg - versión 2}
+		\begin{figure}
+			\includegraphics[scale=0.23]{images/konisberg2.jpg}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}\frametitle{Los puentes de Könisberg - versión 3}
+		\begin{figure}
+			\includegraphics[scale=0.18]{images/konisberg3.jpg}
+		\end{figure}
+		
+		Ahora el problema se reduce a encontrar una caminata  que use cada arista (o puente) una y solo una vez.
+	\end{frame}
+	
 	\begin{frame}
-		Esto nos da otra manera de ver que no son isomorfos los siguientes grafos:
+		\begin{observacion}
+			$\delta(A)=5$, $\delta(B)=3$, $\delta(C)=3$, $\delta(D)=3$.
+		\end{observacion}
 		
 		\vskip .5cm
-		\begin{figure}[ht]
-			\begin{center}
-				\begin{tabular}{llll}
-					&
-					\begin{tikzpicture}[scale=1]
-						%\SetVertexSimple[Shape=circle,FillColor=white]
-						\Vertex[x=0.00, y=2.00]{$a$}
-						\Vertex[x=1.90, y=0.62]{$b$}
-						\Vertex[x=1.18, y=-1.62]{$c$}
-						\Vertex[x=-1.18, y=-1.62]{$d$}
-						\Vertex[x=-1.90, y=0.62]{$e$}
-						\Edges($c$, $b$,$a$,$e$,$d$,$b$,$a$,$d$)
-						\Edges($e$,$b$)
-					\end{tikzpicture}
-					&
-					\qquad
-					& 
-					\begin{tikzpicture}[scale=1]
-						%\SetVertexSimple[Shape=circle,FillColor=white]
-						\Vertex[x=0.00, y=2.00]{1}
-						\Vertex[x=1.90, y=0.62]{2}
-						\Vertex[x=1.18, y=-1.62]{3}
-						\Vertex[x=-1.18, y=-1.62]{4}
-						\Vertex[x=-1.90, y=0.62]{5}
-						\Edges(1,2,3,4,5,1)
-						\Edges(4,2,5)
-					\end{tikzpicture}
-				\end{tabular}
-			\end{center}
-		\end{figure}
-		\vskip .4cm
-		Puesto que el primer grafo tiene un vértice de
-		valencia 1 y el segundo no.
-	\end{frame}
-	
-	
-	\begin{frame}
-		Una extensión de esta idea se da en la siguiente proposición.
 		
-		\vskip .4cm
-		\begin{proposicion}\label{criterioiso}Sean  $G_1$ y $G_2$ grafos isomorfos. Para cada $k\ge 0$ sea $n_i(k)$ el
-			número de vértices de $G_i$ que tienen valencia $k$ ($i=1,2$).
-			Entonces $n_1(k)=n_2(k)$.
-		\end{proposicion}
-		\vskip .4cm
-		\begin{proof} Hemos visto más arriba que si $\alpha:V_1 \to  V_2$ es un isomorfismo entre $G_1$ y $G_2$ y $v\in V_1$, entonces $\delta(v)=\delta(\alpha(v))$. Luego la cantidad de vértices con valencia $k$ en $G_1$ es igual  a la cantidad de vértices con valencia $k$ en $G_2$.     
-		\end{proof}
-	\end{frame}
-	
-	\begin{frame}
+		Euler, abstrayéndose del problema concreto, razonó de la siguiente manera:
 		
-		
-		No hay ningún criterio general eficiente para determinar si dos grafos son isomorfos o no. En  el siguiente ejemplo, no se aplica el criterio anterior. 
-		
-		\vskip .4cm
-		\begin{ejemplo}
-			Probar que los siguientes grafos no son isomorfos.
+		\vskip .5cm 
+		\begin{itemize}
+			\item Supongamos que el vértice de partida es $x$ y  el de llegada es $y$. Todos los demás los llamo intermedios.
+			\item En un vértice intermedio cada vez que entro por un puente salgo por otro. Eso  me ``aporta''  2 a la valencia.
+			\item Terminado el proceso usé todos los puentes, por lo tanto  en cada vértice intermedio la cantidad de entradas más la cantidad de salidas es la valencia. Como la cantidad de entradas es igual a la cantidad de salidas, la valencia es par.
 			
-			\begin{figure}[ht]
+		\end{itemize}
+		
+		
+	\end{frame}
+	
+	\begin{frame}
+		\textbf{Concluyendo}
+		\vskip .3cm
+		\begin{itemize}
+			\item Si hay una caminata que pasa por cada puente una y solo una vez,  la cantidad de vértices con valencia impar es a lo sumo 2. 
+			\item Como todos los vértices en el problema tienen valencia impar, el problema no tiene solución. 
+		\end{itemize}
+		\vskip .3cm
+		Como veremos más adelante el problema de los puentes de Könisberg puede ser generalizado y también vale la recíproca.
+		\vskip .5cm
+		\textbf{Cita:}  Euler, Leonhard (1736). \href{http://math.dartmouth.edu/\~euler/docs/originals/E053.pdf}{Solutio problematis ad geometriam situs pertinentis}. Comment. Acad. Sci. U. Petrop 8, 128-40 (en latín)
+		
+	\end{frame}
+	
+	\begin{frame}
+		\begin{ejemplo} ¿Es posible recorrer el siguiente gráfo con una caminata que pase por cada vértice una sola vez y volver al de partida? ¿Es posible hacer una caminata  que pasa por cada arista una sola vez?
+			\begin{figure}[h]
 				\begin{center}
-					\begin{tabular}{llll}
-						&
-						\begin{tikzpicture}[scale=1]
-							\SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
-							\Vertex[x=0.00, y=2.00]{a}
-							\Vertex[x=2., y=-1.50]{b}
-							\Vertex[x=-2., y=-1.50]{c}
-							\Edges(a,b,c,a)
-							\Vertex[x=0.00, y=0.85]{1}
-							\Vertex[x=1., y=-0.9]{2}
-							\Vertex[x=-1., y=-0.9]{3}
-							\Edges(1,2,3,1)
-							\Edges(a,1,3,c,b,2)
-							\draw (0,-2.2) node {$G_1$};
-						\end{tikzpicture}
-						&
-						\qquad
-						& 
-						\begin{tikzpicture}[scale=0.65]
-							\SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
-							%				
-							\Vertex[x=3.00, y=0.00]{1}
-							\Vertex[x=1.50, y=2.60]{2}
-							\Vertex[x=-1.50, y=2.60]{3}
-							\Vertex[x=-3.00, y=0.00]{4}
-							\Vertex[x=-1.50, y=-2.60]{5}
-							\Vertex[x=1.50, y=-2.60]{6}
-							\Edges(1,2,3,4,5,6,1)
-							\Edges(1,4) \Edges(3,6) \Edges(2,5)
-							\draw (0,-3.8) node {$G_2$};
-						\end{tikzpicture}
-					\end{tabular}
+					\begin{tikzpicture}[scale=1]
+						%\SetVertexSimple[Shape=circle,FillColor=white]
+						\def\rvar{1.2}
+						\Vertex[x=0.00, y=-2.00]{$u$}
+						\Vertex[x=\rvar*1.90, y=-0.62]{$t$}
+						\Vertex[x=\rvar*1.18, y=1.62]{$q$}
+						\Vertex[x=-1.18*\rvar, y=1.62]{$p$}
+						\Vertex[x=-1.90*\rvar, y=-0.62]{$r$}
+						\Vertex[x=0, y=0]{$s$}
+						\Edges($u$,$t$,$q$,$p$,$r$,$u$,$s$,$t$,$r$,$s$,$q$,$r$,$p$,$t$,$s$,$u$,$s$,$p$)
+					\end{tikzpicture}
 				\end{center}
 			\end{figure}
+			
 		\end{ejemplo}
-		
-		
 	\end{frame}
-	
-	
 	
 	\begin{frame}
 		\begin{solucion}
-			Ambos tienen $6$ vértices, $9$ aristas y todos los vértices son de valencia $3$. 
+			Para la primera pregunta una posibilidad es el ciclo $p,q,t,s,u,r,p$.
 			
-			\vskip .4cm
+			\vskip .5cm
+			
+			La segunda pregunta tiene respuesta negativa:
+			
+			Las valencias son 
+			$$\delta(p) = 4,\quad\delta(q) = 4,\quad\delta(s) = 5,\quad\delta(r) = 5,\quad\delta(u) = 3,\quad\delta(t) = 5.$$
+			
+			Como en los puentes de Königsberg,  al haber más de $2$ vértices de valencia impar, no es posible recorrer todas las aristas una sola vez.
+			
+			\qed
 			
 			
-			Sin embargo, observar que  $G_1$ tiene un subgrafo $K_3$:
-			\begin{center}
-				\begin{tikzpicture}[scale=1]
-					\SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
-					\Vertex[x=0.00, y=2.00]{a}
-					\Vertex[x=2., y=-1.50]{b}
-					\Vertex[x=-2., y=-1.50]{c}
-					\Edges(a,b,c,a)
-				\end{tikzpicture}
-			\end{center}
-			
-			Mientras que $G_2$ no lo tiene. Por lo tanto, $G_1$ y $G_2$ no son isomorfos.
 			
 		\end{solucion}
 	\end{frame}
 	
-	\begin{frame}\frametitle{Caminatas, caminos y ciclos}
-		\begin{definicion}  Una {\em caminata} en un grafo $G$ es  \index{caminata}
-			una secuencia de vértices
-			$$
-			v_1,v_2,\ldots,v_k,
-			$$
-			tal que $v_i$ y $v_{i+1}$ son adyacentes ($1 \le i \le k-1$). Si
-			todos los vértices son distintos, una caminata es llamada un {\em
-				camino}.  \index{camino}
-			
-			\vskip .4cm
-			
-			Llamaremos {\em ciclo} a una caminata  \index{ciclo}
-			$v_1,v_2,\ldots,v_{r+1}$ cuyos vértices son distintos exceptuando
-			los extremos, es decir que $v_1=v_{r+1}$ y  a menudo diremos que es un {\em
-				$r$-ciclo}, o un ciclo de {\em longitud} $r$ en $G$.
-			\index{longitud de un ciclo}
+	\begin{frame}
+		
+		
+		\begin{definicion}
+			Un {\em ciclo hamiltoniano} en un grafo $G$ es un ciclo que contiene a todos los vértices del grafo.
+			\vskip .2cm
+			Una {\em caminata euleriana} en un grafo $G$ es un caminata que usa todas las aristas de $G$ exactamente
+			una vez. Una caminata euleriana que comienza y termina en un mismo vértice se llama también {\em circuito euleriano}.
 		\end{definicion}
 		
+		\vskip .2cm
+		
+		\begin{teorema} Un grafo conexo con más de un vértice posee una caminata euleriana de $v$ a $w$, con $v \not= w$ si y sólo si $v$ y $w$ son los únicos vértices de grado impar. Un grafo conexo con más de un vértice tiene un circuito euleriano si y sólo si todos los vértices tienen grado par.
+		\end{teorema}
 	\end{frame}
 	
 	\begin{frame}
+		Algoritmo para encontrar caminatas eulerianas de $v$ a $w$, con $v \not= w$:
+		\vskip .2cm
+		\textit{``Parta del vértice $v$ y recorra el grafo sin pasar dos veces por la misma arista. Cuando no pueda avanzar más se encontrará en $w$ y habrá hecho una caminata euleriana.''}
+		\vskip .4cm
+		El caso de un grafo donde todas las valencias son pares se puede reducir al anterior: si deseamos una caminata euleriana que empiece y termine en $v$
+		\begin{itemize}
+			\item eliminamos una arista $\{v,w\}$ del grafo que contenga a $v$,
+			\item el nuevo  grafo tiene solo dos vértices, $v$ y $w$, de valencia impar,
+			\item aplicamos el caso  anterior, con lo cual hacemos una caminata euleriana que termina en  $w$,
+			\item terminamos la caminata agregando  la arista $\{v,w\}$. 
+		\end{itemize}
+		
+		
+		
+	\end{frame}
+	
+	
+	
+	\begin{frame}
 		\begin{ejemplo}
-			Dibujemos caminatas, caminos y ciclos en el siguiente grafo:
-			\vskip .4cm
-			
+			Encontremos una caminata euleriana con origen en $p$ y final en $r$ del siguiente grafo. 
 			\begin{figure}[ht]
 				\begin{center}
 					\begin{tikzpicture}[scale=1]
@@ -311,223 +273,19 @@
 		\end{ejemplo}
 	\end{frame}
 	
-	\begin{frame}[fragile]
-		
-		Caminata: $p$,$q$,$t$,$s$,$q$,$r$,$u$
-		
-		\begin{figure}[ht]
-			\begin{center}
-				\begin{tikzpicture}[scale=1]
-					%\SetVertexSimple[Shape=circle,FillColor=white]
-					\def\rvar{1.2}
-					\Vertex[x=0.00, y=-2.00]{$u$}
-					\Vertex[x=\rvar*1.90, y=-0.62]{$t$}
-					\Vertex[x=\rvar*1.18, y=1.62]{$q$}
-					\Vertex[x=-1.18*\rvar, y=1.62]{$p$}
-					\Vertex[x=-1.90*\rvar, y=-0.62]{$r$}
-					\Vertex[x=0, y=0]{$s$}
-					\Edges($u$,$t$,$q$,$p$)
-					\Edges($r$,$u$)
-					\Edges($s$,$t$)
-					\Edges($r$,$s$,$q$,$r$)
-					\Edges($p$,$t$,$s$)
-					\tikzset{EdgeStyle/.style = {->,color=blue}}
-					\Edges($p$,$q$,$t$,$s$,$q$,$r$,$u$)
-				\end{tikzpicture}
-			\end{center}
-		\end{figure}
-	\end{frame}
-	
 	\begin{frame}
-		
-		Camino: $p$,$q$,$s$,$r$,$u$,$t$
-		
-		\begin{figure}[ht]
-			\begin{center}
-				\begin{tikzpicture}[scale=1]
-					%\SetVertexSimple[Shape=circle,FillColor=white]
-					\def\rvar{1.2}
-					\Vertex[x=0.00, y=-2.00]{$u$}
-					\Vertex[x=\rvar*1.90, y=-0.62]{$t$}
-					\Vertex[x=\rvar*1.18, y=1.62]{$q$}
-					\Vertex[x=-1.18*\rvar, y=1.62]{$p$}
-					\Vertex[x=-1.90*\rvar, y=-0.62]{$r$}
-					\Vertex[x=0, y=0]{$s$}
-					\Edges($u$,$t$,$q$,$p$)
-					\Edges($r$,$u$)
-					\Edges($s$,$t$)
-					\Edges($r$,$s$,$q$,$r$)
-					\Edges($p$,$t$,$s$)
-					\tikzset{EdgeStyle/.style = {->,color=blue}}
-					\Edges($p$,$q$,$s$,$r$,$u$,$t$)
-				\end{tikzpicture}
-			\end{center}
-		\end{figure}
-	\end{frame}
-	
-	\begin{frame}
-		
-		Ciclo: $p$,$q$,$s$,$r$,$u$,$t$,$p$
-		
-		\begin{figure}[ht]
-			\begin{center}
-				\begin{tikzpicture}[scale=1]
-					%\SetVertexSimple[Shape=circle,FillColor=white]
-					\def\rvar{1.2}
-					\Vertex[x=0.00, y=-2.00]{$u$}
-					\Vertex[x=\rvar*1.90, y=-0.62]{$t$}
-					\Vertex[x=\rvar*1.18, y=1.62]{$q$}
-					\Vertex[x=-1.18*\rvar, y=1.62]{$p$}
-					\Vertex[x=-1.90*\rvar, y=-0.62]{$r$}
-					\Vertex[x=0, y=0]{$s$}
-					\Edges($u$,$t$,$q$,$p$)
-					\Edges($r$,$u$)
-					\Edges($s$,$t$)
-					\Edges($r$,$s$,$q$,$r$)
-					\Edges($p$,$t$,$s$)
-					\tikzset{EdgeStyle/.style = {->,color=blue}}
-					\Edges($p$,$q$,$s$,$r$,$u$,$t$,$p$)
-				\end{tikzpicture}
-			\end{center}
-		\end{figure}
-	\end{frame}
-	
-	
-	\begin{frame}
-		
-		\begin{lema} Sea $G$ un grafo.  Entonces, $x$ e $y$ pueden ser unidos por una caminata  si  y sólo si  $x$ e $y$ pueden ser unidos por un camino.
-		\end{lema}
-		\begin{idea} ($\Leftarrow$) es trivial (un camino es una caminata).
-			
+		\begin{solucion}
+			Debemos primero observar que la caminata euleriana debe existir pues $\delta(p)=3$, $\delta(q)=4$, $\delta(r)=3$, $\delta(s)=4$, 	$\delta(t)=4$, y $\delta(u)=2$. 
 			\vskip .2cm
-			($\Rightarrow$) Eliminar "bucles".
 			
-			\begin{figure}[ht]
-				\begin{center}
-					\begin{tikzpicture}[scale=1]
-						\SetVertexSimple[Shape=circle,FillColor=white,MinSize=5 pt]
-						%
-						%\ponertz{-7}{-30}{$x=$}
-						\draw (-0.6,0) node {$x = $};				
-						\draw (0,0.4) node {$v_0$};
-						\Vertex[x=0.00, y=0]{v0}
-						\Vertex[x=1, y=0]{v1}
-						\draw (1,0.4) node {$v_1$};
-						\Vertex[x=3, y=0]{vi}
-						\draw (3,0.4) node {$v_i$};
-						\Vertex[x=2.5, y=0.5]{vi1}
-						\Vertex[x=2.5, y=1]{vi2}
-						\Vertex[x=3.5, y=0.5]{vi3}
-						\Vertex[x=3.5, y=1]{vi4}
-						\Edges(v0,v1)
-						\Edges(vi,vi1)
-						\Edges(vi1,vi2)
-						\draw (2.7,1.3) node {$\scriptstyle\bullet$};
-						\draw (2.9,1.5) node {$\scriptstyle\bullet$};
-						\draw (3.1,1.5) node {$\scriptstyle\bullet$};
-						\draw (3.3,1.3) node {$\scriptstyle\bullet$};
-						\draw (2,0) node {$\scriptstyle\bullet$};
-						\draw (2.3,0) node {$\scriptstyle\bullet$};
-						\Edges(vi3,vi4)
-						\Edges(vi3,vi)
-						\Vertex[x=5, y=0]{vr1}
-						\Vertex[x=6, y=0]{vr}
-						\Edges(vr1,vr)
-						\draw (6,0.4) node {$v_r$};
-						\draw (5,0.4) node {$v_{r-1}$};
-						\draw (6.6,0) node {$=y$};
-						
-						\SetVertexNormal[LineColor=white]
-						\Vertex[x=1.8, y=0]{s1}
-						\Vertex[x=2.2, y=0]{s2}
-						\Edges(v1,s1)
-						\Edges(vi,s2)
-						\draw (1.7,0) node {$\scriptstyle\bullet$};
-						\draw (2,0) node {$\scriptstyle\bullet$};
-						\draw (2.3,0) node {$\scriptstyle\bullet$};
-						
-						\Vertex[x=4.2, y=0]{t1}
-						\Vertex[x=3.8, y=0]{t2}
-						\Edges(vr1,t1)
-						\Edges(vi,t2)
-						\draw (3.7,0) node {$\scriptstyle\bullet$};
-						\draw (4,0) node {$\scriptstyle\bullet$};
-						\draw (4.3,0) node {$\scriptstyle\bullet$};
-					\end{tikzpicture}
-				\end{center}
-				Se transforma en 
-				\begin{center}
-					\begin{tikzpicture}[scale=1]
-						\SetVertexSimple[Shape=circle,FillColor=white,MinSize=5 pt]
-						%
-						%\ponertz{-7}{-30}{$x=$}
-						\draw (-0.6,0) node {$x = $};				
-						\draw (0,0.4) node {$v_0$};
-						\Vertex[x=0.00, y=0]{v0}
-						\Vertex[x=1, y=0]{v1}
-						\draw (1,0.4) node {$v_1$};
-						\Vertex[x=3, y=0]{vi}
-						\draw (3,0.4) node {$v_i$};
-						\Edges(v0,v1)
-						\Vertex[x=5, y=0]{vr1}
-						\Vertex[x=6, y=0]{vr}
-						\Edges(vr1,vr)
-						\draw (6,0.4) node {$v_r$};
-						\draw (5,0.4) node {$v_{r-1}$};
-						\draw (6.6,0) node {$=y$};
-						
-						\SetVertexNormal[LineColor=white]
-						\Vertex[x=1.8, y=0]{s1}
-						\Vertex[x=2.2, y=0]{s2}
-						\Edges(v1,s1)
-						\Edges(vi,s2)
-						\draw (1.7,0) node {$\scriptstyle\bullet$};
-						\draw (2,0) node {$\scriptstyle\bullet$};
-						\draw (2.3,0) node {$\scriptstyle\bullet$};
-						
-						\Vertex[x=4.2, y=0]{t1}
-						\Vertex[x=3.8, y=0]{t2}
-						\Edges(vr1,t1)
-						\Edges(vi,t2)
-						\draw (3.7,0) node {$\scriptstyle\bullet$};
-						\draw (4,0) node {$\scriptstyle\bullet$};
-						\draw (4.3,0) node {$\scriptstyle\bullet$};
-					\end{tikzpicture}
-				\end{center}	\qed
-			\end{figure}
-			
-			
-			
-			\vskip 4cm
-		\end{idea}
-		
-		
-		
+			Como fue mencionado más arriba,  el algoritmo más sencillo es en este caso el que sirve: debemos partir de $p$ y recorrer el grafo sin repetir aristas. Cuando  no podamos avanzar más (bajo estas condiciones) habremos obtenido la caminata euleriana. Una posible solución es, por ejemplo,
+			$$
+			p,s,q,p,t,u,r,s,t,q,r
+			$$  
+			\vskip .2cm
+			Existen muchas posibles caminatas eulerianas de $p$ a $r$, por ejemplo le proponemos que encuentre una cuya primera arista sea $\{p,t\}$.
+		\end{solucion}
 	\end{frame}
-	
-	\begin{frame} 
-		Escribamos $x \sim y$ siempre y cuando los vértices $x$ e $y$ de
-		$G$ puedan ser unidos por un camino en $G$: hablando en forma
-		rigurosa, esto significa que hay un camino $v_1,v_2,\ldots,v_k$ en
-		$G$ con $x=v_1$ e $y=v_k$. 
-		\vskip .3cm
-		
-		\begin{definicion}
-			Sea $G$ grafo,  diremos que es conexo si  para $x\sim y$ para cualesquiera  $x,y$ vértices en $G$. 
-		\end{definicion}
-		
-		\vskip .3cm
-		El  lema de la página anterior implica que:
-		\begin{itemize}
-			\item $x \sim x$ (reflexividad de $\sim$).
-			\item $x \sim y$, entonces $y \sim x$ (simetría de $\sim$).
-			\item $x \sim y$,  $y \sim z$, entonces  $x \sim z$ (transitividad  de $\sim$).
-		\end{itemize}
-		\vskip .3cm
-		Es decir, $\sim$  es una relación de equivalencia. 
-	\end{frame}
-	
-	
 	
 	
 \end{document}

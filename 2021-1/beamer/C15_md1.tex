@@ -1,6 +1,7 @@
 %\documentclass{beamer} 
 \documentclass[handout]{beamer} % sin pausas
 \usetheme{CambridgeUS}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 \usepackage{etex}
 \usepackage{t1enc}
@@ -42,7 +43,7 @@
 }
 \renewcommand\labelitemi{$\circ$}
 \setlist[enumerate]{label={(\arabic*)}}
-%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+
 \setbeamertemplate{itemize item}{$\circ$}
 \setbeamertemplate{enumerate items}[default]
 \definecolor{links}{HTML}{2A1B81}
@@ -93,7 +94,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
 
 
-\title[Clase 15 - Factorización en primos]{Matemática Discreta I \\ Clase 15 - Factorización en primos 2}
+\title[Clase 15 - Factorización en primos]{Matemática Discreta I \\ Clase 15 - Factorización en primos 2 / Congruencia}
 %\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
 \institute[]{\normalsize FAMAF / UNC
     \\[\baselineskip] ${}^{}$
@@ -132,21 +133,26 @@
         \begin{ejemplo} Probemos que si $m$ y $n$ son enteros tales que
             $m\ge 2$ y $n\ge 2$, entonces $m^2 \not=2n^2$.
         \end{ejemplo}\pause
-        \begin{proof} \vskip -.6cm\pause
-            $$ n = 2^{x}p_2^{e_2}\ldots p_r^{e_r}\text{\quad ($p_i$ todos primos diferentes a 2.)} $$
+        \begin{proof} \pause
+
+        Recordemos que
+        $$
+        (ab)^r = a^rb^r, \quad (a^r)^s = a^{r s}, \quad  a\cdot a^r = a^{r+1}. 
+        $$    
+
+
+            $$ n = 2^{x}p_2^{e_2}\ldots p_r^{e_r}\text{\quad ($x \ge 0$, $p_i$ todos primos diferentes a 2.)} $$
             $$ n^2 = 2^{2x}p_2^{2e_2}\ldots p_r^{2e_r}$$
             \begin{equation}
                 \colorbox{lightgray}{$2n^2= 2^{2x+1}p_2^{2e_2}\ldots p_r^{2e_r}.$ }\tag{*}
             \end{equation}
             
             $$
-            m = 2^{y}q_2^{f_2}\ldots q_s^{f_s}\text{\quad ($q_i$ todos primos diferentes a 2.)}
+            m = 2^{y}q_2^{f_2}\ldots q_s^{f_s}\text{\quad ($y \ge 0$, $q_i$ todos primos diferentes a 2.)}
             $$
             \begin{equation}
                 \colorbox{lightgray}{$m^2 = 2^{2y}q_2^{2f_2}\ldots q_s^{2f_s}$} \tag{**}
             \end{equation}
-            
-            Por unicidad de la descomposición, (*) $\ne$ (**), es decir $m^2 \not=2n^2$.\qed
             
         \end{proof}
         
@@ -154,6 +160,10 @@
     
     
     \begin{frame}
+        Como $2x+1 \ne 2y$ (el primero es impar y el segundo par), por unicidad de la descomposición, (*) $\ne$ (**), es decir $m^2 \not=2n^2$.
+        
+        \qed
+
         \begin{observacion}
             El  ejemplo anterior nos dice que 
             $$
@@ -162,6 +172,10 @@
             
             Es decir $\sqrt{2}$ \textit{no es un número racional.}
         \end{observacion}
+
+        \begin{ejercicio} Probar que $\sqrt{15}$ no es un número racional.
+        \end{ejercicio}
+
     \end{frame}
     
     \begin{frame}\frametitle{Notación}
@@ -203,10 +217,10 @@
             Entonces $m|n$ si y sólo si $e_i \le f_i$ para todo $i$.
         \end{proposicion}\pause 
         \begin{proof}\pause 
-            \noindent($\Rightarrow$) Por la descomposición de $m$ es claro que $p^{e_i}|m$. Como $m|n$ entonces   $p^{e_i}|n$. Es decir $n =  p^{e_i}u$. Es claro por TFA entonces que $e_i \le f_i$.
+            \noindent($\Rightarrow$) Por la descomposición de $m$ es claro que $p_i^{e_i}|m$. Como $m|n$ entonces   $p_i^{e_i}|n$. Es decir $n =  p_i^{e_i}u$. Es claro por TFA entonces que $e_i \le f_i$.
             \vskip .2cm
             
-            \noindent($\Leftarrow$) Como $e_i \le f_i$, tenemos que $p^{e_i}|p^{f_i}$, para $1 \le i \le r$.  Luego  $$p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}| p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.$$ Es decir $m|n$.
+            \noindent($\Leftarrow$) Como $e_i \le f_i$, tenemos que $p_i^{e_i}|p_i^{f_i}$, para $1 \le i \le r$.  Luego  $$p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}| p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.$$ Es decir $m|n$.
         \end{proof}
         
     \end{frame}
@@ -282,6 +296,122 @@
         \end{ejemplo}
         
     \end{frame}
+    
+
+    \begin{frame}
+        \frametitle{Congruencia - Definiciones y propiedades básicas}
+    
+        \begin{definicion} Sean $a$ y $b$ enteros y $m$ un
+            entero positivo. Diremos que $a$ es {\em congruente} a $b$
+            {\textit{módulo}} $m$, y escribimos 
+            $$
+            a \equiv b \pmod{m}
+            $$
+            si $a-b$ es divisible or $m$,  es decir si $m| a -b$.
+        \end{definicion}
+        
+        Observar que 
+        
+        $$a\equiv 0 \pmod{m} \Leftrightarrow m|a\qquad\qquad$$ 
+        y que 
+        $$\qquad\qquad a\equiv b \pmod{m}\Leftrightarrow a-b\equiv 0 \pmod{m}.$$ 
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{}
+
+        \begin{notacion}
+            $a \equiv b \pmod{m}$ también  lo denotamos $a \equiv b\; (m)$.
+
+        \end{notacion}
+
+        \begin{ejemplo}
+            \begin{itemize}
+                \item $7 \equiv 3 \;(2)$, pues $2 | 7-3=4$.
+                \item $17 \equiv 8 \;(3)$, pues $3 | 17-8 =9$.  
+                \item $8 \equiv 17 \;(3)$, pues $3 | 8-17 =-9$.
+                \item $35 \equiv 13 \;(11)$, pues $11| 35-13 = 22 = 2 \cdot 11$. 
+            \end{itemize}
+        \end{ejemplo}
+    
+        
+    
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{}
+    
+        \begin{proposicion}\label{prop-mod-resto}
+            Sean $a$ entero y $m$ un entero positivo. Sea $r$ el resto de dividir $a$ por $m$.            
+            $$a\equiv r \pmod{m}.$$\vskip -.6cm
+        \end{proposicion}
+        \begin{proof}
+             $a=mq+r$  con $0 \le r <m$.
+             \vskip.4cm
+             Luego,
+             $$a-r = mq \quad \Rightarrow \quad m|a-r\quad \Rightarrow \quad a\equiv r \pmod{m}.$$ 
+             
+             \qed
+        \end{proof}
+    
+    \end{frame}
+
+
+    
+    \begin{frame}
+        Es fácil verificar que la {congruencia módulo} $m$ verifica las
+        siguientes propiedades\vskip .2cm
+        \begin{enumerate}
+            \item[a)]
+            Es {\it {reflexiva}} es decir $x\equiv x\pmod{m}$.\vskip .2cm
+            \item[b)]
+            Es {\it {simétrica}}, es decir si $x \equiv y \pmod{m}$, entonces\vskip .2cm
+            $y \equiv x \pmod{m}$.
+            \item[c)]
+            Es {\it { transitiva}}, es decir si $x\equiv y \pmod{m}$ e
+            $y\equiv z \pmod{m}$, entonces $x\equiv z \pmod{m}$.
+        \end{enumerate}
+        \begin{proof}
+            a)  $m| x-x =0$  y por lo tanto $x\equiv x\pmod{m}$.
+            \vskip .2cm
+            b) $x \equiv y\;(m)$ $\Rightarrow$ $m|x-y$ $\Rightarrow$  $m|-(x-y)$   $\Rightarrow$  $m|y-x$ $\Rightarrow$ $y \equiv x\; (m)$.
+            \vskip .2cm
+            c) $x \equiv y \;(m) \wedge y \equiv z \;(m)$ \;  $\Rightarrow$ \; $m|x-y \wedge m|y-z$ \; $\Rightarrow$ \; 
+            \vskip.2cm
+            \quad$m |(x-y) + (y-z) = x -z$ \; $\Rightarrow$ \; $x \equiv z \;(m)$.
+            
+            \qed
+        \end{proof}
+    \end{frame}
+
+
+    \begin{frame}
+        
+        
+        \begin{proposicion}
+            Sean $a$ y $b$ enteros y $m$ un entero positivo. Entonces $a\equiv b \pmod{m}$ si  y sólo si
+            $a$ y $b$ tienen el mismo resto en la división por $m$.
+        \end{proposicion}
+        \begin{proof} Se deduce por la proposición de la p. \ref{prop-mod-resto} y transitividad. \qed
+        \end{proof}
+    
+        Así como separamos $\mathbb Z$ en los números pares e
+        impares, la propiedad anterior nos permite expresar $\mathbb Z$
+        como una unión  de $m$ subconjuntos. 
+        
+        \vskip .4cm
+        
+        Es decir si \quad $\mathbb  Z_{[r]} =\{x \in \mathbb Z: \text{el resto de dividir $x$ por $m$ es $r$}\}$,
+        \vskip .4cm
+        entonces, 
+        
+        $$
+        \mathbb Z= \mathbb Z_{[0]}\cup \mathbb Z_{[1]}\cup \cdots\cup \mathbb Z_{[m-1]}.
+        $$
+    \end{frame}
+    
+    
+    
     
     
 \end{document}
