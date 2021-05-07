@@ -487,7 +487,7 @@ Una \textit{caminata euleriana} en un grafo $G$ es un caminata que usa todas las
 una vez. Una caminata euleriana que comienza y termina en un mismo vértice se llama también \textit{circuito euleriano}.
 \end{definicion}
 
-El siguiente teorema resume los resultados sobre caminatas eulerianas. La demostración no es demasiada complicada, pero excede los alcances de este curso.  
+El siguiente teorema resume los resultados sobre caminatas eulerianas. La demostración no es demasiada complicada, pero la veremos más adelante.  
 
 \begin{teorema}\label{th-caminata-euleriana} Un grafo conexo con más de un vértice posee una caminata euleriana de $v$ a $w$, con $v \not= w$ si y sólo si $v$ y $w$ son los únicos vértices de grado impar. Un grafo conexo con más de un vértice tiene un circuito euleriano si y sólo si todos los vértices tienen grado par.
 \end{teorema}
@@ -512,12 +512,17 @@ El siguiente teorema resume los resultados sobre caminatas eulerianas. La demost
 
 C. Hierholzer (1840-1871) mostró, poco antes de su muerte, un algoritmo fácilmente implementable para encontrar un circuito euleriano  para cualquier grafo  con vértices de grado  par. El algoritmo de Hierholzer fue la primera demostración del teorema \ref{th-caminata-euleriana} para el caso  de grafos con vértices de grado par. Obviamente,  debido a la observación  \ref{obs-impar-a-par}, esto demuestra también el teorema para grafos con dos valencias impares.
 
+La idea clave del algoritmo de Hierholzer  es la siguiente: en un grafo de valencias pares (conexo o no conexo) cada vez que inicio una caminata que no repite aristas puedo volver al vértice original. Observar que no es posible quedarse atascado en ningún vértice que no sea  el vértice original, porque el grado par de todos los vértices garantiza que, cuando se ingresa a un vértice distinto al original debe haber una  arista sin usar que nos permite dejarlo.
+
 El  algoritmo es el siguiente: 
 \begin{enumerate}
     \item \textbf{Paso 1.} Elija cualquier vértice  inicial $v$ y haga una caminata  que no repita aristas y  que vuelva al vértice (de $v$ a $v$). 
     
-    Observar que no es posible quedarse atascado en ningún vértice que no sea $v$, porque el grado par de todos los vértices garantiza que, cuando se ingresa a un vértice $w$ (distinto de $v$) debe haber una  arista sin usar que nos permite dejar $w$. El recorrido formado de esta manera es un recorrido cerrado, pero puede no cubrir todos los vértices y aristas del grafo inicial.
+     El recorrido formado de esta manera es un recorrido cerrado, pero puede no cubrir todos los vértices y aristas del grafo inicial.
+
     \item \textbf{Paso iterativo} Mientras exista un vértice $u$ en la caminata ya realizada, pero que tenga aristas que no formen parte de la caminata, inicie otra caminata desde $u$ hasta $u$ siguiendo las aristas no utilizadas. Luego,  inserte esta  caminata a la caminata  anterior para formar una caminata nueva (más larga).
+    
+    Observemos que el subgrafo formado por todas las aristas utilizadas despues de cada paso iterativo es un grafo con valencias pares y por lo tanto el subgrafo que obtenemos luego de quitar estas aristas también es par. Esto nos permite hacer caminatas cerradas  por aristas no utilizadas desde cada vértice con aristas no utilizadas.
 \end{enumerate}
 
 Puesto que suponemos que el grafo original es conexo, repetir el paso iterativo agotará todos las aristas del grafo.
