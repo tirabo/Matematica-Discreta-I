@@ -790,8 +790,201 @@ Como ya hemos mencionado, podemos ver que el RSA también puede ser usado para u
 
     Más explícitamente, sean $a, d, n$ enteros positivos se desea calcular $r$ tal que $a^d \equiv r \pmod{n}$ con  $0 \le r < n$. En  otras palabras,  se desea calcular el resto de de dividir $a^d$ por $n$. Estaríamos tentados de calcular $a^d$ y luego hacer la congruencia módulo $n$, pero cuando $d$ es grande, por ejemplo $d > 10^{20}$, este cálculo es imposible para cualquier computador. 
 
-    Para realizar este cálculo, $a^d \equiv r \pmod{n}$, podemos hacer los siguientes pasos:
-    \begin{enumerate}
+    Para realizar el  cálculo de $a^d \equiv r \pmod{n}$ en forma eficiente podemos utilizar el \textit{método binario de exponenciación modular} que explicaremos a continuación. 
+
+    Primero,  recordemos la definición recursiva de la potencia de un número: sea  $a$ número (entero, racional, real, etc.),  entonces 
+    \begin{equation}\label{def-potencia-1}
+        a^d = \left\{
+        \begin{matrix*}[l]
+            1&,&\text{ si $d = 0$,} \\
+            a \cdot a^{d-1}&,&\text{ si $d > 0$.}
+        \end{matrix*}\right.   
+    \end{equation}   
+    
+    Aplicar esta definición tiene el inconveniente de que si $d$ es un número grande, la cantidad de pasos  que se deben realizar para calcular $a^d$ es directamente proporcional (y mayor) a $d$, número que puede ser inmanejable para una computadora. 
+    
+    Una definición alternativa de las potencias de un número nos permite amuntar $d$  en forma significativa. Sea  $a$ número (entero, racional, real, etc.),  entonces
+    \begin{equation}\label{def-potencia-2}
+        a^d = \left\{
+        \begin{matrix*}[l]
+            1&,&\text{ si $d = 0$,} \\
+            a \cdot a^{n-1}&,&\text{  si $d > 0$ y  $d$ impar;} \\
+            {(a^2)}^{\frac{n}{2}}&,&\text{  si $d > 0$ y  $d$ par.}
+        \end{matrix*}\right.   
+    \end{equation}    
+
+    
+    Con esta definición la cantidad de operaciones necesarias para calcular la potencia de un número decrece enormemente. Observemos que mientras que con la definición \eqref{def-potencia-1} la cantidad  de operaciones es del orden de $d$,  con la definición \eqref{def-potencia-2} la cantidad de operaciones es del orden de $\log_2(d)$. 
+    
+    
+\begin{ejemplo}\label{ejemplo-9**17}
+    Supongamos que queremos calcular $9^{17}$.  En  este caso, podríamos hacer este cálculo  directamente, multiplicando $17$ veces $9$ y así obtenemos $16677181699666569$ con $17$ multiplicaciones. Este sería el método que se deduce de la definición recursiva \eqref{def-potencia-mod-1}. 
+
+    Probemos con la segunda definición recursiva:
+    \begin{equation}\label{eq-9**17}
+        \begin{matrix*}[l]
+            9^{17}  &=  9 \cdot 9^{16}& & \\
+                    &=  9 \cdot (9^{2})^8   &=& 3 \cdot 81^8 \\
+                    &=  9 \cdot (81^2)^4 &=&  3 \cdot 6561^4  \\
+                    &=  9 \cdot (6561^2)^2 &=&  3 \cdot 43046721^2\\
+                    &=  9 \cdot 1853020188851841 &=&  16677181699666569.\\
+        \end{matrix*}
+    \end{equation}
+Es decir,  en bastante menos pasos hemos podido calcular $9^{17}$.
+\end{ejemplo}
+
+    
+    Pasemos ahora al problema de calcular exponenciación modular. 
+
+    Supongamos ahora que queremos calcular $r$ tal que  
+$$
+         5^{1125899986842625} \equiv r \pmod{100000037},
+$$
+ y $0 \le r < 100000037$. Hacer este cálculo  directamente no nos da un resultado satisfactorio, ni siquiera con un programa de computadora. Pueden hacer el intento con un lenguaje de programación, Python por ejemplo, y verán que el programa no termina. Esto se debe a que $5^{1125899986842625}$  es un número inmenso  cuya representación no cabría en la memoria de ninguna computadora ni actual ni futura. La clave  para poder calcular $r$ es usar un análogo a la definición \eqref{def-potencia-2}, pero con congruencias. Sea $a$ número entero y sean $d \ge 0$ y $n \ge 1$. Definimos $\modulo$ el \textit{operador módulo} de tal forma que $a \modulo n$ devuelve el resto de dividir $a$ por $n$. Hay muchas forma de calcular $a^d \modulo n$, y nosotros elegimos  la siguiente forma recursiva:
+ \begin{equation}\label{def-potencia-mod-1}
+    a^d \modulo n = \left\{
+    \begin{matrix*}[l]
+        1&,&\text{ si $d = 0$,} \\
+        a \cdot (a^{n-1} \modulo n) \modulo n &,&\text{  si $d > 0$ y  $d$ impar;} \\
+        {(a^2 \modulo n)}^{\frac{n}{2}}\modulo n&,&\text{  si $d > 0$ y  $d$ par.}
+    \end{matrix*}\right.   
+\end{equation}
+
+  Esta definición no solo reduce la cantidad de pasos para calcular $r$, si no que, veremos un poco más adelante, también mantiene la cantidad de dígitos de los cálculos intermedios acotada.
+
+  \begin{ejemplo}
+    Sea $n = 23$, calculemos usando  la definición \ref{def-potencia-mod-1}, $r$ tal que  $9^{17} \equiv r \pmod{23}$ con $0 \le r < 23$,  es decir $9^{17} \modulo 23$. Apliquemos la definición \eqref{def-potencia-mod-1} y aprovechemos los cálculos hechos en el ejemplo \ref{ejemplo-9**17}:
+    \begin{equation*}\label{eq-3**17-mod-21}
+        \begin{matrix*}[l]
+            9^{17}  &\equiv  9 \cdot 9^{16}& & &&\\
+                    &\equiv  9 \cdot (9^{2})^8   &\equiv& 9 \cdot 12^8&&\text{(pues $9^2 \equiv 12 \pmod{23}$)} \\
+                    &\equiv  9 \cdot (12^2)^4 &\equiv&  9 \cdot 6^4&&\text{(pues $12^2 \equiv 6\pmod{23}$)}  \\
+                    &\equiv  9 \cdot (6^2)^2 &\equiv&  9 \cdot 13^2&&\text{(pues $6^2 \equiv 13 \pmod{23}$)}\\
+                    &\equiv  9 \cdot 8 &&  &&\text{(pues $13^2 \equiv 8\pmod{23}$)}\\
+                    &\equiv 3 &&  &&\text{(pues $9\cdot 8 \equiv 3 \pmod{23}$).}\\
+        \end{matrix*}
+    \end{equation*}
+    Es decir, $9^{17} \equiv 3 \pmod{23}$. Observar que pese a que $9^{17}$ es un número de $17$ dígitos, los cálculos que hacemos (módulo $23$) involucran pocos dígitos.   
+
+  \end{ejemplo}
+
+Como observamos en el ejemplo,  en cada paso donde $d$ es par tenemos que calcular el cuadrado de un número y elevarlo a una potencia que es la mitad  que la anterior. Luego,  si  el exponente es $d < 2^k$ en alrededor de $k$ pasos (unos pocos más en realidad) obtendremos el resultado deseado. 
+
+En  el caso  que habíamos planteado: calcular $ 5^{1125899986842625} \equiv r \pmod{100000037}$, como $1125899986842625 < 2^{51}$, si lo resolvemos usando el método de la fórmula \eqref{def-potencia-mod-1} necesitaremos poco más de $50$ pasos. 
+
+
+La definición \eqref{def-potencia-mod-1}  nos muestra como casi inmediátamente podemos obtener una fórmula recursiva para la exponenciación modular:  sea $n> 0$, definimos $\cociente$ el \textit{operador cociente} de tal forma que $ a \cociente n$ es el cociente entero de dividir $a$ por $n$. Entonces, nuestro interés es calcular  $f(a,d) =a^d \modulo n$  en forma eficiente y la fórmula \eqref{def-potencia-mod-1} es equivalente a 
+\begin{equation}\label{def-potencia-mod-2}
+    f(a,d) =  \left\{
+    \begin{matrix*}[l]
+        1&,&\text{ si $d = 0$,} \\
+        (a \cdot f(a,d-1)) \modulo n&,&\text{  si $d > 0$ y  $d$ impar;} \\
+        f(a^2 \modulo n, {d}\cociente {2}) &,&\text{  si $d > 0$ y  $d$ par.}
+    \end{matrix*}\right.   
+\end{equation}
+Observar que en la definición hay dos $\modulo n$  que podrían haber sido reemplazados por una instancia de la función $f$ pues $x \modulo n = f(x, 1)$. Pero, en este caso, se pueden calcular directamente por el algorimo de división, pues están aplicados en números considerados ``no grandes''.
+
+
+Esta función recursiva es fácilmente trasladable a pseudocódigo. 
+
+\begin{minipage}{0.90\textwidth}
+    \vskip .5cm
+    \noindent \textsc{Exponenciación modular recursiva}
+    \begin{small}
+        \begin{verbatim}
+def f(a, d):
+    if d == 0:
+        res = 1
+    elif d % 2 == 1:
+        res =  (a * f(a, d - 1)) % n
+    else:
+        res =  f(a**2 % n, d // 2) 
+    return res
+        \end{verbatim}
+    \end{small}
+\end{minipage}
+
+\vskip .2cm 
+
+En pseudocódigo una versión iterativa de la exponenciacion modular se puede describir de la siguiente forma. 
+
+\begin{minipage}{0.90\textwidth}
+    \vskip .5cm
+    \noindent \textsc{Exponenciación modular}
+    \begin{small}
+        \begin{verbatim}
+def exp_modular(a, d, n):
+    res = 1
+    base, exponente = a, d
+    while exponente > 0:
+        # invariante: (a**d) % n = (res * base**exponente) % n
+        if exponente % 2 == 1:
+            res = (res * base) % n
+            exponente = exponente // 2
+            base = base**2 % n
+        elif exponente % 2 == 0:
+            exponente = exponente // 2
+            base = base**2 % n
+    return res
+        \end{verbatim}
+    \end{small}
+\end{minipage}
+\vskip .2cm
+
+\begin{comment}
+\subsection*{Viejo}
+
+En pseudocódigo, una versión iterativa de la exponenciacion modular se puede describir de la siguiente forma. 
+
+\begin{minipage}{0.90\textwidth}
+    \vskip .5cm
+    \noindent \textsc{Exponenciación modular}
+    \begin{small}
+        \begin{verbatim}
+def exp_modular(a, d, n):
+    # pre: a, d >= 0, n > 0
+    # post: calcula res = a**d % n utilizando el método binario 
+    #       de exponenciacion modular
+    res = 1
+    base, exponente = a, d
+    while exponente > 0:
+        # invariante: (a**d) % n = (res * base**exponente) % n
+        if exponente % 2 == 1:
+            res = (res * base) % n
+            exponente = exponente - 1
+        else:
+            res = (res * base**2) % n
+            exponente = exponente // 2
+            base = base**2 % n
+    return res
+        \end{verbatim}
+    \end{small}
+\end{minipage}
+    
+    
+
+\begin{minipage}{0.90\textwidth}
+    \vskip .5cm
+    \noindent \textsc{Exponenciación modular}
+    \begin{small}
+        \begin{verbatim}
+def exp_modular(a, d, n):
+    # pre: a, d >= 0, n > 0
+    # post: calcula em = a**d % n utilizando el método binario 
+    #       de exponenciacion modular
+    a0, em, cociente, resto = a, 1, d, 0
+    while cociente > 0:
+        # invariante: (a**d) % n = (em * a0**cociente) % n
+        resto = cociente % 2
+        cociente = cociente // 2
+        em = (em * a0**resto) % n
+        a0 = a0**2 % n
+    return em
+        \end{verbatim}
+    \end{small}
+\end{minipage}
+
+\begin{enumerate}
         \item Se calcula la expresión binaria de $d$. 
         Si $d$ en base $2$ es $d_m...d_0$, entonces
         $$d = \sum_{i=0}^{m} d_i \cdot  2^i.$$
@@ -916,15 +1109,18 @@ def exp_modular(a, d, n):
     \end{small}
 \end{minipage}
 \vskip .2cm
+\end{comment}
 
-\subsection*{Pruebas de primalidad}
+\end{section}
 
+\begin{section}{Pruebas de primalidad (*)}
+    
 En la implementación del  criptosistema RSA  es fundamental el uso de primos de grandes dimensiones, por ejemplo de más de $100$  dígitos. Ahora bien,  tratar de  demostrar que un número  (grande) es primo buscando sus divisores es imposible con una arquitectura de computadoras determinística,  como la es la de las computadoras actuales. Justamente en la dificultad de la descomposición prima se basa la fortaleza del criptosistema RSA. 
 
-Sin embargo,  veremos en esta parte del apunte  que hay algoritmos que permiten determinar en forma probabilística si un número es primo o no. Mencionaremos al final de esta subsección algoritmos que determinan eficientemente y en forma determinística si un número es primo a o no. 
+Sin embargo,  veremos en esta parte del apunte  que hay algoritmos que permiten determinar en forma probabilística si un número es primo o no. También mencionaremos, al final de esta sección, algoritmos que determinan eficientemente y en forma determinística si un número es primo a o no. 
 
 
-El algoritmo que veremos es el test de primalidad Miller-Rabin probabilístico. Como su nombre lo indica  es una prueba probabilística de primalidad: un algoritmo que determina si un número dado es probable que sea primo.
+El algoritmo que veremos principalmente es el test de primalidad Miller-Rabin probabilístico. Como su nombre lo indica  es una prueba probabilística de primalidad: un algoritmo que determina si un número dado es probable que sea primo.
 
 Este test es ampliamente utilizado en la práctica (en RSA, por ejemplo) y es una de las pruebas más simples y rápidas conocidas.
 
@@ -992,7 +1188,7 @@ Mostramos a continuación una implementación en pseudocódigo.
         \begin{small}
             \begin{verbatim}
 def test_Miller_Rabin(n: int, k: int) -> bool:
-    s, d = satisfacen n = 2**s * d + 1
+    s, d = satisfacen n = 2**s * d + 1, s impar
     repetir k veces:
         a = entero al azar entre 2 y n-1
         fpp = False # suponemos n no es fuertemente primo en base a

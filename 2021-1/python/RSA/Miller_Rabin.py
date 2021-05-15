@@ -191,19 +191,19 @@ def test_Miller_deterministico(n: int) -> bool:
     return True
 
 def main():
-    """
+    
     #n1 = 10**10+79
     n1 = 10**15+37
     #n1 = 43
     #n1 = 45
-    print(test_Miller_deterministico(n1))
+    #print(test_Miller_deterministico(n1))
     
     n1 = 2074722246773485207821695222107608587480996474721117292752992589912196684750549658310084416732550077
     n2 = 2367495770217142995264827948666809233066409497699870112003149352380375124855230068487109373226251983
-    print(test_Miller_deterministico(n1))
+    #print(test_Miller_deterministico(n1))
     k = 50 # 50 dice 0.99... (30 9's) probabilidad de ser primo
     print(test_Miller_Rabin(n1, k)) 
-    """
+    
 
 if __name__ == "__main__":
     main()

@@ -113,7 +113,7 @@
     
     \begin{frame}
         La utilidad de las congruencias reside principalmente en el hecho
-        de que son compatibles con las operaciones aritméticas.
+        de que son compatibles con las operaciones aritméticas. \pause
         Específicamente, tenemos el siguiente teorema.
         
         \begin{teorema}\label{t4.1} Sea $m$ un entero positivo y sean $x_1$, $x_2$,
@@ -135,7 +135,7 @@
     \begin{frame}
         \begin{proof}
             
-            \noindent(a) Por hipótesis $\exists x,y$ tq $x_1-x_2=mx$ e $y_1-y_2=my$. Luego, 
+            \noindent(a) \pause Por hipótesis $\exists x,y$ tq $x_1-x_2=mx$ e $y_1-y_2=my$. Luego, 
             $$
             \begin{aligned}
                 (x_1+y_1)-(x_2+y_2) &= (x_1-x_2)+ (y_1 -y_2) \\
@@ -144,8 +144,8 @@
             \end{aligned}
             $$
             y por consiguiente el lado izquierdo es divisible por $m$.
-            \vskip .2cm
-            \noindent (b)  Aquí tenemos
+            \vskip .2cm\pause 
+            \noindent (b)\pause   Aquí tenemos
             $$
             \begin{aligned}
                 x_1y_1-x_2y_2 &=  x_1y_1-x_2y_1+ x_2y_1-x_2y_2 \\
@@ -162,7 +162,7 @@
     
     \begin{frame}
         
-        \noindent (c)  Lo haremos por inducción sobre $j$. 
+        \noindent (c)\pause   Lo haremos por inducción sobre $j$. 
         \vskip .2cm
         Es claro que si $j=1$ el resultado es verdadero. 
         \vskip .2cm
@@ -182,15 +182,15 @@
     \end{frame}
     
     
-    \begin{frame}\frametitle{Regla del  nueve}
+    \begin{frame}\frametitle{Regla del  nueve}\pause 
         \begin{proposicion}
             Sea $(x_nx_{n-1}\ldots x_0)_{10}$ la
             representación del entero positivo $x$ en base $10$, entonces
             $$
             x \equiv x_0+x_1+\cdots+x_n \pmod{9}
             $$
-        \end{proposicion}
-        \begin{proof}
+        \end{proposicion}\pause 
+        \begin{proof}\pause 
             Observemos:  $10\equiv 1\pmod{9}$ $\Rightarrow$  $10^k\equiv 1^k \equiv 1\pmod{9}$. 
             \vskip .2cm
             Por la definición de representación en base $10$, tenemos que 
@@ -208,8 +208,8 @@
             $$
             9|x\quad  \Leftrightarrow\quad 9|  x_0+x_1+\cdots+x_n.
             $$
-        \end{corolario}
-        \begin{proof}
+        \end{corolario}\pause 
+        \begin{proof}\pause 
             Por la proposición anterior 
             \begin{equation}
                 x \equiv x_0+x_1+\cdots+x_n \pmod{9} \tag{*}
@@ -227,8 +227,8 @@
     \begin{frame}
         
         \begin{ejemplo}Probar que \quad $54\,321 \cdot 98\,765\not= 5\,363\,013\,565$.
-        \end{ejemplo}
-        \begin{proof}
+        \end{ejemplo}\pause 
+        \begin{proof}\pause 
             Módulo 9:
             \begin{equation*}
                 \begin{matrix*}[l]
@@ -477,7 +477,7 @@
         
     \end{frame}
     
-    
+    \begin{comment}
     \begin{frame}
         \begin{proposicion}
             Sean $a$, $b$, $m \in {\mathbb Z}$, $d>0$ tales que  \,$d\mid a$,\,  \,$d\mid b$\, y \,$d\mid m$. Entonces, 
@@ -495,26 +495,33 @@
             \end{align*}
             \qed
         \end{proof}
+        La proposición anterior nos permite reducir las ecuaciones al caso $    ax \equiv b\,({m})$ con $(a,m)=1$. \pause
     \end{frame}
-    
+\end{comment}
     
     \begin{frame}
-        La proposición anterior nos permite reducir las ecuaciones al caso $    ax \equiv b\,({m})$ con $(a,m)=1$. \pause
+    
         
         \vskip .4cm
         
         \begin{ejemplo}
             Encontrar todos los $x \in \mathbb Z$ tales que
             \begin{equation}
-                6x \equiv 30 \pmod{42}. \tag{*}
+                6x \equiv 18 \pmod{21}. \tag{*}
             \end{equation}
         \end{ejemplo} \pause \vskip -.4cm
         \begin{solucion} \pause
-            Como $6 =(6,42)$ y $6|30$, la ecuación (*) tiene solución y tenemos que 
-            \begin{equation*}
-                6x \equiv 30 \pmod{42} \quad \Leftrightarrow \quad     x \equiv 5 \pmod{7}.
-            \end{equation*}
-            Una solución obvia es $x_0 =5$, luego todas las soluciones son $x= 5 + 7k$, $k \in \mathbb Z$.\qed
+            Como $3 =(6,21)$ y $3|18$, la ecuación (*) tiene solución. 
+            
+            Por otro lado, por el algoritmo de Euclides,
+            \begin{align*}
+                3 &= (-3)\cdot 6 + 1\cdot 21& & \Longrightarrow \\
+                3 &\equiv (-3)\cdot 6 \pmod{21}& & \stackrel{\text{multiplicando por $6$}}{\Longrightarrow} \\
+                18 &\equiv (-18)\cdot 6 \pmod{21}& & {\Longrightarrow} \\
+                6 \cdot (-18 ) &\equiv 18 \pmod{21}& &.
+            \end{align*}
+        
+            Es decir $x_0 = -18$  es solución de la ecuación (*) y todas las soluciones son $-18 + k\cdot(\frac{21}{3})$, $k \in \mathbb Z$.\qed
         \end{solucion}
     \end{frame}
     
