@@ -553,9 +553,9 @@ El siguiente teorema resume los resultados sobre caminatas eulerianas. La demost
 
 C. Hierholzer (1840-1871) mostró, poco antes de su muerte, un algoritmo fácilmente implementable para encontrar un circuito euleriano  para cualquier grafo  con vértices de grado  par. El algoritmo de Hierholzer\index{algoritmo de Hierholzer} fue la primera demostración del teorema \ref{th-caminata-euleriana} para el caso  de grafos con vértices de grado par. 
 %Obviamente,  debido a la observación  \ref{obs-impar-a-par}, esto demuestra también el teorema para grafos con dos valencias impares. 
-Nosotros veremos aquí una versión del algoritmo de Hierholzer se aplica tanto a los grafos con todos los vértices de valencia par o con dos vértices de valencia impar. 
+Nosotros veremos aquí una versión del algoritmo de Hierholzer que se aplica tanto a los grafos con todos los vértices de valencia par como, a los que tienen dos vértices de valencia impar. 
 
-Para explicar el algoritmo de Hierholzer no es útil la siguiente definición:  un \textit{recorrido euleriano} es una caminata o circuito que no repite aristas. Un \textit{recorrido euleriano maximal}  es un recorrido euleriano que respetando la condición de no repetir aristas no es posible continuarlo.  
+Para explicar el algoritmo de Hierholzer nos es útil la siguiente definición:  un \textit{recorrido euleriano} es una caminata o circuito que no repite aristas. Un \textit{recorrido euleriano maximal}  es un recorrido euleriano que respetando la condición de no repetir aristas no es posible continuarlo.  
 
 La idea clave del algoritmo de Hierholzer  es la siguiente:  en un grafo de valencias pares (conexo o no conexo) todo recorrido euleriano maximal termina en el vértice original. Observar que no es posible quedarse atascado en ningún vértice que no sea  el vértice original, porque el grado par de todos los vértices garantiza que, cuando se ingresa a un vértice distinto al original debe haber una  arista sin usar que nos permite dejarlo. 
 
