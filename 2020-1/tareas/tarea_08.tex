@@ -1,5 +1,5 @@
 % PDFLaTeX
-\documentclass[a4paper,12pt,twoside,spanish,reqno]{amsbook}
+\documentclass[a4paper,12pt,twoside,spanish]{amsbook}
 %\documentclass[a4paper,11pt,twoside]{book}
 %\documentclass[a4paper,11pt,twoside,spanish]{amsbook}
 
@@ -79,28 +79,28 @@
 \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
 
 \newtheorem{teorema}{Teorema}[section]
-\newtheorem{proposicion}[teorema]{Proposición}
+\newtheorem{proposicion}[teorema]{Proposici\'on}
 \newtheorem{corolario}[teorema]{Corolario}
 \newtheorem{lema}[teorema]{Lema}
 \newtheorem{propiedad}[teorema]{Propiedad}
 
 \theoremstyle{definition}
 
-\newtheorem{definicion}{Definición}[section]
+\newtheorem{definicion}{Definici\'on}[section]
 \newtheorem{ejemplo}{Ejemplo}[section]
 \newtheorem{problema}{Problema}[section]
 \newtheorem{ejercicio}{Ejercicio}[section]
 \newtheorem{ejerciciof}{}[section]
 
 \theoremstyle{remark}
-\newtheorem{observacion}{Observación}[section]
+\newtheorem{observacion}{Observaci\'on}[section]
 \newtheorem{nota}{Nota}[section]
 
 \renewcommand{\partname }{Parte }
 \renewcommand{\indexname}{Indice }
 \renewcommand{\figurename }{Figura }
 \renewcommand{\tablename }{Tabla }
-\renewcommand{\proofname}{Demostración}
+\renewcommand{\proofname}{Demostraci\'on}
 \renewcommand{\appendixname }{}
 \renewcommand{\contentsname }{Contenidos }
 \renewcommand{\chaptername }{}
@@ -110,7 +110,7 @@
 
 \newcommand{\tarea}[1]{
 	\begin{center}
-		{\Large Matemática Discreta I - 2021/1} \vskip.4cm
+		{\Large Matemática Discreta I - 2020/1} \vskip.4cm
 		{\Large Tarea #1}\vskip .4cm
 \end{center}}
 
@@ -139,73 +139,29 @@
 %\frame{\titlepage} 
 
 
-\tarea{9}
+\tarea{8}
 
 \begin{ejercicio}
 	\begin{enumerate}
-		\item[1.] (60 pts) 
-		\begin{enumerate}
-			\item[(i)] Encontrar todas las soluciones de la ecuación en congruencia
-			$$30\,x\equiv 2 \quad (67)$$
-			usando el método visto en clase.
-			\item[(ii)] Dar todas las soluciones $x$ de la ecuación anterior tales que $0 < x < 300$.
-		\end{enumerate}
-		\vskip .2cm
-		\item[2.]  (40 pts)  Encontrar los últimos dos dígitos de $2^{338}$. (\textit{Ayuda:}\;$2^{22} \equiv 4 \; (100)$).  
+		\item[1.] (50 pts) Encontrar el resto de dividir $9^{52}\cdot 7^{33}$ por $8$.
+		\item[2.]  (50 pts)  Probar\textbf{ usando congruencias} que todo número de la forma $3^{2n}-2^n$ es divisible por $7$ . 
 	\end{enumerate}
 \end{ejercicio}
 	
-\begin{comment}^{5}
+\begin{comment}
 \begin{solucion}
 
-1(i). (40 pts) 
-Primero encontramos el mcd entre $59$ y $10$:
-\begin{alignat}3
-59 &= 10 \cdot 5 + 9& \qquad&\Rightarrow& \qquad 9 &= 59 -  10 \cdot 5 \label{eq:cle1}\\ 
-10 &=  9\cdot 1 +1 & \qquad&\Rightarrow& \qquad 1 &= 10 - 9 \label{eq:cle2}\qquad\\
-9 &=  1\cdot 9  +0 & \qquad&& \qquad  &
-\end{alignat}
-Luego, $1=(59,10)$ y 
-\begin{align*}
-1 & \overset{(\ref{eq:cle2})}{=} 10 -9  \\
-& \overset{(\ref{eq:cle1})}{=}  10 -(59 -  10 \cdot 5) = 10 -59 + 5\cdot  10 \\
-&=  6 \cdot  10 + (-1) \cdot 59.
-\end{align*}
+1. 
 
-Por lo tanto
-\begin{equation*}
-	10 \cdot 6 \equiv 1 (59). 
-\end{equation*}
-Multiplicando  por $8$,  tenemos
-\begin{equation*}
-10 \cdot 48 \equiv 8 (59). 
-\end{equation*}
-Por lo tanto $x_0=48$ es solución y todas las soluciones son de la forma $48+ k\cdot 59$, con $k \in \mathbb Z$.
+$9 \equiv 1 \;(8)$ y $7 \equiv -1 \; (8)$, luego $$9^{52}\cdot 7^{33}\equiv 1^{52}\cdot (-1)^{33}\equiv  -1 \equiv 7 \; (8).$$ Por lo tanto el resto es $7$. 
+
 \vskip .4cm
 
-
-
-1(ii). (20 pts) Por (i), las soluciones son de la forma  $48+ k\cdot 59$, con $k \in \mathbb Z$, por lo tanto son soluciones
-\begin{equation*}
-	48 +(-2)\cdot 59 = -70,\quad 48 +(-1)\cdot 59 = -11,\quad  48 +0 \cdot 59= 48, \quad   48 +1 \cdot 59 =107, \quad   48 +2 \cdot 59 =166.,
-\end{equation*}
-Luego, las soluciones $x$ tal que $0 < x < 150$ son $x= 48$ y $x=107$. 
-\vskip .4cm
-\newpage
-	2. Por una de la versiones del teorema de Fermat, si  $p$ ves primo  y $p\not= a$, tenemos que
-	\begin{equation*}
-		a^{p-1} \equiv 1 \,(p).
-	\end{equation*}
-	Como $13$ es primo y $1=(7,13)$,  tenemos que:
-	\begin{equation*}
-	7^{12} \equiv 1 \,(13).
-	\end{equation*}
-	Como $98 = 12 \cdot 8 + 2$, 
-	\begin{equation*}
-		7^{98} \equiv 7^{12 \cdot 8 + 2}  \equiv 7^{12 \cdot 8}\, 7^{2} \equiv (7^{12})^8\, 7^{2}\equiv 1^8\, 7^{2}\equiv 49 \equiv 3\cdot 13 +10  \equiv 10  \, (13).
-	\end{equation*}
-	
-	
+	2. Observar  que $3^{2n} = (3^2)^n = 9^n$. Como $9 \equiv 2 \; (7)$,  tenemos que $ 9^n  \equiv 2^n \; (7)$ y entonces:
+$$
+3^{2n}-2^n \equiv  (3^2)^n - 2^n \equiv 9^n - 2^n  \equiv 2^n - 2^n \equiv 0 \; (7).
+$$
+Por lo tanto  $3^{2n}-2^n$ es divisible por $7$. 	
 \end{solucion}
 
 \end{comment}

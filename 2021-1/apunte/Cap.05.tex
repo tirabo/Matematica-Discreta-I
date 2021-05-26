@@ -130,6 +130,10 @@ $d$&$z$&&$c$&$d$\\
 
 Las listas de adyacencia son redundantes (cada arista está representada dos veces) pero como todo lenguaje de programación de alto nivel maneja la estructura tipo lista,  preferimos esta representación pues  un grafo  resulta ser una lista de listas  o un  arreglo de listas.  
 
+\begin{observacion*}
+    ¿Por qué es más eficiente la representación de un grafo por una lista de adyacencia que por los conjuntos que lo definen?. En  los algoritmos sobre grafos una de las operaciones más utilizadas es encontrar los vértices adyacentes a un vértice dado $v$. En la implementación natural por conjuntos  esto supone recorrer todas las aristas del grafo para determinar en cuales de ellas se encuentra $v$. En un grafo  con gran cantidad de aristas esto supone muchísimas operaciones. En cambio si trabajamos con listas de adyacencia es simplemente devolver la lista correspondiente a $v$ y la cantidad necesaria de operaciones para hacer esto es del orden de la valencia de $v$ (que puede ser un número muy pequeño comparada la número de aristas).   
+\end{observacion*}
+
 
 \begin{definicion}
 Por cada entero positivo $n$ definimos el \textit{grafo completo  \index{grafo completo} $K_n$} como el grafo con $n$ vértices y en el cual cada par de vértices es adyacente. 
@@ -351,6 +355,10 @@ Ahora cada término en la segunda suma es par, luego esta suma es un número par
 Este resultado es a veces llamado el ``handshaking lemma'' (handshak $=$ estrechar la mano, darse la  \index{handshaking lemma} mano), debido a que se puede interpretar en términos de gente y darse la mano: dado un conjunto de personas, el número de personas que le ha dado la mano a un número impar de miembros del conjunto
 es par. 
 
+\begin{observacion*}
+    Cuando representamos un grafo por una lista de adyacencia, como cada arista se encuentra dos veces (si $w$ está en la columna de $v$,  entonces $v$  está en la columna de $w$) podemos llegar a pensar que la representación por listas de adyacencia utiliza ``demasiado espacio'' (el doble de lo necesario). Sin embargo,  esta representación ocupa el mismo espacio que la de conjuntos: en la  lista de adyacencia de un grafo $G$, en cada columna $v$  se encuentran $\delta(v)$ vértices. Por lo tanto la tabla tiene $\sum_{v \in V} \delta(v)$  entradas. Por el teorema \ref{t5.3} tenemos que $\sum_{v \in V} \delta(v)= 2|E|$,  es decir el número de entradas de la tabla es dos veces el número de aristas. Por otro lado, como cada arista ocupa $2$ espacios (los dos vértices),  el número de espacios necesario para representar $G$  como conjunto  es también $2|E|$. 
+\end{observacion*}
+
 Un grafo en el cual todos los vértices tienen la misma valencia $r$ se llama \textit{regular}  \index{grafo regular} (con valencia $r$), o \textit{$r$-valente,} o de \textit{grado $r$.} En este caso, el resultado del teorema \ref{t5.3} se traduce a
 $$
 r|V|=2|E|.
@@ -567,12 +575,16 @@ Teniendo en cuenta las consideraciones anteriores podemos plantear el siguiente 
     \item \textbf{Paso 1.} Elija el vértice inicial $v$ y haga un recorrido euleriano maximal. 
     
     
-    \item \textbf{Paso iterativo} Mientras exista un vértice $u$ en la caminata ya realizada que tenga aristas que no formen parte de la caminata, inicie otro recorrido  euleriano maximal siguiendo las aristas no utilizadas. Luego,  inserte en $u$ este recorrido a la caminata  anterior obteniendo una nueva caminata (más larga).
+    \item \textbf{Paso iterativo} 
+    \begin{itemize}
+        \item Mientras en la caminata ya realizada exista un vértice $u$  que tenga aristas que no formen parte de la caminata, realice otro recorrido  euleriano maximal siguiendo las aristas no utilizadas. 
+        \item Inserte en $u$ este recorrido a la caminata  anterior obteniendo una nueva caminata (más larga).
+        \item  Si aún queda alguna arista sin recorrer vuelva al inicio del paso iterativo.
+    \end{itemize}
 \end{enumerate}
-
 Observemos que el recorrido del paso 1 en el caso del grafo con todas las valencias pares, es un recorrido cerrado. En el caso del grafo con dos valencias impares es un recorrido que va de un vértice impar al otro.  
     
-En  cualquier de los dos casos el recorrido puede no cubrir todos los vértices y aristas del grafo inicial y el subgrafo que se obtiene eliminando las aristas del recorrido tiene todas las valencias pares. 
+En  cualquier de los dos casos,  en el paso 1 el recorrido puede no cubrir todos los vértices y aristas del grafo inicial. Además,  observemos que el subgrafo que se obtiene eliminando las aristas del recorrido tiene todas las valencias pares. 
 
 En  el paso iterativo el subgrafo de las aristas disponibles tiene todos los vértices de valencia par y por lo tanto el recorrido euleriano comienza y  termina en el mismo vértice y allí se inserta.
 
@@ -701,40 +713,56 @@ Es decir si $w$ es un vértice \texttt{libres[w]} es una lista de los vértices 
 \begin{observacion*} Escribiremos en pseudocódigo el algoritmo de Hierholzer para hallar un circuito euleriano en un grafo $G$ con $n$ vértices  de valencia par o una caminata euleriana en un grafo con dos valencias impares.
     
 Como ya mencionamos anteriormente, a un grafo $G$ lo representaremos por una lista de adyacencia. Supongamos que los vértices de $G$ son $0,\ldots,k$,  entonces $G[i] = [i_0,i_1,\ldots]$ serán los vértices adyacentes al vértice $i$. Tomamos como comienzo del recorrido el vértice  $0$. En  el caso de los grafos con valencia impar el vértice $0$ debe ser impar. 
+
+Primero daremos el pseudocódigo para un recorrido euleriano maximal.
+\vskip .4cm    
+\begin{minipage}{0.95\textwidth}
+    \noindent \textsc{Recorrido euleriano maximal}
     
+    \vskip .2cm
+    \begin{small}
+    \begin{verbatim}
+def rem(L, v_ini): 
+    # pre: L grafo, v_ini vértice de L
+    # post: devuelve recorrido euleriano que comienza en v_ini
+    sub_caminata = [v_ini]  # sub caminata
+    p0 = v_ini
+    while len(L.adyacentes(p0)) > 0:  
+        p1 = L.adyacentes(p0)[0] # p1 primer adyacente a p0 
+        sub_caminata.append(p1) # agrega p1 a caminata
+        L.quitar_arista((p0,p1)) # quita arista {p0, p1}
+        p0 = p1 
+    return sub_caminata
+    \end{verbatim}
+    \end{small}
+    \end{minipage}
+    
+    Ahora, implementamos el circuito euleriano o caminata euleriana,  según corresponda,  con el uso de la función \verb+rem()+.
+
     \vskip .4cm 
 
-    \begin{minipage}{0.95\textwidth}
+\begin{minipage}{0.95\textwidth}
 \noindent \textsc{Circuito/Caminata euleriana}
-
-\vskip .2cm
+\vskip .1cm
 \begin{small}
 \begin{verbatim}
 # pre: G grafo con todos los vértices de valencia par o dos impares
 # post: cuando termina 'caminata' es una lista de vértices que es
 #       una caminata o circuito euleriano que empieza en 0.
 libres = G.copiar() # sub grafo de aristas no utilizadas
-caminata = [0] # comenzamos de 0
-h = 0
-while libres.nro_aristas() > 0:
-    while libres.adyacentes(h) == [] or h not in caminata:
-        h = h + 1
-    # h = vértice en caminata y libre[h] != [] (hay aristas libres)
-    pos = caminata.index(h) # en pos se insertará el rec. euleriano
-    p0 = h
-    sub_caminata = [p0]  # sub caminata
-    while len(libres.adyacentes(p0)) > 0:
-        p1 = libres.adyacentes(p0)[0]
-        sub_caminata.append(p1)  # agrega p1 a caminata
-        libres.quitar_arista([p0,p1]) # quitar arista p0, p1 
-        p0 = p1 
-    # sub_caminata es ahora un recorrido euleriano
-    caminata =  caminata[:pos] + sub_caminata + caminata[pos+1:]
+cam = rem(libres, v_ini) # caminata
+while len(libres.aristas()) > 0: 
+    for v in libres.vertices(): 
+        if len(libres.adyacentes(v)) > 0 and v in caminata:
+            pos = cam.index(v) 
+            cam  =  cam[:pos] + rem(libres, v) + cam[pos+1:]
 \end{verbatim}
 \end{small}
 \end{minipage}
 
-En el algoritmo, \verb+libres.nro_aristas()+ indica el número de aristas en el grafo \verb+libres+, \verb+caminata.index(h)+ indica en que lugar de la caminata se encuentra \verb+h+ y \verb+libres.adyacentes(p0)+ indica la lista de vértices adyacentes a \verb+p0+ en el grafo \verb+libres+. 
+\vskip .4cm
+
+Cuando el algoritmo termina la variable \verb+cam+ es una lista que describe la caminata o circuito euleriano. En el algoritmo, \verb+cam.index(v)+ indica en que lugar de la caminata se encuentra \verb+v+ y \verb+libres.adyacentes(v)+ indica la lista de vértices adyacentes a \verb+v+ en el grafo \verb+libres+. 
 
 
 \end{observacion*}

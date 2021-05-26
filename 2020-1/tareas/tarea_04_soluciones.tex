@@ -1,0 +1,241 @@
+% PDFLaTeX
+\documentclass[a4paper,12pt,twoside,spanish]{amsbook}
+%\documentclass[a4paper,11pt,twoside]{book}
+%\documentclass[a4paper,11pt,twoside,spanish]{amsbook}
+
+%%%---------------------------------------------------
+
+
+\usepackage{etex}
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+
+\renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
+
+% Para hacer el  indice en linea de comando hacer 
+% makeindex main
+%% En http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf hay ejemplos de packages de fonts libres, como los siguientes:
+%\usepackage{cmbright}
+%\usepackage{pxfonts}
+%\usepackage[varg]{txfonts}
+%\usepackage{ccfonts}
+%\usepackage[math]{iwona}
+%\usepackage[math]{kurier}
+
+
+\usepackage{t1enc}
+%\usepackage[spanish]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+%\usetikzlibrary{graphs}
+%\usepackage{tikz-3dplot} %for tikz-3dplot functionality
+%\usepackage{pgfplots}
+\usepackage{mathtools}
+\usepackage{stackrel}
+\usepackage{enumerate}
+\usepackage{tkz-graph}
+%\usepackage{makeidx}
+\makeindex
+
+%%%----------------------------------------------------------------------------
+\usepackage[a4paper, top=3cm, left=3cm, right=2cm, bottom=2.5cm]{geometry}
+%% CONTROLADORES DE.
+% Tamaño de la hoja de impresión.
+% Tamaños de los laterales del documento. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% \theoremstyle{plain} %% This is the default
+%\oddsidemargin 0.0in \evensidemargin -1.0cm \topmargin 0in
+%\headheight .3in \headsep .2in \footskip .2in
+%\setlength{\textwidth}{16cm} %ancho para apunte
+%\setlength{\textheight}{21cm} %largo para apunte
+%%%%\leftmargin 2.5cm
+%%%%\rightmargin 2.5cm
+%\topmargin 0.5 cm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+\usepackage{hypcap}
+
+
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{proposicion}[teorema]{Proposici\'on}
+\newtheorem{corolario}[teorema]{Corolario}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{propiedad}[teorema]{Propiedad}
+
+\theoremstyle{definition}
+
+\newtheorem{definicion}{Definici\'on}[section]
+\newtheorem{ejemplo}{Ejemplo}[section]
+\newtheorem{problema}{Problema}[section]
+\newtheorem{ejercicio}{Ejercicio}[section]
+\newtheorem{ejerciciof}{}[section]
+
+\theoremstyle{remark}
+\newtheorem{observacion}{Observaci\'on}[section]
+\newtheorem{nota}{Nota}[section]
+
+\renewcommand{\partname }{Parte }
+\renewcommand{\indexname}{Indice }
+\renewcommand{\figurename }{Figura }
+\renewcommand{\tablename }{Tabla }
+\renewcommand{\proofname}{Demostraci\'on}
+\renewcommand{\appendixname }{}
+\renewcommand{\contentsname }{Contenidos }
+\renewcommand{\chaptername }{}
+\renewcommand{\bibname }{Bibliograf\'\i a }
+
+
+
+\newcommand{\tarea}[1]{
+	\begin{center}
+		{\Large Matemática Discreta I - 2020/1} \vskip.4cm
+		{\Large Tarea #1}\vskip .4cm
+\end{center}}
+
+\renewenvironment{ejercicio}% environment name
+{% begin code
+	\par\vskip .5cm%
+	{\noindent\color{blue}Ejercicio}%
+	\vskip .2cm
+}%
+{%
+	\vskip .2cm}% end code
+
+
+\newenvironment{solucion}% environment name
+{% begin code
+	\par\vskip .2cm%
+	{\noindent\color{blue}Solución}%
+	\vskip .2cm
+}%
+{%
+	\vskip .2cm}% end code
+
+
+\begin{document}
+	
+	%\frame{\titlepage} 
+	
+	
+	\tarea{4}
+	
+	\begin{ejercicio}
+		
+		\noindent Un banco tiene que elegir un equipo directivo de $5$ personas entre un grupo de $8$ personas, de las cuales $3$ son hombres 
+		\textbf{A}, \textbf{E}, \textbf{O} y $5$ mujeres \textbf{X}, \textbf{Y}, \textbf{Z}, \textbf{V}, \textbf{W}  
+		¿De cuántas formas puede hacerse la elección si:
+		
+		\begin{enumerate}
+			\item[(a)] no hay restricciones?
+			
+			\item[(b)] se eligen tres mujeres y dos hombres?
+		\end{enumerate}
+		
+		\noindent Si ahora en el equipo directivo las personas deben cumplir roles distintos, es decir, se requiere elegir los $5$ cargos
+		directivos: director(a), subdirector(a), interventor(a), cajero(a) y cobrador(a); 
+		¿De cuántas formas puede hacerse la elección si:
+		
+		\begin{enumerate}
+			
+			\item[(c)] se eligen los tres hombres?
+			
+			\item[(d)] los hombres \textbf{A} y \textbf{E} no pueden estar juntos en la misma elección?
+		\end{enumerate}
+		
+	\end{ejercicio}
+	
+	%\begin{comment}
+	\begin{solucion}
+		\noindent (a) Elegir 5 entre 8 es el número combinatorio
+		$$
+		\binom{8}{5} = \frac{8!}{(8-5)!5!} =\frac{8!}{3!5!} = \frac{8 \cdot 7\cdot 6}{3 \cdot 2\cdot 1} = 8 \cdot 7 =  \colorbox{lightgray}{56}.
+		$$
+		(Dejando indicado el número combinatorio alcanzaba).
+		
+		\vskip .4cm
+		
+		\noindent (b) Para elegir 3 mujeres entre 5 hay $\binom{5}{3}$ posibilidades. Para elegir 2 hombres entre 3 hay $\binom{3}{2}$ posibilidades. Luego  el  número total de posibilidades es
+		$$
+		\binom{5}{3} \binom{3}{2} = \frac{5!}{2!3!}3 =  \frac{5\cdot 4}{2} 3 =  \colorbox{lightgray}{30}.
+		$$
+		
+			\vskip .4cm
+		
+		\noindent (c) Los tres hombres ya están  elegidos (3 de 3) y hay $\binom{5}{2}$ posibles elecciones de mujeres. Con los 3 hombres y las 2 mujeres ya tenemos las 5 personas para el  equipo. Las formas de ordenar 5 personas son $5!$. Es decir el resultado total es
+		\begin{equation*}
+			\binom{5}{2} \cdot 5! =  \frac{5!}{3!2!} \cdot 5! = \frac{4 \cdot 5}{2}  \cdot 120 =10  \cdot 120 =\colorbox{lightgray}{1200}.
+		\end{equation*}
+		
+		\begin{comment}
+			
+		
+		Primero  elegimos los cargos a ser ocupados por los 3 hombres: para el primer hombre hay 5 posibilidades, para el segundo 4 y para el tercero 3. Es decir el total de posibles asignaciones de cargos a los 3 hombres es $5\cdot 4\cdot 3= 60$.
+		
+		
+		Quedan dos cargos libres (los que dejaron libres los hombres). Para el  primer cargo hay 5 posibilidades (cualquiera de las 5 mujeres) y para el segundo quedan 4 elecciones. Luego el total de posibilidades para los dos cargos restantes es $5 \cdot 4 = 20$. 
+		
+		Concluyendo, por el principio de multiplicación, hay
+		$$
+		60 \cdot 20 =  \colorbox{lightgray}{1200}
+		$$
+		posibilidades.
+		\end{comment}
+			\vskip .4cm
+		
+		\noindent (d)\textit{ Primera forma.} El  hecho de que \textbf{A} y \textbf{E} no están juntos en el equipo se puede partir en tres casos: 1) \textbf{A} y \textbf{E} no están en el equipo, 2) \textbf{A} está en el equipo y \textbf{E} no está en el equipo, y 3) \textbf{A} no está en el equipo y \textbf{E}  está en el equipo.
+		
+		1) Debemos considerar que el grupo tiene 6 personas (pues \textbf{A} y \textbf{E} nunca pueden ser seleccionados) y estos 6 deben ocupar 5 cargos distintos. Luego la cantidad de elecciones posibles es $6  \cdot 5 \cdot 4 \cdot 3 \cdot 2 = 720$.
+		
+		2) Ahora debemos pensar que \textbf{A} ocupa uno de los 5 cargos, por lo tanto hay 5 posibilidades (una por cada cargoo) y las  6  personas restantes (pues \textbf{E} no está) ocupan los 4 cargos restante: $6  \cdot 5 \cdot 4 \cdot 3 =360$ posibilidades. Por lo tanto el total de posibilidades es $5  \cdot  360 = 1800$.
+		
+		
+		3) Es completamente análogo a 2), por lo tanto hay 	1800 posibilidades.
+	
+		
+		Como los tres casos son mutuamente excluyentes (no hay intersección entre ellos), se aplica el principio de adición y por lo tanto hay $$720 + 1800 + 1800 = \colorbox{lightgray}{4320}$$ posibilidades.
+		\vskip .4cm
+		
+		(d)\textit{ Segunda forma. }En  este ejercicio podemos pensar en  el  "complemento" es decir (1) calculamos todas las posibilidades,  después (2) calculamos cuando \textbf{A} y \textbf{E} están juntos y luego el resultado será (1) - (2).
+
+ (1) Todas las posible elecciones es elegir 5 entre 8, en orden sin repetición (el primero director,  el segundo subdirector, etc.) la solución es entonces 
+ $$
+ \frac{8!}{(8-5)!} = \frac{8!}{3!} = 8 \cdot 7 \cdot 6 \cdot 5 \cdot 4 = 6720.
+ $$ 
+ 
+ (2) Primero elegimos un cargo para \textbf{A}, son  5 posibilidades, después un cargo para \textbf{B}, son 4 posibilidades. Luego quedan tres cargos para 6 personas (selecciones de 3 entre 6, en orden, sin repetición), son $6 \cdot 5 \cdot 4 =120$ posibilidades. el  total es entonces
+ $$
+5 \cdot 4 \cdot 120 = 2400.
+ $$ 
+ 
+ De (1) y (2) se deduce que las posibles formas de elegir el comité (con cargos) donde \textbf{A} y \textbf{E} no estén juntos es
+ $$
+ 6720 - 2400 = \colorbox{lightgray}{4320}.
+ $$
+		
+	\end{solucion}
+	
+	%\end{comment}
+\end{document}
+

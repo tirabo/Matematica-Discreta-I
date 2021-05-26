@@ -1,5 +1,5 @@
 % PDFLaTeX
-\documentclass[a4paper,12pt,twoside,spanish,reqno]{amsbook}
+\documentclass[a4paper,12pt,twoside,spanish]{amsbook}
 %\documentclass[a4paper,11pt,twoside]{book}
 %\documentclass[a4paper,11pt,twoside,spanish]{amsbook}
 
@@ -79,28 +79,28 @@
 \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
 
 \newtheorem{teorema}{Teorema}[section]
-\newtheorem{proposicion}[teorema]{Proposición}
+\newtheorem{proposicion}[teorema]{Proposici\'on}
 \newtheorem{corolario}[teorema]{Corolario}
 \newtheorem{lema}[teorema]{Lema}
 \newtheorem{propiedad}[teorema]{Propiedad}
 
 \theoremstyle{definition}
 
-\newtheorem{definicion}{Definición}[section]
+\newtheorem{definicion}{Definici\'on}[section]
 \newtheorem{ejemplo}{Ejemplo}[section]
 \newtheorem{problema}{Problema}[section]
 \newtheorem{ejercicio}{Ejercicio}[section]
 \newtheorem{ejerciciof}{}[section]
 
 \theoremstyle{remark}
-\newtheorem{observacion}{Observación}[section]
+\newtheorem{observacion}{Observaci\'on}[section]
 \newtheorem{nota}{Nota}[section]
 
 \renewcommand{\partname }{Parte }
 \renewcommand{\indexname}{Indice }
 \renewcommand{\figurename }{Figura }
 \renewcommand{\tablename }{Tabla }
-\renewcommand{\proofname}{Demostración}
+\renewcommand{\proofname}{Demostraci\'on}
 \renewcommand{\appendixname }{}
 \renewcommand{\contentsname }{Contenidos }
 \renewcommand{\chaptername }{}
@@ -110,7 +110,7 @@
 
 \newcommand{\tarea}[1]{
 	\begin{center}
-		{\Large Matemática Discreta I - 2021/1} \vskip.4cm
+		{\Large Matemática Discreta I - 2020/1} \vskip.4cm
 		{\Large Tarea #1}\vskip .4cm
 \end{center}}
 
@@ -139,77 +139,56 @@
 %\frame{\titlepage} 
 
 
-\tarea{9}
+\tarea{5}
 
 \begin{ejercicio}
 	\begin{enumerate}
-		\item[1.] (60 pts) 
-		\begin{enumerate}
-			\item[(i)] Encontrar todas las soluciones de la ecuación en congruencia
-			$$30\,x\equiv 2 \quad (67)$$
-			usando el método visto en clase.
-			\item[(ii)] Dar todas las soluciones $x$ de la ecuación anterior tales que $0 < x < 300$.
-		\end{enumerate}
-		\vskip .2cm
-		\item[2.]  (40 pts)  Encontrar los últimos dos dígitos de $2^{338}$. (\textit{Ayuda:}\;$2^{22} \equiv 4 \; (100)$).  
+		\item[1.] Convertir a base 8 el número $(20332)_5$. (50 pts)
+		\item[2.] Calcular  la resta $(4321)_5 - (302)_5$ y expresarla en base 5. (50 pts)
 	\end{enumerate}
 \end{ejercicio}
-	
-\begin{comment}^{5}
+
+\begin{comment}
 \begin{solucion}
-
-1(i). (40 pts) 
-Primero encontramos el mcd entre $59$ y $10$:
-\begin{alignat}3
-59 &= 10 \cdot 5 + 9& \qquad&\Rightarrow& \qquad 9 &= 59 -  10 \cdot 5 \label{eq:cle1}\\ 
-10 &=  9\cdot 1 +1 & \qquad&\Rightarrow& \qquad 1 &= 10 - 9 \label{eq:cle2}\qquad\\
-9 &=  1\cdot 9  +0 & \qquad&& \qquad  &
-\end{alignat}
-Luego, $1=(59,10)$ y 
-\begin{align*}
-1 & \overset{(\ref{eq:cle2})}{=} 10 -9  \\
-& \overset{(\ref{eq:cle1})}{=}  10 -(59 -  10 \cdot 5) = 10 -59 + 5\cdot  10 \\
-&=  6 \cdot  10 + (-1) \cdot 59.
-\end{align*}
-
-Por lo tanto
-\begin{equation*}
-	10 \cdot 6 \equiv 1 (59). 
-\end{equation*}
-Multiplicando  por $8$,  tenemos
-\begin{equation*}
-10 \cdot 48 \equiv 8 (59). 
-\end{equation*}
-Por lo tanto $x_0=48$ es solución y todas las soluciones son de la forma $48+ k\cdot 59$, con $k \in \mathbb Z$.
-\vskip .4cm
-
-
-
-1(ii). (20 pts) Por (i), las soluciones son de la forma  $48+ k\cdot 59$, con $k \in \mathbb Z$, por lo tanto son soluciones
-\begin{equation*}
-	48 +(-2)\cdot 59 = -70,\quad 48 +(-1)\cdot 59 = -11,\quad  48 +0 \cdot 59= 48, \quad   48 +1 \cdot 59 =107, \quad   48 +2 \cdot 59 =166.,
-\end{equation*}
-Luego, las soluciones $x$ tal que $0 < x < 150$ son $x= 48$ y $x=107$. 
-\vskip .4cm
-\newpage
-	2. Por una de la versiones del teorema de Fermat, si  $p$ ves primo  y $p\not= a$, tenemos que
+	\noindent\text{{1.}} Primero calculamos en base 10 el número  $(20332)_5$:
+	\begin{align*}
+	(20332)_5 &= 2 \cdot 5^4+0 \cdot 5^3+3\cdot 5^2+ 3 \cdot 5^1+ 2 \cdot 5^0\\
+	&=  2 \cdot 625+0 \cdot 125+3\cdot 25+ 3 \cdot 5+ 2\\
+	& = 1250 + 0 + 75  + 15 +2  \\
+	&= 1342.
+	\end{align*}
+	Ahora lo convertimos a  base 8:
 	\begin{equation*}
-		a^{p-1} \equiv 1 \,(p).
+	\begin{matrix*}[r]
+	1342 &=& 8 \cdot 167& + &6\\
+	167 &=&  8 \cdot 20& + &7\\
+	20 &=&  8 \cdot 2& + &4\\
+	2 &=&  8 \cdot 0& + &2
+	\end{matrix*}
 	\end{equation*}
-	Como $13$ es primo y $1=(7,13)$,  tenemos que:
-	\begin{equation*}
-	7^{12} \equiv 1 \,(13).
-	\end{equation*}
-	Como $98 = 12 \cdot 8 + 2$, 
-	\begin{equation*}
-		7^{98} \equiv 7^{12 \cdot 8 + 2}  \equiv 7^{12 \cdot 8}\, 7^{2} \equiv (7^{12})^8\, 7^{2}\equiv 1^8\, 7^{2}\equiv 49 \equiv 3\cdot 13 +10  \equiv 10  \, (13).
-	\end{equation*}
+	Luego, la respuesta es $(20332)_5 = (2476)_8$.
 	
-	
+	\vskip .4cm	
+	\noindent{2.} Calculamos primero en base 10 los números $(4321)_5$ y $(302)_5$.
+	\vskip .2cm
+	$(4321)_5 = 4 \cdot 5^3+3\cdot 5^2+ 2\cdot 5^1+ 1 \cdot 5^0 =  4 \cdot 125+3\cdot 25+ 2\cdot 5+ 1 = 586$.
+	\vskip .2cm
+	$(302)_5 =3\cdot 5^2+ 0\cdot 5^1+ 2 \cdot 5^0 =  3\cdot 25+ 0\cdot 5+ 2 = 77$.
+	\vskip .2cm
+	Ahora restamos $586 -77= 509$. Al resultado  obtenido lo convertimos a base 5:
+	\begin{equation*}
+	\begin{matrix*}[r]
+	509 &=& 5 \cdot 101& + &4\\
+	101 &=& 5 \cdot 20& + &1\\
+	20 &=&  5 \cdot 4& + &0\\
+	4 &=&  5 \cdot 0& + &4.
+	\end{matrix*}
+	\end{equation*}
+	Luego $509 = (4014)_5$ y por lo tanto, 
+	\begin{equation*}
+	(4321)_5 - (302)_5 = (4014)_5.
+	\end{equation*}
 \end{solucion}
-
 \end{comment}
 \end{document}
 
-
-	2. 
