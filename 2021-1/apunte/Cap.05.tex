@@ -421,14 +421,16 @@ v_1,v_2,\ldots,v_k,
 $$
 tal que $v_i$ y $v_{i+1}$ son adyacentes ($1 \le i \le k-1$). Si todos los vértices son distintos, una caminata es llamada un \textit{camino}.  \index{camino}
 
+Un \textit{recorrido}\index{recorrido} es una caminata $v_1,v_2,\ldots,v_k$ donde todas las aristas $\{v_i,v_{i+1}\}$ con $1 \le i \le k-1$ son distintas.  
+
 Llamaremos \textit{ciclo} a una caminata \index{ciclo} $v_1,v_2,\ldots,v_{r+1}$  con $r \ge 3$ y cuyos vértices son distintos exceptuando los extremos, es decir que $v_1,v_2,\ldots,v_{r}$ es un camino de al menos tres vértices y $v_1=v_{r+1}$.  A menudo diremos que es un \textit{$r$-ciclo}, o un ciclo de \textit{longitud} $r$ en $G$.  \index{longitud de un ciclo}
 \end{definicion}
 
 Es decir, una caminata especifica una ruta en $G$: del primer vértice vamos a uno adyacente, de éste a otro adyacente y así siguiendo. En una caminata podemos visitar cualquier vértice varias veces, y en particular, podemos ir de un vértice $x$ a otro $y$ y luego tomar la dirección contraria y regresar a $x$. En un camino, cada vértice es visitado solo una vez.
 
-Escribamos $x \sim y$ siempre y cuando los vértices $x$ e $y$ de $G$ puedan ser unidos por un camino en $G$: hablando en forma rigurosa, esto significa que hay un camino $v_1,v_2,\ldots,v_k$ en $G$ con $x=v_1$ e $y=v_k$. 
+Escribamos $x \sim y$ siempre y cuando $x=y$ o $x \ne y$ y los vértices $x$ e $y$ de $G$ puedan ser unidos por un camino en $G$. Hablando en forma rigurosa, esto significa que cuando $x \ne y$  que hay un camino $v_1,v_2,\ldots,v_k$ en $G$ con $x=v_1$ e $y=v_k$. 
 
-\begin{lema} Sea $G$ un grafo. $x \sim y$ si  y sólo si $x$ e $y$ pueden ser unidos por una caminata 
+\begin{lema} Sea $G$ un grafo y $x$, $y$  vértices distintos. Entonces, $x \sim y$ si  y sólo si $x$ e $y$ pueden ser unidos por una caminata 
 \end{lema}
 \begin{proof}Es claro que si $x$ e $y$ están unidos por un camino, como  un camino es un caso especial de caminata, $x$ e $y$ están unidos por una caminata.
 
@@ -444,8 +446,107 @@ Como $x_j = x_{j+r}$ podemos eliminar la subcaminata $x_{j+1},\ldots,x_{j+r}$ (u
 $$
 x=x_1,x_2,\ldots,x_j,x_{j+r+1},\ldots, x_k=y,
 $$
-una caminata, más corta,  entre $x$ e $y$. Podemos repetir este procedimiento hasta eliminar todos los ``bucles'' y obtener un camino.
+una caminata, más corta,  entre $x$ e $y$. Esto se ejemplifica en la figura \ref{fig-eliminando-bucles}.
+
+
+Podemos repetir este procedimiento hasta eliminar todos los ``bucles'' y obtener un camino.
 \end{proof}
+
+\begin{figure}[ht]
+    \begin{center}
+        \begin{tikzpicture}[scale=1]
+            \SetVertexSimple[Shape=circle,FillColor=white,MinSize=5 pt]
+            %
+            %\ponertz{-7}{-30}{$x=$}
+            \draw (-0.6,0) node {$x = $};                
+            \draw (0,0.4) node {$x_1$};
+            \Vertex[x=0.00, y=0]{v0}
+            \Vertex[x=1, y=0]{v1}
+            \draw (1,0.4) node {$x_2$};
+            \Vertex[x=3, y=0]{vi}
+            \draw (3,0.4) node {$x_j$};
+            \Vertex[x=2.5, y=0.5]{vi1}
+            \Vertex[x=2.5, y=1]{vi2}
+            \Vertex[x=3.5, y=0.5]{vi3}
+            \Vertex[x=3.5, y=1]{vi4}
+            \Edges(v0,v1)
+            \Edges(vi,vi1)
+            \Edges(vi1,vi2)
+            \draw (2.7,1.3) node {$\scriptstyle\bullet$};
+            \draw (2.9,1.5) node {$\scriptstyle\bullet$};
+            \draw (3.1,1.5) node {$\scriptstyle\bullet$};
+            \draw (3.3,1.3) node {$\scriptstyle\bullet$};
+            \draw (2,0) node {$\scriptstyle\bullet$};
+            \draw (2.3,0) node {$\scriptstyle\bullet$};
+            \Edges(vi3,vi4)
+            \Edges(vi3,vi)
+            \Vertex[x=5, y=0]{vr1}
+            \Vertex[x=6, y=0]{vr}
+            \Edges(vr1,vr)
+            \draw (6,0.4) node {$x_k$};
+            \draw (5,0.4) node {$x_{k-1}$};
+            \draw (6.6,0) node {$=y$};
+            
+            \SetVertexNormal[LineColor=white]
+            \Vertex[x=1.8, y=0]{s1}
+            \Vertex[x=2.2, y=0]{s2}
+            \Edges(v1,s1)
+            \Edges(vi,s2)
+            \draw (1.7,0) node {$\scriptstyle\bullet$};
+            \draw (2,0) node {$\scriptstyle\bullet$};
+            \draw (2.3,0) node {$\scriptstyle\bullet$};
+            
+            \Vertex[x=4.2, y=0]{t1}
+            \Vertex[x=3.8, y=0]{t2}
+            \Edges(vr1,t1)
+            \Edges(vi,t2)
+            \draw (3.7,0) node {$\scriptstyle\bullet$};
+            \draw (4,0) node {$\scriptstyle\bullet$};
+            \draw (4.3,0) node {$\scriptstyle\bullet$};
+        \end{tikzpicture}
+    \end{center}
+    Se transforma en 
+    \begin{center}
+        \begin{tikzpicture}[scale=1]
+            \SetVertexSimple[Shape=circle,FillColor=white,MinSize=5 pt]
+            %
+            %\ponertz{-7}{-30}{$x=$}
+            \draw (-0.6,0) node {$x = $};                
+            \draw (0,0.4) node {$x_1$};
+            \Vertex[x=0.00, y=0]{v0}
+            \Vertex[x=1, y=0]{v1}
+            \draw (1,0.4) node {$x_2$};
+            \Vertex[x=3, y=0]{vi}
+            \draw (3,0.4) node {$x_j$};
+            \Edges(v0,v1)
+            \Vertex[x=5, y=0]{vr1}
+            \Vertex[x=6, y=0]{vr}
+            \Edges(vr1,vr)
+            \draw (6,0.4) node {$x_k$};
+            \draw (5,0.4) node {$x_{k-1}$};
+            \draw (6.6,0) node {$=y$};
+            
+            \SetVertexNormal[LineColor=white]
+            \Vertex[x=1.8, y=0]{s1}
+            \Vertex[x=2.2, y=0]{s2}
+            \Edges(v1,s1)
+            \Edges(vi,s2)
+            \draw (1.7,0) node {$\scriptstyle\bullet$};
+            \draw (2,0) node {$\scriptstyle\bullet$};
+            \draw (2.3,0) node {$\scriptstyle\bullet$};
+            
+            \Vertex[x=4.2, y=0]{t1}
+            \Vertex[x=3.8, y=0]{t2}
+            \Edges(vr1,t1)
+            \Edges(vi,t2)
+            \draw (3.7,0) node {$\scriptstyle\bullet$};
+            \draw (4,0) node {$\scriptstyle\bullet$};
+            \draw (4.3,0) node {$\scriptstyle\bullet$};
+        \end{tikzpicture}
+    \end{center} 
+    \caption{Eliminando ``bucles''  de una caminata} \label{fig-eliminando-bucles}
+\end{figure}
+
 
 \begin{definicion} Diremos que un grafo  $G$ es \textit{conexo} si para cualesquiera dos vértices $x,y$ existe una camina de $x$ a $y$, es decir si  $x \sim y$. 
 \end{definicion}
@@ -494,7 +595,7 @@ La terminología casi explica por si misma el significado de estas definiciones.
 
 Cuando un grafo de moderado tamaño es dado por una representación pictórica es bastante fácil determinar si es o no conexo. Sin embargo, cuando un grafo es dado por una lista de adyacencia necesitaremos un algoritmo eficiente para decidir si es o no conexo. 
 
-\begin{figure}[b]
+\begin{figure}[ht]
     \begin{center}
         \begin{tikzpicture}[scale=1]
         %\SetVertexSimple[Shape=circle,FillColor=white]
@@ -522,14 +623,13 @@ Cuando un grafo de moderado tamaño es dado por una representación pictórica e
 
 En general, la ruta de Leandro es un ciclo que contiene todos los vértices del grafo dado. Tales ciclos fueron estudiados por el matemático irlandés W.R. Hamilton ($1\,805-65$),  \index{Hamilton, W. R.} y en consecuencia un ciclo con esta propiedad es llamado un \textit{ciclo hamiltoniano}. En nuestro ejemplo, fue muy fácil \index{ciclo hamiltoniano} encontrar un ciclo hamiltoniano, pero este fue un caso muy especial y no representativo. Para ciertos grafos, puede ser un problema difícil decidir si un ciclo hamiltoniano existe o no.
 
-Por otro lado, el problema de Juan puede ser fácilmente resuelto. Una caminata que use cada arista de un grafo solo una vez es llamada una \textit{caminata euleriana}, debido a que Euler \index{caminata euleriana} fue el primero en estudiar estas caminatas y encontró que si $x\not= y$, una condición necesaria para que exista una caminata euleriana que comience en $x$ y finalice en $y$ es que $x$ e $y$ deben ser vértices impares y el resto debe ser par, mientras que si $x=y$ la condición es que todos los vértices deben ser pares. Es decir que una condición necesaria para que exista una caminata euleriana en un grafo $G$
+Por otro lado, el problema de Juan puede ser fácilmente resuelto. Una caminata que use cada arista de un grafo solo una vez, o equivalentemente un recorrido que use todas las aristas, es llamada una \textit{caminata euleriana}, debido a que Euler \index{caminata euleriana} fue el primero en estudiar estas caminatas y encontró que si $x\not= y$, una condición necesaria para que exista una caminata euleriana que comience en $x$ y finalice en $y$ es que $x$ e $y$ deben ser vértices impares y el resto debe ser par, mientras que si $x=y$ la condición es que todos los vértices deben ser pares. Es decir que una condición necesaria para que exista una caminata euleriana en un grafo $G$
 es que $G$ debe tener a lo más dos vértices impares. Más aún, puede probarse que esta condición es también suficiente. Puesto que es sencillo calcular las valencias de los vértices de un grafo, es relativamente sencillo decidir si un grafo tendrá o no una caminata euleriana. 
 
 Resumiendo las definiciones de más arriba:
 
 \begin{definicion}
-Un \textit{ciclo hamiltoniano} en un grafo $G$ es un ciclo que contiene a todos los vértices del grafo. Una \textit{caminata euleriana} en un grafo $G$ es un caminata que usa todas las aristas de $G$ exactamente
-una vez. Una caminata euleriana que comienza y termina en un mismo vértice se llama también \textit{circuito euleriano}.
+Un \textit{ciclo hamiltoniano} en un grafo $G$ es un ciclo que contiene a todos los vértices del grafo. Una \textit{caminata euleriana} en un grafo $G$ es un recorrido que usa todas las aristas de $G$. Una caminata euleriana que comienza y termina en un mismo vértice se llama también \textit{circuito euleriano}.
 \end{definicion}
 
 \begin{ejemplo*}
@@ -563,30 +663,31 @@ C. Hierholzer (1840-1871) mostró, poco antes de su muerte, un algoritmo fácilm
 %Obviamente,  debido a la observación  \ref{obs-impar-a-par}, esto demuestra también el teorema para grafos con dos valencias impares. 
 Nosotros veremos aquí una versión del algoritmo de Hierholzer que se aplica tanto a los grafos con todos los vértices de valencia par como, a los que tienen dos vértices de valencia impar. 
 
-Para explicar el algoritmo de Hierholzer nos es útil la siguiente definición:  un \textit{recorrido euleriano} es una caminata o circuito que no repite aristas. Un \textit{recorrido euleriano maximal}  es un recorrido euleriano que respetando la condición de no repetir aristas no es posible continuarlo.  
+Para explicar el algoritmo de Hierholzer nos es útil la siguiente definición:  un \textit{recorrido maximal}  es un recorrido que respetando la condición de no repetir aristas no es posible continuarlo.  
 
-La idea clave del algoritmo de Hierholzer  es la siguiente:  en un grafo de valencias pares (conexo o no conexo) todo recorrido euleriano maximal termina en el vértice original. Observar que no es posible quedarse atascado en ningún vértice que no sea  el vértice original, porque el grado par de todos los vértices garantiza que, cuando se ingresa a un vértice distinto al original debe haber una  arista sin usar que nos permite dejarlo. 
+La idea clave del algoritmo de Hierholzer  es la siguiente:  en un grafo de valencias pares (conexo o no conexo) todo recorrido maximal termina en el vértice original. Observar que no es posible quedarse atascado en ningún vértice que no sea  el vértice original, porque el grado par de todos los vértices garantiza que, cuando se ingresa a un vértice distinto al original debe haber una  arista sin usar que nos permite dejarlo. 
 
-Más aún, esta idea se puede extender a los grafos conexos con dos vértices de valencia impar, en ese caso: todo recorrido euleriano maximal que parte de un vértice de valencia impar termina en el otro vértice de valencia impar. 
+Más aún, esta idea se puede extender a los grafos conexos con dos vértices de valencia impar, en ese caso: todo recorrido maximal que parte de un vértice de valencia impar termina en el otro vértice de valencia impar. 
 
 Teniendo en cuenta las consideraciones anteriores podemos plantear el siguiente algoritmo:\index{algoritmo de Hierholzer}
 
 \begin{enumerate}
-    \item \textbf{Paso 1.} Elija el vértice inicial $v$ y haga un recorrido euleriano maximal. 
+    \item \textbf{Paso 1.} Elija el vértice inicial $v$ y haga un recorrido maximal. 
     
     
     \item \textbf{Paso iterativo} 
     \begin{itemize}
-        \item Mientras en la caminata ya realizada exista un vértice $u$  que tenga aristas que no formen parte de la caminata, realice otro recorrido  euleriano maximal siguiendo las aristas no utilizadas. 
+        \item Mientras en la caminata ya realizada exista un vértice $u$  que tenga aristas que no formen parte de la caminata, realice otro recorrido maximal siguiendo las aristas no utilizadas. 
         \item Inserte en $u$ este recorrido a la caminata  anterior obteniendo una nueva caminata (más larga).
         \item  Si aún queda alguna arista sin recorrer vuelva al inicio del paso iterativo.
     \end{itemize}
 \end{enumerate}
+
 Observemos que el recorrido del paso 1 en el caso del grafo con todas las valencias pares, es un recorrido cerrado. En el caso del grafo con dos valencias impares es un recorrido que va de un vértice impar al otro.  
     
-En  cualquier de los dos casos,  en el paso 1 el recorrido puede no cubrir todos los vértices y aristas del grafo inicial. Además,  observemos que el subgrafo que se obtiene eliminando las aristas del recorrido tiene todas las valencias pares. 
+En  cualquier de los dos casos,  en el paso 1 el recorrido maximal puede no cubrir todos los vértices y aristas del grafo inicial. Además,  observemos que el subgrafo que se obtiene eliminando las aristas del recorrido tiene todas las valencias pares. 
 
-En  el paso iterativo el subgrafo de las aristas disponibles tiene todos los vértices de valencia par y por lo tanto el recorrido euleriano comienza y  termina en el mismo vértice y allí se inserta.
+En  el paso iterativo el subgrafo de las aristas disponibles tiene todos los vértices de valencia par y por lo tanto el recorrido comienza y  termina en el mismo vértice y allí se inserta.
 
 \begin{comment}
 El  algoritmo es el siguiente: 
@@ -714,17 +815,17 @@ Es decir si $w$ es un vértice \texttt{libres[w]} es una lista de los vértices 
     
 Como ya mencionamos anteriormente, a un grafo $G$ lo representaremos por una lista de adyacencia. Supongamos que los vértices de $G$ son $0,\ldots,k$,  entonces $G[i] = [i_0,i_1,\ldots]$ serán los vértices adyacentes al vértice $i$. Tomamos como comienzo del recorrido el vértice  $0$. En  el caso de los grafos con valencia impar el vértice $0$ debe ser impar. 
 
-Primero daremos el pseudocódigo para un recorrido euleriano maximal.
+Primero daremos el pseudocódigo para encontrar un recorrido maximal.
 \vskip .4cm    
 \begin{minipage}{0.95\textwidth}
-    \noindent \textsc{Recorrido euleriano maximal}
+    \noindent \textsc{Recorrido maximal}
     
     \vskip .2cm
     \begin{small}
     \begin{verbatim}
-def rem(L, v_ini): 
+def r_max(L, v_ini): 
     # pre: L grafo, v_ini vértice de L
-    # post: devuelve recorrido euleriano que comienza en v_ini
+    # post: devuelve un recorrido maximal que comienza en v_ini
     sub_caminata = [v_ini]  # sub caminata
     p0 = v_ini
     while len(L.adyacentes(p0)) > 0:  
@@ -737,7 +838,7 @@ def rem(L, v_ini):
     \end{small}
     \end{minipage}
     
-    Ahora, implementamos el circuito euleriano o caminata euleriana,  según corresponda,  con el uso de la función \verb+rem()+.
+    Ahora, implementamos el circuito euleriano o caminata euleriana,  según corresponda,  con el uso de la función \verb+r_max()+.
 
     \vskip .4cm 
 
@@ -750,12 +851,12 @@ def rem(L, v_ini):
 # post: cuando termina 'caminata' es una lista de vértices que es
 #       una caminata o circuito euleriano que empieza en 0.
 libres = G.copiar() # sub grafo de aristas no utilizadas
-cam = rem(libres, v_ini) # caminata
+cam = r_max(libres, v_ini) # caminata
 while len(libres.aristas()) > 0: 
     for v in libres.vertices(): 
         if len(libres.adyacentes(v)) > 0 and v in caminata:
             pos = cam.index(v) 
-            cam  =  cam[:pos] + rem(libres, v) + cam[pos+1:]
+            cam  =  cam[:pos] + r_max(libres, v) + cam[pos+1:]
 \end{verbatim}
 \end{small}
 \end{minipage}
