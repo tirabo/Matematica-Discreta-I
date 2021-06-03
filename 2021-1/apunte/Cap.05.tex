@@ -848,13 +848,13 @@ def r_max(L, v_ini):
 \begin{small}
 \begin{verbatim}
 # pre: G grafo con todos los vértices de valencia par o dos impares
-# post: cuando termina 'caminata' es una lista de vértices que es
+# post: cuando termina 'cam' es una lista de vértices que es
 #       una caminata o circuito euleriano que empieza en 0.
 libres = G.copiar() # sub grafo de aristas no utilizadas
 cam = r_max(libres, v_ini) # caminata
 while len(libres.aristas()) > 0: 
     for v in libres.vertices(): 
-        if len(libres.adyacentes(v)) > 0 and v in caminata:
+        if len(libres.adyacentes(v)) > 0 and v in cam:
             pos = cam.index(v) 
             cam  =  cam[:pos] + r_max(libres, v) + cam[pos+1:]
 \end{verbatim}
