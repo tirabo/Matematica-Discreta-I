@@ -241,7 +241,7 @@
 \begin{frame}
     \frametitle{}
 
-    El siguiente teorema nos da 4 nociones equivalente a la definición de árbol. 
+    El siguiente teorema nos da 3 nociones equivalente a la definición de árbol. 
 
     \vskip .6cm
 
@@ -250,9 +250,7 @@
     \item[\textbf{T1)}] T es un árbol.
     \item[\textbf{T2)}] \label{T2} Para cada par $x$, $y$ de vértices existe un único camino en $T$ de $x$ a
     $y$.
-    \item[\textbf{T3)}] \label{T3} El grafo obtenido de $T$ removiendo alguna arista tiene dos
-    componentes, cada una de las cuales es un árbol.
-    \item[\textbf{T4)}] \label{T4} $|E|=|V|-1$.
+    \item[\textbf{T3)}] \label{T4} $|E|=|V|-1$.
     \end{enumerate}
     \end{teorema}
     
@@ -266,7 +264,7 @@
     Este teorema se demuestra haciendo las pruebas:
 
     $$
-    \textbf{T1} \quad \Rightarrow  \quad \textbf{T2} \quad \Rightarrow  \quad \textbf{T3} \quad \Rightarrow  \quad \textbf{T4} \quad \Rightarrow  \quad \textbf{T1}.
+    \textbf{T1} \quad \Rightarrow  \quad \textbf{T2} \quad \Rightarrow  \quad \textbf{T3} \quad \Rightarrow  \quad \textbf{T1}.
     $$
 
 
@@ -275,11 +273,11 @@
     Por ejemplo,
 
     $$
-    \textbf{T1} \quad \Leftrightarrow \quad \textbf{T4}\qquad\text{pues} \qquad
+    \textbf{T1} \quad \Leftrightarrow \quad \textbf{T3}\qquad\text{pues} \qquad
     \left\{ 
     \begin{matrix*}[l]
-        \textbf{T1} \quad \Rightarrow  \quad \textbf{T2} \quad \Rightarrow  \quad  \textbf{T3}  \quad \Rightarrow  \quad  \textbf{T4} \\
-        \textbf{T4}  \quad \Rightarrow  \quad  \textbf{T1}. 
+        \textbf{T1} \quad \Rightarrow  \quad \textbf{T2} \quad \Rightarrow  \quad  \textbf{T3} \\
+        \textbf{T3}  \quad \Rightarrow  \quad  \textbf{T1}. 
     \end{matrix*}    
     \right. 
     $$
@@ -290,25 +288,45 @@
 \begin{frame}
     \frametitle{}
 
-    \begin{idea}
-
-        (T1 $\Rightarrow$ T2) Si hubiera dos caminos podríamos formar un ciclo. 
+    (T1 $\Rightarrow$ T2) Si hubiera dos caminos podríamos formar un ciclo. 
         \vskip .4cm
-        (T2 $\Rightarrow$ T3) Sea $G' = T -uv$.  Como hay un único camino de $u$  a $v$,  $G'$ tiene dos componentes conexas: $T_1$  la componente conexa de $u$ y $T_2$ la componente conexa de $v$.
-        \vskip .2cm
-        Cada componente es conexa (por definición), y no contiene ciclos, pues sino habría ciclos en $T$. Es decir que las dos componentes $T_1$ y $T_2$ son árboles.
-
-        \vskip .4cm
-        (T3 $\Rightarrow$ T4) Se hace por inducción completa sobre el número de vértices y usando la porpiedad T3.
-        \vskip .4cm
-        (T4 $\Rightarrow$ T1)  $|E|=|V|-1$ y supongamos que $T$ no es árbol $\Rightarrow$ hay un ciclo $\Rightarrow$ podemos sacar una arista $uv$ y sigue siendo conexo   $\Rightarrow$ $|E -uv|=|V|-2$ y  conexo. Absurdo por el lema. 
-        
-        \qed
-    \end{idea}
+    (T2 $\Rightarrow$ T3) Se hará por inducción en $|V|$. 
     
+    Sea $uv$  arista de $T$ y sea  $F = T -uv$.  Como hay un único camino de $u$  a $v$,  $F$ tiene dos componentes conexas: $T_1$  la componente conexa de $u$ y $T_2$ la componente conexa de $v$.
+        \vskip .2cm
+    En cada componente conexa $T_i = (V_i, E_i)$ hay un único camino de un vértice a otro, pues sino esa propiedad no se cumpliría en $T$. 
+    \vskip .2cm
+    Por HI, $|E_1|=|V_1|-1$ y $|E_2|=|V_2|-1$. Luego 
+    \vskip -.6cm
+    \begin{align*}
+        |E| &= |E_1 \cup E_2| + 1  = |E_1|+|E_2| + 1 \stackrel{\text{(HI)}}{=} (|V_1|-1)+(|V_2|-1) +1 \\
+            &= |V_1 \cup V_2|-1 = |V| -1. 
+    \end{align*}
+    \vskip .0cm
+    (T3 $\Rightarrow$ T1)  $|E|=|V|-1$ y supongamos que $T$ no es árbol $\Rightarrow$ hay un ciclo $\Rightarrow$ podemos sacar una arista $uv$ y sigue siendo conexo   $\Rightarrow$ $|E -uv|=|V|-2$ y  conexo. Absurdo por el lema. \qed
+        
 
 \end{frame}
 
+\begin{frame}
+    \frametitle{}
+
+    \begin{corolario}
+        Sea $T$ árbol con al menos dós vértices,  entonces:
+        \vskip .4cm
+        El grafo obtenido de $T$ removiendo alguna arista tiene dos
+        componentes, cada una de las cuales es un árbol.
+    \end{corolario}
+
+    \begin{proof}
+        Es parte de la demostración de  T2 $\Rightarrow$ T3: el grafo que se obtiene de quitar una arista,  es un grafo con dos componentes conexas cada una de ellas sin ciclos (pues sino los habría en $T$), luego cada una de ellas es árbol.
+
+        \qed
+    \end{proof}
+
+     \vskip 2cm
+
+\end{frame}
 
 \begin{frame}
     \frametitle{Coloreo de los vértices de un grafo}
@@ -385,7 +403,7 @@ c: \{ v_1,v_2,v_3,v_4,v_5,v_6\} \to  \{1,2,3,4\},
 $$
 donde
 \begin{align*}
-    c(v_1) &= c(v_2) = 1 \\
+    c(v_1) &= c(v_3) = 1 \\
     c(v_2) &= c(v_4) = 2 \\
     c(v_5) &= 3 \\
     c(v_6) &= 4. 

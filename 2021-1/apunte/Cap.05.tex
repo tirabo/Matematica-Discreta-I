@@ -904,9 +904,7 @@ $$
 
 \begin{section}{Árboles}\label{seccion-arboles}
 \begin{definicion} Diremos que un grafo $T$ es un \textit{árbol} si cumple \index{arbol} 
-\begin{enumerate}
-\item[\textbf{T1)}] \label{T1}$T$ es conexo y no hay ciclos en $T$.
-\end{enumerate}
+que $T$ es conexo y no hay ciclos en $T$.
 \end{definicion}
 
 Algunos árboles típicos han sido dibujados en la Fig. \ref{f5.8}. A causa de su particular estructura y propiedades, los árboles aparecen en diversas aplicaciones de la matemática, especialmente en investigación operativa y ciencias de la computación. Comenzaremos el estudio de ellos estableciendo algunas propiedades sencillas.
@@ -1002,19 +1000,16 @@ forman un conjunto de $n-1$ aristas distintas en $G$.
 \end{proof}
 
 \begin{teorema}\label{t5.5} Si $T=(V,E)$ es un grafo conexo con al menos dos vértices, entonces son equivalentes las siguientes propiedades
-\begin{enumerate}
-\item[\textbf{T1)}] T es un árbol.
-\item[\textbf{T2)}] \label{T2} Para cada par $x$, $y$ de vértices existe un único camino en $T$ de $x$ a
-$y$.
-\item[\textbf{T3)}] \label{T3} El grafo obtenido de $T$ removiendo alguna arista tiene dos
-componentes, cada una de las cuales es un árbol.
-\item[\textbf{T4)}] \label{T4} $|E|=|V|-1$.
+\begin{enumerate}[label=\text{\textbf{(T\arabic*)}}]
+\item \label{T1} $T$ no tiene ciclos.
+\item \label{T2} Para cada par $x$, $y$ de vértices existe un único camino en $T$ de $x$ a $y$.
+\item \label{T3} $|E|=|V|-1$.
 \end{enumerate}
 \end{teorema}
 \begin{proof}
     \
     
-\noindent (T1 $\Rightarrow$ T2) Puesto que $T$ es conexo, existe un
+\noindent \ref{T1} $\Rightarrow$ \ref{T2}. Puesto que $T$ es conexo, existe un
 camino de $x$ a $y$, digamos
 $$
 x=v_0,v_1,\ldots,v_r=y.
@@ -1108,18 +1103,17 @@ Entonces $v_i,v_{i+1},\ldots,v_j,u_{k-1},u_{k-2},\ldots,u_{i+1},v_i$ es un ciclo
 %\vskip .2cm 
 
 
-\noindent (T2 $\Rightarrow$ T3) Supongamos que $uv$ es una arista en $T$, y sea $G'=(V,E')$ el grafo con el mismo conjunto de vértices que $T$ y con el conjunto de aristas $E'=E-uv$. 
+\noindent \ref{T2} $\Rightarrow$ \ref{T3}.  Se hará por inducción completa en $|V|$. 
+
+Si $|V|=2$  el resultado es obviamente cierto. 
+    
+Veamos el caso $|V|>2$. Sea $uv$  arista de $T$ y sea  $F = T -uv$,  es decir el grafo con el mismo conjunto de vértices que $T$ y con el conjunto de aristas $E'=E-uv$. 
+
 Como hay un único camino de $u$  a $v$, si eliminamos $uv$ el grafo se parte en dos componentes conexas:  $T_1$ el subgrafo que es la componente conexa de $u$ y $T_2$ el subgrafo que es la componente conexa de $v$. 
 
 Más explícitamente, los vértices de $T_1$ son los $x \in V$ tales que  el camino que que une $x$ con $u$ no pasa por $v$ y los vértices de $T_2$ son los $x \in V$ tales que  el camino que que une $x$ con $u$ pasa por $v$.  
 
-Cada componente es conexa (por definición), y no contiene ciclos, pues sino habría ciclos en $T$. Es decir que las dos componentes $T_1$ y $T_2$ son árboles.
-
-%\vskip .2cm 
-
-\noindent(T3 $\Rightarrow$ T4) El resultado es cierto cuando $|V|=1$, puesto que el árbol de un vértice no tiene aristas.
-
-Supongamos que es cierto para árboles con $k$ o menos vértices. Sea $T$ un árbol con $|V|=k+1$, y sea $uv$ una arista en $T$. Si $T_1=(V_1,E_1)$ y $T_2=(V_2,E_2)$ son los árboles que se obtienen removiendo $uv$ en $T$, tenemos que 
+En cada componente conexa $T_i = (V_i, E_i)$ hay un único camino de un vértice a otro, pues sino esa propiedad no se cumpliría en $T$. Además, 
 $$
 |V_1| + |V_2| = |V|, \qquad |E_1| + |E_2| = |E|-1.
 $$
@@ -1127,12 +1121,25 @@ Aplicando la hipótesis inductiva a $T_1$ y $T_2$ obtenemos
 $$
 |E|=|E_1| + |E_2| + 1 = |V_1|-1 +|V_2|-1+1= |V| -1,
 $$
-como nosotros deseábamos. Por consiguiente el resultado es cierto para todos lo enteros positivos.
+como nosotros deseábamos. 
 
-\noindent (T4 $\Rightarrow$ T1) Supongamos que $T$ satisface (T4) pero no es árbol. Por lo tanto $T$ tiene al menos un ciclo. Si eliminamos una arista del ciclo, el grafo sigue siendo conexo, pero con una arista menos (y la misma cantidad de vértices), es decir obtenemos un grafo $G' = (V',E')$  conexo y con $|E'| = |V'|-2$. Pero esto contradice el resultado obtenido en el lema \ref{conv}.    
+\noindent \ref{T3} $\Rightarrow$ \ref{T1}. Supongamos que $T$ satisface \ref{T3} pero tiene ciclos. Si eliminamos una arista del ciclo, el grafo sigue siendo conexo, pero con una arista menos (y la misma cantidad de vértices), es decir obtenemos un grafo $G' = (V',E')$  conexo y con $|E'| = |V'|-2$. Pero esto contradice el resultado obtenido en el lema \ref{conv}.    
 \end{proof}
 
-Las propiedades (T2)-(T3)-(T4) nos dan maneras alternativas de definir árboles. Por ejemplo la propiedad (T2) puede ser considerada como la propiedad que define un árbol, en vez de (T1). 
+
+
+
+Las propiedades \ref{T2} y \ref{T3} nos dan maneras alternativas de definir árboles. Por ejemplo la propiedad \ref{T2} puede ser considerada como la propiedad que define un árbol, en vez de  \ref{T1}. 
+
+\begin{corolario}
+    Si $T=(V,E)$ es un grafo conexo con al menos dos vértices, entonces 
+    \begin{enumerate}
+        \item[\textbf{(T4)}] \label{T4} El grafo obtenido de $T$ removiendo alguna arista tiene dos componentes, cada una de las cuales es un árbol.
+    \end{enumerate}
+\end{corolario}
+\begin{proof}
+    Es parte de la demostración de  \ref{T2} $\Rightarrow$ \ref{T3}: el grafo que se obtiene de quitar una arista,  es un grafo con dos componentes conexas cada una de ellas sin ciclos (pues sino los habría en $T$), luego cada una de ellas es árbol.
+\end{proof}
 
 \begin{observacion*}
 El teorema anterior nos muestra un recurso muy usado para probar que una cierta cantidad de afirmaciones son equivalentes. En el caso de $3$ afirmaciones $P$, $Q$, $R$, uno debería probar
@@ -1144,23 +1151,14 @@ $$
 P \Rightarrow Q,\qquad Q \Rightarrow R,\qquad R \Rightarrow P,
 $$  
 pues si queremos probar, por ejemplo $P \Leftrightarrow Q$, esto es equivalente a probar $P \Rightarrow Q$ y $Q \Rightarrow P$. La parte $P \Rightarrow Q$ ya ha sido probada y $Q \Rightarrow P$ se deduce de $Q \Rightarrow R$, $R \Rightarrow P$ y la propiedad transitiva de $\Rightarrow$. 
-
-Para el caso de cuatro proposiciones $P_1,P_2,P_3,P_4$ la economía de demostraciones es aún más drástica: para probar todas las equivalencias posibles de cuatro afirmaciones hacen falta 12 demostraciones (seis de ida y seis vuelta), pero alcanza haciendo sólo 4 demostraciones:
-$$
-P_1 \Rightarrow P_2,\qquad P_2 \Rightarrow P_3,\qquad P_3 \Rightarrow P_4,\qquad P_4 \Rightarrow P_1. 
-$$ 
 \end{observacion*}
 
 \subsection*{$\S$ Ejercicios}\label{ejercicios5.5}
 \begin{enumex}
 \item \label{ejercicio5.5.1} Hay seis diferentes (es decir, no isomorfos entre si) árboles con
 seis vértices: hacer un dibujo de ellos.
-\item Sea $T=(V,E)$ un árbol con $|V| \ge 2$. Usando la propiedad (T4) y el teorema
-\ref{t5.3}
-probar que $T$ tiene al menos dos vértices con valencia $1$.
-\item Una \textit{foresta} es un grafo que satisface que no contiene ciclos pero no
-necesariamente es conexo. Probar que si $F=(V,E)$ es una foresta con
-$c$ componentes entonces
+\item Sea $T=(V,E)$ un árbol con $|V| \ge 2$. Usando la propiedad \ref{T3} y el teorema \ref{t5.3} probar que $T$ tiene al menos dos vértices con valencia $1$. 
+\item Una \textit{foresta} es un grafo que satisface que no contiene ciclos pero no necesariamente es conexo. Probar que si $F=(V,E)$ es una foresta con $c$ componentes entonces
 $$
 |E|=|V|-c.
 $$
@@ -1371,14 +1369,31 @@ $k$, entonces
 \ref{it.com_a} Sea $v_1,v_2,\ldots,v_n$ un ordenamiento de los vértices de $G$. Cada vértice tiene a lo más $k$ vecinos, y por consiguiente el conjunto $S$ de los colores asignados por el algoritmo greedy a los vértices $v_j$ que son adyacentes a $v_i$ ($1\le j <i$) tiene como máximo cardinal $k$. Por consiguiente al
 menos uno de los colores $1,2,\dots,k+1$ no está en $S$, y el algoritmo greedy asigna entonces el primero de estos a $v_i$.
 
-\ref{it.com_b} Para probar esta parte debemos elegir un orden especial de los vértices, comenzando con $v_n$ y yendo hacia atrás. Puesto que $G$ tiene valencia máxima $k$ y es no regular, existe al menos un vértice $G$ cuya valencia es menor que $k$: llamémoslo $v_n$. Listemos los vecinos de $v_n$ como
-$v_{n-1},v_{n-2},\ldots,v_{n-r}$; hay a lo más $k-1$ de ellos. A continuación listemos los vecinos de $v_{n-1}$ (excepto $v_n$ y sus vecinos), y observemos que como la valencia es a lo más $k$ hay a lo más $k-1$ de estos vértices. A continuación listemos los vecinos de $v_{n-2}$ que no hayan sido listados antes, y así
-siguiendo. Puesto que $G$ es conexo, en determinado momento podremos listar todos los vértices de $G$. Más aún, el método de construcción asegura que cada vértice es adyacente a lo más a $k-1$ de sus predecesores en el orden $v_1,v_2,\ldots,v_n$.
+\ref{it.com_b} Para probar esta parte debemos elegir un orden especial de los vértices. 
+\begin{enumerate}[label=\arabic*.]
+    \item Sea $v_n$ un vértice con $\delta(v_n) < k$. Este vértice existe, pues el grafo es no regular. 
+    \item Sean $v_{n-1},v_{n-2},\ldots,v_{n-r}$ los adyacentes a $v_n$. Como la valencia máxima es $k$, hay a lo más $k-1$ de ellos.
+    \item Luego se van listando consecutivamente los adyacentes a $v_i$  que no están listados antes ($n > i \ge 1$). 
+\end{enumerate}   
 
-Usando el mismo argumento que en la parte \ref{it.com_a} (pero para este orden) se sigue que el algoritmo greedy requerirá a lo más $k$ colores. Luego $\chi(G)\le k$. 
+Puesto que $G$ es conexo, este método garantiza que  podremos listar todos los vértices de $G$.
+
+Por  la forma de construir la lista, si $i < n$ el vértice $v_i$ tiene un adyacente a nivel superior,  es decir un $v_j$ con $j >i$, luego, como $\delta(v_i) \le k$, 
+\begin{equation*}
+  \text{si $i< n$, $v_i$ tiene  a lo más $k-1$ adyacentes a nivel inferior.  }  \tag{*}
+\end{equation*}
+Hagamos la coloración considerando el orden $v_1, \ldots, v_n$. 
+
+Cuando $i < n$,   por (*). se puede colorear $v_i$ con un color en $\{1,\ldots,k\}$.
+
+Cuando $i=n$,  como $\delta(v_n)<k$, se puede colorear $v_n$  con un color en $\{1,\ldots,k\}$.
+
+De esta forma concluimos que se puede colorear $G$  con $k$ colores. 
+
+
 \end{proof}
 
-La parte \ref{it.com_b} del teorema es falsa si permitimos que $G$ sea regular. El lector que haya respondido correctamente al ejercicio \ref{ejercicio5.6.1} de la sección \ref{seccion-coloreo-de-vertices} será capaz de dar dos ejemplos de este hecho:  los grafos cíclicos de longitud impar tienen grado $2$ y número cromático  $3$ y los grafos completos de $k+1$ vértices tienen grado $k$ y número cromático $k+1$ colores. Si embargo, puede ser demostrado que estos son los únicos contraejemplos.
+La parte \ref{it.com_b} del teorema es falsa si permitimos que $G$ sea regular. El lector que haya respondido correctamente al ejercicio \ref{ejercicio5.6.1} de la sección \ref{seccion-coloreo-de-vertices} será capaz de dar dos ejemplos de este hecho:  los grafos cíclicos de longitud impar tienen grado $2$ y número cromático  $3$ y los grafos completos de $k+1$ vértices tienen grado $k$ y número cromático $k+1$. Si embargo, puede ser demostrado que estos son los únicos contraejemplos.
 
 Otra consecuencia útil del algoritmo greedy se refiere a grafos $G$ son $\chi(G)=2$. Para tales grafos, los conjuntos $V_1$ y $V_2$ de vértices de colores $1$ y $2$ respectivamente, forman una partición de $V$, con la propiedad que cada arista tiene un vértice en $V_1$ y el otro en $V_2$. Por esta razón, cuando $\chi(G)=2$, diremos que $G$ es \textit{bipartito}. \index{grafo bipartito} Una coloración de vértices con dos colores de un cubo se ilustra en la Fig. \ref{f5.12}, junto a un dibujo alternativo que enfatiza la naturaleza bipartita del grafo. Usualmente usaremos esta clase de dibujo cuando trabajemos con grafos bipartitos.
 
