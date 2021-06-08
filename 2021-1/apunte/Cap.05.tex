@@ -990,7 +990,7 @@ El siguiente lema nos resultará útil para probar una parte del teorema fundame
 $$
 v_1,v_2,\ldots,v_r.
 $$
-Renombremos los vértices de $G$ con números naturales de tal forma que el primer vértice de la caminata sea $1$, el segundo $2$ y cada vez que aparece un vértice que no ha sido renombrado se le asigna el número siguiente. Luego la caminata comienza en 1 y termina en $n$, donde $n = |V|$.  Observar que cada vez que renombramos un vértice (excepto el primero) su antecesor es menor, es decir dado $i$ tal que $1 < i \le n$ tenemos que la caminata tiene la forma
+Renombremos los vértices de $G$ con números naturales de tal forma que el primer vértice de la caminata sea $1$, el segundo $2$ y cada vez que aparece un vértice que no ha sido renombrado se le asigna el número siguiente. Luego la caminata comienza en $1$ y termina en $n$, donde $n = |V|$.  Observar que cada vez que renombramos un vértice (excepto el primero) su antecesor es menor, es decir dado $i$ tal que $1 < i \le n$ tenemos que la caminata tiene la forma
 $$
 1,\ldots,j_i,i,\ldots,j_n,n
 $$ 
@@ -1107,10 +1107,13 @@ Entonces $v_i,v_{i+1},\ldots,v_j,u_{k-1},u_{k-2},\ldots,u_{i+1},v_i$ es un ciclo
 
 %\vskip .2cm 
 
-\noindent (T2 $\Rightarrow$ T3) Supongamos que $uv$ es una arista en $T$, y sea $S=(V,E')$ el grafo con el mismo conjunto de vértices que $T$ y con el conjunto de aristas $E'=E-uv$. Sea $V_1$ el conjunto de los vértices $x$ de $T$ para los cuales existe un único camino en $T$ de $x$ a $v$ que pasa por $u$. Claramente, este camino debe finalizar con la arista $uv$, pues sino $T$ tendría un ciclo. Sea $V_2$ el complemento de
-$V_1$ en $V$.
 
-Cada vértice en $V_1$ se une por un camino en $S$ a $u$, y cada vértice en $V_2$ se une por un camino en $S$ a $v$, pero no existe camino de $u$ a $v$ en $S$. Se sigue entonces que $V_1$ y $V_2$ son las dos componentes del conjunto de vértices de $S$. Cada componente es conexa (por definición), y no contiene ciclos, pues sino habría ciclos en $T$. Es decir que las dos componentes son árboles.
+\noindent (T2 $\Rightarrow$ T3) Supongamos que $uv$ es una arista en $T$, y sea $G'=(V,E')$ el grafo con el mismo conjunto de vértices que $T$ y con el conjunto de aristas $E'=E-uv$. 
+Como hay un único camino de $u$  a $v$, si eliminamos $uv$ el grafo se parte en dos componentes conexas:  $T_1$ el subgrafo que es la componente conexa de $u$ y $T_2$ el subgrafo que es la componente conexa de $v$. 
+
+Más explícitamente, los vértices de $T_1$ son los $x \in V$ tales que  el camino que que une $x$ con $u$ no pasa por $v$ y los vértices de $T_2$ son los $x \in V$ tales que  el camino que que une $x$ con $u$ pasa por $v$.  
+
+Cada componente es conexa (por definición), y no contiene ciclos, pues sino habría ciclos en $T$. Es decir que las dos componentes $T_1$ y $T_2$ son árboles.
 
 %\vskip .2cm 
 
@@ -1350,7 +1353,7 @@ for i = 0 to n:
 
 
 Debido a que la estrategia greedy es corta de vista, el número de colores que usará será normalmente más grande que le mínimo posible. Por ejemplo, el algoritmo greedy aplicado en el grafo de Fig. \ref{f5.10} da precisamente le coloración de vértices con cuatro colores que fue propuesta anteriormente, luego encontramos
-otra coloración con tres colores. Por supuesto todo depende del orden que se elige inicialmente para los vértices. Es bastante fácil ver que si se elige el orden correcto, entonces el algoritmo greedy nos da la mejor coloración posible (ejercicio \ref{ejercicio5.7}-(2)). Pero hay $n!$ órdenes posibles, y si tuviéramos que controlar cada uno de ellos, el algoritmo requeriría ``tiempo exponencial''.
+otra coloración con tres colores. Por supuesto todo depende del orden que se elige inicialmente para los vértices. Es bastante fácil ver que si se elige el orden correcto, entonces el algoritmo greedy nos da la mejor coloración posible (ejercicio \ref{ejercicio5.7}-(2)). Pero hay $n!$ órdenes posibles, y si tuviéramos que controlar cada uno de ellos, el algoritmo requeriría ``tiempo factorial'' que en la práctica no es computable para $n$  relativamente pequeño.
 
 Más allá de esto, el algoritmo greedy es útil tanto en la teoría como en la práctica. Probaremos ahora dos teoremas por medio de la estrategia greedy.
 

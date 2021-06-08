@@ -1,0 +1,514 @@
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
+\usetheme{CambridgeUS}
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+%\usepackage{makeidx}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usepackage[customcolors]{hf-tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\tikzset{
+    every picture/.append style={
+        execute at begin picture={\deactivatequoting},
+        execute at end picture={\activatequoting}
+    }
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+\usepackage{mathtools}
+\usepackage{stackrel}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+\usepackage{polynom}
+\polyset{%
+    style=B,
+    delims={(}{)},
+    div=:
+}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate]{label={(\arabic*)}}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+\setbeamertemplate{itemize item}{$\circ$}
+\setbeamertemplate{enumerate items}[default]
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand\sgn{\operatorname{sgn}}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\figurename }{Figura}
+
+\include{definiciones}
+
+\newcommand{\nc}{\newcommand}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\nc{\FF}{{\mathbb F}} \nc{\NN}{{\mathbb N}} \nc{\QQ}{{\mathbb Q}}
+\nc{\PP}{{\mathbb P}} \nc{\DD}{{\mathbb D}} \nc{\Sn}{{\mathbb S}}
+\nc{\uno}{\mathbb{1}} \nc{\BB}{{\mathbb B}} \nc{\An}{{\mathbb A}}
+
+\nc{\ba}{\mathbf{a}} \nc{\bb}{\mathbf{b}} \nc{\bt}{\mathbf{t}}
+\nc{\bB}{\mathbf{B}}
+
+\nc{\cP}{\mathcal{P}} \nc{\cU}{\mathcal{U}} \nc{\cX}{\mathcal{X}}
+\nc{\cE}{\mathcal{E}} \nc{\cS}{\mathcal{S}} \nc{\cA}{\mathcal{A}}
+\nc{\cC}{\mathcal{C}} \nc{\cO}{\mathcal{O}} \nc{\cQ}{\mathcal{Q}}
+\nc{\cB}{\mathcal{B}} \nc{\cJ}{\mathcal{J}} \nc{\cI}{\mathcal{I}}
+\nc{\cM}{\mathcal{M}} \nc{\cK}{\mathcal{K}}
+
+\nc{\fD}{\mathfrak{D}} \nc{\fI}{\mathfrak{I}} \nc{\fJ}{\mathfrak{J}}
+\nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+
+\title[Clase 23 - Algoritmos greedy]{Matemática Discreta I \\ Clase 23 - Algoritmos greedy en grafos}
+%\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
+\institute[]{\normalsize FAMAF / UNC
+    \\[\baselineskip] ${}^{}$
+    \\[\baselineskip]
+}
+\date[10/06/2021]{10 de junio de 2021}
+
+
+
+
+\begin{document}
+    
+    \frame{\titlepage} 
+
+    \begin{frame}
+        \frametitle{Algoritmo greedy para coloración de vértices}
+    
+        \begin{itemize}
+            \item No se conoce ningún algoritmo general para encontrar el número cromático de un grafo que trabaje en ``tiempo polinomial''
+            \item Sin embargo hay un método simple de hacer una coloración cromática usando un  ``razonable'' número de colores.
+        \end{itemize}
+
+        \vskip .6cm
+
+
+        El algoritmo es muy sencillo y se puede describir en una sola línea. 
+        \vskip .4cm
+        \begin{itemize}
+            \item Si hay vértices no coloreados, elegimos un vértice no coloreado  y le otorgamos un color que no tengan sus vecinos.
+        \end{itemize}
+
+        \vskip .6cm
+        En este algoritmo insistimos en hacer la mejor elección que podemos en cada paso, sin mirar más allá para ver si esta elección nos traerá problemas luego. 
+        
+        \vskip .4cm
+        
+        Un algoritmo de esta clase se llama a menudo un \textit{algoritmo greedy (goloso)}.  \index{algoritmo greedy (goloso)}
+    
+    \end{frame}
+
+
+
+    \begin{frame}
+        \frametitle{}
+    
+        El algoritmo greedy para coloración de vértices es fácil de programar. 
+        \vskip .8cm
+        Supóngase que hemos dado a los vértices algún orden $v_0,v_1,\ldots,v_n$. 
+        \vskip .8cm
+        \begin{itemize}
+            \item Asignemos el color $0$ a $v_0$.
+            \item Tomamos $v_i$ el siguiente vértice de la lista y
+            \begin{itemize}
+                \item $S =$ el conjunto de colores asignados a los vértices $v_j$ ($0\le j <i$) que son adyacentes a $v_i$.
+                \item Le damos a $v_i$ el primer color que no está en $S$. 
+            \end{itemize}
+            \item si $i < n$ volvemos hacemos el procedimiento del paso anterior para $i = i +1$.
+            
+        \end{itemize}
+        
+    \end{frame}
+
+
+
+    \begin{frame}[fragile]
+        \frametitle{}
+        Mostramos en pseudocódigo del algoritmo greedy para coloración de vértices. 
+        \begin{small}
+\begin{verbatim}
+# pre: 0,...,n los vértices de un grafo G
+# post: devuelve v[0],...,v[n] una coloración de G
+color = []  #  color[j] = c dirá que el color de j es c.
+for i = 0 to n:
+    S = []  # S conjunto de colores asignados a los vértices j
+            # (1 <= j <i) que son adyacentes a i (comienza vacío)
+    for j = 0 to i-1:
+        if j es adyacente a i:
+            S.append(color[j])  # agrega el color de j a  S
+    k = 0
+    while k in S:
+        k = k + 1
+    color.append(k) # Asigna el color k a i, donde k es el primer 
+                    # color que no esta en S. 
+\end{verbatim}
+\end{small}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{}
+    
+        Debido a que la estrategia greedy es corta de vista, el número de colores que usará será normalmente más grande que le mínimo posible. 
+
+        \begin{ejemplo} Aplicar el algoritmo greedy a 
+
+            \begin{center}
+                \begin{tikzpicture}[scale=0.55]
+                    %\SetVertexSimple[Shape=circle,FillColor=white]
+                    %                
+                    \Vertex[x=3.00, y=0.00]{$v_3$}
+                    \Vertex[x=1.50, y=2.60]{$v_2$}
+                    \Vertex[x=-1.50, y=2.60]{$v_1$}
+                    \Vertex[x=-3.00, y=0.00]{$v_6$}
+                    \Vertex[x=-1.50, y=-2.60]{$v_5$}
+                    \Vertex[x=1.50, y=-2.60]{$v_4$}
+                    \Edges($v_2$,$v_1$,$v_6$, $v_5$,$v_4$,$v_1$)
+                    \Edges($v_2$,$v_6$)
+                    \Edges($v_3$,$v_5$)
+                \end{tikzpicture}
+                \end{center}
+
+        \end{ejemplo}
+    
+        \begin{solucion} 
+            
+            
+
+        \end{solucion}
+
+
+    \end{frame}
+
+
+     \begin{frame}
+         \frametitle{}
+
+         El orden de los vértices es $v_1$, $v_2$, $v_3$, $v_4$, $v_5$ y $v_6$. 
+     
+         \vskip .4cm
+
+         El algoritmo es:
+
+         \vskip .4cm
+         
+         \begin{itemize}
+            \item \textbf{Paso 1.} $v_1$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$ $v_1$ color $0$.
+            \item \textbf{Paso 2.} $v_2$ tiene colores vecinos $S = \{0\}$ $\Rightarrow$  $v_2$ color $1$.
+            \item \textbf{Paso 3.} $v_3$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$  $v_3$ color $0$.
+            \item \textbf{Paso 4.} $v_4$ tiene colores vecinos $S = \{0\}$ $\Rightarrow$  $v_4$ color $1$.
+            \item  \textbf{Paso 5.} $v_5$ tiene colores vecinos $S = \{0, 1\}$ $\Rightarrow$  $v_5$ color $2$.
+            \item \textbf{Paso 6.} $v_6$ tiene colores vecinos $S = \{0, 1, 2\}$ $\Rightarrow$  $v_6$ color $3$.
+        \end{itemize}
+         
+     
+     \end{frame}
+
+
+     \begin{frame}
+         \frametitle{}
+
+         Es decir el coloreo queda:
+     
+         \begin{center}
+            \begin{tikzpicture}[scale=0.55]
+                %\SetVertexSimple[Shape=circle,FillColor=white]
+                %
+                \tikzset{VertexStyle/.append style={fill= red!50}}
+                \Vertex[x=-1.50, y=2.60]{$v_1$}              
+                \Vertex[x=3.00, y=0.00]{$v_3$}
+                \tikzset{VertexStyle/.append style={fill= blue!50}}
+                \Vertex[x=1.50, y=2.60]{$v_2$}
+                \Vertex[x=1.50, y=-2.60]{$v_4$}
+                \tikzset{VertexStyle/.append style={fill= green!50}}
+                \Vertex[x=-3.00, y=0.00]{$v_6$}
+                \tikzset{VertexStyle/.append style={fill= yellow!50}}
+                \Vertex[x=-1.50, y=-2.60]{$v_5$}
+                \Edges($v_2$,$v_1$,$v_6$, $v_5$,$v_4$,$v_1$)
+                \Edges($v_2$,$v_6$)
+                \Edges($v_3$,$v_5$)
+            \end{tikzpicture}
+            \end{center}
+            \vskip .4cm
+
+        
+            \qed
+     
+     \end{frame}
+        
+        \begin{frame}
+            \frametitle{}
+        
+        El orden que se elige inicialmente para los vértices es fundamental para establecer la coloración. 
+        \vskip .4cm
+        Es bastante fácil ver que si se elige el orden correcto, entonces el algoritmo greedy nos da la mejor coloración posible (ejercicio en el apunte). 
+        \vskip .4cm
+        Pero hay $n!$ órdenes posibles, y si tuviéramos que controlar cada uno de ellos, el algoritmo requeriría ``tiempo factorial'' (peor aún que tiempo exponencial).
+        
+        \end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{}
+
+    \begin{ejemplo}
+        Aplicar el algorimo greedy al siguiente grafo donde el orden de los vértices es 
+        $$
+        v_3, v_4, v_6, v_2, v_5, v_1. 
+        $$
+        \vskip .4cm
+        \begin{center}
+            \begin{tikzpicture}[scale=0.55]
+                %\SetVertexSimple[Shape=circle,FillColor=white]
+                %                
+                \Vertex[x=3.00, y=0.00]{$v_3$}
+                \Vertex[x=1.50, y=2.60]{$v_2$}
+                \Vertex[x=-1.50, y=2.60]{$v_1$}
+                \Vertex[x=-3.00, y=0.00]{$v_6$}
+                \Vertex[x=-1.50, y=-2.60]{$v_5$}
+                \Vertex[x=1.50, y=-2.60]{$v_4$}
+                \Edges($v_2$,$v_1$,$v_6$, $v_5$,$v_4$,$v_1$)
+                \Edges($v_2$,$v_6$)
+                \Edges($v_3$,$v_5$)
+            \end{tikzpicture}
+            \end{center}
+
+    \end{ejemplo}
+
+    \begin{solucion} 
+            
+            
+
+    \end{solucion}
+
+
+\end{frame}        
+
+
+\begin{frame}
+    \frametitle{}
+
+    El algoritmo es:
+
+    \vskip .4cm
+    
+    \begin{itemize}
+       \item \textbf{Paso 1.} $v_3$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$ $v_3$ color $0$.
+       \item \textbf{Paso 2.} $v_4$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$  $v_4$ color $0$.
+       \item \textbf{Paso 3.} $v_6$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$  $v_6$ color $0$.
+       \item \textbf{Paso 4.} $v_2$ tiene colores vecinos $S = \{0\}$ $\Rightarrow$  $v_2$ color $1$.
+       \item  \textbf{Paso 5.} $v_5$ tiene colores vecinos $S = \{0\}$ $\Rightarrow$  $v_5$ color $1$.
+       \item \textbf{Paso 6.} $v_1$ tiene colores vecinos $S = \{0, 1\}$ $\Rightarrow$  $v_1$ color $2$.
+   \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+    Podemos representar en el  grafo la coloración: 
+
+    \vskip .4 cm
+
+    \begin{center}
+        \begin{tikzpicture}[scale=0.55]
+            %\SetVertexSimple[Shape=circle,FillColor=white]
+            %
+            \tikzset{VertexStyle/.append style={fill= red!50}}
+            \Vertex[x=-1.50, y=2.60]{$v_1$}              
+            \tikzset{VertexStyle/.append style={fill= blue!50}}
+            \Vertex[x=1.50, y=2.60]{$v_2$}
+            \Vertex[x=-1.50, y=-2.60]{$v_5$}
+            \tikzset{VertexStyle/.append style={fill= green!50}}
+            \Vertex[x=3.00, y=0.00]{$v_3$}
+            \Vertex[x=-3.00, y=0.00]{$v_6$}
+            \Vertex[x=1.50, y=-2.60]{$v_4$}
+            \Edges($v_2$,$v_1$,$v_6$, $v_5$,$v_4$,$v_1$)
+            \Edges($v_2$,$v_6$)
+            \Edges($v_3$,$v_5$)
+        \end{tikzpicture}
+        \end{center}
+\qed 
+
+El coloreo queda igual que en la clase pasada. 
+\vskip .4 cm
+El orden fue elegido de la siguiente forma: dado el coloreo con colores $\chi(G)$, se elije,  en el orden, primero los vértices de un solo color que haya mayor cantidad, luego de otro color que haya mayor cantidad,  etc.    
+\end{frame}
+
+    \begin{frame}
+        \frametitle{}
+        Más allá que el algoritmo greedy no soluciona el problema, el algoritmo es útil tanto en la teoría como en la práctica. 
+        
+        \vskip .4 cm
+        
+        Probaremos ahora algunos resultados por medio de la estrategia greedy.
+
+        \vskip .4 cm
+        
+\begin{teorema}\label{t5.7.1} Si $G$ es un grafo con valencia máxima
+    $k$, entonces
+    \begin{enumerate}[label=\textit{\alph*)}]
+    \item\label{it.com_a}  $\chi(G)\le k+1$,
+    \item\label{it.com_b} Si $G$ es conexo y no regular , $\chi(G) \le k$.
+    \end{enumerate}
+    \end{teorema}
+    
+        
+    
+    \end{frame}
+
+
+    \begin{frame}
+        \frametitle{}
+    
+        \begin{proof}
+        
+        \ref{it.com_a} Sea $v_1,v_2,\ldots,v_n$ un ordenamiento cualquiera de los vértices de $G$. 
+        \vskip .2 cm
+        Para cada vértice $v$, si $S$ son los colores de los vecinos a $v$ $\Rightarrow$ $|S| \le k$. 
+        \vskip .2 cm
+        Luego puedo elegir un color entre $0$ y $k$. 
+        \vskip .4 cm
+        \ref{it.com_b}         \begin{enumerate}
+            \item Sea $v_n$ un vértice con $\delta(v_n) < k$. 
+            \item Sean $v_{n-1},v_{n-2},\ldots,v_{n-r}$ los adyacentes a $v_n$. Hay a lo más $k-1$ de ellos.
+            \item Luego se van eligiendo los adyacentes a $v_i$  que no están listados antes ($n > i \ge 1$). 
+            \item Si $i < n$ el vértice $v_i$ tiene un adyacente a nivel superior $\Rightarrow$ $v_i$ tiene  a lo más $k-1$ adyacentes a nivel inferior. 
+            \item Si $i < n$, usando greedy y por (4),  se puede colorear $v_i$ con un color en $\{1,\ldots,k\}$.
+            \item Por (2) se puede colorear $v_n$   on un color en $\{1,\ldots,k\}$.\qed
+        \end{enumerate}      
+        \end{proof}
+    
+    \end{frame}
+
+
+
+    \begin{frame}
+        \frametitle{Grafos bipartitos}
+    
+        
+    
+    \end{frame}
+
+
+
+    \begin{frame}
+        \frametitle{}
+    
+        
+    
+    \end{frame}
+
+
+
+    \begin{frame}
+        \frametitle{}
+    
+        
+    
+    \end{frame}
+
+
+
+    \begin{frame}
+        \frametitle{}
+    
+        
+    
+    \end{frame}
+
+
+
+    \begin{frame}
+        \frametitle{}
+    
+        
+    
+    \end{frame}
+
+
+
+    \begin{frame}
+        \frametitle{}
+    
+        
+    
+    \end{frame}
+
+
+
+    \begin{frame}
+        \frametitle{}
+    
+        
+    
+    \end{frame}
+
+
+
+    \begin{frame}
+        \frametitle{}
+    
+        
+    
+    \end{frame}
+
+
+
+    \begin{frame}
+        \frametitle{}
+    
+        
+    
+    \end{frame}
+
+
+
+    \begin{frame}
+        \frametitle{}
+    
+        
+    
+    \end{frame}
+
+
+\end{document}
+
