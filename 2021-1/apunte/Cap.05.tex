@@ -1372,7 +1372,7 @@ menos uno de los colores $1,2,\dots,k+1$ no está en $S$, y el algoritmo greedy 
 \ref{it.com_b} Para probar esta parte debemos elegir un orden especial de los vértices. 
 \begin{enumerate}[label=\arabic*.]
     \item Sea $v_n$ un vértice con $\delta(v_n) < k$. Este vértice existe, pues el grafo es no regular. 
-    \item Sean $v_{n-1},v_{n-2},\ldots,v_{n-r}$ los adyacentes a $v_n$. Como la valencia máxima es $k$, hay a lo más $k-1$ de ellos.
+    \item Sean $v_{n-1},v_{n-2},\ldots,v_{n-r}$ los adyacentes a $v_n$.
     \item Luego se van listando consecutivamente los adyacentes a $v_i$  que no están listados antes ($n > i \ge 1$). 
 \end{enumerate}   
 
@@ -1382,9 +1382,9 @@ Por  la forma de construir la lista, si $i < n$ el vértice $v_i$ tiene un adyac
 \begin{equation*}
   \text{si $i< n$, $v_i$ tiene  a lo más $k-1$ adyacentes a nivel inferior.  }  \tag{*}
 \end{equation*}
-Hagamos la coloración considerando el orden $v_1, \ldots, v_n$. 
+Hagamos el coloreo del grafo usando el algoritmo greedy  considerando el orden $v_1, \ldots, v_n$. 
 
-Cuando $i < n$,   por (*). se puede colorear $v_i$ con un color en $\{1,\ldots,k\}$.
+Cuando $i < n$,   por (*), se puede colorear $v_i$ con un color en $\{1,\ldots,k\}$.
 
 Cuando $i=n$,  como $\delta(v_n)<k$, se puede colorear $v_n$  con un color en $\{1,\ldots,k\}$.
 
