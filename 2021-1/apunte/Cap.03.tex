@@ -878,7 +878,28 @@ for i = 2 to n:
 \vskip .4cm
 \end{minipage}
 
-Este código en si no es eficiente, pero muestra una forma sencilla de obtener primos con el uso de la criba de Eratóstenes.  
+Este código en si no es eficiente, pero muestra una forma sencilla de obtener primos con el uso de la criba de Eratóstenes. El código puede ser mejorado y su rendimiento aumenta enormemente.
+
+\vskip .5cm
+%\centering
+\begin{minipage}{0.90\textwidth}
+\noindent \textsc{Criba de Eratóstenes 2}
+\vskip .2cm 
+\begin{small}
+\begin{verbatim}
+# pre: n número natural
+# post: primos[i] = True si y solo si i <= n es primo. 
+primos = lista de longitud n con todas las coordenadas True
+for i = 2 to [n^0.5]:
+    if primos[i] == True:
+        for j = i**2 to n+1 step i:
+            primos[j] = False
+\end{verbatim}
+\end{small}
+\vskip .4cm
+\end{minipage}
+
+En el algoritmo \verb+[n^0.5]+ denota la parte entera de la raíz cuadrada de \verb+n+. Por otro lado,  \verb+for j = k to m step t+ simboliza que comenzamos un contador \verb+j+ en \verb+k+ y lo vamos incrementando en \verb+t+ hasta llegar a \verb+m+.
 \end{observacion*} 
 
 %\vskip .5 cm

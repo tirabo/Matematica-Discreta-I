@@ -1463,10 +1463,10 @@ Otra consecuencia útil del algoritmo greedy se refiere a grafos $G$ son $\chi(G
 \begin{proof} Si hay un ciclo de longitud impar, entonces se requieren tres colores, solamente para colorear este ciclo, y el número cromático del grafo es por ende al menos tres. Luego si el grafo es bipartito, no puede tener ciclos de longitud impar.
 
 Recíprocamente, supongamos que $G$ es un grafo sin ciclos de longitud impar. Construiremos un orden de $G$ para el cual el algoritmo greedy producirá una coloración de vértices con dos colores. Elijamos cualquier vértice y llamémoslo $v_1$; diremos que $v_1$ esta en el \textit{nivel $0$}. A continuación, listemos la
-lista de vecinos de $v_1$ (excepto $v_1$), llamémoslos $v_2,v_3,\dots,v_r$; diremos que estos vértices están en el \textit{nivel 2}. Continuando de esta manera, definimos el \textit{nivel $l$} como todos aquellos vértices adyacentes a los del \textit{nivel $l-1$}, exceptuando aquellos previamente listados en el \textit{nivel
-$l-2$}. Cuando ningún nuevo vértice puede ser agregado de esta forma, obtenemos la componente $G_0$ de $G$ (si $G$ es conexo $G_0=G$).
+lista de vecinos de $v_1$y llamemos a estos vértices  $v_2,v_3,\dots,v_r$. Diremos entonces que los vértices  $v_2,v_3,\dots,v_r$ están en el  \textit{nivel 1}. Continuando de esta manera, definimos el  \textit{nivel $i$} como todos aquellos vértices adyacentes a los del {nivel $i-1$}, exceptuando aquellos previamente listados en el {nivel
+$i-2$}. Cuando ningún nuevo vértice puede ser agregado de esta forma, obtenemos la componente $G_0$ de $G$ (si $G$ es conexo $G_0=G$).
 
-El hecho crucial producido por este orden es que un vértice del nivel $l$ solo puede ser adyacente a vértices de los niveles $l-1$ y $l+1$, y no a vértices del mismo nivel. Supongamos que $x$ e $y$ son vértices en el mismo nivel; entonces ellos son unidos por caminos de igual longitud $m$ a algún vértice $z$ de un nivel anterior, y los caminos pueden ser elegidos de tal manera que $z$ sea el único vértice común Fig. \ref{f5.13}. Si $x$ e $y$ fueran adyacentes, habría un ciclo de longitud $2m+1$, lo cual contradice
+El hecho crucial producido por este orden es que un vértice del nivel $i$ solo puede ser adyacente a vértices de los niveles $i-1$ y $i+1$, y no a vértices del mismo nivel. Supongamos que $x$ e $y$ son vértices en el mismo nivel; entonces ellos son unidos por caminos de igual longitud $m$ a algún vértice $z$ de un nivel anterior, y los caminos pueden ser elegidos de tal manera que $z$ sea el único vértice común Fig. \ref{f5.13}. Si $x$ e $y$ fueran adyacentes, habría un ciclo de longitud $2m+1$, lo cual contradice
 la hipótesis. 
 
 \begin{figure}[ht]
