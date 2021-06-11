@@ -228,7 +228,7 @@ También decimos que $y$ es un \textit{factor} de $x$, que $y$ \textit{divide}\i
 \end{definicion}
 
 Cuando $y|x$ podemos usar el símbolo $\frac{x}{y}$ (o $x/y$) para denotar el entero $q$ tal que $ x=yq$. Cuando $y$ no es un divisor de $x$ tenemos que asignar un nuevo significado a la fracción $x/y$, puesto que este número no es un entero. El lector indudablemente, esta familiarizado con las reglas para manejar
-fracciones, y usaremos esas reglas de tanto en tanto, pero es importante recordar que las fracciones no han sido aún formalmente definidas en el contexto de este apunte. Y es aún más importante recordar que $x/y$ no es un elemento de $\mathbb Z$ a menos que $y$ divida a $x$\footnote{En algunos lenguajes de programación si $x,y$ son enteros, entonces la operación $x/y$ devuelve el cociente entero $q$. No usaremos esa convención en este apunte.}.
+fracciones, y usaremos esas reglas de tanto en tanto, pero es importante recordar que las fracciones no han sido aún formalmente definidas en el contexto de este apunte. Y es aún más importante recordar que $x/y$ no es un elemento de $\mathbb Z$ a menos que $y$ divida a $x$.
 
 
 \begin{observacion}\label{prop-divide-a-propiedades} Veamos ahora alguna propiedades básicas de la relación ``divide a''. Sean $a,b,c$ enteros, entonces
@@ -284,6 +284,12 @@ Si  $a<0$ y $b<0$, entonces   $-a>0$ y $-b>0$ y $(-a)(-b) = ab =1$. Luego, por e
 $$y = qx = q(q'y) = (qq')y.$$
 Por el axioma de cancelación (cancelando $y$) obtenemos que $1 = qq'$. Por lo demostrado más arriba tenemos que, o bien $q=q'=1$ y en consecuencia $x=y$, o bien $q=q'=-1$ y en consecuencia $x=-y$. 
 \end{proof}
+
+\begin{observacion*}
+    Si $a$ y $b$ son enteros positivos y $a|b$  entonces $a \le b$. Esto se demuestra de la siguiente manera: como $a|b$  existe $q$  tal que $b = aq$. Como $a$ y $b$ son positivos, por la regla de los signos  también $q >0$. Ahora bien $b = aq = a(q-1) + a \ge a$. La última desigualdad es verdadera pues 
+    $$q >0 \; \Rightarrow  \; q-1 \ge 0\; \Rightarrow \; a(q-1) \ge 0 \; \Rightarrow \; a(q-1) + a \ge a .
+    $$ 
+\end{observacion*}
 
 \subsection*{$\S$ Ejercicios}
 \begin{enumex}
@@ -342,7 +348,7 @@ En  el desarrollo de esta sección responderemos estas preguntas.
 \begin{observacion*} Sean $a,b \in \Z$, alguno de ellos no nulo, y $d$ un máximo común divisor de $a$ y $b$. Entonces, $d$ divide a cualquier combinación lineal entera de $a$ y $b$. Esto es una consecuencia directa de la observación \ref{prop-divide-a-propiedades} \ref{prop-divide-a-propiedades-item-4}.
 \end{observacion*}
 
-\begin{teorema}
+\begin{teorema}\label{th-existencia-mcd}
     Sean $a,b \in \Z$, alguno de ellos no nulo. Sea $d$ el mínimo entre todas las combinaciones lineales enteras positivas de $a$ y $b$.  Entonces,  $d$ es el máximo común divisor de $a$ y $b$. 
 \end{teorema}
 \begin{proof}
@@ -364,7 +370,7 @@ Si $a,b$ enteros,  alguno de ellos  no nulo,  denotaremos al máximo común divi
     $$
     c |a \; \wedge\;  c| b \quad \Leftrightarrow \quad  c |a' \; \wedge\;  c| b', 
     $$
-    es decir, $c$  es divisor de $a$ y $b$ si y solo si es divisor de $a'$ y $b'$. Entonces,  $\mcd(a,b) = \mcd(a',b')$. 
+    es decir, $c$  es divisor de $a$ y $b$ si y solo si es divisor de $a'$ y $b'$. Entonces,  $\mcd(a,b) = \mcd(a',b')$. Esto es obvio a partir de la definición del mcd.
     
 \end{observacion}
 
@@ -386,7 +392,7 @@ Si $a,b$ enteros,  alguno de ellos  no nulo,  denotaremos al máximo común divi
     \end{equation*}
 \end{corolario}
 \begin{proof}
-    Se deduce trivialmente del teorema anterior. 
+    Se deduce trivialmente del teorema \ref{th-existencia-mcd}. 
 \end{proof}
 
 \begin{corolario} Sean $a$ y $b$ enteros uno de ellos no nulo, entonces
@@ -395,7 +401,7 @@ Si $a,b$ enteros,  alguno de ellos  no nulo,  denotaremos al máximo común divi
     $$
 \end{corolario}
 \begin{proof}
-    ($\Rightarrow$) Es consecuencia trivial de la proposición anterior.
+    ($\Rightarrow$) Es consecuencia trivial  del teorema \ref{th-existencia-mcd}. 
     
     ($\Leftarrow$) Sea $d = (a,b)$, entonces $d|a$ y $d|b$ y por lo tanto $d|sa+tb$ para cualesquiera   $s,t \in \mathbb Z$.  En particular, la hipótesis implica que $d | 1$ y, en consecuencia $d =1$. 
 \end{proof}
