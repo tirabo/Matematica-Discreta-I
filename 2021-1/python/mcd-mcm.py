@@ -67,8 +67,9 @@ def gcd_r(x, y): # de Elements of Programming Interviews in Python The Insiders�
     return gcd_r(x, y - x) # Both x and y are odd.
 
 def gcd(x, y): # de Elements of Programming Interviews in Python The Insiders’ Guide by Adnan Aziz, Tsung-Hsien Lee, Amit Prakash p. 352
+    # Modificado: NO recursivo. Muy eficiente.
     # pre: x >= 0, y >= 0,  alguno no nulo.
-    # NO recursivo. No usa: *, //,  %. Solo operaciones bitwise.
+    # No usa: *, //,  %. Solo operaciones bitwise.
     # x & y = el AND de los números binarios correspondientes => x & 1 == 0 sii x es par, x & 1 == 1 sii x es impar
     # x >> 1,  en binario tachar el último dígito =>  x >> 1 == x // 2
     # x << 1,  en binario agregar un 0  al final => x << 1 == 2 * x
@@ -82,64 +83,23 @@ def gcd(x, y): # de Elements of Programming Interviews in Python The Insiders’
             for k in range(k): 
                 y  = y << 1
             mcd, y = y, 0
-            # el gcd es y * 2**k
+            # el gcd es = 2**k * y
         elif not x & 1 and y & 1: # x is even, y is odd.
-            # print('x is even, y is odd',x,y,mcd)
             x = x >> 1
-            # print(x, y, mcd)
         elif x & 1 and not y & 1: # x is odd, y is even.
-            # print('x is odd, y is even',x,y,mcd)
             y = y >> 1
-            # print(x, y, mcd)
         else: # both x and y are odd.
-            # print('x is odd, y is odd',x,y,mcd)
             if y >= x:
                 x, y = y - x, x
             else:
                 x = x - y
-            # print(x, y, mcd)
     return mcd
-
-def gcd_2(x, y): # de Elements of Programming Interviews in Python The Insiders’ Guide by Adnan Aziz, Tsung-Hsien Lee, Amit Prakash p. 352
-    # pre: x >= 0, y >= 0,  alguno no nulo.
-    # NO recursivo. No usa: *, //,  %. Solo operaciones bitwise.
-    # x & y = el AND de los números binarios correspondientes => x & 1 == 0 sii x es par, x & 1 == 1 sii x es impar
-    # x >> 1,  en binario tachar el último dígito =>  x >> 1 == x // 2
-    # x << 1,  en binario agregar un 0  al final => x << 1 == 2 * x
-    mcd  = 1
-    pot2 = 0
-    while y != 0:
-        if x == 0:
-            for k in range(pot2): 
-                y  = y << 1
-            mcd, y = y, 0
-        elif not x & 1 and not y & 1: # x and y are even.
-            # print('x and y are even',x,y,mcd)
-            x, y, pot2 = x >> 1, y >> 1, pot2 + 1 
-            # print(x, y, mcd)
-        elif not x & 1 and y & 1: # x is even, y is odd.
-            # print('x is even, y is odd',x,y,mcd)
-            x = x >> 1
-            # print(x, y, mcd)
-        elif x & 1 and not y & 1: # x is odd, y is even.
-            # print('x is odd, y is even',x,y,mcd)
-            y = y >> 1
-            # print(x, y, mcd)
-        else: # both x and y are odd.
-            # print('x is odd, y is odd',x,y,mcd)
-            if y >= x:
-                x, y = y - x, x
-            else:
-                x = x - y
-            # print(x, y, mcd)
-    return mcd
-
 
 
 def main():
     # Ejemplos
-    n, m = 10**100 + 10000057777452552451767467456784889556356356563563, 10**100+ 100000585575423542452457545234523534524567787856959060021
-    n, m = 2**3 *7*5,  2**2 *7*3
+    n, m = 10**300 + 1000005777745255245176746745678488955635635656356505, 10**200+ 10000058557542354245245754523452353452456778785695906002505
+    #n, m = 2**3 *7*5,  2**2 *7*3
     t0 = time.time()
     x = mcd(n, m)
     print('mcd',x)
