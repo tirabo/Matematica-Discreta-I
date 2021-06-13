@@ -1,21 +1,15 @@
 
 # criba de Eratóstenes
 
-def criba(n: int) -> list[int]:
-    # pre: n > 0
-    criba = [2]*(n+1) # lista de 2's de longitud n + 1 
-    for i in range(1, n + 1, 2):
-        criba[i] = i # en los lugares impares se pone criba[i] = i
-    i = 3
-    while i*i <= n : # se itera desde 3 a i <= sqrt(n)
-        if criba[i] == i: # i es primo
-            for j in range(i*i, n + 1, i): # j desde i^2 a sqrt(n) saltando de a i
-                if criba[j] == j:
-                    criba[j] = i # si j no es divisible por un primo < i, se pone i
-        i = i + 1
-    return criba # post:  criba[i] = menor factor primo de i (i >1)
+def criba_w(n): # de Wikipedia. El mejor. 
+    a = [True]*(n+1)
+    for i in range(2, int(n**0.5) + 1):
+        if a[i] == True:
+            for j in range(i**2, n+1, i ):
+                a[j] = False
+    return [i for i in range(2,n+1) if a[i] == True]
 
-def criba_primos(n: int) -> list[int]:
+def criba_primos(n: int) -> list[int]: # el algoritmo del apunte
     # pre: n número natural
     # post: se obtiene ''primos'' la lista de números primos hasta n usando
     #       la criba de Eratóstenes
@@ -28,27 +22,6 @@ def criba_primos(n: int) -> list[int]:
             while k * i <= n:
                 tachados.append(k * i) # agrega k*i a tachados
                 k = k + 1
-    return primos
-
-def primos_hasta(n: int) -> list[int]:
-    # pre: n > 0
-    # post: devuelve primos, una lista de primos  <= n
-    criba_n = criba(n)
-    primos = [2]
-    for i in range(3, n + 1, 2):
-        if criba_n[i] == i:
-            primos.append(i)
-    return primos
-
-def desc_prima(n: int) -> list[int]:
-    # pre: n > 0
-    # post: devuelve descomposición prima de n como una lista de primos <= n
-    primos = []
-    k = n
-    while k > 1:
-        p = criba(k)[-1] # el menor primo que divide a k
-        primos.append(p)
-        k = k // p
     return primos
 
 def criba_clasica(n: int) -> list[int]:
@@ -70,16 +43,30 @@ def criba_clasica(n: int) -> list[int]:
 
 
 
+def desc_prima(n: int) -> list[int]:
+    # pre: n > 0
+    # post: devuelve descomposición prima de n como una lista de primos <= n
+    primos = []
+    k = n
+    while k > 1:
+        p = criba_w(k)[-1] # el mayor primo que divide a k
+        primos.append(p)
+        k = k // p
+    return primos
+
+
+
+
+
 
 def main():
     # print(criba(25))
-    # print(len(criba(10**8))) # esto ya toma mucho tiempo 
-    # print(len(primos_hasta(102400)))
-    # print(len(criba_primos(102400)))
+    # print(len(criba_w(10**8))) 
+    # print(len(criba_w(102400)))
     # print(desc_prima(1024))
     n = 997
-    print(len(primos_hasta(n))) # Eficiente
-    print(primos_hasta(n))
+    print(len(criba_w(n))) # Eficiente
+    print(criba_w(n))
     # print(len(criba_primos(n))) # No eficiente
     print('')
     print(len(criba_clasica(n))) # Eficiente, consume memoria (arreglo de longitud n)

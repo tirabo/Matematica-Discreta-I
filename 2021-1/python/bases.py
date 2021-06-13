@@ -39,20 +39,29 @@ def mult(b, x, y):
 	return base(b, n * m)
 	
 
-### Ejemplos ###
+def main():
+    ### Ejemplos ###
+    """
+    x0, y0, z0 = 16, 19, 28
+    print('Números: ',x0, y0, z0)
 
-x0, y0, z0 = 16, 19, 28
+    x1, y1, z1 = base(2, x0), base(2, y0), base(5, z0)
+    print('En base 2, 2, 5: ',x1, y1, z1) 
 
-print('Números: ',x0, y0, z0)
+    x2, y2, z2 = numint(2, x1), numint(2, y1), numint(5, z1)
+    print('De nuevo en base 10: ',x2, y2, z2)
 
-x1, y1, z1 = base(2, x0), base(2, y0), base(5, z0)
+    print(x1,'+',y1,'=',suma(2, x1, y1))
+    print(x1,'*',y1,'=',mult(2, x1, y1))
+    """
+    x, y  = bin(1010), base(2, 1111)
+    print(x,y)
+    x, y =0b1101, 0b11011
+    print(bin(x & y))
+    print(bin(x), bin(x << 1))
 
-print('En base 2, 2, 5: ',x1, y1, z1) 
+# RUN
+ 
+if __name__ == '__main__':
+    main()
 
-x2, y2, z2 = numint(2, x1), numint(2, y1), numint(5, z1)
-
-print('De nuevo en base 10: ',x2, y2, z2)
-
-print(x1,'+',y1,'=',suma(2, x1, y1))
-
-print(x1,'*',y1,'=',mult(2, x1, y1))
