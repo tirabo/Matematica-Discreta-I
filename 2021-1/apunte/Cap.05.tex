@@ -903,8 +903,7 @@ $$
 
 
 \begin{section}{Árboles}\label{seccion-arboles}
-\begin{definicion} Diremos que un grafo $T$ es un \textit{árbol} si cumple \index{arbol} 
-que $T$ es conexo y no hay ciclos en $T$.
+\begin{definicion} Diremos que un grafo conexo $T$ es un \textit{árbol} si \index{arbol}  no hay ciclos en $T$.
 \end{definicion}
 
 Algunos árboles típicos han sido dibujados en la Fig. \ref{f5.8}. A causa de su particular estructura y propiedades, los árboles aparecen en diversas aplicaciones de la matemática, especialmente en investigación operativa y ciencias de la computación. Comenzaremos el estudio de ellos estableciendo algunas propiedades sencillas.
@@ -1003,6 +1002,7 @@ forman un conjunto de $n-1$ aristas distintas en $G$.
 \begin{enumerate}[label=\text{\textbf{(T\arabic*)}}]
 \item \label{T1} $T$ no tiene ciclos.
 \item \label{T2} Para cada par $x$, $y$ de vértices existe un único camino en $T$ de $x$ a $y$.
+\item \label{T4} El grafo obtenido de $T$ removiendo cualquier arista tiene dos componentes conexas.
 \item \label{T3} $|E|=|V|-1$.
 \end{enumerate}
 \end{teorema}
@@ -1102,6 +1102,16 @@ Entonces $v_i,v_{i+1},\ldots,v_j,u_{k-1},u_{k-2},\ldots,u_{i+1},v_i$ es un ciclo
 
 %\vskip .2cm 
 
+\noindent  \ref{T2} $\Rightarrow$ \ref{T4}. Sea $uv$  arista de $T$ y sea  $F = T -uv$,  es decir el grafo con el mismo conjunto de vértices que $T$ y con el conjunto de aristas $E'=E-uv$. 
+
+Como hay un único camino de $u$  a $v$, si eliminamos $uv$ el grafo se parte en dos componentes conexas:  $T_1$ el subgrafo que es la componente conexa de $u$ y $T_2$ el subgrafo que es la componente conexa de $v$. 
+
+Más explícitamente, los vértices de $T_1$ son los $x \in V$ tales que  el camino que que une $x$ con $u$ no pasa por $v$ y los vértices de $T_2$ son los $x \in V$ tales que  el camino que que une $x$ con $u$ pasa por $v$. 
+
+\noindent  \ref{T4} $\Rightarrow$ \ref{T2}. Supongamos que exista $T$ con la propiedad \ref{T4} y que no cumple la propiedad \ref{T2},  es decir existen $u,v$  vértices tales que hay dos caminos $C_1$ y $C_2$ de $u$  a $v$. Como $C_1 \ne C_2$, existe una arista $xy$  tal que  $C_2 = u\ldots xy\ldots v$ y $xy$  no es parte del $C_1$. Observemos que de $C_2$  se deducen dos caminos $C_2' = x \ldots u$ y $C_2'' = y \ldots v$.  
+
+Sea $G' = T-xy$,  veamos que $G'$ es conexo. Sean $a,b$  vértices,  como el grafo $T$  es conexo hay un camino $C$ de $a$ a $b$. Si el camino no utiliza la arista $xy$  entonces hay un camino de $a$ a $b$ en $G'$. En  caso contrario el camino es  $C = a \ldots xy \ldots b$ (o,  análogamente $b \ldots xy \ldots a$ ). De este camino obtenemos dos subcaminos $C'= a \ldots x$ y $C''= b \ldots y$, por lo tanto  $C'C_2'C_1C''$ es un camino de $a$  a $b$ en $G'$. Es decir, bajo las hipótesis,  siempre ha yun camino de $a$  a $b$ y por lo tanto $G'$  es conexo. Esto nos lleva a un absurdo que vino de suponer que $T$ no cumple \ref{T2}.
+
 
 \noindent \ref{T2} $\Rightarrow$ \ref{T3}.  Se hará por inducción completa en $|V|$. 
 
@@ -1109,28 +1119,26 @@ Si $|V|=2$  el resultado es obviamente cierto.
     
 Veamos el caso $|V|>2$. Sea $uv$  arista de $T$ y sea  $F = T -uv$,  es decir el grafo con el mismo conjunto de vértices que $T$ y con el conjunto de aristas $E'=E-uv$. 
 
-Como hay un único camino de $u$  a $v$, si eliminamos $uv$ el grafo se parte en dos componentes conexas:  $T_1$ el subgrafo que es la componente conexa de $u$ y $T_2$ el subgrafo que es la componente conexa de $v$. 
-
-Más explícitamente, los vértices de $T_1$ son los $x \in V$ tales que  el camino que que une $x$ con $u$ no pasa por $v$ y los vértices de $T_2$ son los $x \in V$ tales que  el camino que que une $x$ con $u$ pasa por $v$.  
-
-En cada componente conexa $T_i = (V_i, E_i)$ hay un único camino de un vértice a otro, pues sino esa propiedad no se cumpliría en $T$. Además, 
+Por  \ref{T2} $\Rightarrow$ \ref{T4}, $F$ tiene dos componentes conexas   $T_1 = (V_1, E_1)$ y  $T_2 = (V_2, E_2)$. En cada componente conexa  hay un único camino de un vértice a otro, pues sino esa propiedad no se cumpliría en $T$. Además, 
 $$
 |V_1| + |V_2| = |V|, \qquad |E_1| + |E_2| = |E|-1.
 $$
-Aplicando la hipótesis inductiva a $T_1$ y $T_2$ obtenemos
+Aplicando la hipótesis inductiva a $T_1$ y $T_2$ obtenemos que
 $$
-|E|=|E_1| + |E_2| + 1 = |V_1|-1 +|V_2|-1+1= |V| -1,
+|E|=|E_1| + |E_2| + 1 \stackrel{\text{(HI)}}{=} |V_1|-1 +|V_2|-1+1= |V| -1,
 $$
 como nosotros deseábamos. 
 
 \noindent \ref{T3} $\Rightarrow$ \ref{T1}. Supongamos que $T$ satisface \ref{T3} pero tiene ciclos. Si eliminamos una arista del ciclo, el grafo sigue siendo conexo, pero con una arista menos (y la misma cantidad de vértices), es decir obtenemos un grafo $G' = (V',E')$  conexo y con $|E'| = |V'|-2$. Pero esto contradice el resultado obtenido en el lema \ref{conv}.    
+
 \end{proof}
 
 
 
 
-Las propiedades \ref{T2} y \ref{T3} nos dan maneras alternativas de definir árboles. Por ejemplo la propiedad \ref{T2} puede ser considerada como la propiedad que define un árbol, en vez de  \ref{T1}. 
+Las propiedades \ref{T2}, \ref{T4} y \ref{T3} nos dan maneras alternativas de definir árboles. Por ejemplo la propiedad \ref{T2} puede ser considerada como la propiedad que define un árbol, en vez de  \ref{T1}. 
 
+\begin{comment}
 \begin{corolario}
     Si $T=(V,E)$ es un grafo conexo con al menos dos vértices, entonces 
     \begin{enumerate}
@@ -1140,17 +1148,23 @@ Las propiedades \ref{T2} y \ref{T3} nos dan maneras alternativas de definir árb
 \begin{proof}
     Es parte de la demostración de  \ref{T2} $\Rightarrow$ \ref{T3}: el grafo que se obtiene de quitar una arista,  es un grafo con dos componentes conexas cada una de ellas sin ciclos (pues sino los habría en $T$), luego cada una de ellas es árbol.
 \end{proof}
-
+\end{comment}
 \begin{observacion*}
-El teorema anterior nos muestra un recurso muy usado para probar que una cierta cantidad de afirmaciones son equivalentes. En el caso de $3$ afirmaciones $P$, $Q$, $R$, uno debería probar
+El teorema anterior nos muestra un recurso muy usado para probar que una cierta cantidad de afirmaciones son equivalentes. En el caso de $4$ afirmaciones $P_1$, $P_2$, $P_3$, $P_4$, uno debería probar
 $$
-P \Leftrightarrow Q,\qquad P \Leftrightarrow R,\qquad Q \Leftrightarrow R,
+P_1 \Leftrightarrow P_2,\quad P_1 \Leftrightarrow P_3,\quad P_1 \Leftrightarrow P_4,\quad P_2 \Leftrightarrow P_3,\quad P_2 \Leftrightarrow P_4,\quad P_3 \Leftrightarrow P_4.
 $$
-y eso nos garantizaría la equivalencia entre $P$, $Q$ y $R$. Si embargo, podemos ahorrar trabajo demostrando solamente
+Estas son $12$ demostraciones que nos garantizan la equivalencia entre $P_1$, $P_2$, $P_3$ y $P_4$. Sin embargo, podemos ahorrar trabajo demostrando solamente
 $$
-P \Rightarrow Q,\qquad Q \Rightarrow R,\qquad R \Rightarrow P,
+P_1 \Rightarrow P_2,\qquad P_2 \Rightarrow P_3,\qquad P_3 \Rightarrow P_4, \qquad P_4 \Rightarrow P_1
 $$  
-pues si queremos probar, por ejemplo $P \Leftrightarrow Q$, esto es equivalente a probar $P \Rightarrow Q$ y $Q \Rightarrow P$. La parte $P \Rightarrow Q$ ya ha sido probada y $Q \Rightarrow P$ se deduce de $Q \Rightarrow R$, $R \Rightarrow P$ y la propiedad transitiva de $\Rightarrow$. 
+que son $4$ demostraciones o, por ejemplo, como en el teorema anterior, 
+$$
+P_1 \Rightarrow P_2,\qquad P_2 \Leftrightarrow P_3, \qquad P_2 \Rightarrow P_4, \qquad P_4 \Rightarrow P_1, 
+$$  
+que son $5$  demostraciones.
+
+En  cualquiera de los dos casos podemos hacer una cadena de ``implicas'' que nos permite probar  $P_i \Rightarrow P_j$ para cualesquiera $i,j$ y, por lo tanto, $P_i \Leftrightarrow P_j$ para cualesquiera $i,j$.   
 \end{observacion*}
 
 \subsection*{$\S$ Ejercicios}\label{ejercicios5.5}
@@ -1202,6 +1216,30 @@ $$
 v_1 \text{ y } v_3 & v_2 \text{ y } v_4 & v_5 & v_6
 \end{matrix}
 $$
+(ver Fig. \ref{f6.10}).
+\begin{figure}[ht]
+    \begin{center}
+\begin{tikzpicture}[scale=0.55]
+    %\SetVertexSimple[Shape=circle,FillColor=white]
+    %
+    \tikzset{VertexStyle/.append style={fill= red!50}}
+    \Vertex[x=-1.50, y=2.60]{$v_1$}              
+    \Vertex[x=3.00, y=0.00]{$v_3$}
+    \tikzset{VertexStyle/.append style={fill= blue!50}}
+    \Vertex[x=1.50, y=2.60]{$v_2$}
+    \Vertex[x=1.50, y=-2.60]{$v_4$}
+    \tikzset{VertexStyle/.append style={fill= green!50}}
+    \Vertex[x=-3.00, y=0.00]{$v_6$}
+    \tikzset{VertexStyle/.append style={fill= yellow!50}}
+    \Vertex[x=-1.50, y=-2.60]{$v_5$}
+    \Edges($v_2$,$v_1$,$v_6$, $v_5$,$v_4$,$v_1$)
+    \Edges($v_2$,$v_6$)
+    \Edges($v_3$,$v_5$)
+\end{tikzpicture}
+\end{center}
+\caption{Un grafo coloreado con $4$ colores} \label{f6.10}
+\end{figure}
+
 En términos matemáticos, tenemos una partición del conjuntos de vértices en cuatro partes, con la propiedad que ninguna parte contiene un par de vértices adyacentes del grafo. Un descripción más gráfica utiliza la función 
 $$
 c: \{ v_1,v_2,v_3,v_4,v_5,v_6\} \to  \{1,2,3,4\}
@@ -1221,10 +1259,33 @@ colores nos da la solución de este problema:
 $$
 \begin{matrix}
 \text{Color 1}\quad &\text{Color 2}\quad&\text{Color 3} \\
-v_1 &v_2 \text{ y } v_5 \quad & v_3,v_4 \text{ y } v_6 .
+v_1 &v_2 \text{ y } v_5 \quad & v_3,v_4 \text{ y } v_6 
 \end{matrix}
 $$
+(ver Fig. \ref{f7.10}). 
 Más aún, hacen falta por lo menos tres colores, puesto que $v_1$, $v_2$, y $v_6$ son mutuamente adyacentes y por lo tanto deben tener diferentes colores. Luego concluimos que el número cromático del grafo es $3$.
+
+\begin{figure}[hb]
+    \begin{center}
+        \begin{tikzpicture}[scale=0.55]
+            %\SetVertexSimple[Shape=circle,FillColor=white]
+            %
+            \tikzset{VertexStyle/.append style={fill= red!50}}
+            \Vertex[x=-1.50, y=2.60]{$v_1$}              
+            \tikzset{VertexStyle/.append style={fill= blue!50}}
+            \Vertex[x=1.50, y=2.60]{$v_2$}
+            \Vertex[x=-1.50, y=-2.60]{$v_5$}
+            \tikzset{VertexStyle/.append style={fill= green!50}}
+            \Vertex[x=3.00, y=0.00]{$v_3$}
+            \Vertex[x=-3.00, y=0.00]{$v_6$}
+            \Vertex[x=1.50, y=-2.60]{$v_4$}
+            \Edges($v_2$,$v_1$,$v_6$, $v_5$,$v_4$,$v_1$)
+            \Edges($v_2$,$v_6$)
+            \Edges($v_3$,$v_5$)
+        \end{tikzpicture}
+        \end{center}
+        \caption{Un grafo coloreado con $3$ colores} \label{f7.10}
+\end{figure}
 
 En general, para probar que el número cromático de un grafo dado es $k$, debemos hacer dos cosas:
 \begin{enumerate}[label=\textit{\alph*)}] 
