@@ -1304,27 +1304,6 @@ $$
 (ver Fig. \ref{f7.10}). 
 Más aún, hacen falta por lo menos tres colores, puesto que $v_1$, $v_2$, y $v_6$ son mutuamente adyacentes y por lo tanto deben tener diferentes colores. Luego concluimos que el número cromático del grafo es $3$.
 
-\begin{figure}[hb]
-    \begin{center}
-        \begin{tikzpicture}[scale=0.55]
-            %\SetVertexSimple[Shape=circle,FillColor=white]
-            %
-            \tikzset{VertexStyle/.append style={fill= red!50}}
-            \Vertex[x=-1.50, y=2.60]{$v_1$}              
-            \tikzset{VertexStyle/.append style={fill= blue!50}}
-            \Vertex[x=1.50, y=2.60]{$v_2$}
-            \Vertex[x=-1.50, y=-2.60]{$v_5$}
-            \tikzset{VertexStyle/.append style={fill= green!50}}
-            \Vertex[x=3.00, y=0.00]{$v_3$}
-            \Vertex[x=-3.00, y=0.00]{$v_6$}
-            \Vertex[x=1.50, y=-2.60]{$v_4$}
-            \Edges($v_2$,$v_1$,$v_6$, $v_5$,$v_4$,$v_1$)
-            \Edges($v_2$,$v_6$)
-            \Edges($v_3$,$v_5$)
-        \end{tikzpicture}
-        \end{center}
-        \caption{Un grafo coloreado con $3$ colores} \label{f7.10}
-\end{figure}
 
 En general, para probar que el número cromático de un grafo dado es $k$, debemos hacer dos cosas:
 \begin{enumerate}[label=\textit{\alph*)}] 
@@ -1343,12 +1322,11 @@ En general, para probar que el número cromático de un grafo dado es $k$, debem
     \item un grafo cíclico $C_{2r+1}$ con un número impar de vértices.
 \end{enumex}
 
-\item  Determinar los números cromáticos de los grafos descritos en la Fig. \ref{f5.11}.
-\begin{figure}[ht]
-    \begin{center}
+\item  Determinar los números cromáticos en los siguientes grafos:
+
 \begin{tabular}{llllll}
     & 
-    \begin{tikzpicture}[scale=0.50]
+    \begin{tikzpicture}[scale=0.45]
     \SetVertexSimple[Shape=circle,MinSize=5 pt,FillColor=white]
     %
     \Vertex[x=0.00, y=0.00]{0}
@@ -1364,9 +1342,9 @@ En general, para probar que el número cromático de un grafo dado es $k$, debem
     \Edges(1,2,3,4,5,6,7,8,1)
     \end{tikzpicture}
     &
-    \qquad\quad
+    \hskip .7cm
     & 
-    \begin{tikzpicture}[scale=0.8]
+    \begin{tikzpicture}[scale=0.75]
     \SetVertexSimple[Shape=circle,MinSize=5 pt,FillColor=white]
     \Vertex[x=0.00, y=0]{0}
     \Vertex[x=0.00, y=2.00]{1}
@@ -1388,9 +1366,9 @@ En general, para probar que el número cromático de un grafo dado es $k$, debem
     \Edges(0,e)
     \end{tikzpicture}
     &
-    \qquad\quad
+    \hskip .7cm
     &     
-    \begin{tikzpicture}[scale=0.55]
+    \begin{tikzpicture}[scale=0.50]
     \SetVertexSimple[Shape=circle,MinSize=5 pt,FillColor=white]
     %                
     \Vertex[x=3.00, y=0.00]{1}
@@ -1404,9 +1382,7 @@ En general, para probar que el número cromático de un grafo dado es $k$, debem
     \Edges(3,5,6,2)
     \end{tikzpicture}
 \end{tabular}
-\end{center}
-    \caption{Encontrar el número cromático}\label{f5.11}
-\end{figure}
+
 
 \item Describir todos los grafos $G$ tales que $\chi(G)=1$.
 \end{enumex}
@@ -1450,8 +1426,35 @@ for i = 0 to n:
 \vskip .5cm
 
 
-Debido a que la estrategia greedy es corta de vista, el número de colores que usará será normalmente más grande que le mínimo posible. Por ejemplo, el algoritmo greedy aplicado en el grafo de Fig. \ref{f5.10} da precisamente le coloración de vértices con cuatro colores que fue propuesta anteriormente, luego encontramos
-otra coloración con tres colores. Por supuesto todo depende del orden que se elige inicialmente para los vértices. Es bastante fácil ver que si se elige el orden correcto, entonces el algoritmo greedy nos da la mejor coloración posible (ejercicio \ref{ejercicio5.7}-(2)). Pero hay $n!$ órdenes posibles, y si tuviéramos que controlar cada uno de ellos, el algoritmo requeriría ``tiempo factorial'' que en la práctica no es computable para $n$  relativamente pequeño.
+Debido a que la estrategia greedy es corta de vista, el número de colores que usará será normalmente más grande que le mínimo posible. Por ejemplo, el algoritmo greedy aplicado en el grafo de Fig. \ref{f5.10} con el orden $v_1,v_2,v_3,v_4,v_5,v_6$ da precisamente la coloración de vértices con cuatro colores que fue propuesta anteriormente (ver  de la Fig. \ref{f6.10}). 
+
+\begin{ejemplo*} Sea $G$ el grafo de la  Fig. \ref{f5.10},  si aplicamos el algoritmo greedy de coloración de vértices con el orden $v_3,v_4,v_6,v_2,v_5,v_1$ obtenemos la coloración de vértices de la Fig. \ref{f7.10}.
+\end{ejemplo*}
+
+\begin{figure}[hb]
+    \begin{center}
+        \begin{tikzpicture}[scale=0.55]
+            %\SetVertexSimple[Shape=circle,FillColor=white]
+            %
+            \tikzset{VertexStyle/.append style={fill= red!50}}
+            \Vertex[x=-1.50, y=2.60]{$v_1$}              
+            \tikzset{VertexStyle/.append style={fill= blue!50}}
+            \Vertex[x=1.50, y=2.60]{$v_2$}
+            \Vertex[x=-1.50, y=-2.60]{$v_5$}
+            \tikzset{VertexStyle/.append style={fill= green!50}}
+            \Vertex[x=3.00, y=0.00]{$v_3$}
+            \Vertex[x=-3.00, y=0.00]{$v_6$}
+            \Vertex[x=1.50, y=-2.60]{$v_4$}
+            \Edges($v_2$,$v_1$,$v_6$, $v_5$,$v_4$,$v_1$)
+            \Edges($v_2$,$v_6$)
+            \Edges($v_3$,$v_5$)
+        \end{tikzpicture}
+        \end{center}
+        \caption{Un grafo coloreado con $3$ colores} \label{f7.10}
+\end{figure}
+
+
+Cuando aplicamos greedy la coloración depende del orden que se elige inicialmente para los vértices. Es bastante fácil ver que si se elige el orden correcto, entonces el algoritmo greedy nos da la mejor coloración posible (ejercicio \ref{ejercicio5.7}-(2)). Pero hay $n!$ órdenes posibles, y si tuviéramos que controlar cada uno de ellos, el algoritmo requeriría ``tiempo factorial'' que en la práctica no es computable para $n$  relativamente pequeño.
 
 Más allá de esto, el algoritmo greedy es útil tanto en la teoría como en la práctica. Probaremos ahora dos teoremas por medio de la estrategia greedy.
 
