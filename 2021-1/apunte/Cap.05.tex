@@ -1108,9 +1108,48 @@ Como hay un único camino de $u$  a $v$, si eliminamos $uv$ el grafo se parte en
 
 Más explícitamente, los vértices de $T_1$ son los $x \in V$ tales que  el camino que que une $x$ con $u$ no pasa por $v$ y los vértices de $T_2$ son los $x \in V$ tales que  el camino que que une $x$ con $u$ pasa por $v$. 
 
-\noindent  \ref{T4} $\Rightarrow$ \ref{T2}. Supongamos que exista $T$ con la propiedad \ref{T4} y que no cumple la propiedad \ref{T2},  es decir existen $u,v$  vértices tales que hay dos caminos $C_1$ y $C_2$ de $u$  a $v$. Como $C_1 \ne C_2$, existe una arista $xy$  tal que  $C_2 = u\ldots xy\ldots v$ y $xy$  no es parte del $C_1$. Observemos que de $C_2$  se deducen dos caminos $C_2' = x \ldots u$ y $C_2'' = y \ldots v$.  
+\noindent  \ref{T4} $\Rightarrow$ \ref{T2}. Supongamos que exista $T$ con la propiedad \ref{T4} y que no cumple la propiedad \ref{T2},  es decir existen $u,v$  vértices tales que hay dos caminos distintos  $C_1$ y $C_2$ de $u$  a $v$. Como $C_1 \ne C_2$, existe una arista $xy$  tal que  $C_2 = u \cdots xy \cdots v$ y $xy$  no es parte del $C_1$. $C_2$  es la concatenación  $C_2=C_3xyC_4$ donde $C_3 = u \cdots x$ y $C_4 = y \cdots v$ son el subcamino inicial y final, respectivamente, de $C_2$. 
 
-Sea $G' = T-xy$,  veamos que $G'$ es conexo. Sean $a,b$  vértices,  como el grafo $T$  es conexo hay un camino $C$ de $a$ a $b$. Si el camino no utiliza la arista $xy$  entonces hay un camino de $a$ a $b$ en $G'$. En  caso contrario el camino es  $C = a \ldots xy \ldots b$ (o,  análogamente $b \ldots xy \ldots a$ ). De este camino obtenemos dos subcaminos $C'= a \ldots x$ y $C''= b \ldots y$, por lo tanto  $C'C_2'C_1C''$ es un camino de $a$  a $b$ en $G'$. Es decir, bajo las hipótesis,  siempre ha yun camino de $a$  a $b$ y por lo tanto $G'$  es conexo. Esto nos lleva a un absurdo que vino de suponer que $T$ no cumple \ref{T2}.
+Sea $G' = T-xy$,  veamos que $G'$ es conexo. Sean $a,b$  vértices,  como el grafo $T$  es conexo hay un camino $C$ de $a$ a $b$. Si el camino no utiliza la arista $xy$  entonces hay un camino de $a$ a $b$ en $G'$. En  caso contrario el camino es  $C = a \cdots xy \cdots b$ (o,  análogamente $b \cdots xy \cdots a$ ). De este camino obtenemos dos subcaminos $C_5= a \cdots x$ y $C_6= b \cdots y$ tal que $C =C_5xyC_6$.  Por lo tanto, podemos hacer un camino concatenando subcaminos:  
+$$
+a \stackrel{C_5}{\cdots} x \stackrel{C_3^{-1}}{\cdots} u \stackrel{C_1}{\cdots} v \stackrel{C_4^{-1}}{\cdots} y \stackrel{C_6}{\cdots} b
+$$
+(ver Fig. \ref{fT2T3}). Aquí denotamos $C_3^{-1}$ el camino $C_3$ recorrido en sentido inverso. Análogo  para $C_4^{-1}$.  
+
+
+\begin{figure}[ht]
+    \begin{center}
+    \begin{tikzpicture}[scale=1]
+    \SetVertexSimple[Shape=circle,FillColor=white,MinSize=5 pt]
+    \tikzset{LabelStyle/.style = {fill=white}}
+    \Vertex[x=1.5, y=0]{u}
+    \draw (1.5,0.4) node {$u$};
+    \Vertex[x=3.7, y=0]{x}
+    \draw (3.7,-0.4) node {$x$};
+    \Vertex[x=4.5, y=0]{y}
+    \draw (4.5,-0.4) node {$y$};
+    \Vertex[x=6.7, y=0]{v}
+    \draw (6.7,0.4) node {$v$};
+    \Edge(x)(y)
+    \Edge[label=$C_1$,style={bend left}](u)(v)
+    \Edge[label=$C_3$](u)(x)
+    \Edge[label=$C_4$](y)(v)
+    \Vertex[x=2, y=-1.5]{a}
+    \draw (2,-1.9) node {$a$};
+    \Vertex[x=6.2, y=-1.5]{b}
+    \draw (6.2,-1.9) node {$b$};
+    \Edge[label=$C_5$](a)(x)
+    \Edge[label=$C_6$](y)(b)
+    \end{tikzpicture}
+    \end{center}
+    %fig 5.10
+    \caption{Caminos entre dos vértices} \label{fT2T3}
+\end{figure}
+
+
+El camino $C_5C_3^{-1}C_1C_4^{-1}C_6$ une $a$ con $b$ sin pasar por $xy$ y en consecuencia es un camino en $G'$. Es decir, bajo las hipótesis,  para cualesquiera $a,b$ siempre hay un camino de $a$ a $b$ en $G'$ y por lo tanto  $G'$ es conexo. Esto nos lleva a un absurdo que vino de suponer que $T$ no cumple \ref{T2}.
+
+
 
 
 \noindent \ref{T2} $\Rightarrow$ \ref{T3}.  Se hará por inducción completa en $|V|$. 
@@ -1456,8 +1495,53 @@ De esta forma concluimos que se puede colorear $G$  con $k$ colores.
 
 La parte \ref{it.com_b} del teorema es falsa si permitimos que $G$ sea regular. El lector que haya respondido correctamente al ejercicio \ref{ejercicio5.6.1} de la sección \ref{seccion-coloreo-de-vertices} será capaz de dar dos ejemplos de este hecho:  los grafos cíclicos de longitud impar tienen grado $2$ y número cromático  $3$ y los grafos completos de $k+1$ vértices tienen grado $k$ y número cromático $k+1$. Si embargo, puede ser demostrado que estos son los únicos contraejemplos.
 
-Otra consecuencia útil del algoritmo greedy se refiere a grafos $G$ son $\chi(G)=2$. Para tales grafos, los conjuntos $V_1$ y $V_2$ de vértices de colores $1$ y $2$ respectivamente, forman una partición de $V$, con la propiedad que cada arista tiene un vértice en $V_1$ y el otro en $V_2$. Por esta razón, cuando $\chi(G)=2$, diremos que $G$ es \textit{bipartito}. \index{grafo bipartito} Una coloración de vértices con dos colores de un cubo se ilustra en la Fig. \ref{f5.12}, junto a un dibujo alternativo que enfatiza la naturaleza bipartita del grafo. Usualmente usaremos esta clase de dibujo cuando trabajemos con grafos bipartitos.
+Otra consecuencia útil del algoritmo greedy se refiere a grafos $G$ son $\chi(G)=2$. Para tales grafos, los conjuntos $V_1$ y $V_2$ de vértices de colores $1$ y $2$ respectivamente, forman una partición de $V$, con la propiedad que cada arista tiene un vértice en $V_1$ y el otro en $V_2$. Por esta razón, cuando $\chi(G)=2$, diremos que $G$ es \textit{bipartito}. \index{grafo bipartito} Una coloración de vértices con dos colores de un cubo se ilustra en la Fig. \ref{f5.12}, junto a un dibujo alternativo que enfatiza la naturaleza bipartita del grafo. Usualmente usaremos esta clase de dibujo, la de la derecha, cuando trabajemos con grafos bipartitos.
 
+\begin{figure}[ht]
+\begin{center}
+    \begin{tabular}{llll}
+        & 
+        \begin{tikzpicture}[scale=1.2]
+        \tikzset{VertexStyle/.append style={fill= red!50}}
+        \Vertex[x=0.00, y=0.00]{0}
+        \Vertex[x=2.00, y=-2.00]{2}
+        \Vertex[x=2.00 + 1, y=0.00 + 1]{5}
+        \Vertex[x=0.00 + 1, y=-2.00 + 1]{7}
+        \tikzset{VertexStyle/.append style={fill= blue!50}}
+        \Vertex[x=0.00 , y=-2.00]{3}
+        \Vertex[x=0.00 + 1, y=0.00 + 1]{4}
+        \Vertex[x=2.00, y=0.00]{1}
+        \Vertex[x=2.00 + 1, y=-2.00 + 1]{6}
+    
+        \Edges(0,1,2,3,0,4,5,6,7,4)
+        \Edges(1,5)
+        \Edges(2,6)
+        \Edges(3,7)
+        \end{tikzpicture}
+        &
+        \qquad  \qquad
+        & 
+        \begin{tikzpicture}[scale=1.2]
+        \tikzset{VertexStyle/.append style={fill= red!50}}
+        \Vertex[x=0.00, y=0.00]{0}
+        \Vertex[x=0.0, y=-1.00]{2}
+        \Vertex[x=0.00 , y=-2.00]{5}
+        \Vertex[x=0.00, y=-3.00]{7}
+        \tikzset{VertexStyle/.append style={fill= blue!50}}
+        \Vertex[x=2.00, y=0.00]{1}
+        \Vertex[x=2.00 , y=-1.00]{3}
+        \Vertex[x=2.00, y=-2.00]{4}
+        \Vertex[x=2.00, y=-3.00]{6}
+        \Edges(0,1,2,3,0,4,5,6,7,4)
+        \Edges(1,5)
+        \Edges(2,6)
+        \Edges(3,7)
+        \end{tikzpicture}
+    \end{tabular}
+\end{center}
+\caption{El cubo es un grafo bipartito} \label{f5.12}
+\end{figure}
+\begin{comment}
 \begin{figure}[ht]
     \renewcommand{\varx}{1} % variable para cambiar coordenada x
     \renewcommand{\vary}{1} % variable para cambiar coordenada y
@@ -1518,6 +1602,7 @@ Otra consecuencia útil del algoritmo greedy se refiere a grafos $G$ son $\chi(G
 \end{center}
 \caption{El cubo es un grafo bipartito} \label{f5.12}
 \end{figure}
+\end{comment}
 
 \begin{teorema}\label{t5.7.2} Un grafo es bipartito si  y sólo si no contiene ciclos de longitud impar.
 \end{teorema}
