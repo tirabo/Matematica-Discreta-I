@@ -828,6 +828,7 @@ Primero daremos el pseudocódigo para encontrar un recorrido maximal.
 def r_max(L, v_ini): 
     # pre: L grafo, v_ini vértice de L
     # post: devuelve un recorrido maximal que comienza en v_ini
+    # mod: se quitan de L las aristas utilizadas
     sub_caminata = [v_ini]  # sub caminata
     p0 = v_ini
     while len(L.adyacentes(p0)) > 0:  
@@ -840,7 +841,7 @@ def r_max(L, v_ini):
     \end{small}
     \end{minipage}
     
-    Ahora, implementamos el circuito euleriano o caminata euleriana,  según corresponda,  con el uso de la función \verb+r_max()+.
+    Ahora, implementamos el circuito euleriano o caminata euleriana,  según corresponda,  con el uso de la función \verb+r_max()+. xxx
 
     \vskip .4cm 
 
@@ -853,7 +854,7 @@ def r_max(L, v_ini):
 # post: cuando termina 'cam' es una lista de vértices que es
 #       una caminata o circuito euleriano que empieza en 0.
 libres = G.copiar() # sub grafo de aristas no utilizadas
-cam = r_max(libres, v_ini) # caminata
+cam = r_max(libres, 0) # recorrido maximal desde v = 0
 while len(libres.aristas()) > 0: 
     for v in libres.vertices(): 
         if len(libres.adyacentes(v)) > 0 and v in cam:
