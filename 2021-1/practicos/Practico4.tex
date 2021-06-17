@@ -270,15 +270,8 @@ usando el método visto en clase.
 %
 \item Probar que si \,$(a,1001)=1$\, entonces \,$1001$\, divide a \,$a^{720}-1$.
 
-\item Sea $p$ primo impar. 
-\begin{enumerate}
-    \item Probar que las únicas raíces cuadradas de 1 módulo $p$,  son $1$ y $-1$ módulo $p$. Es decir, probar que $x^2 \equiv 1 \pmod{p}$, entonces  $x \equiv \pm1 \pmod{p}$.
-    \item Sea  $p = d \cdot 2^s + 1$ donde $d$ es impar. Dado $a$ entero tal que $0 < a <p$, probar que 
-    \begin{itemize}
-        \item $a^{d} \equiv 1 \pmod{p}$, o
-        \item $a^{2^r\cdot\, d} \equiv -1 \pmod{p}$  para algún $r$ tal que $0 \le r < s$.
-    \end{itemize}
-\end{enumerate}
+\item\label{ej-raiz-de-1-mod-p} Sea $p$ primo impar.  Probar que las únicas raíces cuadradas de 1 módulo $p$,  son $1$ y $-1$ módulo $p$. Es decir, probar que $x^2 \equiv 1 \pmod{p}$, entonces  $x \equiv \pm1 \pmod{p}$.
+
 \end{enumerate}
 
 
@@ -305,6 +298,16 @@ $x \equiv 1\ ( 3); $ \qquad $x \equiv 1 \ ( 5)$; \qquad $x \equiv 1\ ( 7)$.
 \item${}^{(*)}$  El número \,$2^{29}$\, tiene nueve cifras y todas distintas.
 ¿Cuál dígito falta? (No está permitido el uso de calculadora).
 
+
+\item${}^{(*)}$ Sea  $p = d \cdot 2^s + 1$ donde $d$ es impar. Dado $a$ entero tal que $0 < a <p$, probar que 
+\begin{itemize}
+    \item $a^{d} \equiv 1 \pmod{p}$, o
+    \item $a^{2^r\cdot\, d} \equiv -1 \pmod{p}$  para algún $r$ tal que $0 \le r < s$.
+\end{itemize} Dicho de otra forma: probar que
+\begin{multline*}
+    a^{d} \equiv 1 \;(\operatorname{mod} p) \;\text{ o }\; a^{d} \equiv -1 \;(\operatorname{mod} p) \;\text{ o }\;a^{2d} \equiv -1 \;(\operatorname{mod} p) \;\text{ o} \; \cdots\\ \; a^{2^{s-2}d} \equiv -1 \;(\operatorname{mod} p)\; \text{ o }\; a^{2^{s-1}d} \equiv -1 \;(\operatorname{mod} p).
+\end{multline*}
+(\textit{Ayuda:} observar $a^{2^{i}d}$ es el cuadrado de $a^{2^{i-1}d}$ y por el Teorema de Fermat $a^{2^s \cdot d} = a^{n-1} \equiv 1 \pmod{n}$. Utilizar el resultado del ejercicio \ref{ej-raiz-de-1-mod-p}).
 \end{enumerate}
 
 
