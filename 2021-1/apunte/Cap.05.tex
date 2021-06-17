@@ -548,7 +548,7 @@ Podemos repetir este procedimiento hasta eliminar todos los ``bucles'' y obtener
 \end{figure}
 
 
-\begin{definicion} Diremos que un grafo  $G$ es \textit{conexo} si para cualesquiera dos vértices $x,y$ existe una camina de $x$ a $y$, es decir si  $x \sim y$. 
+\begin{definicion} Diremos que un grafo  $G$ es \textit{conexo} si para cualesquiera dos vértices $x,y$ existe un camino de $x$ a $y$, es decir si  $x \sim y$. 
 \end{definicion}
 
 Debido al lema que probamos más arriba, es sencillo verificar la siguientes propiedades: sea $G$ grafo y sean $x,y,z$ vértices de $G$, entonces
@@ -611,6 +611,8 @@ Cuando un grafo de moderado tamaño es dado por una representación pictórica e
     \end{center}
     \caption{El gran tour} \label{f5.7}
 \end{figure}
+
+\subsection*{Ciclos hamiltonianos, caminatas eulerianas}
 
 \begin{ejemplo}\label{chunner} Leandro y Juan, dos amigos, planean tomar sus vacaciones en determinada isla. La Fig. \ref{f5.7} representa los lugares de interés turístico de la isla y las carreteras que los unen. Leandro es un turista por naturaleza, y desea visitar cada lugar una vez y volver al punto de partida. Juan es un explorador, y desea atravesar todos los caminos solo una vez, a él lo tiene sin cuidado si regresa o no al lugar del cual partió. ¿Podrán encontrar las rutas que desean Leandro y Juan?
 \begin{proof}[Solución] Leandro puede usar diferentes rutas para alcanzar su objetivo: una posibilidad es el ciclo $p,q,t,s,u,r,p$.

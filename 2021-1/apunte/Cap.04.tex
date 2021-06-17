@@ -803,13 +803,13 @@ Como ya hemos mencionado, podemos ver que el RSA también puede ser usado para u
     
     Aplicar esta definición tiene el inconveniente de que si $d$ es un número grande, la cantidad de pasos  que se deben realizar para calcular $a^d$ es directamente proporcional (y mayor) a $d$, número que puede ser inmanejable para una computadora. 
     
-    Una definición alternativa de las potencias de un número nos permite amuntar $d$  en forma significativa. Sea  $a$ número (entero, racional, real, etc.),  entonces
+    Una definición alternativa de las potencias de un número nos permite bajar el número de operaciones  en forma significativa. Sea  $a$ número (entero, racional, real, etc.),  entonces
     \begin{equation}\label{def-potencia-2}
         a^d = \left\{
         \begin{matrix*}[l]
             1&,&\text{ si $d = 0$,} \\
-            a \cdot a^{n-1}&,&\text{  si $d > 0$ y  $d$ impar;} \\
-            {(a^2)}^{\frac{n}{2}}&,&\text{  si $d > 0$ y  $d$ par.}
+            a \cdot a^{d-1}&,&\text{  si $d > 0$ y  $d$ impar;} \\
+            {(a^2)}^{\frac{d}{2}}&,&\text{  si $d > 0$ y  $d$ par.}
         \end{matrix*}\right.   
     \end{equation}    
 
