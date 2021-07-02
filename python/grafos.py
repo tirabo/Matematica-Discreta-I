@@ -7,6 +7,8 @@ import copy
 #  3) j in ai sii i in aj
 #  4) ai no tiene elementos repetidos (0 <= i <= len(G)-1).
 
+# La implementación de grafos como clases está en  AyP
+
 # OPERACIONES ELEMENTALES SOBRE GRAFOS
 # valencia de un vertice, vertices adyacentes, agregar arista, quitar arista
 
@@ -218,7 +220,7 @@ def caminata_euleriana(G):
 
 ## INICIO: algoritmo greedy para coloración de vértices
 
-def coloracion_vertices(G):
+def coloracion_vertices(graph):
     # pre: G grafo
     # post: devuelve la cantidad de colores usados  y  una lista de i:c donde i es vertice y
     #       c es color (c in N); de tal forma que si i:c,  k:c' y ij arista, entonces c != c'.
