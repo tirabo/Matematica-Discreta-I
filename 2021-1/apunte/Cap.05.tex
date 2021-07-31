@@ -182,6 +182,8 @@ $$
 \begin{definicion} Dos grafos $G_1$ y $G_2$ se dicen que son \textit{isomorfos} cuando  existe una biyección $\alpha$ entre el  \index{grafos isomorfos}  \index{isomorfismo de grafos} conjunto de vértices de $G_1$ y el conjunto de vértices de $G_2$ tal que  si $\{x,y\}$ es una arista de $G_1$ entonces $\{\alpha(x),\alpha(y)\}$ es una arista de $G_2$ y recíprocamente si  $\{z,w\}$ es una arista de $G_2$ entonces $\{\alpha^{-1}(z),\alpha^{-1}(w)\}$ es una arista de $G_1$. La biyección $\alpha$ es llamada un \textit{isomorfismo}.
 \end{definicion}
 
+Es importante notar que, debido a al definición, un isomorfismo de grafos se extiende a un biyección de aristas del primer grafo en el segundo grafo. Por lo tanto, para demostrar  que $\alpha$ es un isomorfismo entre dos grafos $G_1$ y $G_2$ alcanza von verificar que lleva en forma inyectiva todas las aristas de $G_1$  en todas las aristas de $G_2$.   
+
 Por ejemplo, considere los dos grafos de la Fig. \ref{f5.3}. En este caso hay una biyección entre el conjunto de vértices de $G_1$ y el conjunto de vértices de $G_2$ la cual tiene la propiedad requerida; esta biyección es dada por
 $$
 \alpha(a)=t,\quad \alpha(b)=v,\quad \alpha(c)=w,\quad \alpha(d)=u.
@@ -403,7 +405,41 @@ vértices dados.)
 
 \item Si $G=(V,E)$ es un grafo, el \textit{complemento}\index{complemento de un grafo} $G^c$ de $G$ es el grafo cuyo conjunto de vértices es $V$ y cuyas aristas unen aquellos vértices que no son unidos por $G$. Si $G$ tiene $n$ vértices y sus valencias son $d_1,d_2,\ldots,d_n$, ¿cuáles son las valencias de $G^c$? 
 
-\item Encuentrar todos los grafos posibles (no isomorfos) que pueda, que sean regulares, $4$-valentes y con $7$ vértices. [Ayuda: considere el complemento de esos grafos.]
+\item  Probar que dos grafos $G_1$ y $G_2$  son isomorfos si y solo si $G_1^c$ y $G_2^c$ son isomorfos. 
+
+\item Usando la propiedad anterior probar que  los siguientes grafos no son isomorfos.
+\begin{center}
+    \begin{tabular}{llll}
+        &
+        \begin{tikzpicture}[scale=1]
+        %\SetVertexSimple[Shape=circle,FillColor=white]
+        \Vertex[x=0.00, y=2.00]{$0$}
+        \Vertex[x=1.90, y=0.62]{$1$}
+        \Vertex[x=1.18, y=-1.62]{$2$}
+        \Vertex[x=-1.18, y=-1.62]{$3$}
+        \Vertex[x=-1.90, y=0.62]{$4$}
+        \Edges($0$, $2$,$1$,$3$,$0$,$4$,$1$)
+        \draw (0,-2.2) node {$G_1$};
+        \end{tikzpicture}
+        &
+        \qquad\quad
+        & 
+        \begin{tikzpicture}[scale=1]
+        %\SetVertexSimple[Shape=circle,FillColor=white]
+        \Vertex[x=0.00, y=2.00]{$a$}
+        \Vertex[x=1.90, y=0.62]{$b$}
+        \Vertex[x=1.18, y=-1.62]{$c$}
+        \Vertex[x=-1.18, y=-1.62]{$d$}
+        \Vertex[x=-1.90, y=0.62]{$e$}
+        \Edges($a$, $b$, $d$, $c$, $a$, $e$, $b$)
+        \draw (0,-2.2) node {$G_2$};
+        \end{tikzpicture}
+    \end{tabular}
+\end{center}
+
+\item Encontrar todos los grafos posibles (no isomorfos) que pueda, que sean regulares, $4$-valentes y con $7$ vértices. [Ayuda: considere el complemento de esos grafos.]
+
+
 
 \item Probar que si $G$ es un grafo con al menos dos vértices, entonces $G$ tiene dos vértices con la misma valencia.
 \end{enumex}
