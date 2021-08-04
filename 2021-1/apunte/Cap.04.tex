@@ -464,18 +464,13 @@ Luego $k = 6$ o $k =7$ y entonces $x_1 = -225 + 38\cdot 6 = 3$ y $x_2 = -225 + 3
     \end{enumex}
 
 
-\item Determinar todas las posibles soluciones de las congruencias
-\begin{enumex}
-    \item  $5x\equiv1 \pmod{11},$
-    
-    \item  $5x\equiv 7 \pmod{15}.$
-\end{enumex}
-\item Resolver la ecuaciones
-\begin{enumex}
-\item $5x\equiv12 \pmod{13},$
+    \item Determinar todas las posibles soluciones de las congruencias
+    \begin{enumex}
+        \item  $5x\equiv1 \pmod{11},$
+        
+        \item  $5x\equiv 7 \pmod{15}.$
+    \end{enumex}
 
-\item $x^2-x \equiv 1 \pmod{11}.$
-\end{enumex}
 
     \item\label{ejercicio-zm}  Sea $m$ un número entero $\ge 2$ y sea
     $$
@@ -490,7 +485,16 @@ Luego $k = 6$ o $k =7$ y entonces $x_1 = -225 + 38\cdot 6 = 3$ y $x_2 = -225 + 3
     \end{equation*}
     \begin{enumex}
         \item Probar que $\Z_m$ es un  \textit{anillo conmutativo con unidad},  es decir se cumplen los axiomas \textbf{I1},\ldots,\textbf{I6} de la sección \ref{seccion-aritmetica} (cambiando $\Z$ por  $\Z_m$). 
-        \item Probar que si $p$ es un número primo,  entonces $\Z_p$ es \textit{cuerpo}, es decir  se cumplen los axiomas \textbf{I1},\ldots,\textbf{I6} de la sección \ref{seccion-aritmetica} y además, para todo $a \in \Z_p$, $a\ne 0$, existe $b \in \Z_p$ tal que $ab =1$. 
+        \item\label{item-zp-cuerpo} Probar que si $p$ es un número primo,  entonces $\Z_p$ es \textit{cuerpo}, es decir  se cumplen los axiomas \textbf{I1},\ldots,\textbf{I6} de la sección \ref{seccion-aritmetica} y además, para todo $a \in \Z_p$, $a\ne 0$, existe un único $b \in \Z_p$ tal que $ab =1$. 
+    \end{enumex}
+
+    \item  Sea $p$ número entero positivo.
+    \begin{enumex} 
+        \item (Teorema de Wilson). Probar que si $p$ es un número primo,  entonces 
+        $$(p-1)! \equiv -1 \pmod{p}.
+        $$
+        [Ayuda: $1 \cdot (p-1) \equiv -1 \pmod{p}$ y  debido al ejercicio \ref{ejercicio-zm}\,\ref{item-zp-cuerpo} los números $2, \ldots, p-2$ se pueden ordenar de a pares $m_1, m_2$ tal que $m_1m_2 \equiv 1 \pmod{p}$].
+        \item Probar que si $(p-1)! \equiv -1 \pmod{p}$,  entonces $p$  es un número primo. [Ayuda: probar el contrarrecíproco y usar el hecho que si $p$  es compuesto  existe $m$ con $1 < m < p$ y  tal que $m|p$].
     \end{enumex}
 \end{enumex}
 
