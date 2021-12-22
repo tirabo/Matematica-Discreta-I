@@ -1,0 +1,436 @@
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
+\usetheme{CambridgeUS}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+%\usepackage{makeidx}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usepackage[customcolors]{hf-tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\tikzset{
+	every picture/.append style={
+		execute at begin picture={\deactivatequoting},
+		execute at end picture={\activatequoting}
+	}
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+\usepackage{mathtools}
+\usepackage{stackrel}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+\usepackage{polynom}
+\polyset{%
+	style=B,
+	delims={(}{)},
+	div=:
+}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate]{label={(\arabic*)}}
+
+\setbeamertemplate{itemize item}{$\circ$}
+\setbeamertemplate{enumerate items}[default]
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand\sgn{\operatorname{sgn}}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\figurename }{Figura}
+
+\include{definiciones}
+
+\newcommand{\nc}{\newcommand}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\nc{\FF}{{\mathbb F}} \nc{\NN}{{\mathbb N}} \nc{\QQ}{{\mathbb Q}}
+\nc{\PP}{{\mathbb P}} \nc{\DD}{{\mathbb D}} \nc{\Sn}{{\mathbb S}}
+\nc{\uno}{\mathbb{1}} \nc{\BB}{{\mathbb B}} \nc{\An}{{\mathbb A}}
+
+\nc{\ba}{\mathbf{a}} \nc{\bb}{\mathbf{b}} \nc{\bt}{\mathbf{t}}
+\nc{\bB}{\mathbf{B}}
+
+\nc{\cP}{\mathcal{P}} \nc{\cU}{\mathcal{U}} \nc{\cX}{\mathcal{X}}
+\nc{\cE}{\mathcal{E}} \nc{\cS}{\mathcal{S}} \nc{\cA}{\mathcal{A}}
+\nc{\cC}{\mathcal{C}} \nc{\cO}{\mathcal{O}} \nc{\cQ}{\mathcal{Q}}
+\nc{\cB}{\mathcal{B}} \nc{\cJ}{\mathcal{J}} \nc{\cI}{\mathcal{I}}
+\nc{\cM}{\mathcal{M}} \nc{\cK}{\mathcal{K}}
+
+\nc{\fD}{\mathfrak{D}} \nc{\fI}{\mathfrak{I}} \nc{\fJ}{\mathfrak{J}}
+\nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+
+\title[Clase 8 - Conteo 3]{Matemática Discreta I \\ Clase 8 - Conteo ($3^\circ$ parte)}
+%\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
+\institute[]{\normalsize FAMAF / UNC
+	\\[\baselineskip] ${}^{}$
+	\\[\baselineskip]
+}
+\date[13/04/2021]{13 de abril  de 2021}
+
+
+
+\begin{document}
+	
+	\frame{\titlepage} 
+	
+	
+	
+	\begin{frame}\frametitle{Selecciones sin orden}
+		
+		$X$ finito de $n$ elementos. 
+		\begin{center}
+			{\it ¿Cuántos subconjuntos de $m$ elementos hay en $X$?}
+		\end{center} \pause
+		
+		\vskip .4cm
+		{\color{blue}Ejemplo}
+		\vskip .2cm
+		%\begin{ejemplo}
+		Por ejemplo, sea $\mathbb I_5 = \{ 1, 2, 3, 4, 5 \}$ y nos interesan los
+		subconjuntos de tres ele\-men\-tos. ¿Cuántos habrá? 
+		
+		\vskip .2cm \pause
+		
+		{\color{blue}Solución.} \pause
+		\vskip .2cm
+		Contemos directamente: 
+		
+		$\{1,2,3\}$, $\{1,2,4\}$, $\{1,2,5\}$, $\{1,3,4\}$, $\{1,3,5\}$, $\{1,4,5\}$,
+		
+		$\{2,3,4\}$, $\{2,3,5\}$, $\{2,4,5\}$,
+		
+		$\{3,4,5\}$.
+		\vskip .2cm \pause
+		La respuesta, entonces, es 10. 
+		
+	\end{frame}
+	
+	
+	
+	
+	
+	
+	
+	\begin{frame}	
+		
+		¿Cómo podemos calcular este número sin contar caso por caso?
+		\vskip .2cm \pause
+		
+		Una forma de individualizar un subconjunto de tres elementos en $\mathbb I_5$, consiste
+		en, primero, seleccionar  ordenadamente $3$ elementos.
+		
+		\vskip .2cm \pause
+		
+		Habría, a priori, $5 \cdot 4 \cdot 3$ subconjuntos pues ese es el número
+		de selecciones ordenadas y sin repetición de $3$ elementos de $\mathbb I_5$. 
+		
+		\vskip .2cm
+		Es claro que algunas de las selecciones ordenadas pueden determinar el mismo subconjunto. En efecto, por ejemplo, cualesquiera de las selecciones
+		\begin{align*}
+			1 2 3, \qquad  1 3 2, \qquad  2 1 3, \qquad 2 3 1, \qquad  3 1 2, \qquad  3 2 1
+		\end{align*}
+		determina el subconjunto $\{ 1, 2, 3\}$. 
+		
+		\vskip .2cm \pause
+		
+		Es decir las permutaciones de $\{ 1, 2, 3\}$ determinan el mismo subconjunto.  
+		
+		\vskip .2cm 
+		
+		Veamos todos los casos: 
+		
+		
+	\end{frame}
+	
+	
+	
+	
+	
+	\begin{frame}	
+		
+		\pause
+		\begin{align*}
+			&1 2 3 \qquad  1 3 2  \qquad  2 1 3  \qquad 2 3 1  \qquad  3 1 2  \qquad  3 2 1 \qquad	&\to \qquad &\{1,2,3\}\\
+			&1 2 4  \qquad  1 4 2  \qquad  2 1 4  \qquad 2 4 1  \qquad  4 1 2  \qquad  4 2 1  \qquad	&\to \qquad &\{1,2,4\}\\
+			&1 2 5  \qquad  1 5 2  \qquad  2 1 5  \qquad 2 5 1  \qquad  3 1 2  \qquad  5 2 1  \qquad	&\to \qquad &\{1,2,5\}\\
+			&1 3 4  \qquad  1 43  \qquad  3 1 4  \qquad 34 1  \qquad  4 1 3  \qquad  431  \qquad	&\to \qquad &\{1,3,4\}\\
+			&1 3 5  \qquad  1 53  \qquad  3 1 5  \qquad 35 1  \qquad  5 1 3  \qquad  531  \qquad	&\to \qquad &\{1,3,5\}\\
+			&1 45  \qquad  1 54  \qquad  4 1 5  \qquad 45 1  \qquad  5 1 4  \qquad  541  \qquad	&\to \qquad &\{1,4,5\}\\
+			&234  \qquad  243  \qquad  324  \qquad 342  \qquad  423  \qquad  432  \qquad	&\to \qquad &\{2,3,4\}\\
+			&235  \qquad  253  \qquad  325  \qquad 352  \qquad  523  \qquad  532  \qquad	&\to \qquad &\{2,3,5\}\\
+			&245  \qquad  254  \qquad  425  \qquad 452  \qquad  524  \qquad  542  \qquad	&\to \qquad &\{2,4,5\}\\
+			&345  \qquad  354  \qquad  435 \qquad 453  \qquad  534  \qquad  543  \qquad	&\to \qquad &\{3,4,5\}
+		\end{align*}	
+		
+	\end{frame}
+	
+	
+	
+	\begin{frame}
+		
+		Es decir  $3! = 6$ selecciones ordenadas nos determinan un subconjunto de tres elementos. Por lo tanto, el número total de
+		subconjuntos de $3$ elementos es
+		
+		$$
+		\frac{5 \cdot 4 \cdot 3}{3!} =  \frac{5!}{3! (5 - 3)!}
+		$$
+		\vskip .4cm \pause
+		
+		Podemos  hacer el mismo razonamiento, si tuviéramos que elegir subconjuntos de 2 elementos:
+		
+		\vskip .4cm \pause
+		
+		\begin{itemize}
+			\item Tenemos $5 \cdot 4 = \displaystyle \frac{5!}{3!}$  selecciones ordenadas de 2 elementos.
+			\item La cantidad de permutaciones de dos elementos es $2!$, luego,
+			\item hay  $\displaystyle \frac{5!}{3!2!} = 10$ subconjuntos de 2 elementos. 
+		\end{itemize}
+		
+		
+		
+	\end{frame}
+	
+	\begin{frame}
+		En el caso general de subconjuntos de $m$ elementos de un
+		conjunto de $n$ elementos ($m \le n$) podemos razonar en forma análoga. 
+		
+		\vskip .4cm \pause
+		
+		\begin{itemize}
+			\item Tenemos $\displaystyle \frac{n!}{(n-m)!}$  selecciones ordenadas de $m$ elementos entre $n$. \pause
+			\item La cantidad de permutaciones de $m$ elementos es $m!$, luego, \pause
+			\item hay  $\displaystyle \frac{n!}{(n-m)!m!}$ subconjuntos de $m$ elementos. 
+		\end{itemize}
+		
+		
+		
+		\vskip .4cm \pause
+		
+		
+		
+		{\color{blue}Teorema}
+		\vskip .2cm
+		{\it Sea $X$ un conjunto de $n$ elementos. Entonces   el número total de subconjuntos de $m$ elementos
+			de $X$ es
+			$$
+			\frac{n!}{(n - m)!\; m!}
+			$$}
+		
+		\vskip .4cm
+	\end{frame}
+	
+	
+	\begin{frame}	\frametitle{Número combinatorio}
+		
+		Sean $n, m \in \mathbb N_0$, $m \le n$. Definimos
+		$$
+		\binom{n}{m} = \frac{n!}{(n - m)! \; m!}
+		$$
+		el  {\em número combinatorio} asociado al par $n$, $m$ con $m \le n$.
+		
+		\vskip .4cm \pause
+		Por razones que se verán más adelante se denomina también el {\em coeficiente binomial} asociado al par $n$, $m$ con $m \le n$.
+		
+		\vskip .4cm  \pause
+		Definimos también
+		$$
+		\binom{n}{m} = 0,\qquad \text{ si } m > n.
+		$$
+		
+	\end{frame}
+	
+	
+	
+	\begin{frame}
+		Hay unos pocos números combinatorios que son fácilmente calculables: 
+		$$
+		\binom{n}{0} = \binom{0}{0} = 1 \qquad \text{ y }\qquad  \binom{n}{1} = \binom{n}{n-1} = n. 
+		$$
+		Estos resultados se obtienen por aplicación directa de la definición (recordar que  $0! =1$). 
+		
+		
+		\vskip .4cm  \pause
+		
+		Con el número combinatorio podemos reescribir el resultado visto más arriba:
+		
+		\vskip .4cm 
+		{\color{blue}Teorema}
+		\vskip .2cm
+		{\it Sean $n, m \in \mathbb N_0$, $m \le n$, y supongamos que el conjunto $X$ tiene $n$ elementos.
+			Entonces la cantidad de subconjuntos de $X$ con $m$ elementos es
+			$
+			\displaystyle\binom{n}{m}
+			$.}
+		
+	\end{frame}
+	
+	
+	\begin{frame}
+		
+		
+		{\color{blue}Ejemplo}
+		\vskip .3cm
+		¿Cuántos comités pueden formarse de un conjunto de $6$ mujeres y $4$ hombres, si el comité debe estar compuesto por $4$ mujeres y $2$ hombres?
+		\vskip .3cm \pause
+		{\color{blue}Solución} \pause
+		\vskip .2cm Debemos elegir $4$ mujeres entre $6$, y la cantidad de elecciones posibles es   $\displaystyle\binom{6}{4}$. Por otro lado, hay $ \displaystyle\binom{4}{2}$ formas de elegir $2$ hombres entre $4$. Luego, por el principio de multiplicación,  el resultado es
+		\begin{align*}
+            \binom{6}{4}\cdot \binom{4}{2} &= \frac{6!}{(6-4)!4!}\cdot\frac{4!}{(4-2)!2!}= \frac{6!}{2!4!}\cdot\frac{4!}{2!2!} = \frac{6\cdot 5}{2}\cdot\frac{4\cdot 3}{2} \\[0.3cm] & = 15 \cdot 6= 90.
+        \end{align*}
+		
+	
+		\vskip .3cm
+	\end{frame}
+	
+	
+	\begin{frame}\frametitle{Simetría del número combinatorio}
+		
+		
+		{\color{blue} Proposición}
+		\vskip .2cm
+		{\it	Sean $m,n \in \mathbb N_0$, tal que $m \le n$. Entonces
+			$$
+			\binom{n}{m} = \binom{n}{n-m}.
+			$$} \pause  
+		{\color{blue} Demostración.} \pause  
+		\begin{align*}
+			\binom{n}{n-m} &= \frac{n!}{(n-(n-m))!\,(n-m)!} \\
+			&=  \frac{n!}{m!\,(n-m)!} \\
+			&=    \frac{n!}{(n-m)!\,m!}=  \binom{n}{m}.
+		\end{align*}
+		\qed
+		
+		
+		
+	\end{frame}
+	
+	
+	\begin{frame}	
+		
+		El hecho  de que 
+		$$
+		\binom{n}{m} = \binom{n}{n-m}.
+		$$
+		se puede interpretar en términos de subconjuntos:  $\displaystyle\binom{n}{m}$ es el número de subconjuntos de $m$ ele\-men\-tos de un conjunto de $n$ elementos. 
+		\vskip .2cm\pause  
+		
+		Puesto que con cada subconjunto de $m$ ele\-men\-tos hay unívocamente asociado un subconjunto de $n - m$ elementos, su complemento en $X$, es claro que $$\displaystyle\binom{n}{m} = \binom{n}{n-m}.$$
+		
+		
+	\end{frame}
+	
+	
+	\begin{frame}\frametitle{Triángulo de Pascal}
+		
+		
+		{\color{blue} Teorema}
+		\vskip .2cm
+		{\it
+			Sean $m,n \in \mathbb N$, tal que $m \le n$. Entonces
+			$$
+			\binom{n}{m-1} + \binom{n}{m}   = \binom{n+1}{m} 
+			$$
+		}\pause  
+		
+		{\color{blue} Demostración.}\pause  
+		\vskip .2cm
+		
+		El enunciado nos dice que debemos demostrar que 
+		\begin{equation*}
+			\frac{n!}{(n-m+1)!\,(m-1)!} +  \frac{n!}{(n-m)!\,m!} = \frac{(n+1)!}{(n-m+1)!\,m!}
+		\end{equation*}
+		
+		y lo dejamos como ejercicio.\qed
+		
+	\end{frame}
+	
+	\begin{frame}
+		
+		Veamos unos pocos ejemplos de la fórmula $\binom{n}{m-1} + \binom{n}{m}   = \binom{n+1}{m}$ o  equivalentemente (dando vuelta la igualdad).
+		$$
+		\binom{n+1}{m} = \binom{n}{m-1} + \binom{n}{m} .
+		$$
+		\vskip .3cm \pause  
+
+        \begin{block}{Ejemplos}
+        \begin{align*}
+            \binom{4}{2} &= \binom{3}{1} + \binom{3}{2} = 3+3 =6. \\[.5cm]
+            \binom{5}{2} &= \binom{4}{1} + \binom{4}{2} = 4 + 6 = 10, \\[.3cm]
+            \binom{5}{3} &= \binom{4}{2} + \binom{4}{3} = 6 + 4 = 10.
+        \end{align*}
+    \end{block}
+		
+	\end{frame}
+	
+	\begin{frame}
+		El teorema precedente permite calcular los coeficientes binomiales:
+		\pause  
+		\begin{align*}
+			&& && && && && &\binom{0}{0}& && && && && &&  \\
+			&& && && && &\binom{1}{0}& && &\binom{1}{1}& && && && &&  \\
+			&& && && &\binom{2}{0}& && &\binom{2}{1}& && &\binom{2}{2}& && && &&  \\
+			&& && &\binom{3}{0}& && &\binom{3}{1}& && &\binom{3}{2}& && &\binom{3}{3}& && &&  \\
+			&& &\binom{4}{0}& && &\binom{4}{1}& && &\binom{4}{2}& && &\binom{4}{3}& && &\binom{4}{4}& && 
+		\end{align*}\pause  
+		Cada término interior es suma de los dos términos inmediatos superiores. 
+		
+		Los elementos en los lados valen 1.
+		
+	\end{frame}
+	
+	
+	\begin{frame}
+		Escribamos los valores de cada fila:\pause  
+		\begin{align*}
+			&& && && && && &1& && && && && &&  \\
+			&& && && && &1& && &1& && && && &&  \\
+			&& && && &1& && &2& && &1& && && &&  \\
+			&& && &1& && &3& && &3& && &1& && &&  \\
+			&& &1& && &4& && &6& && &4& && &1& &&  
+		\end{align*}
+		
+		\vskip .2cm
+		El  triángulo es denominado \emph{triángulo de Pascal}. 
+		\vskip .2cm\pause  
+		Entre las propiedades que cuenta el triángulo de Pascal está la de ser simétrico respecto al eje vertical central, como consecuencia de la simetría de los números combinatorios. 
+	\end{frame}
+	
+	
+	
+\end{document}
+

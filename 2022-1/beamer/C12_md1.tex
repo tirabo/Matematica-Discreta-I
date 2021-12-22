@@ -1,0 +1,390 @@
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
+\usetheme{CambridgeUS}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+%\usepackage{makeidx}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usepackage[customcolors]{hf-tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\tikzset{
+    every picture/.append style={
+        execute at begin picture={\deactivatequoting},
+        execute at end picture={\activatequoting}
+    }
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+\usepackage{mathtools}
+\usepackage{stackrel}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+\usepackage{polynom}
+\polyset{%
+    style=B,
+    delims={(}{)},
+    div=:
+}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate]{label={(\arabic*)}}
+
+\setbeamertemplate{itemize item}{$\circ$}
+\setbeamertemplate{enumerate items}[default]
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand\sgn{\operatorname{sgn}}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\figurename }{Figura}
+
+\include{definiciones} % definiciones propias
+
+\newcommand{\nc}{\newcommand}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\nc{\FF}{{\mathbb F}} \nc{\NN}{{\mathbb N}} \nc{\QQ}{{\mathbb Q}}
+\nc{\PP}{{\mathbb P}} \nc{\DD}{{\mathbb D}} \nc{\Sn}{{\mathbb S}}
+\nc{\uno}{\mathbb{1}} \nc{\BB}{{\mathbb B}} \nc{\An}{{\mathbb A}}
+
+\nc{\ba}{\mathbf{a}} \nc{\bb}{\mathbf{b}} \nc{\bt}{\mathbf{t}}
+\nc{\bB}{\mathbf{B}}
+
+\nc{\cP}{\mathcal{P}} \nc{\cU}{\mathcal{U}} \nc{\cX}{\mathcal{X}}
+\nc{\cE}{\mathcal{E}} \nc{\cS}{\mathcal{S}} \nc{\cA}{\mathcal{A}}
+\nc{\cC}{\mathcal{C}} \nc{\cO}{\mathcal{O}} \nc{\cQ}{\mathcal{Q}}
+\nc{\cB}{\mathcal{B}} \nc{\cJ}{\mathcal{J}} \nc{\cI}{\mathcal{I}}
+\nc{\cM}{\mathcal{M}} \nc{\cK}{\mathcal{K}}
+
+\nc{\fD}{\mathfrak{D}} \nc{\fI}{\mathfrak{I}} \nc{\fJ}{\mathfrak{J}}
+\nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+
+
+
+\title[Clase 12 - MCD (1)]{Matemática Discreta I \\ Clase 12 - Máximo común divisor (1)}
+%\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
+\institute[]{\normalsize FAMAF / UNC
+    \\[\baselineskip] ${}^{}$
+    \\[\baselineskip]
+}
+\date[27/04/2021]{27 de abril  de 2021}
+
+\newcommand{\mcd}{\operatorname{mcd}}
+
+
+\begin{document}
+    
+    \frame{\titlepage} 
+    
+    
+    \begin{frame}\frametitle{Definición de MCD}
+        
+        
+        \begin{definicion}
+        Si $a$ y $b$ son enteros algunos de ellos no nulo, decimos que un entero positivo $d$ es un {\em máximo común divisor}\index{máximo común divisor}, o {\em mcd}, de $a$ y $b$ si
+        \begin{enumerate}
+            \item[{\color{blue} a)}] $ d|a$  y $d|b$;
+            \item[{\color{blue} b)}]  si $ c|a $ y $c|b$ entonces $ c|d$.
+        \end{enumerate}
+        \end{definicion}
+        \vskip .4cm 
+        \begin{itemize}
+            \item[$\bullet$]  La condición (a) nos dice que $d$ es un común divisor de $a$ y $b$.
+            \vskip .4cm 
+            
+            \item[$\bullet$] La condición (b) nos dice que cualquier divisor común de
+            $a$ y $b$ es también divisor de $d$. 
+        \end{itemize}
+        
+        \vskip .4cm 
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        \begin{ejemplo}
+            ¿Cuál es el mcd entre $60$ y $84$?
+        \end{ejemplo}
+         \pause
+        \begin{solucion}
+            \pause
+            \begin{itemize}
+                \item[$\bullet$] $6$ es un divisor común de $60$ y $84$, pero no es el mayor divisor común, porque
+                $12|60$ y $12|84$ pero $12{\not|}6$.
+                \vskip .2cm 
+                \item[$\bullet$] Los divisores positivos comunes de 60  y 84 son 1, 2, 3, 6 y 12, luego aunque 6  es un divisor común, no satisface (2) de la definición. 
+                \vskip .2cm 
+                \item[$\bullet$] En este caso, 12  claramente es  el  \textbf{máximo común divisor}.
+            \end{itemize}
+        \end{solucion}
+
+        
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        \begin{preguntas}
+            \pause
+
+            \begin{itemize}
+                \item[$\bullet$] Dados $a,b \in \mathbb Z$ arbitrarios, alguno de ellos no nulo ¿existe el máximo común divisor? \pause \newline \textbf{Rta:} Sí.
+                \vskip .4cm \pause
+                \item[$\bullet$]
+                Si existe, ¿hay una forma eficiente de calcularlo? \pause \newline \textbf{Rta:} Sí.
+                \vskip .4cm \pause
+                \item[$\bullet$]  ¿Cuántos máximos común divisores puede tener un  par de enteros? \pause\newline \textbf{Rta:} 1. 
+            \end{itemize}
+            \vskip .8cm 
+        \end{preguntas}
+
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        La primera y tercera pregunta son respondidas por el siguiente:
+        \vskip .4cm
+        \begin{teorema}\label{th-mcd}
+            {\it Dados $a,b \in \mathbb Z$, alguno de ellos no nulo, existe un único $d \in \mathbb Z$ que es el máximo común divisor. }
+            \vskip .2cm \pause
+        \end{teorema}
+        \begin{idea}
+            \pause 
+            \begin{equation*}
+                S = \{m a+n b : m,n\in \mathbb Z, m a+n b>0\} \subset \mathbb N.
+            \end{equation*}
+            
+            El mínimo de $S$ es el mcd.\qed
+        \end{idea}
+        \pause 
+        \vskip .4cm 
+        \begin{notacion}
+            Sean $a,b \in \mathbb Z$, alguno de ellos no nulo, denotamos $\mcd(a,b)$ o $(a,b)$ al máximo común divisor entre $a$ y $b$.
+        \end{notacion}
+
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        
+        \begin{ejemplo}
+            Hallar   $\mcd(174,72)$.
+        \end{ejemplo}
+         \pause    
+        \begin{solucion}
+            \pause
+        Divisores de 174: 1, 2, 3, 6, 29, 58, 87, 174\pause
+        \vskip .2cm         
+        Divisores de 72: 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, 72 \pause
+        \vskip .2cm         
+        Luego, $6$ es divisor común de 174 y 72, y todos los demás divisores comunes ($1$, $2$ y $3$) dividen a $6$. 
+        \vskip .2cm     
+        
+        Por lo tanto $\mcd(174,72) =6$.\qed
+        \end{solucion} 
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        \begin{proposicion} 
+        Sean $a,b \in \mathbb Z$, alguno de ellos no nulo. Entonces existen $s,t \in \mathbb Z$ tal que
+        \begin{equation*}
+            (a,b) = sa + tb. 
+        \end{equation*}
+        \end{proposicion}
+        \begin{proof}
+            Es consecuencia inmediata de la demostración del  teorema de la p. \ref{th-mcd}. \qed
+        \end{proof}
+        \pause
+        \vskip .2cm 
+        \begin{corolario}
+            Sean $a$ y $b$ enteros, $b$ no nulo, entonces
+            $$
+            (a,b) = 1 \Leftrightarrow \text{existen $s,t \in \mathbb Z$ tales que $1 = sa+tb$.}
+            $$
+        \end{corolario}
+        \pause
+    
+        
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{}
+        
+    \begin{definicion}
+        Si  $(a,b)=1$ entonces decimos que $a$ y $ b$ son {\em coprimos}\index{coprimos}.
+    \end{definicion}
+
+    \begin{observacion}
+        Por el corolario de la página anterior 
+        $$
+        a,b \text{ coprimos }\quad \Leftrightarrow\quad \text{existen $s,t \in \mathbb Z$ tales que $1 = sa+tb$.}
+        $$
+    \end{observacion}
+
+    \begin{observacion}
+        \textit{NO} es cierto  que si existen $s,t \in \mathbb Z$ tales que $d = sa+tb$ $\Rightarrow$ $d = (a,b)$.
+\vskip .4cm
+        Por ejemplo, $4 = 2 \cdot 6 + (-2) \cdot 4$ y $(6,4) =2$. 
+    \end{observacion}
+        
+        
+    
+    \end{frame}
+    
+    \begin{frame}
+        
+        \begin{proposicion} Sean $a,b$ enteros con $a \not = 0$, entonces
+            \begin{enumerate}
+                \item[1.] $\mcd(b,a) = \mcd(a,b) = \mcd(\pm a, \pm b)$,\pause
+                \item[2.] si $a>0$,  $\mcd(a,0) = a$ y $\mcd(a,a) = a$,\pause
+                \item[3.] $\mcd(1,b) = 1$.
+            \end{enumerate}
+        \end{proposicion}
+        \pause
+        \begin{proof}
+            Estas propiedades son de demostración casi trivial, por ejemplo para demostrar que  $\mcd(1,b) = 1$ comprobamos que 1 cumple con la definición:
+            \begin{enumerate}
+                \item[({a})] $ 1|1$ y $1|b$;
+                \item[({b})] si $ c|1 $ y $c|b$ entonces $ c|1$,
+            \end{enumerate}
+            propiedades que son obviamente verdaderas.
+            
+            1. y 2.  se dejan a cargo del lector. \qed
+        \end{proof}
+        \vskip .8cm
+        
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        La siguiente propiedad no es tan obvia y resulta muy importante. 
+        \vskip .2cm
+        \begin{propiedad}
+            Si $a \not=0, b \in \mathbb Z$, entonces $\mcd(a,b) = \mcd(a,b-a)$. 
+        \end{propiedad}\pause
+        \begin{proof}
+            Sea $d =  \mcd(a,b)$, luego 
+            \vskip .2cm
+            (a) $ d|a$ y $d|b$ \; \quad \;\,\, y \; (b) si $ c|a $ y $c|b$ entonces $ c|d$.\pause
+            \vskip .2cm
+            Debemos probar que 
+            \vskip .2cm
+            (a') $ d|a$ y $d|b -a$ \; y \; (b') si $ c|a $ y $c|b -a$ entonces $ c|d$.\pause
+            \vskip .6cm
+            Por (a),  $ d|a$ y $d|b$ $\Rightarrow$  $d|b -a$  $\Rightarrow$ (a').\pause
+            \vskip .2cm
+            Si $ c|a $ y $c|b -a$ $\Rightarrow$  $c|a +(b -a) = b$ $\stackrel{(b)}{\Rightarrow}$ $ c|d$ $\Rightarrow$  (b').
+
+            \qed
+
+        \end{proof}
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        \begin{ejemplo} Encontrar el mcd entre 72 y 174.
+        \end{ejemplo} \pause\vskip -.6cm
+        $$
+        \begin{matrix*}[l]
+            \text{{\color{blue}Solución:}\qquad} & (72, 174)     &=  (72,174-72) =  (72,102)\qquad\qquad\qquad{}^{}\\
+            &&=  (72,102 - 72) = (72,30)\\
+            &&= (30,72)  \\
+            &&= (30,72 -30) = (42, 30) \\
+            &&=  (30,42)\\
+            &&= (30,42 -30) =(30,12) \\
+            &&= (12,30) \\
+            &&= (12, 30-12) = (12,18)\\
+            &&=  (12, 18-12)= (12,6)\\
+            &&= (6,12) \\
+            &&= (6,12-6) =(6,6)\\
+            &&= (6, 6-6) = (6,0) = 6. \qquad\qquad\qquad\qquad\qquad\qquad\qed 
+        \end{matrix*}
+        $$
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        $\bullet$ En  general no es sencillo encontrar todos los divisores de un número entero grande. 
+        \vskip .2cm
+        $\bullet$ No es factible calcular el  mcd de números grandes revisando todos los divisores comunes.  
+        \vskip .2cm
+        $\bullet$ El algoritmo anterior  nos da un método práctico y relativamente eficiente para calcular el mcd. 
+        \vskip .6cm
+        \pause
+        La próxima proposición nos provee una herramienta aún mejor para calcular el mcd.
+        \pause
+        \begin{proposicion}\label{prop-alg-eucl} Sean  $a,b$ enteros no negativos con $b \not=0$, entonces 
+            \begin{equation}\label{bec}
+                a=bq+r\quad \Rightarrow \quad\mcd(a,b)=\mcd(b,r).
+            \end{equation}
+        \end{proposicion}
+    \end{frame}
+    
+    
+    \begin{frame}
+        \begin{ejemplo} Encuentre el mcd de 174 y 72.
+        \end{ejemplo}\pause
+        \begin{solucion}\pause Con el uso repetido de la proposición anterior, obtenemos
+            \begin{alignat*}3
+                174&=72\cdot 2+30,&\quad&\text{ entonces  }& \quad(174,72)&= (72,30)\\
+                72&=30\cdot 2+12,&\quad&\text{ entonces  }& (72,30)&= (30,12)\\
+                30&=12\cdot 2+6,&\quad&\text{ entonces  }& (30,12)&= (12,6)\\
+                12&=6\cdot 2+0,&\quad&\text{ entonces  }&(12,6)&= (6,0)=6.\\
+            \end{alignat*}
+            
+            Por lo tanto $(174,72) = 6$. \qed
+            
+        \end{solucion}
+    \end{frame}
+    
+    
+    
+\end{document}
+

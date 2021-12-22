@@ -1,0 +1,452 @@
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+
+\usetheme{CambridgeUS}
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+%\usepackage{makeidx}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usepackage[customcolors]{hf-tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\tikzset{
+	every picture/.append style={
+		execute at begin picture={\deactivatequoting},
+		execute at end picture={\activatequoting}
+	}
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+\usepackage{mathtools}
+\usepackage{stackrel}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+\usepackage{polynom}
+\polyset{%
+	style=B,
+	delims={(}{)},
+	div=:
+}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate]{label={(\arabic*)}}
+\setbeamertemplate{itemize item}{$\circ$}
+\setbeamertemplate{enumerate items}[default]
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand\sgn{\operatorname{sgn}}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\figurename }{Figura}
+
+\include{definiciones}
+
+\newcommand{\nc}{\newcommand}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\nc{\FF}{{\mathbb F}} \nc{\NN}{{\mathbb N}} \nc{\QQ}{{\mathbb Q}}
+\nc{\PP}{{\mathbb P}} \nc{\DD}{{\mathbb D}} \nc{\Sn}{{\mathbb S}}
+\nc{\uno}{\mathbb{1}} \nc{\BB}{{\mathbb B}} \nc{\An}{{\mathbb A}}
+
+\nc{\ba}{\mathbf{a}} \nc{\bb}{\mathbf{b}} \nc{\bt}{\mathbf{t}}
+\nc{\bB}{\mathbf{B}}
+
+\nc{\cP}{\mathcal{P}} \nc{\cU}{\mathcal{U}} \nc{\cX}{\mathcal{X}}
+\nc{\cE}{\mathcal{E}} \nc{\cS}{\mathcal{S}} \nc{\cA}{\mathcal{A}}
+\nc{\cC}{\mathcal{C}} \nc{\cO}{\mathcal{O}} \nc{\cQ}{\mathcal{Q}}
+\nc{\cB}{\mathcal{B}} \nc{\cJ}{\mathcal{J}} \nc{\cI}{\mathcal{I}}
+\nc{\cM}{\mathcal{M}} \nc{\cK}{\mathcal{K}}
+
+\nc{\fD}{\mathfrak{D}} \nc{\fI}{\mathfrak{I}} \nc{\fJ}{\mathfrak{J}}
+\nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+
+
+\title[Clase 10 - Cociente y resto]{Matemática Discreta I \\ Clase 10 - Cociente y resto}
+%\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
+\institute[]{\normalsize FAMAF / UNC
+	\\[\baselineskip] ${}^{}$
+	\\[\baselineskip]
+}
+\date[20/04/2021]{20 de abril  de 2021}
+
+
+
+
+
+
+\begin{document}
+
+\frame{\titlepage} 
+
+
+\begin{frame}\frametitle{Cociente y resto}
+Cuando somos chicos aprendemos que $6$ ``cabe'' cuatro veces en $27$ y
+el resto es $3$, o sea
+$$
+27=6 \cdot 4 + 3.
+$$\pause
+Un punto importante es que el resto debe ser menor que 6. Aunque,
+también es verdadero que, por ejemplo
+$$
+27=6 \cdot 3 + 9.
+$$\pause
+
+En la división debemos tomar el menor valor para el resto, de forma que ``lo que
+queda'' sea un número no negativo lo más chico posible. 
+\vskip .2cm\pause
+El hecho de que el conjunto de
+posibles ``restos'' tenga un mínimo es una consecuencia del \textit{axioma
+del buen orden.}
+
+
+\end{frame}
+
+
+\begin{frame}
+	
+
+\vskip .4cm
+{\color{blue}Teorema (Algoritmo de división)}
+\vskip .2cm
+{\it Sean $a$ y $b$ números enteros
+	cualesquiera con $b \in \mathbb N$, entonces existen enteros únicos $q$ y
+	$r$ tales que
+	$$
+	a=b \cdot q + r\qquad\text{ y }\qquad 0\le r<b.
+	$$
+ }\pause
+\vskip 0.4cm
+A la $q$ del teorema anterior lo llamaremos el \textit{cociente de $b$  por $a$}.
+\vskip .4cm
+A $r$ lo llamamos el \textit{resto de dividir $b$ por $a$.}
+\vskip 2cm
+
+\end{frame}
+
+
+\begin{frame}
+
+{\color{blue}Idea de la prueba.}
+\vskip .2cm
+Debemos aplicar el axioma del buen orden al
+conjunto de los ``restos''
+$$ R=\{x \in \mathbb N_0 | a = by + x \ \text{ para algún }\ y \in \mathbb Z\}.
+$$
+\pause
+Primero se demuestra que $R$ no es vacío. 
+\pause
+\vskip .4cm 
+Entonces, por el axioma del buen orden se encuentra un  mínimo $r \in R$. Es decir existe $q \in \mathbb{Z}$ tal que 
+$$
+a=b \cdot q + r\qquad\text{ y $r$ es mínimo de R} .
+$$\pause  
+Luego se prueba  que $0\le r<b$.
+\qed
+\end{frame}
+
+
+\begin{frame}
+	
+	
+	{\color{blue}Ejemplos}
+	\vskip .2cm
+		\begin{enumerate}
+			\item[1. ] Si $a=10$ y $b=3$, entonces $10 = 3 \cdot 3 +1$. Es decir $q= 3$, $r=1$. \pause\vskip .3cm
+			\item[2. ] Si $a=2$ y $b=5$, entonces $2 = 5 \cdot 0 +2$. Es decir $q= 0$, $r=2$.  \pause\vskip .3cm
+			\item[3. ] Si $a=-10$ y $b=3$, entonces $-10 = 3 \cdot (-4) +2$. Es decir $q= -4$, $r=2$.    \pause\vskip .3cm 
+			\item[4. ] Si $a=-2$ y $b=3$, entonces $-2 = 3 \cdot (-1) +1$. Es decir $q= -1$, $r=1$. 
+		\end{enumerate}
+
+\end{frame}
+
+
+\begin{frame}\frametitle{ Desarrollos en base $b$, ($b \ge 2$)}
+	
+	
+	Los números tal como los escribimos se encuentran en \textit{base 10.} 
+	\vskip .2cm
+	¿Qué significa  esto?
+	\vskip .4cm\pause
+	{\color{blue}Ejemplo}
+	\vskip .2cm
+	El número 407 se puede escribir como 
+	$$
+	407 = 4 \cdot 10^2 +0 \cdot 10^{1}+ 7 \cdot 10^0,
+	$$
+	\vskip .2cm\pause
+	El número 23827 se puede escribir como 
+	$$
+	23827 = 2 \cdot 10^4 +3 \cdot 10^3 +8 \cdot 10^2 +2 \cdot 10^{1}+ 7 \cdot 10^0,
+	$$
+
+
+	
+\end{frame}
+
+
+\begin{frame}
+	
+	En  general:
+	\vskip .4cm
+	{\color{blue}Teorema }
+	\vskip .2cm
+	{\it Todo número natural $x$  se puede escribir de una única forma como  
+		$$
+		x = r_n10^n +r_{n-1} 10^{n-1}+\cdots + r_1 10 + r_0,
+		$$
+		donde $0 < r_n < 10$ y  $0 \le r_i < 10$ para $i= 0, 1, \ldots, {n-1}$.}
+	
+	\vskip .8cm\pause
+	
+	Podemos decir entonces que
+		\vskip .4cm
+
+	\begin{center}
+		{\it $x$ se representa como la cadena $ r_n r_{n-1}  \ldots  r_1   r_0$ en base 10.}
+	\end{center}
+		\vskip .2cm
+	o también que 
+	
+	\begin{equation*}
+		x = ( r_n r_{n-1}  \ldots  r_1   r_0)_{10}.
+	\end{equation*}
+	\vskip 4cm
+	\end{frame}
+	
+
+\begin{frame}
+	Este teorema es	una consecuencia importante del algoritmo de división  y es el que
+	justifica nuestro método usual de representación de enteros. 
+	
+	\vskip .2cm
+	
+	También podemos desarrollar en potencias de $b$ con $b$ cualquier entero $\ge 2$ (y vale el teorema anterior reemplazando $10$ por $b$).
+	
+ \vskip .8cm\pause
+ {\color{blue}Ejemplo (base 5)}
+ \vskip .2cm
+ Deseamos escribir el número $407$ con una expresión de la forma 
+		$$
+		407 = r_n5^n +r_{n-1} 5^{n-1}+\cdots + r_1 5 + r_0,
+		$$
+		con $0 \le r_i < 5$. Veamos que esto es posible y se puede hacer de forma algorítmica. 
+
+\end{frame}
+
+
+\begin{frame}
+	La forma de hacerlo  es, primero, dividir el número original y los sucesivos cocientes por $5$:   \pause
+	\begin{alignat}2
+	407 &=5\cdot 81 &\;+\;& 2 \label{ib3}\\
+	81 & = 5\cdot 16 &\;+\;& 1  \label{ib4}\\
+	16 & = 5\cdot 3 &\;+\;& 1  \label{ibi5}\\
+	3 & = 5\cdot 0 &\;+\;& 3.
+	\end{alignat} \pause
+	Observar entonces que
+
+\begin{center}
+    \begin{tabular}{rll}
+        $407$&$=5\cdot 81 + 2$  \qquad \qquad&{por (\ref{ib3})} \\ \pause
+        &= $5\cdot (5\cdot 16 + 1) + 2$  \qquad& \text{por (\ref{ib4})}\\ \pause
+        &= $5^2 \cdot 16+ 5\cdot 1 + 2$ \qquad& \text{}\\ \pause
+        &= $5^2 \cdot (5\cdot 3 + 1)+ 5\cdot 1 + 2$    \qquad\qquad& \text{por (\ref{ibi5})}\\ \pause
+        &= $5^3 \cdot 3+ 5^2 \cdot 1 + 5\cdot 1 + 2$.  \qquad& \text{}
+        \end{tabular} 
+\end{center}
+	\pause
+	En este caso diremos que el desarrollo en base $5$ de $407$ es $3112$ o, resumidamente, $407 = (3112)_5$.  
+\end{frame}
+
+
+\begin{frame}
+	Observar que 
+	\begin{alignat*}2
+	407 &=5\cdot 81 &\;+\;& \textbf{2} \\
+	81 & = 5\cdot 16 &\;+\;& \textbf{1} \\
+	16 & = 5\cdot 3 &\;+\;& \textbf{1}  \\
+	3 & = 5\cdot 0 &\;+\;& \textbf{3}.
+	\end{alignat*} \pause
+	
+	y  que 
+	
+	$$407 = (\textbf{3112})_5.$$ 
+	 \pause
+	 
+	Es decir los restos leídos de abajo hacia arriba forman la escritura en base 5 de 407. Esto es general. 
+\end{frame}
+
+\begin{frame}
+	Sea
+	$b \ge 2$ un número entero, llamado {\em base}\index{base (de un sistema de numeración)} para los cálculos.
+	Para cualquier entero positivo $x$ tenemos, por la aplicación
+	repetida del algoritmo de división,
+	\begin{alignat*}3
+	x&=bq_0 &+\;&r_0 &\qquad&(0 \le r_0 < b)\\
+	q_0 & = bq_1 &+\;&r_1&& (0 \le r_1 < b)\\
+	\cdots &&&&& \\
+	q_{n-2} & = bq_{n-1} &+\;&r_{n-1} &&(0 \le r_{n-1} < b)\\
+	q_{n-1} & = bq_n &+\;&r_n.&&(0 < r_n < b)
+	\end{alignat*} \pause
+	Este procedimiento se detiene en el primer $q_{n-1} < b$. 
+    \vskip .2cm \pause
+    Reemplazando sucesivamente los cocientes $q_i$, como lo hicimos en el ejemplo, obtenemos
+	$$
+	x=r_nb^n +r_{n-1} b^{n-1}+\cdots + r_1 b + r_0.
+	$$
+\end{frame}
+
+
+\begin{frame}
+	Hemos representado $x$ (con respecto a la base $b$) por la
+	secuencia de los restos, y escribimos 	\vskip .2cm
+	$$x=(r_nr_{n-1}\dots r_1
+	r_0)_b.$$
+		\vskip .2cm \pause
+	Convencionalmente $b=10$ es la base para los cálculos
+	hechos ``a mano'' y omitimos ponerle el subíndice, entonces
+	tenemos la notación usual
+		\vskip .2cm\vskip .2cm \pause
+	Por ejemplo,
+		
+	$$
+	1984=1\cdot 10^3  + 9\cdot 10^2 + 8\cdot 10  + 4.
+	$$ \pause
+    o lo que es lo mismo
+    $$
+	(1984)_{10}=1\cdot 10^3  + 9\cdot 10^2 + 8\cdot 10  + 4.
+	$$
+\end{frame}
+
+
+\begin{frame}
+	
+	
+	La base $b=2$ es particularmente adaptable para
+	los cálculos en computadoras. 
+	
+\vskip .2cm\pause
+{\color{blue}Ejemplo}
+\vskip .2cm ?`Cuál es la representación en base $2$ de
+		$(109)_{10}$?
+\vskip .2cm\pause
+{\color{blue}Solución.}  \pause	Dividiendo repetidamente por $2$ obtenemos
+		\begin{alignat*}2
+		109&=2\cdot 54&\;+\;&\textbf{1}\\ 54&=2\cdot 27&\;+\;&\textbf{0}\\ 27&=2\cdot 13&\;+\;&\textbf{1}\\ 13&=2\cdot 6&\;+\;&\textbf{1}\\
+		6&=2\cdot 3&\;+\;&\textbf{0} \\ 3&=2\cdot 1&\;+\;&\textbf{1} \\1&=2\cdot 0&\;+\;&\textbf{1}
+		\end{alignat*}
+		\pause
+		Por lo tanto: \quad $ (109)_{10} = (1101101)_2$.\qed
+		
+\end{frame}
+
+
+\begin{frame}
+	La base $16$ también es  muy usada en computación.
+	\vskip .2cm\pause
+	Los dígitos disponibles (del $0$  al $9$) no nos alcanzan  para representar un  número en base $16$, pues se requieren $16$ símbolos. La convención usada es 
+	$${\tt A}=10,\quad {\tt B}=11,\quad {\tt C} =12,\quad {\tt D} = 13,\quad {\tt E} = 14,\quad {\tt F} = 15.$$
+\vskip .2cm\pause
+{\color{blue}Ejemplo}
+\vskip .2cm
+
+ Representemos  $12488$ en  base $16$. \pause
+		\begin{alignat*}2
+		12488 &= 16 \cdot 780 &\;+\;&  8\\
+		780 & = 16 \cdot 48 &\;+\;& 12\\
+		48 & = 16\cdot 3 &\;+\;& 0\\
+		3 & = 16 \cdot 0  &\;+\;& 3.
+		\end{alignat*}
+		Luego $12488 = (30{\tt C}8)_{16}$. 
+
+	
+\end{frame}
+
+
+
+\begin{frame}\frametitle{Conversiones de base}
+	¿Cómo convertimos un número en  base $b$  a base 10?
+	\vskip .2cm
+	Lo \textit{calculamos}.
+	\vskip .5cm\pause
+	{\color{blue}Ejemplo}
+	\vskip .2cm
+	Convertir $(1304)_6$  a base 10.
+	\vskip .2cm\pause
+	{\color{blue}Solución.}  \pause
+	\begin{align*}
+		(1304)_6 &= 1 \cdot 6^3 + 3 \cdot 6^2 + 0 \cdot 6^1 + 4 \cdot 6^0 \\ 
+		&= 1 \cdot 216 + 3 \cdot 36 + 0 \cdot 6 + 4  \\
+		&= 216 + 108 +  4  \\
+		&= 328. \\
+	\end{align*}
+	Luego $(1304)_6 = 328$.\qed
+	
+\end{frame}
+
+
+\begin{frame}\frametitle{Conversiones de base}
+	
+		¿Cómo convertimos un número en  base $b$  a base $b'$?
+	\vskip .2cm
+	
+	\begin{enumerate}
+	\item[1. ] Convertimos el número de base $b$  a  base 10 .
+	\item[2. ] Convertimos el número obtenido a  base $b'$.
+	\end{enumerate}
+
+	\vskip .4cm\pause
+{\color{blue}Ejemplo}
+\vskip .2cm
+Convertir $(1304)_6$  a base 5.
+\vskip .2cm\pause
+{\color{blue}Solución.}  \pause
+\vskip .2cm 
+Calculamos antes que $(1304)_6 = 328$. Ahora debemos ver 328  en base 5.
+\begin{align*}
+328 &= 5 \cdot 65   + 3\\ 
+65 &= 5 \cdot 13   + 0\\ 
+13 &= 5 \cdot 2   + 3\\ 
+2 &= 5 \cdot 0   + 2
+\end{align*}
+
+Luego  $(1304)_6 = (2303)_5$. \qed
+\end{frame}
+
+
+
+
+\end{document}

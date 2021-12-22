@@ -1,0 +1,353 @@
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
+\usetheme{CambridgeUS}
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+%\usepackage{makeidx}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usepackage[customcolors]{hf-tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\tikzset{
+    every picture/.append style={
+        execute at begin picture={\deactivatequoting},
+        execute at end picture={\activatequoting}
+    }
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+\usepackage{mathtools}
+\usepackage{stackrel}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+\usepackage{polynom}
+\polyset{%
+    style=B,
+    delims={(}{)},
+    div=:
+}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate]{label={(\arabic*)}}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+\setbeamertemplate{itemize item}{$\circ$}
+\setbeamertemplate{enumerate items}[default]
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand\sgn{\operatorname{sgn}}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\figurename }{Figura}
+
+\include{definiciones}
+
+\newcommand{\nc}{\newcommand}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\nc{\FF}{{\mathbb F}} \nc{\NN}{{\mathbb N}} \nc{\QQ}{{\mathbb Q}}
+\nc{\PP}{{\mathbb P}} \nc{\DD}{{\mathbb D}} \nc{\Sn}{{\mathbb S}}
+\nc{\uno}{\mathbb{1}} \nc{\BB}{{\mathbb B}} \nc{\An}{{\mathbb A}}
+
+\nc{\ba}{\mathbf{a}} \nc{\bb}{\mathbf{b}} \nc{\bt}{\mathbf{t}}
+\nc{\bB}{\mathbf{B}}
+
+\nc{\cP}{\mathcal{P}} \nc{\cU}{\mathcal{U}} \nc{\cX}{\mathcal{X}}
+\nc{\cE}{\mathcal{E}} \nc{\cS}{\mathcal{S}} \nc{\cA}{\mathcal{A}}
+\nc{\cC}{\mathcal{C}} \nc{\cO}{\mathcal{O}} \nc{\cQ}{\mathcal{Q}}
+\nc{\cB}{\mathcal{B}} \nc{\cJ}{\mathcal{J}} \nc{\cI}{\mathcal{I}}
+\nc{\cM}{\mathcal{M}} \nc{\cK}{\mathcal{K}}
+
+\nc{\fD}{\mathfrak{D}} \nc{\fI}{\mathfrak{I}} \nc{\fJ}{\mathfrak{J}}
+\nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+
+\title[Clase 18 - Grafos y sus representaciones]{Matemática Discreta I \\ Clase 18 - Grafos y sus representaciones}
+%\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
+\institute[]{\normalsize FAMAF / UNC
+    \\[\baselineskip] ${}^{}$
+    \\[\baselineskip]
+}
+\date[18/05/2021]{18 de mayo de 2021}
+
+
+
+
+\begin{document}
+    
+    \frame{\titlepage} 
+    
+    \begin{frame}\frametitle{Grafos y sus representaciones}
+        Usaremos la siguiente definición en lo que sigue: dado un conjunto $X$ un {\em $2$-subconjunto} es un subconjunto de $X$ de dos elementos.  \pause
+        \vskip .4cm
+        \begin{definicion} Un {\em grafo} $G$ consiste de un  \index{grafo}
+            conjunto finito $V$, cuyos miembros son llamados
+            {\em vértices},  \index{vértices de un grafo}
+            y un conjunto de $2$-subconjuntos de $V$, cuyos miembros son
+            llamados {\em aristas}.  \index{aristas de un grafo}
+            \pause
+            \vskip .4cm
+            Nosotros
+            usualmente escribiremos $G=(V,E)$ y diremos que $V$ es el {\em
+                conjunto de vértices} y $E$ es el {\em conjunto de aristas}.
+        \end{definicion}
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        Un ejemplo típico de un grafo $G=(V,E)$ es dado por los conjuntos
+        \begin{equation*}\label{grafosimple}
+            V=\{a,b,c,d,z\}, \qquad\quad
+            E=\{\{a,b\},\{a,d\},\{b,z\},\{c,d\},\{d,z\}\}.
+        \end{equation*}\pause
+        Este ejemplo y la definición misma no son demasiado
+        esclarecedores, y solamente cuando con\-si\-de\-ra\-mos la {\it
+            representación pictórica} de un grafo es cuando entendemos un poco más la definición.
+        
+        \pause
+        \begin{figure}[ht]
+            \begin{center}
+                \begin{tikzpicture}[scale=1]
+                    %\SetVertexSimple[Shape=circle,FillColor=white]
+                    \Vertex[x=0.00, y=2.00]{$a$}
+                    \Vertex[x=1.90, y=0.62]{$b$}
+                    \Vertex[x=1.18, y=-1.62]{$c$}
+                    \Vertex[x=-1.18, y=-1.62]{$d$}
+                    \Vertex[x=-1.90, y=0.62]{$z$}
+                    \Edges($c$, $d$,$a$,$b$,$z$,$d$)
+                \end{tikzpicture}
+            \end{center}    
+        \end{figure}
+    \end{frame}
+    
+    \begin{frame}
+        
+        \begin{itemize}
+            \item[$\circ$]  La representación pictórica es intuitivamente atractiva
+            pero no es útil cuando deseamos comunicarnos con una computadora.\pause
+            \item[$\circ$] Debemos     re\-pre\-sen\-tar el grafo mediante conjuntos o una tabla.
+        \end{itemize}
+        \vskip .4cm\pause
+        \begin{definicion}
+            Diremos que dos vértices $x$ e $y$ de un grafo son {\em    adyacentes} cuando $\{x,y\}$ es una arista.
+        \end{definicion}
+        \pause
+        \begin{definicion}
+            Podemos representar un grafo $G=(V,E)$ por su {\em lista de    adyacencia}, donde cada vértice $v$     encabeza una lista de aquellos vértices que son adyacentes a $v$:
+        \end{definicion}
+        
+        
+        %\vskip.4cm
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        \begin{ejemplo}
+            Vimos el $G=(V,E)$ es dado por
+            \begin{equation*}\label{grafosimple}
+                V=\{a,b,c,d,z\}, \qquad\quad
+                E=\{\{a,b\},\{a,d\},\{b,z\},\{c,d\},\{d,z\}\}.
+            \end{equation*}
+            \pause    
+            Su lista de adyacencia es 
+            
+            \begin{center}
+                \begin{tabular}{ccccc}
+                    $a$&$b$&$c$&$d$&$z$ \\ \hline
+                    $b$&$a$&$d$&$a$&$b$ \\
+                    $d$&$z$&&$c$&$d$\\
+                    &&&$z$&
+                \end{tabular}
+            \end{center}
+            \pause    
+            En Python el grafo estaría representado por la lista de listas\\
+            \begin{equation*}
+                [[b,d],[a,z],[d],[a,c,z],[b,d]].
+            \end{equation*}
+        \end{ejemplo}
+    \end{frame}    
+    
+    
+    \begin{frame}
+        
+        
+        
+        
+        \begin{definicion}
+            Por cada entero positivo $n$ definimos el {\em grafo completo  \index{grafo completo}
+                $K_n$} como el grafo con $n$ vértices y en el cual cada par de vértices es adyacente. 
+        \end{definicion}
+        
+        \vskip.4cm\pause
+        
+        La lista de adyacencia de $K_n$ es unas lista donde en la columna del vértice $i$ están todos los vértices menos $i$ ($n-1$ vértices). 
+        
+        \vskip.4cm\pause
+        
+        
+        ?`Cuántas aristas tiene $K_n$? \pause
+        
+        \vskip.2cm\pause
+        
+        De cada vértice ``salen'' $n-1$ aristas, las que van a otros vértices. 
+        \vskip.2cm
+        Si  sumamos $n$-veces las $n-1$ aristas es claro que estamos contando cada arista dos veces, luego el número total de aristas es $n(n-1)/2$.
+        \pause
+        \vskip.2cm
+        Observar que esta es una demostración, usando  grafos, de que $\sum_{i=1}^{n-1} i = n(n-1)/2$.
+        
+        
+    \end{frame}    
+    
+    
+    
+    \begin{frame}
+        
+        \begin{ejemplo} Mario y su mujer Abril dan una
+            fiesta en la cual hay otras cuatro parejas de casados. Las
+            parejas, cuando arriban, estrechan la mano a algunas personas,
+            pero, naturalmente, no se estrechan la mano entre marido y mujer.
+            Cuando la fiesta finaliza el profesor pregunta a los otros a
+            cuantas personas han estrechado la mano, recibiendo $9$ respuestas
+            diferentes. ?`Cuántas personas estrecharon la mano de Abril?
+        \end{ejemplo}\pause
+        \begin{solucion}\pause Construyamos un grafo cuyos vértices son las personas que asisten a la
+            fiesta. Las aristas del grafo son las  $\{x,y\}$ siempre y cuando $x$ e $y$ se
+            hayan estrechado las manos.
+            \vskip.2cm\pause
+            Puesto que hay nueve personas aparte
+            de Mario, y que una persona puede estrechar a lo sumo
+            a otras $8$ personas, se sigue que las $9$ respuestas diferentes que
+            ha recibido el profesor deben ser $0, 1, 2, 3, 4, 5, 6, 7, 8.$
+        \end{solucion}
+        
+        
+    \end{frame}
+    
+    \begin{frame}
+        \begin{figure}[h]
+            \begin{center}
+                \begin{tikzpicture}[scale=2.5]
+                    \draw[-,line width=1pt] (0.81,0.59) -- (0.7*0.81,0.7*0.59);
+                    \draw[-,line width=1pt] (0.31,0.95) -- (0.04, 0.81) -- (0.31,0.95) -- (0.45, 0.68) -- (0.31,0.95);
+                    \draw[-,line width=1pt] (-0.31,0.95) -- (-0.45, 0.68) -- (-0.31,0.95) -- (-0.22, 0.66) -- (-0.31,0.95) -- (-0.04, 0.81) -- (-0.31,0.95);
+                    \draw[-,line width=1pt] (-0.81,0.59) -- (-0.76, 0.29) -- (-0.81,0.59) -- (-0.62, 0.36) -- (-0.81,0.59) -- (-0.53, 0.48) -- (-0.81,0.59) -- (-0.51, 0.64) -- (-0.81,0.59);
+                    \draw[-,line width=1pt] (-1.0,-0.0) -- (-0.79, -0.21) -- (-1.0,-0.0) -- (-0.72, -0.12) -- (-1.0,-0.0) -- (-0.7, -0.0) -- (-1.0,-0.0) -- (-0.72, 0.11) -- (-1.0,-0.0) -- (-0.79, 0.21) -- (-1.0,-0.0);
+                    \draw[-,line width=1pt] (-0.81,-0.59) -- (-0.51, -0.64) -- (-0.81,-0.59) -- (-0.51, -0.54) -- (-0.81,-0.59) -- (-0.54, -0.45) -- (-0.81,-0.59) -- (-0.6, -0.38) -- (-0.81,-0.59) -- (-0.67, -0.32) -- (-0.81,-0.59) -- (-0.76, -0.29) -- (-0.81,-0.59);
+                    \draw[-,line width=1pt] (-0.31,-0.95) -- (-0.04, -0.81) -- (-0.31,-0.95) -- (-0.09, -0.75) -- (-0.31,-0.95) -- (-0.15, -0.7) -- (-0.31,-0.95) -- (-0.22, -0.66) -- (-0.31,-0.95) -- (-0.29, -0.65) -- (-0.31,-0.95) -- (-0.37, -0.66) -- (-0.31,-0.95) -- (-0.45, -0.68) -- (-0.31,-0.95);
+                    \draw[-,line width=1pt] (0.31,-0.95) -- (0.45, -0.68) -- (0.31,-0.95) -- (0.38, -0.66) -- (0.31,-0.95) -- (0.32, -0.65) -- (0.31,-0.95) -- (0.25, -0.66) -- (0.31,-0.95) -- (0.18, -0.68) -- (0.31,-0.95) -- (0.13, -0.71) -- (0.31,-0.95) -- (0.08, -0.76) -- (0.31,-0.95) -- (0.04, -0.81) -- (0.31,-0.95);
+                    
+                    \GraphInit[vstyle=Welsh]
+                    \Vertices[]{circle}{0,1,2,3,4,5,6,7,8,$M$}
+                    \draw (0.6,-0.45) node {?};
+                \end{tikzpicture} 
+            \end{center}
+            \caption{La fiesta de Abril}\label{f5.2}
+        \end{figure}
+    \end{frame}
+    
+    \begin{frame}
+        
+        
+        Ahora, el vértice $8$ alcanza a todos los otros vértices excepto
+        uno, el cual debe por lo tanto representar a la esposa de $8$. Este
+        vértice debe ser el $0$ el cual por cierto que no está unido al $8$
+        (ni ob\-via\-men\-te a ningún otro). 
+        \vskip.2cm\pause
+        Luego $8$ y $0$ son una pareja de
+        casados y $8$ está unido a $1, 2, 3, 4, 5, 6, 7$ y $M$. 
+        \pause
+        En particular el $1$ está unido al $8$ y ésta es la única arista que parte del $1$.
+        \vskip.2cm
+        \pause
+        Por consiguiente $7$ no esta unido al $0$ y al $1$ y sí está unido a $2,3,4$, $5,6,8$ y $M$. La
+        esposa de $7$ debe ser $1$, puesto que $0$ esta casado con $8$.
+        \vskip.2cm
+        \pause
+        Continuando con este razonamiento vemos que $6$ y $2$, y $5$ y $3$ son
+        parejas de casados. 
+        \vskip.2cm\pause
+        Se sigue entonces que $M$ y $4$ están casados,
+        luego el vértice $4$ representa a Abril, quien estrechó la mano de
+        cuatro personas. \qed
+    \end{frame}
+    
+    \begin{frame}
+        \begin{ejemplo}
+            Los senderos de un jardín han sido diseñados dándoles forma de {\em grafo rueda}
+            $W_n$, cuyos vértices son $V=\{0,1,2,\ldots,n\}$ y sus aristas son
+            $$
+            \begin{aligned}
+                &\{0,1\},\{0,2\},\ldots,\{0,n\}, \\
+                &\{1,2\}, \{2,3\},\ldots,\{n-1,n\},\{n,1\}.
+            \end{aligned}
+            $$
+            \pause
+            Describir una ruta por los senderos de tal forma que empiece y
+            termine en le vértice $0$ y que pase por cada vértice una sola vez.
+        \end{ejemplo}
+    \end{frame}
+    
+    \begin{frame}
+        
+        \begin{solucion}
+            Primero  dibujemos el grafo para darnos cuenta de por que se llama ``rueda''. Dibujemos $W_6$:\pause
+            \vskip .2cm
+            \begin{figure}
+                \begin{tikzpicture}[scale=0.65]
+                    %\SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+                    %
+                    \Vertex[x=0.00, y=0.00]{0}            
+                    \Vertex[x=3.00, y=0.00]{1}
+                    \Vertex[x=1.50, y=2.60]{2}
+                    \Vertex[x=-1.50, y=2.60]{3}
+                    \Vertex[x=-3.00, y=0.00]{4}
+                    \Vertex[x=-1.50, y=-2.60]{5}
+                    \Vertex[x=1.50, y=-2.60]{6}
+                    \Edges(1,2,3,4,5,6,1)
+                    \Edges(1,0,4) \Edges(2,0,5) \Edges(3,0,6) 
+                    
+                \end{tikzpicture}
+            \end{figure}\pause
+            El dibujo nos orienta de como puede ser una ruta: $0,1,2,3,4,5,6,0$. 
+            \vskip .2cm\pause
+            En  general una respuesta es: $0,1,2,3,\cdots,n-1,n,0$.    \qed\end{solucion} 
+        
+    \end{frame}
+    
+    
+\end{document}
+

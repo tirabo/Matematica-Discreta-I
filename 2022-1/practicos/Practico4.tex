@@ -1,0 +1,361 @@
+% PDFLaTeX
+\documentclass[a4paper,12pt,twoside,spanish,reqno]{amsbook}
+%%%---------------------------------------------------
+
+%\renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
+%\usepackage[T1]{fontenc}
+
+% Para hacer el  indice en linea de comando hacer 
+% makeindex main
+%% En http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf hay ejemplos de packages de fonts libres, como los siguientes:
+%\usepackage{cmbright}
+%\usepackage{pxfonts}
+%\usepackage[varg]{txfonts}
+%\usepackage{ccfonts}
+%\usepackage[math]{iwona}
+\usepackage[math]{kurier}
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\usepackage{mathtools}
+\usepackage{stackrel}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+%\usepackage{makeidx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage{hypcap}
+\numberwithin{equation}{section}
+% http://www.texnia.com/archive/enumitem.pdf (para las labels de los enumerate)
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate, 1]{label={(\arabic*)}}
+\setlist[enumerate, 2]{label=\emph{\alph*)}}
+
+
+%%% FORMATOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+\usepackage[a4paper, top=3cm, left=3cm, right=2cm, bottom=2.5cm]{geometry}
+\usepackage{setspace}
+%\setlength{\parindent}{0,7cm}% tamaño de sangria.
+\setlength{\parskip}{0,4cm} % separación entre parrafos.
+\renewcommand{\baselinestretch}{0.90}% separacion del interlineado
+\setlist[1]{topsep=8pt,itemsep=.4cm,partopsep=4pt, parsep=4pt} %espacios nivel 1 listas
+\setlist[2]{itemsep=.15cm}  %espacios nivel 2 listas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\end{comment}
+%%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\rta}{\noindent\textit{Rta: }} 
+
+\newcommand \Z{{\mathbb Z}}
+\newcommand \N{{\mathbb N}}
+\newcommand \mcd{\operatorname{mcd}}
+\newcommand \mcm{\operatorname{mcm}}
+
+\begin{document}
+    \baselineskip=0.55truecm %original
+    
+
+
+{\bf \begin{center}\large Práctico 4 \\ Matemática Discreta I -- Año 2021/1 \\ FAMAF \end{center}}
+
+
+
+\begin{enumerate}
+\setlength\itemsep{1.1em}
+
+\item  
+\begin{enumerate}
+    \item Calcular el resto de la divisi\'on de 1599 por 39 sin tener que hacer la divisi\'on. \\(Ayuda: $1599=1600-1=40^2-1$).
+    \item Lo mismo con el resto de 914 al dividirlo por 31.
+\end{enumerate}
+
+
+\item Sea $n\in\mathbb N$. Probar que todo n\'umero de la forma $4^n-1$ es divisible por 3.
+
+\item Probar que el resto de dividir $n^2$ por 4 es igual a 0 si $n$ es par y 1 si $n$ es impar.
+
+%
+%\item Probar que si las longitudes de los lados de un tri\'angulo rect\'angulo son n\'umeros enteros, entonces los catetos no pueden ser ambos impares.
+
+\item
+\begin{enumerate}
+\item
+Probar las reglas de divisibilidad por 2, 3, 4, 5, 8, 9 y 11.% que no hayan sido probadas en el te\'orico.
+\item Decir por cu\'ales de los n\'umeros del 2 al 11 son divisibles los siguientes n\'umeros:
+$$ \qquad 12342  \, \qquad   \qquad  5176 \, \qquad \qquad  314573\,  \qquad  \qquad  899.$$
+\end{enumerate}
+
+%\vskip .5cm \item Hallar los restos posibles en la divisi\'on de $n^2$ por 3.
+
+\item Sean $a$, $b$, $c$ n\'umeros enteros, ninguno divisible por 3. Probar que 
+$$a^2 + b^2 + c^2\equiv 0 \pmod 3.$$% es divisible por 3.
+
+
+\item Hallar la cifra de las unidades y la de las decenas del n\'umero $7^{15}$.
+
+
+\item Hallar el resto en la divisi\'on de $x$ por 5 y por 7 para:
+ \begin{enumerate}
+\item $x=1^8 + 2^8 + 3^8 + 4^8 + 5^8 + 6^8 + 7^8 + 8^8$;
+\item $x=3\cdot 11\cdot 17\cdot 71\cdot 101$.
+\end{enumerate}
+
+
+\item Hallar todos los $x$ que satisfacen:
+ \begin{enumerate}
+ \begin{minipage}{0.25 \textwidth}
+  \item $x^2 \equiv 1\,\, (4)$\end{minipage}
+  \begin{minipage}{0.25 \textwidth}
+\item  $x^2 \equiv x\,\, (12)$\end{minipage}
+\begin{minipage}{0.25 \textwidth}
+\item  $x^2 \equiv 2 \,\, (3)$\end{minipage}
+
+\begin{minipage}{0.25 \textwidth}
+\item  $x^2 \equiv 0\,\, (12$)\end{minipage}
+\begin{minipage}{0.25 \textwidth}
+\item  $x^4 \equiv 1 \,\, (16)$\end{minipage}
+\begin{minipage}{0.25 \textwidth}
+\item  $3x \equiv 1\,\, (5)$\end{minipage}
+%\item $2x\equiv 5\,\, (6)$
+%\item  $3x^3 \equiv 20\,\, (8)$.
+ \end{enumerate}
+
+\item Sean $a$, $b$, $m \in {\mathbb Z}$, $d>0$ tales que  \,$d\mid a$,\,  \,$d\mid b$\, y \,$d\mid m$. Probar que la ecuación $a\cdot x \equiv b\,( m)$ tiene
+solución si y solo si la ecuación
+$$\frac{a}{d}\cdot x \equiv \frac{b}{d}\,\left(\frac{m}{d}\right)$$
+tiene solución.
+
+\item Resolver las siguientes ecuaciones:
+ \begin{enumerate}
+  \begin{minipage}{0.25 \textwidth}
+  \item $2x \equiv -21 \,\,\, (8)$\end{minipage}
+  \begin{minipage}{0.25 \textwidth}
+\item $2x \equiv -12 \,\,\, (7)$\end{minipage}
+\begin{minipage}{0.25 \textwidth}
+\item $3x \equiv 5\,\,\, (4)$.\end{minipage}
+ \end{enumerate}
+
+
+\item Resolver la ecuaci\'on $221 x \equiv 85\,\, (340)$. Hallar todas las soluciones $x$ tales que $0 \le x < 340$.
+
+\item 
+\begin{enumerate}
+    \item Encontrar todas las soluciones de la ecuaci\'on en congruencia
+    $$36\,x\equiv 8 \quad (20)$$
+    usando el método visto en clase.
+    \item Dar todas las soluciones $x$ de la ecuaci\'on anterior tales que $-8 < x < 30$.
+\end{enumerate}
+
+
+\item 
+\begin{enumerate}
+\item Encontrar todas las soluciones de la ecuaci\'on en congruencia
+$$21\,x\equiv 6 \quad (30)$$
+usando el método visto en clase.
+\item Dar todas las soluciones $x$ de la ecuaci\'on anterior tales que $0 < x < 35$.
+\end{enumerate}
+
+
+
+
+\item Encontrar todas las soluciones de los siguientes sistemas de ecuaciones en congruencia 
+    
+\begin{enumerate}
+    \item  
+        $\begin{array}{l}
+        4x\equiv 7 \pmod{11} \\
+        7x\equiv 8 \pmod{12}
+        \end{array}$
+        \vskip .4cm
+    \item 
+    $\begin{array}{l}
+    x \equiv -1 \pmod{7} \\
+    x \equiv 3 \pmod{10} \\
+    x \equiv -2 \pmod{11}.
+    \end{array}$
+    \vskip .4cm 
+        \item         $\begin{array}{l}
+            x \equiv -1 \pmod{2}\\
+            x \equiv 5 \pmod{9}\\
+            x \equiv -3 \pmod{7}.
+            \end{array}$
+
+\end{enumerate}
+
+
+
+\item Dado $t \in {\mathbb Z}$, decimos que $t$ es {\it inversible m\'odulo $m$} si existe $h \in {\mathbb Z}$ tal que $th\equiv 1\,(\ m)$.
+  \begin{enumerate}
+  \item ¿Es 5 inversible m\'odulo 17?
+%  \item ¿Existe alg\'un $m$ tal que $m$ sea inversible m\'odulo $m$?
+  \item Probar que $t$ es inversible m\'odulo $m$, si y s\'olo si $(t,m)=1$.
+  \item Determinar los inversibles m\'odulo $m$, para $m=11,12,16$.
+  \end{enumerate}
+
+
+
+%\begin{enumerate}
+%\item Dar la tabla de la suma y del producto en $\mathbb Z_2$, $\mathbb Z_3$ y $\mathbb Z_4$.
+%  \item Probar que $\mathbb Z_m$ es un anillo.
+% \end{enumerate}
+
+\item Encontrar los enteros cuyos cuadrados divididos por 19 dan resto 9.
+
+
+\item Probar que todo n\'umero impar $a$ satisface: $a^4 \equiv 1(16)$, $a^8 \equiv 1(32)$, $a^{16}\equiv 1(64)$.\\ ¿Se puede asegurar que $a^{2^n} \equiv 1 (2^{n+2})$?
+
+
+\item Encontrar el resto en la divisi\'on de $a$ por $b$ en los siguientes casos:
+ \begin{enumerate}
+\begin{minipage}{0.40 \textwidth}
+\item $a=11^{13}\cdot 13^8$; \quad $b=12$;
+\end{minipage}
+\begin{minipage}{0.40 \textwidth}
+\item $a=4^{1000}$;\quad $b=7$;
+\end{minipage}
+
+\begin{minipage}{0.40 \textwidth}
+\item $a=123^{456}$; \quad  $b=31$;
+\end{minipage}
+\begin{minipage}{0.40 \textwidth}
+\item $a=7^{83}$;\quad  $b=10$.
+\end{minipage}
+\end{enumerate}
+
+
+\item Obtener el resto en la divisi\'on de $2^{21}$ por 13; de $3^8$ por 5 y de  $8^{25}$ por 127.
+
+%%\item Hallar el menor entero positivo que satisface simult\'aneamente las siguientes congruencias:
+
+%$x\equiv 2\ ( 3)$; \qquad $x \equiv 3\ ( 5)$; \qquad $x \equiv 5\ (2)$.
+
+%
+%\item Hallar 4 enteros consecutivos divisibles por \,5, 7, 9 y 11 respectivamente.
+
+\item \begin{enumerate}
+\item Probar que no existen enteros no nulos tales que $x^2 + y^2 = 3z^2$.
+\item Probar que no existen n\'umeros racionales no nulos $a$, $b$, $r$ tales que $3(a^2 + b^2) = 7r^2$.
+\end{enumerate}
+
+
+%\item Cinco hombres recogieron en una isla un cierto n\'umero de cocos y resolvieron repartirlos al d\'\i a siguiente. Durante la noche uno de ellos decidi\'o separar su parte y para ello %dividi\'o el total en cinco partes y di\'o un coco que sobraba a un mono y se fue a dormir. Enseguida otro de los hombres hizo lo mismo, dividiendo lo que hab\'\i a quedado por cinco, dando %un coco que sobraba a un mono y retirando su parte, se fue a dormir. Uno tras otro los tres restantes hicieron lo mismo, d\'andole a un mono el coco que sobraba. A la ma\~nana siguiente %repartieron los cocos restantes, d\'andole a un mono el coco sobrante.
+%>Cu\'al es el n\'umero m\'\i nimo de cocos que se recogieron?
+
+%
+%\item La producci\'on diaria de huevos en una granja es inferior a 75.
+%Cierto d\'\i a el recolector inform\'o que la cantidad de huevos recogida era tal que contando de a 3 sobraban 2, contando de a 5 sobraban 4 y
+%contando de a 7 sobraban 5. El capataz, dijo que eso era imposible. >Qui\'en ten\'\i a raz\'on? Justificar.
+
+%
+\item Probar que si \,$(a,1001)=1$\, entonces \,$1001$\, divide a \,$a^{720}-1$.
+
+\item\label{ej-raiz-de-1-mod-p} Sea $p$ primo impar.  Probar que las únicas raíces cuadradas de 1 módulo $p$,  son $1$ y $-1$ módulo $p$. Es decir, probar que $x^2 \equiv 1 \pmod{p}$, entonces  $x \equiv \pm1 \pmod{p}$.
+
+\end{enumerate}
+
+
+
+\subsection*{$\S$ Ejercicios de repaso} Los ejercicios marcados con ${}^{(*)}$ son de mayor dificultad.
+
+\begin{enumerate}[resume]
+\item Dada la ecuación de congruencia
+$$14\,x\equiv 10 \, (26),$$
+hallar todas las soluciones en el intervalo $[-20,10]$. Hacerlo con el método usado en la teórica.
+
+\item Dada la ecuación de congruencia
+$$21\,x\equiv 15 \, (39),$$
+hallar todas las soluciones en el intervalo $[-10,30]$. Hacerlo con el método usado en la teórica. 
+
+\item Hallar todos los enteros que satisfacen simultáneamente:
+
+$x \equiv 1\ ( 3); $ \qquad $x \equiv 1 \ ( 5)$; \qquad $x \equiv 1\ ( 7)$.
+
+\item${}^{(*)}$  ¿Para qué valores de \,$n$\, es \,$10^n-1$\, divisible por \,$11$?
+
+\item${}^{(*)}$ Probar que para ning\'un $n\in\mathbb N$ se puede partir el conjunto $\{n,n+1,\ldots, n+5\}$ en dos partes disjuntas no vacías tales que los productos de los elementos que las integran sean iguales.
+
+\item${}^{(*)}$  El número \,$2^{29}$\, tiene nueve cifras y todas distintas.
+¿Cuál dígito falta? (No está permitido el uso de calculadora).
+
+
+\item${}^{(*)}$ Sea  $p = d \cdot 2^s + 1$ donde $d$ es impar. Dado $a$ entero tal que $0 < a <p$, probar que 
+\begin{itemize}
+    \item $a^{d} \equiv 1 \pmod{p}$, o
+    \item $a^{2^r\cdot\, d} \equiv -1 \pmod{p}$  para algún $r$ tal que $0 \le r < s$.
+\end{itemize} Dicho de otra forma: probar que
+\begin{multline*}
+    a^{d} \equiv 1 \;(\operatorname{mod} p) \;\text{ o }\; a^{d} \equiv -1 \;(\operatorname{mod} p) \;\text{ o }\;a^{2d} \equiv -1 \;(\operatorname{mod} p) \;\text{ o} \; \cdots\\ \; a^{2^{s-2}d} \equiv -1 \;(\operatorname{mod} p)\; \text{ o }\; a^{2^{s-1}d} \equiv -1 \;(\operatorname{mod} p).
+\end{multline*}
+(\textit{Ayuda:} observar $a^{2^{i}d}$ es el cuadrado de $a^{2^{i-1}d}$ y por el Teorema de Fermat $a^{2^s \cdot d} = a^{n-1} \equiv 1 \pmod{n}$. Utilizar el resultado del ejercicio \ref{ej-raiz-de-1-mod-p}).
+\end{enumerate}
+
+
+
+
+
+
+
+
+\end{document}
+
+\
+
+\noindent {\bf Ejercicios de parciales y ex\'amenes anteriores:}
+
+\
+
+\item Decidir si las siguientes afirmaciones son verdaderas o
+falsas. Justificar.
+
+\begin{enumerate}
+\item La suma de cuatro cuadrados siempre es m\'ultiplo de cuatro.
+
+\item $7^{50}\equiv 10 \mod(13)$.
+
+\item Existe un n\'umero entero $x$ tal que $1001 x\equiv 104 \mod(39)$.
+
+\item Existe $n\in\mathbb N$ tal que $4n+3$ es suma de dos cuadrados.
+
+\item $777^{151}\equiv 7 \mod(11)$.
+
+\item Existe un n\'umero entero $x$ tal que $1001\, x\equiv 131 \mod(39)$.
+
+\end{enumerate}
+
+\
+
+\item Sean $a,b\in\mathbb Z$.  Probar que si $11$ divide a $a^2+5b^2$ entonces $a$ y $b$ son
+tambi\'en divisibles por $11$.
+
+\
+
+\item  Hallar tres n\'umeros naturales consecutivos mayores que $2000$ y divisibles por
+$2$, $7$ y $13$, respectivamente.
+
+\
+
+\item Hallar el resto de la divisi\'on por $11$ de $(61162)^{53}$.
+\end{enumerate}
+
+\end{document}

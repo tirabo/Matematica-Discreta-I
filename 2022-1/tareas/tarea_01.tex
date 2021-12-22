@@ -1,0 +1,56 @@
+% PDFLaTeX
+\documentclass[a4paper,12pt,twoside,spanish]{amsbook}
+
+\input{tareas_definiciones} 
+
+
+\begin{document}
+
+\tarea{1}
+
+\begin{ejercicio}
+	 Demostrár por inducción la siguiente fórmula
+    \begin{equation*}
+		\sum_{j=1}^{n}( 4j -1)  = n(2n+1) , \; n \in \mathbb N.
+	\end{equation*}
+    Debés hacer una demostración por inducción mostrando detalladamente cada paso. 
+
+    
+\end{ejercicio}
+
+\begin{comment}
+\begin{solucion}
+	Se demostrará la fórmula por inducción sobre $n$.
+	
+	\textbf{Caso base.} $n=0$. En este caso  $\sum_{k=0}^{0} (2k +1)  = 2\cdot 0 +1 = 1$ y por otro lado $(0 +1)^2 = 1^2 =1$. Es decir el resultado vale para $n=0$.
+	
+	
+	\vskip .4cm
+	
+	\textbf{Paso inductivo.} Debemos probar que si  vale
+	\begin{equation*}
+	\sum_{k=0}^{h} (2k +1) = (h+1)^2, \;  h \ge 0, \tag{HI}
+	\end{equation*}
+	entonces  
+	\begin{equation*}
+	\sum_{k=0}^{h+1} (2k +1) = ((h+1)+1)^2 = (h+2)^2.\tag{*}
+	\end{equation*}
+	\vskip .4cm
+	Comenzamos por el lado izquierdo de (*):
+	
+	\begin{align*}
+	\sum_{k=0}^{h+1} (2k +1)  &=   \sum_{k=0}^{h} (2k +1)  +  (2(h+1) +1)&&\text{ \;(por definición de sumatoria)\; } \\	
+	&=   \sum_{k=0}^{h} (2k +1)  +  (2h+3)&&\\	
+	&=   (h+1)^2 +  (2h+3)&&\text{ \;(por HI)\; } \\	
+	&=   h^2 + 2h +1 + 2h+3&& \\	
+	&=   h^2 + 4h +4&& \\
+	&=   (h+2)^2&& \\	
+	\end{align*}
+	Esto  prueba (*).
+\end{solucion}
+	
+\end{comment}
+
+
+\end{document}
+

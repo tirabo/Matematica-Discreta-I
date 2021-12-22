@@ -1,0 +1,593 @@
+% PDFLaTeX
+\documentclass[a4paper,12pt,twoside,spanish,reqno]{amsbook}
+%%%---------------------------------------------------
+
+%\renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
+%\usepackage[T1]{fontenc}
+
+% Para hacer el  indice en linea de comando hacer 
+% makeindex main
+%% En http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf hay ejemplos de packages de fonts libres, como los siguientes:
+%\usepackage{cmbright}
+%\usepackage{pxfonts}
+%\usepackage[varg]{txfonts}
+%\usepackage{ccfonts}
+%\usepackage[math]{iwona}
+\usepackage[math]{kurier}
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\usepackage{mathtools}
+\usepackage{stackrel}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+%\usepackage{makeidx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage{hypcap}
+\numberwithin{equation}{section}
+% http://www.texnia.com/archive/enumitem.pdf (para las labels de los enumerate)
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate, 1]{label={(\arabic*)}}
+\setlist[enumerate, 2]{label=\emph{\alph*)}}
+
+
+%%% FORMATOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+\usepackage[a4paper, top=3cm, left=3cm, right=2cm, bottom=2.5cm]{geometry}
+\usepackage{setspace}
+%\setlength{\parindent}{0,7cm}% tamaño de sangria.
+\setlength{\parskip}{0,4cm} % separación entre parrafos.
+\renewcommand{\baselinestretch}{0.90}% separacion del interlineado
+\setlist[1]{topsep=8pt,itemsep=.4cm,partopsep=4pt, parsep=4pt} %espacios nivel 1 listas
+\setlist[2]{itemsep=.15cm}  %espacios nivel 2 listas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\end{comment}
+%%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\rta}{\noindent\textit{Rta: }} 
+
+\newcommand \Z{{\mathbb Z}}
+\newcommand \N{{\mathbb N}}
+\newcommand \mcd{\operatorname{mcd}}
+\newcommand \mcm{\operatorname{mcm}}
+
+\begin{document}
+    \baselineskip=0.55truecm %original    
+
+{\bf \begin{center} Práctico 4 \\ Matemática Discreta I -- Año 2021/1 \\ FAMAF \end{center}}
+
+{\bf \begin{center} Ejercicios resueltos \end{center}}
+
+\begin{enumerate}
+\setlength\itemsep{1.1em}
+
+    \item  
+    \begin{enumerate}
+        \item Calcular el resto de la división de 1599 por 39 sin tener que hacer la división. \\(Ayuda: $1599=1600-1=40^2-1$).
+        
+        \rta $1599\equiv 1^2-1\pmod{ 39}$, por lo tanto el resto es 0.
+        
+        \item Lo mismo con el resto de 914 al dividirlo por 31.
+        
+        \rta $914=30^2+14\equiv (-1)^2+14 \pmod{ 31}$, por lo tanto el resto es 15.
+    \end{enumerate}
+    
+    
+    
+    \item Sea $n\in\N$. Probar que todo número de la forma $4^n-1$ es divisible por 3.
+    
+    \rta $4^n-1\equiv 1^n-1 \equiv 0 \equiv 3$ por lo tanto $3\vert 4^n-1$.
+    
+    
+    \item Probar que el resto de dividir $n^2$ por 4 es igual a 0 si $n$ es par y 1 si $n$ es impar.
+        
+    \rta  Si $n=2k$, se tiene $n^2=4k^2$, por lo tanto $4\vert n^2$. Si $n=2k+1$, tenemos $n^2=4k^2+4k+1=4(k^2+k)+1$ y vale el resultado.
+    
+    %
+    
+    %\item Probar que si las longitudes de los lados de un triángulo rectángulo son números enteros, entonces los catetos no pueden ser ambos impares.
+    
+    
+    \item
+    \begin{enumerate}
+        \item
+        Probar las reglas de divisibilidad por 2, 3, 4, 5, 8, 9 y 11.% que no hayan sido probadas en el teórico.
+            
+        \rta 
+        
+        \textit{Regla del 2.} Si $n=\sum_{j=0}^ka_j10^j, n\equiv \sum_{j=1}^ka_j0^j+a_0 \pmod{2}$ por lo tanto es divisible por 2 si y solo si su dígito de unidades lo es, o sea si termina en 0, 2, 4, 6, 8.
+        
+        \textit{Regla del 3 y 9.} Como $10\equiv 1\pmod{3}, \sum_{j=0}^ka_j10^j\equiv\sum_{j=0}^ka_j1^j \pmod{3}$. Por lo tanto $3\vert n$ si y sólo si 3 divide a la suma de sus dígitos.
+        Notar que lo mismo pasa con 9 por ser $10\equiv 1\pmod{9}$.
+        
+        \textit{Regla del 4 y 8.} $10^j\equiv0 \pmod{4}$ si $j>1$ y $10^j\equiv0 \pmod{8}$ si $j>2$. Por lo tanto, al tomar congruencia de $n$ módulo 4 u 8, sólo quedan las dos últimas cifras en el primer caso y las 3 últimas en el segundo. Es decir $4\vert n$ si y sólo si $4\vert 10a_1 +a_0$ y $8\vert n$ si y sólo si $8\vert 100a_2+10a_1 +a_0$ .
+        
+        \textit{Regla del 11.} $10\equiv -1\pmod{11} \Rightarrow n=\sum_{j=0}^ka_j10^j\equiv \sum_{j=0}^ka_j(-1)^j$ Entonces $11\vert n$ si y sólo si 11 divide a la suma de los dígitos que están en lugar par menos la suma delos dígitos que están en lugar impar.
+        
+        
+        
+        
+        \item Decir por cuáles de los números del 2 al 11 son divisibles los siguientes números:
+        $$ \qquad 12342  \, \qquad   \qquad  5176 \, \qquad \qquad  314573\,  \qquad  \qquad  899.$$
+            
+        \rta  $12342 =2\cdot 3 \cdot 11^2\cdot 17$,  $5176=2^3 \cdot 647$, $314573= 7\cdot 44939$, $899$ no es divisible por ninguno de ellos.
+        
+    \end{enumerate}
+    
+    % \item Hallar los restos posibles en la división de $n^2$ por 3.
+    
+    
+    \item Sean $a$, $b$, $c$ números enteros, ninguno divisible por $3$. Probar que 
+    $$a^2 + b^2 + c^2\equiv 0 \equiv 3.$$% es divisible por 3.
+        
+    \rta Si ninguno es divisible por $3$ tenemos que cada uno de ellos es de la forma $x \equiv 1 \pmod{3}$ o  $x \equiv 2 \pmod{3}$, por lo tanto  $x^2 \equiv 1 \pmod{3}$ o  $x^2 \equiv 4 \equiv 1 \pmod{3}$. Luego $a^2 , b^2 , c^2$ sin congruentes a $1$ módulo $3$, y en consecuencia
+    $$
+    a^2 + b^2 + c^2 \equiv 1 +1 +1 \equiv 3 \equiv 0 \pmod{3}:
+    $$
+    Por lo tanto, $3\vert a^2+b^2+c^2$.
+    
+    
+    
+    \item Hallar la cifra de las unidades y la de las decenas del número $7^{15}$.
+        
+    \rta Para encontrar dichas cifras tenemos que tomar congruencia módulo 100.
+
+    Ahora bien,    $7^{15}=(7^2)^77=(50-1)^77$ y observar que como  $50^k\equiv 0 \pmod{100}$ para $k>1$, por la fórmula binomial,  $(50-1)^77 \equiv(50\cdot7-1)7 \pmod{100}$. 
+    
+    Finalmente 
+    $$(50\cdot 7-1)7\equiv 350\cdot 7- 7\equiv 50\cdot 7- 7\equiv 350 -7 \equiv 343 \equiv 43\pmod{100}.$$
+    
+    
+    
+    \item Hallar el resto en la división de $x$ por 5 y por 7 para:
+    \begin{enumerate}
+        \item $x=1^8 + 2^8 + 3^8 + 4^8 + 5^8 + 6^8 + 7^8 + 8^8$;
+            
+        \rta Sabemos que si $(a,5)=1$ y por el teorema de Fermat se tiene $a^4\equiv 1 \pmod{5}$, luego cada sumando salvo $5^8$ que es congruente a $0$ módulo $5$. Su suma da entonces $7\equiv 2 \pmod{5}$.
+        
+        También sabemos que $a^7\equiv a \pmod{7},\, \forall a$, por lo cual la suma es congruente a $\sum_{i=1}^8i^2$ módulo 8.
+        Esto es $1+4+2+2+4+1+0+1=15\equiv 1 \pmod{7}$.
+        
+        \item $x=3\cdot 11\cdot 17\cdot 71\cdot 101$.
+            
+        \rta $ x = 3 \cdot11\cdot17 \cdot 71 \cdot101\equiv 3 \cdot1 \cdot2 \cdot1 \cdot1\equiv 6\equiv 1 \pmod{5}$
+        
+        $ x = 3\cdot11\cdot17 \cdot 71 \cdot101\equiv 3\cdot4\cdot3\cdot1\cdot3\equiv 108\equiv 1 \pmod{7}$.
+        
+        
+    \end{enumerate}
+    %\end{multicols}
+    
+    
+
+    
+    
+    \item Hallar todos los $x$ que satisfacen:
+    \begin{enumerate}
+        \item $x^2 \equiv1 \pmod{4}$\quad
+        
+        \rta Resolvemos primero para $0\le x\le3$ y luego sumamos un múltiplo de 4. Esto es $x= 1$ o $x=3$ y por lo tanto $x=1+4k$ o $x=3+4k$, lo cual también se puede escribir como $x=4k\pm 1$.
+        
+        \item$x^2  \equiv x\pmod{12}$ 
+        
+        \rta Soluciones menores que 12: $x=0, 1, 4, 9, 11.$ Luego el conjunto solución es $\{12k, 12k\pm1, 12k+4, 12k-3\}$.
+        
+        \item $x^2  \equiv 2\pmod{3}$\quad
+        
+    \rta     No tiene soluciones pues $0^2=0, 1^2=1, 2^2\equiv 1 \pmod{3}$.
+        
+        \item $ x^2  \equiv 0\pmod{12}$
+        
+        \rta Soluciones menores que 12: $\{ 0, 6,\}$. Luego las soluciones son $\{12k, 12k+6\}$.
+        
+        \item $x^4  \equiv1\pmod{16}$\quad
+        
+        \rta Notemos que $x$ debe ser impar. Podemos tomar $-8\le x\le 8$, es decir $x\in \{-7, -5,-3, -1, 1, 3, 5, 7\}$.
+        Los cuadrados son $\{49, 25, 9, 1, 1,9, 25, 49\}$ que son congruentes módulo 16 a $\{1, 9, 9, 1, 1, 9, 9,1\}$
+        A su vez cuando elevamos estos al cuadrado, como $9^2=81\equiv 1\pmod{16}$ Tenemos que todo número impar es solución de la ecuación.
+        
+        Alternativamente podríamos elevar $2k+1$ a la cuarta con la f\'ormula binomial $\sum_{j=0}^4 \binom{4}{j}(2k)^j1^{4-j}=1+4\cdot 2k+6\cdot4k^2+4\cdot4k^3+16k^4= 1+8(k+3k^2)+16(k^3+k^4)\equiv 1+8(k+3k^2)\pmod{16}$.
+        Si observamos que $k(1+3k)$ siempre es par ya que es uno de los factores es par, tenemos que 
+        $(2k+1)^4\equiv 1+ 16(3k+1)k/2\equiv 1\pmod{16}$.
+        
+        \item $3x  \equiv 1 \pmod{5}$
+        
+        \rta Probamos con $x=0,1,2,3,4$ y vemos que $3\cdot2=6\equiv 1\pmod{5}$. Luego las soluciones son $x=5k+2$.
+    \end{enumerate}
+    
+    %
+    \item Sean $a$, $b$, $m \in {\Z}$, $d>0$ tales que  \,$d\mid a$,\,  \,$d\mid b$\, y \,$d\mid m$. Probar que la ecuación $a\cdot x \equiv b\,( m)$ tiene     solución si y sólo si la ecuación
+    \begin{equation*}
+        \frac{a}{d}\cdot x \equiv \frac{b}{d}\pmod{\frac{m}{d}}
+    \end{equation*}
+    tiene solución.
+        
+    \rta La ecuación $\frac{a}{d}\cdot x \equiv \frac{b}{d} \pmod{\frac{m}{d}}$
+    tiene solución si y sólo si $\frac{m}{d}\vert \frac{a}{d}\cdot x - \frac{b}{d}$ si y sólo si $\frac{a}{d}\cdot x - \frac{b}{d}=\frac{m}{d}q$ como $d\neq0$ multiplicando por $d$, esto ocurre si y sólo si $m\vert a \cdot x - b $, es decir, $a \cdot x \equiv b \pmod{m}$.
+    
+    
+    
+    \item Resolver las siguientes ecuaciones:
+    \begin{enumerate}
+        \item $2x \equiv -21 \pmod{8}$ 
+        
+        Como el módulo es par, no hay solución pues el miembro de la derecha es par y el de la izquierda es impar.
+        
+        \item $2x \equiv -12 \pmod{7} $
+        
+        \rta  $-12 \equiv 2 \pmod{7}$, por lo tanto la ecuación es equivalente a $2x \equiv 2 \pmod{7}$. Evidentemente 1 es solución de la ecuación y como $1=(2,7)$ todas las soluciones son de la forma $x=1+7k, k\in\mathbb{Z}$.
+        
+        \item $3x \equiv 5 \pmod{4}.$
+        
+        \rta   $5 \equiv 1 \pmod{4}$, por lo tanto la ecuación es equivalente a $3x \equiv 1 \pmod{4}$. Probando se encuentra que 3 es solución y como $1=(4,3)$, todas las soluciones son de la forma $x=3+4k, k\in\mathbb{Z}$.
+    \end{enumerate}
+
+    
+    \item Resolver la ecuación $221 x \equiv 85\pmod{340}$. Hallar todas las soluciones $x$ tales que $0 \le x < 340$.
+        
+    \rta Notemos que 221, 85 y 340 son divisibles por 17.  Sus respectivos cocientes son 13, 5 y 20.
+    Por el ejercicio 9 podemos entonces resolver $13x\equiv 5 \pmod{20}$. Las soluciones de esta ecuación deben ser múltiplos de 5 y menores que 20. Comprobamos que 5 es la única solución menor que 20.
+    las restantes son de la forma $20k+5$. Tenemos que el conjunto buscado es: $\{5, 25, 45, \dots,305, 325\}=\{5+20k,\}_{k=1}^{20}$.
+    
+    
+    \item 
+    \begin{enumerate}
+        \item Encontrar todas las soluciones de la ecuación en congruencia
+        $$36\,x\equiv 8 \pmod{20}$$
+        usando el método visto en clase.
+            
+        \rta 
+        \begin{align*}
+            36 &= 20 \times 1 + 16 \Rightarrow 16 = 36 -20\\
+            20 &= 16 \times 1 + 4 \Rightarrow 4 = 20 -16 \\
+            16 &= 4 \times 4 + 0.
+        \end{align*}
+        Luego $4 = (36,20)$. Como $4|8$ la ecuación tiene solución. Ahora bien,  
+        \begin{equation*}
+            4 = 20 -16 = 20 - (36 -20) = (-1)\cdot 36 + 2 \cdot 20,
+        \end{equation*}
+        por lo tanto, multiplicando por 2 la ecuación, tenemos que $8 = (-2) \cdot 36 + 4 \cdot 20$. Luego, 
+        \begin{equation*}
+            8 \equiv  (-2)\cdot 36\pmod{20},
+        \end{equation*}
+        y entonces $-2$ es solución y todas la soluciones sonde la forma $x = -2 + (20/4)k= -2 +5k$, con $k$ entero. 
+        
+        
+        
+        \item Dar todas las soluciones $x$ de la ecuación anterior tales que $-8 < x < 30$.    
+        
+        \rta  Como todas las soluciones son de la forma  $x = -2 +5k$, con $k$ entero, tomamos valores consecutivos de $k$ y observamos cuando $x=-2 +5k$ se encuentra en el rango  $-8 < x < 30$. Si  empezamos por $k=-3$, la solución es $x=-17$ y  las soluciones para ese $k$ y los siguientes son
+        \begin{equation*}
+            -17, -12, -7, -2, 3, 8, 13, 18, 23, 28, 33 
+        \end{equation*}
+        Por lo tanto la respuesta es $-7, -2, 3, 8, 13, 18, 23, 28$.
+        
+        \rta (alternativa) Si queremos ser más sistemáticos planteamos las inecuaciones $-8 < -2 +5k < 30$. Sumando 2 y dividiendo por 5 en las inecuaciones, obtenemos $-6/5 < k < 32/5$ o equivalentemente $-1.2 < k < 6.4$, es decir que $k$ debe tomar los valores $-1, 0,1,2,3,4,5,6$ y por lo tanto $x = -2 +5k$ toma valores $-7, -2, 3, 8, 13, 18, 23, 28$.
+        
+    \end{enumerate}
+    
+    
+    
+    \item 
+    \begin{enumerate}
+        \item Encontrar todas las soluciones de la ecuación en congruencia
+        $$21\,x\equiv 6 \pmod{30}$$
+        usando el método visto en clase.
+            
+        \rta  $3=(21,30)$ y $3 = (-7)\cdot 21 + 5 \cdot 30$, por lo tanto $6 = (-14)\cdot 21 + 10 \cdot 30$. Haciendo congruencia módulo $30$ obtenemos: $6 \equiv (-14)\cdot 21\equiv 6\cdot 21 \pmod{30}$. Luego la ecuación  tiene como soluciones $x=6+(30/10)k= 6+ 10k$, con $k$ entero.
+        
+        \item Dar todas las soluciones $x$ de la ecuación anterior tales que $0 < x < 35$.
+            
+        \rta En base al punto anterior, $0 < x < 35$, es equivalente a $0 < 6 +10k < 35$. Restando 6 y luego dividiendo por 10 las inecuaciones, obtenemos $-6/10 < k < 29/10$ o bien $-0.6 < k < 2.9$, por lo tanto $k $ toma valores $0, 1,2$ y las soluciones son $6, 16, 26$.
+        
+    \end{enumerate}
+    
+    
+    
+    \item Encontrar todas las soluciones de los siguientes sistemas de ecuaciones en congruencia 
+    \vskip .4cm 
+    \begin{enumerate}
+        \item     $\begin{array}{l}
+            4x\equiv 7 \pmod{11} \\
+            7x\equiv 8 \pmod{12}
+            \end{array}$
+            \vskip .2cm 
+        \rta Para resolver la ecuación $4x\equiv 7 \pmod{11}$ observemos que $-1$  es solución. Como $1=(4,11)$ todas las soluciones de $4x\equiv 7 \pmod{11}$ son de la forma $x = -1 + 11k$, para $k$ entero.     Ahora, debemos encontrar los $k \in \mathbb{Z}$ soluciones de la ecuación
+        \begin{equation*}\label{eq-sistema}
+        7(-1 + 11k)\equiv 8 \pmod{12}.
+        \end{equation*}
+        Expandiendo el lado izquierdo de la ecuación obtenemos
+        \begin{equation*}
+        7\times (-1) + 7\times 11 k\equiv -7 + 77 k\equiv 5 + 5k \pmod{12}.
+        \end{equation*}
+        Luego, debemos resolver $5 + 5k \equiv 8\pmod{12}$ o equivalentemente, $5k \equiv 3\pmod{12}$. Una solución a esta ecuación es $3$. Como $1 =(5,12)$, todas las soluciones son de la forma $k = 3 + 12 h$ con $h \in \mathbb{Z}$.
+        
+        La solución al sistema entonces será $x = -1 + 11k = -1 + 11( 3 + 12 h)$.  Es decir $x = 32 + 132 h$ para $h \in \mathbb{Z}$.
+        \vskip .4cm 
+        \item 
+        $\begin{array}{l}
+            x \equiv -1 \pmod{7} \\
+            x \equiv 3 \pmod{10} \\
+            x \equiv -2 \pmod{11}.
+            \end{array}$
+            \vskip .2cm 
+        \rta Las soluciones de la primera ecuación son $x=-1 + 7k$ para $k \in \mathbb{Z}$. Especializando estas soluciones en la segunda ecuación obtenemos $-1 + 7k \equiv 3 \pmod{10}$, lo que es equivalente a $7k \equiv 4 \pmod{10}$, cuyas soluciones son $k=2 + 10 h$ para $h \in \mathbb{Z}$. Luego las soluciones  para el sistema que forman las dos primeras ecuaciones son $x =  -1 + 7k = -1 + 7(2 + 10 h) = 13 + 70h$ para   $h \in \mathbb{Z}$.
+        
+        \noindent Finalmente, especificando estas soluciones en la tercera ecuación obtenemos 
+        $13+ 70 h\equiv -2 \pmod{11}$ o equivalentemente $70 h\equiv -15 \pmod{11}$ o bien $4 h\equiv 7 \pmod{11}$, cuyas soluciones son $h= -1 + 11t$ para  $t \in \mathbb{Z}$. Luego, $x = 13 + 70h = 13 + 70(-1 + 11t)= -57 + 770t$. 
+        
+        \noindent Concluyendo: las soluciones del sistema son $x = -57 + 770t$ para  $t \in \mathbb{Z}$. 
+        \vskip .4cm 
+        \item         $\begin{array}{l}
+            x \equiv -1 \pmod{2}\\
+            x \equiv 5 \pmod{9}\\
+            x \equiv -3 \pmod{7}.
+            \end{array}$
+            \vskip .2cm 
+        \rta Las soluciones de la primera ecuación son $x=1 + 2k$ para $k \in \mathbb{Z}$. Especializando estas soluciones en la segunda ecuación obtenemos $1 + 2k \equiv 5 \pmod{9}$, lo que es equivalente a $2k \equiv 4 \pmod{9}$, cuyas soluciones son $k=2 + 9 h$ para $h \in \mathbb{Z}$. Luego las soluciones  para el sistema que forman las dos primeras ecuaciones son $x =  1 + 2k = 1 + 2(2 + 9 h)= 5 + 18 h$ para   $h \in \mathbb{Z}$.
+        
+        \noindent Finalmente, especificando estas soluciones en la tercera ecuación obtenemos 
+        $5+ 18 h\equiv -3 \pmod{7}$ o equivalentemente $18 h\equiv -8 \pmod{7}$ o bien $4 h\equiv 6 \pmod{7}$, cuyas soluciones son $h= 5 + 7t$ para  $t \in \mathbb{Z}$. Luego, $x =  5 + 18 h =  5 + 18(5 + 7t)= 95 + 126t$. 
+        
+        \noindent Concluyendo: las soluciones del sistema son $x = 95 + 126t$ para  $t \in \mathbb{Z}$. 
+
+    \end{enumerate}
+    
+    
+    
+    \item Dado $t \in {\Z}$, decimos que $t$ es {\it inversible módulo $m$} si existe $h \in {\Z}$ tal que $th\equiv 1\,(\ m)$.
+    \begin{enumerate}
+        \item ¿Es 5 inversible módulo 17?
+            
+        \rta Si, $5\cdot 7\equiv 1 \pmod{17}$
+        
+        %  \item ¿Existe algún $m$ tal que $m$ sea inversible módulo $m$?
+        \item Probar que $t$ es inversible módulo $m$, si y sólo si $(t,m)=1$.
+            
+        \rta Si $t$ es inversible módulo $m$ sea $h$ tal que $th\equiv 1 \pmod{m}$. Esto es $th-1=mq$, y por lo tanto $1=th-mq$, lo cual dice que $(t,m)=1$. Recíprocamente si $(t, m)=1$ existen enteros $h$ y $q$ tales que $1=th+mq$ y esto nos dice que $m$ divide a $1-th$ o sea $th\equiv 1 \pmod{m}$.
+        
+        \item Determinar los inversibles módulo $m$, para $m=11,12,16$.
+            
+        \rta $\{1,2,3,\dots, 9,10\}, \{1, 5, 7,11\} , \{1, 3, 5, 7, 9 ,11, 13, 15\}$.
+        
+    \end{enumerate}
+    
+    
+    
+    %\begin{enumerate}
+    %\item Dar la tabla de la suma y del producto en $\Z_2$, $\Z_3$ y $\Z_4$.
+    %  \item Probar que $\Z_m$ es un anillo.
+    % \end{enumerate}
+    
+    
+    \item Encontrar los enteros cuyos cuadrados divididos por 19 dan resto 9.
+        
+    \rta Si resolvemos $x^2\equiv 9 \pmod{3} $ vemos que 3 y 16 son los únicos restos que son solución. Luego, todas las soluciones buscadas son $19k\pm3$. 
+    
+    
+    
+    
+    \item Probar que todo número impar $a$ satisface: $a^4 \equiv 1\pmod{16}$, $a^8 \equiv 1\pmod{32}$, $a^{16}\equiv 1\pmod{64}$.\\ ¿Se puede asegurar que $a^{2^n} \equiv 1 \pmod{2^{n+2}}$?
+        
+    \rta Si $n=1$,  $a^2-1$ es divisible por 8 ya que $a^2-1 =(2k+1)^2-1=4k^2+4k=4k(k+1)$ y $2\vert k(k+1)$.
+    
+    Si $a^{2^n}\equiv 1 \pmod{2^{n+2}}$ entonces $2^{n+2}$ divide a $a^{2^n}-1$ multiplicando por $a^{2^n}+ 1$, que es par, tenemos que $2^{n+1+2}$ divide a $(a^{2^n}-1)(a^{2^n}+1)=a^{2^{n+1}}-1$.
+    
+    
+    
+    
+\item Encontrar el resto en la división de $a$ por $b$ en los siguientes casos:
+\begin{enumerate}
+    \item $a = 11^{13}\cdot13^8 ; b = 12$;  \rta  $11^{13}\cdot13^8\equiv (-1)^{13}\cdot 1^8\equiv 11 \pmod{12}$.
+    
+    \item $a = 4^{1000}; b = 7$;  \rta  $4^{1000}=(4^6)^{166}4^4\equiv (4^2)^2\equiv 2^2 \pmod{12}$.
+    
+    \item $a = 123^{456}; b = 31$;  \rta  $123^{456}\equiv (-1)^{456}\equiv 1 \pmod{31}.$
+    
+    \item $a = 7^{83}; b = 10$.  \rta  $7^{83}= (7^4)^{20}7^3\equiv 1^{20}343\equiv 3 \pmod{10}$.
+\end{enumerate}
+    
+    %
+    \item Obtener el resto en la división de $2^{21}$ por 13; de $3^8$ por 5 y de
+    $8^{25}$ por 127.
+        
+    \rta  $2^{21}=2^{13}2^8\equiv 2\cdot2^8 \pmod{13}$ Como $2^32^9= 2^{12}\equiv 1 \pmod{13}$, se tiene $82^9\equiv1 \pmod{13}$ y esto dice que $2^9\equiv 5 \pmod{13}$ ya que $8\cdot 5=3\cdot 13 +1$.
+    
+    $3^8=3^4\cdot 3^4\equiv 1\cdot1 \pmod{13}$.
+    
+    $8^{25}=2^{75}$ como $2^7=128\equiv1 \pmod{127}$; tenemos que $2^{75}=(2^7)^{10}2^5\equiv2^5 \pmod{127}$.
+    Por lo tanto $8^{25}\equiv32 \pmod{127}$
+    
+    %$$ \text{ (a)  $2^{21}$\, por \,13;\qquad
+    %$3^8$\, por \,5 $8^{25}$\, por \,127.}$$
+    
+    
+    %
+    
+    %\item Hallar todos los enteros que satisfacen simultáneamente:
+    
+    %$x \equiv 1\ ( 3); $ \qquad $x \equiv 1 \ ( 5)$; \qquad $x \equiv 1\ ( 7)$.
+    
+    %
+    %\item Hallar el menor entero positivo que satisface simultáneamente las siguientes congruencias:
+    
+    %$x\equiv 2\ ( 3)$; \qquad $x \equiv 3\ ( 5)$; \qquad $x \equiv 5\ (2)$.
+    
+    %
+    
+    %\item Hallar 4 enteros consecutivos divisibles por \,5, 7, 9 y 11 respectivamente.
+    
+    
+    \item \begin{enumerate}
+        \item Probar que no existen enteros no nulos tales que $x^2 + y^2 = 3z^2$.
+            
+        \rta Si $x, y, z$ fuesen solución y tuvieran un factor común $t$ es claro que también $x/t, y/t. z/t$ cumpliría las condiciones. Luego podemos asumir que $x, y, z$ no tienen factor en común salvo $\pm1$.
+        
+        Ahora bien, $0^2 \equiv 0\pmod{3}$, $1^2 \equiv 1\pmod{3}$ y $2^2 \equiv 1\pmod{3}$. Por lo tanto, si tomamos congruencia módulo 3 en ambos miembros vemos que la suma de dos cuadrados módulo 3 sólo puede ser 0 si ambos números son divisibles por 3. Luego $x=3a, y=3b$, y por lo tanto $x^2=9a^2, y^2=9b^2$. Podemos simplificar la ecuación y obtenemos $3a^2+3b^2=z^2$. Tomando congruencia módulo 3 nuevamente tenemos que 3 divide a $z^2$ y por lo tanto divide a $z$. Esto contradice el hecho que $x,y, z$ no tenían factor común. 
+        
+        \item Probar que no existen números racionales no nulos $a$, $b$, $r$ tales que $3(a^2 + b^2) = 7r^2$.
+            
+        \rta Aquí también podemos asumir que $a, b, r$ no tienen factores en común. Tomando congruencia módulo 3 vemos que 3 divide a $r$ o sea $r=3t, r^2=9t^2$. Reemplazando y simplificando tenemos $a^2+b^2=3t^2$, que sabemos por el inciso anterior que no tiene solución.
+        
+        
+    \end{enumerate}
+    
+    
+    
+    %\item Cinco hombres recogieron en una isla un cierto número de cocos y resolvieron repartirlos al día siguiente. Durante la noche uno de ellos decidió separar su parte y para ello %dividió el total en cinco partes y dió un coco que sobraba a un mono y se fue a dormir. Enseguida otro de los hombres hizo lo mismo, dividiendo lo que había quedado por cinco, dando %un coco que sobraba a un mono y retirando su parte, se fue a dormir. Uno tras otro los tres restantes hicieron lo mismo, dándole a un mono el coco que sobraba. A la ma\~nana siguiente %repartieron los cocos restantes, dándole a un mono el coco sobrante.
+    %>Cuál es el número mínimo de cocos que se recogieron?
+    
+    %
+    
+    %\item La producción diaria de huevos en una granja es inferior a 75.
+    %Cierto día el recolector informó que la cantidad de huevos recogida era tal que contando de a 3 sobraban 2, contando de a 5 sobraban 4 y
+    %contando de a 7 sobraban 5. El capataz, dijo que eso era imposible. >Qui\'en tenía razón? Justificar.
+    
+    %
+    
+    \item Probar que si \,$(a,1001)=1$\, entonces \,$1001$\, divide a \,$a^{720}-1$.
+    
+    \rta Notemos que $1001=7\cdot11\cdot13$. Por lo tanto $(a, 1001) = 1$ implica $(a,7)=(a,11)=(a,13)=1$.
+    Entonces $a^6\equiv1 \pmod{7}; a^{10}\equiv1 \pmod{11}$ y $ a^{12}\equiv1 \pmod{13}$.
+    Por lo tanto $a^{720}=((a^6)^{10})^{12}\equiv 1 \pmod{7\cdot11\cdot13}$.
+    
+    \item Sea $p$ primo impar. 
+\begin{enumerate}
+    \item Probar que las únicas raíces cuadradas de 1 módulo $p$,  son $1$ y $-1$ módulo $p$. Es decir, probar que $x^2 \equiv 1 \pmod{p}$, entonces  $x \equiv \pm1 \pmod{p}$.
+    
+    \rta   $x^2 \equiv 1 \pmod{p}$ $\Rightarrow$  $x^2 - 1 \equiv 0 \pmod{p}$, como $x^2 -1 = (x-1)(x+1)$, obtenemos  $ (x-1)(x+1) \equiv 0 \pmod{p}$. Esto quiere decir  que $p|  (x-1)(x+1)$. Como $p$  es primo, $p | x -1$ o $p| x +1$, es decir 
+    \begin{align*}
+        x -1 \equiv 0 \pmod{p} \;\;&\vee \;\; x +1 \equiv 0 \pmod{p} \quad \Leftrightarrow  \\
+        x  \equiv 1 \pmod{p} \;\;&\vee \;\; x  \equiv -1 \pmod{p}.
+    \end{align*}
+
+    \item Sea  $p = d \cdot 2^s + 1$ donde $d$ es impar. Dado $a$ entero tal que $0 < a <p$, probar que 
+    \begin{itemize}
+        \item $a^{d} \equiv 1 \pmod{p}$, o
+        \item $a^{2^r\cdot\, d} \equiv -1 \pmod{p}$  para algún $r$ tal que $0 \le r < s$.
+    \end{itemize}
+    \rta Consideremos la sucesión $a^{2^s \cdot d}, a^{2^{s-1} \cdot d}, \dots, a^{2d}, a^d$. La demostración la haremos usando el teorema de Fermat,  el resultado del inciso anterior y  observando que cada término de la sucesión es el cuadrado del siguiente.
+    \begin{itemize}
+        \item Por el teorema de Fermat  $a^{2^s \cdot d} = a^{p-1} \equiv 1 \pmod{p}$. Luego $(a^{2^{s-1} \cdot d})^2 \equiv 1 \pmod{p}$ y por lo tanto $a^{2^{s-1} \cdot d}$ es una raíz cuadrada de $1$ módulo $p$. Por  el inciso anterior entonces  $a^{2^{s-1} \cdot d} \equiv \pm 1 \pmod{p}$.
+        \item Si  $a^{2^{s-1} \cdot d} \equiv - 1 \pmod{p}$, listo,  en caso contrario  $a^{2^{s-1} \cdot d} \equiv 1 \pmod{p}$,  luego $(a^{2^{s-2} \cdot d})^2 \equiv 1 \pmod{p}$ y por lo tanto $a^{2^{s-2} \cdot d}$ es una raíz cuadrada de $1$ módulo $p$. Por  el inciso anterior entonces  $a^{2^{s-2} \cdot d} \equiv \pm 1 \pmod{p}$.
+        \item Iterando el razonamiento anterior concluimos que alguno de los términos de la sucesión $ a^{2^{r} \cdot d}$  es congruente   a $-1$ módulo $p$ o bien todos los términos son congruentes a $1$,  en particular $a^{d} \equiv 1 \pmod{p}$.
+    \end{itemize}
+    
+\end{enumerate}
+    
+    
+    \
+    
+    \subsection*{$\S$ Ejercicios de repaso} Los ejercicios marcados con ${}^{(*)}$ son de mayor dificultad.
+    
+    \item Dada la ecuación de congruencia
+$$14\,x\equiv 10 \, (26),$$
+hallar todas las soluciones en el intervalo $[-20,10]$. Hacerlo con el método usado en la teórica.
+
+\item Dada la ecuación de congruencia
+$$21\,x\equiv 15 \, (39),$$
+hallar todas las soluciones en el intervalo $[-10,30]$. Hacerlo con el método usado en la teórica. 
+
+
+\item Hallar todos los enteros que satisfacen simultáneamente:
+
+$x \equiv 1\ ( 3); $ \qquad $x \equiv 1 \ ( 5)$; \qquad $x \equiv 1\ ( 7)$.
+
+    
+    \item (*) ¿Para qu\'e valores de \,$n$\, es \,$10^n-1$\, divisible por \,$11$?
+    
+    \rta Como $10\equiv -1 \pmod{11}$, se tiene $10^{n}-1\equiv(-1)^n-1 \pmod{11}$. Entonces $10^n-1$ es divisible por 11 si y solo si $n$ es par.
+    
+    
+    
+    \item (*) Probar que para ningún $n\in\N$ se puede partir el conjunto $\{n,n+1,\ldots, n+5\}$ en dos partes
+    disjuntas no vacías tales que los productos de los elementos que las integran sean iguales.
+    
+    \rta Notemos que si fuera posible dicha partición. el $n+2$ dividiría a ambos productos y uno de ellos no lo contiene.
+    Entonces $n+2$ debe dividir a $(n+2-2)(n+2-1)(n+2+1)(n+2+2)(n+2+3)$. Esto nos dice que $n+2$ debe dividir a 
+    $(-1)(-2)\cdot1\cdot2\cdot3=12$. Las posibilidades para $n+2$ son entonces: 1, 2, 3, 4, 6,12.
+    Pero 1 y 2 dan $n\le 0$ y las restantes dan $n\in \{1, 2, 4, 10\}$. Las primera no puede ser pues en el conjunto \{1,2,3,4,5,6\} hay un único elemento divisible por 5, que debería ser divisor de ambos productos de la partición.
+    La misma razón dice que $n$ no puede ser 2 ni 4. Finalmente si $n=10$, el conjunto sería $\{10,11,12,13,14,15\}$ que posee un único elemento divisible por 7 (el 14) y vale el mismo razonamiento que antes con 7 en lugar de 5.
+    
+    Alternativamente: Notemos que 7 divide a lo sumo a uno de los 6 números. Si $\prod_{i=0}^5(n+i)=u_1u_2$ con $u_1=u_2$, entonces 7 no divide a ninguno de los factores ya que si divide a un factor de $u_1$ divide a un factor de $u_2$. Tenemos así que las congruencias módulo 7 dan los 6 restos posibles y su producto 720 es congruente a 6 módulo 7. Pero entonces $u_1^2=u_1u_2\equiv 720\equiv 6 \pmod{7}$ se tendría que 6 es un cuadrado módulo 7 lo cual es falso.
+    
+    
+    
+    \item (*) El número \,$2^{29}$\, tiene nueve dígitos y todos son distintos.
+    ¿Cuál dígito falta? (No está permitido el uso de calculadora).
+    
+    \rta Primero nos planteamos la siguiente pregunta, ¿Cuánto suman sus dígitos? Si $2^{29} =  \sum_{i=0}^8 a_i10^i$, entonces  $\sum_{i=0}^8 a_i= \sum_{i=0}^9i-d$, donde $d$ es el dígito que falta.
+    Esto es $\sum_{i=0}^8 a_i= 45-d$. Además $2^{29} = \sum_{i=0}^8 a_i10^i \equiv \sum_{i=0}^8 a_i\pmod{9} $.     Entonces si calculamos esta congruencia podemos obtener $d$: 
+    $2^{29}=(2^6)^42^5\equiv 2^5 \pmod{9}$ y $2^5\equiv 5 \pmod{9}$ por lo tanto $d\equiv -5 \pmod{9}$ o sea $d=4$ es el dígito faltante. 
+    
+\end{enumerate}
+
+
+
+
+
+
+\end{document}
+
+\
+
+\noindent {\bf Ejercicios de parciales y exámenes anteriores:}
+
+\
+
+\item Decidir si las siguientes afirmaciones son verdaderas o
+falsas. Justificar.
+
+\begin{enumerate}
+\item La suma de cuatro cuadrados siempre es múltiplo de cuatro.
+
+\item $7^{50}\equiv 10 \mod(13)$.
+
+\item Existe un número entero $x$ tal que $1001 x\equiv 104 \mod(39)$.
+
+\item Existe $n\in\N$ tal que $4n+3$ es suma de dos cuadrados.
+
+\item $777^{151}\equiv 7 \mod(11)$.
+
+\item Existe un número entero $x$ tal que $1001\, x\equiv 131 \mod(39)$.
+
+\end{enumerate}
+
+\
+
+\item Sean $a,b\in\Z$.  Probar que si $11$ divide a $a^2+5b^2$ entonces $a$ y $b$ son
+tambi\'en divisibles por $11$.
+
+\
+
+\item  Hallar tres números naturales consecutivos mayores que $2000$ y divisibles por
+$2$, $7$ y $13$, respectivamente.
+
+\
+
+\item Hallar el resto de la división por $11$ de $(61162)^{53}$.
+\end{enumerate}
+
+
+\end{document}

@@ -1,0 +1,93 @@
+% PDFLaTeX
+\documentclass[a4paper,12pt,twoside,spanish]{amsbook}
+
+\input{tareas_definiciones} 
+
+
+\begin{document}
+
+	\tarea{4}
+
+    \begin{ejercicio}[1]
+        (80 pts)  ¿De cuántas formas distintas se pueden escoger $5$  cartas de una baraja de $52$ cartas?
+            \begin{enumerate}
+                \item[(a)] (20 pts) Si no hay restricciones.
+                \item[(b)] (30 pts) Si debe haber tres picas y dos corazones.
+                \item[(c)] (30 pts) Si debe haber al menos una carta de cada palo.
+                %\item (30 pts) Si de haber al menos $3$ picas.
+            \end{enumerate}
+    \end{ejercicio}
+
+
+    \begin{ejercicio}[2] (20 pts) Sea $n\in\mathbb{N}$.  Probar la siguiente igualdad:
+        $$
+        n = \frac{n! + (n+2)! - n(n+2)(n-1)!}{n!+(n-1)!+(n+1)!}.
+        $$
+    \end{ejercicio}
+
+	
+	\begin{comment}
+	\begin{solucion}
+		\noindent (a) Elegir 5 entre 8 es el número combinatorio
+		$$
+		\binom{8}{5} = \frac{8!}{(8-5)!5!} =\frac{8!}{3!5!} = \frac{8 \cdot 7\cdot 6}{3 \cdot 2\cdot 1} = 8 \cdot 7 =  \colorbox{lightgray}{56}.
+		$$
+		(Dejando indicado el número combinatorio alcanzaba).
+		
+		\vskip .4cm
+		
+		\noindent (b) Para elegir 3 mujeres entre 5 hay $\binom{5}{3}$ posibilidades. Para elegir 2 hombres entre 3 hay $\binom{3}{2}$ posibilidades. Luego  el  número total de posibilidades es
+		$$
+		\binom{5}{3} \binom{3}{2} = \frac{5!}{2!3!}3 =  \frac{5\cdot 4}{2} 3 =  \colorbox{lightgray}{30}.
+		$$
+		
+			\vskip .4cm
+		
+		\noindent (c) Primero  elegimos los cargos a ser ocupados por los 3 hombres: para el primer hombre hay 5 posibilidades, para el segundo 4 y para el tercero 3. Es decir el total de posibles asignaciones de cargos a los 3 hombres es $5\cdot 4\cdot 3= 60$.
+		
+		
+		Quedan dos cargos libres (los que dejaron libres los hombres). Para el  primer cargo hay 5 posibilidades y para el segundo hay 4. Luego el total de posibilidades para los dos cargos restantes es $5 \cdot 4 = 20$.
+		
+		Concluyendo, por el principio de multiplicación, hay
+		$$
+		60 \cdot 20 =  \colorbox{lightgray}{1200}
+		$$
+		posibilidades.
+		
+			\vskip .4cm
+		
+		\noindent (d)\textit{ Primera forma.} El  hecho de que \textbf{A} y \textbf{E} no están en el equipo se puede partir en tres casos: 1) \textbf{A} y \textbf{E} no están en el equipo, 2) \textbf{A} está en el equipo y \textbf{E} no está en el equipo, y 3) \textbf{A} no está en el equipo y \textbf{E}  está en el equipo.
+		
+		1) Debemos considerar que el grupo tiene 6 personas (pues \textbf{A} y \textbf{E} nunca pueden ser seleccionados) y estos 6 deben ocupar 5 cargos distintos. Luego la cantidad de elecciones posibles es $6  \cdot 5 \cdot 4 \cdot 3 \cdot 2 = 720$.
+		
+		2) Ahora debemos pensar que \textbf{A} ocupa uno de los 5 cargos, por lo tanto hay 5 posibilidades  y los 6 restantes (pues \textbf{E} no está) ocupan los 4 cargos restante: $6  \cdot 5 \cdot 4 \cdot 3 =360$ posibilidades. Por lo tanto el total de posibilidades es $5  \cdot  360 = 1800$.
+		
+		
+		3) Es completamente análogo a 2), por lo tanto hay 	1800 posibilidades.
+	
+		
+		Como los tres casos son mutuamente excluyentes (no hay intersección entre ellos), se aplica el principio de adición y por lo tanto hay $$720 + 1800 + 1800 = \colorbox{lightgray}{4320}$$ posibilidades.
+		\vskip .4cm
+		
+		(d)\textit{ Segunda forma. }En  este ejercicio podemos pensar en  el  "complemento" es decir (1) calculamos todas las posibilidades,  después (2) calculamos cuando \textbf{A} y \textbf{E} están juntos y luego el resultado será (1) - (2).
+
+ (1) Todas las posible elecciones es elegir 5 entre 8, en orden sin repetición (el primero director,  el segundo subdirector, etc.) la solución es entonces
+ $$
+ \frac{8!}{(8-5)!} = \frac{8!}{3!} = 8 \cdot 7 \cdot 6 \cdot 5 \cdot 4 = 6720.
+ $$
+
+ (2) Primero elegimos un cargo para \textbf{A}, son  5 posibilidades, después un cargo para \textbf{B}, son 4 posibilidades. Luego quedan tres cargos para 6 personas (selecciones de 3 entre 6, en orden, sin repetición), son $6 \cdot 5 \cdot 4 =120$ posibilidades. el  total es entonces
+ $$
+5 \cdot 4 \cdot 120 = 2400.
+ $$
+
+ De (1) y (2) se deduce que las posibles formas de elegir el comité (con cargos) donde \textbf{A} y \textbf{E} no estén juntos es
+ $$
+ 6720 - 2400 = \colorbox{lightgray}{4320}.
+ $$
+		
+	\end{solucion}
+	
+	\end{comment}
+\end{document}
+

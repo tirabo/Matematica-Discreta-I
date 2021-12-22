@@ -1,0 +1,22 @@
+\begin{figure}[ht]
+    \begin{center}
+        \begin{tikzpicture}[node distance=2cm,scale=0.8]
+            \node (casa1) [startstop] {Primera casa};
+            \node (casa2) [startstop, xshift=4cm] {Segunda casa};
+            \node (casa3) [startstop, xshift=8cm] {Tercera casa};
+            \node (A) [servicio, below of=casa1] {A};
+            \node (L) [servicio, below of=casa2] {L};
+            \node (G) [servicio, below of=casa3] {G};
+            \draw [thick,-,>=stealth] (A) -- (casa1);
+            \draw [thick,-,>=stealth] (L) -- (casa1);
+            \draw [thick,-,>=stealth] (G) -- (casa1);
+            \draw [thick,-,>=stealth] (A) -- (casa2);
+            \draw [thick,-,>=stealth] (L) -- (casa2);
+            \draw [thick,-,>=stealth] (G) -- (casa2);
+            \draw [thick,-,>=stealth] (A) -- (casa3);
+            \draw [thick,-,>=stealth] (L) -- (casa3);
+            \draw [thick,-,>=stealth] (G) -- (casa3);
+        \end{tikzpicture}
+    \end{center}
+    \caption{Luz-agua-gas es $K_{3,3}$} \label{fA4.8}
+\end{figure}

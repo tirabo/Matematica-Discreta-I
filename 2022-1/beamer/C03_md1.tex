@@ -1,0 +1,359 @@
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
+\usetheme{CambridgeUS}
+
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+%\usepackage{makeidx}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usepackage[customcolors]{hf-tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\tikzset{
+	every picture/.append style={
+		execute at begin picture={\deactivatequoting},
+		execute at end picture={\activatequoting}
+	}
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+\usepackage{mathtools}
+\usepackage{stackrel}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+\usepackage{polynom}
+\polyset{%
+	style=B,
+	delims={(}{)},
+	div=:
+}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate]{label={(\arabic*)}}
+
+\setbeamertemplate{itemize item}{$\circ$}
+\setbeamertemplate{enumerate items}[default]
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand\sgn{\operatorname{sgn}}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\figurename }{Figura}
+
+\include{definiciones}
+
+\newcommand{\nc}{\newcommand}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\nc{\FF}{{\mathbb F}} \nc{\NN}{{\mathbb N}} \nc{\QQ}{{\mathbb Q}}
+\nc{\PP}{{\mathbb P}} \nc{\DD}{{\mathbb D}} \nc{\Sn}{{\mathbb S}}
+\nc{\uno}{\mathbb{1}} \nc{\BB}{{\mathbb B}} \nc{\An}{{\mathbb A}}
+
+\nc{\ba}{\mathbf{a}} \nc{\bb}{\mathbf{b}} \nc{\bt}{\mathbf{t}}
+\nc{\bB}{\mathbf{B}}
+
+\nc{\cP}{\mathcal{P}} \nc{\cU}{\mathcal{U}} \nc{\cX}{\mathcal{X}}
+\nc{\cE}{\mathcal{E}} \nc{\cS}{\mathcal{S}} \nc{\cA}{\mathcal{A}}
+\nc{\cC}{\mathcal{C}} \nc{\cO}{\mathcal{O}} \nc{\cQ}{\mathcal{Q}}
+\nc{\cB}{\mathcal{B}} \nc{\cJ}{\mathcal{J}} \nc{\cI}{\mathcal{I}}
+\nc{\cM}{\mathcal{M}} \nc{\cK}{\mathcal{K}}
+
+\nc{\fD}{\mathfrak{D}} \nc{\fI}{\mathfrak{I}} \nc{\fJ}{\mathfrak{J}}
+\nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+
+\title[Clase 3 - Recursión]{Matemática Discreta I \\ Clase 3 - Recursión}
+%\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
+\institute[]{\normalsize FAMAF / UNC
+	\\[\baselineskip] ${}^{}$
+	\\[\baselineskip]
+}
+\date[23/03/2020]{23 de marzo  de 2020}
+
+
+
+\begin{document}
+
+
+
+
+\frame{\titlepage} 
+
+%\frame{\frametitle{Índice}\tableofcontents} 
+
+
+\begin{frame}\frametitle{Definiciones recursivas} 
+
+    \pause
+
+Sea $\mathbb N$ el conjuntos de enteros positivos, esto es
+$$
+\mathbb N = \{ n \in \mathbb Z | n\ge 1\},
+$$
+y denotemos $\mathbb N_0$ el conjunto $\mathbb N \cup \{0\}$, esto
+es
+$$
+\mathbb N_0 = \{ n \in \mathbb Z | n\ge 0\}.
+$$\pause
+$\mathbb{N}$  es llamado el conjunto de  \textit{números naturales}.     \pause
+\vskip .4cm
+\begin{itemize}
+    \item $X \subset \mathbb N$ (o de $\mathbb N_0$) $\wedge$ $X \ne \emptyset$ $\Rightarrow$ $X$ tiene cota inferior ($0$ o un $x <0$).\vskip .4cm    \pause
+    \item As{í}, en este caso el axioma del buen orden toma la
+    forma\vskip .4cm 
+
+    \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
+    \hskip 0.8cm\begin{beamercolorbox}[wd=0.75\textwidth,rounded=true,shadow=true]{postit}%
+        \textit{si $X \subset \mathbb N \vee X \subset\mathbb N_0$, no vacío \; $\Rightarrow$ \; $X$ tiene un mínimo.}
+\end{beamercolorbox}
+    
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}\frametitle{ }  
+	
+Una sucesión $u_n$ puede ser dada en forma explícita, por ejemplo  \pause
+\begin{itemize}
+	\item $u_n=3n+2$,   \pause o
+	\item $w_n =(n+1)(n+2)(n+3)$. 
+\end{itemize}
+\pause
+\medspace
+
+En este caso es fácil calcular algún valor de cada sucesión, por ejemplo \pause
+\begin{equation*}
+	u_5 = 3\cdot 5 +2= 17 \; \text{ o } \; w_3 = 4\cdot 5 \cdot 6 = 120
+\end{equation*}
+
+\medspace
+
+\pause
+Cuando una sucesión puede expresar se como combinación de un número determinado de operaciones elementales, diremos que tiene una \textit{fórmula cerrada.}
+	
+\end{frame}
+
+
+
+\begin{frame}\frametitle{ }  
+
+A veces la sucesión que nos interesa no tiene una fórmula \textit{cerrada} como las anteriores y podemos expresarla en forma \textit{recursiva}.  \pause Por ejemplo,
+
+\medspace
+
+\begin{itemize}
+	\item $u_1=1$, $u_2=2$, (casos base)   \pause
+	\item $u_n =u_{n-1} +u_{n-2}$, para $n\ge 3$ (caso recursivo).   \pause
+\end{itemize} 
+
+\medspace
+
+La anterior es la \textit{sucesión de Fibonacci.} Entonces podemos calcular los término $n \ge 3$  de la sucesión usando la recursión:
+
+\medspace  \pause
+
+\begin{itemize}
+	\item $u_3 =  u_2 + u_1 =  2 +1=3$,  \pause
+	\item $u_4 =  u_3 + u_2 = 3 +2 =5$  \pause
+	\item $u_5 =  u_4 + u_3 = 5 +3 =8$
+\end{itemize} 
+y así sucesivamente.
+\end{frame}
+
+
+\begin{frame}\frametitle{} 
+	 \begin{ejemplo} Sea $u_n$ definida
+	 	\begin{itemize}
+	 		\item $ u_1=3$, $u_2=5$ y
+	 		\item $u_n=3 u_{n-1} - 2 u_{n-2}$ para $n\geq 3$.
+	 	\end{itemize}
+ 	Calcular $u_n$ para $n \le 5$.\pause 
+	 \end{ejemplo}
+	\begin{solucion} \pause Los valores para $n=1$ y $n=2$ ya los conocemos. La fórmula recursiva es la que nos servirá para conocer los siguientes términos
+	\begin{itemize}
+	\pause \item $u_{3} = 3 u_{2} - 2 u_{1}\pause = 3 \cdot 5 - 2 \cdot 3 = 9$,
+	\pause \item $u_{4} = 3 u_{3} - 2 u_{2}\pause = 3 \cdot 9 - 2 \cdot 5 = 17$,
+	\pause \item $u_{5} = 3 u_{4} - 2 u_{3}\pause = 3 \cdot 17 - 2 \cdot 9  = 33$,
+
+	\end{itemize}
+	\end{solucion}
+	
+	 
+	
+\end{frame}
+
+\begin{frame}\frametitle{} 
+ En base al resultado podemos,  en este caso, adivinar una fórmula general para $u_n$. Escribamos de nuevo los valores de la sucesión para $n \le 5$. 
+ 
+ \medspace \pause 
+ 
+ \begin{itemize}
+  	\item $ u_1=3$, \pause 
+ 	\item $u_2=5$,\pause 
+ 	\item $u_{3} = 9$,\pause 
+ 	\item $u_{4} = 17$,\pause 
+ 	\item $u_{5} = 33$,
+\end{itemize}
+
+\medspace 
+\pause 
+\pause Observando cuidadosamente estos valores podemos darnos cuenta que:
+	
+\end{frame}
+
+\begin{frame}\frametitle{} 
+
+	\begin{itemize}
+		\item $ u_1=3 = 2 +1 = 2^1 + 1$, \pause 
+		\item $u_2=5 = 4 +1 = 2^2 + 1$,\pause 
+		\item $u_{3} = 9 = 8 +1 = 2^3 + 1$,\pause 
+		\item $u_{4} = 17 = 16 +1 = 2^4 + 1$,\pause 
+		\item $u_{5} = 33 = 32 +1 = 2^5 + 1$,\pause 
+	\end{itemize}
+\medspace 
+
+Ahora sí,  claramente podemos deducir que (posiblemente) 
+$$u_{n} =  2^n + 1.$$ \pause 
+La clase que viene aprenderemos un método (principio de inducción) que nos permitirá probar este tipo de afirmaciones. 
+	
+\end{frame}
+
+
+
+\begin{frame}\frametitle{} 
+	El método de definición recursiva aparecerá bastante seguido en la materia. Existen otras formas de este procedimiento que se ``esconden'' por su notación. \pause ¿Qué significan las siguientes expresiones?
+	$$
+	\sum_{r=1}^{n} r,\qquad 1+2+3+\cdots +n.
+	$$\pause 
+	Ambas significan que sumamos los primeros $n$ números naturales, pero cada uno contiene un misterioso símbolo, $\sum$ y $\cdots$,
+	respectivamente. 
+	
+	\medspace 
+	\pause 
+	Lo que deberíamos decir es que cada uno de ellos
+	es equivalente a la expresión $s_n$, dada por la siguiente
+	definición recursiva:\pause 
+	$$
+	s_1= 1, \qquad s_n = s_{n-1} + n, \qquad n\ge 2.
+	$$
+	
+	
+\end{frame}
+
+
+\begin{frame}\frametitle{} 
+\begin{definicion} Sea $n \in \mathbb N$ sean $a_i$,  $1 \le i \le n$ una secuencia de números (enteros, reales, etc.).\pause  Entonces $\sum_{i=1}^{n} a_i$  denota la función recursiva definida  \pause 
+	$$
+	\sum_{i=1}^{1} a_i= a_1, \qquad \sum_{i=1}^{n} a_i = \sum_{i=1}^{n-1} a_i+ a_{n} \quad (n\ge 2).
+	$$\pause 
+	En  este caso  decimos que  $\displaystyle\sum_{i=1}^{n} a_i$ es la \textit{sumatoria} de los $a_i$ de $i=1$  a $n$. 
+\end{definicion}
+	
+\end{frame}
+
+
+\begin{frame}\frametitle{} 
+\begin{definicion}
+	El símbolo $\displaystyle\prod_{i=1}^{n} a_i$ denota la función recursiva definida  \pause 
+	$$
+	\prod_{i=1}^{1} a_i= a_1, \qquad \prod_{i=1}^{n} a_i = \prod_{i=1}^{n-1} a_i \cdot  a_{n} \quad (n\ge 2).
+	$$\pause 
+	En  este caso  decimos que  $\displaystyle\prod_{i=1}^{n} a_i$ es la \textit{productoria} de los $a_i$ de $i=1$  a $n$. 
+\end{definicion}
+	
+
+
+\end{frame}
+
+
+
+\begin{frame}\frametitle{} 
+	Una definición muy utilizada es la de  $n!$ (que se lee $n$ {\it factorial}). Intuitivamente podemos definirlo como \pause 
+	$$
+	n!=1 \cdot 2 \cdot 3 \cdots n,
+	$$\pause 
+	y el significado es bastante claro para cualquiera.
+	
+	\medspace \pause 
+	
+	Pero para precisar (y hacerlo claro para una computadora) debemos usar una definición recursiva:
+	\pause 
+	\begin{itemize}
+		\item $1! = 1$, \pause 
+		\item $n! = (n-1)! \cdot n$.
+	\end{itemize}
+	
+	
+	
+\end{frame}
+
+
+\begin{frame}\frametitle{} 	
+	Observar que también podemos definir 
+	\pause 
+	$$n! = \prod_{i=1}^{n} i.$$ 
+	\pause 
+	Pese a que esta última fórmula parece cerrada, oculta la definición recursiva de $\prod$.
+	
+	\medspace 
+	
+	\pause 
+	Es un resultado conocido  que la función $n!$ \textit{no} admite  una fórmula cerrada. 
+	
+\end{frame}
+
+ 
+
+\medspace 
+ 
+
+ \medspace 
+
+
+
+
+ Finalmente definiremos  la ``$n$-ésima potencia'' de un número: sea $x$ un  número, si $n \in \mathbb N $ definimos\pause 
+ $$
+ x^1=x,\qquad x^n= x \cdot x^{n-1} \quad (n\ge 2).
+ $$\pause 
+ Por completitud,  definimos $x^0=1$ cuando $x \ne 0$ y  dejamos indefinido $0^0$. 
+
+
+
+\end{document}
+

@@ -1,0 +1,472 @@
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
+\usetheme{CambridgeUS}
+
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+%\usepackage{makeidx}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usepackage[customcolors]{hf-tikz}
+\usepackage[most]{tcolorbox}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\tikzset{
+	every picture/.append style={
+		execute at begin picture={\deactivatequoting},
+		execute at end picture={\activatequoting}
+	}
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+\usepackage{mathtools}
+\usepackage{stackrel}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+\usepackage{polynom}
+\polyset{%
+	style=B,
+	delims={(}{)},
+	div=:
+}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate]{label={(\arabic*)}}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+\setbeamertemplate{itemize item}{$\circ$}
+\setbeamertemplate{enumerate items}[default]
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand\sgn{\operatorname{sgn}}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\figurename }{Figura}
+
+\include{definiciones}
+
+\newcommand{\nc}{\newcommand}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\nc{\FF}{{\mathbb F}} \nc{\NN}{{\mathbb N}} \nc{\QQ}{{\mathbb Q}}
+\nc{\PP}{{\mathbb P}} \nc{\DD}{{\mathbb D}} \nc{\Sn}{{\mathbb S}}
+\nc{\uno}{\mathbb{1}} \nc{\BB}{{\mathbb B}} \nc{\An}{{\mathbb A}}
+
+\nc{\ba}{\mathbf{a}} \nc{\bb}{\mathbf{b}} \nc{\bt}{\mathbf{t}}
+\nc{\bB}{\mathbf{B}}
+
+\nc{\cP}{\mathcal{P}} \nc{\cU}{\mathcal{U}} \nc{\cX}{\mathcal{X}}
+\nc{\cE}{\mathcal{E}} \nc{\cS}{\mathcal{S}} \nc{\cA}{\mathcal{A}}
+\nc{\cC}{\mathcal{C}} \nc{\cO}{\mathcal{O}} \nc{\cQ}{\mathcal{Q}}
+\nc{\cB}{\mathcal{B}} \nc{\cJ}{\mathcal{J}} \nc{\cI}{\mathcal{I}}
+\nc{\cM}{\mathcal{M}} \nc{\cK}{\mathcal{K}}
+
+\nc{\fD}{\mathfrak{D}} \nc{\fI}{\mathfrak{I}} \nc{\fJ}{\mathfrak{J}}
+\nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\title[Clase 5 - Inducción]{Matemática Discreta I \\ Clase 5 - Ejercicios de inducción}
+%\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
+\institute[]{\normalsize FAMAF / UNC
+	\\[\baselineskip] ${}^{}$
+	\\[\baselineskip]
+}
+\date[30/03/2021]{30 de marzo   de 2021}
+
+
+
+
+\begin{document}
+
+\frame{\titlepage} 
+
+\begin{frame}\frametitle{} 
+
+    \begin{ejercicio}[(Serie aritmética)]\label{serie-aritmetica}
+        Probar que 
+        $$
+        1 + 2+ 3 + \cdots + n = \frac{n(n+1)}{2},
+        $$
+        para $n \in \N$.
+    \end{ejercicio}
+
+    \vskip .2cm\pause
+    \begin{proof}
+        \vskip .4cm \pause
+        \noindent({\it Caso  base}) El resultado es verdadero
+            cuando $n=1$ pues $ 1 = \frac{1 \cdot (1+1)}{2}$.
+        
+        \vskip .4cm 
+
+    \end{proof}
+	
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+		\noindent ({\it Paso  inductivo}) 
+        \pause \vskip .4cm
+		
+        Supongamos que el resultado verdadero cuando $n=k$, o
+		sea, que 
+        $$
+        \sum_{i=1}^{k} i = \frac{k(k+1)}{2}\quad \text{hipótesis inductiva (HI).}
+        $$
+        \vskip .4cm\pause
+        En el paso inductivo queremos probar que 
+        $$
+        \sum_{i=1}^{k} i = \frac{k(k+1)}{2} \quad \Rightarrow \quad    \sum_{i=1}^{k+1} i =\frac{(k+1)(k+2)}{2}.
+        $$
+\vskip 1cm
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{}
+
+    Entonces
+
+    \medskip
+    
+    
+    \begin{tabular}{lllll}
+        $\displaystyle\sum_{i=1}^{k+1} i$ &$=$& $\displaystyle\sum_{i=0}^{k} i + (k+1)$ &\qquad &$\text{(por la definición recursiva de $\sum$)}$ \\[0.6cm]
+    &$=$& $\displaystyle\frac{k(k+1)}{2}+(k+1)$ &\qquad &$\text{(por hipótesis inductiva)}$ \\[0.6cm]
+    &$=$& $\displaystyle(k+1)(\frac{k}{2}+1))$ &\qquad &$\text{($(k+1)$ factor común)}$ \\[0.6cm]
+    &$=$& $\displaystyle(k+1)\frac{(k+2)}{2}.$&\qquad &\\[0.6cm]
+    &$=$& $\displaystyle\frac{(k+1)(k+2)}{2}.$&\qquad &
+    \end{tabular}
+    \medskip
+    \pause
+    
+    Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.\qed
+
+\end{frame}
+
+\begin{frame}\frametitle{} 
+
+    \begin{ejercicio}[(Serie geométrica)]\label{serie-geometrica}
+        Probar que 
+        $$
+        1 + q+ q^2 + \cdots + q^n = \sum_{i=0}^{n} q^i = \frac{q^{n+1}-1}{q -1},
+        $$
+        para $n \in \N_0$, $q >0$ y $q \ne 1$.
+    \end{ejercicio}
+
+    \vskip .2cm\pause
+    \begin{proof} \pause
+        \vskip .2cm 
+        \noindent({\it Caso  base}) El resultado es verdadero
+            cuando $n=0$ pues 
+            $$q^0 = 1 =  \frac{q^{0+1}-1}{q -1}.$$
+        
+        \vskip .4cm 
+
+    \end{proof}
+	
+\end{frame}
+
+\begin{frame}
+    \frametitle{}
+
+		\noindent ({\it Paso  inductivo})
+		Supongamos que el resultado verdadero cuando $n=k$, o
+		sea, que 
+        $$
+        \sum_{i=0}^{k} q^i = \frac{q^{k+1}-1}{q -1},\quad \text{hipótesis inductiva (HI).}
+        $$
+        \vskip .4cm\pause
+        En el paso inductivo queremos probar que 
+        $$
+        \sum_{i=0}^{k} q^i = \frac{q^{k+1}-1}{q -1} \quad \Rightarrow \quad   \sum_{i=0}^{k+1} q^i = \frac{q^{k+2}-1}{q -1}.
+        $$
+\vskip 1cm
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{}
+
+    Entonces
+
+    \medskip
+    
+    
+    \begin{tabular}{lllll}
+        $\displaystyle\sum_{i=0}^{k+1} q^i $ &$=$& $\displaystyle\sum_{i=0}^{k} q^i  + q^{k+1}$ &\qquad &$\text{(por la definición recursiva)}$ \\[0.6cm]
+    &$=$& $\displaystyle\ \frac{q^{k+1}-1}{q -1}+ q^{k+1}$ &\qquad &$\text{(por hipótesis inductiva)}$ \\[0.6cm]
+    &$=$& $\displaystyle\ \frac{q^{k+1}-1+ (q-1) q^{k+1}}{q -1}$ &\qquad & \\[0.6cm]
+    &$=$& $\displaystyle\ \frac{q^{k+1}-1+ q\cdot q^{k+1}- q^{k+1}}{q -1}$ &\qquad &\\[0.6cm]
+    &$=$& $\displaystyle\ \frac{q^{k+2}-1}{q -1}$ &\qquad &
+    \end{tabular}
+    \medskip
+    \pause
+    
+    Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.\qed
+
+\end{frame}
+
+\begin{frame}\frametitle{} 
+
+    \begin{ejercicio}
+        Probar que 
+        $$
+        (1 + 2+ 3 + \cdots + n)^2 = 1^3 +2^3 +3^3 + \cdots +n^3,
+        $$
+        para $n \in \N$.
+    \end{ejercicio}\pause
+\begin{proof}\pause
+    Para probar esto primero debemos usar el resultado de la página \ref{serie-aritmetica} que nos dice  que 
+    $$
+    (1 + 2+ 3 + \cdots + n)^2 = \left(\sum_{i=1}^n i\right)^2 = \left(\frac{n(n+1)}{2}\right)^2 = \frac{n^2(n+1)^2}{4}.
+    $$\pause
+    Luego debemos probar que 
+    $$
+    \sum_{i=1}^{n} i^3 =  \frac{n^2(n+1)^2}{4}.
+    $$
+\end{proof}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+        \vskip .4cm 
+        \noindent({\it Caso  base})\pause El resultado es verdadero
+            cuando $n=1$ pues 
+            $$ \sum_{i=1}^{1} i^3 = 1\quad \text{y}\quad\frac{1^2(1+1)^2}{4} =\frac{4}{4} =1.$$
+        
+        \vskip .4cm \pause
+        \noindent ({\it Paso  inductivo})\pause
+		Debemos probar que si $k \ge 1$, 
+        $$
+        \sum_{i=0}^{k} i^3 = \frac{k^2(k+1)^2}{4} \;\; \text{ (HI) }\quad \Rightarrow \quad    \sum_{i=0}^{k+1} i^3 =\frac{(k+1)^2(k+2)^2}{4}.
+        $$
+
+    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+    
+    \begin{tabular}{lllll}
+        $\displaystyle\sum_{i=0}^{k+1} i^3$ &$=$& $\displaystyle\sum_{i=0}^{k} i^3 + (k+1)^3$ &\qquad &$\text{(por la definición recursiva de $\sum$ )}$ \\[0.6cm]
+    &$=$& $\displaystyle\frac{k^2(k+1)^2}{4}+(k+1)^3$ &\quad &$\text{(por hipótesis inductiva)}$ \\[0.6cm]
+    &$=$& $\displaystyle(k+1)^2(\frac{k^2}{4}+(k+1)))$ &\quad &$\text{($(k+1)^2$ factor común)}$ \\[0.6cm]
+    &$=$& $\displaystyle(k+1)^2\frac{(k^2+4k+4)}{4}.$&\quad &\\[0.6cm]
+    &$=$& $\displaystyle\frac{(k+1)^2(k+2)^2}{4}.$&\quad &
+    \end{tabular}
+    \medskip
+    \pause
+    
+    Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.\qed
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Inducción completa}
+
+    \begin{ejercicio}
+        Sea $u_n$ definida recursivamente por:
+        \begin{equation*}
+        u_0 = 1, \; u_1 = 0, \;\qquad u_n = 5u_{n-1} - 6 u_{n-2}, \; \forall n \ge 2. 
+        \end{equation*}
+        \begin{enumerate}
+            \item[1.]  Calcule $u_2$ y $u_3$ usando  recursión.
+            \item[2.] Pruebe por inducción que $u_n = 3\cdot 2^n - 2 \cdot 3^n$ ($n \in \N_0$). 
+        \end{enumerate}
+        \vskip .2cm
+    \end{ejercicio}\pause
+
+    \begin{solucion}\pause
+        {\noindent 1.} Por definición $u_0 = 1, \; u_1 = 0$, luego:
+        \begin{equation*}
+        u_2 = 5u_{2-1} - 6 u_{2-2} = 5u_{1} - 6 u_{0} = 5 \cdot 0 - 6 \cdot 1 = -6 
+        \end{equation*}\pause
+        Ahora  $u_1 = 0, \; u_2 = -6$, luego:\pause
+        \begin{equation*}
+        u_3 = 5u_{3-1} - 6 u_{3-2} = 5u_{2} - 6 u_{1} = 5 \cdot (-6) - 6 \cdot 0 = -30. 
+        \end{equation*}
+    \end{solucion}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+
+        {\noindent 2.} \noindent ({\it Caso base})\pause
+        \vskip .2cm
+        Por un lado $u_0 =1$, por definición, por otro lado  si calculamos con la fórmula: $u_0 = 3 \cdot 2^0 - 2 \cdot 3^0 = 3- 2 = 1$ y listo.
+        \vskip .2cm\pause
+        Por un lado $u_1 =0$, por definición, por otro lado  si calculamos con la fórmula: $u_1 = 3 \cdot 2^1 - 2 \cdot 3^1 = 3 \cdot 2- 2 \cdot 3 =  6-6 = 0$ y listo.\pause
+        
+        \vskip .6cm
+        
+        \noindent ({\it Paso  inductivo}) \pause
+        \vskip .2cm
+        Debemos probar que si  vale
+        \begin{equation*}
+        u_h = 3\cdot 2^h - 2 \cdot 3^h \text{ \;para\; }  0 \le h \le k \text{\; con\; }  k \ge 1, \tag{HI}
+        \end{equation*}\pause
+        eso implica que
+        \begin{equation*}
+        u_{k+1} = 3\cdot 2^{k+1} - 2 \cdot 3^{k+1}. \tag{*}
+        \end{equation*}
+        
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+    Comenzamos por el lado izquierdo de (*):
+        \begin{align*}
+        u_{k+1} &=   5u_{k+1-1} - 6 u_{k+1-2}&&\text{ \;(def. $u_n$)\; } \\
+        &=   5u_{k} - 6 u_{k-1}&&\\
+        &=   5( 3\cdot 2^{k} - 2 \cdot 3^{k}) - 6 ( 3\cdot 2^{k-1} - 2 \cdot 3^{k-1})&&\text{ \;(por HI)\; }
+        \end{align*}\vskip .2cm
+        En  lo que se refiere al procedimiento de inducción hemos terminado,  ahora solo queda por probar que
+        \begin{equation}
+            5( 3\cdot 2^{k} - 2 \cdot 3^{k}) - 6 ( 3\cdot 2^{k-1} - 2 \cdot 3^{k-1}) =
+        3\cdot 2^{k+1} - 2 \cdot 3^{k+1} \tag{**}
+        \end{equation}
+        
+        \vskip .2cm
+        Desarrollemos el término de la izquierda
+        \pause
+        \begin{align*}
+        \qquad &=  5( 3\cdot 2^{k} - 2 \cdot 3^{k}) - 6 ( 3\cdot 2^{k-1} - 2 \cdot 3^{k-1})&& \\
+        &=   5\cdot  3\cdot 2^{k} - 5 \cdot 2 \cdot 3^{k} - 6 \cdot  3\cdot 2^{k-1} + 6 \cdot  2 \cdot 3^{k-1}&& \\
+        &=   5\cdot  3\cdot 2^{k} - 5 \cdot 2 \cdot 3^{k} - 3 \cdot  3\cdot 2^{k} + 2 \cdot  2 \cdot 3^{k}&& \\
+        &=   6\cdot 2^{k} - 6 \cdot 3^{k} && \\
+        \end{align*}
+        \pause
+        
+\end{frame}
+
+\begin{frame}
+    \frametitle{}
+Luego (**) se transforma  en 
+\begin{gather*}
+    6\cdot 2^{k} - 6 \cdot 3^{k} =
+    3\cdot 2^{k+1} - 2 \cdot 3^{k+1} \tag{***} \\
+\Updownarrow\\
+3\cdot 2 \cdot 2^{k} - 2 \cdot 3 \cdot 3^{k} =
+    3\cdot 2^{k+1} - 2 \cdot 3^{k+1} \\
+    \Updownarrow\\
+    3\cdot 2^{k+1} - 2 \cdot 3^{k+1}  = 3\cdot 2^{k+1} - 2 \cdot 3^{k+1}. 
+\end{gather*}
+
+Como esto último es verdadero,  es verdadero (***) y por lo tanto son verdaderos (**) y (*). 
+
+\qed
+
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{}
+
+Nos adelantamos un poco en los temas de la materia para ejemplificar el principio de inducción completa. \pause
+
+\begin{definicion} Sea $n \in \N$ diremos que es \textit{primo} si $n \ne 1$ y el  único natural menor que lo divide es  $1$.
+\end{definicion}
+    \vskip .4cm\pause
+\begin{ejercicio}
+    Probar que si $n \in \N$, $n >1$,  entonces $n$  es producto de primos. 
+\end{ejercicio}\pause
+
+\begin{proof}\pause
+    Lo haremos por inducción en $n \ge 2$. 
+\end{proof}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+    \noindent ({\it Caso base})\pause
+    \vskip .4cm
+    El caso base es $n=2$,  y es claro que $2$ es primo (y por lo tanto producto de primos  en un sentido generalizado).  
+    \vskip .6cm\pause
+    \noindent ({\it Paso inductivo})\pause
+    \vskip .4cm
+    Probaremos que dado $k>1$, 
+
+    \begin{gather*}
+        \text{todo $h$ tal que $2 \le h \le k$, es producto de primos (HI)} \\[.2cm]
+        \Downarrow \\[.2cm]
+        \text{$k+1$  es producto de primos. }
+    \end{gather*}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+Si $k+1$ es primo, listo,  es producto de primos.\pause
+\vskip .4cm
+Si $k+1$ no es primo,  significa que $k+1= d \cdot e$ donde $d, e < k+1$. \pause
+\vskip .4cm
+
+Por (HI), $d$ y $e$ son productos de primos,  es decir
+\begin{align*}
+    d &= p_1\cdot p_2 \cdots p_r \\ 
+    e &= q_1\cdot q_2 \cdots q_s \\ 
+\end{align*}\vskip -.6cm
+donde $p_i, q_i$ son primos.\pause Luego
+\begin{equation*}
+    k +1 = d \cdot e = p_1\cdot p_2 \cdots p_r \cdot q_1\cdot q_2 \cdots q_s. 
+\end{equation*}
+\vskip .4cm
+\pause
+Por lo tanto $k+1$  es producto de primos.
+
+\qed
+    
+
+\end{frame}
+
+
+
+\end{document}
+

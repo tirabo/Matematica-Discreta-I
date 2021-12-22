@@ -1,0 +1,400 @@
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
+\usetheme{CambridgeUS}
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+%\usepackage{makeidx}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usepackage[customcolors]{hf-tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\tikzset{
+	every picture/.append style={
+		execute at begin picture={\deactivatequoting},
+		execute at end picture={\activatequoting}
+	}
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+\usepackage{mathtools}
+\usepackage{stackrel}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+\usepackage{polynom}
+\polyset{%
+	style=B,
+	delims={(}{)},
+	div=:
+}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate]{label={(\arabic*)}}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+\setbeamertemplate{itemize item}{$\circ$}
+\setbeamertemplate{enumerate items}[default]
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand\sgn{\operatorname{sgn}}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\figurename }{Figura}
+
+\include{definiciones}
+
+\newcommand{\nc}{\newcommand}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\nc{\FF}{{\mathbb F}} \nc{\NN}{{\mathbb N}} \nc{\QQ}{{\mathbb Q}}
+\nc{\PP}{{\mathbb P}} \nc{\DD}{{\mathbb D}} \nc{\Sn}{{\mathbb S}}
+\nc{\uno}{\mathbb{1}} \nc{\BB}{{\mathbb B}} \nc{\An}{{\mathbb A}}
+
+\nc{\ba}{\mathbf{a}} \nc{\bb}{\mathbf{b}} \nc{\bt}{\mathbf{t}}
+\nc{\bB}{\mathbf{B}}
+
+\nc{\cP}{\mathcal{P}} \nc{\cU}{\mathcal{U}} \nc{\cX}{\mathcal{X}}
+\nc{\cE}{\mathcal{E}} \nc{\cS}{\mathcal{S}} \nc{\cA}{\mathcal{A}}
+\nc{\cC}{\mathcal{C}} \nc{\cO}{\mathcal{O}} \nc{\cQ}{\mathcal{Q}}
+\nc{\cB}{\mathcal{B}} \nc{\cJ}{\mathcal{J}} \nc{\cI}{\mathcal{I}}
+\nc{\cM}{\mathcal{M}} \nc{\cK}{\mathcal{K}}
+
+\nc{\fD}{\mathfrak{D}} \nc{\fI}{\mathfrak{I}} \nc{\fJ}{\mathfrak{J}}
+\nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+
+\title[Clase 1 - Enteros]{Matemática Discreta I \\ Clase 1 - Los números enteros}
+%\author[A. Tiraboschi]{Alejandro Tiraboschi}
+\institute[]{\normalsize FAMAF / UNC
+	\\[\baselineskip] ${}^{}$
+	\\[\baselineskip]
+}
+\date[16/03/2020]{16 de marzo  de 2021}
+
+
+
+\begin{document}
+%\title{El centro geográfico de Argentina}   
+%\author{} 
+%\date{Villa Huidobro \\ 4/12/2018} 
+
+
+
+\frame{\titlepage} 
+
+%\frame{\frametitle{Índice}\tableofcontents} 
+
+
+\begin{frame}\frametitle{Axiomas de los números enteros} 
+
+    Todos conocemos los \textit{enteros}. \pause
+
+    \vskip .3cm
+    
+    Primero, los  ``números naturales'' $$1,2,3,4,5,\ldots$$ \pause
+
+    \vskip .3cm
+    
+    Más adelante introducimos el $0$ (cero).\pause
+    
+    \vskip .3cm
+    
+    Luego,  los enteros negativos $$ -1,-2,-3,-4,-5,\ldots $$ \pause
+    
+    \begin{itemize}
+        \item En este curso no nos preocupamos demasiado por el significado lógico y filosófico de estos objetos, pero necesitamos saber las propiedades que se supone que tienen. 
+    
+    \end{itemize}
+    
+    
+\end{frame}
+
+
+
+\begin{frame}\frametitle{ }  
+	
+    \begin{itemize}
+        \item La idea es: si todos parten de las mismas suposiciones entonces todos llegarán a los mismos resultados. \pause
+        \vskip .4cm 
+        \item Estos supuestos son los llamados \textit{axiomas.}\pause
+        \vskip .4cm 
+        \item  Aceptamos sin reparo que existe un conjunto de objetos llamados \textit{enteros}.\pause
+        \vskip .4cm 
+        \item  El conjunto de enteros se denotará por el símbolo especial ${\mathbb Z}$.\pause
+        \vskip .4cm 
+        \item Las propiedades de ${\mathbb Z}$ serán dadas por una lista de axiomas.\pause
+        \vskip .4cm 
+        \item  Un  resultado acerca de $\Z$ es válido  si se deduce lógicamente de los axiomas. 
+    \end{itemize}
+    
+
+
+    
+
+\end{frame}
+
+
+
+\begin{frame}\frametitle{ }  
+	
+
+     Empezaremos listando aquellos axiomas que tratan la suma y la multiplicación.\pause
+     \vskip .6cm
+    \begin{notacion}
+        Sean $a, b \in \Z$ (números enteros)\pause
+        \begin{itemize}
+            \item $a + b$  denota la suma.\pause
+            \item  $a \cdot b$ ( o $ab$ o también $a \times b$) el producto de enteros.\pause
+        \end{itemize}
+
+    \end{notacion}
+
+    \vskip .6cm
+    
+     El hecho de que $a \cdot b$ y $a+b$ son enteros, es nuestro primer axioma.     
+	
+\end{frame}
+
+
+
+\begin{frame}\frametitle{ }  
+
+    En la siguiente lista de axiomas $a$, $b$, $c$ denotan enteros arbitrarios, y $0$ y $1$ denotan enteros especiales que cumplen las propiedades especificadas más abajo.\pause
+\vskip .4cm
+    \begin{enumerate}[label=\textbf{I\arabic*)}, ref=\textbf{I\arabic*}]\pause
+    \item \label{axioma-i1} $a+b$ y $a\cdot b$ pertenecen a ${\mathbb Z}$.\pause
+    \item \label{axioma-i2} {\em Conmutatividad.}\, $a+b = b+a$;\qquad $ab=ba$. \pause
+    \item \label{axioma-i3} {\em Asociatividad.}\, $(a+b)+c = a+(b+c)$;\qquad $(a\cdot b)\cdot c = a\cdot (b\cdot c)$. \pause
+    \item \label{axioma-i4} {\em Existencia de elemento neutro.}\, Existen números $0$, $1 \in \mathbb Z$ con $0\not=1$ tal que $a+0=a$;\qquad $a\cdot 1=a$. \pause
+    \end{enumerate}
+
+    Los axiomas anteriores involucran a la suma y el producto por separado. 
+
+
+    
+\end{frame}
+
+
+\begin{frame}
+    El axioma siguiente  relaciona el suma y el producto. \pause
+    \vskip .4cm
+	\begin{enumerate}
+        \item[\textbf{I5)}] \label{axioma-i5} {\em Distributividad.}\, $a\cdot (b+c)=a\cdot b+a\cdot c$. 
+        \end{enumerate}
+        \vskip .8cm\pause
+        También tenemos propiedades de cancelación. 
+        \vskip .4cm
+    	\begin{enumerate}
+            \item[\textbf{I6)}] \label{axioma-i6} {\em Existencia del inverso aditivo, también llamado opuesto.}\, Por cada $a$ en ${\mathbb Z}$ existe un único entero $-a$ en ${\mathbb Z}$ tal que $a+(-a)=0$. \pause
+            \item[\textbf{I7)}] \label{axioma-i7} {\em Cancelación.}\, Si $a$ es distinto de $0$ y $a\cdot b=a\cdot c$, entonces $b=c$. 
+        \end{enumerate}
+	 
+	
+\end{frame}
+
+\begin{frame}
+
+    \begin{itemize}
+        \item Debido a la ley de asociatividad para la suma axioma (\textbf{I3}) $(a+b)+c$ es igual a $a+(b+c)$ y por lo tanto podemos eliminar los paréntesis sin ambigüedad. Es decir, denotamos
+        $$
+        a+b+c := (a+b)+c = a+(b+c).
+        $$\pause
+        \vskip .2cm
+        \item De forma análoga, usaremos la notación
+        $$
+        abc = (ab)c = a(bc).
+        $$\pause
+        \vskip .2cm
+        \item Debido a la ley de conmutatividad axioma (\textbf{I2}), es claro que  del axioma (\textbf{I4}) se deduce que  $0+a=a+0=a$ y $1\cdot a = a\cdot 1=a$.
+        \vskip .2cm\pause
+        \item Análogamente,  por  (\textbf{I2}) e  (\textbf{I6}) obtenemos que  $-a+a =    a+(-a)=0$.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+    
+    Una propiedad que debemos mencionar es la siguiente: 
+    
+    \begin{center}
+        \textit{Si $a,b, c \in \mathbb Z$  y $a=b$, entonces $a+c = b+c$ y $ac = bc$.}    
+    \end{center}
+    \vskip .2cm    \vskip .2cm
+    \pause
+    
+    Esto se debe a que:
+    \vskip .2cm
+    \begin{itemize}
+        \item la suma y el producto son operaciones que devuelven enteros.\pause
+         \vskip .2cm
+        \item Si $a=b$, entonces el  par $a,c$ es igual al par $b,c$ y por lo tanto devuelven la misma suma y el mismo producto.\pause
+    \end{itemize}
+    \vskip .6cm\pause
+    Esta propiedad \textit{no es un axioma,} sino  una mera aplicación de la lógica formal. 
+	
+\end{frame}
+
+
+
+\begin{frame}\begin{ejemplo}\label{Ej.opuesto_opuesto} Demostremos que, para todo $n$ entero, el opuesto de $-n$ es $n$, es decir que 
+    $$-(-n) = n.$$ 
+    \end{ejemplo}\pause
+    \begin{proof}\pause El axioma (\textbf{I6}) nos dice que $-(-n)$ es el único número que sumado a $-n$, da cero.  Por lo tanto, para demostrar que $-(-n) = n$ basta ver que $(-n)+n=0$. \pause Esto se cumple puesto que 
+    \begin{alignat*}2
+    (-n)+n&=n+(-n) &\qquad &\text{axioma (\textbf{I2})} \\
+    &=0&\qquad &\text{axioma (\textbf{I6})}
+    \end{alignat*}\pause
+    Por lo tanto  $(-n)+n=0$. \qed
+    \end{proof}
+	
+\end{frame}
+
+
+\begin{frame} 
+    
+    A continuación definimos la resta o sustracción. \pause
+
+    \begin{definicion} Si $a,b\in\mathbb{Z}$ definimos $a-b$ como la suma de $a$ más el opuesto de $b$, es decir que  $a-b=a+(-b)$ por definición.  
+    \end{definicion}
+    
+    
+    
+	
+\end{frame}
+
+
+\begin{frame}
+    
+    Ahora demostremos una propiedad básica de la resta.\pause
+    
+    \begin{ejemplo*} Sean  $m$ y $n$ enteros, entonces
+    $$m-(-n) = m+n.$$ 
+    \end{ejemplo*}\pause
+    \begin{proof}\pause Por la definición de sustracción, $m-(-n)$ es la suma $m+(-(-n))$, es decir 
+    $$m-(-n)=m+(-(-n)).$$ 
+    Por el ejemplo de la p. \ref{Ej.opuesto_opuesto} sabemos que $-(-n)=n$ y por lo tanto $m-(-n)=m+(-(-n))=m+n$.\qed
+    \end{proof}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+    
+    \begin{ejemplo*} Supongamos que existen dos enteros $0$ y $0'$ ambos cumpliendo el  axioma (\textbf{I4}), esto es
+        $$
+        a+0= a, \qquad a+0'=a
+        $$
+        para todo $a$ de $\mathbb Z$.  Entonces $0= 0'$. 
+        \end{ejemplo*}\pause
+        \begin{proof}\pause
+            \vskip -.6cm
+        \begin{alignat*}2
+        0 &= 0 + 0'&\qquad &\text{axioma (\textbf{I4}) aplicado a $0$ y con $0'$ como neutro} \\
+        &=0'+0&\qquad &\text{axioma (\textbf{I2})}\\
+        &= 0' &\qquad &\text{axioma (\textbf{I4}) aplicado a $0'$ y con $0$ como neutro}.
+        \end{alignat*} \qed
+        \end{proof}
+        \pause
+        \vskip .1cm
+
+    \begin{observacion}
+        Vale el resultado análogo  para el producto: el  elemento neutro del producto es único. 
+    \end{observacion}
+	
+\end{frame}
+
+
+\begin{frame}
+    
+    \begin{ejemplo*}\label{a0=0} Sea $a \in \Z$,  entonces 
+        $$
+        a \cdot 0 = 0
+        $$
+    \end{ejemplo*}\pause
+    \begin{proof}\pause
+        \vskip -.8cm
+    \begin{alignat*}2
+    a \cdot 0  &= a \cdot (0 + 0)  &\qquad &\text{axioma (\textbf{I4})} \\
+    a \cdot 0  &= a \cdot 0 + a \cdot 0  &\qquad &\text{axioma (\textbf{I5})} \\
+    a \cdot 0 -  a \cdot 0&= a \cdot 0 + a \cdot 0 - a \cdot 0 &\qquad &\text{lógica} \\
+     0  &= a \cdot 0 +  0  &\qquad &\text{2 veces axioma (\textbf{I6})} \\
+      0  &= a \cdot 0   &\qquad &\text{axioma (\textbf{I4}).}
+    \end{alignat*}
+    \qed
+    \end{proof}
+\end{frame}
+
+ 
+
+
+\begin{frame}
+    \begin{ejemplo*} (Regla de los signos) Veamos que  si $a,b \in \mathbb Z$ entonces
+        $$
+        (1)\quad (-a)(-b) = ab ,\qquad (2)\quad a(-b) = (-a)b = -(ab).
+        $$
+        \end{ejemplo*}\pause
+        \begin{proof}\pause
+        (2)  Probaremos $a(-b)= -(ab)$.  
+        \vskip .2cm
+        Para ello, veremos que $a(-b)$ es el inverso aditivo de $ab$. 
+        \vskip .2cm
+        Por unicidad del inverso aditivo (axioma \textbf{I6}), de deduce que $a(-b) = -(ab)$.
+        
+        \end{proof}
+    \end{frame}
+
+    \begin{frame}
+        
+        \begin{alignat*}2
+        ab + a(-b) &=a(b-b) &\qquad &\text{axioma (\textbf{I5})} \\
+        &=a\cdot 0 &\qquad &\text{axioma (\textbf{I6})}\\
+        &= 0 &\qquad &\text{ejercicio p. \ref{a0=0}}.
+        \end{alignat*}
+        
+        Es complétamente análogo probar $(-a)b = -(ab)$.
+
+        \vskip .4cm
+
+        (1) Ejercicio. 
+
+        
+        \qed 
+    \vskip 3cm
+        
+    
+    \end{frame}
+
+\end{document}
+

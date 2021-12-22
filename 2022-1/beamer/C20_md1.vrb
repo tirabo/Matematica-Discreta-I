@@ -1,0 +1,30 @@
+
+        Caminata: p,q,t,s,q,r,u
+
+        \begin{figure}[ht]
+            \begin{center}
+                \begin{tikzpicture}[scale=1]
+                    %\SetVertexSimple[Shape=circle,FillColor=white]
+                    \def\rvar{1.2}
+                    \Vertex[x=0.00, y=-2.00]{u}
+                    \Vertex[x=\rvar*1.90, y=-0.62]{t}
+                    \Vertex[x=\rvar*1.18, y=1.62]{q}
+                    \Vertex[x=-1.18*\rvar, y=1.62]{p}
+                    \Vertex[x=-1.90*\rvar, y=-0.62]{r}
+                    \Vertex[x=0, y=0]{s}
+                    \Edges(u,t,q,p)
+                    \Edges(r,u)
+                    \Edges(s,t)
+                    \Edges(r,s,q,r)
+                    \Edges(p,t,s)
+                    \tikzset{EdgeStyle/.style = {->,color=blue}}
+                    %\tikzset{EdgeStyle/.append style = {bend left,->,color=blue}}
+                    \Edge[label=1](p)(q)
+                    \Edge[label=2](q)(t)
+                    \Edge[label=3](t)(s)
+                    \Edge[label=4](s)(q)
+                    \Edge[label=5](q)(r)
+                    \Edge[label=6](r)(u)
+                \end{tikzpicture}
+            \end{center}
+        \end{figure}
