@@ -1,7 +1,9 @@
-%\documentclass{beamer} 
-\documentclass[handout]{beamer} % sin pausas
+%\documentclass[handout]{beamer} % sin pausas
+\documentclass{beamer} 
+\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+
 \usetheme{CambridgeUS}
-%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+
 
 \usepackage{etex}
 \usepackage{t1enc}
@@ -261,7 +263,7 @@
 		$$
 		\binom{n}{m} = \frac{n!}{(n - m)! \; m!}
 		$$
-		el  {\em número combinatorio} asociado al par $n$, $m$ con $m \le n$.
+		el  {\em número combinatorio} asociado al par $n$, $m$  o {\em número combinatorio $n$, $m$}.
 		
 		\vskip .4cm \pause
 		Por razones que se verán más adelante se denomina también el {\em coeficiente binomial} asociado al par $n$, $m$ con $m \le n$.
@@ -312,6 +314,7 @@
 		\begin{align*}
             \binom{6}{4}\cdot \binom{4}{2} &= \frac{6!}{(6-4)!4!}\cdot\frac{4!}{(4-2)!2!}= \frac{6!}{2!4!}\cdot\frac{4!}{2!2!} = \frac{6\cdot 5}{2}\cdot\frac{4\cdot 3}{2} \\[0.3cm] & = 15 \cdot 6= 90.
         \end{align*}
+        \qed
 		
 	
 		\vskip .3cm
@@ -381,7 +384,7 @@
 	
 	\begin{frame}
 		
-		Veamos unos pocos ejemplos de la fórmula $\binom{n}{m-1} + \binom{n}{m}   = \binom{n+1}{m}$ o  equivalentemente (dando vuelta la igualdad).
+		Veamos unos pocos ejemplos de la fórmula $\displaystyle\binom{n}{m-1} + \binom{n}{m}   = \binom{n+1}{m}$ o  equivalentemente (dando vuelta la igualdad).
 		$$
 		\binom{n+1}{m} = \binom{n}{m-1} + \binom{n}{m} .
 		$$
