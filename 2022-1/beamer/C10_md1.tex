@@ -1,6 +1,6 @@
-%\documentclass{beamer} 
-\documentclass[handout]{beamer} % sin pausas
-%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+%\documentclass[handout]{beamer} % sin pausas
+\documentclass{beamer} 
+\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 \usetheme{CambridgeUS}
 
@@ -167,7 +167,7 @@ conjunto de los ``restos''
 $$ R=\{x \in \mathbb N_0 | a = by + x \ \text{ para algún }\ y \in \mathbb Z\}.
 $$
 \pause
-Primero se demuestra que $R$ no es vacío. 
+Primero se demuestra que $R$ no es vacío \pause  (si $a \ge 0$, $a \in R$ tomando  $y=0$).  
 \pause
 \vskip .4cm 
 Entonces, por el axioma del buen orden se encuentra un  mínimo $r \in R$. Es decir existe $q \in \mathbb{Z}$ tal que 
@@ -435,7 +435,20 @@ Convertir $(1304)_6$  a base 5.
 \vskip .2cm\pause
 {\color{blue}Solución.}  \pause
 \vskip .2cm 
-Calculamos antes que $(1304)_6 = 328$. Ahora debemos ver 328  en base 5.
+Primero calculemos $(1304)_6$  en base $10$ (el sistema que sabemos manejar).
+\pause
+\begin{align*}
+    (1304)_6 &= 1 \cdot 6^3 + 3 \cdot 6^2 + 0 \cdot 6 + 4\\
+    &= 1 \cdot 216 + 3 \cdot 36 + 0 \cdot 6 + 4\\ 
+    &= 216 + 108 + 0 + 4\\ 
+    &= 328
+    \end{align*}
+\end{frame}
+
+
+\begin{frame}
+
+Ahora debemos ver como se escribe $328$  en base $5$.
 \begin{align*}
 328 &= 5 \cdot 65   + 3\\ 
 65 &= 5 \cdot 13   + 0\\ 
@@ -443,7 +456,10 @@ Calculamos antes que $(1304)_6 = 328$. Ahora debemos ver 328  en base 5.
 2 &= 5 \cdot 0   + 2
 \end{align*}
 
-Luego  $(1304)_6 = (2303)_5$. \qed
+Luego  $328 = (2303)_5$ y como $(1304)_6 = 328$, tenemos  
+$$(1304)_6 = (2303)_5.$$ \qed
+
+\vskip 3cm
 \end{frame}
 
 
