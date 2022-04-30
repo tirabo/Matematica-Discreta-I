@@ -1,5 +1,5 @@
-%\documentclass{beamer} 
 \documentclass[handout]{beamer} % sin pausas
+%\documentclass{beamer} 
 %\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 \usetheme{CambridgeUS}
@@ -13,7 +13,7 @@
 \usepackage{multicol}
 \usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
 \usepackage{amsthm}
-\usepackage{calc}         % From LaTeX distribution
+\usepackage{calc}        % From LaTeX distribution
 \usepackage{graphicx}     % From LaTeX distribution
 \usepackage{ifthen}
 %\usepackage{makeidx}
@@ -24,10 +24,10 @@
 \usetikzlibrary{arrows}
 \usetikzlibrary{matrix}
 \tikzset{
-	every picture/.append style={
-		execute at begin picture={\deactivatequoting},
-		execute at end picture={\activatequoting}
-	}
+    every picture/.append style={
+        execute at begin picture={\deactivatequoting},
+        execute at end picture={\activatequoting}
+    }
 }
 \usetikzlibrary{decorations.pathreplacing,angles,quotes}
 \usetikzlibrary{shapes.geometric}
@@ -38,9 +38,9 @@
 \usepackage{tkz-graph}
 \usepackage{polynom}
 \polyset{%
-	style=B,
-	delims={(}{)},
-	div=:
+    style=B,
+    delims={(}{)},
+    div=:
 }
 \renewcommand\labelitemi{$\circ$}
 \setlist[enumerate]{label={(\arabic*)}}
@@ -98,10 +98,10 @@
 \title[Clase 11 - Divisibilidad]{Matemática Discreta I \\ Clase 11 - Divisibilidad}
 %\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
 \institute[]{\normalsize FAMAF / UNC
-	\\[\baselineskip] ${}^{}$
-	\\[\baselineskip]
+    \\[\baselineskip] ${}^{}$
+    \\[\baselineskip]
 }
-\date[26/04/2022]{26 de abril  de 2022}
+\date[28/04/2022]{28 de abril  de 2022}
 
 
 
@@ -112,13 +112,13 @@
 
 
 \begin{frame}
-	
+    
 {\color{blue}Definición}
 \vskip .2cm Dados dos enteros $x$ e $y$ decimos que $y$ {\em divide a } $x$, y escribimos $y|x$, si
-	$$
-	x=yq\quad\text{ para algún }\quad q\in \mathbb Z.
-	$$
-	También decimos que $y$ es un {\em factor} de $x$, que $y$ es un {\em divisor} de $x$, que $x$ es {\em divisible} por $y$, y que $x$ es {\em múltiplo}\index{múltiplo} de $y$.
+    $$
+    x=yq\quad\text{ para algún }\quad q\in \mathbb Z.
+    $$
+    También decimos que $y$ es un {\em factor} de $x$, que $y$ es un {\em divisor} de $x$, que $x$ es {\em divisible} por $y$, y que $x$ es {\em múltiplo}\index{múltiplo} de $y$.
 
 \vskip .8cm\pause
 
@@ -138,10 +138,10 @@ $$
 
 
 \begin{frame}
-	
-	{\color{blue}Notación. }
-	\vskip .3cm
-	Si $y$ no  divide a $x$ escribimos $y  \not| x$.
+    
+    {\color{blue}Notación. }
+    \vskip .3cm
+    Si $y$ no  divide a $x$ escribimos $y  \not| x$.
 \vskip .8cm\pause
 {\color{blue}Ejemplos. }
 \vskip .3cm
@@ -152,8 +152,8 @@ $$
 \vskip .3cm\pause
 (3) $6 | 18$, pues $18 = 6 \cdot 3$. Luego también vale que $18 = (-6) \cdot (-3)$ y que $ -18 = (-6) \cdot 3 $ y $ -18 = 6 \cdot (-3)$.  De esto se sigue que
 \begin{align*}
-	6 &| 18,& -6 &| 18,& -6 &| -18,& 6 &| -18,\\
-	3 &| 18,& -3 &| 18,& 3 &| -18,& -3 &| -18.
+    6 &| 18,& -6 &| 18,& -6 &| -18,& 6 &| -18,\\
+    3 &| 18,& -3 &| 18,& 3 &| -18,& -3 &| -18.
 \end{align*}
 
 
@@ -162,7 +162,7 @@ $$
 
 
 \begin{frame}\frametitle{Propiedades básicas 1}
-	
+    
 Veamos ahora alguna propiedades básicas de la relación ``divide a''. \pause
 
 \vskip .3cm
@@ -171,17 +171,17 @@ Sean $a,b,c$ enteros, entonces\pause
 
 \vskip .3cm
 
-{\color{blue}1. }		 $1|a$\quad $a|\pm a$;
-		 
-		 \vskip .3cm \pause
+{\color{blue}1. }        $1|a$\quad $a|\pm a$;
+        
+        \vskip .3cm \pause
 {\color{blue}Demostración. }\pause
-\vskip .3cm		 
-		 \;\textbullet\; $a = 1 \cdot a$.
-\vskip .3cm	
-		\;\textbullet\; $ a = 	a \cdot 1$.	 
-\vskip .3cm	
-		\;\textbullet\; $ - a = 	a \cdot (-1)$.	
-\vskip .3cm			 
+\vskip .3cm        
+        \;\textbullet\; $a = 1 \cdot a$.
+\vskip .3cm    
+        \;\textbullet\; $ a =     a \cdot 1$.     
+\vskip .3cm    
+        \;\textbullet\; $ - a =     a \cdot (-1)$.    
+\vskip .3cm            
 
 
 
@@ -191,70 +191,70 @@ Sean $a,b,c$ enteros, entonces\pause
 
 
 \begin{frame}\frametitle{Propiedades básicas 2}
-	
-		 
-	{\color{blue}2. }			  $a|0$ y $0$ sólo divide a $0$;
-	\vskip .3cm  \pause
-	{\color{blue}Demostración. }\pause
-	\vskip .3cm
-	\;\textbullet\; $0 = a\cdot 0$.
-	\vskip .3cm	
-	\;\textbullet\; Si $0|a$ entonces existe $q$ tal que $a = 0 \cdot q =0$. 
-	\vskip .8cm	
+    
+        
+    {\color{blue}2. }             $a|0$ y $0$ sólo divide a $0$;
+    \vskip .3cm  \pause
+    {\color{blue}Demostración. }\pause
+    \vskip .3cm
+    \;\textbullet\; $0 = a\cdot 0$.
+    \vskip .3cm    
+    \;\textbullet\; Si $0|a$ entonces existe $q$ tal que $a = 0 \cdot q =0$. 
+    \vskip .8cm    
 
-	{\color{blue}3. }			 si $a|b$, entonces $a|bc$ para cualquier $c$;\pause
-	\vskip .3cm
-	{\color{blue}Demostración. } \pause
-	\vskip .3cm
-	\;\textbullet\; $a | b \;\Rightarrow\; b = a \cdot q \;\Rightarrow\;  bc = a \cdot qc \;\Rightarrow\; a|bc$. 
-	
+    {\color{blue}3. }            si $a|b$, entonces $a|bc$ para cualquier $c$;\pause
+    \vskip .3cm
+    {\color{blue}Demostración. } \pause
+    \vskip .3cm
+    \;\textbullet\; $a | b \;\Rightarrow\; b = a \cdot q \;\Rightarrow\;  bc = a \cdot qc \;\Rightarrow\; a|bc$. 
+    
 
-	
-	
+    
+    
 \end{frame}
 
 
 
 
 \begin{frame}\frametitle{Propiedades básicas 2}
-		{\color{blue}4. }			si $a|b$ y $a|c$, entonces $a|(b+c)$;\pause
-		\vskip .3cm
-		{\color{blue}Demostración. } \pause
-	\vskip .3cm
-	\;\textbullet\; $a|b$ y $a|c$ $\;\Rightarrow\;$ $b = a \cdot q$ y $c = a \cdot q'$ $\;\Rightarrow\;$ 
-	\vskip .2cm
-	\quad\; $b+c =  a \cdot q +   a \cdot q' =  a \cdot(q + q')$  $\;\Rightarrow\;$  $a|(b+c)$.
-	
-	
-	\vskip .8cm	
-	{\color{blue}5. }				si $a|b$ y $a|c$, entonces $a|(rb+sc)$ para cualesquiera $r,s \in \mathbb Z$.
-		\vskip .3cm\pause
-		{\color{blue}Demostración. } \pause
-		\vskip .3cm
-	\;\textbullet\; $a|b$ y $a|c$ $\;\Rightarrow\;$ $b = a \cdot q$ y $c = a \cdot q'$ $\;\Rightarrow\;$ 
-	\vskip .2cm
-	\quad\; $rb+sc =  a \cdot rq +   a \cdot sq' =  a \cdot(rq + sq')$  $\;\Rightarrow\;$  $a|(rb+sc)$.
+        {\color{blue}4. }           si $a|b$ y $a|c$, entonces $a|(b+c)$;\pause
+        \vskip .3cm
+        {\color{blue}Demostración. } \pause
+    \vskip .3cm
+    \;\textbullet\; $a|b$ y $a|c$ $\;\Rightarrow\;$ $b = a \cdot q$ y $c = a \cdot q'$ $\;\Rightarrow\;$ 
+    \vskip .2cm
+    \quad\; $b+c =  a \cdot q +   a \cdot q' =  a \cdot(q + q')$  $\;\Rightarrow\;$  $a|(b+c)$.
+    
+    
+    \vskip .8cm    
+    {\color{blue}5. }               si $a|b$ y $a|c$, entonces $a|(rb+sc)$ para cualesquiera $r,s \in \mathbb Z$.
+        \vskip .3cm\pause
+        {\color{blue}Demostración. } \pause
+        \vskip .3cm
+    \;\textbullet\; $a|b$ y $a|c$ $\;\Rightarrow\;$ $b = a \cdot q$ y $c = a \cdot q'$ $\;\Rightarrow\;$ 
+    \vskip .2cm
+    \quad\; $rb+sc =  a \cdot rq +   a \cdot sq' =  a \cdot(rq + sq')$  $\;\Rightarrow\;$  $a|(rb+sc)$.
 \end{frame}
 
 
 \begin{frame}\frametitle{Propiedades básicas 3}
-	{\color{blue}6. }			si $a|b + c$ y $a|c$, entonces $a|b$;\pause
-	\vskip .3cm 
-	{\color{blue}Demostración. } \pause
-	\vskip .3cm
-	
-	\;\textbullet\; $a|b+c$ y $a|c$ $\;\Rightarrow\;$ $b + c = a \cdot q$ y $c = a \cdot q'$ $\;\Rightarrow\;$ 
-	\vskip .2cm
-	\quad\; $ b = (b+c) -c  =  a \cdot q -   a \cdot q' =  a \cdot(q -q')$  $\;\Rightarrow\;$  $a|b$.
-	
-	\vskip 0.4cm \pause
+    {\color{blue}6. }           si $a|b + c$ y $a|c$, entonces $a|b$;\pause
+    \vskip .3cm 
+    {\color{blue}Demostración. } \pause
+    \vskip .3cm
+    
+    \;\textbullet\; $a|b+c$ y $a|c$ $\;\Rightarrow\;$ $b + c = a \cdot q$ y $c = a \cdot q'$ $\;\Rightarrow\;$ 
+    \vskip .2cm
+    \quad\; $ b = (b+c) -c  =  a \cdot q -   a \cdot q' =  a \cdot(q -q')$  $\;\Rightarrow\;$  $a|b$.
+    
+    \vskip 0.4cm \pause
 
-    {\color{blue}7. }			si $a|b$, entonces $\pm a| \pm b$;\pause
-	\vskip .3cm 
-	{\color{blue}Demostración. } \pause
-	\vskip .3cm
-	
-	\;\textbullet\; $a|b$\;$\Rightarrow$\; $b = a \cdot q$\;$\Rightarrow$\;
+    {\color{blue}7. }           si $a|b$, entonces $\pm a| \pm b$;\pause
+    \vskip .3cm 
+    {\color{blue}Demostración. } \pause
+    \vskip .3cm
+    
+    \;\textbullet\; $a|b$\;$\Rightarrow$\; $b = a \cdot q$\;$\Rightarrow$\;
     \vskip .2cm
     \qquad$\begin{matrix}
         -b = a \cdot (-q ) \;\Rightarrow\; a|-b, &\quad &b = -a \cdot (-q ) \;\Rightarrow\; -a|b\\-b = -a \cdot q  \;\Rightarrow\; -a|-b. & &
@@ -265,8 +265,8 @@ Sean $a,b,c$ enteros, entonces\pause
 \end{frame}
 
 \begin{frame}
-	
-	
+    
+    
 {\color{blue}Proposición }
 \vskip .3cm
 {\it Sean $a,b \in \mathbb{N}$. Entonces} 
@@ -288,14 +288,14 @@ A partir de la proposición no es difícil probar que si $a,b \in \mathbb{Z}$ y 
 
 
 \begin{frame}
-	
+    
 {\color{blue}Proposición }
 \vskip .3cm
 {\it Sean $a,b,c \in \mathbb{N}$, entonces 
 \begin{enumerate}
-	\item[(D1)] $a | a$ (reflexividad);
-	\item[(D2)]  si $a | b$ y $b | a$, entonces $a = b$ (antisimetría);
-	\item[(D3)]  si $a | b$ y $b | c$, entonces $a | c$ (transitividad).
+    \item[(D1)] $a | a$ (reflexividad);
+    \item[(D2)]  si $a | b$ y $b | a$, entonces $a = b$ (antisimetría);
+    \item[(D3)]  si $a | b$ y $b | c$, entonces $a | c$ (transitividad).
 \end{enumerate} }
 \vskip .3cm
 {\color{blue}Demostración. }
@@ -314,125 +314,133 @@ Por el axioma de cancelación (cancelando $b$) obtenemos que $1 = q'q \Rightarro
 
 
 \begin{frame}
-	
-	
-	(D3) $a|b \Rightarrow$ existe $q \in \mathbb N$ tal que $b = aq$.  \pause
-	\vskip .3cm
-	\quad\quad\,$b|c\Rightarrow$ existe $q' \in \mathbb N$ tal que $c = bq'$. 
-	\vskip .3cm
-	\pause
-	Luego $$c =bq' = aqq' =a(qq').$$
-	\pause
-	Luego $a|c$. \qed\pause
-	\vskip .6cm
-	{\color{blue}Observación. }
-	\vskip .3cm
-	Las propiedades (D1), (D2) y (D3) nos dicen que ``divide a'' es una \textit{relación de orden}.
-	\vskip .3cm
-	Habíamos visto que ``$\le$'' también era una relación de orden.
-	
-	\vskip 1cm
+    
+    
+    (D3) $a|b \Rightarrow$ existe $q \in \mathbb N$ tal que $b = aq$.  \pause
+    \vskip .3cm
+    \quad\quad\,$b|c\Rightarrow$ existe $q' \in \mathbb N$ tal que $c = bq'$. 
+    \vskip .3cm
+    \pause
+    Luego $$c =bq' = aqq' =a(qq').$$
+    \pause
+    Luego $a|c$. \qed\pause
+    \vskip .6cm
+    {\color{blue}Observación. }
+    \vskip .3cm
+    Las propiedades (D1), (D2) y (D3) nos dicen que ``divide a'' es una \textit{relación de orden}.
+    \vskip .3cm
+    Habíamos visto que ``$\le$'' también era una relación de orden.
+    
+    \vskip 1cm
 \end{frame}
 
 
 \begin{frame}\frametitle{Ejercicios}
-	
-	{\color{blue}Ejercicio}
-		\vskip .3cm 
-		¿Es cierto que si $a | bc$, entonces $a | b$ ó $a | c$?
-		\vskip .3cm
-		\pause
-	{\color{blue}Solución. } No necesariamente (es decir la respuesta es NO).
-	\vskip .3cm
-		\;\textbullet\; Es cierto, por ejemplo que  $3 | 6 \cdot 2$ y que $3 | 6$.
-		\vskip .3cm
-		\;\textbullet\; Pero $6|4 \cdot 3$ y $6\not|4$, $6\not|3 $.
-		\vskip .8cm
-		
-		{\color{blue}Ejercicio}
-		\vskip .3cm 
-		Determinar todos los divisores de 12.
-		\vskip .3cm
-		\pause
-		{\color{blue}Solución. }
-		\vskip .3cm
-		\;\textbullet\; $\pm1$, $\pm2$, $\pm3$, $\pm4$, $\pm6$, $\pm12$, (12 divisores).
-	
+    
+    {\color{blue}Ejercicio}
+        \vskip .3cm 
+        ¿Es cierto que si $a | bc$, entonces $a | b$ ó $a | c$?
+        \vskip .3cm
+        \pause
+    {\color{blue}Solución. } No necesariamente (es decir la respuesta es NO).
+    \vskip .3cm
+        \;\textbullet\; Es cierto, por ejemplo que  $3 | 6 \cdot 2$ y que $3 | 6$.
+        \vskip .3cm
+        \;\textbullet\; Pero $6|4 \cdot 3$ y $6\not|4$, $6\not|3 $.
+        \vskip .8cm
+        
+        {\color{blue}Ejercicio}
+        \vskip .3cm 
+        Determinar todos los divisores de 12.
+        \vskip .3cm
+        \pause
+        {\color{blue}Solución. }
+        \vskip .3cm
+        \;\textbullet\; $\pm1$, $\pm2$, $\pm3$, $\pm4$, $\pm6$, $\pm12$, (12 divisores).
+    
 \end{frame}
 
 
 \begin{frame}\frametitle{Ejercicios}
-		{\color{blue}Ejercicio.}
-		\vskip .3cm 
-			Mostrar que $4^n -1$ es divisible por 3 para todo $n \in \mathbb{N}$.
-	\pause\vskip .3cm 
-	
-	{\color{blue}Solución. } 
-	\vskip .3cm 
-	Este ejercicio se puede hacer de dos formas.
-	\vskip .3cm 
-	\textbf{1° demostración.} Por inducción sobre $n$.
-	\vskip .3cm 
-	Caso base $n=1$. $4^n -1 = 4^1- 1 = 4-1 = 3$ que obviamente es divisible por 3.
-	\vskip .3cm 
-	Paso  inductivo.  Debemos probar que  $3 | 4^k -1$ para $k \ge 1$ (HI) entonces, se deduce que $3 | 4^{k+1} -1$.
-	\vskip .3cm
-	Ahora bien,
-	\begin{equation*}
-		4^{k+1} -1 = 4 \cdot 4^k - 1 = 3 \cdot 4^k + (4^k -1).
-	\end{equation*} 
-\end{frame}
-
-
-\begin{frame}			
-		Como $3| 3 \cdot 4^k$ y por (HI) $3|4^k -1$	, tenemos
-		\begin{equation*}
-			3| 3 \cdot 4^k+ 4^k -1 =4^{k+1} -1.
-		\end{equation*}
-	\vskip .3cm 
-	\textbf{2° demostración.} 
-	Observemos que $4 = 3 +1$, luego $4^n -1 = (3+1)^n -1$.
-	\begin{align*}
-		4^n -1 = (3+1)^n -1 &= \sum_{i=0}^{n} \binom{n}{i} 3^i 1^{n-i}- 1&&(\text{binomio de Newton}) \\
-		 &= \sum_{i=0}^{n} \binom{n}{i} 3^i- 1 &&\\
-		 &= 1 + \sum_{i=1}^{n} \binom{n}{i} 3^i - 1 &&\\
-	\end{align*}
-	
+        {\color{blue}Ejercicio.}
+        \vskip .3cm 
+           Mostrar que $4^n -1$ es divisible por 3 para todo $n \in \mathbb{N}$.
+    \pause\vskip .3cm 
+    
+    {\color{blue}Solución. } 
+    \vskip .3cm 
+    Este ejercicio se puede hacer de dos formas.
+    \vskip .3cm 
+    \textbf{1° demostración.} Por inducción sobre $n$.
+    \vskip .3cm 
+    Caso base $n=1$. $4^n -1 = 4^1- 1 = 4-1 = 3$ que obviamente es divisible por 3.
+    \vskip .3cm 
+    Paso  inductivo.  Debemos probar que  $3 | 4^k -1$ para $k \ge 1$ (HI) entonces, se deduce que $3 | 4^{k+1} -1$.
+    \vskip .3cm
+    Ahora bien,
+    \begin{equation*}
+        4^{k+1} -1 = 4 \cdot 4^k - 1 = 3 \cdot 4^k + (4^k -1).
+    \end{equation*} 
 \end{frame}
 
 
 \begin{frame}
-	\vskip -3cm
-	\begin{align*}
-	{\qquad\qquad\qquad\qquad\quad} &	{\qquad}&&	{\qquad} \\
-	&= 1 + \sum_{i=1}^{n} \binom{n}{i} 3^i - 1 &&\\
-	&= 1 + 3 (\sum_{i=1}^{n} \binom{n}{i} 3^{i-1}) - 1 &&(\text{$i < 0$ en la sumatoria})\\
-	&=  3 (\sum_{i=1}^{n} \binom{n}{i} 3^{i-1}) &&
-	\end{align*}
-	Luego $4^n -1 = 3 \cdot q$. 
-	\vskip .3cm 
-	Por lo tanto, $3|4^n -1$.
+    \textbf{Opción a)} Ahora bien,
+    \begin{equation*}
+        4^{k+1} -1 = 4 \cdot 4^k - 1 = 3 \cdot 4^k + (4^k -1).
+    \end{equation*} 
+        Como $3| 3 \cdot 4^k$ y por (HI) $3|4^k -1$    , tenemos
+        \begin{equation*}
+            3| 3 \cdot 4^k+ 4^k -1 =4^{k+1} -1.
+        \end{equation*}
+    \vskip .3cm 
+    \textbf{Opción b)} Ahora bien, como por (HI) $3 | 4^k -1$, existe $q$ tal que $4^k -1 = 3q$. Entonces,
+    \begin{equation*}
+        4^{k+1} -1 = 4 \cdot (4^k - 1) + 3 = 4 \cdot 3q + 3 = 3(4  q +1).
+    \end{equation*} 
+    Luego 
+    \begin{equation*}
+        3 | 3(4q +1) =4^{k+1} -1 .
+    \end{equation*}
+    
+    
+\end{frame}
+
+
+\begin{frame}
+    \textbf{2° demostración.} 
+    Observemos que $4 = 3 +1$, luego $4^n -1 = (3+1)^n -1$.
+    \begin{align*}
+        4^n -1 = (3+1)^n -1 &= \sum_{i=0}^{n} \binom{n}{i} 3^i 1^{n-i}- 1&&(\text{binomio de Newton}) \\
+        &= \sum_{i=0}^{n} \binom{n}{i} 3^i- 1 &&\\
+    &= 1 + \sum_{i=1}^{n} \binom{n}{i} 3^i - 1 &&\\
+    &= 1 + 3 (\sum_{i=1}^{n} \binom{n}{i} 3^{i-1}) - 1 &&(\text{$i > 0$ en la sumatoria})\\
+    &=  3 (\sum_{i=1}^{n} \binom{n}{i} 3^{i-1}) &&
+    \end{align*}
+    Luego $4^n -1 = 3 \cdot q$. 
+    \vskip .3cm 
+    Por lo tanto, $3|4^n -1$.
 
     \qed
 \end{frame}
 
 
 \begin{frame}\frametitle{Ejercicios}
-	
-	{\color{blue}Ejercicio}
-	\vskip .3cm 
+    
+    {\color{blue}Ejercicio}
+    \vskip .3cm 
 ¿Cuál es el menor natural que es divisible por 6 y por 15?
 
-	\vskip .3cm
-	\pause
-	{\color{blue}Solución. } Hagamos una lista de múltiplos de 6 y 15.
-	\vskip .3cm
-	\;\textbullet\; Múltiplos de 6: 6, 12, 18, 24, 30, 36, 42, 48, 54, 60, ...
-	\vskip .3cm
-	\;\textbullet\; Múltiplos de 15: 15, 30, 45, 60 , 75, ...
-	\vskip .3cm
-	\;\textbullet\; Luego, el menor natural que es divisible por 6 y por 15 es 30.
-	\vskip .8cm
+    \vskip .3cm
+    \pause
+    {\color{blue}Solución. } Hagamos una lista de múltiplos de 6 y 15.
+    \vskip .3cm
+    \;\textbullet\; Múltiplos de 6: 6, 12, 18, 24, 30, 36, 42, 48, 54, 60, ...
+    \vskip .3cm
+    \;\textbullet\; Múltiplos de 15: 15, 30, 45, 60 , 75, ...
+    \vskip .3cm
+    \;\textbullet\; Luego, el menor natural que es divisible por 6 y por 15 es 30.
+    \vskip .8cm
 \end{frame}
 
 
