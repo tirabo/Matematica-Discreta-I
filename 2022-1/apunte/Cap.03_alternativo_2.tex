@@ -910,7 +910,7 @@ Como vimos más arriba $2, 3, 5$ y $67$ son  números primos y por lo tanto hemo
 \end{ejemplo*}
 
 
-Veamos ahora alguna propiedades básicas de los números primos.
+Veamos ahora algunas propiedades básicas de los números primos.
 
 \begin{observacion} \label{pdivpp}
 Sea $a \in \mathbb Z$ y $p$ primo. Entonces 
@@ -1009,6 +1009,16 @@ n=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},
 \end{equation*}
 donde $p_1,p_2,\ldots ,p_r$ son primos distintos y $e_1,e_2,\ldots,e_r$ son enteros positivos. Por ejemplo $ 7000 = 2^3 \cdot 5^3 \cdot 7$.
 
+La unicidad de la factorización prima de cualquier entero mayor que 1 nos permite hacer la siguiente definición. 
+
+\begin{definicion}
+    Se $n$  entero mayor o igual a $2$ y 
+    \begin{equation*}
+        n=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},
+    \end{equation*}
+    donde $p_i$ primo para todo $i$ ($1\le i \le r$). Entonces, diremos que  $p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}$ es la \textit{factorización prima de $n$} y que $p_i$ es un \textit{factor primo de } $n$  ($1\le i \le r$).
+\end{definicion}
+
 La factorización prima nos dice que los números primos son los  ``ladrillos'' esenciales para  ``cons\-truir'' los números enteros usando multiplicaciones. Ahora bien, podría ocurrir que haya un número finitos de ellos y que podamos escribir cada número como producto de primos en forma muy sintética. Pero este no es el caso.
 
 \begin{proposicion}[Teorema de Euclides] Existen infinitos números primos. 
@@ -1066,6 +1076,11 @@ Entonces $m|n$ si y sólo si $e_i \le f_i$ para todo $i$.
 \noindent($\Leftarrow$) Como $e_i \le f_i$, tenemos que $p^{e_i}|p^{f_i}$, para $1 \le i \le r$.  Luego  $$p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}| p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.$$ Es decir $m|n$.
 \end{proof}
 
+\begin{corolario}
+    Sea $n \ge 2$ y $p$ un número primo,  entonces $p|n$ si y solo si $p$ es un factor primo de $n$.\qed
+\end{corolario}
+
+
 
 %\begin{ejercicio} Sean $m,n$ enteros con $m,n\ge 2$. Entonces  $m$ y  $n$ son coprimos si y sólo si no comparten ningún primo en la factorización. 
 %
@@ -1078,7 +1093,7 @@ Entonces $m|n$ si y sólo si $e_i \le f_i$ para todo $i$.
 %\end{ejercicio}
 
 
-Ahora veremos que es es posible calcular el $\mcd$ y el $\mcm$ de un par de números sabiendo sus descomposiciones primas.
+Ahora veremos que es posible calcular el $\mcd$ y el $\mcm$ de un par de números sabiendo sus descomposiciones primas.
 
 \begin{proposicion}
 Sean $m$ y $n$ enteros positivos cuyas factorizaciones primas son
@@ -1107,12 +1122,13 @@ $$
 
 
 \begin{ejemplo*}
-Encontremos el mcd y el mcm  de $825$ y $385$.
-
-Como $825 =  3\cdot 5^2\cdot 11$ y $385 = 5\cdot 7\cdot 11$, tenemos que
-$$
-\text{mcd}(825,385) = 5\cdot 11 = 55, \qquad \text{mcm}(825,385) = 3\cdot 5^2\cdot 7\cdot 11 = 5775.
-$$
+Encontremos el mcd y el mcm  de $825$ y $385$ utilizando las factorizaciones primas de ambos.
+\begin{proof}[Solución]
+    Como $825 =  3\cdot 5^2\cdot 11$ y $385 = 5\cdot 7\cdot 11$, tenemos que
+    $$
+    \text{mcd}(825,385) = 5\cdot 11 = 55, \qquad \text{mcm}(825,385) = 3\cdot 5^2\cdot 7\cdot 11 = 5775.
+    $$
+\end{proof}
 \end{ejemplo*}
 
 
