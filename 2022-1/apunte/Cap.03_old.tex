@@ -307,37 +307,64 @@ Por el axioma de cancelación (cancelando $y$) obtenemos que $1 = qq'$. Por lo d
 
 \begin{section}{El máximo común divisor y el mínimo común múltiplo}\label{seccion-maximo-comun-divisor-mcm}
 
-\begin{definicion}\label{mcd} Si $a$ y $b$ son enteros algunos de ellos no nulo, decimos que un entero no negativo $d$ es el \textit{máximo común divisor}\index{máximo común divisor}, o \textit{mcd}, de $a$ y $b$ si
+\begin{definicion}\label{mcd} Si $a$ y $b$ son enteros algunos de ellos no nulo, decimos que un entero no negativo $d$ es un \textit{máximo común divisor}\index{máximo común divisor}, o \textit{mcd}, de $a$ y $b$ si
 \begin{enumerate}[label=\textit{\alph*)}]
 \item\label{mcda} $ d|a$  y $d|b$;
-\item\label{mcdb}  si $ c|a $ y $c|b$ entonces $ c \le d$.
+\item\label{mcdb}  si $ c|a $ y $c|b$ entonces $ c|d$.
 \end{enumerate}
-Denotaremos al máximo común divisor  de $a$ y $b$ por $\mcd(a,b)$ o, en caso de no haber confusión, por $(a,b)$.
 \end{definicion}
- 
-
 La condición \ref{mcda} nos dice que $d$ es un común divisor de $a$ y $b$ y la condición \ref{mcdb} nos dice que cualquier divisor común de
-$a$ y $b$ es menor igual que $d$. Podemos resumir la definición en una frase, diciendo: \textit{el máximo común divisor de $a$ y $b$  es el mayor divisor común a ambos números.} 
+$a$ y $b$ es también divisor de $d$. Por ejemplo, $6$ es un divisor común de $60$ y $84$, pero no es el mayor divisor común, porque
+$12|60$ y $12|84$ pero $12{\nodivide }6$ (el símbolo significa ``no divide''.)
 
-\begin{ejemplo*} \label{ejem-1-mcd}
-    Los divisores positivos comunes de 60  y 84 son 1, 2, 3, 6 y 12, luego aunque 6  es un divisor común, no satisface \ref{mcdb} de la definición, pues $12|60$ y $12|84$ pero $12>6$. En este caso, 12  claramente es  el  máximo común divisor.
-\end{ejemplo*}
 
-\begin{ejemplo*} Hallar   $\mcd(174,72)$.
-    \begin{proof}[Solución] ${^{}}$
-        
-        Divisores de 174: 1, 2, 3, 6, 29, 58, 87, 174
-        
-        Divisores de 72: 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, 72 
-        
-        Luego, $6$ es divisor común de 174 y 72, y todos los demás divisores comunes ($1$, $2$ y $3$) son menosres que  $6$. Por lo tanto $\mcd(174,72) =6$.
-    \end{proof}
-\end{ejemplo*}
 
-En los  ejemplos anteriores usamos dos enteros pequeños y no tuvimos problemas en encontrar el  máximo común divisor. Pero ¿qué pasaría si consideráramos dos enteros muy grandes? 
+\begin{ejemplo} \label{ejem-1-mcd}
+    Los divisores positivos comunes de 60  y 84 son 1, 2, 3, 6 y 12, luego aunque 6  es un divisor común, no satisface \ref{mcdb} de la definición, pues $12|60$ y $12|84$ pero $12{\nodivide }6$. En este caso, 12  claramente es  el  máximo común divisor.
+\end{ejemplo}
 
-En  el desarrollo de esta sección veremos el \textit{algoritmo de Euclides}, un método muy eficiente para calcular el máximo común divisor de dos números. 
+En el ejemplo anterior usamos dos enteros pequeños y no tuvimos problemas en encontrar el  máximo común divisor. Pero ¿qué pasaría si consideráramos dos enteros muy grandes? Consideremos las siguientes preguntas.
+\begin{itemize}
+    \item Dados $a,b \in \Z$ arbitrarios, alguno de ellos no nulo ¿existe el máximo común divisor? Si existe, ¿hay una forma eficiente de calcularlo?
+    \item  ¿Cuántos máximos común divisores puede tener un  par de enteros?
+\end{itemize}
+En  el desarrollo de esta sección responderemos estas preguntas. 
 
+
+\begin{proposicion}
+    Sean $a$ y $b$ números enteros, algunos de ellos no nulo, entonces el mcd, si existe,  es único. 
+\end{proposicion}
+\begin{proof}
+    Sean $d$ y $d'$ dos enteros no negativos que satisfacen las propiedades de la definición del máximo común divisor, como $d'|a$, $d'|b$ y  $d$ satisface la propiedad {\ref{mcdb}} de la definición de mcd, se deduce que $d|d'$. Intercambiando  los papeles de $d$ y $d'$ se obtiene que $d'|d$. Luego, $d|d'$, $d'|d$ y $d,d'\ge 0$, entonces, por  proposición \ref{pm} \ref{prop-pm-b}, se obtiene que $d=d'$.
+\end{proof}
+
+\begin{definicion} Sean $a,b$ enteros, entonces dados $s,t \in \Z$ diremos que
+    $$
+    sa+tb
+    $$ 
+    es una  \textit{combinación lineal entera} de $a$ y $b$. 
+\end{definicion}
+
+\begin{observacion*} Sean $a,b \in \Z$, alguno de ellos no nulo, y $d$ un máximo común divisor de $a$ y $b$. Entonces, $d$ divide a cualquier combinación lineal entera de $a$ y $b$. Esto es una consecuencia directa de la observación \ref{prop-divide-a-propiedades} \ref{prop-divide-a-propiedades-item-4}.
+\end{observacion*}
+
+\begin{teorema}\label{th-existencia-mcd}
+    Sean $a,b \in \Z$, alguno de ellos no nulo. Sea $d$ el mínimo entre todas las combinaciones lineales enteras positivas de $a$ y $b$.  Entonces,  $d$ es el máximo común divisor de $a$ y $b$. 
+\end{teorema}
+\begin{proof}
+    Sin pérdida de generalidad podemos suponer que  $a \ne 0$. Sea 
+    \begin{equation*}
+    S = \{m a+n b : m,n\in \Z, m a+n b>0\},
+    \end{equation*}
+    el conjunto de las combinaciones lineales positivas de $a$ y $b$. Como  $a$ o $-a$ pertenecen a $S$, tenemos que  $S \not= \emptyset$, luego, por el principio de buena ordenación, $S$ tiene un  mínimo $d$. Probaremos ahora que  $d$  es un  máximo común divisor de $a$ y $b$. 
+    
+    \textit{Propiedad {\ref{mcdb}}.} Puesto  que $d \in S$,  existen $s, t \in \Z$ tal que $d = sa+tb$. Sea $c$ tal que $c|a$ y $c|b$, por \ref{prop-divide-a-propiedades-item-4} de la observación \ref{prop-divide-a-propiedades},  tenemos que $c|sa+tb$,  es decir $c|d$. 
+    
+    \textit{Propiedad {\ref{mcda}}.} Supongamos ahora que $d \nodivide  a$,  entonces $|a| = qd + r$ con $0 < r <d$ y $q \ge 0$, luego $r = \pm a - qd = \pm a-q(sa+tb) = a(\pm1-qs) +(-qt)b$. Por lo tanto,  $r < d$  pertenece a $S$, contradiciendo  el hecho de que $d$  es un mínimo de $S$. La contradicción vino de suponer que  $d \nodivide  a$, por lo tanto $d|a$. En  forma análoga podemos probar que $d|b$. 
+\end{proof}
+
+
+Si $a,b$ enteros,  alguno de ellos  no nulo,  denotaremos al máximo común divisor  de $a$ y $b$ por $\mcd(a,b)$ o, en caso de no haber confusión, por $(a,b)$.
 
 \begin{observacion}\label{obs-mcd-divisores} Sean $a,b$ enteros,  alguno de ellos  no nulo, y $a', b'$ otro par de enteros tal que se cumple la propiedad:
     $$
@@ -347,7 +374,63 @@ En  el desarrollo de esta sección veremos el \textit{algoritmo de Euclides}, un
     
 \end{observacion}
 
-Podemos enunciar las propiedades más sencillas del mcd en la siguiente proposición.
+\begin{ejemplo*} Hallar   $\mcd(174,72)$.
+    \begin{proof}[Solución] ${^{}}$
+        
+        Divisores de 174: 1, 2, 3, 6, 29, 58, 87, 174
+        
+        Divisores de 72: 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, 72 
+        
+        Luego, $6$ es divisor común de 174 y 72, y todos los demás divisores comunes ($1$, $2$ y $3$) dividen a $6$. Por lo tanto $\mcd(174,72) =6$.
+    \end{proof}
+\end{ejemplo*}
+
+\begin{corolario}\label{prop-d-comb-lin}
+    Sean $a,b \in \Z$, alguno de ellos no nulo. Entonces existen $s,t \in \Z$ tal que
+    \begin{equation*}
+    (a,b) = sa + tb. 
+    \end{equation*}
+\end{corolario}
+\begin{proof}
+    Se deduce trivialmente del teorema \ref{th-existencia-mcd}. 
+\end{proof}
+
+\begin{corolario} Sean $a$ y $b$ enteros uno de ellos no nulo, entonces
+    $$
+    (a,b) = 1 \Leftrightarrow \text{existen $s,t \in \mathbb Z$ tales que $1 = sa+tb$.}
+    $$
+\end{corolario}
+\begin{proof}
+    ($\Rightarrow$) Es consecuencia trivial  del teorema \ref{th-existencia-mcd}. 
+    
+    ($\Leftarrow$) Sea $d = (a,b)$, entonces $d|a$ y $d|b$ y por lo tanto $d|sa+tb$ para cualesquiera   $s,t \in \mathbb Z$.  En particular, la hipótesis implica que $d | 1$ y, en consecuencia $d =1$. 
+\end{proof}
+
+\begin{definicion}
+    Si $(a,b)=1$ entonces decimos que $a$ y $ b$ son \textit{coprimos}\index{coprimos}.
+\end{definicion}
+
+
+\begin{ejemplo*}
+    Sean $a$ y $b$ enteros coprimos y $c \in \Z$, entonces,
+    $$
+    a|c \; \wedge \; b|c  \quad \Rightarrow \quad ab|c.
+    $$
+\end{ejemplo*}
+\begin{proof}[Solución] como $a$ y $b$ son coprimos, existen $s,t \in \Z$ tales que $1 = sa+tb$. Por lo tanto,  multiplicando por $c$ la ecuación,  obtenemos $c = csa + ctb$. Como $a|c$, tenemos que $c/a \in \Z$, y 
+$$
+\frac{c}{a} = \frac{csa + ctb}{a} = cs + (\frac{c}{a})tb.
+$$ 
+Como $b|c$ y $b|b$, entonces $b |cs +(c/a)tb =c/a$, luego $(c/a)/b$ entero,  es decir $ab|c$.     
+\end{proof}
+
+
+
+
+
+
+
+Podemos enunciar las propiedades más sencillas del mcd en la siguiente proposición
 
 \begin{proposicion} Sean $a,b$ enteros con $a \not = 0$, entonces
     \begin{enumerate}
@@ -360,7 +443,7 @@ Podemos enunciar las propiedades más sencillas del mcd en la siguiente proposic
     Estas propiedades son de demostración casi trivial, por ejemplo para demostrar que  $\mcd(1,b) = 1$ comprobamos que 1 cumple con la definición:
     \begin{enumerate}[label=\textit{\alph*)}]
         \item $ 1|1$ y $1|b$;
-        \item si $ c|1 $ y $c|b$ entonces $ c \le 1$,
+        \item si $ c|1 $ y $c|b$ entonces $ c|1$,
     \end{enumerate}
     propiedades que son obviamente verdaderas.
     
@@ -376,15 +459,15 @@ La siguiente propiedad no es tan obvia y resulta muy importante.
     Sea $d =  \mcd(a,b-a)$, luego 
     \begin{enumerate}[label=\textit{\alph*)}]
         \item $ d|a$ y $d|b -a$;
-        \item\label{cond-b-mcd} si $ c|a $ y $c|b -a$ entonces $ c \le d$.
+        \item\label{cond-b-mcd} si $ c|a $ y $c|b -a$ entonces $ c|d$.
     \end{enumerate}
     Ahora bien, como  $ d|a$ y $d|b -a$, entonces $  d|a +(b -a) = b$. Es decir, para recalcar,
     \begin{enumerate}
-        \item[\textit{a')}] $ d|a$ y $d|b$.
+        \item[\textit{(a')}] $ d|a$ y $d|b$.
     \end{enumerate}
-    Por otro lado, si  $ c|a $ y $c|b$, entonces  $c|b -a$, luego por \ref{cond-b-mcd} tenemos que $c\le d$. Es decir, 
+    Por otro lado, si  $ c|a $ y $c|b$, entonces  $c|b -a$, luego por \ref{cond-b-mcd} tenemos que $c|d$. Es decir, 
     \begin{enumerate}
-        \item[\textit{b')}]si  $ c|a $ y $c|b$, entonces  $c \le d$.
+        \item[\textit{(b')}]si  $ c|a $ y $c|b$, entonces  $c|d$.
     \end{enumerate}
     Luego, por definición de mcd, obtenemos que $d = \mcd(a,b)$.
 \end{proof}
@@ -423,10 +506,14 @@ La aplicación repetida de este simple hecho, en combinación con el algoritmo d
     &=\mcd(18,6)  && \text{ porque }\quad &24 &=18\cdot1+6,\\
     & =\mcd(6,0) = 6           &&\text{ porque }\quad&18&=6\cdot3 + 0
     \end{alignat*}
-    Por lo tanto, $\mcd(2406,654) = 6$.
+    
 \end{proof}
 
 Este ejemplo es un caso particular o una aplicación del algoritmo que nos permite calcular el máximo común divisor.
+
+
+
+
 
 %\vskip .1cm
 \begin{table}[htbp]
@@ -438,7 +525,7 @@ Este ejemplo es un caso particular o una aplicación del algoritmo que nos permi
             {\flushleft \textbf{Algoritmo de Euclides}}
             \vskip .2cm
             Por lo general, para calcular el mcd de enteros $a$ y $b$, con $b >0$, 
-            definimos $r_i$ recursivamente  de la siguiente manera: $r_0 = a$, $r_1 = b$,  y 
+            definimos $q_i$ y $r_i$ recursivamente  de la siguiente manera: $r_0 = a$, $r_1 = b$,  y 
             \begin{align*}
             &\text{($e_{1}$)}\qquad& r_0&=r_1 q_1 + r_2& &(0 < r_2<r_1)\\
             &\text{($e_{2}$)}\qquad& r_1&=r_2q_2 + r_3\quad{}\quad{}\quad{}& &(0 < r_3<r_2)  \\
@@ -462,7 +549,7 @@ El proceso se detiene cuando uno de los restos $r_i$  es igual a $0$ y queda cla
 Este procedimiento es conocido como el \textit{algoritmo de Euclides}\index{algoritmo de Euclides}, debido al matemático griego Euclides ($300$ a. c.). Es extremadamente útil en la práctica, y tiene importantes consecuencias.
 
 
-\begin{teorema} Sean  $a$ y $b$ enteros con $b >0$, entonces el máximo común divisor es el último resto no nulo obtenido en el algoritmo de Euclides (con la notación anterior es $r_k$). 
+\begin{teorema} Sean  $a$ y $b$ enteros con $b >0$, entonces el máximo común divisor existe y es el último resto no nulo obtenido en el algoritmo de Euclides (con la notación anterior es $r_k$). 
 \end{teorema}
 \begin{proof}
 Observar que aplicando repetidas veces la fórmula (\ref{bec}) obtenemos 
@@ -471,9 +558,6 @@ r_k = \mcd(r_{k},0) = \mcd(r_{k-1},r_k) =\mcd(r_{k-2},r_{k-1}) = \cdots\\\cdots
 =  \mcd(r_2,r_3) =  \mcd(r_1,r_2)  =  \mcd(r_0,r_1) = \mcd(a,b)  
 \end{multline*}
 \end{proof}
-
-
-
 
 
 \begin{observacion*}[*] El algoritmo de Euclides es fácilmente implementable en un lenguaje de programación. A continuación una versión del mismo en pseudocódigo. 
@@ -506,33 +590,15 @@ $$
 \vskip .2cm
 
 
-\begin{definicion} Sean $a,b$ enteros, entonces dados $s,t \in \Z$ diremos que
-    $$
-    sa+tb
-    $$ 
-    es una  \textit{combinación lineal entera} de $a$ y $b$. 
-\end{definicion}
-
-\begin{observacion*} Sean $a,b \in \Z$, alguno de ellos no nulo, y $d$ un máximo común divisor de $a$ y $b$. Entonces, $d$ divide a cualquier combinación lineal entera de $a$ y $b$. Esto es una consecuencia directa de la observación \ref{prop-divide-a-propiedades} \ref{prop-divide-a-propiedades-item-4}.
-\end{observacion*}
-
-\begin{teorema}\label{prop-d-comb-lin}
-    Sean $a,b \in \Z$, alguno de ellos no nulo. Entonces,  existen $s, t \in \Z$ tal que 
-    \begin{equation*}
-        \operatorname{mcd}(a,b) = sa +tb.
-    \end{equation*}
-    Es decir $\operatorname{mcd}(a,b)$  es combinación lineal entera de $a$ y $b$.
-\end{teorema}
-\begin{proof}
-Supongamos que $b>0$ (los otros casos se deducen fácilmente) y sea $d=\mcd(a,b)$. La idea es calcular $s$ y $t$ tales que
-\begin{equation*}
-    d= sa +tb.
-\end{equation*}
-De  acuerdo con la notación que utilizamos para explicar el algoritmo de Euclides, $d=r_{k}$ y usando la  ecuación ($e_{k-1}$) tenemos
+Sean $a$ y $b$ enteros, $b$ no nulo y sea $d=\mcd(a,b)$. Entonces sabemos que existen enteros $s$ y $t$ tales que
+$$
+d=sa+tb.
+$$
+La idea ahora es calcular $s$ y $t$. En el caso que $b >0$, de acuerdo con el cálculo hecho antes $d=r_{k}$ y usando la  ecuación ($e_{k-1}$) tenemos
 $$
 r_{k}=r_{k-2} -r_{k-1}q_{k-1}.
 $$
-Así, $d$ puede escribirse en la forma $ d = s_{k}r_{k-2} +t_{k}r_{k-1}$, donde $s_{k}=1$ y $t_{k}=-q_{k-1}$ . Usando la ecuación  ($e_{k-2}$), sustituyendo $r_{k-1}$ en términos de $r_{k-3}$ y $r_{k-2}$ obtenemos
+As{í}, $d$ puede escribirse en la forma $ d = s_{k}r_{k-2} +t_{k}r_{k-1}$,donde $s_{k}=1$ y $t_{k}=-q_{k-1}$ . Usando la ecuación  ($e_{k-2}$), sustituyendo $r_{k-1}$ en términos de $r_{k-3}$ y $r_{k-2}$ obtenemos
 $$
 d= s_{k}(r_{k-3}-r_{k-2}q_{k-2}) + t_{k}r_{k-3} =  s_{k-1}r_{k-3} +t_{k-1}r_{k-2}
 $$
@@ -544,12 +610,9 @@ con  $s_{i}, t_{i} \in \mathbb Z$, para $2 \le i \le k$. En particular
 $$
 d =  s_{2}r_{0} +t_{2}r_{1} = s_{2}a +t_{2}b.
 $$
-\end{proof}
-
-
 
 \begin{ejemplo*}
-    Encontrar usando el algoritmo de Euclides $d = \operatorname{mcd}( 470, 55)$ y expresar $d$  como combinación lineal entera entre  $470$ y $55$.
+     Encontrar usando el algoritmo de Euclides $d = \operatorname{mcd}( 470, 55)$ y expresar $d$  como combinación lineal entera entre  $470$ y $55$.
 \end{ejemplo*}
 \begin{proof}[Solución]
     \begin{alignat*}4
@@ -568,43 +631,6 @@ $$
     $$
     5=2 \cdot 470 +(-17)\cdot 55.
     $$
-\end{proof}
-
-\begin{corolario}
-    Sean  $a$ y $b$ enteros,  unos de ellos no nulo y  sea $d = \mcd(a,b)$. Sea $c \in \Z$ tal que $c|a$ y $c|b$,  entonces $c|d$. 
-\end{corolario}
-\begin{proof}
-    Por la proposición anterior $d$  es combinación lineal entera de $a$ y $b$, y $c|a$ y $c|b$ luego, por observación \ref{prop-divide-a-propiedades} \ref{prop-divide-a-propiedades-item-4}, se deduce que  $c|d$.
-\end{proof}
-
-\begin{definicion}
-    Si $(a,b)=1$ entonces decimos que $a$ y $ b$ son \textit{coprimos}\index{coprimos}.
-\end{definicion}
-
-
-\begin{corolario} Sean $a$ y $b$ enteros uno de ellos no nulo, entonces
-    $$
-    (a,b) = 1 \Leftrightarrow \text{existen $s,t \in \mathbb Z$ tales que $1 = sa+tb$.}
-    $$
-\end{corolario}
-\begin{proof}
-    ($\Rightarrow$) Es consecuencia trivial  del teorema \ref{prop-d-comb-lin}. 
-    
-    ($\Leftarrow$) Sea $d = (a,b)$, entonces $d|a$ y $d|b$ y por lo tanto $d|sa+tb$ para cualesquiera   $s,t \in \mathbb Z$.  En particular, la hipótesis implica que $d | 1$ y, en consecuencia $d =1$. 
-\end{proof}
-
-
-\begin{ejemplo*}
-    Sean $a$ y $b$ enteros coprimos y $c \in \Z$, entonces,
-    $$
-    a|c \; \wedge \; b|c  \quad \Rightarrow \quad ab|c.
-    $$
-\end{ejemplo*}
-\begin{proof}[Solución] como $a$ y $b$ son coprimos, existen $s,t \in \Z$ tales que $1 = sa+tb$. Por lo tanto,  multiplicando por $c$ la ecuación,  obtenemos $c = csa + ctb$. Como $a|c$, tenemos que $c/a \in \Z$, y 
-$$
-\frac{c}{a} = \frac{csa + ctb}{a} = cs + (\frac{c}{a})tb.
-$$ 
-Como $b|c$ y $b|b$, entonces $b |cs +(c/a)tb =c/a$, luego $(c/a)/b$ entero,  es decir $ab|c$.     
 \end{proof}
 
 El hecho  de que el máximo común divisor de dos enteros $a$ y $b$ puede ser escrito como una combinación lineal entera de $a$ y $b$  (proposición \ref{prop-d-comb-lin}) es una herramienta de suma utilidad para trabajar en problemas relacionados con el mcd. Por ejemplo, todos estamos familiarizados con la idea de que una fracción puede reducirse al ``mínimo término'', o sea a la forma $a/b$ con $a$ y $b$ coprimos. El  siguiente ejemplo establece que esta forma es única, y como veremos, el hecho clave de la demostración es que podemos expresar
@@ -640,7 +666,7 @@ esta demostrado.
 
 
 \begin{observacion*}[*]
-El  algoritmo explicado anteriormente para obtener el $\mcd(a,b)$ como combinación lineal entera $sa+tb$ no es muy sencillo de programar. Más aún, requiere terminar el cálculo del $\mcd$ usando el algoritmo de Euclides, para comenzar a calcular los coeficientes enteros $s,t$. Veremos a continuación un algoritmo que calcula usando el algortimo de Euclides simultáneamente los coeficientes enteros $s$ y $t$ y  el máximo común divisor.  El algoritmo se basa en el siguiente resultado,  que es una forma más precisa de enunciar el teorema \ref{prop-d-comb-lin} . 
+El  algoritmo explicado anteriormente para obtener el $\mcd(a,b)$ como combinación lineal entera $sa+tb$ no es muy sencillo de programar. Más aún, requiere terminar el cálculo del $\mcd$ usando el algoritmo de Euclides, para comenzar a calcular los coeficientes enteros $s,t$. Veremos a continuación un algoritmo sencillo de programar que nos devuelve $s$ y $t$. El algoritmo se basa en el siguiente resultado. 
 \end{observacion*}
 
 \begin{proposicion}\label{prop-alg-euclides-2} Sean, $a,b$ enteros, $b>0$, y $r_i, q_i$ los restos y cocientes obtenidos en el algoritmo de Euclides (ver tabla \ref{tabla-AE}). Entonces, 
@@ -910,7 +936,7 @@ Como vimos más arriba $2, 3, 5$ y $67$ son  números primos y por lo tanto hemo
 \end{ejemplo*}
 
 
-Veamos ahora algunas propiedades básicas de los números primos.
+Veamos ahora alguna propiedades básicas de los números primos.
 
 \begin{observacion} \label{pdivpp}
 Sea $a \in \mathbb Z$ y $p$ primo. Entonces 
@@ -1009,16 +1035,6 @@ n=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},
 \end{equation*}
 donde $p_1,p_2,\ldots ,p_r$ son primos distintos y $e_1,e_2,\ldots,e_r$ son enteros positivos. Por ejemplo $ 7000 = 2^3 \cdot 5^3 \cdot 7$.
 
-La unicidad de la factorización prima de cualquier entero mayor que 1 nos permite hacer la siguiente definición. 
-
-\begin{definicion}
-    Se $n$  entero mayor o igual a $2$ y 
-    \begin{equation*}
-        n=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},
-    \end{equation*}
-    donde $p_i$ primo para todo $i$ ($1\le i \le r$). Entonces, diremos que  $p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}$ es la \textit{factorización prima de $n$} y que $p_i$ es un \textit{factor primo de } $n$  ($1\le i \le r$).
-\end{definicion}
-
 La factorización prima nos dice que los números primos son los  ``ladrillos'' esenciales para  ``cons\-truir'' los números enteros usando multiplicaciones. Ahora bien, podría ocurrir que haya un número finitos de ellos y que podamos escribir cada número como producto de primos en forma muy sintética. Pero este no es el caso.
 
 \begin{proposicion}[Teorema de Euclides] Existen infinitos números primos. 
@@ -1076,11 +1092,6 @@ Entonces $m|n$ si y sólo si $e_i \le f_i$ para todo $i$.
 \noindent($\Leftarrow$) Como $e_i \le f_i$, tenemos que $p^{e_i}|p^{f_i}$, para $1 \le i \le r$.  Luego  $$p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}| p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.$$ Es decir $m|n$.
 \end{proof}
 
-\begin{corolario}
-    Sea $n \ge 2$ y $p$ un número primo,  entonces $p|n$ si y solo si $p$ es un factor primo de $n$.\qed
-\end{corolario}
-
-
 
 %\begin{ejercicio} Sean $m,n$ enteros con $m,n\ge 2$. Entonces  $m$ y  $n$ son coprimos si y sólo si no comparten ningún primo en la factorización. 
 %
@@ -1093,7 +1104,7 @@ Entonces $m|n$ si y sólo si $e_i \le f_i$ para todo $i$.
 %\end{ejercicio}
 
 
-Ahora veremos que es posible calcular el $\mcd$ y el $\mcm$ de un par de números sabiendo sus descomposiciones primas.
+Ahora veremos que es es posible calcular el $\mcd$ y el $\mcm$ de un par de números sabiendo sus descomposiciones primas.
 
 \begin{proposicion}
 Sean $m$ y $n$ enteros positivos cuyas factorizaciones primas son
@@ -1122,13 +1133,12 @@ $$
 
 
 \begin{ejemplo*}
-Encontremos el mcd y el mcm  de $825$ y $385$ utilizando las factorizaciones primas de ambos.
-\begin{proof}[Solución]
-    Como $825 =  3\cdot 5^2\cdot 11$ y $385 = 5\cdot 7\cdot 11$, tenemos que
-    $$
-    \text{mcd}(825,385) = 5\cdot 11 = 55, \qquad \text{mcm}(825,385) = 3\cdot 5^2\cdot 7\cdot 11 = 5775.
-    $$
-\end{proof}
+Encontremos el mcd y el mcm  de $825$ y $385$.
+
+Como $825 =  3\cdot 5^2\cdot 11$ y $385 = 5\cdot 7\cdot 11$, tenemos que
+$$
+\text{mcd}(825,385) = 5\cdot 11 = 55, \qquad \text{mcm}(825,385) = 3\cdot 5^2\cdot 7\cdot 11 = 5775.
+$$
 \end{ejemplo*}
 
 
