@@ -1,7 +1,8 @@
-%\documentclass{beamer} 
 \documentclass[handout]{beamer} % sin pausas
-\usetheme{CambridgeUS}
+%\documentclass{beamer} % con pausas
 %\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+
+\usetheme{CambridgeUS}
 
 \usepackage{etex}
 \usepackage{t1enc}
@@ -101,7 +102,7 @@
     \\[\baselineskip] ${}^{}$
     \\[\baselineskip]
 }
-\date[17/05/2022]{17 de mayo de 2022}
+\date[19/05/2022]{19 de mayo de 2022}
 
 
 
@@ -378,7 +379,56 @@
         \end{observacion}
     \end{frame}
     
+    \begin{frame}\frametitle{Consideraciones finales sobre el algoritmo RSA}
+
+        Hay dos ``obstrucciones'' para una implementación del algoritmo RSA:
+        
+        \vskip .4cm 
+            \begin{enumerate}
+                \item ¿Cómo calcular un número elevado a una potencia de más de 200 dígitos? Hay dos problemas 
+                \begin{enumerate}
+                    \item[(a)] La cantidad de multiplicaciones necesarias va más allá de $2^{200}$, imposibles de realizar.
+                    \item[(b)] Los números se tornan tan grandes que no entrarían en ninguna memoria.
+                \end{enumerate}
+                
+                \item   
+                ¿Cómo saber si un número de más de 100 dígitos es primo o no?\\
+                No  es posible conocer los divisores  de un número de ese tamaño.
+            \end{enumerate}
+
+    \end{frame}
+
+    \begin{frame}\frametitle{Consideraciones finales sobre el algoritmo RSA}
+
+        El problema (1) es fácil de resolver, se usa la técnica llamada \textit{exponenciación modular},  explicada en el apunte, capítulo 4, sección 5.
+        \begin{itemize}
+            \item La idea para (1)(a) es usar la propiedad siguiente: si $m = 2q +r$, entonces 
+            $$
+            a^m = (a^q)^2 a^r
+            $$
+            y definir recursivamente la potencia.
+            \item La idea para (1)(b) es usar la idea de (1)(a) y en cada paso reducir módulo $n$. Es decir,  utilizar la propiedad
+            $$
+            a^m \equiv (a^q)^2 a^r \equiv s\pmod{n}
+            $$
+            con $0 \le s < n$.
+        \end{itemize}
+
+        \vskip .4 cm
+
+        
+    \end{frame}
     
+    \begin{frame}\frametitle{Consideraciones finales sobre el algoritmo RSA}
+
+        El  problema (2) es más complicado y se usa el llamado el test de primalidad de Miller-Rabin probabilístico. 
+        
+        \vskip .4 cm
+        
+        En  el apunte, capítulo 4, sección 6 se explica en que consiste este test.
+
+        \vskip 4 cm
+    \end{frame}
     
 \end{document}
 
