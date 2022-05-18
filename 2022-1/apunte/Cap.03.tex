@@ -325,7 +325,7 @@ La condición \ref{mcda} nos dice que $d$ es un común divisor de $a$ y $b$ y la
 $a$ y $b$ es menor igual que $d$. Podemos resumir la definición en una frase, diciendo: \textit{el máximo común divisor de $a$ y $b$  es el mayor divisor común a ambos números.} 
 
 \begin{ejemplo*} \label{ejem-1-mcd}
-    Los divisores positivos comunes de 60  y 84 son 1, 2, 3, 6 y 12, luego aunque 6  es un divisor común, no satisface \ref{mcdb} de la definición, pues $12|60$ y $12|84$ pero $12>6$. En este caso, 12  claramente es  el  máximo común divisor.
+    Los divisores positivos comunes de 60  y 84 son 1, 2, 3, 6 y 12, luego, por ejemplo, 6  es un divisor común y por lo tanto satisface \ref{mcda}. Sin embargo, no satisface \ref{mcdb} de la definición, pues $12|60$ y $12|84$ pero $12>6$. En este caso, 12  claramente es  el  máximo común divisor.
 \end{ejemplo*}
 
 \begin{ejemplo*} Hallar   $\mcd(174,72)$.
@@ -394,7 +394,7 @@ La siguiente propiedad no es tan obvia y resulta muy importante.
     Luego, por definición de mcd, obtenemos que $d = \mcd(a,b)$.
 \end{proof}
 
-La propiedad anterior nos provee un método práctico para encontrar el máximo común divisor entre dos números, como vemos en el siguiente ejemplo.
+La propiedad anterior nos provee un método práctico para encontrar el máximo común divisor entre dos números. Veamos su aplicación en el siguiente ejemplo.
 
 \begin{ejemplo*} Encontrar el mcd entre 72 y 174.
     \begin{proof}[Solución] Observar que 
@@ -404,7 +404,7 @@ La propiedad anterior nos provee un método práctico para encontrar el máximo 
     \end{proof}
 \end{ejemplo*} 
 
-En  general no es sencillo encontrar todos los divisores de un número entero grande. Por ejemplo, para los  números de más de cien dígitos no es posible,  en general, calcular sus divisores ni con las computadoras más poderosas de la actualidad. Por  lo tanto, no es factible calcular el  mcd de números grandes revisando todos los divisores comunes.  El algoritmo que nos provee la  propiedad \ref{propiedad1} nos da un método práctico y relativamente eficiente para calcular el mcd. Veremos a continuación un método similar pero mucho más eficiente para calcular el mcd de dos enteros no negativos $a,b$ con $b \not=0$. Este método esta basado en la técnica del cociente y el resto y depende del siguiente hecho.
+En  general no es sencillo encontrar todos los divisores de un número entero grande. Por ejemplo, para los  números de más de cien dígitos no es posible,  en general, calcular sus divisores ni con las computadoras más poderosas de la actualidad. Por  lo tanto, no es factible calcular el  mcd de números grandes revisando todos los divisores comunes.  El algoritmo que nos provee la  propiedad \ref{propiedad1} nos da un método práctico y relativamente eficiente para calcular el mcd. Veremos a continuación un método similar pero mucho más eficiente para calcular el mcd de dos enteros no negativos $a,b$ con $b \not=0$. Este método esta basado en el algoritmo de división y el siguiente resultado.
 
 \begin{proposicion}\label{prop-alg-eucl} Sean  $a,b$ enteros no negativos con $b \not=0$, entonces 
     \begin{equation}\label{bec}
@@ -412,10 +412,14 @@ En  general no es sencillo encontrar todos los divisores de un número entero gr
     \end{equation}
 \end{proposicion}
 \begin{proof}
+    Se puede demostrar por definición directamente y en ese caso la demostración es similar a la de la propiedad \ref{propiedad1}. 
+    
+    Sin embargo, para mostrar que un problema se puede encarar de forma diferente, haremos la demostración utilizando la observación \ref{obs-mcd-divisores}. Es decir probaremos que los divisores comunas de $a$ y $b$ son los mismos que los divisores comunes de $b$ y $r$. 
+
     Para demostrar esto debemos observar que si $c$ divide $a$ y $b$, entonces también divide a $a-bq$; y como $a-bq=r$, tenemos que $c|r$. De este modo cualquier divisor común de $a$ y $b$ es también divisor común de $b$ y $r$.  Por otro lado si $c$ divide $b$ y $r$ también divide a $a=bq+r$. Es decir, $c$ es divisor común de $a$ y $b$ si y sólo si $c$ es divisor común de $b$ y $r$. Por lo tanto, por observación \ref{obs-mcd-divisores}, obtenemos que $d = \mcd(b,r)$.
 \end{proof}
 
-La aplicación repetida de este simple hecho, en combinación con el algoritmo de división, nos da un método para calcular el mcd.
+La aplicación repetida de este simple resultado, en combinación con el algoritmo de división, nos da un método para calcular el mcd.
 
 \begin{ejemplo*} Encuentre el mcd de 2406 y 654.
 \end{ejemplo*}
@@ -431,11 +435,22 @@ La aplicación repetida de este simple hecho, en combinación con el algoritmo d
     Por lo tanto, $\mcd(2406,654) = 6$.
 \end{proof}
 
-Este ejemplo es un caso particular o una aplicación del algoritmo que nos permite calcular el máximo común divisor.
+\vskip .3cm
 
-%\vskip .1cm
-\begin{table}[htbp]
-\centering
+Este ejemplo es un caso particular o una aplicación del algoritmo que nos permite calcular el máximo común divisor: sean $a$ y $b$ enteros con $b>0$, sea $r_0=a$, $r_1 =b$  y suponiendo definidos $r_{i-1}$ y  $r_{i}$ definimos recursivamente $r_{i+1}$ por la siguiente ecuación 
+\begin{equation*}
+    r_{i-1}=r_{i}q + r_{i+1}\quad \text{con \quad $0 < r_{i+1} <r_{i}$}.
+\end{equation*}
+Observar que $r_{i+1]}$  está bien definido por el algoritmo de división. Detenemos el proceso  cuando uno de los restos $r_i$  es igual a $0$. Ahora bien, cada resto no nulo es positivo y estrictamente menor que el anterior. Entonces, queda claro que el proceso se va a detener.
+
+El proceso se explica esquemáticamente en el cuadro \ref{tabla-AE}. 
+\vskip .3cm
+
+Este procedimiento es conocido como el \textit{algoritmo de Euclides}\index{algoritmo de Euclides}, debido al matemático griego Euclides ($300$ a. c.). Es extremadamente útil en la práctica, y tiene importantes consecuencias.
+
+
+\begin{center}
+    \begin{table}[h]
 \fbox{\begin{minipage}{0.95\textwidth} 
     \vskip .4cm
     \begin{center}
@@ -454,6 +469,7 @@ Este ejemplo es un caso particular o una aplicación del algoritmo que nos permi
             &\text{($e_{k-1}$)}\qquad& r_{k-2}&=r_{k-1}q_{k-1} + r_{k}& &(0 < r_{k} <r_{k-1}) \\
             &\text{($e_{k}$)}\qquad& r_{k-1}&=r_{k}q_{k} + 0 ,&&  
             \end{align*}
+            \vskip .05cm
         \end{minipage}
     \end{center}
     \vskip .4cm
@@ -461,13 +477,11 @@ Este ejemplo es un caso particular o una aplicación del algoritmo que nos permi
 \caption{Algoritmo de Euclides}
 \label{tabla-AE}
 \end{table}
+\end{center}
 
-El proceso se detiene cuando uno de los restos $r_i$  es igual a $0$ y queda claro que el proceso debe detenerse, porque cada resto no nulo es positivo y estrictamente menor que el anterior.
+\vskip .2cm
 
-Este procedimiento es conocido como el \textit{algoritmo de Euclides}\index{algoritmo de Euclides}, debido al matemático griego Euclides ($300$ a. c.). Es extremadamente útil en la práctica, y tiene importantes consecuencias.
-
-
-\begin{teorema} Sean  $a$ y $b$ enteros con $b >0$, entonces el máximo común divisor es el último resto no nulo obtenido en el algoritmo de Euclides (con la notación anterior es $r_k$). 
+\begin{teorema} Sean  $a$ y $b$ enteros con $b >0$, entonces el máximo común divisor es el último resto no nulo obtenido en el algoritmo de Euclides (con la notación del cuadro \ref{tabla-AE} es $r_k$). 
 \end{teorema}
 \begin{proof}
 Observar que aplicando repetidas veces la fórmula (\ref{bec}) obtenemos 
@@ -558,9 +572,9 @@ $$
 \end{ejemplo*}
 \begin{proof}[Solución]
     \begin{alignat*}4
-    470&=55 \cdot 8 +30&\quad\Rightarrow\quad &30 &=&470 + (-8)\cdot 55&\qquad (1)&\\
-    55&=30 \cdot 1 + 25&\quad\Rightarrow\quad &25 &=&55 +(-1)\cdot 30&\qquad (2)&\\
-    30&=25 \cdot 1+5&\quad\Rightarrow\quad &5 &=&30 +(-1) \cdot 25&\qquad (3)& \\
+    470&=55 \cdot 8 +30&\quad\Rightarrow\quad &30 &\,=\,&470 + (-8)\cdot 55&\qquad (1)&\\
+    55&=30 \cdot 1 + 25&\quad\Rightarrow\quad &25 &\,=\,&55 +(-1)\cdot 30&\qquad (2)&\\
+    30&=25 \cdot 1+5&\quad\Rightarrow\quad &5 &\,=\,&30 +(-1) \cdot 25&\qquad (3)& \\
     25&=5\cdot 5+0.&&&&&&
     \end{alignat*}
     Luego,  el máximo común divisor de $470$ y $55$ es $5$ y de las fórmulas anteriores obtenemos:
@@ -579,7 +593,7 @@ $$
     Sean  $a$ y $b$ enteros,  unos de ellos no nulo y  sea $d = \mcd(a,b)$. Sea $c \in \Z$ tal que $c|a$ y $c|b$,  entonces $c|d$. 
 \end{corolario}
 \begin{proof}
-    Por la proposición anterior $d$  es combinación lineal entera de $a$ y $b$, y $c|a$ y $c|b$ luego, por observación \ref{prop-divide-a-propiedades} \ref{prop-divide-a-propiedades-item-4}, se deduce que  $c|d$.
+    Por la proposición anterior $d$  es combinación lineal entera de $a$ y $b$. Como $c|a$ y $c|b$, por observación \ref{prop-divide-a-propiedades} \ref{prop-divide-a-propiedades-item-4}, se deduce que  $c|d$.
 \end{proof}
 
 \begin{definicion}
