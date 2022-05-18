@@ -292,7 +292,7 @@ a(rb) \equiv b \pmod{m},
 $$
 es decir $rb$ es solución de la ecuación. Veremos que el caso general se hace en forma análoga a lo anterior.
 
-\begin{teorema}\label{elc} Sean $a,b$ números enteros y $m$ un entero positivo y denotemos $d = \mcd(a,m)$. La  ecuación 
+\begin{teorema}\label{teorema-elc} Sean $a,b$ números enteros y $m$ un entero positivo y denotemos $d = \mcd(a,m)$. La  ecuación 
 \begin{equation}\label{ecu.elc}
 ax \equiv b \pmod{m}
 \end{equation}
@@ -419,7 +419,7 @@ Usando  el algoritmo de Euclides obtenemos el  $\mcd(42,76)$.
 76 &=  42 \cdot 1 + 34 \\
 42 &= 34 \cdot 1 + 8 \\
 34 &= 8 \cdot 4 + 2 \\
-8 &= 2 \cdot 4 
+8 &= 2 \cdot 4 + 0.
 \end{align*}
 Luego $2 = \mcd(42,76)$. Como $2|50$ la ecuación tiene solución. Del algoritmo de Euclides deducimos 
 \begin{align*}
@@ -453,6 +453,84 @@ Debemos ver ahora cuales soluciones $x$ cumplen $0\le x< 76$. Como en el caso an
 Luego $k = 6$ o $k =7$ y entonces $x_1 = -225 + 38\cdot 6 = 3$ y $x_2 = -225 + 38\cdot 7 = 41$ son las soluciones que buscamos. 
 \end{proof}
 
+
+Operativamente es útil el siguiente resultado. 
+
+\begin{proposicion}\label{proposicion-elc-simplificada}
+    Sean $a,b$ números enteros y $m$ un entero positivo, denotemos $d = \mcd(a,m)$ y supongamos que $d|b$. Entonces las soluciones de la ecuación
+    \begin{equation*}
+        ax \equiv b \pmod{m}
+    \end{equation*}
+    son las misma que las de la ecuación
+    \begin{equation*}
+        \frac{a}{d} x \equiv \frac{b}{d} \pmod{\frac{m}{d}}.
+    \end{equation*}
+\end{proposicion}
+\begin{proof}
+    $x_0$ cumple que $ax_0 \equiv b \pmod{m}$ si y solo si $m | ax_0 - b$,  es decir, si y solo si existe $q \in \Z$  tal que $ ax_0 - b = mq$. Si dividimos por $d$ la ecuación $ ax_0 - b = mq$, obtenemos $\displaystyle\frac{a}{d} x_0 - \frac{b}{d}  = {\frac{m}{d}}q$ y esto vale si y solo si  $\displaystyle\frac{a}{d} x_0 \equiv \frac{b}{d} \pmod{\frac{m}{d}}$.
+\end{proof}
+
+\begin{observacion*}
+    Sean $a,b$ números enteros y $m$ un entero positivo, denotemos $d = \mcd(a,m)$ y supongamos que $d|b$. Entonces es fácil ver que 
+    \begin{equation*}
+        \mcd(\frac{a}{d},\frac{m}{d}) = 1,
+    \end{equation*}
+    Lo cual implica, por la proposición anterior, que encontrar las soluciones de la ecuación lineal de congruencia se puede reducir al caso que $\mcd(a,b) =1$.
+\end{observacion*}
+
+
+
+
+\begin{ejemplo*} Hallemos las soluciones de la ecuación $21x\equiv
+    48 \pmod{114}$ con $0 \le x \le 1000$.
+    \end{ejemplo*}
+    \begin{proof} Los divisores de $21$ son $3$ y $7$, $3|114$ y $7 \not| 114$, por lo tanto $\mcd(21, 114) = 3$. Por  la proposición \ref{proposicion-elc-simplificada}, dividimos por 3 la ecuación y tenemos que el problema original es equivalente a encontrar todos los $x$ tal que  
+        \begin{equation*}
+        7x \equiv  12 \pmod{38} \quad \text{tal que} \quad 0 \le x \le 1000.
+        \end{equation*}
+    Ahora bien, usando el algoritmo de Euclides, obtenemos el $\mcd(7,38)$:
+    \begin{equation}
+        \begin{aligned}
+            38 &=  7 \cdot 5 + 3  \quad \Rightarrow \quad 3 = 38 - 7 \cdot 5\\
+            7 &= 3 \cdot 2 + 1 \quad \Rightarrow \quad 1 = 7 - 3 \cdot 2\\
+            3 &= 1 \cdot 3 + 0.
+            \end{aligned}
+            \tag{*}
+    \end{equation}
+    Luego $1 = \mcd(7,38)$ y de (*) deducimos 
+    \begin{align*}
+    1 &= 7 - 3 \cdot 2\\
+    &= 7 - (38 - 7 \cdot 5) \cdot 2\\
+    &= 7 + (-2) \cdot  38 + 10 \cdot  7\\
+    &= 11 \cdot  7 + (-2) \cdot  38 .
+    \end{align*}
+    Por lo tanto 
+    \begin{equation*}
+        1 \equiv 11 \cdot  7 \pmod{38},
+    \end{equation*}
+    o equivalentemente, 
+    \begin{equation*}
+        7 \cdot  11  \equiv 1\pmod{38}. 
+    \end{equation*}
+    Si multiplicamos por 12 la ecuación obtenemos:
+    \begin{equation*}
+        7 \cdot  (11 \cdot 12)   \equiv 12 \pmod{38}. 
+    \end{equation*}
+    Por lo tanto, $x_0 =  11 \cdot 12 = 132$ es solución de la ecuación original. 
+
+    Como $\mcd(7, 38) =1$, por el teorema \ref{teorema-elc} deducimos que todas las soluciones de la ecuación $7x \equiv  12 \pmod{38}$ son de la forma $x = x_0 + 38k $ donde $k \in \Z$.
+
+    Debemos ver ahora cuales soluciones $x$ cumplen $0\le x \le 1000$. Lo haremos escribiendo las inecuaciones:
+    \begin{align*}
+    0&\le 132 + 38k \le 1000 \\
+    -132&\le 38k \le 1000-132= 868 \\
+    -\frac{132}{38}&\le k \le \frac{868}{38} \\
+    -3.4&\le k \le 22.8 \\
+    \end{align*}
+    Luego $-4 \le k \le 22$,  es decir $k$  recorre todos los valores enteros desde $-4$  a $22$. 
+    
+    Concluyendo:   los  $x$ tales que   $21x\equiv  48 \pmod{114}$ y  $0 \le x \le 1000$ son los $x = 132 + 38k$ donde  $k \in \Z$ y $-4 \le k \le 22$.
+    \end{proof}
 
 \subsection*{$\S$ Ejercicios}
 
@@ -670,7 +748,7 @@ Los dos primos $p$ y $q$ deberían tener alrededor de $100$ dígitos cada uno (l
 \item
 El número $e$ puede elegirse pequeño y se selecciona haciendo prueba y error con el algoritmo de Euclides, es decir probando hasta encontrar un $e$ tal que $\operatorname{mcd}(e, (p-1)(q-1)) = 1$.
 \item
-La existencia de $d$ está garantizada por el teorema \ref{elc} (ecuación lineal de congruencia), pues $e$ y $(p-1)(q-1)$ son coprimos.
+La existencia de $d$ está garantizada por el teorema \ref{teorema-elc} (ecuación lineal de congruencia), pues $e$ y $(p-1)(q-1)$ son coprimos.
 \end{itemize}
 
 \end{observacion*}

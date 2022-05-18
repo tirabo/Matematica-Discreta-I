@@ -1399,7 +1399,7 @@ Sea $a \in \mathbb Z$ y $p$ primo. Entonces
 \noindent \ref{it.propmcd_b} $p'$ es primo, por lo tanto tiene sólo dos divisores positivos $1$ y $p'$. Como $p$ no es $1$, tenemos que  $p=p'$.
 \end{proof}
 
-Para encontrar la descomposición prima de un número, digamos $n$, debemos ir tomando todos los números menores a $n$ y comprobando si estos lo dividen o no. En lo que sigue veremos el criterio de la raíz, que se utiliza para comprobar si un número es primo en menos pasos que la comprobación directa.  
+Para encontrar una descomposición prima de un número, digamos $n$, debemos ir tomando todos los números menores a $n$ y comprobando si estos lo dividen o no. En lo que sigue veremos el criterio de la raíz, que se utiliza para comprobar si un número es primo en menos pasos que la comprobación directa.  
 
 \begin{lema} Si $n>0$ no es primo, entonces existe $m>0$ tal que $m|n$ y $m \le \sqrt{n}$.  
 \end{lema}
@@ -1490,6 +1490,17 @@ La unicidad de la factorización prima de cualquier entero mayor que 1 nos permi
     \end{equation*}
     donde $p_i$ primo para todo $i$ ($1\le i \le r$). Entonces, diremos que  $p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}$ es la \textit{factorización prima de $n$} y que $p_i$ es un \textit{factor primo de } $n$  ($1\le i \le r$).
 \end{definicion}
+
+
+\begin{proposicion}
+    Sea $n$  entero mayor o igual a $2$ y $p$ número primo. Entonces, $p|n$ si y solo si $p$ es un factor primo de $n$.
+\end{proposicion}
+\begin{proof}
+    Si $n = q_1q_2 \cdots q_s$ donde los $q_i$ son primos no necesariamente distintos. Como $p|n$,  entonces $p|q_i$, para algún $i$ (teorema \ref{t1.8} \ref{it.pirreducible_b}), por lo tanto $p=q_i$ (observación \ref{pdivpp} \ref{it.propmcd_b}),  es decir, $p$ es factor primo de $n$.
+
+    Recíprocamente, si en la factorización prima de $n$ participa $p$,  es decir si $n= p p_1 \cdots p_k$,  entonces $n = pm$ donde $m = p_1 \cdots p_k$. Por lo tanto, $p|n$.
+\end{proof}
+
 
 La factorización prima nos dice que los números primos son los  ``ladrillos'' esenciales para  ``cons\-truir'' los números enteros usando multiplicaciones. Ahora bien, podría ocurrir que haya un número finitos de ellos y que podamos escribir cada número como producto de primos en forma muy sintética. Pero este no es el caso.
 
