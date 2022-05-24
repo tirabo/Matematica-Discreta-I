@@ -182,7 +182,7 @@ $$
 \begin{definicion} Dos grafos $G_1$ y $G_2$ se dicen que son \textit{isomorfos} cuando  existe una biyección $\alpha$ entre el  \index{grafos isomorfos}  \index{isomorfismo de grafos} conjunto de vértices de $G_1$ y el conjunto de vértices de $G_2$ tal que  si $\{x,y\}$ es una arista de $G_1$ entonces $\{\alpha(x),\alpha(y)\}$ es una arista de $G_2$ y recíprocamente si  $\{z,w\}$ es una arista de $G_2$ entonces $\{\alpha^{-1}(z),\alpha^{-1}(w)\}$ es una arista de $G_1$. La biyección $\alpha$ es llamada un \textit{isomorfismo}.
 \end{definicion}
 
-Es importante notar que, debido a al definición, un isomorfismo de grafos se extiende a un biyección de aristas del primer grafo en el segundo grafo. Por lo tanto, para demostrar  que $\alpha$ es un isomorfismo entre dos grafos $G_1$ y $G_2$ alcanza von verificar que lleva en forma inyectiva todas las aristas de $G_1$  en todas las aristas de $G_2$.   
+Es importante notar que, debido a al definición, un isomorfismo de grafos se extiende a un biyección de aristas del primer grafo en el segundo grafo. Por lo tanto, para demostrar  que $\alpha$ es un isomorfismo entre dos grafos $G_1$ y $G_2$ alcanza con verificar que lleva en forma inyectiva todas las aristas de $G_1$  en todas las aristas de $G_2$.   
 
 Por ejemplo, considere los dos grafos de la Fig. \ref{f5.3}. En este caso hay una biyección entre el conjunto de vértices de $G_1$ y el conjunto de vértices de $G_2$ la cual tiene la propiedad requerida; esta biyección es dada por
 $$
@@ -312,7 +312,7 @@ Por ejemplo, los dos grafos de la Fig. \ref{f5.4} tienen cada uno cinco vértice
 \end{figure}
 
 \item \label{ejercicio5.2.2}Encontrar un isomorfismo entre los grafos definidos por las siguientes listas de
-adyacencias. (Ambas listas especifican versiones de un grafo famoso conocido como \textit{grafo de Petersen}). \index{grafo dePetersen}
+adyacencias. Ambas listas especifican versiones de un grafo famoso conocido como \textit{grafo de Petersen}. \index{grafo dePetersen}
 $$
 \begin{matrix}
 a&b&c&d&e&f&g&h&i&j\\ \hline
@@ -361,7 +361,7 @@ es par.
     Cuando representamos un grafo por una lista de adyacencia, como cada arista se encuentra dos veces (si $w$ está en la columna de $v$,  entonces $v$  está en la columna de $w$) podemos llegar a pensar que la representación por listas de adyacencia utiliza ``demasiado espacio'' (el doble de lo necesario). Sin embargo,  esta representación ocupa el mismo espacio que la de conjuntos: en la  lista de adyacencia de un grafo $G$, en cada columna $v$  se encuentran $\delta(v)$ vértices. Por lo tanto la tabla tiene $\sum_{v \in V} \delta(v)$  entradas. Por el teorema \ref{t5.3} tenemos que $\sum_{v \in V} \delta(v)= 2|E|$,  es decir el número de entradas de la tabla es dos veces el número de aristas. Por otro lado, como cada arista ocupa $2$ espacios (los dos vértices),  el número de espacios necesario para representar $G$  como conjunto  es también $2|E|$. 
 \end{observacion*}
 
-Un grafo en el cual todos los vértices tienen la misma valencia $r$ se llama \textit{regular}  \index{grafo regular} (con valencia $r$), o \textit{$r$-valente,} o de \textit{grado $r$.} En este caso, el resultado del teorema \ref{t5.3} se traduce a
+Un grafo en el cual todos los vértices tienen la misma valencia $r$ se llama \textit{regular}  \index{grafo regular} (con valencia $r$), o \textit{$r$-valente,} o de \textit{grado $r$.} En este caso, el de un grafo de grado $r $, el resultado del teorema \ref{t5.3} se traduce a
 $$
 r|V|=2|E|.
 $$
@@ -449,7 +449,7 @@ vértices dados.)
 
 \begin{section}{Caminos y ciclos}\label{seccion-caminos-y-ciclos}
 
-Frecuentemente usamos grafos como modelos de situaciones prácticas que involucran rutas: los vértices representan ciudades o cruces, y cada arista representa una ruta o cualquier otro forma de comunicación. Las definiciones de esta sección se comprenderán mejor con esta clase de ejemplo en mente.
+Frecuentemente usamos grafos como modelos de situaciones prácticas que involucran rutas: los vértices representan ciudades o cruces, y cada arista representa una ruta o cualquier otra forma de comunicación. Las definiciones de esta sección se comprenderán mejor con esta clase de ejemplo en mente.
 
 \begin{definicion}  Una \textit{caminata} en un grafo $G$ es  \index{caminata} una secuencia de vértices
 $$
@@ -701,21 +701,34 @@ C. Hierholzer (1840-1871) mostró, poco antes de su muerte, un algoritmo fácilm
 %Obviamente,  debido a la observación  \ref{obs-impar-a-par}, esto demuestra también el teorema para grafos con dos valencias impares. 
 Nosotros veremos aquí una versión del algoritmo de Hierholzer que se aplica tanto a los grafos con todos los vértices de valencia par como, a los que tienen dos vértices de valencia impar. 
 
-Para explicar el algoritmo de Hierholzer nos es útil la siguiente definición:  un \textit{recorrido maximal}  es un recorrido que respetando la condición de no repetir aristas no es posible continuarlo.  
+Para explicar el algoritmo de Hierholzer nos es útil la siguiente definición:  un \textit{recorrido maximal}  es un recorrido que respetando la condición de no repetir aristas no es posible continuarlo como recorrido desde el último vértice.  
 
-La idea clave del algoritmo de Hierholzer  es la siguiente:  en un grafo de valencias pares (conexo o no conexo) todo recorrido maximal termina en el vértice original. Observar que no es posible quedarse atascado en ningún vértice que no sea  el vértice original, porque el grado par de todos los vértices garantiza que, cuando se ingresa a un vértice distinto al original debe haber una  arista sin usar que nos permite dejarlo. 
+La idea clave del algoritmo de Hierholzer  es la siguiente.
 
-Más aún, esta idea se puede extender a los grafos conexos con dos vértices de valencia impar, en ese caso: todo recorrido maximal que parte de un vértice de valencia impar termina en el otro vértice de valencia impar. 
+\begin{lema}\label{lema:hierholzer}
+    \begin{enumerate}
+        \item\label{item:hierholzer_a} En un grafo de valencias pares (conexo o no conexo) todo recorrido maximal termina en el vértice original.
+        \item\label{item:hierholzer_b} En  un grafo conexo con dos vértices de valencia impar todo recorrido maximal que parte de un vértice de valencia impar termina en el otro vértice de valencia impar.
+    \end{enumerate}
+\end{lema}
+\begin{proof} \ref{item:hierholzer_a}
+    Observar que no es posible quedarse atascado en ningún vértice que no sea  el vértice original, porque el grado par de todos los vértices garantiza que, cuando se ingresa a un vértice distinto al original debe haber una  arista sin usar que nos permite dejarlo. 
+
+    \ref{item:hierholzer_b} Saliendo del vértice original,  cada vez que ingresamos a un vértice de valencia par tenemos aristas sin usar y salimos por alguna de ellas. Por lo tanto, no es posible quedarse atascado en ningún vértice que sea par y el recorrido maximal debe terminar en un vértice impar. Pero no puede terminar en el vértice original, pues si terminara ahí el vértice sería par. Todo esto implica que el recorrido maximal termina en el vértice impar que no es el origen. 
+\end{proof}
+
 
 Teniendo en cuenta las consideraciones anteriores podemos plantear el siguiente algoritmo:\index{algoritmo de Hierholzer}
 
+Sea $G$ un grafo conexo con vértices de grado par o con dos vértices de grado impar y los demás de grado par. 
+
 \begin{enumerate}
-    \item \textbf{Paso 1.} Elija el vértice inicial $v$ y haga un recorrido maximal. 
-    
+    \item \textbf{Paso 0.} Elija el vértice inicial $v$. Si $G$  tiene todos sus vértices de grado par,  elija cualquier vértice. Si $G$ tiene dos vértices de grado impar,  elija un vértice de valencia impar.
+    \item \textbf{Paso 1.} Haga un recorrido maximal partiendo de $v$. 
     
     \item \textbf{Paso iterativo} 
     \begin{itemize}
-        \item Mientras en la caminata ya realizada exista un vértice $u$  que tenga aristas que no formen parte de la caminata, realice otro recorrido maximal siguiendo las aristas no utilizadas. 
+        \item Mientras en la caminata ya realizada exista un vértice $u$  que tenga aristas que no formen parte de la caminata, realice otro recorrido maximal que parte de $u$ siguiendo las aristas no utilizadas. 
         \item Inserte en $u$ este recorrido a la caminata  anterior obteniendo una nueva caminata (más larga).
         \item  Si aún queda alguna arista sin recorrer vuelva al inicio del paso iterativo.
     \end{itemize}
@@ -726,6 +739,8 @@ Observemos que el recorrido del paso 1 en el caso del grafo con todas las valenc
 En  cualquier de los dos casos,  en el paso 1 el recorrido maximal puede no cubrir todos los vértices y aristas del grafo inicial. Además,  observemos que el subgrafo que se obtiene eliminando las aristas del recorrido tiene todas las valencias pares. 
 
 En  el paso iterativo el subgrafo de las aristas disponibles tiene todos los vértices de valencia par y por lo tanto el recorrido comienza y  termina en el mismo vértice y allí se inserta.
+
+Puesto que suponemos que el grafo original es conexo, repetir el paso iterativo agotará todos las aristas del grafo.
 
 \begin{comment}
 El  algoritmo es el siguiente: 
