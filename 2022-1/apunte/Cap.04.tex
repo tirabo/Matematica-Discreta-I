@@ -38,8 +38,8 @@ Observar que $a\equiv 0 \pmod{m}$ si  y sólo si $m|a$ y que $a\equiv b \pmod{m}
     $$a\equiv r \pmod{m}.$$\vskip -.6cm
 \end{proposicion}
 \begin{proof}
-     $a=mq+r$  con $0 \le r <m$. Luego,
-     $$a-r = mq \quad \Rightarrow \quad m|a-r\quad \Rightarrow \quad a\equiv r \pmod{m}.$$ 
+    $a=mq+r$  con $0 \le r <m$. Luego,
+    $$a-r = mq \quad \Rightarrow \quad m|a-r\quad \Rightarrow \quad a\equiv r \pmod{m}.$$ 
 \end{proof}
 
 Es fácil verificar que la {congruencia módulo} $m$ es una relación de equivalencia. 
@@ -86,12 +86,16 @@ Si $a=mh+r$ y $b=mk+s$, con $0 \le r,s <m$, entonces por la proposición \ref{pr
 \begin{equation*}
     a \equiv r \pmod{m} \quad \wedge \quad     b \equiv s \pmod{m}.
 \end{equation*}
-Por la propiedad transitiva de ``congruencia módulo $m$'', $ r \equiv s \pmod{m}$, luego $p | r-s$.  Podemos suponer, sin perdida de generalidad, que $s \le r$, luego $0\le r-s< m$, lo cual implica que $r-s=0$,  es decir $r=s$. 
+Por la propiedad transitiva de ``congruencia módulo $m$'', $ r \equiv s \pmod{m}$, luego $m | r-s$.  Podemos suponer, sin perdida de generalidad, que $s \le r$, luego $0\le r-s< m$, lo cual implica que $r-s=0$,  es decir $r=s$. 
 
 ($\Leftarrow$) Si $a$ y $b$ tienen el mismo resto en la división por $m$, entonces  $a=mh+r$ y $b=mk+r$, luego $a-b = m(h-k)$ que es divisible por $m$.
 \end{proof}
 
-Así como antes podíamos separar $\mathbb Z$ en los números pares e impares, la propiedad anterior nos permite expresar $\mathbb Z$ como una unión disjunta de $m$ subconjuntos. Es decir si $\mathbb  Z_{[r]} =\{x \in \mathbb Z:$ el resto de dividir $x$ por $m$ es $r\}$, entonces dado $m \in \mathbb N$, 
+Así como antes podíamos separar $\mathbb Z$ en los números pares e impares, la propiedad anterior nos permite expresar $\mathbb Z$ como una unión disjunta de $m$ subconjuntos. Es decir sea $\mathbb  Z_{[r]} =\{x \in \mathbb Z:$ el resto de dividir $x$ por $m$ es $r\}$, o más formalmente 
+\begin{equation*}
+    \mathbb  Z_{[r]} =\{x \in \mathbb Z: \; x \equiv r \pmod{m} \}, \qquad 0 \le r < m.
+\end{equation*}
+Entonces, 
 $$
 \mathbb Z= \mathbb Z_{[0]}\cup \mathbb Z_{[1]}\cup \cdots\cup \mathbb Z_{[m-1]}.
 $$
