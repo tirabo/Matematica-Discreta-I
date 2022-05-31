@@ -1,6 +1,6 @@
-\documentclass[handout]{beamer} % sin pausas
-%\documentclass{beamer} % con pausas
-%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+%\documentclass[handout]{beamer} % sin pausas
+\documentclass{beamer} % con pausas
+\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 \usetheme{CambridgeUS}
 
@@ -199,6 +199,10 @@
             \begin{equation*}
                 [[b,d],[a,z],[d],[a,c,z],[b,d]].
             \end{equation*}
+            O  el diccionario
+            \begin{equation*}
+                \{a:[b,d],\, b:[a,z],\, c:[d],\, d:[a,c,z],\, z:[b,d]\}
+            \end{equation*}
         \end{ejemplo}
     \end{frame}    
     
@@ -220,7 +224,7 @@
         \vskip.4cm\pause
         
         
-        ?`Cuántas aristas tiene $K_n$? \pause
+        ?`Cuántas aristas tiene $K_n$?
         
         \vskip.2cm\pause
         
@@ -229,7 +233,11 @@
         Si  sumamos $n$-veces las $n-1$ aristas es claro que estamos contando cada arista dos veces, luego el número total de aristas es $n(n-1)/2$.
         \pause
         \vskip.2cm
-        Observar que esta es una demostración, usando  grafos, de que $\sum_{i=1}^{n-1} i = n(n-1)/2$.
+        Observar que esta es una demostración, usando  grafos, de que 
+        \begin{equation*}
+            \sum_{i=1}^{n-1} i = n(n-1)/2.
+        \end{equation*}
+        
         
         
     \end{frame}    
