@@ -1,6 +1,6 @@
-\documentclass[handout]{beamer} % sin pausas
-%\documentclass{beamer} % con pausas
-%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+%\documentclass[handout]{beamer} % sin pausas
+\documentclass{beamer} % con pausas
+\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 \usetheme{CambridgeUS}
 
@@ -135,23 +135,23 @@
         \begin{figure}
             \includegraphics[scale=0.18]{images/konisberg3.jpg}
         \end{figure}
-        
+        \pause
         Ahora el problema se reduce a encontrar una caminata  que use cada arista (o puente) una y solo una vez.
     \end{frame}
     
     \begin{frame}
         \begin{observacion}
             $\delta(A)=5$, $\delta(B)=3$, $\delta(C)=3$, $\delta(D)=3$.
-        \end{observacion}
+        \end{observacion}\pause
         
         \vskip .5cm
         
-        Euler, abstrayéndose del problema concreto, razonó de la siguiente manera:
+        Euler, abstrayéndose del problema concreto, razonó de la siguiente manera:\pause
         
         \vskip .5cm 
         \begin{itemize}
-            \item Supongamos que el vértice de partida es $x$ y  el de llegada es $y$. Todos los demás los llamo vértices intermedios.
-            \item En un vértice intermedio cada vez que entro por un puente salgo por otro. Eso  me ``aporta''  2 a la valencia.
+            \item Supongamos que el vértice de partida es $x$ y  el de llegada es $y$. Todos los demás los llamo vértices intermedios.\pause
+            \item En un vértice intermedio cada vez que entro por un puente salgo por otro. Eso  me ``aporta''  2 a la valencia.\pause
             \item Terminado el proceso usé todos los puentes, por lo tanto  en cada vértice intermedio la cantidad de entradas más la cantidad de salidas es la valencia. Como la cantidad de entradas es igual a la cantidad de salidas, la valencia en los vértices intermedios es par.
             
         \end{itemize}
@@ -163,11 +163,11 @@
         \textbf{Concluyendo}
         \vskip .3cm
         \begin{itemize}
-            \item Si hay una caminata que pasa por cada puente una y solo una vez,  la cantidad de vértices con valencia impar es a lo sumo 2. 
+            \item Si hay una caminata que pasa por cada puente una y solo una vez,  la cantidad de vértices con valencia impar es a lo sumo 2. \pause
             \item Como todos los vértices en el problema tienen valencia impar, el problema no tiene solución. 
-        \end{itemize}
+        \end{itemize}\pause
         \vskip .3cm
-        Como veremos más adelante el problema de los puentes de Könisberg puede ser generalizado y también vale la recíproca.
+        Como veremos más adelante el problema de los puentes de Könisberg puede ser generalizado y también vale la recíproca.\pause
         \vskip .5cm
         \textbf{Cita:}  Euler, Leonhard (1736). \href{http://math.dartmouth.edu/\~euler/docs/originals/E053.pdf}{Solutio problematis ad geometriam situs pertinentis}. Comment. Acad. Sci. U. Petrop 8, 128-40 (en latín)
         
@@ -195,15 +195,15 @@
     \end{frame}
     
     \begin{frame}
-        \begin{solucion}
-            Para la primera pregunta una posibilidad es el ciclo $p,q,t,s,u,r,p$.
+        \begin{solucion}\pause
+            Para la primera pregunta una posibilidad es el ciclo $p,q,t,s,u,r,p$.\pause
             
             \vskip .5cm
             
-            La segunda pregunta tiene respuesta negativa:
+            La segunda pregunta tiene respuesta negativa:\pause
             
             Las valencias son 
-            $$\delta(p) = 4,\quad\delta(q) = 4,\quad\delta(s) = 5,\quad\delta(r) = 5,\quad\delta(u) = 3,\quad\delta(t) = 5.$$
+            $$\delta(p) = 4,\quad\delta(q) = 4,\quad\delta(s) = 5,\quad\delta(r) = 5,\quad\delta(u) = 3,\quad\delta(t) = 5.$$\pause
             
             Como en los puentes de Königsberg,  al haber más de $2$ vértices de valencia impar, no es posible recorrer todas las aristas una sola vez.
             
@@ -217,10 +217,11 @@
         
     \begin{frame}
         \begin{definicion}
-            Un {\em ciclo hamiltoniano} en un grafo $G$ es un ciclo que contiene a todos los vértices del grafo.
+            Un {\em ciclo hamiltoniano} en un grafo $G$ es un ciclo que contiene a todos los vértices del grafo.\pause
             \vskip .2cm
-            Una {\em caminata euleriana} en un grafo $G$ es un caminata que usa todas las aristas de $G$ exactamente
-            una vez. Una caminata euleriana que comienza y termina en un mismo vértice se llama también {\em circuito euleriano}.
+            Una {\em caminata euleriana} en un grafo $G$ es un caminata que usa todas las aristas de $G$ exactamente  una vez o,  equivalentemente, un recorrido que utiliza todas las aristas.  \pause
+            \vskip .2cm
+            Una caminata euleriana que comienza y termina en un mismo vértice se llama también {\em circuito euleriano}.
         \end{definicion}
         
         \vskip .2cm
@@ -232,37 +233,59 @@
     \begin{frame}
     
 
-        C. Hierholzer (1840-1871) mostró, poco antes de su muerte, un algoritmo fácilmente implementable para encontrar un circuito euleriano  para cualquier grafo  con vértices de grado  par. 
+        C. Hierholzer (1840-1871) mostró, poco antes de su muerte, un algoritmo fácilmente implementable para encontrar un circuito euleriano  para cualquier grafo  con vértices de grado  par. \pause
         
         \vskip .6cm
         
         El  mismo algoritmo sirve para grafos con dos vértices de grado impar.
         
-        \vskip .6cm
+        \vskip .6cm\pause
         
-        Para explicar el algoritmo de Hierholzer nos es útil la siguiente definición:  un \textit{recorrido maximal}  es un recorrido que respetando la condición de no repetir aristas no es posible continuarlo.  
+        Para explicar el algoritmo de Hierholzer nos es útil la siguiente
+        
+        \vskip .4cm
+        
+        \begin{definicion}
+            Un \textit{recorrido maximal}  es un recorrido que respetando la condición de no repetir aristas no es posible continuarlo.  
+        \end{definicion}
 
-        \vskip .6cm
+        \vskip .2cm
 
+        \vskip .6cm\pause
+    \end{frame}
+        
+    \begin{frame}\frametitle{Algoritmo de Hierholzer: idea clave}\pause
+        
         La idea clave del algoritmo de Hierholzer  es la siguiente:  en un grafo de valencias pares (conexo o no conexo) todo recorrido maximal termina en el vértice original.
+
+        \vskip .4cm\pause
+
+        \begin{itemize}
+            \item Sea $x$ un vértice del grafo  que será donde comenzará la caminata.
+            \item Cada vez que ingreso y salgo de un vértice $v$ ``consumo'' $2$  aristas y  me quedan $2$ aristas menos para utilizar.\pause
+            \item Como $\delta(v)$  es par,  si $v\ne x$ cada vez que ingraso y salgo  de $v$ me queda un un número para de aristas de ese vértice sin utilizar.\pause
+            \item Es decir,  siempre que puedo entrar a un vértice $v \ne x$, puedo salir.\pause
+            \item Es  decir, el único vértice al que puedo entrar y quizás no pueda  salir es $x$.\pause
+            \item Como el recorrido es maximal,  va a haber algún momento en que no pueda avanzar más y eso solo puede ocurrir cuando estamos en el vértice $x$.
+        \end{itemize}
 
     \end{frame}
 
     \begin{frame}
-        \frametitle{Idea de la demostración (1)}
+        \frametitle{Algoritmo de Hierholzer: idea de la demostración (1)}\pause
         
         
-        Algoritmo  de Hierholzer (grafo con todas valencias pares):
+        Algoritmo  de Hierholzer (grafo con todas valencias pares):\pause
         \vskip .4cm
         \begin{enumerate}
-            \item \textbf{Paso 1.} Elija cualquier vértice  inicial $v$ y haga un recorrido  maximal.
+            \item \textbf{Paso 1.} Elija cualquier vértice  inicial $v$ y haga un recorrido  maximal.\pause
             \vskip .2cm
-            (recorrido cerrado, puede no cubrir todas las aristas).
+            (recorrido cerrado, puede no cubrir todas las aristas).\pause
             \vskip .4cm
-            \item \textbf{Paso iterativo} 
-            \begin{enumerate}
-                \item[\textit{i)}] Mientras exista un vértice $u$ en la caminata ya realizada, pero que tenga aristas que no formen parte de la caminata, inicie otro recorrido maximal (será de $u$ a $u$) siguiendo las aristas no utilizadas.
-                \item[\textit{ii)}] Inserte esta  caminata a la caminata  anterior en $u$  para formar una caminata nueva (más larga).
+            \item \textbf{Paso iterativo} \pause
+            \begin{enumerate}\pause
+                \item[\textit{i)}] Mientras exista un vértice $u$ en la caminata ya realizada, pero que tenga aristas que no formen parte de la caminata, inicie otro recorrido maximal (será de $u$ a $u$) siguiendo las aristas no utilizadas.\pause
+                \item[\textit{ii)}] Inserte esta  caminata a la caminata  anterior en $u$  para formar una caminata nueva (más larga).\pause
                 \item[\textit{iii)}] Si no cubrió todas las aristas vuelva a \textit{i)}.
             \end{enumerate} 
             
@@ -270,15 +293,15 @@
     
     \end{frame}
     
-    \begin{frame}\frametitle{Idea de la demostración (2)}
+    \begin{frame}\frametitle{Algoritmo de Hierholzer: idea de la demostración (2)}
 
-        En  el paso iterativo el subgrafo que obtenemos luego de quitar las aristas recorridas es par. Esto nos permite hacer caminatas cerradas  por aristas no utilizadas desde cada vértice con aristas no utilizadas.
+        En  el paso iterativo el subgrafo que obtenemos luego de quitar las aristas recorridas es par. Esto nos permite hacer caminatas cerradas  por aristas no utilizadas desde cada vértice con aristas no utilizadas.\pause
         \vskip .6cm
 
         
-            El caso de un grafo donde todas las valencias son pares excepto $2$ se puede reducir al anterior: si deseamos una caminata euleriana que empiece por $v$ y termine en $w$.
+            El caso de un grafo donde todas las valencias son pares excepto $2$ se puede reducir al anterior: si deseamos una caminata euleriana que empiece por $v$ y termine en $w$.\pause
         \begin{itemize}
-            \item Comenzamos en $v$ y haga una caminata  que no repita aristas hasta que se detenga. 
+            \item Comenzamos en $v$ y haga una caminata  que no repita aristas hasta que se detenga. \pause
             \item Elimine la aristas utilizadas. El grafo que queda es par y  ahí utilizamos el algoritmo para ese caso. 
         \end{itemize}
         
@@ -318,16 +341,17 @@
     
     \begin{frame}
         \begin{solucion}
-            Debemos primero observar que  debe existir un circuito euleriano, pues $\delta(p)=4$, $\delta(q)=4$, $\delta(r)=4$, $\delta(s)=4$, $\delta(t)=4$, y $\delta(u)=2$,  es decir todos los vértices tienen grado par. 
+            Debemos primero observar que  debe existir un circuito euleriano, pues $\delta(p)=4$, $\delta(q)=4$, $\delta(r)=4$, $\delta(s)=4$, $\delta(t)=4$, y $\delta(u)=2$,  es decir todos los vértices tienen grado par. \pause
             \vskip .2cm
             
             Apliquemos el algoritmo de Hierholzer partiendo  desde $u$. Una caminata posible con origen en $u$ y que vuelva a $u$ es $$u, r, p, q, s, t, u.$$
 
 
-Ahora elijamos $q$ que es un vértice que pertenece a la caminata pero que tiene aristas que no son parte de la caminata. Una caminata que no toca aristas usadas y  que parte de $q$ y regresa a $q$ es $q,t,p,s,r,q$.  
-Insertamos en $q$  esta caminata  a la caminata anterior y obtenemos:
-$$u, r, p, \mathbf{q,t,p,s,r,q}, s, t, u.$$
-(En  negrita la caminata insertada).
+            Ahora elijamos $q$ que es un vértice que pertenece a la caminata pero que tiene aristas que no son parte de la caminata. Una caminata que no toca aristas usadas y  que parte de $q$ y regresa a $q$ es $q,t,p,s,r,q$.  \pause
+
+            Insertamos en $q$  esta caminata  a la caminata anterior y obtenemos:
+            $$u, r, p, \underline{q,t,p,s,r,q}, s, t, u.$$
+            (Subrayada la caminata insertada).
 
             \qed
         \end{solucion}
