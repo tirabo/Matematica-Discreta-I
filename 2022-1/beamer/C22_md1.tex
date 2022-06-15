@@ -1,6 +1,6 @@
-\documentclass[handout]{beamer} % sin pausas
-%\documentclass{beamer} % con pausas
-%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+%\documentclass[handout]{beamer} % sin pausas
+\documentclass{beamer} % con pausas
+\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 \usetheme{CambridgeUS}
 
@@ -198,9 +198,9 @@
 \begin{frame}
     \frametitle{}
 
-    A causa de su particular estructura y propiedades, los árboles aparecen en diversas aplicaciones de la matemática, especialmente en investigación operativa y ciencias de la computación. 
+    A causa de su particular estructura y propiedades, los árboles aparecen en diversas aplicaciones de la matemática, especialmente en investigación operativa y ciencias de la computación. \pause
 \vskip .9cm
-    El siguiente lema nos resultará útil para probar una parte del teorema fundamental de esta sección.
+    El siguiente lema nos resultará útil para probar una parte del teorema fundamental de esta sección.\pause
 \vskip .4cm
 
 \begin{lema} Sea $G=(V,E)$ un grafo conexo, entonces $|E| \ge |V| -1$.  
@@ -219,10 +219,10 @@
         $$
         Renombremos los vértices de $G$ con números naturales de tal forma que el primer vértice de la caminata sea $1$, el segundo $2$ y cada vez que aparece un vértice que no ha sido renombrado se le asigna el número siguiente.
         
-        \vskip .4cm
+        \vskip .4cm\pause
 
         Luego la caminata comienza en $1$ y termina en $n$, donde $n = |V|$.  
-        
+        \pause
         \vskip .4cm
 
         Observar: si $i$ tal que $1 < i \le n$ tenemos que la caminata tiene la forma
@@ -244,7 +244,7 @@
 
     El siguiente teorema nos da 3 nociones equivalente a la definición de árbol. 
 
-    \vskip .6cm
+    \vskip .6cm\pause
 
 \begin{teorema}\label{t5.5} Si $T=(V,E)$ es un grafo conexo con al menos dos vértices, entonces son equivalentes las siguientes propiedades
     \begin{enumerate}
@@ -266,11 +266,11 @@
 
     $$
     \textbf{T1} \quad \Rightarrow  \quad \textbf{T2} \quad \Rightarrow  \quad \textbf{T3} \quad \Rightarrow  \quad \textbf{T1}.
-    $$
+    $$\pause
 
 
     Luego, toda equivalencia se deduce de estas implicaciones. 
-    \vskip .4cm
+    \vskip .4cm\pause
     Por ejemplo,
 
     $$
@@ -291,18 +291,18 @@
 
     (T1 $\Rightarrow$ T2) Si hubiera dos caminos podríamos formar un ciclo. 
         \vskip .4cm
-    (T2 $\Rightarrow$ T3) Se hará por inducción en $|V|$. 
+    (T2 $\Rightarrow$ T3) Se hará por inducción en $|V|$. \pause
     
-    Sea $uv$  arista de $T$ y sea  $F = T -uv$.  Como hay un único camino de $u$  a $v$,  $F$ tiene dos componentes conexas: $T_1$  la componente conexa de $u$ y $T_2$ la componente conexa de $v$.
+    Sea $uv$  arista de $T$ y sea  $F = T -uv$.  Como hay un único camino de $u$  a $v$,  $F$ tiene dos componentes conexas: $T_1$  la componente conexa de $u$ y $T_2$ la componente conexa de $v$.\pause
         \vskip .2cm
-    En cada componente conexa $T_i = (V_i, E_i)$ hay un único camino de un vértice a otro, pues sino esa propiedad no se cumpliría en $T$. 
+    En cada componente conexa $T_i = (V_i, E_i)$ hay un único camino de un vértice a otro, pues sino esa propiedad no se cumpliría en $T$. \pause
     \vskip .2cm
     Por HI, $|E_1|=|V_1|-1$ y $|E_2|=|V_2|-1$. Luego 
     \vskip -.6cm
     \begin{align*}
         |E| &= |E_1 \cup E_2| + 1  = |E_1|+|E_2| + 1 \stackrel{\text{(HI)}}{=} (|V_1|-1)+(|V_2|-1) +1 \\
             &= |V_1 \cup V_2|-1 = |V| -1. 
-    \end{align*}
+    \end{align*}\pause
     \vskip .0cm
     (T3 $\Rightarrow$ T1)  $|E|=|V|-1$ y supongamos que $T$ no es árbol $\Rightarrow$ hay un ciclo $\Rightarrow$ podemos sacar una arista $uv$ y sigue siendo conexo   $\Rightarrow$ $|E -uv|=|V|-2$ y  conexo. Absurdo por el lema. \qed
         
@@ -317,9 +317,9 @@
         \vskip .4cm
         El grafo obtenido de $T$ removiendo alguna arista tiene dos
         componentes, cada una de las cuales es un árbol.
-    \end{corolario}
+    \end{corolario}\pause
 
-    \begin{proof}
+    \begin{proof}\pause
         Es parte de la demostración de  T2 $\Rightarrow$ T3: el grafo que se obtiene de quitar una arista,  es un grafo con dos componentes conexas cada una de ellas sin ciclos (pues sino los habría en $T$), luego cada una de ellas es árbol.
 
         \qed
@@ -335,7 +335,7 @@
     \begin{block}[Problema]
         ¿Cómo hacer un horario de actividades sin interferencias?.
     \end{block}
-
+    \pause
 
 
 
@@ -394,10 +394,10 @@ $$
 \text{Hora 1} & \text{Hora 2} &\text{ Hora 3}& \text{Hora 4} \\
 v_1 \text{ y } v_3 & v_2 \text{ y } v_4 & v_5 & v_6
 \end{matrix}
-$$
+$$\pause
 Es una partición del conjuntos de vértices en cuatro partes, con la propiedad que ninguna parte contiene un par de vértices adyacentes del grafo. 
 
-
+\pause
 Claramente,  le corresponde una función:
 $$
 c: \{ v_1,v_2,v_3,v_4,v_5,v_6\} \to  \{1,2,3,4\},
@@ -419,7 +419,7 @@ donde
     \frametitle{}
 
     También podemos representar esta función como un \textit{coloreo de vértices} donde dos vértices adyacentes tienen distintos colores:
-    \vskip .4cm
+    \vskip .4cm\pause
 \begin{center}
     \begin{tikzpicture}[scale=0.55]
         %\SetVertexSimple[Shape=circle,FillColor=white]
@@ -439,7 +439,7 @@ donde
         \Edges($v_3$,$v_5$)
     \end{tikzpicture}
     \end{center}
-    \vskip .4cm
+    \vskip .4cm\pause
     Cualquiera de las tres formas de presentar el resultado nos daría una solución (quizás no la mejor). 
 
     \qed
@@ -453,10 +453,10 @@ donde
     \begin{definicion} Una \textit{coloración de vértices} de un grafo $G=(V,E)$ es una función $c:V \to  \mathbb N$ con la siguiente propiedad:
         $$
         c(x)\not= c(y) \quad \text{ si } \quad \{x,y\} \in E.
-        $$
+        $$\pause
         El \textit{número cromático} de $G$, denotado $\chi(G)$, se define \index{número cromático} como el mínimo entero $k$ para el cual existe una coloración de vértices de $G$ usando $k$-colores. 
         
-        \vskip .4cm
+        \vskip .4cm\pause
         
         En otra palabras, $\chi(G)=k$ si  y sólo si existe una coloración de vértices $c$ la cual es una función de $V$ a $\mathbb N_k$, y $k$ es el mínimo entero con esta propiedad. 
         \end{definicion}
@@ -469,18 +469,18 @@ donde
 
     Volviendo al ejemplo de los horarios,  nuestro primer intento fue de 4 colores.
     \vskip .4cm
-    Un rápido intento con tres  colores nos da la solución de este problema: 
+    Un rápido intento con tres  colores nos da la solución de este problema: \pause
 
     $$
     \begin{matrix}
     \text{Color 1}\quad &\text{Color 2}\quad&\text{Color 3} \\
     v_1 &v_2 \text{ y } v_5 \quad & v_3,v_4 \text{ y } v_6 .
     \end{matrix}
-    $$
+    $$\pause
 
     Más aún, hacen falta por lo menos tres colores, puesto que $v_1$, $v_2$, y $v_6$ son mutuamente adyacentes y por lo tanto deben tener diferentes colores. 
     
-    \vskip .4cm
+    \vskip .4cm\pause
 
     Luego concluimos que el número cromático del grafo es $3$.
 
@@ -519,18 +519,18 @@ donde
 \begin{frame}
     \frametitle{}
 
-    En general, para probar que el número cromático de un grafo dado es $k$, debemos hacer dos cosas:
+    En general, para probar que el número cromático de un grafo dado es $k$, debemos hacer dos cosas:\pause
 
     \vskip .4cm
 
 \begin{enumerate}[label=\textit{\alph*)}] 
-    \item  encontrar una coloración de vértices usando $k$ colores;
+    \item  encontrar una coloración de vértices usando $k$ colores;\pause
     \vskip .4cm
     \item  probar que ninguna coloración de vértices usa menos de $k$ colores.
 \end{enumerate}
 
-\vskip .9cm
-¿Existe algún algoritmo general eficiente para encontrar el número cromático?
+\vskip .9cm\pause
+¿Existe algún algoritmo general eficiente para encontrar el número cromático?\pause
 \vskip .2cm
 \textbf{Respuesta:} No.
 \vskip .4cm
