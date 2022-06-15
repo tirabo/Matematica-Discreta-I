@@ -124,7 +124,7 @@ def grafos_conexos(n_vert):
 
 
 def guardar_lista_grafos(lista_grafos, nombre):
-    with open('./2021/python/'+nombre+'.json', 'w') as file:
+    with open(nombre, 'w') as file:
         grafos_no_iso_json = []
         for grafo in lista_grafos:
             l_grafo = []
@@ -159,19 +159,31 @@ def str_grafo(grafo):
 
 def main():
     # grafos_no_iso = grafos_conexos(4)
-    # grafos, n_vert = importar_lista_grafos('./2021/python/grafos-5.json'), 5
-    # grafos, n_vert = importar_lista_grafos('./2021/python/grafos-6.json'), 6
-    grafos, n_vert = importar_lista_grafos('./2021/python/grafos-7.json'), 7
+    # guardar_lista_grafos(grafos_no_iso, './python/grafos_no_iso/grafos-4.json' )
+    # grafos_no_iso = grafos_conexos(5)
+    # guardar_lista_grafos(grafos_no_iso, './python/grafos_no_iso/grafos-5.json' )
+    # grafos_no_iso = grafos_conexos(6)
+    # guardar_lista_grafos(grafos_no_iso, './python/grafos_no_iso/grafos-6.json' )
+    # grafos_no_iso = grafos_conexos(7)
+    # guardar_lista_grafos(grafos_no_iso, './python/grafos_no_iso/grafos-7.json' )
+    """
+    Lo de arriba genera un archivo .json con la lista de grafos no isomorfos
+    """
+    # grafos, n_vert = importar_lista_grafos('./python/grafos_no_iso/grafos-4.json'), 4
+    # grafos, n_vert = importar_lista_grafos('./python/grafos_no_iso/grafos-5.json'), 5
+    # grafos, n_vert = importar_lista_grafos('./python/grafos_no_iso/grafos-6.json'), 6
+    # grafos, n_vert = importar_lista_grafos('./python/grafos_no_iso/grafos-7.json'), 7
     
 
 
-    val_gr = []
-    for grafo in grafos:
-        val_gr.append([lista_de_valencias(n_vert, grafo), grafo])
-    val_gr.sort()
+    # val_gr = []
+    # for grafo in grafos:
+    #     val_gr.append([lista_de_valencias(n_vert, grafo), grafo])
+    # val_gr.sort()
 
-    for w in val_gr:
-        print(w[0], str_grafo(w[1]))
+    # for w in val_gr:
+    #     print(w[0], str_grafo(w[1]))
+    return 0
 
 
     
