@@ -1,6 +1,6 @@
-\documentclass[handout]{beamer} % sin pausas
-%\documentclass{beamer} % con pausas
-%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+%\documentclass[handout]{beamer} % sin pausas
+\documentclass{beamer} % con pausas
+\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 \usetheme{CambridgeUS}
 
@@ -115,23 +115,23 @@
         \frametitle{Algoritmo greedy para coloración de vértices}
     
         \begin{itemize}
-            \item No se conoce ningún algoritmo general para encontrar el número cromático de un grafo que trabaje en ``tiempo polinomial''
-            \item Sin embargo hay un método simple de hacer una coloración usando un  ``razonable'' número de colores.
+            \item No se conoce ningún algoritmo general para encontrar el número cromático de un grafo que trabaje en ``tiempo polinomial'' \pause
+            \item Sin embargo hay un método simple de hacer una coloración usando un  ``razonable'' número de colores. \pause
         \end{itemize}
 
-        \vskip .6cm
+        \vskip .4cm
 
 
-        El algoritmo es muy sencillo y se puede describir en una sola línea. 
+        El algoritmo es muy sencillo y se puede describir en una sola línea.  \pause
         \vskip .4cm
         \begin{itemize}
             \item Si hay vértices no coloreados, elegimos un vértice no coloreado  y le otorgamos un color que no tengan sus vecinos.
-        \end{itemize}
+        \end{itemize} \pause
 
-        \vskip .6cm
+        \vskip .4cm
         En este algoritmo insistimos en hacer la mejor elección que podemos en cada paso, sin mirar más allá para ver si esta elección nos traerá problemas luego. 
         
-        \vskip .4cm
+        \vskip .4cm \pause
         
         Un algoritmo de esta clase se llama a menudo un \textit{algoritmo greedy (goloso)}.  \index{algoritmo greedy (goloso)}
     
@@ -142,16 +142,16 @@
     \begin{frame}
         \frametitle{}
     
-        El algoritmo greedy para coloración de vértices es fácil de programar. 
+        El algoritmo greedy para coloración de vértices es fácil de programar.  \pause
         \vskip .8cm
-        Supóngase que hemos dado a los vértices algún orden $v_0,v_1,\ldots,v_n$. 
+        Supóngase que hemos dado a los vértices algún orden $v_0,v_1,\ldots,v_n$.  \pause
         \vskip .8cm
         \begin{itemize}
-            \item Asignemos el color $0$ a $v_0$.
+            \item Asignemos el color $0$ a $v_0$. \pause
             \item Tomamos $v_i$ el siguiente vértice de la lista y
             \begin{itemize}
                 \item $S =$ el conjunto de colores asignados a los vértices $v_j$ ($0\le j <i$) que son adyacentes a $v_i$.
-                \item Le damos a $v_i$ el primer color que no está en $S$. 
+                \item Le damos a $v_i$ el primer color que no está en $S$.  \pause
             \end{itemize}
             \item si $i < n$ volvemos hacemos el procedimiento del paso anterior para $i = i +1$.
             
@@ -163,7 +163,7 @@
 
     \begin{frame}[fragile]
         \frametitle{}
-        Mostramos en pseudocódigo del algoritmo greedy para coloración de vértices. 
+        Mostramos en pseudocódigo del algoritmo greedy para coloración de vértices.  \pause
         \begin{small}
 \begin{verbatim}
 # pre: 0,...,n los vértices de un grafo G
@@ -187,7 +187,7 @@ for i = 0 to n:
     \begin{frame}
         \frametitle{}
     
-        Debido a que la estrategia greedy es corta de vista, el número de colores que usará será normalmente más grande que le mínimo posible. 
+        Debido a que la estrategia greedy es corta de vista, el número de colores que usará será normalmente más grande que le mínimo posible.  \pause
 
         \begin{ejemplo} Aplicar el algoritmo greedy a 
 
@@ -222,7 +222,7 @@ for i = 0 to n:
      \begin{frame}
          \frametitle{}
 
-         El orden de los vértices es $v_1$, $v_2$, $v_3$, $v_4$, $v_5$ y $v_6$. 
+         El orden de los vértices es $v_1$, $v_2$, $v_3$, $v_4$, $v_5$ y $v_6$.  \pause
      
          \vskip .4cm
 
@@ -231,12 +231,12 @@ for i = 0 to n:
          \vskip .4cm
          
          \begin{itemize}
-            \item \textbf{Paso 1.} $v_1$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$ $v_1$ color $0$.
-            \item \textbf{Paso 2.} $v_2$ tiene colores vecinos $S = \{0\}$ $\Rightarrow$  $v_2$ color $1$.
-            \item \textbf{Paso 3.} $v_3$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$  $v_3$ color $0$.
-            \item \textbf{Paso 4.} $v_4$ tiene colores vecinos $S = \{0\}$ $\Rightarrow$  $v_4$ color $1$.
-            \item  \textbf{Paso 5.} $v_5$ tiene colores vecinos $S = \{0, 1\}$ $\Rightarrow$  $v_5$ color $2$.
-            \item \textbf{Paso 6.} $v_6$ tiene colores vecinos $S = \{0, 1, 2\}$ $\Rightarrow$  $v_6$ color $3$.
+            \item \textbf{Paso 1.} $v_1$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$ $v_1$ color $0$. \pause
+            \item \textbf{Paso 2.} $v_2$ tiene colores vecinos $S = \{0\}$ $\Rightarrow$  $v_2$ color $1$. \pause
+            \item \textbf{Paso 3.} $v_3$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$  $v_3$ color $0$. \pause
+            \item \textbf{Paso 4.} $v_4$ tiene colores vecinos $S = \{0\}$ $\Rightarrow$  $v_4$ color $1$. \pause
+            \item  \textbf{Paso 5.} $v_5$ tiene colores vecinos $S = \{0, 1\}$ $\Rightarrow$  $v_5$ color $2$. \pause
+            \item \textbf{Paso 6.} $v_6$ tiene colores vecinos $S = \{0, 1, 2\}$ $\Rightarrow$  $v_6$ color $3$. \pause
         \end{itemize}
          
      
@@ -277,9 +277,9 @@ for i = 0 to n:
         \begin{frame}
             \frametitle{}
         
-        El orden que se elige inicialmente para los vértices es fundamental para establecer la coloración. 
+        El orden que se elige inicialmente para los vértices es fundamental para establecer la coloración.  \pause
         \vskip .4cm
-        Es bastante fácil ver que si se elige el orden correcto, entonces el algoritmo greedy nos da la mejor coloración posible (ejercicio en el apunte). 
+        Es bastante fácil ver que si se elige el orden correcto, entonces el algoritmo greedy nos da la mejor coloración posible (ejercicio en el apunte).  \pause
         \vskip .4cm
         Pero hay $n!$ órdenes posibles, y si tuviéramos que controlar cada uno de ellos, el algoritmo requeriría ``tiempo factorial'' (peor aún que tiempo exponencial).
         
@@ -295,7 +295,7 @@ for i = 0 to n:
         Aplicar el algorimo greedy al siguiente grafo donde el orden de los vértices es 
         $$
         v_3, v_4, v_6, v_2, v_5, v_1. 
-        $$
+        $$ 
         \vskip .4cm
         \begin{center}
             \begin{tikzpicture}[scale=0.55]
@@ -328,17 +328,17 @@ for i = 0 to n:
 \begin{frame}
     \frametitle{}
 
-    El algoritmo es:
+    El algoritmo es: \pause
 
     \vskip .4cm
     
     \begin{itemize}
-       \item \textbf{Paso 1.} $v_3$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$ $v_3$ color $0$.
-       \item \textbf{Paso 2.} $v_4$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$  $v_4$ color $0$.
-       \item \textbf{Paso 3.} $v_6$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$  $v_6$ color $0$.
-       \item \textbf{Paso 4.} $v_2$ tiene colores vecinos $S = \{0\}$ $\Rightarrow$  $v_2$ color $1$.
-       \item  \textbf{Paso 5.} $v_5$ tiene colores vecinos $S = \{0\}$ $\Rightarrow$  $v_5$ color $1$.
-       \item \textbf{Paso 6.} $v_1$ tiene colores vecinos $S = \{0, 1\}$ $\Rightarrow$  $v_1$ color $2$.
+       \item \textbf{Paso 1.} $v_3$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$ $v_3$ color $0$. \pause
+       \item \textbf{Paso 2.} $v_4$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$  $v_4$ color $0$. \pause
+       \item \textbf{Paso 3.} $v_6$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$  $v_6$ color $0$. \pause
+       \item \textbf{Paso 4.} $v_2$ tiene colores vecinos $S = \{0\}$ $\Rightarrow$  $v_2$ color $1$. \pause
+       \item  \textbf{Paso 5.} $v_5$ tiene colores vecinos $S = \{0\}$ $\Rightarrow$  $v_5$ color $1$. \pause
+       \item \textbf{Paso 6.} $v_1$ tiene colores vecinos $S = \{0, 1\}$ $\Rightarrow$  $v_1$ color $2$. \pause
    \end{itemize}
 
 \end{frame}
@@ -370,19 +370,19 @@ for i = 0 to n:
         \end{tikzpicture}
         \end{center}
 \qed 
-
-El coloreo queda igual que en la clase pasada. 
+\pause
+El coloreo queda igual que en la clase pasada.  \pause
 \vskip .4 cm
 El orden fue elegido de la siguiente forma: dado el coloreo con colores $\chi(G)$, se elije,  en el orden, primero los vértices de un solo color que haya mayor cantidad, luego de otro color que haya mayor cantidad,  etc.    
 \end{frame}
 
     \begin{frame}
         \frametitle{}
-        Más allá que el algoritmo greedy no soluciona el problema, el algoritmo es útil tanto en la teoría como en la práctica. 
+        Más allá que el algoritmo greedy no soluciona el problema, el algoritmo es útil tanto en la teoría como en la práctica.  \pause
         
         \vskip .4 cm
         
-        Probaremos ahora algunos resultados por medio de la estrategia greedy.
+        Probaremos ahora algunos resultados por medio de la estrategia greedy. \pause
 
         \vskip .4 cm
         
@@ -402,25 +402,26 @@ El orden fue elegido de la siguiente forma: dado el coloreo con colores $\chi(G)
     \begin{frame}
         \frametitle{}
     
-        \begin{proof}
+        \begin{proof} \pause
         
-        \ref{it.com_a} Sea $v_1,v_2,\ldots,v_n$ un ordenamiento cualquiera de los vértices de $G$. 
+        \ref{it.com_a} Sea $v_1,v_2,\ldots,v_n$ un ordenamiento cualquiera de los vértices de $G$.  \pause
         \vskip .2 cm
-        Para cada vértice $v$, si $S$ son los colores de los vecinos a $v$ $\Rightarrow$ $|S| \le k$. 
-        \vskip .4 cm
-        \ref{it.com_b}       
-            (1) Sea $v_n$ un vértice con $\delta(v_n) < k$. 
-            \vskip .2 cm
-            (2) Sean $v_{n-1},v_{n-2},\ldots,v_{n-r}$ los adyacentes a $v_n$. Hay a lo más $k-1$ de ellos.
-            \vskip .2 cm
-            (3) Luego se van eligiendo los adyacentes a $v_i$  que no están listados antes ($n > i \ge 1$). 
-            \vskip .2 cm
-            (4) Si $i < n$ el vértice $v_i$ tiene un adyacente a nivel superior $\Rightarrow$ $v_i$ tiene  a lo más $k-1$ adyacentes a nivel inferior. 
-            \vskip .2 cm
-            (5) Si $i < n$, usando greedy y por (4),  se puede colorear $v_i$ con un color en $\{1,\ldots,k\}$.
-            \vskip .2 cm
-            (6) Por (2) se puede colorear $v_n$   on un color en $\{1,\ldots,k\}$.\qed
-  
+        Para cada vértice $v$, si $S$ son los colores de los vecinos a $v$ $\Rightarrow$ $|S| \le k$.  \pause
+        \vskip .2 cm
+        \ref{it.com_b}
+            \begin{enumerate}
+                \item  Sea $v_n$ un vértice con $\delta(v_n) < k$.    \pause
+                \vskip .2 cm
+                \item Sean $v_{n-1},v_{n-2},\ldots,v_{n-r}$ los adyacentes a $v_n$. Hay a lo más $k-1$ de ellos.  \pause
+                \vskip .2 cm
+                \item Luego se van eligiendo los adyacentes a $v_i$  que no están listados antes ($n > i \ge 1$).   \pause
+                \vskip .2 cm
+                \item Si $i < n$ el vértice $v_i$ tiene un adyacente a nivel superior $\Rightarrow$ $v_i$ tiene  a lo más $k-1$ adyacentes a nivel inferior.   \pause
+                \vskip .2 cm
+                \item Si $i < n$, usando greedy y por (4),  se puede colorear $v_i$ con un color en $\{1,\ldots,k\}$.  \pause
+                \vskip .2 cm
+                \item Por (2) se puede colorear $v_n$   on un color en $\{1,\ldots,k\}$.\qed
+        \end{enumerate}
         \end{proof}
     
     \end{frame}
@@ -431,7 +432,7 @@ El orden fue elegido de la siguiente forma: dado el coloreo con colores $\chi(G)
         \frametitle{Grafos bipartitos}
     
         \begin{definicion} Sea $G$  grafo. Diremos que $G$  es \textit{bipartito} si $\chi(G) = 2$. Es decir,  si se puede colorear con dos colores.
-        \end{definicion}
+        \end{definicion}  \pause
 
         
         \begin{ejemplo}
@@ -484,14 +485,14 @@ El orden fue elegido de la siguiente forma: dado el coloreo con colores $\chi(G)
     \begin{frame}
         \frametitle{}
 
-        Una consecuencia importante del algoritmo greedy es el siguiente teorema. 
+        Una consecuencia importante del algoritmo greedy es el siguiente teorema.   \pause
 
         \vskip .4cm 
         \begin{teorema}\label{t5.7.2} Un grafo es bipartito si  y sólo si no contiene ciclos de longitud impar.
-        \end{teorema}
-        \begin{proof} 
+        \end{teorema}  \pause
+        \begin{proof}  \pause
             
-        ($\Rightarrow$) El contrarrecíproco: si $G$ tiene un ciclo de longitud impar $\Rightarrow$ no es bipartito. 
+        ($\Rightarrow$) El contrarrecíproco: \pause si $G$ tiene un ciclo de longitud impar $\Rightarrow$ no es bipartito. \pause
         
         \vskip .2cm 
 
@@ -499,7 +500,7 @@ El orden fue elegido de la siguiente forma: dado el coloreo con colores $\chi(G)
 
         \vskip .4cm 
 
-        ($\Leftarrow$) Supongamos que $G$ es un grafo sin ciclos de longitud impar y conexo. 
+        ($\Leftarrow$) Supongamos que $G$ es un grafo sin ciclos de longitud impar y conexo. \pause
         \vskip .2cm
         Construiremos un orden de $G$ para el cual el algoritmo greedy producirá una coloración de vértices con dos colores. 
 
@@ -515,18 +516,18 @@ El orden fue elegido de la siguiente forma: dado el coloreo con colores $\chi(G)
     
         
         \begin{itemize}
-            \item Elijamos cualquier vértice y llamémoslo $v_1$; diremos que $v_1$ esta en el \textit{nivel $0$}. 
+            \item Elijamos cualquier vértice y llamémoslo $v_1$; diremos que $v_1$ esta en el \textit{nivel $0$}. \pause
             \vskip .2cm
-            \item A continuación, listemos la lista de vecinos de $v_1$, llamémoslos $v_2,v_3, \dots,v_r$; diremos que estos vértices están en el \textit{nivel 1}. 
+            \item A continuación, listemos la lista de vecinos de $v_1$, llamémoslos $v_2,v_3, \dots,v_r$; diremos que estos vértices están en el \textit{nivel 1}. \pause
             \vskip .2cm
-            \item Continuando de esta manera, definimos el \textit{nivel $i$} como todos aquellos vértices adyacentes a los del {nivel $i-1$}, exceptuando aquellos previamente listados en el {nivel $i-2$}. 
+            \item Continuando de esta manera, definimos el \textit{nivel $i$} como todos aquellos vértices adyacentes a los del {nivel $i-1$}, exceptuando aquellos previamente listados en el {nivel $i-2$}. \pause
         \end{itemize}
         
         \vskip .3cm
         
-        Cuando ningún nuevo vértice puede ser agregado de esta forma, obtenemos $G$ (pues es conexo).
+        Cuando ningún nuevo vértice puede ser agregado de esta forma, obtenemos $G$ (pues es conexo).\pause
         \vskip .3cm
-        El hecho crucial producido por este orden es que un vértice del nivel $i$ solo puede ser adyacente a vértices de los niveles $i-1$ y $i+1$, y no a vértices del mismo nivel.
+        El hecho crucial producido por este orden es que un vértice del nivel $i$ solo puede ser adyacente a vértices de los niveles $i-1$ y $i+1$, y no a vértices del mismo nivel. Probemos esto.
     \end{frame}
 
 
@@ -534,14 +535,14 @@ El orden fue elegido de la siguiente forma: dado el coloreo con colores $\chi(G)
             \frametitle{}
     
 
-        Supongamos que $x$ e $y$ son vértices en el mismo nivel.
+        Supongamos que $x$ e $y$ son vértices en el mismo nivel.\pause
         \vskip .2cm
-        Entonces ellos son unidos por caminos de igual longitud $m$ a algún vértice $z$ de un nivel anterior. 
+        Entonces ellos son unidos por caminos de igual longitud $m$ a algún vértice $z$ de un nivel anterior.\pause 
         \vskip .2cm
-        Los caminos pueden ser elegidos de tal manera que $z$ sea el único vértice común. 
+        Los caminos pueden ser elegidos de tal manera que $z$ sea el único vértice común. \pause
         \vskip .2cm
         Si $x$ e $y$ fueran adyacentes, habría un ciclo de longitud $2m+1$, lo cual contradice
-        la hipótesis. 
+        la hipótesis. \pause
         \vskip .2cm
             \begin{center}
             \begin{tikzpicture}[scale=1]
@@ -577,12 +578,12 @@ El orden fue elegido de la siguiente forma: dado el coloreo con colores $\chi(G)
     \begin{frame}
         \frametitle{}
             
-        Se deduce entonces que el algoritmo greedy asigna:
+        Se deduce entonces que el algoritmo greedy asigna:\pause
         \vskip .4cm
         \begin{itemize}
-            \item el color $1$ a los vértices en el nivel $0,2,4,\ldots$,
+            \item el color $1$ a los vértices en el nivel $0,2,4,\ldots$,\pause
             \vskip .2cm
-            \item el color $2$ a los vértices en los niveles $1,3,5,\ldots$.
+            \item el color $2$ a los vértices en los niveles $1,3,5,\ldots$.\pause
         \end{itemize}
         \vskip .4cm
         Por consiguiente $\chi(G_0)=2$. \qed
