@@ -202,23 +202,25 @@ def main():
     x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12 = 1, 2, 3, 4, 5, 6, 7 ,8 ,9 ,10, 11, 12
     G7 = Grafo({x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12}, {(x1, x2), (x1,x12), (x2, x7), (x3, x4), (x4, x5), (x4, x6), (x5, x6), (x7, x3), (x7, x4), (x7, x8), (x8, x9), (x9, x10), (x9, x11), (x9, x12), (x10, x11)})
     print(sorted(list(G7.vertices())))
-    print(sorted(list(G7.aristas())))
+    print(str(sorted(list(G7.aristas()))).replace('(','{').replace(')','}').replace('[','{').replace(']','}'))
+    print(caminata_euleriana(G7, 1))
     print('')
     x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12 = 4, 5, 6, 7 ,1, 2, 3, 8 ,9 ,10, 11, 12
     G7 = Grafo({x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12}, {(x1, x2), (x1,x12), (x2, x7), (x3, x4), (x4, x5), (x4, x6), (x5, x6), (x7, x3), (x7, x4), (x7, x8), (x8, x9), (x9, x10), (x9, x11), (x9, x12), (x10, x11)})
     print(sorted(list(G7.vertices())))
     print(sorted(list(G7.aristas())))
+    print(caminata_euleriana(G7, 1))
     print('')
     x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12 = 5, 6, 7 ,8 ,9 ,10, 11, 1, 2, 3, 4, 12
     G7 = Grafo({x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12}, {(x1, x2), (x1,x12), (x2, x7), (x3, x4), (x4, x5), (x4, x6), (x5, x6), (x7, x3), (x7, x4), (x7, x8), (x8, x9), (x9, x10), (x9, x11), (x9, x12), (x10, x11)})
     print(sorted(list(G7.vertices())))
     print(sorted(list(G7.aristas())))
+    print(caminata_euleriana(G7, 1))
     print('')
     x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12 =  4, 5, 6, 1, 3, 2, 7 ,9 ,8 ,10, 11, 12
     G7 = Grafo({x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12}, {(x1, x2), (x1,x12), (x2, x7), (x3, x4), (x4, x5), (x4, x6), (x5, x6), (x7, x3), (x7, x4), (x7, x8), (x8, x9), (x9, x10), (x9, x11), (x9, x12), (x10, x11)})
     print(sorted(list(G7.vertices())))
     print(sorted(list(G7.aristas())))
-
     print(caminata_euleriana(G7, 1))
     # print(isinstance(G7, Grafo)  )
 
