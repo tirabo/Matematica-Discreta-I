@@ -117,17 +117,18 @@ G = [[1,2,4,5],[0,2,4,5],[0,1,3,5],[2,4],[0,1,3,5],[0,1,2,4]]
 
 ## Inicio: Algoritmo de Hierholzer ##
 
-def enclibr(lt, tc): # necesaria para circuitos eulerianos
-    # pre: lt lista de adyacencia, tc = lista de vértices,  
-    # post: devuelve j en tocados tq libres[j] no es vacío.  
+def encuentra_libre(grafo, l_ver): # necesaria para circuitos eulerianos (aparentemente no se usa)
+    # pre: grafo: lista de adyacencia, l_ver: lista de vértices,  
+    # post: devuelve un j en l_ver tal que  grafo[j] no es vacío.  Si no hay devuelve -1
     ret = -1
-    for j in range(len(lt)):
-        if len(lt[j]) > 0 and j in tc:
-            ret = j
-            break
+    j = 0
+    while j < len(grafo) and (len(grafo[j]) == 0 or j not in l_ver):
+            j = j + 1
+    if j != len(grafo):
+        ret = j        
     return ret
 
-def inserta_circuito(cr, ct): # necesaria pa circuitos eulerianos
+def inserta_circuito(cr, ct): # necesaria para circuitos eulerianos
     # pre: cr, ct circuitos tq ct[0] en cr
     # mod: se modifica cr insertando ct en ct[0]
     # si cr = [...,c0,c1,c2,...] y ct = [c1,d,...,f,c1]
@@ -381,3 +382,72 @@ print(F)
 print(wF)
 
 ## FIN: Algoritmo de Prim ##
+
+
+
+def main():
+    # Grafos de prueba
+    
+    # Grafo 0 (el gran tour)
+    G0 = Grafo({0, 1, 2, 3, 4, 5}, {(0, 1), (0, 2), (0, 4), (0, 5), (1, 2), (1, 4), (1, 5), (2, 3), (2, 5), (3, 4), (4, 5)})
+    # print(G0)
+    # print(recorrido_euleriano_max(G0, 0))
+    # lista ady= [[1,2,4,5],[0,2,4,5],[0,1,3,5],[2,4],[0,1,3,5],[0,1,2,4]]
+
+    # Grafo 1
+    G1 = Grafo({0, 1, 2, 3, 4, 5, 6}, {(0, 3), (0, 4), (0, 5), (0, 6), (1, 2), (1, 4), (2, 5), (3, 4), (4, 5), (5, 6)})
+    #print(G1)
+    #print(recorrido_euleriano_max(G1, 0),'\n')
+    #lista_ady [[3,4,5,6], [2,4], [1,5], [0,4], [0,1,3,5], [0,2,4,6], [0,5]]
+
+    # Grafo 2 (cíclico)
+    G2 = Grafo({0, 1, 2, 3, 4, 5}, {(0, 1), (0, 5), (1, 2), (2, 3), (3, 4), (4, 5)})
+    # print(G2)
+    # print(recorrido_euleriano_max(G2, 0),'\n')
+    #lista_ady [[1,5],[0, 2],[1,3],[2,4],[3,5],[4,0]]
+
+    # Grafo 3 
+    G3 = Grafo({0, 1, 2, 3, 4, 5}, {(0, 2), (0, 4), (0, 5), (1, 3), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (4, 5)})
+    # print(G3)
+    # print(recorrido_euleriano_max(G3, 0))
+    # print(recorrido_euleriano_max(G3, 1),'\n')
+    #lista_ady [[2, 4, 5], [3, 5], [0, 3, 4, 5], [1, 2, 4], [0, 2, 3, 5], [0, 1, 2, 4]]
+
+    # Grafo 4
+    G4 = Grafo({0, 1, 2, 3, 4, 5, 6}, {(0, 3), (0, 4), (0, 5), (1, 2), (1, 4), (2, 5), (3, 4), (4, 5), (5, 6)})
+    # print(recorrido_euleriano_max(G4, 0))
+    #lista_ady [[3,4,5], [2,4], [1,5], [0,4], [0,1,3,5], [0,2,4,6], [5]]
+    
+    # Grafo 6 (dos valencias impares)
+    G6 = Grafo({0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}, {(0, 1), (1, 2), (2, 3), (2, 4), (2, 7), (3, 4), (4, 5), (4, 6), (5, 6), (7, 8), (8, 9), (8, 10), (8, 11), (9, 10)})
+    #print(G6)
+    #print(caminata_euleriana(G6, 0))
+
+    # Grafo 7 (todas valencias pares)
+    G7 = Grafo({0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}, {(0, 1), (0, 11), (1, 2), (2, 3), (2, 4), (2, 7), (3, 4), (4, 5), (4, 6), (5, 6), (7, 8), (8, 9), (8, 10), (8, 11), (9, 10)})
+    # print(G7)
+    #print(recorrido_euleriano_max(G7,0))
+    # G7.agregar_vertice()
+    # print(G7)
+    # G7.agregar_arista([12, 0])
+    # print(G7)
+    # print(caminata_euleriana(G7, 0))
+    # print(isinstance(G7, Grafo)  )
+
+    #print(coloracion_vertices(G1))
+    #print(coloracion_vertices(G7))
+
+
+
+    # Pesos en G1
+    pesos_G1 =  {(0, 3):5, (0, 4):0, (0, 5):0, (0, 6):0, (1, 2):10, (1, 4):0, (2, 5):0, (3, 4):0, (4, 5):0, (5, 6):0}
+
+    print(kruskal(G1, pesos_G1))
+    print(prim(G1, pesos_G1))
+
+
+    return 0
+# RUN
+
+if __name__ == '__main__':
+    main()
