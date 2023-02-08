@@ -1,0 +1,37 @@
+% PDFLaTeX
+\documentclass[a4paper,12pt,twoside,spanish]{amsbook}
+
+\input{tareas_definiciones} 
+
+\begin{document}
+
+\tarea{8}
+
+\begin{ejercicio}
+	\begin{enumerate}
+		\item[1.] (50 pts) Encontrar el resto de dividir $323^{5843}$ por $13$.
+		\item[2.]  (50 pts)  Probar\textbf{ usando congruencias} que todo número de la forma $4^{2n}-7^n$ es divisible por $9$ . 
+	\end{enumerate}
+\end{ejercicio}
+	
+\begin{comment}
+\begin{solucion}
+
+1. 
+
+$9 \equiv 1 \;(8)$ y $7 \equiv -1 \; (8)$, luego $$9^{52}\cdot 7^{33}\equiv 1^{52}\cdot (-1)^{33}\equiv  -1 \equiv 7 \; (8).$$ Por lo tanto el resto es $7$. 
+
+\vskip .4cm
+
+	2. Observar  que $3^{2n} = (3^2)^n = 9^n$. Como $9 \equiv 2 \; (7)$,  tenemos que $ 9^n  \equiv 2^n \; (7)$ y entonces:
+$$
+3^{2n}-2^n \equiv  (3^2)^n - 2^n \equiv 9^n - 2^n  \equiv 2^n - 2^n \equiv 0 \; (7).
+$$
+Por lo tanto  $3^{2n}-2^n$ es divisible por $7$. 	
+\end{solucion}
+
+\end{comment}
+\end{document}
+
+
+	2. 

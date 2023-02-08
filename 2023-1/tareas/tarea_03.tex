@@ -1,0 +1,48 @@
+% PDFLaTeX
+\documentclass[a4paper,12pt,twoside,spanish]{amsbook}
+
+\input{tareas_definiciones} 
+
+
+\begin{document}
+
+\tarea{3}
+
+\begin{ejercicio}[1]
+        (50 pts) Para participar en un torneo de tenis de dobles mixtos (parejas de un hombre y una mujer), es necesario presentar 
+        un equipo de 3 parejas, debiéndose elegir los jugadores entre los integrantes de un grupo constituido por 6 hombres y 3 mujeres. 
+         ¿De cuántas maneras puede seleccionarse el equipo?
+		
+        \end{ejercicio}
+        
+       \begin{ejercicio}[2] (50 pts) ¿De cuántas formas pueden ordenarse las letras de la palabra\newline PRIMERAMENTE?
+
+\end{ejercicio}
+	
+\begin{comment}
+\begin{solucion}
+	\noindent 1. La pregunta del ejercicio es equivalente a ¿cuántas palabras de 1, 2,3 o 4 letras se pueden hacer con un alfabeto de 26 letras? Es decir podemos separar en 4 casos (disjuntos) palabras de 1 letra, de 2 letras,  de 3 letras  o de 4 letras. Cada caso  es una selección ordenada con repetición.
+	
+	\textbf{1 letra.} 26 palabras.
+	
+	\textbf{2 letras.} $26 \times 26 = 26^2$ palabras.
+	
+	\textbf{3 letras.} $26 \times 26 \times  26 = 26^3$ palabras.
+
+	\textbf{4 letras.}  $26 \times 26 \times  26 \times  26 = 26^4$ palabras.
+	
+	Luego  la respuesta es $26 + 26^2 + 26^3 + 26^4$ palabras.
+	
+	\vskip .4cm
+	
+	\noindent 2. La palabra PREPOTENTE es una palabra de longitud 10, donde la E se repite 3 veces, la P y la T se repiten 2 veces y luego están  la R, la O y  la N  una sola vez cada una.
+	
+	Luego, la solución es
+	$$
+	\frac{10!}{3!2!2!}.
+	$$
+\end{solucion}
+
+\end{comment}
+\end{document}
+

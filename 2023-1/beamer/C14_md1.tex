@@ -1,0 +1,376 @@
+%\documentclass[handout]{beamer} % sin pausas
+\documentclass{beamer} 
+\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+
+\usetheme{CambridgeUS}
+
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+%\usepackage{makeidx}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usepackage[customcolors]{hf-tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\tikzset{
+    every picture/.append style={
+        execute at begin picture={\deactivatequoting},
+        execute at end picture={\activatequoting}
+    }
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+\usepackage{mathtools}
+\usepackage{stackrel}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+\usepackage{polynom}
+\polyset{%
+    style=B,
+    delims={(}{)},
+    div=:
+}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate]{label={(\arabic*)}}
+\setbeamertemplate{itemize item}{$\circ$}
+\setbeamertemplate{enumerate items}[default]
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand\sgn{\operatorname{sgn}}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\figurename }{Figura}
+
+\include{definiciones}
+
+\newcommand{\nc}{\newcommand}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\nc{\FF}{{\mathbb F}} \nc{\NN}{{\mathbb N}} \nc{\QQ}{{\mathbb Q}}
+\nc{\PP}{{\mathbb P}} \nc{\DD}{{\mathbb D}} \nc{\Sn}{{\mathbb S}}
+\nc{\uno}{\mathbb{1}} \nc{\BB}{{\mathbb B}} \nc{\An}{{\mathbb A}}
+
+\nc{\ba}{\mathbf{a}} \nc{\bb}{\mathbf{b}} \nc{\bt}{\mathbf{t}}
+\nc{\bB}{\mathbf{B}}
+
+\nc{\cP}{\mathcal{P}} \nc{\cU}{\mathcal{U}} \nc{\cX}{\mathcal{X}}
+\nc{\cE}{\mathcal{E}} \nc{\cS}{\mathcal{S}} \nc{\cA}{\mathcal{A}}
+\nc{\cC}{\mathcal{C}} \nc{\cO}{\mathcal{O}} \nc{\cQ}{\mathcal{Q}}
+\nc{\cB}{\mathcal{B}} \nc{\cJ}{\mathcal{J}} \nc{\cI}{\mathcal{I}}
+\nc{\cM}{\mathcal{M}} \nc{\cK}{\mathcal{K}}
+
+\nc{\fD}{\mathfrak{D}} \nc{\fI}{\mathfrak{I}} \nc{\fJ}{\mathfrak{J}}
+\nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+
+
+\title[Clase 14 - Factorización prima]{Matemática Discreta I \\ Clase 14 - Factorización prima 1}
+%\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
+\institute[]{\normalsize FAMAF / UNC
+    \\[\baselineskip] ${}^{}$
+    \\[\baselineskip]
+}
+\date[10/05/2022]{10 de mayo de 2022}
+
+
+
+
+\begin{document}
+    
+    \frame{\titlepage} 
+    
+    
+    \begin{frame}
+        \begin{definicion} Se dice que un entero positivo $p$ es {\em primo}\index{número primo} si $p\ge 2$ y
+            los únicos enteros positivos que dividen $p$ son 1 y $p$ mismo.
+        \end{definicion}\pause
+        \vskip .4cm
+        Los primeros primos (los  menores que $100$) son
+        \vskip .4cm
+        2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89 y 97.
+        
+        \vskip .4cm\pause
+        Enfaticemos que de acuerdo a la definición, 1 {\it no} es primo.
+        
+        \vskip .4cm
+        
+        
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        
+        \begin{itemize}
+            \item[$\circ$]  $p$ es primo si y solo si $P = m_1m_2$ $\Rightarrow$ $m_1 = 1, m_2=p$ o  $m_1 = p, m_2=1$. 
+            \vskip .4cm\pause
+            \item[$\circ$]   $m\ge 2$ no es un primo si y sólo si existen $1 < m_1, m_2 < m$, tales que $m=m_1m_2$.
+        \end{itemize}
+        \pause
+        \vskip .6cm
+        
+        No son primos:
+        \begin{alignat*}4
+            4 &= 2 \cdot 2,&\qquad 6&= 2\cdot3, &\qquad 8&=2 \cdot 4,&\qquad 9&= 3\cdot 3,\quad \\ 
+            10&= 2\cdot5 ,& 12&= 3\cdot 4,& 14&=2 \cdot 7,& 15&=3 \cdot 5, \\
+            16&= 2\cdot 8,&  18&= 2\cdot 9,& 20&= 4 \cdot 5,& 21 &= 3 \cdot 7.
+        \end{alignat*}
+        
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        Veremos que todo número entero positivo puede expresarse como producto de primos. Por ejemplo
+        $$
+        825=3\cdot 5\cdot 5\cdot 11.
+        $$ \pause 
+        Si el entero es negativo, es $-1$ por un producto de primos
+        $$
+        -825=-1 \cdot 3\cdot 5\cdot 5\cdot 11.
+        $$ \pause 
+        
+        Como consecuencia del axioma del buen orden obtenemos que todo entero positivo es producto de primos (si $p$ es primo, también lo consideramos un {producto de primos.})
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        \begin{teorema}
+            Todo  entero  mayor que $1$ es producto de números primos. 
+        \end{teorema}  
+        \pause
+        
+        \begin{idea}\pause
+            \vskip -.4cm
+            $$
+            B = \{n >0: \text{$n$ no es  producto de primos} \}.
+            $$\pause
+            Si $B \ne \emptyset$, por BO existe $m$ mínimo de $B$. \pause
+            \vskip .3cm
+            $m$ no es primo $\Rightarrow$ $m= m_1m_2$ con $1 < m_1, m_2 < m$. \pause
+            \vskip .3cm
+            Como $ m_1, m_2 < m$, ambos son producto de  primos.\pause
+            \vskip .3cm
+            Luego $m_1m_2 = m$ es producto de primos. Absurdo.\pause
+            \vskip .3cm
+            El absurdo vino de suponer que $B \ne \emptyset$.
+            \qed
+            
+        \end{idea}  
+
+
+
+    \end{frame}
+    
+    
+    \begin{frame}
+
+        \begin{observacion}
+			\begin{itemize}
+				\item[$\circ$] Por el teorema,  decimos que todo número  \textit{admite una factorización con factores primos}.
+			\end{itemize}
+			
+		\end{observacion}
+        \pause
+        \begin{ejemplo} 
+            Encontremos la factorización en números primos de $201\,000$. Esto se hace di\-vi\-dien\-do  sucesivamente los números hasta llegar a factores primos:\pause
+            \begin{align*}
+                201\,000 &= 201\cdot 1000 = 3\cdot 67\cdot 10\cdot 10\cdot 10\\ &=  3\cdot 67\cdot 2\cdot 5 \cdot 2\cdot 5 \cdot 2\cdot 5 \\&= 2^3\cdot 3\cdot 5^3\cdot 67.
+            \end{align*}
+            Como vimos más arriba $2, 3, 5$ y $67$ son  números primos y por lo tanto hemos obtenido la descomposición prima de $201\,000$.
+        \end{ejemplo}
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        \begin{observacion}
+            Sea $a \in \mathbb Z$ y $p$ primo. Entonces 
+            \begin{enumerate}
+                \item[a)]  Si $p{\not|}a$, entonces $\operatorname{mcd}(a,p) = 1$.\pause
+                \item[b)]  Si $p$ y $p'$ son primos y $p|p'$ entonces $p=p'$.
+            \end{enumerate}\pause
+        \end{observacion}
+        \begin{proof}
+            \pause
+            
+            \noindent (a) Como los únicos divisores de $p$ son $p$ y $1$, y $p{\not|}a$, el único  divisor común de $p$ y $a$ es $1$.
+            \vskip .3cm\pause
+            \noindent (b) $p'$ es primo, por lo tanto tiene sólo dos divisores positivos $1$ y $p'$. Como $p$ no es $1$, tenemos que  $p=p'$.  \qed
+        \end{proof}
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        \begin{lema} Si $n>0$ no es primo, entonces existe $m>0$ tal que $m|n$ y $m \le \sqrt{n}$.  
+        \end{lema}\pause
+        \begin{demostracion}\pause
+            Sea $n > 1$ que no es primo. Entonces existe  $m_1, m_2$ tal que 
+            $$
+            1 < m_1, m_2 < n \quad \text{y} \quad n = m_1 m_2.$$\pause
+            
+            Si $m_1 > \sqrt{n}$ y $m_2 >\sqrt{n}$ entonces 
+            
+            $$
+            n = m_1m_2 > \sqrt{n}\sqrt{n} = \sqrt{n}^2 = n.
+            $$\pause
+            \vskip .2cm
+            Absurdo. Vino de suponer que $m_1 > \sqrt{n}$ y $m_2 >\sqrt{n}$. 
+            \vskip .3cm
+            Luego $m_1 \le \sqrt{n}$ o $m_2 \le \sqrt{n}$\qed
+            
+            
+        \end{demostracion}
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        \vskip .4cm
+        El contrarrecíproco del  lema anterior, es el \textit{criterio de la raíz}:\pause
+        
+        \begin{proposicion}Sea $n\ge 2$. Si para todo $m$ tal que $1<m \le \sqrt{n}$ se cumple que $m{\not|}n$, entonces $n$ es primo.
+        \end{proposicion}\pause
+        \vskip .3cm
+        \begin{corolario}
+            Sea $n\ge 2$. Si para todo $p$ primo tal que $1<p \le \sqrt{n}$ se cumple que $p{\not|}n$, entonces $n$ es primo.
+        \end{corolario}
+    \end{frame}
+    
+    
+    \begin{frame}
+        \begin{ejemplo} Verifiquemos si $467$ es primo o no.
+        \end{ejemplo}\pause
+        \begin{solucion}
+            Si no utilizamos el criterio de la raíz deberíamos hacer 465 divisiones: deberíamos comprobar si $m|467$ con  $1<m <467$. \pause
+            \vskip .2cm
+            Como $\sqrt{467} = 21.61...$, sólo debemos comprobar si $m|467$ para $2\le m \le 21$. \pause
+            \vskip .2cm
+            Un sencilla comprobación (dividiendo) muestra que los números $2,3,\cdots,20,21$ no  dividen a $467$ y por  lo tanto $467$ es primo. 
+        \end{solucion}
+        \pause
+        \begin{observacion}
+            En  el ejemplo anterior podríamos haber solo comprobado si los primos 2, 3, 5, 7, 11, 13, 17, 19 dividen a 467. 
+        \end{observacion}
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        \begin{teorema} Sea $p$  un número  primo.
+            
+            \begin{enumerate} 
+                \item[a)] Si $p|xy$ entonces $p|x$ o $p|y$.
+                \item[b)] $x_1,x_2,\ldots,x_n$ son enteros tales que
+                $$
+                p|x_1x_2\ldots x_n
+                $$
+                entonces $p|x_i$ para algún $x_i$ ($1\le i \le n$).
+            \end{enumerate}
+        \end{teorema}
+        \vskip .4cm
+        \begin{observacion}
+            La propiedad a) es \textit{muy importante} y podíamos haber definido número primo como aquel  número que cumple esta propiedad.
+        \end{observacion}
+    \end{frame}
+    
+    
+    \begin{frame}
+        Un error común es asumir que la propiedad a) se mantiene
+        verdadera cuando reemplazamos el primo $p$ por un entero
+        arbitrario . Pero esto claramente falso: por ejemplo
+        $$
+        6| 3\cdot 8 \quad \text{ pero } \quad 6{\not|} 3 \quad \text{ y }
+        \quad 6{\not|}8.
+        $$
+        
+        \vskip .4cm
+        
+        \pause
+        
+        La propiedad a)  juega un papel crucial en la demostración del
+        siguiente resultado, que a veces es llamado el {\it Teorema
+            Fundamental de la Aritmética}.
+        \vskip .4cm
+        \begin{teorema}La factorización en primos de un entero
+            positivo $n\ge 2$ es única, salvo el orden de los factores primos.
+        \end{teorema}
+    \end{frame}
+    
+    
+    \begin{frame}
+        Luego todo entero positivo $n$ puede escribirse como
+        $$
+        m = q_{1}\cdot q_{2}\cdot \cdots q_{m-1}\cdot q_{m}
+        $$
+        donde los $q_i$ son  primos no necesariamente distintos.
+        \vskip .8cm
+        En la práctica a menudo reunimos los primos iguales en la
+        factorización de $n$ y escribimos
+        \begin{equation}
+            n=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},
+        \end{equation}
+        donde $p_1,p_2,\ldots ,p_r$ son primos distintos y $e_1,e_2,\ldots,e_r$ son enteros positivos.
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        \begin{ejemplo} Encontrar la descomposición prima de 7000.
+        \end{ejemplo}
+        \begin{solucion}
+            $ 7000 = 1000 \cdot 7 = 10\cdot 10\cdot 10\cdot 7= 2\cdot 5\cdot 2\cdot 5\cdot 2 \cdot 5\cdot 7$, Es decir
+            $$
+            7000 = 2\cdot 5\cdot 2\cdot 5\cdot 2 \cdot 5\cdot 7.
+            $$ 
+            
+            Pero suele ser mejor escribirlo  como
+            $$7000 = 2^3 \cdot 5^3    \cdot 7.$$
+        \end{solucion}
+        
+        
+        
+        
+    \end{frame}
+    
+    
+    
+    
+\end{document}
+

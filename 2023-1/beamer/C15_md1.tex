@@ -1,0 +1,419 @@
+%\documentclass[handout]{beamer} % sin pausas
+\documentclass{beamer} 
+\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+
+\usetheme{CambridgeUS}
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+%\usepackage{makeidx}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usepackage[customcolors]{hf-tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\tikzset{
+    every picture/.append style={
+        execute at begin picture={\deactivatequoting},
+        execute at end picture={\activatequoting}
+    }
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+\usepackage{mathtools}
+\usepackage{stackrel}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+\usepackage{polynom}
+\polyset{%
+    style=B,
+    delims={(}{)},
+    div=:
+}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate]{label={(\arabic*)}}
+
+\setbeamertemplate{itemize item}{$\circ$}
+\setbeamertemplate{enumerate items}[default]
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand\sgn{\operatorname{sgn}}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\figurename }{Figura}
+
+\include{definiciones}
+
+\newcommand{\nc}{\newcommand}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\nc{\FF}{{\mathbb F}} \nc{\NN}{{\mathbb N}} \nc{\QQ}{{\mathbb Q}}
+\nc{\PP}{{\mathbb P}} \nc{\DD}{{\mathbb D}} \nc{\Sn}{{\mathbb S}}
+\nc{\uno}{\mathbb{1}} \nc{\BB}{{\mathbb B}} \nc{\An}{{\mathbb A}}
+
+\nc{\ba}{\mathbf{a}} \nc{\bb}{\mathbf{b}} \nc{\bt}{\mathbf{t}}
+\nc{\bB}{\mathbf{B}}
+
+\nc{\cP}{\mathcal{P}} \nc{\cU}{\mathcal{U}} \nc{\cX}{\mathcal{X}}
+\nc{\cE}{\mathcal{E}} \nc{\cS}{\mathcal{S}} \nc{\cA}{\mathcal{A}}
+\nc{\cC}{\mathcal{C}} \nc{\cO}{\mathcal{O}} \nc{\cQ}{\mathcal{Q}}
+\nc{\cB}{\mathcal{B}} \nc{\cJ}{\mathcal{J}} \nc{\cI}{\mathcal{I}}
+\nc{\cM}{\mathcal{M}} \nc{\cK}{\mathcal{K}}
+
+\nc{\fD}{\mathfrak{D}} \nc{\fI}{\mathfrak{I}} \nc{\fJ}{\mathfrak{J}}
+\nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+
+\title[Clase 15 - Factorización en primos]{Matemática Discreta I \\ Clase 15 - Factorización en primos 2 / Congruencia}
+%\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
+\institute[]{\normalsize FAMAF / UNC
+    \\[\baselineskip] ${}^{}$
+    \\[\baselineskip]
+}
+\date[12/05/2022]{12 de mayo de 2022}
+
+
+
+
+\begin{document}
+    
+    \frame{\titlepage} 
+    
+    \begin{frame}
+        \begin{proposicion} Existen infinitos números primos. 
+        \end{proposicion} \pause
+        \begin{proof}\pause Haremos la demostración por el absurdo. 
+            \vskip .3cm
+            Supongamos que $p_1,p_2,\ldots, p_r$ son todos los números primos. 
+            \vskip .3cm
+            Sea $n =  p_1p_2\ldots p_r+1$. 
+            \vskip .3cm
+            
+            Sea $p$ primo tal que $p|n$ $\Rightarrow$ existe $i$  tal que $p=p_i$. 
+            \vskip .3cm
+            Ahora bien $p_i| n$ y $p_i|p_1p_2\ldots p_r$, luego $p_i|n-p_1p_2\ldots p_r =1$. Absurdo.  
+            
+            \qed
+        \end{proof}
+        
+    \end{frame}
+    
+    \begin{frame}
+        
+        \begin{ejemplo} Probemos que si $m$ y $n$ son enteros tales que
+            $m\ge 2$ y $n\ge 2$, entonces $m^2 \not=2n^2$.
+        \end{ejemplo}\pause
+        \begin{proof} \pause
+
+        Recordemos que
+        $$
+        (ab)^r = a^rb^r, \quad (a^r)^s = a^{r s}, \quad  a\cdot a^r = a^{r+1}. 
+        $$    
+
+
+            $$ n = 2^{x}p_2^{e_2}\ldots p_r^{e_r}\text{\quad ($x \ge 0$, $p_i$ todos primos diferentes a 2.)} $$
+            $$ n^2 = 2^{2x}p_2^{2e_2}\ldots p_r^{2e_r}$$
+            \begin{equation}
+                \colorbox{lightgray}{$2n^2= 2^{2x+1}p_2^{2e_2}\ldots p_r^{2e_r}.$ }\tag{*}
+            \end{equation}
+            
+            $$
+            m = 2^{y}q_2^{f_2}\ldots q_s^{f_s}\text{\quad ($y \ge 0$, $q_i$ todos primos diferentes a 2.)}
+            $$
+            \begin{equation}
+                \colorbox{lightgray}{$m^2 = 2^{2y}q_2^{2f_2}\ldots q_s^{2f_s}$} \tag{**}
+            \end{equation}
+            
+        \end{proof}
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        Como $2x+1 \ne 2y$ (el primero es impar y el segundo par), por unicidad de la descomposición, (*) $\ne$ (**), es decir $m^2 \not=2n^2$.
+        
+        \qed
+
+        \begin{observacion}
+            El  ejemplo anterior nos dice que 
+            $$
+            m^2 \not=2n^2\quad \Rightarrow \quad \frac{m^2}{n^2}\not=2 \quad \Rightarrow \quad \left(\frac{m}{n}\right)^2\not=2 \quad \Rightarrow \quad \frac{m}{n}\not=\sqrt{2}. 
+            $$
+            
+            Es decir $\sqrt{2}$ \textit{no es un número racional.}
+        \end{observacion}
+
+        \begin{ejercicio} Probar que $\sqrt{15}$ no es un número racional.
+        \end{ejercicio}
+
+    \end{frame}
+    
+    \begin{frame}\frametitle{Notación}
+        
+        Sean $m$ y $n$ dos enteros positivos, a veces es conveniente escribir la factorización prima de ambos números usando los mismos primos.
+        
+        Los primos que usamos son los que se encuentran en la factorización prima de ambos:
+        $$
+        m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
+        n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
+        $$
+        con $e_i,f_i \ge 0$ para $i=1,\ldots,r$ y $e_i$ o $f_i$ distinto de cero. 
+        \pause
+        \begin{ejemplo}
+            168 y 495. \pause Tenemos que
+            \begin{equation*}
+                168 = 2^3 \cdot 3^1 \cdot 7^1, \qquad 495 = 3^2 \cdot 5^1 \cdot 11^1
+            \end{equation*}
+            Luego 
+            \begin{align*}
+                168 &= 2^3 \cdot 3^1 \cdot 5^0\cdot 7^1\cdot 11^0, \\
+                495 &= 2^0 \cdot3^2 \cdot 5^1 \cdot 7^0 \cdot 11^1
+            \end{align*}
+        \end{ejemplo}
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        Veremos ahora un resultado que se puede deducir fácilmente del Teorema Fundamental de la Aritmética (TFA).\pause 
+        
+        \begin{proposicion} Sean $m,n \ge2$ con
+            $$
+            m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
+            n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
+            $$
+            donde $p_i$ primo y $e_i,f_i \ge 0$ para $i=1,\ldots,r$. 
+            
+            Entonces $m|n$ si y sólo si $e_i \le f_i$ para todo $i$.
+        \end{proposicion}\pause 
+        \begin{proof}\pause 
+            \noindent($\Rightarrow$) Por la descomposición de $m$ es claro que $p_i^{e_i}|m$. Como $m|n$ entonces   $p_i^{e_i}|n$. Es decir $n =  p_i^{e_i}u$. Es claro por TFA entonces que $e_i \le f_i$.
+            \vskip .2cm
+            
+            \noindent($\Leftarrow$) Como $e_i \le f_i$, tenemos que $p_i^{e_i}|p_i^{f_i}$, para $1 \le i \le r$.  Luego  $$p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}| p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.$$ Es decir $m|n$.
+        \end{proof}
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        Ahora veremos que es posible calcular el $\operatorname{mcd}$ y el $\operatorname{mcm}$ de un par de números sabiendo sus descomposiciones primas.
+        
+        \begin{proposicion}
+            Sean $m$ y $n$ enteros positivos cuyas factorizaciones primas son
+            $$
+            m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
+            n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
+            $$
+            \begin{enumerate}
+                \item[a)] El mcd de $m$ y $n$ es $d=p_1^{k_1}p_2^{k_2}\ldots
+                p_r^{k_r}$ donde, para cada $i$ en el rango $1\le i \le r$, $k_i$
+                es el mínimo entre $e_i$ y $f_i$.\vskip .2cm
+                \item[b)] El mcm de $m$ y $n$ es $u=p_1^{h_1}p_2^{h_2}\ldots
+                p_r^{h_r}$ donde, para cada $i$ en el rango $1\le i \le r$, $h_i$
+                es el máximo entre $e_i$ y $f_i$.
+            \end{enumerate}
+        \end{proposicion}
+    \end{frame}
+    
+    
+    \begin{frame}
+        \begin{proof}
+            \
+            
+            \noindent(a)  Es claro  que  $d = p_1^{k_1}p_2^{k_2}\ldots p_r^{k_r}$ divide a $m$ y $n$.
+            
+            \vskip .3cm
+            Sea $c$ tal que $c|n$ y $c|m$, entonces los primos que intervienen en la factorización de $c$ son $p_1,\ldots,p_r$ y por lo tanto 
+            $$
+            c =  p_1^{t_1}p_2^{t_2}\ldots p_r^{t_r}.
+            $$
+            
+            Además, como $c|n$ y $c|m$ tenemos que $t_i \le e_i,f_i$ y por lo tanto $t_i \le k_i = \min(e_i,f_i)$. 
+            
+            \vskip .3cm
+            
+            De esto se deduce que $c|p_1^{k_1}p_2^{k_2}\ldots p_r^{k_r}=d$. 
+            
+            \vskip .6cm
+            \noindent(b) Se deja como ejercicio. 
+            
+            \qed
+        \end{proof}
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        \begin{ejemplo}
+            Encontremos el mcd y el mcm  de $168$ y $495$.
+            \vskip .2cm
+            Ya habíamos visto que 
+            \begin{align*}
+                168 &= 2^3 \cdot 3^1 \cdot 5^0\cdot 7^1\cdot 11^0, \\
+                495 &= 2^0 \cdot3^2 \cdot 5^1 \cdot 7^0 \cdot 11^1
+            \end{align*}
+            
+            Luego 
+            
+            \begin{align*}
+                \text{mcd}(168,495) &= 2^0 \cdot 3^1 \cdot 5^0\cdot 7^0\cdot 11^0 = 3, \\
+                \text{mcm}(168,495) &= 2^3 \cdot3^2 \cdot 5^1 \cdot 7^1 \cdot 11^1.
+            \end{align*}
+            
+        \end{ejemplo}
+        
+    \end{frame}
+    
+
+    \begin{frame}
+        \frametitle{Congruencia - Definiciones y propiedades básicas}
+    
+        \begin{definicion} Sean $a$ y $b$ enteros y $m$ un
+            entero positivo. Diremos que $a$ es {\em congruente} a $b$
+            {\textit{módulo}} $m$, y escribimos 
+            $$
+            a \equiv b \pmod{m}
+            $$
+            si $a-b$ es divisible or $m$,  es decir si $m| a -b$.
+        \end{definicion}
+        
+        Observar que 
+        
+        $$a\equiv 0 \pmod{m} \Leftrightarrow m|a\qquad\qquad$$ 
+        y que 
+        $$\qquad\qquad a\equiv b \pmod{m}\Leftrightarrow a-b\equiv 0 \pmod{m}.$$ 
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{}
+
+        \begin{notacion}
+            $a \equiv b \pmod{m}$ también  lo denotamos $a \equiv b\; (m)$.
+
+        \end{notacion}
+
+        \begin{ejemplo}
+            \begin{itemize}
+                \item $7 \equiv 3 \;(2)$, pues $2 | 7-3=4$.
+                \item $17 \equiv 8 \;(3)$, pues $3 | 17-8 =9$.  
+                \item $8 \equiv 17 \;(3)$, pues $3 | 8-17 =-9$.
+                \item $35 \equiv 13 \;(11)$, pues $11| 35-13 = 22 = 2 \cdot 11$. 
+            \end{itemize}
+        \end{ejemplo}
+    
+        
+    
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{}
+    
+        \begin{proposicion}\label{prop-mod-resto}
+            Sean $a$ entero y $m$ un entero positivo. Sea $r$ el resto de dividir $a$ por $m$.            
+            $$a\equiv r \pmod{m}.$$\vskip -.6cm
+        \end{proposicion}
+        \begin{proof}
+             $a=mq+r$  con $0 \le r <m$.
+             \vskip.4cm
+             Luego,
+             $$a-r = mq \quad \Rightarrow \quad m|a-r\quad \Rightarrow \quad a\equiv r \pmod{m}.$$ 
+             
+             \qed
+        \end{proof}
+    
+    \end{frame}
+
+
+    
+    \begin{frame}
+        Es fácil verificar que la {congruencia módulo} $m$ verifica las
+        siguientes propiedades\vskip .2cm
+        \begin{enumerate}
+            \item[a)]
+            Es {\it {reflexiva}} es decir $x\equiv x\pmod{m}$.\vskip .2cm
+            \item[b)]
+            Es {\it {simétrica}}, es decir si $x \equiv y \pmod{m}$, entonces\vskip .2cm
+            $y \equiv x \pmod{m}$.
+            \item[c)]
+            Es {\it { transitiva}}, es decir si $x\equiv y \pmod{m}$ e
+            $y\equiv z \pmod{m}$, entonces $x\equiv z \pmod{m}$.
+        \end{enumerate}
+        \begin{proof}
+            a)  $m| x-x =0$  y por lo tanto $x\equiv x\pmod{m}$.
+            \vskip .2cm
+            b) $x \equiv y\;(m)$ $\Rightarrow$ $m|x-y$ $\Rightarrow$  $m|-(x-y)$   $\Rightarrow$  $m|y-x$ $\Rightarrow$ $y \equiv x\; (m)$.
+            \vskip .2cm
+            c) $x \equiv y \;(m) \wedge y \equiv z \;(m)$ \;  $\Rightarrow$ \; $m|x-y \wedge m|y-z$ \; $\Rightarrow$ \; 
+            \vskip.2cm
+            \quad$m |(x-y) + (y-z) = x -z$ \; $\Rightarrow$ \; $x \equiv z \;(m)$.
+            
+            \qed
+        \end{proof}
+    \end{frame}
+
+
+    \begin{frame}
+        
+        
+        \begin{proposicion}
+            Sean $a$ y $b$ enteros y $m$ un entero positivo. Entonces $a\equiv b \pmod{m}$ si  y sólo si
+            $a$ y $b$ tienen el mismo resto en la división por $m$.
+        \end{proposicion}
+        \begin{proof} Se deduce por la proposición de la p. \ref{prop-mod-resto} y transitividad. \qed
+        \end{proof}
+    
+        Así como separamos $\mathbb Z$ en los números pares e
+        impares, la propiedad anterior nos permite expresar $\mathbb Z$
+        como una unión  de $m$ subconjuntos. 
+        
+        \vskip .4cm
+        
+        Es decir si \quad $\mathbb  Z_{[r]} =\{x \in \mathbb Z: \text{el resto de dividir $x$ por $m$ es $r$}\}$,
+        \vskip .4cm
+        entonces, 
+        
+        $$
+        \mathbb Z= \mathbb Z_{[0]}\cup \mathbb Z_{[1]}\cup \cdots\cup \mathbb Z_{[m-1]}.
+        $$
+    \end{frame}
+    
+    
+    
+    
+    
+\end{document}
+

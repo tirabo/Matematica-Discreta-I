@@ -1,0 +1,431 @@
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
+\usetheme{CambridgeUS}
+% \setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+%\usepackage{makeidx}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usepackage[customcolors]{hf-tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\tikzset{
+    every picture/.append style={
+        execute at begin picture={\deactivatequoting},
+        execute at end picture={\activatequoting}
+    }
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+\usepackage{mathtools}
+\usepackage{stackrel}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+\usepackage{polynom}
+\polyset{%
+    style=B,
+    delims={(}{)},
+    div=:
+}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate]{label={(\arabic*)}}
+\setbeamertemplate{itemize item}{$\circ$}
+\setbeamertemplate{enumerate items}[default]
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand\sgn{\operatorname{sgn}}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\figurename }{Figura}
+
+\include{definiciones}
+
+\newcommand{\nc}{\newcommand}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\nc{\FF}{{\mathbb F}} \nc{\NN}{{\mathbb N}} \nc{\QQ}{{\mathbb Q}}
+\nc{\PP}{{\mathbb P}} \nc{\DD}{{\mathbb D}} \nc{\Sn}{{\mathbb S}}
+\nc{\uno}{\mathbb{1}} \nc{\BB}{{\mathbb B}} \nc{\An}{{\mathbb A}}
+
+\nc{\ba}{\mathbf{a}} \nc{\bb}{\mathbf{b}} \nc{\bt}{\mathbf{t}}
+\nc{\bB}{\mathbf{B}}
+
+\nc{\cP}{\mathcal{P}} \nc{\cU}{\mathcal{U}} \nc{\cX}{\mathcal{X}}
+\nc{\cE}{\mathcal{E}} \nc{\cS}{\mathcal{S}} \nc{\cA}{\mathcal{A}}
+\nc{\cC}{\mathcal{C}} \nc{\cO}{\mathcal{O}} \nc{\cQ}{\mathcal{Q}}
+\nc{\cB}{\mathcal{B}} \nc{\cJ}{\mathcal{J}} \nc{\cI}{\mathcal{I}}
+\nc{\cM}{\mathcal{M}} \nc{\cK}{\mathcal{K}}
+
+\nc{\fD}{\mathfrak{D}} \nc{\fI}{\mathfrak{I}} \nc{\fJ}{\mathfrak{J}}
+\nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+
+
+
+\title[Clase 12 - MCD (2)]{Matemática Discreta I \\ Clase 13 - Máximo común divisor (2)}
+%\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
+\institute[]{\normalsize FAMAF / UNC
+    \\[\baselineskip] ${}^{}$
+    \\[\baselineskip]
+}
+\date[05/05/2022]{5 de mayo  de 2022}
+
+\newcommand{\mcd}{\operatorname{mcd}}
+\newcommand{\mcm}{\operatorname{mcm}}
+
+
+\begin{document}
+    
+    \frame{\titlepage} 
+    
+    
+    
+    \begin{frame}\frametitle{Algoritmo de Euclides}\label{film-alg-eucl}
+        Para calcular el mcd de enteros $a$ y $b$, con $b >0$, 
+        definimos $q_i$ y $r_i$ recursivamente  de la siguiente manera: $r_0 = a$, $r_1 = b$,  y \pause
+        \begin{align*}
+            &\text{($e_{1}$)}\qquad& r_0&=r_1 q_1 + r_2& &(0 < r_2<r_1)\\
+            &\text{($e_{2}$)}\qquad& r_1&=r_2q_2 + r_3\quad{}\quad{}\quad{}& &(0 < r_3<r_2)  \\
+            &\text{($e_{3}$)}\qquad& r_2&=r_3q_3 + r_4\quad{}\quad{}\quad{}& &(0 < r_4<r_3)  \\
+            &\cdots&&\\
+            &\text{($e_{i}$)}\qquad& r_{i-1}&=r_{i}q_{i} + r_{i+1}& &(0 < r_{i+1} <r_{i}) \\
+            &\cdots&& \\
+            &\text{($e_{k-1}$)}\qquad& r_{k-2}&=r_{k-1}q_{k-1} + r_{k}& &(0 < r_{k} <r_{k-1}) \\
+            &\text{($e_{k}$)}\qquad& r_{k-1}&=r_{k}q_{k} + 0 ,&&  
+        \end{align*}\pause
+        
+        Entonces $r_k = \mcd(a,b)$ {\color{gray} \qquad (Se usa en filmina \ref{film-alg-eucl-2})}
+    \end{frame}
+
+    
+
+    
+    \begin{frame}
+        
+        \begin{itemize}
+            \item[$\bullet$] El proceso se detiene en el primer resto $r_i$  igual a $0$.
+            \vskip .4cm\pause
+            \item[$\bullet$]  El proceso debe detenerse, porque cada resto no nulo es positivo y estrictamente menor que el anterior.
+            \vskip .4cm\pause
+            \item[$\bullet$]  Este procedimiento es conocido como el {\em algoritmo de Euclides}.
+        \end{itemize}
+        \pause
+        
+        \vskip .4cm
+        \begin{teorema} Sean  $a$ y $b$ enteros con $b >0$, entonces el máximo común divisor  es el último resto no nulo obtenido en el algoritmo de Euclides ($r_k$ de la filmina anterior). 
+        \end{teorema}
+        \pause
+        \begin{idea}
+            $r_{i-1}=r_{i}q_{i} + r_{i+1} \Rightarrow \mcd(r_{i-1},r_{i}) = \mcd(r_{i} , r_{i+1})$. Luego,
+            \begin{multline*}
+                \mcd(a,b) = \mcd(r_{0},r_{1}) = \mcd(r_{1},r_{2}) = \cdots \\
+                \cdots = \mcd(r_{k-1},r_{k})  = \mcd(r_{k},0) = r_k. \qed
+            \end{multline*}
+            
+            
+        \end{idea}
+    \end{frame}
+    
+    \begin{frame}
+        
+        
+        Ejemplifiquemos el algoritmo de Euclides.\pause
+        
+        \vskip .4cm
+        
+        \begin{ejemplo} Encuentre el mcd de 2406 y 654.
+        \end{ejemplo}\pause
+        \begin{solucion}\pause Tenemos
+            \begin{alignat*}3
+                2406&=654\cdot3+444,&\quad&\text{ entonces  }&\quad (2406,654)&= (654,444) \\
+                654&=444\cdot1+210, &\quad&\text{ entonces  }&(654,444)&= (444,210)\\
+                444&=210\cdot2+24,&\quad&\text{ entonces  }&(444,210)&= (210,24)\\
+                210&=24\cdot8+18,&\quad&\text{ entonces  }&(210,24)&= (24,18)\\
+                24 &=18\cdot1+6,&\quad&\text{ entonces  }&(24,18)&= (18,6)\\
+                18&=6\cdot3 + 0&\quad&\text{ entonces  }& (18,6) &= (6,0) = 6 
+            \end{alignat*}\pause
+            Por lo tanto $(2406,654)=6$.
+            
+            
+            
+        \end{solucion}
+        
+    \end{frame}
+    
+    \begin{frame}[fragile=singleslide]
+        
+        \begin{itemize}
+            \item[$\bullet$] El algoritmo de Euclides es fácilmente implementable en un lenguaje de programación.
+            \vskip .4cm
+            \item[$\bullet$]  A continuación una versión del mismo en pseudocódigo (estilo Python).
+        \end{itemize}
+        
+        
+        \vskip .6cm
+        
+        {\quad\color{blue} Algoritmo de Euclides }
+        %\vskip .2cm
+        \begin{verbatim}
+        # pre: a y b son números positivos
+        # post: obtenemos d = mcd(a,b)
+        i, j = a, b
+        while j != 0:
+            # invariante: mcd(a, b) = mcd(i, j)
+            resto = i % j  # i = q * j + resto
+            i, j = j, resto
+        d = i
+        \end{verbatim}
+        
+        
+    \end{frame}
+    
+    
+    
+    \begin{frame}\label{film-alg-eucl-2}
+        
+        Sean $a, b \in \mathbb{Z}$, uno de ellos no nulo, entonces 
+        $$
+        d=sa+tb.
+        $$
+        \pause
+        
+        Calculemos $s$ y $t$. En el caso que $b >0$,  la  ecuación ($e_{i}$) de la filmina \ref{film-alg-eucl} es:
+        $$
+        r_{i-1}=r_{i}q_{i} + r_{i+1}
+        $$\pause
+        Esto implica que 
+        $$
+        r_{i+1} = r_{i-1}-r_{i}q_{i}.
+        $$\pause
+        Lo cual nos dice que $r_i$  puede ser calculado usando $r_{i-1}$ y $r_{i-2}$.
+        \pause
+        \begin{align*}
+            r_{k} \quad &\text{puede ser calculado con $r_{k-1}$ y $r_{k-2} $ } \\
+            r_{k-1} \quad &\text{puede ser calculado con $r_{k-2}$ y $r_{k-3} $ } \\
+            \cdots\quad &\cdots \\
+            r_{3} \quad &\text{puede ser calculado con $r_{2}$ y $r_{1} $ } \\
+            r_{2} \quad &\text{puede ser calculado con $r_{1} =b$ y $r_{0}=a $ } \\
+        \end{align*}
+        
+        
+    \end{frame}
+    
+    
+    
+    \begin{frame}
+        \begin{ejemplo} Encuentre $d$, el mcd de 174 y 72 y  escribir $d = s \cdot 174 + t \cdot 72$.
+        \end{ejemplo}\pause
+        {\color{blue} Solución}
+        \pause 
+        \begin{alignat*}5
+            174&=72\cdot 2+30,& \;\quad&\Rightarrow&  \;\quad 30 &=     174-72\cdot 2& &\; &\quad\quad\quad&(1)\\
+            72&=30\cdot 2+12,& \;&\Rightarrow& 12&=72-30\cdot 2& \; & \; &&(2) \\
+            30&=12\cdot 2+6,& \;&\Rightarrow& 6&=    30-12\cdot 2& \; & \; &&(3)\\
+            12&=6\cdot 2+0.& \;&&  && &&\\
+        \end{alignat*} \pause \vskip -1.0cm
+        Por lo tanto,     $(174,72) = 6$ y,
+    \end{frame}
+    
+    
+    
+    \begin{frame}
+        \begin{align*}
+            6&\stackrel{(3)}{=}    30-12\cdot 2\\
+            &\stackrel{(2)}{=}    30-(72-30\cdot 2)\cdot 2 \\  
+            &=    5 \cdot 30 + (-2) \cdot 72\\  
+            &\stackrel{(1)}{=} 5 \cdot (    174-72\cdot 2) + (-2) \cdot 72\\   
+            &=  5\cdot 174+ (-12) \cdot 72  
+        \end{align*}
+        \pause
+        Concluyendo: 
+        \begin{itemize}
+            \item     $(174,72) = 6$ y,
+            \item  $6= 5\cdot 174+ (-12) \cdot 72$.
+        \end{itemize}
+        \qed
+        
+        \vskip 2cm
+        %    72&=30\cdot 2+12,& \;&\Rightarrow& 12&=72-30\cdot 2& \; &\Rightarrow&  \; 12&= (-2)\cdot 174+ 5 \cdot 72 \\
+        %30&=12\cdot 2+6,& \;&\Rightarrow& 6&=    30-12\cdot 2& \; &\Rightarrow&  \; 6&= 5\cdot 174+ (-12) \cdot 72\\
+        
+    \end{frame}
+    
+    \begin{frame}
+        \begin{ejemplo} Encuentre $d$, el mcd de 470 y 55 y escribir $d = s \cdot 470 + t \cdot 55$.
+        \end{ejemplo} \pause
+        \begin{solucion}\pause
+            Por el algoritmo de Euclides obtenemos
+            \begin{alignat*}4
+                470&=55 \cdot 8 +30&\quad\Rightarrow\quad &30 &=&470 + (-8)\cdot 55&\qquad (1)&\\
+                55&=30 \cdot 1 + 25&\quad\Rightarrow\quad &25 &=&55 +(-1)\cdot 30&\qquad (2)&\\
+                30&=25 \cdot 1+5&\quad\Rightarrow\quad &5 &=&30 +(-1) \cdot 25&\qquad (3)& \\
+                25&=5\cdot 5+0.&&&&&&
+            \end{alignat*}\pause
+            Luego
+            \begin{align*}
+                5 &\stackrel{(3)}{=} 30 +(-1) \cdot 25\\
+                &\stackrel{(2)}{=} 30 + (-1) \cdot (55 +(-1)\cdot 30) = 2 \cdot 30 + (-1) \cdot 55 \\   
+                &\stackrel{(1)}{=}  2 \cdot (470 + (-8)\cdot 55) + (-1) \cdot 55 = 2 \cdot 470 +(-17)\cdot 55    \qed\\    
+            \end{align*}
+        
+        \end{solucion}    
+        
+    \end{frame}
+    
+    
+    \begin{frame}\frametitle{Mínimo común múltiplo}
+        
+        
+        \begin{definicion}
+            Si $a$ y $b$ son enteros decimos que un entero no negativo $m$ es el {\em
+                mínimo común múltiplo}\index{mínimo común múltiplo}, o {\em mcm}, de $a$ y $b$ si
+            \begin{enumerate}
+                \item[a)] $ a|m$ y $b|m$;
+                \item[b)] si $ a|n $ y $b|n$ entonces $ m|n$.
+            \end{enumerate}
+        \end{definicion}\pause
+        \vskip 0.6cm
+        \begin{itemize}
+            \item La condición (a) nos dice que $m$ es múl\-ti\-plo común de $a$ y $b$. 
+            \item La condición (b) nos dice que cualquier otro múltiplo de $a$ y $b$ también debe ser múltiplo de $m$.
+        \end{itemize}
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        \begin{ejemplo}
+            Hallemos el mínimo común múltiplo entre $8$ y $14$.
+        \end{ejemplo}\pause
+        
+        \begin{solucion}\pause
+            Escribamos los múl\-ti\-plos de ambos números y busquemos el menor común a ambos. 
+            
+            \vskip .4cm \pause
+            
+            Los primeros múltiplos de $8$ son: $8,16,24,32,40,48,56,\ldots$. 
+            
+            \vskip .4cm 
+            Los primeros múltiplos de $14$ son: $14,28,42,56,72,\ldots$. 
+            
+            \vskip .4cm \pause
+            
+            Luego se tiene $\mcm(8,14)=56$. Nos faltaría  comprobar que cualquier múltiplo de $8$ y $14$ es múltiplo de 56, pero eso se deduce fácilmente de los resultados que veremos a continuación.
+        \end{solucion}
+        
+        
+        
+        
+    \end{frame}
+    
+    
+    
+    \begin{frame}
+        \begin{teorema}\label{t1.7.2} Sean $a$ y $b$ enteros no nulos, entonces
+            $$
+            \mcm(a,b)=\frac{|a b|}{\mcd(a,b)}.
+            $$
+        \end{teorema}\pause
+        
+        En particular este resultado implica que si $a$ y $b$ son naturales coprimos, entonces $\mcm(a,b)=ab$.
+        \pause
+        \vskip .5cm
+        
+        \begin{ejemplo} Encontrar el  mcm de $8$ y $14$.\pause
+            \begin{solucion}\pause
+                Es claro que $2 = \mcd(8,14)$, luego $\mcm(8,14) = 8 \cdot 14 / 2 = 56$. 
+            \end{solucion}
+        \end{ejemplo}
+        
+    \end{frame}
+    
+    
+    
+    \begin{frame}
+        \begin{ejercicio}
+            Demostrar que si $a$, $b$ y $n$ son enteros no nulos, entonces
+            $\mcd(na,nb)=n\mcd(a,b)$.
+        \end{ejercicio}\pause
+        \begin{solucion}\pause
+            Sea $d = (a,b)$, debemos probar que $ nd = (na,nb)$. Es decir, \pause
+            \vskip .2cm
+            \begin{enumerate}
+                \item[{\color{blue}a)}] $ d|a$  y $d|b$;
+                \item[{\color{blue}b)}]  si $ c|a $ y $c|b$ entonces $ c|d$.
+            \end{enumerate}\pause
+            
+            \qquad\qquad $\Downarrow$
+            
+            \begin{enumerate}\pause
+                \item[{\color{blue}a')}] $ nd|na$  y $nd|nb$;
+                \item[{\color{blue}b')}]  si $ c|na $ y $c|nb$ entonces $ c|nd$.
+            \end{enumerate}
+        \end{solucion}
+    \end{frame}
+    
+    
+    
+    \begin{frame}
+        
+        {\color{blue}a')}  
+        
+        Por {\color{blue}a)}, $a = d \cdot q_1$, $b = d \cdot q_2$ , luego
+        $$na = d \cdot nq_1, \quad nb = d \cdot nq_2,$$ es decir
+        $$ nd|na, \quad nd|nb.$$\pause
+        
+        \vskip .2cm
+        {\color{blue}b')}  
+        
+        Sea $c$ tal que  $ c|na $ y $c|nb$.  
+        \vskip .2cm
+        Ahora bien
+        $$
+        d = ra +sb \Rightarrow nd = s(na) +t(nb),
+        $$\pause
+        Luego,
+        $$
+        c|na ,c|nb  \Rightarrow  c|s(na) +t(nb) = nd.
+        $$
+        Esto prueba     {\color{blue}b')}. \qed
+    \end{frame}
+    
+    
+    
+    
+    
+\end{document}
+

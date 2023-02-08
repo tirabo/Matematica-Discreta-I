@@ -1,0 +1,953 @@
+\appendix
+
+
+\part{Soluciones de los ejercicios} 
+
+\setcounter{chapter}{0}
+\renewcommand{\thechapter}{R\arabic{chapter}}
+
+\newcommand{\rta}{\noindent\textit{Rta: }} 
+
+\chapter{Ejercicios resueltos}\label{ej-resueltos-1}
+
+\begin{enumerate}
+		
+		
+    \item\label{prob1} Demostrar las siguientes afirmaciones donde $a$, $b$, $c$ y $d$ son siempre números enteros. Justificar cada uno de los pasos en cada demostración indicando el axioma o resultado que utiliza.
+    \begin{enumerate}
+        \item  $a=-(-a)$
+        
+        \rta $-a$  es el inverso aditivo de $a$ y por lo tanto el inverso aditivo de $-a$ es $a$.  Ahora bien, $-(-a)$  es el inverso aditivo de  $-a$, luego por  unicidad del inverso aditivo (axioma { I6}), obtenemos que $a = -(-a)$.
+        
+        \item  $a=b\,$ si y sólo si $\,-a=-b$
+        
+        \rta Si  $a=b$, es claro que $-a=-b$. Si $-a= -b$, entonces $-(-a) = -(-b)$ y  por \textit{a)}, tenemos que $a=b$.  
+        
+        \item  $a+a=a$ implica que  $a=0$.
+        
+        \rta Sumo $-a$ a ambos lados de la ecuación  $a+a=a$ y obtengo, por axioma I6,  $-a + a + a = -a +a$, luego $0 +a = 0$ y, finalmente por axioma I4, $a=0$. 
+        
+    \end{enumerate}
+    
+
+    \item Idem \ref{prob1}.
+    
+    \begin{enumerate}
+        \item $0<a\,$ y $\,0<b\,$ implican $\,0<a\cdot b$
+        
+        \rta Como $0<a\,$ y $\,0<b\,$, por axioma I11, $0 \cdot b < a \cdot b$. Por un resultado del teórico  tenemos que $0 \cdot b = 0$, luego $0 < a\cdot b$.
+        
+        \item $a<b\,$ y $\,c<0$ implican $\,b\cdot c<a\cdot c$
+        
+        \rta Sumamos $-c$  a la inecuación  $\,c<0$ y  obtenemos, por axioma I10,    $-c + c<-c + 0$, luego por axioma I6 en la parte izquierda y axioma I4 en la parte derecha, obtenemos $0 < -c$: Ahora bien  por axioma I11, $a<b\,$ y  $0 < -c$ implican $a \cdot (-c)<b \cdot (-c)$. Por la regla de los signos tenemos $-a \cdot c<- b \cdot c$. Sumando $a \cdot c$ y $ b \cdot c$  a ambos lados de la inecuación y aplicando axioma I10 y  repetidamente los axiomas I4 e I6, obtenemos  $\,b\cdot c<a\cdot c$.
+    \end{enumerate}
+    
+
+    \item  Probar las siguientes afirmaciones, justificando los pasos que realiza.
+    \begin{enumerate}
+        \item Si $0 < a$  y $\,0<b\,$ entonces $\,a<b\,$ si y sólo si $a^2<b^2$.
+        
+        \rta  Como $a < b$ y $0 < a$ por I11 obtenemos $a^2 < ba$. Como $a < b$ y $0 < b$ por I11 obtenemos $ab < b^2$. Luego  $a^2 < ba = ab < b^2$.
+        
+        
+        \item Si $a\neq 0$  entonces $0 < a^2$.
+        
+        \rta  Por tricotomía (axioma I8) o bien $0 <a$ o bien $a <0$. Si $0<a$, entonces, por \textit{a)} tenemos que $0 = 0^2 < a^2$.  Si $a<0$, sumando $-a$ a ambos miembros de la desigualdad y aplicando axiomas I10, I6 e I4 obtenemos $0 < -a$. Luego, por \textit{a)},  $0 = 0^2 < (-a)^2 = a^2$. La última igualdad se deduce de la regla de los signos. 
+        
+        \item Si $a\neq b$  entonces $a^2+b^2>0$.
+        
+        \rta Como $a\neq b$,  alguno de los dos, $a$ o $b$, es distinto de cero. Supongamos que $a \ne 0$ y, entonces, por  \textit{b)} tenemos que $0 = < a^2$. Análogamente, si $b \ne 0$, $0 < b^2$ y sumando  $a^2$  a esta inecuación, por axioma I10, obtenemos $a^2 + 0 <a^2 + b^2$, que por axioma I4, es $a^2  <a^2 + b^2$. Como $0 = < a^2$, tenemos $0 = < a^2 < a^2 + b^2$. Falta considerar el caso en que  $b =0$. en este caso $a^2 + b^2 = a^2 + 0^2 = a^2 + 0 = a^2 > 0$.
+        
+        
+        
+        
+        \item Probar que si $a+c <b+c$ entonces $a<b$.
+        
+        \rta Por  axioma I10 $a+c -c  <b+c -c$. Por axiomas I6 e I4 obtenemos $a<b$.
+    \end{enumerate}
+    
+    
+    \item Calcular evaluando las siguientes expresiones:
+        \begin{enumerate}
+            \item $\displaystyle{\sum_{r=0}^4 r}$. \quad \rta $\displaystyle{\sum_{r=0}^4 r} = 0+1+2+3+4 = 10.$
+            \item \quad $\displaystyle{\prod_{i=1}^5 i}$. \quad \rta $1 \cdot  2 \cdot 3 \cdot 4\cdot  5 = 120$. 
+            \item  \quad $\displaystyle{\sum_{k=-3}^{-1} \frac{1}{k(k+4)}}$. \quad \rta  $\frac{1}{-3(-3+4)} +\frac{1}{-2(-2+4)} +\frac{1}{-1(-1+4)} = \frac{1}{-3} +\frac{1}{-4} +\frac{1}{-3} = -\frac{11}{12}$.
+            \item \quad $\displaystyle{\prod_{n=2}^7 \frac{n}{n-1}}$. \quad \rta $\displaystyle{\frac{2}{1}\frac{3}{2}\frac{4}{3}\frac{5}{4}\frac{6}{5}\frac{7}{6} = \frac{7}{1} = 7}$
+        \end{enumerate}
+
+    
+    \item Calcular:
+        \begin{enumerate}
+            \item \quad $2^{10} - 2^{9}$. \quad  \rta $2^{10} - 2^{9} = 2\cdot 2^{9} - 2^{9} = 2^{9} + 2^{9} -2^{9} = 2^{9}$.
+            \item \quad $3^2 2^5 - 3^5 2^2$. \quad  \rta $3^2 2^5 - 3^5 2^2 = 3^22^2(2^3 -3^3) = 36 (-19)$.
+            \item \quad $(2^2)^n - (2^n)^2$. \quad  \rta $(2^2)^n - (2^n)^2 = 2^{2n} - 2^{n2} =0$.
+            \item \quad $(2^{2^n} + 1)  (2^{2^n} - 1)$. \quad  \rta $(2^{2^n} + 1)  (2^{2^n} - 1) = {(2^{2^n})}^2 -1^2 = 2^{2 \cdot 2^n} - 1 = 2^{2^{n+1}} - 1$.
+        \end{enumerate}
+    
+    
+    \item Dado un natural $m$, probar que $\forall n \in {\mathbb N} $; $x$, $y \in {\mathbb R}$, se cumple:
+        \begin{enumerate}
+            \item $x^n \cdot x^m = x^{n+m}$
+            
+            \rta Se fijará $n$ y se hará inducción sobre $m$. 
+            
+            \textit{(Caso base)} Debemos ver que $x^{n}x^1 = x^{n+1}$, lo cual es verdadero por la definición recursiva de potencia. 
+            
+            \noindent \textit{(Paso  inductivo)} Supongamos que el resultado es verdadero para $m=k$, es decir que $x^{n}x^k = a^{n+k}$ (HI). Veamos que  $x^{n}x^{k+1} = x^{n+k+1}$. Ahora bien, 
+            \begin{alignat*}2
+            x^{n}x^{k+1} &= x^{n}x^{k}x&  & \text{(definición de potencia)} \\
+            &= x^{n+k}x& & \text{(HI)} \\
+            &= x^{n+k+1}&  & \text{(definición de potencia)}. 
+            \end{alignat*}
+            \item $(x\cdot y)^n=x^n\cdot y^n$
+            
+            \rta Se  hará inducción sobre $n$.
+            
+            \textit{(Caso base)} $(x\cdot y)^1=x\cdot y = x^1\cdot y^1$, por definición de potencia. 
+            
+            \textit{(Paso  inductivo)} Veamos que  $(x\cdot y)^k=x^k\cdot y^k \text{ (HI) } \Rightarrow (x\cdot y)^{k+1}=x^{k+1}\cdot y^{k+1}$, para $k \ge 1$. Ahora bien,
+            \begin{multline*}
+            \qquad\; \qquad (x\cdot y)^{k+1} \overset{\text{def}}{=} (x\cdot y)^{k} (x\cdot y) \overset{\text{(HI)}}{=} (x^{k}\cdot y^{k}) (x\cdot y) = (x^{k}x)\cdot (y^{k}y) \overset{\text{def}}{=}  x^{k+1}\cdot y^{k+1}.
+            \end{multline*}
+            
+             
+             
+            
+            \item $(x^n)^m = x^{n\cdot m}$
+            
+            \rta Al igual que en \textit{a)}, se fijará $n$ y se hará inducción sobre $m$.
+            
+            \textit{(Caso base)} Debemos ver que $(x^n)^1 = x^n$, lo cual es verdadero por la definición recursiva de potencia. 
+            
+            \textit{(Paso  inductivo)} Supongamos que el resultado es verdadero para $m=k$, es decir que  $(x^n)^k = x^{nk}$ (HI). Veamos que  $(x^n)^{k+1} = x^{n(k+1)}$. 
+            \begin{equation*}
+            (x^n)^{k+1}  \overset{\text{def}}{=} (x^n)^{k}x^n
+            \overset{\text{(HI)}}{=} x^{nk}x^n
+            \overset{\text{(\textit{a)}}}{=} x^{nk+n} 
+            = x^{n(k+1)}.  
+            \end{equation*} 
+        \end{enumerate}
+
+    
+    \item Analizar la validez de las siguientes afirmaciones:
+    %\begin{multicols}{2}
+    \begin{enumerate}
+        \item  $(2^{2^n})^{2^k} = 2^{2^{n+k}}$,  $n$, $k \in {\mathbb N}$. 	\rta  Verdadera: $(2^{2^n})^{2^k} =(2^{2^n2^k}) =  2^{2^{n+k}}$.
+        \item $(2^n)^2 = 4^n$, $n \in {\mathbb N}$. \rta  Verdadera: $(2^n)^2 = 2^{2n} =(2^2)^n= 4^n$.
+        \item $2^{7+11} = 2^7 + 2^{11}$. Falsa: si divido la ecuación por $2^7$ se obtiene $2^{11} = 1 + 2^{4}$,  donde la expresión de la izquierda es par y la de la derecha es impar. 
+    \end{enumerate}
+    %\end{multicols}
+
+    
+    \item\label{ej-suma-2-ala-n} Probar que $\sum_{i=0}^n 2^i = 2^{n+1} -1$ ($n \ge 0$). 
+    
+    \rta Haremos inducción sobre $n$. 
+    
+    \textit{(Caso base $n=0$) }  $\sum_{i=0}^0n 2^i = 2^0 = 1 = 2^{+1} -1$.
+    
+    \textit{(Paso inductivo) } Supongamos que $k\ge 0$ y se cumple que  $\sum_{i=0}^k 2^i = 2^{k+1} -1$ (hipótesis inductiva). Probaremos que  $\sum_{i=0}^{k+1} 2^i = 2^{k+2} -1$. Ahora bien, 
+    \begin{equation*}
+    \sum_{i=0}^{k+1} 2^i = \sum_{i=0}^{k} 2^i + 2^{k+1} \overset{\text{(HI)}}{=}  2^{k+1} -1 + 2^{k+1} = 2 \cdot 2^{k+1} -1 = 2^{k+2} -1.
+    \end{equation*}
+    
+    
+    \item Probar las siguientes afirmaciones usando inducción en $n$:
+    \begin{enumerate}
+        \item $n^2\leq 2^n$ para todo $n\in{\mathbb N}$, $n>3$ .
+        
+        \rta  Se probara por inducción sobre $n$. 
+        
+        \textit{(Caso base $n=4$) } En  este caso $4^2 = 16$ y $2^4 = 16$, luego $4^2 \le 2^4$.
+        
+        \textit{(Paso inductivo)} Debemos probar que si para $k \ge 4$ se cumple  que  $k^2\leq 2^k$ (HI),  entonces $(k+1)^2\leq 2^{k+1}$. 
+        \begin{equation*}
+        \begin{array}{rclr}
+        (k+1)^2 &=& k^2 + 2k +1 \overset{\text{(HI)}}{\le} 2^k +2k +1. \hfill &\quad \hfill(*)
+        \end{array}
+        \end{equation*}
+        Por otro lado, $2^{k+1} = 2 \cdot 2^k = 2^k + 2^k$, deberíamos,  entonces,  probar $2^k +2k +1 \le 2^k +2^k$ o equivalentemente, 
+        \begin{equation*}
+        \begin{array}{rclr}
+        2k +1   &\le&2^k. \hfill &\qquad\qquad\qquad\qquad\qquad\qquad \hfill\hfill(**)
+        \end{array}
+        \end{equation*}
+        Para probar esto debemos hacer inducción nuevamente. El caso base es $k=4$, y en ese caso $2\cdot 4+ 1 = 9 \le 2^4 = 16$. En  el paso inductivo debemos probar que $2s+ 1 < 2^s \text{ (HI) } \Rightarrow 2(s+1)+ 1 < 2^{s+1}$. Ahora bien, 
+        \begin{equation*}
+        2(s+1)+ 1  = (2s + 1) +2 \overset{\text{(HI)}}{\le} 2^s + 2 < 2^s + 2^s = 2\cdot 2^s = 2^{s+1}. 
+        \end{equation*}    
+        Luego,  hemos probado $(**)$. Por lo tanto
+        \begin{equation*}
+        (k+1)^2 \overset{(*)}{\le}  2^k +2k +1 \overset{(**)}{\le} 2^k + 2^k = 2^{k+1}.
+        \end{equation*}
+        
+        
+        %\item $n^3 \le 3^n$;\quad $\forall n \in {\mathbb N}$, $n\ge 3$ .
+        %\item $(n+1)^n < n^{n+1}$; $\forall n \in {\mathbb N}$, $n \ge 3$.
+        \item $\forall n \in {\mathbb N}$,\ $3^n \ge 1 + 2^n$.
+        
+        \rta Inducción sobre $n$.
+        
+        \textit{(Caso base $n=1$) } En este caso $3^1 = 3$ y $1+2^1 = 3$, y se verifica la desigualdad.
+        
+        \textit{(Paso inductivo)} Debemos ver que si para $k \in \mathbb N$, tenemos que   $3^{k} \ge 1 + 2^k$ (HI),  entonces $3^{k+1} \ge 1 + 2^{k+1}$. 
+        \begin{equation*}
+        3^{k+1} = 3^k\cdot 3 \overset{\text{(HI)}}{\ge} (1 + 2^k) \cdot 3 = 3 + 3 \cdot 2^k \ge 1 + 2\cdot 2^k = 1 + 2^{k+1}.
+        \end{equation*}
+        
+        
+    \end{enumerate}
+  
+    
+    \item\label{ej-induccion} Demostrar por inducción  las siguientes igualdades:
+    \begin{enumerate}
+        \item  $\displaystyle{ \sum_{k=1}^n (a_k + b_k) = \sum_{k=1}^n a_k + \sum_{k=1}^n b_k}$, $n\in \mathbb N$.
+        
+        \rta Inducción en $n$.
+        
+        \textit{(Caso base $n=1$) }  $\sum_{k=1}^1 (a_k + b_k) = a_1+b_1 = \sum_{k=1}^1 a_k + \sum_{k=1}^1 b_k$, verdadero.
+        
+        \textit{(Paso inductivo)} Dado $h \ge 1$ supondremos  que 
+        $$\sum_{k=1}^h (a_k + b_k) = \sum_{k=1}^h a_k + \sum_{k=1}^h b_k$$ es verdadera (HI) y deduciremos que $$\sum_{k=1}^{h+1} (a_k + b_k) = \sum_{k=1}^{h+1} a_k + \sum_{k=1}^{h+1} b_k.$$
+        Comenzamos con el término de la izquierda de lo que queremos probar  y debemos obtener el término de la derecha. 
+        \begin{align*}
+            \sum_{k=1}^{h+1} (a_k + b_k) &\overset{(\text{def } \Sigma)}{=}  \sum_{k=1}^h (a_k + b_k) + a_{h+1} + b_{h+1}\\ &\overset{\text{(HI)}}{=} \sum_{k=1}^h a_k + \sum_{k=1}^h b_k + a_{h+1} + b_{h+1}
+            \\&= ( \sum_{k=1}^h a_k+a_{h+1} ) + ( \sum_{k=1}^h b_k + b_{h+1}) \\&\overset{(\text{def } \Sigma)}{=} \sum_{k=1}^{h+1} a_k + \sum_{k=1}^{h+1} b_k.
+        \end{align*}
+        
+        
+        \item\label{ej-serie-aritmetica}  $\displaystyle{ \sum_{j=1}^n j = \frac{n(n+1)}{2}}$, $n\in \mathbb N$, $n\in \mathbb N$.
+        
+        \rta Esta es llamada la \textit{suma aritmética} y la demostraremos por inducción en $n$.
+        
+        \textit{(Caso base $n=1$) } $ \sum_{j=1}^1 j = 1 = (1 \cdot 2)/2$. Verdadero. 
+        
+        \textit{(Paso inductivo)} Para $k \ge 1$ suponemos cierto $$\sum_{j=1}^k j = \frac{k(k+1)}{2} \text{\quad (HI)}$$  y  debemos demostrar  que $$\sum_{j=1}^{k+1} j = \frac{(k+1)(k+2)}{2} = \frac{(k+1)(k+2)}{2}.$$ Ahora bien,
+        \begin{align*}
+            \sum_{j=1}^{k+1} j \overset{(\text{def } \Sigma)}{=} \sum_{j=1}^k j + (k+1)&  \overset{\text{(HI)}}{=} \frac{k(k+1)}{2} + (k+1) \\&= \frac{k(k+1) +2(k+1)}{2} = \frac{(k+1)(k +2)}{2}. 
+        \end{align*}
+        
+        \item\label{ej-sum-i2}  $\displaystyle{ \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}}$, $n\in \mathbb N$.
+        
+        \rta Inducción en $n$.
+        
+        \textit{(Caso base $n=1$) } $ \sum_{i=1}^1 i^2 = 1$ y $(1  (1+1)  (2\cdot 1 + 1))/2 = (1 \cdot 2 \cdot 3)/6=1$. Verdadero.  
+        
+        \textit{(Paso inductivo)} Para  $k \ge 1$,  supondremos cierto 
+        $$\sum_{i=1}^{k} i^2 = \frac{k(k+1)(2k+1)}{6} \text{\quad (HI)}$$
+        y probaremos que 
+        $$\sum_{i=1}^{k+1} i^2 = \frac{(k+1)(k+2)(2(k+1)+1)}{6} = \frac{(k+1)(k+2)(2k+3)}{6} \text{\quad (T)}.$$ 
+        Operemos con el lado izquierdo de (T):
+        \begin{align*}
+        \sum_{i=1}^{k+1} i^2 &\overset{(\text{def } \Sigma)}{=} \sum_{i=1}^{k} i^2 + (k+1)^2 \\ &\overset{\text{(HI)}}{=} \frac{k(k+1)(2k+1)}{6}  + (k+1)^2 \\ &=   \frac{k(k+1)(2k+1) + 6(k+1)^2}{6} = \frac{(k+1)(k(2k+1) + 6(k+1))}{6} \\ &= \frac{(k+1)(2k^2+k + 6k+6))}{6} =  \frac{(k+1)(2k^2+7k+6))}{6}.
+        \end{align*}
+        Por otro lado,  desarrollamos el lado derecho de (T): 
+        \begin{align*}
+            \frac{(k+1)(k+2)(2k+3)}{6} &= \frac{(k+1)(2k^2+3k +4k +6)}{6} \\&= \frac{(k+1)(2k^2+7k +6)}{6}.
+        \end{align*}
+        Es decir,  hemos probado que el lado derecho y el lado izquierdo de (T) son iguales y con esto se prueba el resultado. 
+        
+        \item  $\displaystyle{ \sum_{k=0}^n (2k+1) = (n+1)^2}$, $n\in \mathbb N_0$.
+        
+        \rta Inducción en $n$.
+        
+        \textit{(Caso base $n=0$) } $\sum_{k=0}^0 (2k+1) = 1 = 1^2$. Verdadero.
+        
+        \textit{(Paso inductivo)} Para $h \ge 0$ suponemos que $\sum_{k=0}^h (2k+1) = (h+1)^2$ (HI) y debemos probar que $\sum_{k=0}^{h+1} (2k+1) = (h+2)^2$. Ahora bien, 
+        \begin{align*}
+            \sum_{k=0}^{h+1} (2k+1) &\overset{(\text{def } \Sigma)}{=} \sum_{k=0}^h (2k+1) + 2(h+1) +1 \\ &\overset{\text{(HI)}}{=}  (h+1)^2 + 2(h+1) +1 = (h+2)^2.
+        \end{align*}
+        
+        \item  $\displaystyle{ \sum_{i=1}^n i^3 = \left( \frac{n(n+1)}{2 }\right)^2}$, $n\in \mathbb N$.
+        
+        \rta Inducción en $n$.
+        
+        \textit{(Caso base $n=1$) } $\sum_{i=1}^1 i^3 = 1 = (\frac{1 \cdot 2}{2})^2$. Verdadero. 
+        
+        \textit{(Paso inductivo)} Para  $k \ge 1$,  supondremos cierto $\sum_{i=1}^k i^3 = \left( \frac{k(k+1)}{2 }\right)^2$ (HI) y probaremos $\sum_{i=1}^{k+1} i^3 = \left( \frac{(k+1)(k+2)}{2 }\right)^2$. Ahora bien,
+        \begin{align*}
+            \sum_{i=1}^{k+1} i^3 &\overset{(\text{def } \Sigma)}{=} \sum_{i=1}^k i^3 + (k+1)^3 \overset{\text{(HI)}}{=}  \left( \frac{k(k+1)}{2 }\right)^2 + (k+1)^3 \\
+            &= \frac{k^2(k+1)^2}{4 } + (k+1)^3 = (k+1)^2 \left(\frac{k^2}{4 } + k+1 \right)\\
+            &= (k+1)^2 \left(\frac{k^2+4k +4}{4 } \right) = (k+1)^2\frac{(k+2)^2}{4 } \\
+            &= \left( \frac{(k+1)(k+2)}{2 }\right)^2.
+        \end{align*}
+        
+        \item\label{ej-serie-geometrica}  $\displaystyle{ \sum_{k=0}^n a^k = \frac{a^{n+1}-1}{a-1}}$, donde $a\in {\mathbb R}$, $a \neq 0,\ 1$, $n\in \mathbb N_0$.
+        
+        \rta Esta es llamada la \textit{suma geométrica} y la demostraremos por inducción en $n$.
+        
+        \textit{(Caso base $n=0$) } $\sum_{k=0}^0 a^k = a^0 = 1$ y $\frac{a^{1}-1}{a-1}=1$. Luego el resultado es verdadero para  $n=1$. 
+        
+        \textit{(Paso inductivo)}  Para  $h \ge 0$,  supondremos cierto $\sum_{k=0}^h a^k = \frac{a^{h+1}-1}{a-1}$ (HI) y probaremos $\sum_{k=0}^{h+1} a^k = \frac{a^{h+2}-1}{a-1}$. Ahora bien, 
+        \begin{align*}
+            \sum_{k=0}^{h+1} a^k &\overset{(\text{def } \Sigma)}{=\quad} \;\sum_{k=0}^h a^k + a^{h+1} \overset{\text{(HI)}}{=} \frac{a^{h+1}-1}{a-1} +  a^{h+1} \\
+            &= \frac{a^{h+1}-1 + a^{h+1}(a-1)}{a-1} = \frac{a^{h+1}-1 + a^{h+2}-a^{h+1}}{a-1} \\
+            &=\frac{a^{h+2}-1}{a-1}.
+        \end{align*}
+        
+        \item  $\displaystyle{ \prod_{i=1}^n \frac{i+1}{i} = n+1}$, $n\in \mathbb N$.
+        
+        \rta Inducción en $n$.
+        
+        \textit{(Caso base $n=1$)} $\prod_{i=1}^1 \frac{i+1}{i} = \frac{2}{1} = 2$. Verdadero.   
+        
+        \textit{(Paso inductivo)}  Para  $k \ge 1$,  supondremos cierto $\prod_{i=1}^k \frac{i+1}{i} = k+1$ y probaremos que $\prod_{i=1}^{k+1} \frac{i+1}{i} = k+2$. Ahora bien,
+        \begin{align*}
+            \prod_{i=1}^{k+1} \frac{i+1}{i} &\overset{(\text{def } \Pi)}{=\quad} \prod_{i=1}^k \frac{i+1}{i} \cdot \frac{k+2}{k+1} \overset{\text{(HI)}}{=} (k+1) \cdot \frac{k+2}{k+1} = k+2.
+        \end{align*}
+        
+        
+        \item $\displaystyle{ \sum_{i=1}^n \frac{1}{4i^2-1} = \frac{n}{2n+1}}$, $n\in \mathbb N$.
+        
+        \rta Inducción en $n$.
+        
+        \textit{(Caso base $n=1$)} $\sum_{i=1}^1 \frac{1}{4i^2-1} = \frac{1}{4\cdot 1^2-1} = \frac13$. Por otro lado $\frac{1}{2\cdot 1+1} = \frac13$. Por lo tanto la fórmula vale para $n=1$.  
+        
+        \textit{(Paso inductivo)}  Para  $k \ge 1$,  supondremos cierto $\sum_{i=1}^k \frac{1}{4i^2-1} = \frac{k}{2k+1}$ (HI) y probaremos $\sum_{i=1}^{k+1} \frac{1}{4i^2-1} = \frac{k+1}{2(k+1)+1} = \frac{k+1}{2k+3}$. Ahora bien,
+        \begin{align*}
+        \sum_{i=1}^{k+1} \frac{1}{4i^2-1} &\overset{(\text{def } \Sigma)}{=\quad}\sum_{i=1}^{k} \frac{1}{4i^2-1} +  \frac{1}{4(k+1)^2-1}\\
+        &\overset{\text{(HI)}}{=} \frac{k}{2k+1} + \frac{1}{4(k+1)^2-1} = (*)
+        \end{align*}
+        Ahora debemos observar que $4(k+1)^2-1 = 4k^2 +8k+3 = (2k+1)(2k+3)$, luego
+        \begin{align*}
+        \sum_{i=1}^{k+1} \frac{1}{4i^2-1} &\overset{(*)}{=} \frac{k}{2k+1} + \frac{1}{(2k+1)(2k+3)} \\
+        &=  \frac{k(2k+3) +1}{(2k+1)(2k+3)} = \frac{k(2k+3) +1}{(2k+1)(2k+3)} \\
+        &=  \frac{2k^2+3k +1}{(2k+1)(2k+3)}  = (**)
+        \end{align*}
+        Observemos  que $2k^2+3k +1 = (k+1)(2k+1)$, luego
+        \begin{align*}
+        \sum_{i=1}^{k+1} \frac{1}{4i^2-1} &\overset{(**)}{=} \frac{(k+1)(2k+1)}{(2k+1)(2k+3)} = \frac{(k+1)}{(2k+3)},
+        \end{align*}
+        que es lo que queríamos demostrar.
+        
+        \item $\displaystyle{ \sum_{i=1}^n i^2\, /\, \sum_{j=1}^n j = \frac{2n+1}{3}}$, $n\in \mathbb N$.
+        
+        \rta En  este caso no hace falta hacer inducción: por \textit{ \ref{ej-sum-i2}} y \textit{\ref{ej-serie-aritmetica}} tenemos que 
+        \begin{equation*}
+            \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6} \text{\quad y \quad} \sum_{j=1}^n j = \frac{n(n+1)}{2},
+        \end{equation*}
+        respectivamente. Por  lo tanto, 
+        \begin{align*}
+            \sum_{i=1}^n i^2\, /\, \sum_{j=1}^n j &= \left(\frac{n(n+1)(2n+1)}{6}\right) / \left(\frac{n(n+1)}{2}\right) \\
+            &= \frac{n(n+1)(2n+1)2}{6n(n+1)} = \frac{2n+1}{3}.
+        \end{align*}
+        
+        
+        \item $\displaystyle{ \prod_{i=2}^n \left(1-\frac{1}{i^2}\right) = \frac{n+1}{2n}}$, $n\in \mathbb N$ y $ n\ge 2$.
+        
+        \rta Inducción en $n$.
+        
+        \textit{(Caso base $n=2$)} $\prod_{i=2}^2 \left(1-\frac{1}{i^2}\right) = (1- \frac{1}{2^2}) = \frac{4-1}{4} = \frac{3}{4} = \frac{2+1}{2 \cdot 2}$.
+        
+        \textit{(Paso inductivo)} Para  $k \ge 1$,  supondremos cierto $\prod_{i=2}^k \left(1-\frac{1}{i^2}\right) = \frac{k+1}{2k}$ y  deberemos probar  que $\prod_{i=2}^{k+1} \left(1-\frac{1}{i^2}\right) = \frac{k+2}{2(k+1)}$. Ahora bien,
+        \begin{align*}
+        \prod_{i=1}^{k+1}\left(1-\frac{1}{i^2}\right) &\overset{(\text{def } \Pi)}{=\quad} \prod_{i=1}^k \left(1-\frac{1}{i^2}\right) \cdot \left(1-\frac{1}{(k+1)^2}\right)\\ &\overset{\text{(HI)}}{=}  \frac{k+1}{2k} \cdot\left(1-\frac{1}{(k+1)^2}\right)
+        =  \frac{k+1}{2k} \cdot\frac{(k+1)^2- 1}{(k+1)^2} \\
+        &= \frac{k+1}{2k} \cdot\frac{k^2+2k}{(k+1)^2} = \frac{k^2+2k}{2k (k+1)} = \frac{k(k+2)}{2k (k+1)} \\
+        &=  \frac{k+2}{2 (k+1)}.
+        \end{align*}
+        
+        \item Si $a\in \mathbb R$ y $a\geq -1$, entonces $(1+a)^n\geq 1+n\cdot a$, $\forall \, n \in \mathbb N$.
+        
+        \rta Inducción en $n$.
+        
+        \textit{(Caso base $n=1$)} $(1+a)^1 = 1+a = 1+ 1\cdot a$. 
+        
+        \textit{(Paso inductivo)}  Para  $k \ge 1$,  supondremos cierto que $(1+a)^k\geq 1+k a$ y probaremos  que $(1+a)^{k+1}\geq 1+(k+1) a$. Ahora bien, 
+        \begin{align*}
+        (1+a)^{k+1} &\overset{(\text{def } x^n)}{=\quad} (1+a)^k(1+a) \qquad (*)
+        \end{align*}
+        Como $a\ge -1$, entonces $1+a \ge 0$, por (HI) tenemos  que $(1+a)^k\geq 1+k a$, entonces  por compatibilidad del  producto con el orden obtenemos
+        \begin{equation*}
+            (1+a)^k(1+a) \ge   (1+k a)(1+a)  \qquad (**)
+        \end{equation*}
+        De $(*)$ y $(**)$ obtenemos
+        \begin{align*}
+        (1+a)^{k+1} &\ge (1+k a)(1+a) \\
+        &= 1+ ka + a + ka^2 = 1 + (k+1)a + ka^2 \\
+        &\ge 1 + (k+1)a
+        \end{align*}
+        (la última desigualdad vale pues $ka^2 \ge 0$). 
+        
+        
+        \item Si $a_1,\dots,a_n \in \mathbb R$, entonces $\displaystyle{\sum_{k=1}^n a_{k}^{2}\leq \left(\sum_{k=1}^n |a_{k}|\right)^{2}}$, $n\in \mathbb N$.
+        
+        \rta Como $a_k^2$ y $|a_k|$ son no negativos, podemos hacer el ejercicio pensando que $a_k \ge 0$ para todo $k$ (con eso evitamos un poco de notación). Debemos entonces probar que  si $a_1,\dots,a_n $ son no negativos, entonces
+        \begin{equation*}
+            \sum_{k=1}^n a_{k}^{2}\leq \left(\sum_{k=1}^n a_{k}\right)^{2}. 
+        \end{equation*} 
+        Lo haremos por inducción en $n$.
+         
+        \textit{(Caso base $n=1$)} $\sum_{k=1}^1 a_{k}^{2} = a_1^2 = (\sum_{k=1}^1 a_{k})^{2}$.
+        
+        \textit{(Paso inductivo)}  Para  $h \ge 1$,  supondremos cierto $\sum_{k=1}^h a_{k}^{2}\leq \left(\sum_{k=1}^h a_{k}\right)^{2}$ y deberemos  probar $\sum_{k=1}^{h+1} a_{k}^{2}\leq \left(\sum_{k=1}^{h+1} a_{k}\right)^{2}$.  Ahora bien,
+        \begin{align*}
+        \sum_{k=1}^{h+1} a_{k}^{2} &\overset{(\text{def } \Sigma)}{=\quad} \sum_{k=1}^h a_{k}^{2} + a_{h+1}^{2} \overset{\text{(HI)}}{\leq} \left(\sum_{k=1}^h a_{k}\right)^{2} + a_{h+1}^{2}. \qquad (*)
+        \end{align*}
+        Observemos que si $x,y \ge 0$,  entonces $x^2 + y^2 \leq (x+y)^2$ (pues $2xy \ge 0$). Por lo tanto 
+        \begin{equation*}
+             \left(\sum_{k=1}^h a_{k}\right)^{2} + a_{h+1}^{2} \leq  \left(\sum_{k=1}^h a_{k}+a_{h+1}\right)^{2}. \qquad\qquad\qquad (**)
+        \end{equation*}
+        Combinanado $(*)$ y $(**)$ obtenemos
+        \begin{equation*}
+            \sum_{k=1}^{h+1} a_{k}^{2} \leq \left(\sum_{k=1}^h a_{k}+a_{h+1}\right)^{2} \overset{(\text{def } \Sigma)}{=} \left(\sum_{k=1}^{h+1} a_{k}\right)^{2}
+        \end{equation*}
+        que es lo que queríamos demostrar. 
+        
+        \item Si $a_1,\dots,a_n \in \mathbb R$ y $0<a_i<1$ para $1 \le i\le n$, entonces $(1-a_1)\cdots(1-a_n)\ge 1-a_1-\cdots -a_n$, $n\in \mathbb N$.
+        
+        \rta Lo que debemos probar es equivalente a $\prod_{i=1}^{n} (1-a_i) \ge 1 - \sum_{i=1}^{n} a_i$ y la demostraremos haciendo inducción en $n$.  
+        
+        \textit{(Caso base $n=1$)} $\prod_{i=1}^{1} (1-a_i) = 1-a_1 = 1 - \sum_{i=1}^{1} a_i$.
+        
+        \textit{(Paso inductivo)}  Para  $k \ge 1$,  supondremos cierto  $\prod_{i=1}^{k} (1-a_i) \ge 1 - \sum_{i=1}^{k} a_i$ (HI) y probaremos  $\prod_{i=1}^{k+1} (1-a_i) \ge 1 - \sum_{i=1}^{k+1} a_i$. Ahora bien, 
+        \begin{align*}
+        \prod_{i=1}^{k+1} (1-a_i) &\overset{(\text{def } \Pi)}{=\quad} \prod_{i=1}^{k} (1-a_i)\cdot (1-a_{k+1})\\
+        &\overset{\text{(HI)}}{\ge}  (1 - \sum_{i=1}^{k} a_i)\cdot (1-a_{k+1}) =(*)
+        \end{align*}
+        La última desigualdad es verdadera, puesto  que como $0<a_{k+1}<1$, entonces $0<1-a_{k+1}<1$. 
+        Luego
+        \begin{align*}
+            (*)&= 1 - \sum_{i=1}^{k} a_i -a_{k+1} +  (\sum_{i=1}^{k} a_i)a_{k+1} \overset{(\text{def } \Sigma)}{=} 1 - \sum_{i=1}^{k+1} a_i +  (\sum_{i=1}^{k} a_i)a_{k+1} \\
+            &\ge  1 - \sum_{i=1}^{k+1} a_i,
+        \end{align*}
+        y  esta última desigualdad se debe a que $(\sum_{i=1}^{k} a_i)a_{k+1} \ge 0$.
+    \end{enumerate}
+    
+    \item Hallar $n_0 \in {\mathbb N}$ tal que $\forall n \ge n_0$ se cumpla que $n^2 \ge 11 \cdot n + 3$.
+    
+    \rta Para $n=1,\ldots,11$,  es claro que no se cumple pues $n^2 \le 11n < 11n +3$. Para $n =12$ la desiguald se cumple, pues $12^2 = 144 \ge 121+3$.   Probaremos  que $n^2 \ge 11  n + 3$ para $n\ge 12$. 
+    
+        \textit{(Caso base $n=12$)} Lo vimos más arriba.
+        
+        \textit{(Paso inductivo)}  Para  $k \ge 12$,  supondremos cierto $k^2 \ge 11  n + 3$ (HI) y debemos probar que $(k+1)^2 \ge 11  (k+1) + 3 =11k +14$. Ahora bien, 
+        \begin{align*}
+            (k+1)^2 = k^2+2k+1 \overset{\text{(HI)}}{\ge} 11k+3 +2k+1 = 11k + 2k+ 4 \ge 11k +14, 
+        \end{align*}
+        y la última desigualdad es válida pues como  $k\ge 12$,  entonces $2k+ 4 \ge 14$.
+    
+    \item Sea $u_1=3$, $u_2=5$ y $u_n=3 u_{n-1} - 2 u_{n-2}$ con $n\in \mathbb N$, $n\geq 3$.
+    Probar que $u_n=2^n+1$.
+    
+    \rta Para $n=1$ el resultado es verdadero pues $u_1 =3 = 1^1 +1$. Tomaremos el caso  base $n=2$.
+    
+    \textit{(Caso  base) } El resultado es verdadero cuando  $n=2$ pues $u_2 = 5 =2^2+1$.
+    
+    \textit{(Paso  inductivo)} Supongamos que $k \ge 2$ y el resultado  es cierto para los $h$ tales que  $1 \le h \le k$. Es decir que $u_h = 2^h+1$ para $1 \le h \le k$ y $k \ge 2$ (hipótesis inductiva),  entonces debemos probar que $u_{k+1} = 2^{k+1}+1$. Ahora bien, 
+    $$
+    \begin{matrix} u_{k+1} &=& 3u_k -2u_{k-1} \hfill &\quad \text{(por definición recursiva)} \hfill \\
+    &=& 3(2^k+1)-2(2^{k-1}+1) \hfill &\quad \text{(por hipótesis inductiva})\hfill \\
+    &=& 3\cdot 2^k+3-2\cdot 2^{k-1}-2 \hfill & \\
+    &=& 3\cdot 2^k+1- 2^{k} \hfill & \\
+    &=& 2\cdot 2^k+1 \hfill & \\
+    &=& 2^{k+1}+1. \hfill & 
+    \end{matrix}
+    $$
+    
+
+    \item Sea $\{ u_n \}_{n \in \mathbb N}$ la sucesión definida por recurrencia como sigue: $u_1 = 9$, $u_2 = 33$, $u_n = 7u_{n-1} - 10u_{n-2}$, $\forall n \geq 3$. Probar que $u_n = 2^{n+1} + 5^n$, para todo $n \in \mathbb N$.
+    
+    
+    \rta Para $n=1$ el resultado es verdadero pues $u_1 = 9 = 2^{1+1} + 5^1$. Tomaremos el caso  base $n=2$.
+    
+    \textit{(Caso  base) }El resultado es verdadero cuando  $n=2$ pues $u_2 = 33 = 2^{2+1} + 5^2$.
+    
+    \textit{(Paso  inductivo) } Supongamos que $k \ge 2$ y el resultado  es cierto para los $h$ tales que  $1 \le h \le k$. Es decir que $u_h = 2^{h+1} + 5^h$ para $1 \le h \le k$ y $k \ge 2$ (hipótesis inductiva), entonces debemos probar que $u_{k+1} = 2^{k+2}+5^{k+1}$. Ahora bien, 
+    \begin{equation*}
+    \begin{matrix*}[l]
+    u_{k+1} &=& 7u_{k+1-1} - 10u_{k+1-2}  \hfill &\quad \text{(def. recursiva)} \hfill \\
+    &=& 7u_{k} - 10u_{k-1}  \hfill &\hfill\\
+    &=& 7( 2^{k+1} + 5^k) -10 ( 2^{k-1+1} + 5^{k-1})  \hfill &\quad \text{(hip. inductiva})\hfill \\
+    &=& 7 \cdot  2^{k+1} + 7 \cdot 5^k -10 \cdot  2^{k} -10 \cdot  5^{k-1} \hfill  & \hfill\\
+    &=& 7 \cdot 2 \cdot  2^{k} + 7 \cdot 5 \cdot 5^{k-1} -10 \cdot  2^{k} -10 \cdot  5^{k-1}  \hfill  & \hfill\\
+    &=& (7 \cdot 2 -10 ) \cdot  2^{k} + (7 \cdot 5 -10) \cdot 5^{k-1}  \hfill  & \hfill\\
+    &=& 4 \cdot  2^{k} + 25 \cdot 5^{k-1}  \hfill  & \hfill\\
+    &=& 2^2 \cdot  2^{k} + 5^2 \cdot 5^{k-1}  \hfill  & \hfill\\
+    &=& 2^{k+2} + 5^{k+1}  \hfill  & \hfill
+    \end{matrix*}
+    \end{equation*}
+    
+    
+    \item Sea $u_n$ definida recursivamente por: 
+    $$u_1=2,\;\; u_n=2+\sum_{i=1}^{n-1}2^{n-2i}u_i \;\;\forall\; n >1.$$
+    \begin{enumerate}
+        \item Calcule $u_2$ y $u_3$.
+        
+        \rta $u_2 = 2+\sum_{i=1}^{1}2^{2-2i}u_i = 2+2^{2-2}u_1 = 2 + u_1 = 4$.
+        
+        $u_3 = 2+\sum_{i=1}^{2}2^{3-2i}u_i = 2+2^{3-2}u_1 + 2^{3-4}u_2=2+2^12 + 2^{-1}4 = 8$.
+        
+        \item Proponga una fórmula para el término general $u_n$ y pruébela por inducción.
+        
+        \rta Calculemos el cuarto témino de la sucesión: $u_4 =  2+\sum_{i=1}^{3}2^{4-2i}u_i = 2+2^{4-2}u_1 + 2^{4-4}u_2 + 2^{4-6}u_3= 2+2^2 2 + 2^{0}4 + 2^   {-2}8 = 16$. 
+        
+        Entonces tenemos que $u_1 = 2 = 2^1$, $u_2 = 4 = 2^2$, $u_3 = 8 = 2^3$. Esto nos indica que debería ser $u_n = 2^n$.  y lo haremos por inducción completa. 
+        
+        \textit{(Caso base)} Para $n=2$, por \textit{a)}, se cumple $u_2 = 4 =2^2$. 
+        
+        \textit{(Paso inductivo)} Supongamos que $k \ge 1$ y el resultado  es cierto para los $h$ tales que  $1 \le h \le k$,  es decir $u_h=2^h$ para $1 \le h \le k$. Debemos probar que $u_{k+1} = 2^{k+1}$. Ahora bien
+        \begin{equation*}
+        \begin{matrix*}[l]
+        u_{k+1} &=& 2+\sum_{i=1}^{k+1-1}2^{k+1-2i}u_i \hfill &\quad \text{(por definición recursiva)} \hfill \\
+        &=& 2+\sum_{i=1}^{k}2^{k+1-2i}u_i \hfill &\hfill\\
+        &=& 2+\sum_{i=1}^{k}2^{k+1-2i}2^i \hfill &\quad \text{(por hipótesis inductiva)}\hfill \\
+        &=& 2+\sum_{i=1}^{k}2^{k+1-2i+ i} \hfill  & \hfill\\
+        &=& 2+\sum_{i=1}^{k}2^{k+1-i} \hfill  & \hfill\\
+        &=& 2+\sum_{j=1}^{k}2^{j} \hfill  &\quad \text{(cambio de variables $j =k +1-i$)}\hfill \\
+        &=& 2+2^{k+1} -2 \hfill  &\quad \text{(por ej. \ref{ej-suma-2-ala-n} o ej. \ref{ej-induccion} \ref{ej-serie-geometrica})}\hfill \\
+        &=& 2^{k+1} \hfill  &\quad \hfill
+        \end{matrix*}
+        \end{equation*} 
+    \end{enumerate}
+    
+
+    \item Las siguientes proposiciones no son válidas para todo $n \in {\mathbb N}$. Indicar en qué paso del principio de inducción falla la demostración:
+        \begin{enumerate}
+            \item  $n=n^2$.
+            
+            \rta Para el caso base no falla pues $1 = 1^2$,  pero cuando queremos hacer el paso inductivo tenemos
+            \begin{equation*}
+                k+1 \overset{\text{(HI)}}{=} k^2 +1 \not=(k+1)^2.
+            \end{equation*}
+            
+            \item  $n=n+1$. No vale en el caso base: $1 \ne 1+1$.
+            \item  $3^n = 3^{n+2}$.  No vale en el caso base: $3^1 = 3 \ne 27 = 3^3$.
+            \item  $3^{3n} = 3^{n+2}$.  
+            
+            \rta La afirmación vale en el caso base pues  $3^{3\cdot 1} = 3^{1+2}$. En el paso inductivo debemos probar que si  vale $3^{3k} = 3^{k+2}$, entonces se cumple $3^{3(k+1)} = 3^{(k+1)+3}$. Sin embargo, usando  la (HI) obtenemos:
+            \begin{equation*}
+            3^{3(k+1)}  = 3^{3k+3} = 3^{3k}3^3\overset{\text{(HI)}}{=} 3^{k+2}3^3 = 3^{k+5}.
+            \end{equation*}
+            Por otro  lado $3^{(k+1)+2} = 3^{k+3}$. Deberíamos probar entonces que $3^{k+5} = 3^{k+3}$, pero esto es falso pues dividiendo  por $3^{k+3}$ obtenemos $3^2 =1$,  lo cual es absurdo.
+    \end{enumerate}
+    
+   
+    \item Encuentre el error en los siguientes argumentos de inducción.
+    \begin{enumerate}
+        \item  Demostraremos que $5n+3$ es múltiplo de 5 para todo $n\in \mathbb N$.
+        
+        Supongamos que $5k+3$ es múltiplo de 5, siendo $k\in \mathbb N$. Entonces existe
+        $p\in \mathbb N$ tal que  $5k+3=5p$. Probemos que $5(k+1)+3$ es múltiplo de 5:
+        Como
+        $$
+        5(k+1)+3=(5k+5)+3=(5k+3)+5=5p+5=5(p+1),
+        $$
+        entonces obtenemos que $5(k+1)+3$ es múltiplo de 5. Por lo tanto, por el principio
+        de inducción, demostramos que $5n+3$ es múltiplo de 5 para todo $n\in \mathbb
+        N$.
+        
+        \rta El caso base es par $n=1$ y en ese caso $5\cdot 1+3=8$ que no es divisible por 5. Por lo tanto al fallar el caso base no es posible hacer la demostración por inducción. 
+        
+       
+        \item Sea $a\in\mathbb R$, con $a\neq 0$. Vamos a demostrar que para todo entero no negativo $n$, $a^n=1$.
+        
+        Como $a^0=1$ por definición, la proposición es verdadera para $n=0$. Supongamos
+        que para  un entero $k$, $a^m=1$ para $0\leq m \leq k$. Entonces
+        $a^{k+1}= \frac{a^k a^k}{a^{k-1}}=\frac{1\cdot1}1=1$.
+        Por lo tanto, el principio de inducción fuerte implica que $a^n=1$ para todo $n\in \mathbb N$.
+        
+        \rta En  este caso falla el paso inductivo para $k=0$,  en este caso el razonamiento es
+        \begin{equation*}
+            a^{1}= \frac{a^0 a^0}{a^{-1}}=\frac{1\cdot1}1=1
+        \end{equation*}
+        Pero la última igualdad es incorrecta, pues nada demuestra que $a^{-1}$  se igual a $1$ y, en efecto, no lo es salvo que  $a=1$. 
+    \end{enumerate}
+
+    \item * La \emph{sucesión de Fibonacci} se define recursivamente de la siguiente manera:
+    $$
+    u_1=1,\quad u_2=1,\quad u_{n+1}=u_{n}+u_{n-1}, \, n\geq 2.
+    $$
+    Los primeros términos de esta sucesión son: $1,1,2,3,5,8,13,\ldots$
+    
+    Demostrar por inducción que el término general de esta sucesión se puede calcular mediante la fórmula
+    $$
+    u_n= \frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n-\left(\frac{1-\sqrt{5}}{2}\right)^n\right].
+    $$
+    (\textit{Ayuda:} usar que $\frac{1+\sqrt{5}}{2}$ y $\frac{1-\sqrt{5}}{2}$ son las raíces de la ecuación cuadrática $x^2-x-1=0$ y por lo tanto  $\left(\frac{1\pm\sqrt{5}}{2}\right)^{n+1} = \left(\frac{1\pm\sqrt{5}}{2}\right)^{n}+\left(\frac{1\pm\sqrt{5}}{2}\right)^{n-1}$).
+
+    \rta LLamemos $\rho_+ = \frac{1+\sqrt{5}}{2}$ y $\rho_ = \frac{1-\sqrt{5}}{2}$,  queremos probar entonces
+    \begin{equation}
+        u_n= \frac{1}{\sqrt{5}}(\rho_+^n - \rho_-^n). \tag{$P_n$}
+    \end{equation}
+    Como dice el enunciado, lo haremos por indicción en $n$.
+
+    \textit{(Caso  base, $n=1,2$) }. Para $n=1$:
+    \begin{align*}
+        \frac{1}{\sqrt{5}}\left[\rho_+^1-\rho_-^1\right]    &=  \frac{1}{\sqrt{5}}\left(\frac{1+\sqrt{5}- 1+\sqrt{5}}{2}\right) \\
+        &=  \frac{1}{\sqrt{5}}\frac{2\sqrt{5}}{2} = 1 \\
+        &= u_1. 
+    \end{align*}
+    Para $n=2$: 
+    \begin{align*}
+        \frac{1}{\sqrt{5}}\left[\rho_+^2-\rho_-^2\right]  &=  \frac{1}{\sqrt{5}}(\rho_+-\rho_-)(\rho_++\rho_-) \\
+        &= \frac{1}{\sqrt{5}}\cdot \sqrt{5} \cdot 1 = 1\\
+        &= u_2. 
+    \end{align*}
+    
+    \textit{(Paso  inductivo)} Dado $n \ge 2$, supongamos que 
+    \begin{equation}
+        u_{k}= \frac{1}{\sqrt{5}}(\rho_+^{k} - \rho_-^{k})\quad \text{ para }k \le n. \tag{HI}
+    \end{equation}
+    y probemos que 
+    \begin{equation*}
+        u_{n+1}= \frac{1}{\sqrt{5}}(\rho_+^{n+1} - \rho_-^{n+1}).
+    \end{equation*}
+    Como dice la ayuda, $\rho_\pm^2 - \rho_\pm - 1$, luego, 
+    $$
+    \rho_\pm^2 = \rho_\pm + 1,
+    $$ 
+    y  si multiplicamos por  $ \rho_\pm^{n-1}$, obtenemos
+    \begin{equation*}
+        \rho_\pm^{n+1} = \rho_\pm^{n} + \rho_\pm^{n-1}. \tag{*}
+    \end{equation*}
+    Luego 
+    \begin{align*}
+        u_{n+1}&=  u_n + u_{n-1}&&\text{(def. recursiva)}\\
+        &= \frac{1}{\sqrt{5}}(\rho_+^{n} - \rho_-^{n}) + \frac{1}{\sqrt{5}}(\rho_+^{n-1} - \rho_-^{n-1})&&\text{(por HI)}\\
+        &= \frac{1}{\sqrt{5}}(\rho_+^{n} + \rho_+^{n-1}) - \frac{1}{\sqrt{5}}(\rho_-^{n} +\rho_-^{n-1})&&\\
+        &= \frac{1}{\sqrt{5}}\rho_+^{n+1} - \frac{1}{\sqrt{5}}\rho_-^{n+1}&&\text{(por (*))}\\
+        &=\frac{1}{\sqrt{5}}(\rho_+^{n+1} - \rho_-^{n+1}).&&
+    \end{align*}
+\end{enumerate}
+
+
+\chapter{Ejercicios resueltos}\label{ej-resueltos-2}
+\begin{enumerate}
+    \item  La cantidad de dígitos o cifras de un número se cuenta a partir del primer dígito
+    distinto de cero. Por ejemplo, 0035010 es un número de 5 dígitos.
+    \begin{enumerate}
+    \item ¿Cuántos números de 5 dígitos hay?
+    
+    \textit{Rta:} Tenemos 9 posibilidades para el primero (todos salvo el cero) y diez para cada uno de los restantes cuatro lugares. Por lo tanto hay 90000 números de 5 dígitos.
+    
+    \item ¿Cuántos números pares de 5 dígitos hay?
+    
+    \textit{Rta:} En este caso el último dígito sólo puede ser 0,2,4,6 u 8. Por lo tanto hay $9\times 10^3\times 5= 45000$.
+    
+    \item ¿Cuántos números de 5 dígitos existen con sólo un 3?
+    
+    \noindent\textit{Rta:} El 3 puede estar en cada uno de los 5 lugares. Si está en el lugar más significativo en los restantes 4 lugares sólo pueden tomar 9 valores, ya que el 3 está excluido. Tenemos así $\times 9^4.$ A esto hay que sumarle los números que comienzan con un dígito distinto de 0 y 3 y que tienen exactamente un 3 entre sus cuatro últimos dígitos. Estos son $4.8.9^3$ números. La suma da $41.9^3=29889$.
+    
+    \item ¿Cuántos números capicúas de 5 dígitos existen?
+    
+    \textit{Rta:} Un capicúa de 5 dígitos está determinado por los primeros 3 dígitos. El primero tiene 9 posibilidades y los dos restantes 10 cada uno. Luego tenemos $9\times 10^2=900 $ capicúas de 5 dígitos.
+    
+    \item ¿Cuántos números capicúas de a lo sumo 5 dígitos hay?
+    
+    \textit{Rta:} A los anteriores 900 debemos sumarle 90 de 4 dígitos 90 de 3 dígitos 9 de 2 dígitos y 9 de un dígito. En total tenemos 1098.
+     
+    \end{enumerate}
+    
+    
+    
+    \item¿Cuántos números de 6 cifras pueden formarse con los dígitos de 112200?
+    
+    \noindent\textit{Rta:} Si no consideramos que la primera cifra no debe ser cero tenemos que llenar 6 casillas con dichos dígitos.
+    Tenemos que seleccionar 2 casillas entre las 6 para poner los unos y 2 entre las cuatro que quedan para poner los 2. En las dos restantes van los ceros. Así quedan $  \frac{6!}{2!4!}\frac{4!}{2!2!}\frac{2!}{2!0!}$. A estos debemos restar los que comienzan con cero, es decir $\frac{5!}{2!3!}\frac{3!}{2!1!}\frac{1!}{1!0!}$. Queda $90 -30=60$.
+    
+    Otra forma de pensarlo es que tenemos que armar todas las permutaciones de seis objetos de los cuales se repiten tres de ellos dos veces cada uno (tenemos tres pares de objetos). Esto da $\frac{6!}{2!2!2!}=90$. A esto debemos retarle como antes todas las permutaciones que comienzan con un 0. esto es $\frac{5!}{2!2!1!}=30$.
+    
+    Otra forma de pensarlo sería notar que la cantidad de números que empiezan con 1 es igual a la cantidad de números que empiezan con 2, porque en cada caso tengo que ordenar 5 objetos donde hay dos repeticiones de dos de esos objetos. Entonces el total de combinaciones sería $2.(5!/(2*2))$ .
+    
+    
+    
+    
+    \item ¿Cuántos números impares de cuatro cifras hay?
+    
+    \noindent\textit{Rta:} La primera cifra tiene 9 posibilidades, la última tiene 5 posibilidades y las dos restantes 10. Por lo tanto, se tienen $9\times 5\times 10^2=4500$.
+    
+    
+    
+    \item ¿Cuántos números múltiplos de 5 y menores que 4999 hay?
+    
+    \noindent\textit{Rta:} Como $5000/5=1000$, cada múltiplo de cinco buscado, al dividirlo por 5, me dará un número entre 1 y 999. Recíprocamente cada número entre 1 y 999 al multiplicarlo por 5 me da un múltiplo de 5 menor que 4999.
+    Luego hay 999 múltiplos de 5.
+    
+     Otra forma de pensarlo es que tengo 5 elecciones posibles para el primer dígito {0,...,4}, 10 elecciones posibles para el segundo y tercer dígito, y dos para el cuarto {0,5}. Eso da $5.10.10.2 =1000$ posibilidades, pero estoy contando también el 0000. Si descuento ese caso, obtengo 1000-1=999 números
+    
+    
+    
+    \item En los viejos boletos de ómnibus, aparecía un número de 5 cifras (en este caso
+    podían empezar con 0), y uno tenía un boleto capicúa si el número lo era.
+    
+    
+    \begin{enumerate}
+    \item ¿Cuántos boletos capicúas había? \noindent\textit{Rta:} 1000.
+    
+    \item ¿Cuántos boletos había en los cuales no hubiera ningún dígito repetido? \noindent\textit{Rta:} $10\times9\times8\times 7\times6$.
+    \end{enumerate}
+    
+    
+    
+    \item Las antiguas patentes de auto tenían una letra indicativa de la provincia y luego 6 dígitos. (En algunas provincias, Bs. As. y Capital, tenían 7 dígitos, pero ignoremos eso por el momento). Luego  vinieron patentes que tienen 3 letras y luego 3 dígitos. Finalmente, ahora, las patentes tienen 2 letras, luego 3 dígitos y a continuación dos letras más ¿Cuántas patentes pueden hacerse con cada uno de los sistemas?
+    
+    \noindent\textit{Rta:} Con el primer sistema teníamos 24 letras contando Tierra del Fuego y ciudad de Buenos Aires. Entonces con el primer sistema podíamos hacer $24\times 10^6$ patentes (24 millones). Con el segundo sistema  $27^3\times 10^3$ (menos de 20 millones). Con el tercer sistema hay $27^2\times 10^3 \times 27^2$ posibilidades (alrededor de 530 millones).
+    
+    
+    
+    \item Si uno tiene 8 CD distintos de Rock, 7 CD distintos de música clásica y 5 CD
+    distintos de cuartetos,
+    
+    \begin{enumerate}
+    \item 
+    ¿Cuántas formas distintas hay de seleccionar un CD?
+    
+    \noindent\textit{Rta:}  $20= 8+7+5$
+    
+    \item ¿Cuántas formas hay de seleccionar tres CD, uno de cada tipo?
+    
+    \noindent\textit{Rta:} Si los ordenamos según estilo RoClCu tenemos 8 posibles para el primero, 7 para el segundo y 5 para el tercero. En total 280=8.7.5. Si no están ordenados por estilo hay que multiplicar por 6.
+    
+    \item Un sonidista en una fiesta de casamientos planea poner 3 CD, uno a continuación
+    de otro. ¿Cuántas formas distintas tiene de hacerlo si le han dicho que no
+    mezcle más de dos estilos?
+    
+    \noindent\textit{Rta:} Si pudiera mezclar estilos  sin restricciones tendría  $20\times 19\times 18$. Para cumplir con la restricción impuesta debemos restar todos los que usan los tres estilos es decir uno de cada uno, que es lo que calculamos en el  apartado anterior cuando no están ordenados por estilo: $280\times 6$. Queda entonces $20.19.18-280.6=43.120=5160$. En el caso que importe el orden y ABC sea lo mismo que CBA, etc., se tendría $\frac{20.19.18}{6}-280=3140$.
+    \end{enumerate}
+    
+    
+    
+    \item Mostrar que si uno arroja un dado n veces y suma todos los resultados obtenidos,
+    hay $\frac{6^n}{2}$
+    formas distintas de obtener una suma par.
+    
+    \noindent\textit{Rta:} Probemos por inducción en $n$. Si $n=1$ como el dado tiene tres caras pares (2,4,6), es cierto.
+    Suponiendo que fuese cierto para $k$ dados cuando tiramos $k+1$ la suma total será par si la suma de los primeros $k$ dados era par y el último fue par o si la suma de los primeros $k$dados fue impar y el último fue impar. Notemos que si había $\frac{6^k}{2}$ posibilidades de que la suma de los primeros $k$ fuese par, entonces las posibilidades de que fuese impar son $6^k-\frac{6^k}{2}=\frac{6^k}{2}$. Por lo tanto las posibilidades para $k+1$ serán:${ \frac{6^k}{2}\times 3+\frac{6^k}{2}\times 3=\frac{6^{k+1}}{2}}$.
+    
+    
+    
+    \item ¿Cuántos enteros entre 1 y 10000 tienen exactamente un 7 y exactamente un 5
+    entre sus cifras?
+    
+    \noindent\textit{Rta:} Podemos suponer que es un número de 4 cifras ya que 10000 no tiene una cifra 7.
+    De los de cuatro cifras elegimos dos de ellas donde irán ubicados el 5 y el 7. Las restantes podrán llevar cualquiera de de los otro ocho dígitos. Tenemos entonces $6\times 8^2\times 2$ posibilidades. El último 2 es porque podemos poner 5 y 7 o 7 y 5 en los dos casilleros elegidos al comienzo.
+    
+    
+    
+    \item ¿Cuántos subconjuntos de $\{0,1,2,\dots,8,9\}$ contienen al menos un impar?
+    
+    \noindent\textit{Rta:} Es más fácil contar todos los subconjuntos ($2^{10}$) y luego eliminar aquellos que no contienen ningún impar, es decir aquellos que están formados únicamente por los elementos de $\{0,2,4,6,8\}$ que son $2^5$. Luego la solución es $2^{10}-2^5$.
+    
+    Otra forma sería pensar que para armar un subconjunto de $\{0,...,9\}$ tengo que elegir primero un subconjunto de $\{0,2,4,6,8\}$, después elegir un subconjunto de $\{1,3,5,7,9\}$ y por último unirlos. Lo primero se puede hacer de $2^5$ formas. Lo segundo de $2^5-1$ formas, descontando el conjunto vacío porque quiero que haya al menos un impar. Son entonces $2^5 (2^5 - 1)$ formas.
+    
+    
+    
+    \item El truco se juega con un mazo de $40$ cartas, y se reparten $3$ cartas a cada jugador. Obtener el $1$ de espadas (el \textit{As de espadas}) es muy bueno. También lo es, por otros motivos, obtener un $7$ y un $6$ del mismo palo (\textit{tener $33$}). ¿Qué es más probable: obtener el As de espadas, o tener $33$?
+    
+    \noindent\textit{Rta:} Si contamos todos los subconjuntos de 3 cartas una de las cuales es el macho, tendremos que son todos los subconjuntos de dos cartas entre las 39 restantes esto es $\frac{39!}{2!37!}$.
+    Ahora, para cada palo, la cantidad de subconjuntos de 3 cartas, de entre las cuales 2 de ellas son el 7 y el 6 correspondientes, son exactamente 38 (las posibles cartas restantes). Esto para cada palo entonces tenemos $4\times 38$ posibilidades. Ahora bien, es más probable el macho pues $4\times 38< 39\times 19$. 
+    
+    
+    
+    \item ¿Cuántos comités pueden formarse de un conjunto de 6 mujeres y 4 hombres, si el comité debe estar compuesto por 3 mujeres y 2 hombres?
+    
+    \noindent\textit{Rta:} Debemos elegir 3 mujeres entre 6 y combinarlo con 2 hombres elegidos entre 4. Esto da $\frac{6!}{2!4!}\times \frac{4!}{2!2!}=90$.
+    
+    
+    
+    \item ¿De cuántas formas puede formarse un comité de 5 personas tomadas de un grupo de $11$ personas entre las cuales hay $4$ profesores y $7$ estudiantes, si:
+    \begin{enumerate}
+    \item 
+    No hay restricciones en la selección?
+    \noindent\textit{Rta:}  $\binom{11}{5}$
+    
+    \item El comité debe tener exactamente $2$ profesores?
+    \noindent\textit{Rta:}  $\binom{4}{2}\binom{7}{3}$.
+    
+    \item El comité debe tener al menos $3$ profesores?
+    
+    \noindent\textit{Rta:} Si tuviera exactamente $3$ sería:  $\binom{4}{3}\binom{7}{2}=84$. A estos debemos agregar los que tienen $4$ profesores:  $\binom{4}{4}\binom{7}{1}=7$. En total quedan $91$.
+    
+    
+    \item El profesor $X$ y el estudiante $Y$ no pueden estar juntos en el comité?
+    
+    \noindent\textit{Rta:} Sin restricción tenemos  $\binom{11}{5}$. A esto le restamos los que tienen a $X$ e $Y$:  $\binom{9}{3}$.
+    En total quedan $462-84=378$. 
+    \end{enumerate}
+    
+    
+    
+    \item Si en un torneo de fútbol participan $2n$ equipos, probar que el número total de opciones posibles para la primera fecha es $1\cdot 3\cdot 5 \cdots (2n - 1)$. sugerencia: use un argumento por inducción. 
+    
+    \noindent\textit{Rta:} Si son 2 equipos hay un único partido posible o sea $2\cdot 1-1$. suponiendo que vale para $2k$ equipos consideremos el caso de $2k+2$ equipos. Tomamos uno de los nuevos equipos y tenemos $2k+1$ rivales posibles y una vez definido este partido por hipótesis inductiva tenemos $1\cdot 3\cdots (2k-1)$ posibilidades para completar la fecha. Es decir en total tenemos $1\cdot 3\cdots(2k-1)\cdot(2k+1)$ posibilidades para la primera fecha.
+    
+     Otra forma es elegir el primer partido, $\binom{2n}{2}$ formas, el segundo partido, $\binom{2n-2}{2}$ formas, y asi sucesivamente hasta $\binom{4}{2}$ y $\binom{2}{2}$ formas para los últimos dos partidos. Al hacer eso se están contando más de una vez la misma elección de partidos pero en diferentes ordenes, así que se deben descontar todas las maneras posibles de ordenar los $n$ partidos para los $2n$ equipos. El resultado sería $(1 / n!) \binom{2n}{2}\binom{2n-2}{2}\dots \binom{4}{2}\binom{2}{2}= (2n)! / ( 2^n n!)$.
+    
+    Viendo esa última expresión se puede deducir también otra forma: Ordeno a los $2n$ equipos en fila, y yendo de dos en dos voy determinando quienes juegan entre si. Como ahí estoy contando de más, tengo que corregir descontando todas las maneras de ordenar los partidos, $n!$, y todas las maneras de ordenar los equipos en cada partido, $2^n$.
+    
+    
+    
+    \item En una clase hay $n$ chicas y $n$ chicos. Dar el número de maneras de ubicarlos en una fila de modo que todas las chicas estén juntas.
+    
+    \noindent\textit{Rta:} Podríamos pensar a las chicas como un único bloque y este puede ir en $n+1$ posiciones distintas. Si ahora individualizamos cada chico tenemos $n!$ posibilidades de ordenarlos e idénticamente $n!$ posibilidades individualizando cada chica. Luego tenemos $(n+1)(n!)n!=(n+1)!n!$ formas posibles de armar la fila.
+    
+    
+    
+    \item ¿De cuántas maneras distintas pueden sentarse 8 personas en una mesa circular?
+    
+    \noindent\textit{Rta:} Si numeramos las sillas del 1 al 8 tendríamos $8!$ maneras distintas de ubicar a las personas a partir de la número uno. Rotando las sillas podemos hacer que la número 1 corresponda a una de las 8 personas en particular. Esto hace que dividamos el número de posibilidades por 8 y tenemos $7!$ maneras distintas de distribuir.
+    
+    
+    
+    \item 
+    \begin{enumerate}
+    \item 
+    ¿De cuántas maneras distintas pueden sentarse 6 hombres y 6 mujeres en una
+    mesa circular si nunca deben quedar dos mujeres juntas?
+    
+    \noindent\textit{Rta:} Como siempre hay al menos un hombre entre cada par de mujeres y hay sólo seis hombres, debe haber exactamente uno separando dos mujeres cercanas. Entonces tenemos que alternar hombre y mujer. Por lo cual tenemos $6!6!$ posibilidades para ponerlos en fila comenzando por un hombre y dividimos por 6 ya que, por ser circular, no importa que hombre comienza. 
+    
+    Alternativamente si tenemos doce sillas numeradas del 1 al 12 alrededor de la mesa y ubicamos a los hombres en las sillas impares, esto se puede hacer de $5!$ formas distintas (ver ejercicio anterior). Luego tenemos que llenar las sillas pares y cualquiera de las $6!$ permutaciones da una distribución distinta. Así quedan $5!6!$.
+    
+    \item Ídem, pero con 10 hombres y 7 mujeres.
+    
+    \noindent\textit{Rta:}  Ponemos 20 sillas y sentamos al primer  hombre en la silla 2 y  a los restantes en las otras sillas pares. Tenemos $9!$ formas de hacerlo. Ahora ubicamos a las mujeres en las $10$ sillas vacías (las sillas sobrantes se retiran). Tenemos $\binom{10}{7}$ formas de elegir los lugares por $7!$ formas de ordenarlas. Así tenemos: $$\displaystyle 9! \frac{10!}{7!3!} 7!=\frac{10!9!}{3!}.$$
+    
+    \end{enumerate}
+    
+    
+    
+    \item 
+    \begin{enumerate}
+    \item 
+     ¿De cuántas formas distintas pueden ordenarse las letras de la palabra MATEMATICA
+    
+    \noindent\textit{Rta:} Tenemos 10 letras, de las cuales hay 3 A, 2 M, 2 T, 1 E, 1 I, 1 C. Al total de las $10!$ permutaciones debemos dividirlo por las permutaciones de las repeticiones. Entonces tendremos $$\frac{10!}{3!2!2!}$$ formas distintas.
+    
+    \item Ídem con las palabras ALGEBRA, GEOMETRIA.
+    
+    \noindent\textit{Rta:}  $\frac{7!}{2!}$ y $\frac{9!}{2!}$.
+    
+    \item ¿De cuántas formas distintas pueden ordenarse las letras de la palabra MATEMATICA
+    si se pide que las consonantes y las vocales se alternen?
+    
+    \noindent\textit{Rta:} Tenemos 5 vocales y 5 consonantes, al alternarlos tendremos $5!5!$A esto hay que multiplicarlo por 2 ya que se puede empezar con vocal o consonante y dividirlo por las repeticiones y nos quedan $$\frac{5!5!2}{3!2!2!}=1200.$$
+    \end{enumerate}
+    
+    
+    
+    \item ¿Cuántas diagonales tiene un polígono regular de $n$ lados?
+    
+    \noindent\textit{Rta:} Da cada vértice del polígono salen $n-3$ diagonales si sumamos $n$ veces $n-3$, resulta $n(n-3)$,  lo cual hay dividir por dos ya que cada diagonal fue contada dos veces. Así nos quedan: $ \frac{n(n-3)}{2}$ diagonales.
+    
+    Otra forma es considerar todos los segmentos que tienen como extremos a dos vértices del polígono. Como cada segmento está determinado por dos vértices sin importar el orden, hay $\binom{n}{2}$ segmentos. Ahora, en esa cuenta están incluidos los lados del polígono, que no queremos contar. Esos son $n$, así que la cantidad de diagonales sería $\binom{n}{2}-n$.
+    
+    
+    
+    \item Dados $m$, $n$ y $k$ naturales tales que $m \le k \le n$, probar que se verifica
+    \begin{equation*}
+    \binom{n}{k}\binom{k}{m} = \binom{n}{m}\binom{n-m}{k-m}.
+    \end{equation*}
+    
+    \noindent\textit{Rta:} Tenemos: $$\binom{n}{k}\binom{k}{m}=\frac{n!k!}{k!(n-k)!m!(k-m)!}=\frac{n!}{(n-k)!m!(k-m)!}.$$
+    
+    Y por otra parte: 
+    \begin{align*}
+        \binom{n}{m}\binom{n-m}{k-m}&=\frac{n!(n-m)!}{m!(n-m)!(k-m)!(n-m-(k-m))!}\\
+        &=\frac{n!}{m!(k-m)!(n-k)!}
+    \end{align*}
+     de donde se desprende que se verifica la igualdad deseada.
+    
+    
+    
+    
+    \item Probar que para todo $i$, $j$, $k \in {\mathbb N}_0$ vale
+    \begin{equation*}
+    \binom{i + j + k}{i}\binom{j+k}{j} = \frac{(i+j+k)!}{i!j!k!}
+    \end{equation*}
+    
+    \noindent\textit{Rta:} Por definición: 
+    \begin{equation*}
+    \binom{i + j + k}{i}\binom{j+k}{j}=\frac{(i + j + k)!}{i!(i+j+k-i)!}\frac{(j+k)!}{j!k!(j+k-k)!}=\frac{(i + j + k)!}{i!j!k!}.
+    \end{equation*}
+    
+    
+    
+    
+    \item Demostrar que para todo $n\in \mathbb{N}$  vale:
+    \vskip .3cm
+    \begin{enumerate}
+    \item{}
+    $\displaystyle\binom{n}{0}+\binom{n}{1}+\dots+\binom{n}{n}=2^n$
+    \vskip .3cm
+    \noindent\textit{Rta:}  $2^n$ es la cantidad de subconjuntos de $\{1,2,\dots,n\}$. Si agrupamos los subconjuntos de acuerdo a su cardinal y usamos que $\binom{n}{k}$ es la cantidad de subconjuntos de $k$ elementos de  $\{1,2,\dots,n\}$
+    Se tiene la igualdad.
+    
+    Alternativamente si conocemos la fórmula del binomio de Newton $(a+b)^n=\sum_{i=0}^n\binom{n}{i}a^ib^{n-i}$ podemos aplicarla al caso particular $a=1, b=1$ y obtener la igualdad del ejercicio.
+    \vskip .3cm
+    \item{} $\displaystyle\binom{n}{0}-\binom{n}{1}+\dots+(-1)^n\binom{n}{n}=0$.
+    \vskip .3cm
+    \noindent\textit{Rta:} Aquí podemos usar la fórmula del binomio al caso particular $a=1, b=-1$. Podemos interpretar la fórmula como la igualdad de la cantidad de subconjuntos de cardinal par con los de cardinal impar.
+    \end{enumerate}
+    
+    
+    
+    \item Probar que para todo natural $n$ vale que 
+    \begin{equation*}
+    \binom{2n}{2} = 2 \binom{n}{2} + n^2.
+    \end{equation*}
+    
+    \noindent\textit{Rta:} Tenemos: $$2\binom{n}{2}+n^2=2\frac{n(n-1)}{2}+n^2={n(n-1+n)}=\frac{2n(2n-1)}{2}=\binom{2n}{2}.$$
+    
+    
+    
+    
+    \begin{center}
+        \textbf{Ejercicios adicionales (para repasar)}
+    \end{center}
+    
+    
+    
+    
+    \item Con 20 socios de un club se desea formar 5 listas electorales (disjuntas). Cada lista
+    consta de 1 Presidente, 1 Tesorero y 2 vocales. ¿De cuántas formas puede hacerse?
+    
+    \noindent\textit{Rta:} Dado un subconjunto de cuatro miembros, tenemos 4 posibilidades para presidente y cada una de ellas tiene tres para tesorero, siendo los restantes miembros vocales. Es decir cada subconjunto de 4 tiene doce posibilidades para listas. Para elegir un subconjunto de 4 tenemos $\binom{20}{4}$ posibilidades. A cada una de ellas le corresponde $\binom{16}{4}$ para un segundo subconjunto y luego $\binom{12}{4}$ para el tercero y $\binom{8}{4}$ para el cuarto, quedando determinado el quinto. A esto tenemos que dividirlo por $5!$ ya que la elección $ABCDE$ es equivalente a  $BCDEA$ y cualquier otra permutación. 
+    Finalmente quedan $$\frac{12^5}{5!}\binom{20}{4}\binom{16}{4}\binom{12^5}{4}\binom{8}{4}=\frac{20!12^5}{5!4!4!4!4!4!}=\frac{20!}{5!2^5}$$ formas distintas de elegir listas.
+    
+    Otra forma es elegir a los presidentes primero, eso se puede de $\binom{20}{5}$ formas. Ahora para cada presidente elijo un tesorero, eso son 15!/10! formas. Por último, tengo que dividir los últimos 10 en 5 parejas, eso se puede hacer de ${10 \choose 2} {8 \choose 2} {6 \choose 2} {4 \choose 2} = 10! / ( 2^5)$ formas. Alternativamente, recordando el ejercicio 14, armar 5 parejas con 10 personas se puede hacer de $10! / ( 2^5 5!)$ formas si no importa el orden. Como en este caso si importa porque los presidentes ya fueron elegidos, serían $10! / ( 2^5)$ formas. La cantidad total es entonces $\binom{20}{5} (15! / 10!) ( 10! / ( 2^5) ) = 20! / (2^5 5!)$.
+    
+    Y también, viendo la última expresión se puede deducir otra forma: Ordeno a las 20 personas en fila y yendo de cinco en cinco determino las listas. Al hacer eso estoy contando de más, corrijo descontando todas las maneras de ordenar las listas, $5!$, y todas las maneras de ordenar los vocales en cada lista, $2^5$.
+    
+    
+    
+    \item ¿De cuántas formas se pueden fotografiar 7 matrimonios en una hilera, de tal forma
+    que cada hombre aparezca al lado de su esposa?
+    
+    \noindent\textit{Rta:} Cada pareja tiene dos formas de posar y podemos permutar a las 7 parejas. Luego tenemos $7!2=1680$ formas.
+    
+    
+    
+    \item ¿De cuántas formas pueden distribuirse 14 libros distintos entre dos personas de
+    manera tal que cada persona reciba al menos 3 libros?
+    
+    \noindent\textit{Rta:} Para cada libro tenemos dos posibles destinatarios, entonces hay $2^{14}$ formas de repartir 14 libros entre dos personas.  Las que dan menos de 3 libros a alguno de los dos son $\binom{14}{0}+\binom{14}{1}+\binom{14}{2}+\binom{14}{12}+\binom{14}{13}+\binom{14}{14}=1+14+91+91+14+1=212$. Si las restamos se tiene el resultado buscado: $2^{14}-212$.
+    
+    \smallskip
+    
+    \item
+    Cecilia ha olvidado la contraseña de su correo electrónico, la cual est\'a formada por $11$ caracteres: $4$ d\'igitos y $7$ letras todos mezclados. ?`Cu\'al es el m\'aximo n\'umero de intentos que deber\'ia probar para entrar a su correo si:
+    \begin{enumerate}
+        \item  tiene en cuenta que hay 26 letras?
+        
+        \textit{Rta:} Pensemos que tenemos 11 posiciones donde poner los caracteres de la contraseña. Hay $\binom{11}{7}$ formas de elegir 7 posiciones y ahí ponemos las letras de $26^7$ formas. En  las  posiciones que quedan ubicamos los 4 dígitos de $10^4$ formas. En total tenemos $\binom{11}{7}26^710^4$   contraseñas posibles de 7 letras y 4 dígitos.
+        
+        \item la letra B y el d\'igito 2 no pueden estar ambos en la contraseña?
+        
+        \textit{Rta:} Aquí debemos pensar en  tres casos mutuamente excluyentes: 1) la contraseña no tiene ni B ni 2, 2) la contraseña tiene B, pero no 2 y 3) la contraseña no tiene B pero tiene 2. Estos casos cubren todas las posibilidades,  encontrando  la solución en cada caso y sumándolas obtenemos la respuesta al ejercicio.
+        
+        1) En  este caso es como  el problema en \textit{a)} pero sin poder usar ni B, ni 2,  es decir teniendo 25 letras y 9 dígitos. La respuesta es $\binom{11}{7}25^79^4$.
+        
+        2) Tenemos 11 posiciones donde ubicar B. Una vez ubicado  B,  quedan 26 letras (todas) y 9 dígitos (no puede estar 2) y debemos poner 6 letras y 4 dígitos,  es decir tenemos $\binom{10}{6}26^69^4$ posibilidades. Luego el total es $11\binom{10}{6}26^69^4$
+        
+        3) Se hace parecido a 2): tenemos 11 posiciones donde ubicar 2. Una vez ubicado  2,  quedan 25 letras (no puede esta B) y 10 dígitos (todos) y debemos poner 7 letras y 3 dígitos,  es decir tenemos $\binom{10}{6}25^710^3$ posibilidades. Luego el total es $11\binom{10}{6}25^710^4$.
+        
+        Finalmente la  solución es :  $\binom{11}{7}25^79^4+11\binom{10}{6}26^69^4+11\binom{10}{6}25^710^4$.
+        
+        \item  recuerda que ha formado la clave de la siguiente manera: los primeros siete caracteres son una mezcla de las letras de su nombre (CECILIA), y los \'ultimos cuatro caracteres son una permutaci\'on de las cuatro cifras de su a\~no de nacimiento (1998)?
+        
+        \textit{Rta:} Como CECILIA es una palabra de longitud 7 formada por  las letras A, C, C,  E, I, I, L las permutaciones posibles son $\frac{7!}{2!2!}$. Las permutaciones de 1998  son $\frac{4!}{2!}$. Luego el toral de contraseñas posibles es   $\frac{7!}{2!2!}\frac{4!}{2!}$.
+        
+    \end{enumerate}
+    
+    
+    \end{enumerate}

@@ -1,0 +1,634 @@
+\documentclass[handout]{beamer} % sin pausas
+%\documentclass{beamer} % con pausas
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+
+\usetheme{CambridgeUS}
+
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+%\usepackage{makeidx}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usepackage[customcolors]{hf-tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\tikzset{
+    every picture/.append style={
+        execute at begin picture={\deactivatequoting},
+        execute at end picture={\activatequoting}
+    }
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+\usepackage{mathtools}
+\usepackage{stackrel}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+\usepackage{polynom}
+\polyset{%
+    style=B,
+    delims={(}{)},
+    div=:
+}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate]{label={(\arabic*)}}
+\setbeamertemplate{itemize item}{$\circ$}
+\setbeamertemplate{enumerate items}[default]
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand\sgn{\operatorname{sgn}}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\figurename }{Figura}
+
+\include{definiciones}
+
+\newcommand{\nc}{\newcommand}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\nc{\FF}{{\mathbb F}} \nc{\NN}{{\mathbb N}} \nc{\QQ}{{\mathbb Q}}
+\nc{\PP}{{\mathbb P}} \nc{\DD}{{\mathbb D}} \nc{\Sn}{{\mathbb S}}
+\nc{\uno}{\mathbb{1}} \nc{\BB}{{\mathbb B}} \nc{\An}{{\mathbb A}}
+
+\nc{\ba}{\mathbf{a}} \nc{\bb}{\mathbf{b}} \nc{\bt}{\mathbf{t}}
+\nc{\bB}{\mathbf{B}}
+ 
+\nc{\cP}{\mathcal{P}} \nc{\cU}{\mathcal{U}} \nc{\cX}{\mathcal{X}}
+\nc{\cE}{\mathcal{E}} \nc{\cS}{\mathcal{S}} \nc{\cA}{\mathcal{A}}
+\nc{\cC}{\mathcal{C}} \nc{\cO}{\mathcal{O}} \nc{\cQ}{\mathcal{Q}}
+\nc{\cB}{\mathcal{B}} \nc{\cJ}{\mathcal{J}} \nc{\cI}{\mathcal{I}}
+\nc{\cM}{\mathcal{M}} \nc{\cK}{\mathcal{K}}
+
+\nc{\fD}{\mathfrak{D}} \nc{\fI}{\mathfrak{I}} \nc{\fJ}{\mathfrak{J}}
+\nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+
+
+\title[Clase 20 - Isomorfismo / Caminatas, caminos y ciclos]{Matemática Discreta I \\ Clase 20 -  Isomorfismo / Caminatas, caminos y ciclos}
+%\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
+\institute[]{\normalsize FAMAF / UNC
+    \\[\baselineskip] ${}^{}$
+    \\[\baselineskip]
+}
+\date[07/06/2022]{7 de junio de 2022}
+
+
+
+
+\begin{document}
+    
+    \frame{\titlepage} 
+    
+    
+    
+    
+    \begin{frame}
+        Una aplicación importante de la noción de valencia es en el problema de determinar si dos grafos son o no isomorfos. \pause
+        
+        \vskip .6cm
+        
+        Si     $\alpha:V_1 \to  V_2$ es un isomorfismo entre $G_1$ y $G_2$, y $\alpha(v)=w$, entonces cada arista que contiene a $v$ se transforma en una arista que contiene a $w$. \pause
+        
+        \vskip .6cm
+        
+        En consecuencia $\delta(v)=\delta(w)$. Por otro lado, si $G_1$ tiene un vértice $x$, con valencia $\delta(x)=\delta_0$, y $G_2$ no tiene vértices    con valencia $\delta_0$, entonces $G_1$ y $G_2$ no pueden ser    isomorfos. 
+        
+        
+        
+        
+        
+        
+        
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        Esto nos da otra manera de ver que no son isomorfos los siguientes grafos:
+        
+        \vskip .5cm
+        \begin{figure}[ht]
+            \begin{center}
+                \begin{tabular}{llll}
+                    &
+                    \begin{tikzpicture}[scale=1]
+                        %\SetVertexSimple[Shape=circle,FillColor=white]
+                        \Vertex[x=0.00, y=2.00]{$a$}
+                        \Vertex[x=1.90, y=0.62]{$b$}
+                        \Vertex[x=1.18, y=-1.62]{$c$}
+                        \Vertex[x=-1.18, y=-1.62]{$d$}
+                        \Vertex[x=-1.90, y=0.62]{$e$}
+                        \Edges($c$, $b$,$a$,$e$,$d$,$b$,$a$,$d$)
+                        \Edges($e$,$b$)
+                    \end{tikzpicture}
+                    &
+                    \qquad
+                    & 
+                    \begin{tikzpicture}[scale=1]
+                        %\SetVertexSimple[Shape=circle,FillColor=white]
+                        \Vertex[x=0.00, y=2.00]{1}
+                        \Vertex[x=1.90, y=0.62]{2}
+                        \Vertex[x=1.18, y=-1.62]{3}
+                        \Vertex[x=-1.18, y=-1.62]{4}
+                        \Vertex[x=-1.90, y=0.62]{5}
+                        \Edges(1,2,3,4,5,1)
+                        \Edges(4,2,5)
+                    \end{tikzpicture}
+                \end{tabular}
+            \end{center}
+        \end{figure}
+        \vskip .4cm
+        Puesto que el primer grafo tiene un vértice de
+        valencia 1 y el segundo no.
+    \end{frame}
+    
+    
+    \begin{frame}
+        Una extensión de esta idea se da en la siguiente proposición.\pause
+        
+        \vskip .4cm
+        \begin{proposicion}\label{criterioiso}Sean  $G_1$ y $G_2$ grafos isomorfos. Para cada $k\ge 0$ sea $n_i(k)$ el
+            número de vértices de $G_i$ que tienen valencia $k$ ($i=1,2$).
+            Entonces $n_1(k)=n_2(k)$.
+        \end{proposicion}\pause
+        \vskip .4cm
+        \begin{proof}\pause  Hemos visto más arriba que si $\alpha:V_1 \to  V_2$ es un isomorfismo entre $G_1$ y $G_2$ y $v\in V_1$, entonces $\delta(v)=\delta(\alpha(v))$. Luego la cantidad de vértices con valencia $k$ en $G_1$ es igual  a la cantidad de vértices con valencia $k$ en $G_2$.  
+            
+            \qed
+        \end{proof}
+    \end{frame}
+    
+    \begin{frame}
+        
+        
+        No hay ningún criterio general eficiente para determinar si dos grafos son isomorfos o no. En  el siguiente ejemplo, no se aplica el criterio anterior. \pause
+        
+        \vskip .4cm
+        \begin{ejemplo}
+            Probar que los siguientes grafos no son isomorfos.
+            
+            \begin{figure}[ht]
+                \begin{center}
+                    \begin{tabular}{llll}
+                        &
+                        \begin{tikzpicture}[scale=1]
+                            \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+                            \Vertex[x=0.00, y=2.00]{a}
+                            \Vertex[x=2., y=-1.50]{b}
+                            \Vertex[x=-2., y=-1.50]{c}
+                            \Edges(a,b,c,a)
+                            \Vertex[x=0.00, y=0.85]{1}
+                            \Vertex[x=1., y=-0.9]{2}
+                            \Vertex[x=-1., y=-0.9]{3}
+                            \Edges(1,2,3,1)
+                            \Edges(a,1,3,c,b,2)
+                            \draw (0,-2.2) node {$G_1$};
+                        \end{tikzpicture}
+                        &
+                        \qquad
+                        & 
+                        \begin{tikzpicture}[scale=0.65]
+                            \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+                            %                
+                            \Vertex[x=3.00, y=0.00]{1}
+                            \Vertex[x=1.50, y=2.60]{2}
+                            \Vertex[x=-1.50, y=2.60]{3}
+                            \Vertex[x=-3.00, y=0.00]{4}
+                            \Vertex[x=-1.50, y=-2.60]{5}
+                            \Vertex[x=1.50, y=-2.60]{6}
+                            \Edges(1,2,3,4,5,6,1)
+                            \Edges(1,4) \Edges(3,6) \Edges(2,5)
+                            \draw (0,-3.8) node {$G_2$};
+                        \end{tikzpicture}
+                    \end{tabular}
+                \end{center}
+            \end{figure}
+        \end{ejemplo}
+        
+        
+    \end{frame}
+    
+    
+    
+    \begin{frame}
+        \begin{solucion}\pause
+            Ambos tienen $6$ vértices, $9$ aristas y todos los vértices son de valencia $3$. 
+            \pause
+            \vskip .4cm
+            
+            
+            Sin embargo, observar que  $G_1$ tiene un subgrafo $K_3$:
+            \vskip .2cm
+            \begin{center}
+                \begin{tikzpicture}[scale=0.8]
+                    \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+                    \Vertex[x=0.00, y=2.00]{a}
+                    \Vertex[x=2., y=-1.50]{b}
+                    \Vertex[x=-2., y=-1.50]{c}
+                    \Edges(a,b,c,a)
+                \end{tikzpicture}
+            \end{center}\pause
+            \vskip .4cm
+            Mientras que $G_2$ no lo tiene. Por lo tanto, $G_1$ y $G_2$ no son isomorfos.
+            
+            \qed
+        \end{solucion}
+    \end{frame}
+    
+    \begin{frame}\frametitle{Caminatas, caminos y ciclos}
+        \begin{definicion}  Una {\em caminata} en un grafo $G$ es  \index{caminata}
+            una secuencia de vértices
+            $$
+            v_1,v_2,\ldots,v_k,
+            $$
+            tal que $v_i$ y $v_{i+1}$ son adyacentes ($1 \le i \le k-1$). \pause
+            
+            \vskip .4cm
+            Si todos los vértices son distintos, una caminata es llamada un {\em  camino}.\pause
+            
+            \vskip .4cm
+            
+            Un \textit{recorrido} es una caminata donde todas las aristas $\{v_i,v_{i+1}\}$ con $1 \le i \le k-1$ son distintas.  
+
+            \vskip .4cm
+
+            Un {\em ciclo} a una caminata $v_1,v_2,\ldots,v_{k}, v_1$ con $v_1,v_2,\ldots,v_{k}$ camino y $k \ge 3$. A menudo diremos que es un {\em
+                $k$-ciclo}, o un ciclo de {\em longitud} $k$ en $G$.
+        \end{definicion}\pause
+
+    
+        
+    \end{frame}
+
+
+    \begin{frame}
+        
+        \begin{observacion}
+            \begin{itemize}
+                \item Por definición de caminata $k\ge2$, es decir una caminata tiene al menos una arista ($\{v_1, v_2\}$).
+                \item Por definición de ciclo  $v_1,v_2,\ldots,v_{k}, v_1$, $k \ge 3$; un ciclo tiene al menos 3 aristas (claramente, no hay 2-ciclos.). 
+            \end{itemize}
+
+        \end{observacion}
+    
+        \vskip 3cm
+    
+    \end{frame}
+    
+    \begin{frame}
+        \begin{ejemplo}
+            Dibujemos caminatas, caminos, recorridos y ciclos en el siguiente grafo:
+            \vskip .4cm
+            
+            \begin{center}
+                \begin{tikzpicture}[scale=1]
+                    \def\rvar{1.2}
+                    \Vertex[x=0.00, y=-2.00]{u}
+                    \Vertex[x=\rvar*1.90, y=-0.62]{t}
+                    \Vertex[x=\rvar*1.18, y=1.62]{q}
+                    \Vertex[x=-1.18*\rvar, y=1.62]{p}
+                    \Vertex[x=-1.90*\rvar, y=-0.62]{r}
+                    \Vertex[x=0, y=0]{s}
+                    \Edge(u)(t)
+                    \Edges(t,q,p)
+                    \Edges(r,u)
+                    \Edges(s,t)
+                    \Edges(r,s,q,r)
+                    \Edges(p,t,s)
+                    \Edges(s,p)
+                    
+                    %\Edge[label=1](u)(t)
+                \end{tikzpicture}
+            \end{center}
+            
+        \end{ejemplo}
+    \end{frame}
+
+    
+    \begin{frame}
+        
+        Caminata: p,q,t,s,q,r,u,r
+        
+        \begin{figure}[ht]
+            \begin{center}
+                \begin{tikzpicture}[scale=1]
+                    %\SetVertexSimple[Shape=circle,FillColor=white]
+                    \def\rvar{1.2}
+                    \Vertex[x=0.00, y=-2.00]{u}
+                    \Vertex[x=\rvar*1.90, y=-0.62]{t}
+                    \Vertex[x=\rvar*1.18, y=1.62]{q}
+                    \Vertex[x=-1.18*\rvar, y=1.62]{p}
+                    \Vertex[x=-1.90*\rvar, y=-0.62]{r}
+                    \Vertex[x=0, y=0]{s}
+                    \Edges(u,t,q,p)
+                    \Edges(r,u)
+                    \Edges(s,t)
+                    \Edges(r,s,q,r)
+                    \Edges(p,t,s)
+                    \tikzset{EdgeStyle/.style = {->,color=blue}}
+                    %\tikzset{EdgeStyle/.append style = {bend left,->,color=blue}}
+                    \Edge[label=1](p)(q)
+                    \Edge[label=2](q)(t)
+                    \Edge[label=3](t)(s)
+                    \Edge[label=4](s)(q)
+                    \Edge[label=5](q)(r)
+                    \Edge[label=6](r)(u)
+                    \Edge[label=7,style={bend left}](u)(r)
+                \end{tikzpicture}
+            \end{center}
+        \end{figure}
+    \end{frame}
+
+    \begin{frame}
+        
+        Recorrido: p,q,t,s,q,r,u
+        
+        \begin{figure}[ht]
+            \begin{center}
+                \begin{tikzpicture}[scale=1]
+                    %\SetVertexSimple[Shape=circle,FillColor=white]
+                    \def\rvar{1.2}
+                    \Vertex[x=0.00, y=-2.00]{u}
+                    \Vertex[x=\rvar*1.90, y=-0.62]{t}
+                    \Vertex[x=\rvar*1.18, y=1.62]{q}
+                    \Vertex[x=-1.18*\rvar, y=1.62]{p}
+                    \Vertex[x=-1.90*\rvar, y=-0.62]{r}
+                    \Vertex[x=0, y=0]{s}
+                    \Edges(u,t,q,p)
+                    \Edges(r,u)
+                    \Edges(s,t)
+                    \Edges(r,s,q,r)
+                    \Edges(p,t,s)
+                    \tikzset{EdgeStyle/.style = {->,color=blue}}
+                    %\tikzset{EdgeStyle/.append style = {bend left,->,color=blue}}
+                    \Edge[label=1](p)(q)
+                    \Edge[label=2](q)(t)
+                    \Edge[label=3](t)(s)
+                    \Edge[label=4](s)(q)
+                    \Edge[label=5](q)(r)
+                    \Edge[label=6](r)(u)
+                \end{tikzpicture}
+            \end{center}
+        \end{figure}
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        Camino: p,q,s,r,u,t
+        
+        \begin{figure}[ht]
+            \begin{center}
+                \begin{tikzpicture}[scale=1]
+                    %\SetVertexSimple[Shape=circle,FillColor=white]
+                    \def\rvar{1.2}
+                    \Vertex[x=0.00, y=-2.00]{u}
+                    \Vertex[x=\rvar*1.90, y=-0.62]{t}
+                    \Vertex[x=\rvar*1.18, y=1.62]{q}
+                    \Vertex[x=-1.18*\rvar, y=1.62]{p}
+                    \Vertex[x=-1.90*\rvar, y=-0.62]{r}
+                    \Vertex[x=0, y=0]{s}
+                    \Edges(u,t,q,p)
+                    \Edges(r,u)
+                    \Edges(s,t)
+                    \Edges(r,s,q,r)
+                    \Edges(p,t,s)
+                    \tikzset{EdgeStyle/.style = {->,color=blue}}
+                    \Edge[label=1](p)(q)
+                    \Edge[label=2](q)(s)
+                    \Edge[label=3](s)(r)
+                    \Edge[label=4](r)(u)
+                    \Edge[label=5](u)(t)
+                \end{tikzpicture}
+            \end{center}
+        \end{figure}
+    \end{frame}
+    
+    \begin{frame}
+        
+        Ciclo: p,q,s,r,u,t,p
+        
+        \begin{figure}[ht]
+            \begin{center}
+                \begin{tikzpicture}[scale=1]
+                    %\SetVertexSimple[Shape=circle,FillColor=white]
+                    \def\rvar{1.2}
+                    \Vertex[x=0.00, y=-2.00]{u}
+                    \Vertex[x=\rvar*1.90, y=-0.62]{t}
+                    \Vertex[x=\rvar*1.18, y=1.62]{q}
+                    \Vertex[x=-1.18*\rvar, y=1.62]{p}
+                    \Vertex[x=-1.90*\rvar, y=-0.62]{r}
+                    \Vertex[x=0, y=0]{s}
+                    \Edges(u,t,q,p)
+                    \Edges(r,u)
+                    \Edges(s,t)
+                    \Edges(r,s,q,r)
+                    \Edges(p,t,s)
+                    \tikzset{EdgeStyle/.style = {->,color=blue}}
+                    \Edge[label=1](p)(q)
+                    \Edge[label=2](q)(s)
+                    \Edge[label=3](s)(r)
+                    \Edge[label=4](r)(u)
+                    \Edge[label=5](u)(t)
+                    \Edge(t)(p)
+    
+                \end{tikzpicture}
+            \end{center}
+        \end{figure}
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        \begin{lema} Sea $G$ un grafo.  Entonces, $x$ e $y$ pueden ser unidos por una caminata  si  y sólo si  $x$ e $y$ pueden ser unidos por un camino.
+        \end{lema}
+        \begin{idea} ($\Leftarrow$) es trivial (un camino es una caminata).
+            
+            \vskip .2cm
+            ($\Rightarrow$) Eliminar "bucles".
+            
+            \begin{figure}[ht]
+                \begin{center}
+                    \begin{tikzpicture}[scale=1]
+                        \SetVertexSimple[Shape=circle,FillColor=white,MinSize=5 pt]
+                        %
+                        %\ponertz{-7}{-30}{$x=$}
+                        \draw (-0.6,0) node {$x = $};                
+                        \draw (0,0.4) node {$v_0$};
+                        \Vertex[x=0.00, y=0]{v0}
+                        \Vertex[x=1, y=0]{v1}
+                        \draw (1,0.4) node {$v_1$};
+                        \Vertex[x=3, y=0]{vi}
+                        \draw (3,0.4) node {$v_i$};
+                        \Vertex[x=2.5, y=0.5]{vi1}
+                        \Vertex[x=2.5, y=1]{vi2}
+                        \Vertex[x=3.5, y=0.5]{vi3}
+                        \Vertex[x=3.5, y=1]{vi4}
+                        \Edges(v0,v1)
+                        \Edges(vi,vi1)
+                        \Edges(vi1,vi2)
+                        \draw (2.7,1.3) node {$\scriptstyle\bullet$};
+                        \draw (2.9,1.5) node {$\scriptstyle\bullet$};
+                        \draw (3.1,1.5) node {$\scriptstyle\bullet$};
+                        \draw (3.3,1.3) node {$\scriptstyle\bullet$};
+                        \draw (2,0) node {$\scriptstyle\bullet$};
+                        \draw (2.3,0) node {$\scriptstyle\bullet$};
+                        \Edges(vi3,vi4)
+                        \Edges(vi3,vi)
+                        \Vertex[x=5, y=0]{vr1}
+                        \Vertex[x=6, y=0]{vr}
+                        \Edges(vr1,vr)
+                        \draw (6,0.4) node {$v_r$};
+                        \draw (5,0.4) node {$v_{r-1}$};
+                        \draw (6.6,0) node {$=y$};
+                        
+                        \SetVertexNormal[LineColor=white]
+                        \Vertex[x=1.8, y=0]{s1}
+                        \Vertex[x=2.2, y=0]{s2}
+                        \Edges(v1,s1)
+                        \Edges(vi,s2)
+                        \draw (1.7,0) node {$\scriptstyle\bullet$};
+                        \draw (2,0) node {$\scriptstyle\bullet$};
+                        \draw (2.3,0) node {$\scriptstyle\bullet$};
+                        
+                        \Vertex[x=4.2, y=0]{t1}
+                        \Vertex[x=3.8, y=0]{t2}
+                        \Edges(vr1,t1)
+                        \Edges(vi,t2)
+                        \draw (3.7,0) node {$\scriptstyle\bullet$};
+                        \draw (4,0) node {$\scriptstyle\bullet$};
+                        \draw (4.3,0) node {$\scriptstyle\bullet$};
+                    \end{tikzpicture}
+                \end{center}
+                Se transforma en 
+                \begin{center}
+                    \begin{tikzpicture}[scale=1]
+                        \SetVertexSimple[Shape=circle,FillColor=white,MinSize=5 pt]
+                        %
+                        %\ponertz{-7}{-30}{$x=$}
+                        \draw (-0.6,0) node {$x = $};                
+                        \draw (0,0.4) node {$v_0$};
+                        \Vertex[x=0.00, y=0]{v0}
+                        \Vertex[x=1, y=0]{v1}
+                        \draw (1,0.4) node {$v_1$};
+                        \Vertex[x=3, y=0]{vi}
+                        \draw (3,0.4) node {$v_i$};
+                        \Edges(v0,v1)
+                        \Vertex[x=5, y=0]{vr1}
+                        \Vertex[x=6, y=0]{vr}
+                        \Edges(vr1,vr)
+                        \draw (6,0.4) node {$v_r$};
+                        \draw (5,0.4) node {$v_{r-1}$};
+                        \draw (6.6,0) node {$=y$};
+                        
+                        \SetVertexNormal[LineColor=white]
+                        \Vertex[x=1.8, y=0]{s1}
+                        \Vertex[x=2.2, y=0]{s2}
+                        \Edges(v1,s1)
+                        \Edges(vi,s2)
+                        \draw (1.7,0) node {$\scriptstyle\bullet$};
+                        \draw (2,0) node {$\scriptstyle\bullet$};
+                        \draw (2.3,0) node {$\scriptstyle\bullet$};
+                        
+                        \Vertex[x=4.2, y=0]{t1}
+                        \Vertex[x=3.8, y=0]{t2}
+                        \Edges(vr1,t1)
+                        \Edges(vi,t2)
+                        \draw (3.7,0) node {$\scriptstyle\bullet$};
+                        \draw (4,0) node {$\scriptstyle\bullet$};
+                        \draw (4.3,0) node {$\scriptstyle\bullet$};
+                    \end{tikzpicture}
+                \end{center}    \qed
+            \end{figure}
+            
+            
+            
+            \vskip 4cm
+        \end{idea}
+        
+        
+        
+    \end{frame}
+    
+    \begin{frame} 
+        Escribamos $x \sim y$ siempre y cuando los vértices $x$ e $y$ de
+        $G$ puedan ser unidos por un camino en $G$ o $x=y$: hablando en forma
+        rigurosa, esto significa que si $x \ne y$ hay un camino $v_1,v_2,\ldots,v_k$ en
+        $G$ con $x=v_1$ e $y=v_k$. 
+        \vskip .3cm
+        
+        \begin{definicion}
+            Sea $G$ grafo,  diremos que es conexo si  para $x\sim y$ para cualesquiera  $x,y$ vértices en $G$. 
+        \end{definicion}
+        
+        \vskip .6cm
+        El  lema de la página anterior implica que  $\sim$  es una relación de equivalencia. 
+
+    
+        
+ 
+    \end{frame}
+    
+    \begin{frame}
+        \begin{proposicion} Sea $G$ grafo  y $x$, $y$, $z$ vértices de $G$. Entonces, 
+            \begin{enumerate}
+                \item $x \sim x$ (reflexividad de $\sim$).
+                \item $x \sim y$, entonces $y \sim x$ (simetría de $\sim$).
+                \item $x \sim y$,  $y \sim z$, entonces  $x \sim z$ (transitividad  de $\sim$).
+            \end{enumerate}
+        \end{proposicion}
+        
+        \begin{proof}
+            (1) Por definición $x \sim x$.
+            \vskip .4cm
+
+            (2) Si $x=x_1,x_2, \ldots,x_k= y$  es un camino de $x$ a $y$,  entonces $y=x_k,\ldots, x_2, x_1 =x$  es un camino de $y$ a $x$.
+            \vskip .4cm
+
+            (3) 
+            
+            $x \sim y$ $\Rightarrow$  un camino de $x$ a $y$. 
+
+            $y \sim z$ $\Rightarrow$  un camino de $y$ a $z$.
+            
+            Pegando los caminos en $y$,  obtenemos  una caminata de $x$ a $z$ (que se reduce a un camino por el lema). \qed
+
+        \end{proof}
+        
+    
+    \end{frame}
+
+\end{document}
+

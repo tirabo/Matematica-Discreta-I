@@ -1,0 +1,62 @@
+% PDFLaTeX
+\documentclass[a4paper,12pt,twoside,spanish]{amsbook}
+
+\input{tareas_definiciones} 
+
+
+\begin{document}
+
+\tarea{5}
+
+\begin{ejercicio}
+	\begin{enumerate}
+		\item[1.] (25 pts) Convertir a base $2$ el número $345$. 
+		\item[2.] (25 pts) Convertir a base $10$ el número $(203112)_4$. 
+		\item[3.] (50 pts) Calcular  la resta $(4351)_8 -(2310)_4$ y expresarla en base $5$. 
+	\end{enumerate}
+\end{ejercicio}
+
+\begin{comment}
+\begin{solucion}
+	\noindent\text{{1.}} Primero calculamos en base 10 el número  $(20332)_5$:
+	\begin{align*}
+	(20332)_5 &= 2 \cdot 5^4+0 \cdot 5^3+3\cdot 5^2+ 3 \cdot 5^1+ 2 \cdot 5^0\\
+	&=  2 \cdot 625+0 \cdot 125+3\cdot 25+ 3 \cdot 5+ 2\\
+	& = 1250 + 0 + 75  + 15 +2  \\
+	&= 1342.
+	\end{align*}
+	Ahora lo convertimos a  base 8:
+	\begin{equation*}
+	\begin{matrix*}[r]
+	1342 &=& 8 \cdot 167& + &6\\
+	167 &=&  8 \cdot 20& + &7\\
+	20 &=&  8 \cdot 2& + &4\\
+	2 &=&  8 \cdot 0& + &2
+	\end{matrix*}
+	\end{equation*}
+	Luego, la respuesta es $(20332)_5 = (2476)_8$.
+	
+	\vskip .4cm	
+	\noindent{2.} Calculamos primero en base 10 los números $(4321)_5$ y $(302)_5$.
+	\vskip .2cm
+	$(4321)_5 = 4 \cdot 5^3+3\cdot 5^2+ 2\cdot 5^1+ 1 \cdot 5^0 =  4 \cdot 125+3\cdot 25+ 2\cdot 5+ 1 = 586$.
+	\vskip .2cm
+	$(302)_5 =3\cdot 5^2+ 0\cdot 5^1+ 2 \cdot 5^0 =  3\cdot 25+ 0\cdot 5+ 2 = 77$.
+	\vskip .2cm
+	Ahora restamos $586 -77= 509$. Al resultado  obtenido lo convertimos a base 5:
+	\begin{equation*}
+	\begin{matrix*}[r]
+	509 &=& 5 \cdot 101& + &4\\
+	101 &=& 5 \cdot 20& + &1\\
+	20 &=&  5 \cdot 4& + &0\\
+	4 &=&  5 \cdot 0& + &4.
+	\end{matrix*}
+	\end{equation*}
+	Luego $509 = (4014)_5$ y por lo tanto,
+	\begin{equation*}
+	(4321)_5 - (302)_5 = (4014)_5.
+	\end{equation*}
+\end{solucion}
+\end{comment}
+\end{document}
+

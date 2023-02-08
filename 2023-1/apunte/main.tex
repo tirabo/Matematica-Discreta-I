@@ -1,0 +1,162 @@
+\documentclass[a4paper,12pt,twoside,spanish,reqno,dottedtoc]{scrbook}
+\usepackage[spanish,es-lcroman,es-nodecimaldot]{babel}
+
+\usepackage{imakeidx}  
+\makeindex  
+\input{classicthesis-config}
+\input{config-definiciones} 
+%\setstretch{1.3}
+\parskip = 8pt
+\tolerance=10000
+\begin{document}
+    %\baselineskip=0.55truecm %original
+    %\baselineskip=0.43truecm
+    
+    \pagenumbering{roman}
+    
+    \begin{titlepage}
+        
+        \begin{addmargin}[-1cm]{-3cm}
+            \begin{center}
+                \large
+                
+                \hfill
+                \vfill
+                
+                \begingroup
+                \color{Maroon}\spacedallcaps{Matemática Discreta I \\ FAMAF  - UNC} \\ \bigskip % Thesis title
+                \endgroup
+                
+                \spacedlowsmallcaps{Alejandro Tiraboschi} % Your name
+                
+                \vfill
+                
+                
+                
+                Año 2023   \\ FAMAF  - UNC\\ \medskip % Thesis subtitle
+                %\myDegree \\
+                %\myDepartment \\
+                %\myFaculty \\
+                %\myUni \\ \bigskip
+                
+                %\today % Time and version
+                
+                \vfill
+                
+            \end{center}
+        \end{addmargin}
+        
+    \end{titlepage}
+    
+    
+    \pdfbookmark[1]{Autores y derechos}{Autores y derechos} % Bookmark name visible in a PDF viewer
+    
+    %----------------------------------------------------------------------------------------
+    
+    \begingroup
+    
+    \let\clearpage\relax
+    \let\cleardoublepage\relax
+    \let\cleardoublepage\relax
+    
+    \chapter*{Leer}
+    
+    \center{\textbf{AUTORES/COLABORADORES}} \\${}^{}$\\ 
+    
+    \begin{itemize}
+        \item \textbf{Obra original:} coordinada y escrita por Alejandro Tiraboschi. 
+        \item \textbf{Colaboración: } Daniel Penazzi, colaborador  de la sección ``El criptosistema RSA'' y autor principal del apéndice de grafos planares. Fernando Levstein colaborador en la sección ``Máximo común divisor y mínimo común múltiplo''.   
+        \item \textbf{Correcciones y sugerencias:} Pedro Pury, Romina Arroyo, Leandro Cagliero, Fredy Restrepo, Patricia Kysbye. 
+    \end{itemize}
+
+\vskip 2cm
+    
+    \center{\textbf{LICENCIA}} \\${}^{}$\\ 
+    {\flushleft 
+        Este material es distribuido bajo la licencia Creative Commons} \\
+    {\center \textbf{Atribución--CompartirIgual 4.0 Internacional}}
+    \\ 
+    \center  lo cual significa 
+    \\
+    \flushleft
+    - En cualquier explotación de la obra autorizada por la licencia será necesario reconocer los autores, colaboradores, etc.\\
+    - La distribución de la obra u obras derivadas se debe hacer con una licencia igual a la que regula la obra original.\\
+    ${}^{}$
+    \\
+    Los detalles de la licencia pueden encontrarse en \href{https://creativecommons.org/licenses/by/4.0/deed.es}{Creative Commons}
+    \vskip 1cm 
+    \endgroup
+    
+    
+    
+    
+    %%% INICIO: Tabla de contenidos
+    \pagestyle{scrheadings} % Show chapter titles as headings
+    \cleardoublepage\include{classicthesis-contents} % Contents, list of figures/tables/listings and acronyms
+    \cleardoublepage
+    %%% FIN: Tabla de contenidos
+    
+    \pagenumbering{arabic}
+    
+    \chapter*{Prefacio} 
+    
+    
+    Las siguientes notas se han utilizado para el dictado del curso  “Matemática Discreta I” del primer año de la carrera de ciencias de la computación de FAMAF-UNC. Han sido las notas principales en el dictado del año $2019$ y en algunos años anteriores (desde $1995$).  Las notas están basadas en diversas fuentes, principalmente en los libros “Discrete Mathematics” de N. Biggs y “Notas de Álgebra I” de E. Gentile, pero a lo largo de los años ha habido numerosas modificaciones y agregados por parte de los diferentes docentes de la cátedra. 
+    
+    El objetivo de las notas es tratar de explicar de una manera simple conceptos aritméticos y algebraicos  elementales, de tal forma que luego estos puedan ser utilizados como herramientas en la práctica profesional. En particular, uno de nuestros principales objetivos es el desarrollo de la madurez matemática y la habilidad para resolver problemas matemáticos relacionados con la artitmética,  conteo  y grafos. A nivel metodológico, el curso comienza con un enfoque formal pero intuitivo que se vuelve cada vez más riguroso a medida que aumenta el interés y las capacidades de abstracción de los alumnos. 
+    
+    
+    
+    Las notas se limitan casi exclusivamente al contenido dictado en el curso y las partes señaladas con (*) y los apéndices son optativos. 
+    
+    El  primer capítulo introduce a los alumnos al formalismo de los números enteros como sistema axiomático. En la  mitad final de este capítulo se estudia el concepto de definición recursiva y se demuestra y aplica el principio de inducción.  En el segundo capítulo se estudian los principios de conteo  y diversas técnicas relacionadas a los mismos. Diferentes aspectos de la aritmética elemental son estudiados en el tercer y cuarto capítulo. Como aplicación de lo  aprendido en  estos dos capítulos se explica el algoritmo RSA. Finalmente, los capítulos 5 y 6 estudian la teoría de grafos y árboles, temas clásicos de la matemática discreta. 
+    
+    
+    \pagenumbering{arabic}
+    
+    \setcounter{chapter}{0}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cleardoublepage
+
+%\input{contenido.tex}
+
+%\input{soluciones.tex}
+
+\part{Números enteros y aritmética} 
+%%% CAP1 =================
+    \input{Cap.01.tex}
+%%%=======================
+%%%=======================
+%%% CAP2 =================
+    \input{Cap.02.tex}
+%%%=======================
+%%%=======================
+%%% CAP3 =================
+    \input{Cap.03.tex}
+%    \input{Cap.03_alternativo_1.tex}
+%%%=======================
+%%%=======================
+%%% CAP4 =================
+    \input{Cap.04.tex}
+%%%=======================
+\part{Grafos} 
+%%%=======================
+%%% CAP5 =================
+    \input{Cap.05.tex}
+%%%=======================
+%%%=======================
+%%% CAP6 =================
+    \input{Cap.06.tex}
+%%%=======================
+\appendix
+\part{Ap\'endices} 
+\setcounter{chapter}{0}
+\renewcommand{\thechapter}{\Alph{chapter}}
+%%%=======================
+%%% Apéndices =================
+    \input{Cap.apendices.tex}
+%%%=======================
+\part{\'Indice} 
+\addcontentsline{toc}{chapter}{Indice  alfabético}
+\printindex
+\end{document}

@@ -1,0 +1,1314 @@
+\chapter[Aritmética Modular]{Aritmética Modular}\label{cap.aritmetica_modular}
+
+\begin{section}{Congruencias}\label{seccion-congruencias}
+Una de las más familiares particiones de un conjunto es la partición de $\mathbb Z$ en enteros pares y enteros impares. Es decir $\mathbb Z$ es la unión disjunta del conjunto de números pares y el de los números impares. Es claro que dos números $a,b$ tienen la misma paridad si $a-b$ es divisible por $2$. Para expresar este hecho es usual la notación
+$$
+a\equiv b \pmod2
+$$
+y se dice que $a$ es \textit{congruente } a $b$ \textit{módulo} $2$. Es decir, $a$ es congruente a $b$ módulo $2$ si y solo si $a$ y $b$ son ambos pares o ambos impares si y solo si $2|a-b$.
+
+Claramente esta definición se puede extender a cualquier entero positivo $m$.
+
+\begin{definicion} Sean $a$ y $b$ enteros y $m$ un entero positivo. Diremos que $a$ es {\em congruente}\index{congruencia} a $b$ \index{congruencia} {\em módulo} $m$, y escribimos  \index{módulo $m$}
+$$
+a \equiv b \pmod{m}
+$$
+si $a-b$ es divisible por $m$, o, escrito de otra forma,  $m|a-b$.
+\end{definicion}
+
+Observar que $a\equiv 0 \pmod{m}$ si  y sólo si $m|a$ y que $a\equiv b \pmod{m}$ si y sólo si $a-b\equiv 0 \pmod{m}$. 
+
+\begin{notacion*}
+    $a \equiv b \pmod{m}$ también  lo denotamos $a \equiv b\; (m)$.
+
+\end{notacion*}
+
+\begin{ejemplo*} Algunos ejemplos  numéricos:
+    \begin{itemize}
+        \item $7 \equiv 3 \;(2)$, pues $2 | 7-3=4$.
+        \item $17 \equiv 8 \;(3)$, pues $3 | 17-8 =9$.  
+        \item $8 \equiv 17 \;(3)$, pues $3 | 8-17 =-9$.
+        \item $35 \equiv 13 \;(11)$, pues $11| 35-13 = 22 = 2 \cdot 11$. 
+    \end{itemize}
+\end{ejemplo*}
+
+
+\begin{proposicion}\label{prop-mod-resto}
+    Sean $a$ entero y $m$ un entero positivo. Sea $r$ el resto de dividir $a$ por $m$,  entonces            
+    $$a\equiv r \pmod{m}.$$\vskip -.6cm
+\end{proposicion}
+\begin{proof}
+    $a=mq+r$  con $0 \le r <m$. Luego,
+    $$a-r = mq \quad \Rightarrow \quad m|a-r\quad \Rightarrow \quad a\equiv r \pmod{m}.$$ 
+\end{proof}
+
+Es fácil verificar que la {congruencia módulo} $m$ es una relación de equivalencia. 
+
+\begin{proposicion} Sea $m$ entero positivo y $x,y,z \in \Z$. Entonces la relación de congruencia es
+    \begin{enumerate}[label=\textit{\alph*)}]
+        \item\label{cong-reflexiva}
+        \textit{{reflexiva}}, es decir $x\equiv x\pmod{m}$,
+        \item\label{cong-simetrica}
+        \textit{{simétrica}}, es decir si $x \equiv y \pmod{m}$, entonces
+        $y \equiv x \pmod{m}$, y 
+        \item\label{cong-transitiva}
+        \textit{{ transitiva}}, es decir si $x\equiv y \pmod{m}$ e
+        $y\equiv z \pmod{m}$, entonces $x\equiv z \pmod{m}$.
+        \end{enumerate}
+\end{proposicion}
+
+\begin{proof} Las tres propiedades son sencillas de demostrar y se deducen de propiedades de ``divide a''.
+
+    \ref{cong-reflexiva}  $m| x-x =0$  y por lo tanto $x\equiv x\pmod{m}$.
+
+    \ref{cong-simetrica} $x \equiv y\;(m)$ $\Rightarrow$ $m|x-y$ $\Rightarrow$  $m|-(x-y)$   $\Rightarrow$  $m|y-x$ $\Rightarrow$ $y \equiv x\; (m)$.
+
+    \ref{cong-transitiva} $x \equiv y \;(m) \wedge y \equiv z \;(m)$ \;  $\Rightarrow$ \; $m|x-y \wedge m|y-z$ \; $\Rightarrow$ \; 
+
+    \quad$m |(x-y) + (y-z) = x -z$ \; $\Rightarrow$ \; $x \equiv z \;(m)$.
+    
+    \qed
+\end{proof}
+
+\begin{observacion*}\label{relacion-de-equivalencia}
+    Dado un conjunto $X$ una relación que cumple las propiedades de ser reflexiva, simétrica y transitiva es llamada una \textit{relación de equivalencia}\index{relación de equivalencia}.
+
+    Ejemplos de relación de equivalencia son la igualdad y  el paralelismo de rectas y ahora vimos la relación de congruencia. Veremos otra relación de equivalencia en el capítulo de grafos.
+\end{observacion*}
+
+Por la proposición \ref{prop-mod-resto} y por ser ``congruencia módulo $m$'' una relación de equivalencia se deduce el siguiente resultado. 
+
+\begin{proposicion}
+Sean $a$ y $b$ enteros y $m$ un entero positivo. Entonces $a\equiv b \pmod{m}$ si  y sólo si $a$ y $b$ tienen el mismo resto en la división por $m$.
+\end{proposicion}
+\begin{proof} ($\Rightarrow$)
+Si $a=mh+r$ y $b=mk+s$, con $0 \le r,s <m$, entonces por la proposición \ref{prop-mod-resto} tenemos que
+\begin{equation*}
+    a \equiv r \pmod{m} \quad \wedge \quad     b \equiv s \pmod{m}.
+\end{equation*}
+Por la propiedad transitiva de ``congruencia módulo $m$'', $ r \equiv s \pmod{m}$, luego $m | r-s$.  Podemos suponer, sin perdida de generalidad, que $s \le r$, luego $0\le r-s< m$,  y por lo visto recién $m | r-s$, lo cual implica que $r-s=0$,  es decir $r=s$. 
+
+($\Leftarrow$) Si $a$ y $b$ tienen el mismo resto en la división por $m$, entonces  $a=mh+r$ y $b=mk+r$, luego $a-b = m(h-k)$ que es divisible por $m$.
+\end{proof}
+
+Así como antes podíamos separar $\mathbb Z$ en los números pares e impares, la propiedad anterior nos permite expresar $\mathbb Z$ como una unión disjunta de $m$ subconjuntos. Es decir sea $\mathbb  Z_{[r]} =\{x \in \mathbb Z:$ el resto de dividir $x$ por $m$ es $r\}$, o más formalmente 
+\begin{equation*}
+    \mathbb  Z_{[r]} =\{x \in \mathbb Z: \; x \equiv r \pmod{m} \}, \qquad 0 \le r < m.
+\end{equation*}
+Entonces, 
+$$
+\mathbb Z= \mathbb Z_{[0]}\cup \mathbb Z_{[1]}\cup \cdots\cup \mathbb Z_{[m-1]}.
+$$
+
+%\vskip .3cm 
+
+
+
+La utilidad de las congruencias reside principalmente en el hecho de que son compatibles con las operaciones aritméticas. Específicamente, tenemos el siguiente teorema.
+
+\begin{teorema}\label{t4.1} Sea $m$ un entero positivo y sean $x_1$, $x_2$,
+$y_1$, $y_2$ enteros tales que
+$$
+x_1 \equiv x_2 \pmod{m}, \qquad y_1 \equiv y_2 \pmod{m}.
+$$
+Entonces
+\begin{enumerate}[label=\textit{\alph*)}]
+\item\label{it.con.prop_a} $ x_1+ y_1 \equiv x_2+ y_2 \pmod{m}$,
+\item\label{it.con.prop_b}  $x_1 y_1 \equiv x_2 y_2 \pmod{m}$,
+\item\label{it.con.prop_c}  Si $x \equiv y \pmod{m}$  y $j \in  \mathbb N$, entonces $x^j \equiv y^j \pmod{m}$.
+\end{enumerate}
+\end{teorema}
+\begin{proof}
+La hipótesis nos dice que 
+\begin{equation*}
+    m | x_1 - x_2 \qquad \wedge \qquad m | y_1 - y_2.
+\end{equation*}
+
+\ref{it.con.prop_a} Como $m | x_1 - x_2$ y $m | y_1 - y_2$,  entonces 
+$$
+m |  (x_1 - x_2) + (y_1 - y_2) = (x_1 +y_1) -(x_2+y_2).
+$$
+Es decir, $ x_1+ y_1 \equiv x_2+ y_2 \pmod{m}$. 
+
+\ref{it.con.prop_b} Aquí tenemos,
+$$
+\begin{aligned}
+    m | x_1 - x_2  \wedge  m | y_1 - y_2 &\Rightarrow m | (x_1 - x_2)y_1  \wedge  m | x_2(y_1 - y_2) \\
+    &\Rightarrow m | (x_1 - x_2)y_1 + x_2(y_1 - y_2) \\
+    &\Rightarrow m | x_1y_1 - x_2y_1  + x_2y_1 - x_2y_2 \\
+    &\Rightarrow m | x_1y_1  - x_2y_2.
+\end{aligned}
+$$
+Luego $ x_1 y_1 \equiv x_2 y_2 \pmod{m}$.
+
+\ref{it.con.prop_c}  Lo haremos por inducción sobre $j$. 
+
+Es claro que si $j=1$ el resultado es verdadero. Supongamos ahora que el resultado vale para $j-1$, es decir que si  $x \equiv y \pmod{m}$, entonces 
+$$
+x^{j-1} \equiv y^{j-1} \pmod{m}.
+$$
+Como $x \equiv y \pmod{m}$,  por   { (b)} tenemos que 
+$$
+x^{j-1}x \equiv y^{j-1}y  \pmod{m},
+$$
+es decir 
+$$
+x^j \equiv y^j \pmod{m}.
+$$
+\end{proof}
+
+
+Veremos ahora una aplicación interesante de las congruencias y  sus propiedades. 
+
+\begin{proposicion}\label{prop412}
+Sea $(x_nx_{n-1}\ldots x_0)_{10}$ la representación del entero positivo $x$ en base $10$, entonces
+$$
+x \equiv x_0+x_1+\cdots+x_n \pmod{9}
+$$
+\end{proposicion}
+\begin{proof}
+ Observemos primero que como $10\equiv 1\pmod{9}$, entonces  $10^k\equiv 1^k \equiv 1\pmod{9}$. Esto es debido  al teorema \ref{t4.1} \ref{it.con.prop_c} 
+
+Por la definición de representación en base $10$, tenemos que 
+$$x=x_0 + 10x_1+ \cdots+10^nx_n,$$ 
+por el párrafo anterior y teorema \ref{t4.1} \ref{it.con.prop_b}   obtenemos que $x_k10^k \equiv x_k \pmod{9}$ y por
+teorema \ref{t4.1} \ref{it.con.prop_a}  se deduce que $x \equiv
+x_0+x_1+\cdots+x_n \pmod{9}$.
+\end{proof}
+
+ \begin{corolario} ea $(x_nx_{n-1}\ldots x_0)_{10}$ la representación del entero positivo $x$ en base $10$, entonces $x$ es divisible por $9$ si y solo si $ x_0+x_1+\cdots+x_n$ es divisible por $9$.
+ \end{corolario}
+ \begin{proof}
+    \begin{align*}
+        9 | x &\Leftrightarrow 0 \equiv x  \pmod{9}&& \\
+        &\Leftrightarrow 0 \equiv x_0+x_1+\cdots+x_n\pmod{9}&&\text{(prop. \ref{prop412} y transitividad)} \\
+        &\Leftrightarrow 9 | x_0+x_1+\cdots+x_n.
+    \end{align*}
+ \end{proof}
+ El procedimiento anterior a veces es llamado \textit{regla del nueve.}
+ \index{regla del nueve}
+
+\begin{ejemplo*} Usando la regla del $9$  es sencillo verificar que $X= 3475682568$ es divisible por $9$, pues 
+    $$
+    3+4+7+5+6+8+2+5+6+8 = 54
+    $$
+    y como $5+4=9$ es divisible por $9$, también lo es  $54$ y, luego, también lo es $x$. 
+\end{ejemplo*}
+
+También la proposición \ref{prop412} es útil para verificar si una multiplicación larga es incorrecta. 
+
+\begin{ejemplo*} Verifiquemos  el siguiente cálculo
+$$
+54\,321 \cdot 98\,765= 5\,363\,013\,565.
+$$
+\end{ejemplo*}
+\begin{proof}
+En la notación de la proposición \ref{prop412} escribamos $\Sigma\, x$ en vez de $$\sum_{i=0}^n x_i = x_0+x_1+\cdots+x_n.$$
+Hemos visto que $\Sigma\, x \equiv x \pmod{9}$. Por la parte \ref{it.con.prop_b}  del
+teorema \ref{t4.1} tenemos
+$$
+\Sigma\, x \cdot\Sigma\ y \equiv xy \pmod{9},
+$$
+y por consiguiente si $xy=z$ debemos tener $\Sigma\, x \cdot \Sigma\, y \equiv\Sigma\, z \pmod{9}$. 
+En el cálculo que se tiene en el ejemplo
+$$
+\Sigma\, 54\,321=15,\quad \Sigma\, 98\,765=35,\qquad \Sigma\, 5\,363\,013\,565=37,
+$$
+y
+$$
+\Sigma\, 15=6, \qquad \Sigma\, 35=8,\quad \Sigma\, 37=10.
+$$
+Puesto que $6 \cdot 8$ no es congruente a $10 \pmod{9}$ se sigue
+que $15 \cdot 35$ no es congruente a $37 \pmod{9}$ y que $54\,321
+\cdot 98\,765$ no es congruente a $5\,363\,013\,565\pmod{9}$. En
+consecuencia el cálculo está errado.
+\end{proof}
+
+También a este verificación suele llamársela la regla del $9$. Observar que esta última aplicación solo sirve para comprobar que una multiplicación es incorrecta, y no es útil para verificar que una multiplicación es correcta, pues $xy \equiv z \pmod{9}$ no garantiza que $xy=z$. 
+
+\subsection*{$\S$ Ejercicios}
+
+\begin{enumex}
+\item Sin hacer ninguna ``multiplicación larga'' probar que
+\begin{enumex}
+    \item $1\,234\,567 \cdot 90\,123 \equiv 1 \pmod{10}$
+    
+    \item $2\,468 \cdot 13\,579 \equiv -3 \pmod{25}$
+\end{enumex}
+
+\item Usar la regla del nueve para verificar que dos de las siguientes ecuaciones son falsas. ¿Qué se puede decir de la otra ecuación?
+\begin{enumex}
+    \item  $5\,783 \cdot 40\,162  = 233\,256\,846 ,$
+    
+    \item  $9\,787 \cdot 1\,258  = 12\,342\,046 , $
+    
+    \item  $ 8\,901 \cdot 5\,743  = 52\,018\,443 .$
+\end{enumex}
+
+\item Encontrar el resto de dividir $3^{15}$ por $17$ y el de dividir $15^{81}$ por $13$.
+\item  Sea $(x_nx_{n-1}\ldots x_0)_{10}$ la representación en base 10 de un entero positivo $x$. 
+\begin{enumex}
+    \item Probar que 
+    $$
+    x\equiv x_0-x_1+x_2+\cdots +(-1)^nx_n \pmod{11}.
+    $$
+    \item Enuncie la \textit{regla del $11$}.
+    \item Probar que $1\,213\,141\,516\,171\,819$  es divisible por $11$.
+\end{enumex}
+
+\item ¿Cuál es el último dígito de la representación en base $10$ de
+$7^{93}$.
+
+\item Usar que $1\,001=7\cdot 11 \cdot 13$ para construir una prueba
+para la división simultanea por los números $7$, $11$ y $13$, similar a la prueba
+del $9$.
+
+
+\item Si $m$ coprimo con $n$, entonces $ma\equiv mb \pmod{n}$ si y solo
+si $a\equiv b\pmod{m}$.
+
+\end{enumex}
+
+\end{section}
+
+
+\begin{section}{Ecuación lineal de congruencia}\label{seccion-ecuacion-lineal-de-congruencia}
+ \index{Ecuación lineal de congruencia}
+Se trata primero de estudiar en general el problema de resolución de la ecuación en $x$
+\begin{equation}\label{ecuacionlineal}
+ ax \equiv b \pmod{m}.
+\end{equation}
+Es fácil ver que el problema no admite siempre solución, por ejemplo $2x\equiv 3 \pmod{2}$ no posee ninguna solución en $\mathbb Z$, pues cualquiera se $k \in \mathbb Z$, $2k-3$ es impar, luego no es divisible por $2$.
+
+Notemos además que si $x_0$ es solución de la ecuación (\ref{ecuacionlineal}), también lo es $x_0+km$ de manera que si la ecuación posee una solución, posee infinitas soluciones. Para evitar la ambigüedad de infinitas soluciones, nos limitaremos a considerar las soluciones tales que $0\le x < m$.
+
+\begin{ejemplo*} La solución general de la ecuación $3x\equiv 7 \pmod{11}$ es $6+k7$ con $k \in \mathbb Z$.
+\end{ejemplo*}
+\begin{proof} Si probamos con los enteros $x$ tal que  $0\le x < 11$, veremos que la ecuación admite una única solución, a saber $x=6$. Otras soluciones se obtienen tomando $6+11k$. Por otra parte si $u$ es también solución de la ecuación, se tiene $3u \equiv 3\cdot 6 \pmod{11}$, por lo tanto $3(u-6)$ es múltiplo de $11$. Como $11$ no divide a $3$ se tiene que $11|(u-6)$, o sea $u=6+11k$.
+\end{proof}
+
+Analicemos ahora la situación general de la ecuación $ ax\equiv b
+\pmod{m}$. Si $\mcd(a,m)=1$, entonces sabemos que existen enteros
+$r$ y $s$ tales que $1=ra+sm$ y por lo tanto $b=(rb)a +(sb)m$, o
+sea que
+$$
+a(rb) \equiv b \pmod{m},
+$$
+es decir $rb$ es solución de la ecuación. Veremos que el caso general se hace en forma análoga a lo anterior.
+
+\begin{teorema}\label{teorema-elc} Sean $a,b$ números enteros y $m$ un entero positivo y denotemos $d = \mcd(a,m)$. La  ecuación 
+\begin{equation}\label{ecu.elc}
+ax \equiv b \pmod{m}
+\end{equation}
+admite solución si y sólo si $d|b$, y en este caso dada $x_0$ una solución, todas las soluciones son de la forma 
+$$x = x_0 + k n,\qquad \mbox{ con } k \in \mathbb Z \mbox{ y } n = {\frac{m}{d}} $$
+\end{teorema}
+\begin{proof} Como $d =\mcd(a,m)$, existen $r,s \in \mathbb Z$ tales que
+$$
+d = ra+sm.
+$$
+Si $d|b$, entonces existe $h\in \mathbb Z$ tal que $b = dh$. Si multiplicamos por $h$ la ecuación de arriba obtenemos
+$$
+dh = (rh)a+(sh)m.
+$$
+Luego $a(rh) \equiv a(rh)+(sh)m \equiv dh \equiv b \pmod{m}$, y por lo tanto $rh$ es solución de la ecuación lineal de congruencia.    
+
+
+Por otro lado si $ax\equiv b\pmod{m}$, entonces $ax-b=km$ para
+algún $k$, o sea
+$$
+b=ax+(-k)m
+$$
+de la cual se sigue que si $d|a$ y $d|m$, entonces $d|b$ y por lo
+tanto $\mcd(a,m)|b$.
+
+Por lo tanto hemos demostrado que la condición necesaria y
+suficiente para que la ecuación $ax\equiv b \pmod{m}$ admita una
+solución es que $\mcd(a,m)|b$.
+
+En el caso que $d|b$ veamos ahora cuales son todas las soluciones posibles de la ecuación (\ref{ecu.elc}). Sean $x_1,x_2$ soluciones, es decir
+\begin{align*}
+ax_1 &\equiv b \pmod{m} \\
+ax_2 &\equiv b \pmod{m},
+\end{align*}
+entonces, restando miembro a miembro, obtenemos
+$$
+ax_1 -ax_2 \equiv b - b \equiv 0 \pmod{m}.
+$$
+Es decir, $x_1,x_2$ son soluciones de la ecuación (\ref{ecu.elc}) si y sólo si  $y = x_1 -x_2$ es solución de la ecuación lineal de congruencia
+\begin{equation*}
+ay \equiv 0 \pmod{m}.
+\end{equation*}
+
+Si $\mcd(a,m) =1$ es claro que la ecuación $ay \equiv 0 \pmod{m}$ tiene como solución todos los $y$ tales que $m|ay$. Como $m$ y $a$ son  coprimos, las soluciones son todos los $y$ tal $m|y$, es decir todos los múltiplos de $m$.
+
+Si $\mcd(a,m) =d > 1$,  la ecuación $ay \equiv 0 \pmod{m}$ tiene como solución todos los $y$ tales que $ay=mk$ para algún $k$. Si dividimos por $d$, podemos decir que las soluciones son todos los $y$ tales que $(a/d)y = (m/d)k$, es decir todos los $y$ tal que $(m/d)|(a/d)y$. Como $m/d$ y $a/d$ son coprimos, las soluciones son todos los múltiplos de $m/d$.
+
+Sean $x_0$ y $x$ tal que $ax_0 \equiv b \pmod{m}$ y $ax \equiv b \pmod{m}$, entonces $a(x_0-x) \equiv 0 \pmod{m}$ y por lo tanto $x_0-x = kn$ para algún $k$. Es decir, cualquier $x$ que es solución lineal de congruencia es de la forma $x_0 = x+kn$ para algún $k$.
+\end{proof}
+
+De las demostraciones podemos obtener un método general para encontrar soluciones de la ecuación lineal de congruencia
+$$
+ax \equiv b \pmod{m}.
+$$
+con $\mcd(a,m)|b$
+
+
+\begin{enumerate}[label=\textit{\alph*)}]
+\item\label{elc-a}  Encontrar, usando el algoritmo de Euclides, $r,s$ tales que 
+\begin{equation}\label{elc2}
+d =\mcd(a,m) = ra+sm.
+\end{equation}
+\item\label{elc-b}  Como $d|b$, tenemos que $b = td$, para algún $t$ entero, y multiplicamos la ecuación (\ref{elc2}) por $t$: $$dt =  (rt)a+(st)m.$$
+\item\label{elc-c}  $b = dt = (rt)a+(st)m \equiv (rt)a \pmod{m}$. 
+
+Luego $x_0 = rt$ es solución de la ecuación lineal de congruencia. 
+\item\label{elc-d}  Toda solución de la ecuación lineal de congruencia es $x= x_0+ k(m/d)$ con $k \in \mathbb Z$.
+\end{enumerate}
+
+%\vskip .3cm
+
+Observemos que, en las hipótesis del teorema, si $\mcd(a,m) =1$, entonces siempre existen soluciones a la ecuación $ax\equiv b\pmod m$ y todas las soluciones son de la forma $x_0+km$, donde $x_0$ es una solución particular. Más aún, debido a esto, hay una única solución $x$, con $ 0\le x < m$. 
+
+%\vskip .3cm
+
+
+\begin{ejemplo*} Hallemos las soluciones de la ecuación $13x\equiv 7 \pmod{15}$ con $0\le x< 15$.
+\end{ejemplo*}
+\begin{proof}
+Hagamos, paso a paso, el procedimiento explicado anteriormente.
+
+\ref{elc-a}
+Usando  el algoritmo de Euclides obtenemos el  $\mcd(13,15)$.
+\begin{align*}
+15 &=  13 \cdot 1 + 2 \\
+13 &= 2 \cdot 6 + 1 \\
+2 &= 1 \cdot 2 + 0
+\end{align*}
+Luego $1 = \mcd(13,15)$. Como $1$ divide a cualquier número, en este caso  la ecuación tiene solución. Del algoritmo de Euclides deducimos 
+\begin{align*}
+1 &= 13 - 2 \cdot 6\\
+&= 13 - (15-13) \cdot 6  \\
+&= 13\cdot 7 - 15\cdot 6. 
+\end{align*}
+Es decir
+\begin{equation}\label{eq1315}
+1 = 13\cdot 7 - 15\cdot 6. 
+\end{equation}
+
+\ref{elc-b} Multiplicando la ecuación (\ref{eq1315}) por $7$ obtenemos
+$$
+7 = 13\cdot 49 - 15\cdot 42. 
+$$
+
+\ref{elc-c} Luego $13 \cdot 49 \equiv 7 \pmod{15}$, es decir $49$ es solución de la ecuación.
+
+\ref{elc-d} Todas las soluciones son de la forma  $x=49 + 15k$.
+
+Debemos ver ahora cuales soluciones $x$ cumplen $0\le x< 15$. La forma más sencilla de hacerlo es buscando por tanteo: $49+15(-1)=34$, $49+15(-2)=19$, , $49+15(-3)=4$, $49+15(-4)=-11$.
+Es decir la solución que buscamos es $x=4$.  
+\end{proof}
+
+
+
+
+\begin{ejemplo*} Hallemos las soluciones de la ecuación $42x\equiv
+50 \pmod{76}$ con $0\le x< 76$.
+\end{ejemplo*}
+\begin{proof} Como antes, hagamos paso a paso el procedimiento explicado anteriormente.
+
+    \ref{elc-a}
+Usando  el algoritmo de Euclides obtenemos el  $\mcd(42,76)$.
+\begin{align*}
+76 &=  42 \cdot 1 + 34 \\
+42 &= 34 \cdot 1 + 8 \\
+34 &= 8 \cdot 4 + 2 \\
+8 &= 2 \cdot 4 + 0.
+\end{align*}
+Luego $2 = \mcd(42,76)$. Como $2|50$ la ecuación tiene solución. Del algoritmo de Euclides deducimos 
+\begin{align*}
+2 &= 34 - 8 \cdot 4\\
+&= 34 - (42-34) \cdot 4 = 34\cdot 5 - 42\cdot 4\\
+&= (76-42)\cdot 5 - 42\cdot 4 \\
+&= 76\cdot 5 - 42\cdot 9. 
+\end{align*}
+Es decir
+$$
+2 = (-9) \cdot 42 + 5 \cdot 76.
+$$
+
+\ref{elc-b} $50 = 2\cdot 25$ y tenemos  que 
+\begin{align*}
+50 &= (-9\cdot 25) \cdot 42 + (5 \cdot 25) \cdot 76 \\
+50 &= (-225) \cdot 42 + 125 \cdot 76
+\end{align*}
+
+\ref{elc-c} Luego $x_0 = -225$ es una solución de la ecuación lineal de congruencia.
+
+\ref{elc-d} Todas las soluciones son de la forma $-225 + (76/2)k$, es decir $x = -225 + 38k$.
+\vskip .1cm
+Debemos ver ahora cuales soluciones $x$ cumplen $0\le x< 76$. Como en el caso anterior podemos hacer esto por tanteo, pero aquí la forma más sencilla de hacerlo es escribir las inecuaciones
+\begin{align*}
+0&\le -225 + 38k < 76 \\
+225&\le 38k < 76+225= 301 \\
+225/38 &\le k \le 301/38 \\
+5.9 &\le k \le 7.9
+\end{align*}
+Luego $k = 6$ o $k =7$ y entonces $x_1 = -225 + 38\cdot 6 = 3$ y $x_2 = -225 + 38\cdot 7 = 41$ son las soluciones que buscamos. 
+\end{proof}
+
+
+Operativamente es útil el siguiente resultado. 
+
+\begin{proposicion}\label{proposicion-elc-simplificada}
+    Sean $a,b$ números enteros y $m$ un entero positivo, denotemos $d = \mcd(a,m)$ y supongamos que $d|b$. Entonces las soluciones de la ecuación
+    \begin{equation*}
+        ax \equiv b \pmod{m}
+    \end{equation*}
+    son las misma que las de la ecuación
+    \begin{equation*}
+        \frac{a}{d} x \equiv \frac{b}{d} \pmod{\frac{m}{d}}.
+    \end{equation*}
+\end{proposicion}
+\begin{proof}
+    $x_0$ cumple que $ax_0 \equiv b \pmod{m}$ si y solo si $m | ax_0 - b$,  es decir, si y solo si existe $q \in \Z$  tal que $ ax_0 - b = mq$. Si dividimos por $d$ la ecuación $ ax_0 - b = mq$, obtenemos $\displaystyle\frac{a}{d} x_0 - \frac{b}{d}  = {\frac{m}{d}}q$ y esto vale si y solo si  $\displaystyle\frac{a}{d} x_0 \equiv \frac{b}{d} \pmod{\frac{m}{d}}$.
+\end{proof}
+
+\begin{observacion*}
+    Sean $a,b$ números enteros y $m$ un entero positivo, denotemos $d = \mcd(a,m)$ y supongamos que $d|b$. Entonces es fácil ver que 
+    \begin{equation*}
+        \mcd(\frac{a}{d},\frac{m}{d}) = 1,
+    \end{equation*}
+    Lo cual implica, por la proposición anterior, que encontrar las soluciones de la ecuación lineal de congruencia se puede reducir al caso que $\mcd(a,b) =1$.
+\end{observacion*}
+
+
+
+
+\begin{ejemplo*} Hallemos las soluciones de la ecuación $21x\equiv
+    48 \pmod{114}$ con $0 \le x \le 1000$.
+    \end{ejemplo*}
+    \begin{proof} Los divisores de $21$ son $3$ y $7$, $3|114$ y $7 \not| 114$, por lo tanto $\mcd(21, 114) = 3$. Por  la proposición \ref{proposicion-elc-simplificada}, dividimos por 3 la ecuación y tenemos que el problema original es equivalente a encontrar todos los $x$ tal que  
+        \begin{equation*}
+        7x \equiv  12 \pmod{38} \quad \text{tal que} \quad 0 \le x \le 1000.
+        \end{equation*}
+    Ahora bien, usando el algoritmo de Euclides, obtenemos el $\mcd(7,38)$:
+    \begin{equation}
+        \begin{aligned}
+            38 &=  7 \cdot 5 + 3  \quad \Rightarrow \quad 3 = 38 - 7 \cdot 5\\
+            7 &= 3 \cdot 2 + 1 \quad \Rightarrow \quad 1 = 7 - 3 \cdot 2\\
+            3 &= 1 \cdot 3 + 0.
+            \end{aligned}
+            \tag{*}
+    \end{equation}
+    Luego $1 = \mcd(7,38)$ y de (*) deducimos 
+    \begin{align*}
+    1 &= 7 - 3 \cdot 2\\
+    &= 7 - (38 - 7 \cdot 5) \cdot 2\\
+    &= 7 + (-2) \cdot  38 + 10 \cdot  7\\
+    &= 11 \cdot  7 + (-2) \cdot  38 .
+    \end{align*}
+    Por lo tanto 
+    \begin{equation*}
+        1 \equiv 11 \cdot  7 \pmod{38},
+    \end{equation*}
+    o equivalentemente, 
+    \begin{equation*}
+        7 \cdot  11  \equiv 1\pmod{38}. 
+    \end{equation*}
+    Si multiplicamos por 12 la ecuación obtenemos:
+    \begin{equation*}
+        7 \cdot  (11 \cdot 12)   \equiv 12 \pmod{38}. 
+    \end{equation*}
+    Por lo tanto, $x_0 =  11 \cdot 12 = 132$ es solución de la ecuación original. 
+
+    Como $\mcd(7, 38) =1$, por el teorema \ref{teorema-elc} deducimos que todas las soluciones de la ecuación $7x \equiv  12 \pmod{38}$ son de la forma $x = x_0 + 38k $ donde $k \in \Z$.
+
+    Debemos ver ahora cuales soluciones $x$ cumplen $0\le x \le 1000$. Lo haremos escribiendo las inecuaciones:
+    \begin{align*}
+    0&\le 132 + 38k \le 1000 \\
+    -132&\le 38k \le 1000-132= 868 \\
+    -\frac{132}{38}&\le k \le \frac{868}{38} \\
+    -3.4&\le k \le 22.8 \\
+    \end{align*}
+    Luego $-4 \le k \le 22$,  es decir $k$  recorre todos los valores enteros desde $-4$  a $22$. 
+    
+    Concluyendo:   los  $x$ tales que   $21x\equiv  48 \pmod{114}$ y  $0 \le x \le 1000$ son los $x = 132 + 38k$ donde  $k \in \Z$ y $-4 \le k \le 22$.
+    \end{proof}
+
+\subsection*{$\S$ Ejercicios}
+
+\begin{enumex}
+    \item Resolver las siguientes ecuaciones lineales de congruencia
+    \begin{enumex}
+        \item $2x \equiv 1 \pmod{7}$.
+        \item $3\,970\, x \equiv 560 \pmod{2755}$.
+    \end{enumex}
+
+
+    \item Determinar todas las posibles soluciones de las congruencias
+    \begin{enumex}
+        \item  $5x\equiv1 \pmod{11},$
+        
+        \item  $5x\equiv 7 \pmod{15}.$
+    \end{enumex}
+
+
+    \item\label{ejercicio-zm}  Sea $m$ un número entero $\ge 2$ y sea
+    $$
+    \Z_m := \{0,1,\ldots, m-1\}
+    $$
+    el conjunto de restos de dividir por $m$. En $\Z_m$ definimos suma y producto de la siguiente manera: sean $a,b \in \Z_m$,  entonces  
+    \begin{equation*}
+        \begin{array}{llllll}
+            a+b &= c\quad &\text{ si }\quad &a+b \equiv c \; (\operatorname{mod}m) \quad&\wedge\quad&0 \le c \le m-1,\\
+            a \cdot b &= d\quad &\text{ si }\quad &a\cdot b \equiv d \; (\operatorname{mod}m) &\wedge& 0 \le d \le m-1.
+        \end{array} 
+    \end{equation*}
+    \begin{enumex}
+        \item Probar que $\Z_m$ es un  \textit{anillo conmutativo con unidad},  es decir se cumplen los axiomas \textbf{I1},\ldots,\textbf{I6} de la sección \ref{seccion-aritmetica} (cambiando $\Z$ por  $\Z_m$). 
+        \item\label{item-zp-cuerpo} Probar que si $p$ es un número primo,  entonces $\Z_p$ es \textit{cuerpo}, es decir  se cumplen los axiomas \textbf{I1},\ldots,\textbf{I6} de la sección \ref{seccion-aritmetica} y además, para todo $a \in \Z_p$, $a\ne 0$, existe un único $b \in \Z_p$ tal que $ab =1$ [Ayuda: usar la ecuación lineal de congruencia]. 
+    \end{enumex}
+
+    \item  Sea $p$ número entero positivo.
+    \begin{enumex} 
+        \item (Teorema de Wilson). Probar que si $p$ es un número primo,  entonces 
+        $$(p-1)! \equiv -1 \pmod{p}.
+        $$
+        [Ayuda: $1 \cdot (p-1) \equiv -1 \pmod{p}$ y  debido al ejercicio \ref{ejercicio-zm}\,\ref{item-zp-cuerpo} los números $2, \ldots, p-2$ se pueden ordenar de a pares $m_1, m_2$ tal que $m_1m_2 \equiv 1 \pmod{p}$].
+        \item Probar que si $(p-1)! \equiv -1 \pmod{p}$,  entonces $p$  es un número primo. [Ayuda: probar el contrarrecíproco y usar el hecho que si $p$  es compuesto  existe $m$ con $1 < m < p$ y  tal que $m|p$].
+    \end{enumex}
+\end{enumex}
+
+\end{section}
+
+
+
+\begin{section}{Teorema de Fermat}\label{seccion-teorema-de-fermat} \index{Teorema de Fermat}
+El siguiente lema nos sirve de preparación para la demostración
+del Teorema (o fórmula) de Fermat.
+
+\begin{lema} \label{l4.3} Sea $p$ un número primo, entonces
+\begin{enumerate}[label=\textit{\alph*)}]
+\item\label{it.lemafermat_a}  $p|\displaystyle\binom{p}{r}$, con $0< r <p$,
+\item\label{it.lemafermat_b}  $(a+b)^p \equiv a^p+b^p \pmod{p}$.
+\end{enumerate}
+\end{lema}
+\begin{proof}
+    \
+    
+    \ref{it.lemafermat_a} Escribamos el número binomial de otra forma: 
+$$
+\binom{p}{r}=\frac{p!}{r!(p-r)!}=p\cdot\,\frac{(p-1)!}{r!(p-r)!}
+$$ 
+es un número entero, digamos $k$, luego 
+\begin{equation}\label{binp}
+k \cdot r!(p-r)! = p \cdot(p-1)!
+\end{equation}
+Como $p-1$, $r$ y $p-r$ son menores que $p$, entonces  $(p-1)!$, $r!$ y $(p-r)!$ son producto de números menores que $p$ y por lo tanto son producto de primos menores que $p$. 
+Por lo tanto, el primo $p$ no aparece en la descomposición prima de $(p-1)!$, $r!$ y $(p-r)!$. Por la igualdad de la ecuación (\ref{binp}), $p$ debe ser factor de $k = \binom{p}{r}$, luego $p|\binom{p}{r}$.
+
+\ref{it.lemafermat_b} Por el teorema del binomio (teorema \ref{t3.6}) sabemos que
+\begin{equation*}
+    (a+b)^p =\sum_{i=0}^{p} \binom{p}{i} a^ib^{p-i}.
+\end{equation*}
+Por \ref{it.lemafermat_a} es claro que $ \binom{p}{i} a^ib^{p-i}\equiv 0 \pmod{p}$,
+si $0<i<p$. Luego,
+\begin{align*}
+    (a+b)^p &\equiv {\scriptstyle \binom{p}{0}} b^{p}+ {\scriptstyle \binom{p}{1}} a^1b^{p-1} + \cdots +{\scriptstyle \binom{p}{p-1}} a^{p-1}b^{1}+ {\scriptstyle \binom{p}{p}} a^p \pmod{p} \\
+    &\equiv b^{p}+ 0 + \cdots +0 + a^p \pmod{p} \\
+    &\equiv b^{p}+  a^p \pmod{p} 
+\end{align*}
+
+\end{proof}
+
+El siguiente es el llamado teorema de Fermat o teorema pequeño de Fermat.
+
+\begin{teorema}\label{t4.3} Sea $p$ un número primo y $a$ número
+entero. Entonces
+$$
+a^p\equiv a\pmod{p}.
+$$
+\end{teorema}
+\begin{proof} Supongamos que $a\ge 0$, entonces hagamos
+inducción en $a$. Si $a=0$, el resultado es trivial. Supongamos el
+resultado probado para $k$, es decir $k^p \equiv k \pmod{p}$.
+Entonces $(k+1)^p \equiv k^p +1^p \equiv k+1 \pmod{p}$. La primera
+congruencia es debido al lema \ref{l4.3} \ref{it.lemafermat_b} y la segunda es
+válida por hipótesis inductiva. Luego $a^p\equiv a\pmod{p}$ cuando $a >0$.
+
+Si $a<0$, entonces $-a>0$ y ya vimos que $(-a)^p \equiv -a
+\pmod{p}$, es decir que $(-1)^pa^p \equiv (-1)a \pmod{p}$. Si
+$p\not=2$, entonces $(-1)^p=-1$ y se deduce el resultado. Si
+$p=2$, entonces $(-1)^p=1$, pero como $1\equiv -1 \pmod{2}$,
+obtenemos también $a^p\equiv a\pmod{p}$.
+\end{proof}
+
+\begin{corolario}
+    Sea $p$ primo y  $a$ entero tal $p\nodivide a$, entonces $a^{(p-1)}\equiv 1\pmod{p}$.
+\end{corolario}
+\begin{proof}
+    Por Fermat $a^p\equiv a\pmod{p}$, es decir 
+    $$p|(a^p -a)=a(a^{(p-1)} -1).$$
+    Como $p$ no divide a $a$, tenemos que $p|(a^{(p-1)} -1)$ (teorema \ref{t1.8}), es decir  $a^{(p-1)}\equiv 1\pmod{p}$.
+\end{proof}
+
+Este último corolario es también conocido como teorema de Fermat.
+
+
+
+La función de Euler  \index{función de Euler} $\phi(n)$, para $n\ge 1$, está definida como el cardinal del conjunto de los $x$ entre 1 y $n$ que son coprimos con $n$. El teorema de Fermat admite la siguiente generalización.
+
+\begin{teorema}[Teorema de Euler]
+    Sea $n$ un entero positivo y $a$ un número entero coprimo con $n$, entonces
+$$
+a^{\phi(n)} \equiv 1\pmod{n}.
+$$
+\end{teorema}
+\begin{proof}
+    Ver ejercicios \ref{demdeeuler-1} y \ref{demdeeuler-2}, a continuación.
+\end{proof}
+
+\subsection*{$\S$ Ejercicios}
+
+\begin{enumex}
+\item Usar el teorema de Fermat para calcular el resto de dividir
+$3^{47}$ por $23$.
+
+\item \label{demdeeuler-1} Sean $x_1,\ldots,x_k$ los números coprimos con $n$ comprendidos
+entre $1$ y $n$ (es decir $k=\phi(n)$) y sea $y$ coprimo con $n$.
+Entonces hay un reordenamiento de $yx_1,\ldots,yx_k$, es decir una
+permutación $\sigma$ de $1,\ldots,k$, tal que $x_i \equiv
+yx_{\sigma_i} \pmod{n}$, para $1\le i \le k$. [Ayuda: como $y$
+coprimo con $n$, existe $v$ tal que $yv\equiv 1\pmod{n}$].
+
+\item \label{demdeeuler-2}Demostrar el teorema de Euler. [Ayuda: Sean $x_1,\ldots,x_k$ los
+números coprimos con $n$ comprendidos entre $1$ y $n$, por el
+ejercicio anterior $y^{\phi(n)}x_1\ldots x_k =yx_1\ldots yx_k
+\equiv x_1\ldots x_k \pmod{n}$. Como $u=x_1\ldots x_k$ coprimo con
+$n$, existe $v$ tal que $uv\equiv 1\pmod{n}$].
+\end{enumex}
+
+\end{section}
+
+
+\begin{section}{El criptosistema RSA}\label{seccion-el-criptosistema-rsa}
+
+
+Una de las aplicaciones más elementales y difundidas de la aritmética es en el diseño de sistemas criptográficos. El RSA es el más conocido de ellos y será presentado en esta sección. \index{RSA}
+
+Por criptosistema nos referimos a sistemas de encriptamiento o codificación esencialmente pensados para proteger la \index{encriptar}  \index{codificar} confidencialidad de datos que
+se desean transmitir. Entre los criptosistemas encontramos los simétricos \index{criptografía simétrica} y los de clave pública o asimétricos.
+\index{criptografía asimétrica} \index{criptografía de clave pública} 
+
+Los sistemas criptográficos simétricos son aquellos en que tanto el emisor como el receptor conocen una función, digamos $f$ y una palabra, digamos $x$ (la clave), tanto la función como la clave 
+deben ser confidenciales o más comúnmente solo la clave debe ser confidencial. Cuando el emisor desea enviar un mensaje $M$, entonces aplica la función a $M$ y $x$, es decir $M'=f(M,x)$,
+envía $M'$ y el receptor aplica la función inversa y recupera $M$, es decir $M=f^{-1}(M',x)$. Es llamada \emph{simétrica} porque tanto el emisor como el receptor manejan las mismas claves y el emisor puede pasar a receptor y viceversa usando la misma encriptación.   
+
+En los sistemas de clave pública el receptor conoce una clave privada $y$ (no compartida por nadie) y publicita una clave pública $x$, de la misma manera que antes,  si alguien desea enviar un mensaje $M$ al receptor debe hacer $M'=f(M,x)$, pero el receptor para decodificar debe hacer $M=g(M',y)$, donde $g$ es una función adecuada. Una ventaja evidente de los sistemas de clave pública es que no es necesario poner en conocimiento del emisor ninguna clave confidencial, más aún cualquier persona puede enviar en forma confidencial datos a otra persona que ha publicitado su clave.
+
+
+Rivest, Shamir y Adleman descubrieron el primer criptosistema práctico de clave pública, que es llamado RSA. La seguridad del RSA se basa en la dificultad de factorizar números enteros grandes. Este sistema es el más comúnmente recomendado para uso en sistemas de clave pública. La mayor ventaja del RSA es que puede ser usado para proveer privacidad y autenticación (firma digital) en las comunicaciones. Su principal desventaja es que su implementación se basa en exponenciación de números enteros grandes, una operación que consume recursos de la computadora, aunque esto es cada vez menos significativo.
+
+
+Antes de describir el RSA digamos que se basa fuertemente en el teorema de Fermat visto en la sección anterior. 
+
+
+En el sistema RSA deben realizarse algunos paso previos para fijar ciertos parámetros que luego nos permitirán encriptar y desencriptar los mensajes.
+
+%\vskip .4cm 
+
+
+\subsection*{Idea del  algoritmo}
+
+Supongamos que la persona $B$  quiere enviar a la persona $A$ un mensaje $m$ pero encriptado de tal forma que sólo $A$ pueda leer su contenido. Por su parte $A$ hace públicos dos números $e$ y $n$ que son los que se utilizarán para encriptar los mensajes que le envíen. 
+
+Entonces a partir de $m$ la persona $B$ genera un mensaje cifrado $c$ mediante la siguiente ope\-ra\-ción:
+$$
+    c\equiv m^e\ \pmod{n}\ ,
+$$
+donde $e$ y $n$ es la clave pública de $A$.
+
+Ahora $A$ recupera le mensaje $m$ a partir del mensaje en clave $c$ mediante la operación inversa dada por
+$$
+    m\equiv c^d\ \pmod{n}\ ,
+$$
+donde $d$ es la clave privada que solo $A$ conoce.
+
+
+
+%\vskip .3cm 
+
+\subsection*{Elección de claves}
+
+
+%\vskip .3cm 
+
+Sean  $p$ y $q$ primos distintos suficientemente . 
+\begin{itemize}
+    \item  La \emph{clave pública} es $(n, e)$ con $n = pq$ y $e$ tal que $1 < e < (p-1)(q-1)$ y $\operatorname{mcd}(e, (p-1)(q-1)) = 1$. 
+    \item  La \emph{clave privada} es un entero $d$ tal que $ed \equiv 1 \pmod{(p-1)(q-1)}$ y $0 \le d <(p-1)(q-1)$.
+\end{itemize}
+
+
+\begin{observacion*} Algunos comentarios sobre la elección de $p,q,e,d$.
+\begin{itemize}
+\item
+Los dos primos $p$ y $q$ deberían tener alrededor de $100$ dígitos cada uno (longitud considerada segura en este momento).
+\item
+El número $e$ puede elegirse pequeño y se selecciona haciendo prueba y error con el algoritmo de Euclides, es decir probando hasta encontrar un $e$ tal que $\operatorname{mcd}(e, (p-1)(q-1)) = 1$.
+\item
+La existencia de $d$ está garantizada por el teorema \ref{teorema-elc} (ecuación lineal de congruencia), pues $e$ y $(p-1)(q-1)$ son coprimos.
+\end{itemize}
+
+\end{observacion*}
+
+
+%\vskip .4cm 
+
+\subsection*{Encriptar y desencriptar mensajes}
+
+%\vskip .3cm 
+El receptor de mensajes publicita la clave pública $(n,e)$. Obviamente no da a conocer ni $p$, ni $q$ y mantiene segura la clave privada $d$. Como mencionamos anteriormente, el envío del mensaje y su decodificación requiere dos pasos
+\begin{enumerate}[label=\textit{\alph*)}]
+\item  El  emisor desea \emph{encriptar }un número $m \in \{0,\ldots,n-1\}$ y para ello calcula $c \equiv m^e \pmod{n}$ y  envía $c$ al receptor.
+\item  El receptor desea \emph{desencriptar} el mensaje, es decir usando la clave pública $(n, e)$ y $c$, desea recuperar $m$: calcula $c^d \pmod{n}$ y veremos a continuación que este número es $m$. 
+\end{enumerate}
+
+\subsection*{Demostración del método}
+
+Debemos probar que el método anterior funciona  y lo haremos en la siguiente proposición.
+
+\begin{proposicion} \label{rsa}
+    Sean 
+    \begin{itemize}
+        \item $n =pq$ producto de dos números primos,
+        \item $e$ coprimo con $(p-1)(q-1)$, y
+        \item $d$ tal que  $ed \equiv 1 \pmod{(p-1)(q-1)}$.
+    \end{itemize}
+    Entonces si $m \in \{0,\ldots,n-1\}$,  
+    $$c \equiv m^e \pmod{n}\quad \Rightarrow \quad m \equiv c^d \pmod{n}.$$
+\end{proposicion} 
+\begin{proof}
+Como $ed \equiv 1 \pmod{(p - 1)(q - 1)}$, entonces existe $k$ tal que  
+\begin{equation}\label{rsa1}
+ed = 1 + k(p - 1)(q - 1).
+\end{equation}
+Consideremos el mensaje $m$ y si es o no coprimo con $p$.
+
+Si $\operatorname{mcd}(m, p) = 1$, el Teorema de Fermat dice que $m^{p - 1}  \equiv 1\pmod{p}$.
+Entonces $(m^{p - 1})^x \equiv 1\pmod{p}$ para cualquier $x$. En particular, para 
+$x = k(q-1)$. Asi que tenemos:
+\begin{equation*}
+m^{k(p-1)(q-1)} = (m^{p-1})^{k(q-1)} \equiv 1\pmod{p}.
+\end{equation*}
+Multiplicando esta ecuación por $m$ obtenemos
+\begin{equation}\label{rsa2}
+m^{1+k(p-1)(q-1)} \equiv m\pmod{p}. 
+\end{equation}
+Usando las ecuaciones (\ref{rsa1}) y (\ref{rsa2}) obtenemos:
+\begin{equation}\label{rsa3}
+m^{ed} \equiv m\pmod{p} 
+\end{equation}
+Esto, si  $\operatorname{mcd}(m, p) = 1$. Pero si esto último no es cierto, entonces al ser $p$
+primo debemos tener $m \equiv 0\pmod{p}$ y en ese caso la ecuación (\ref{rsa3}) es trivial (dice que $0 \equiv 0$). Concuyendo, la ecuación (\ref{rsa3}) se cumple para todo $m$.
+
+Obviamente podemos reemplazar $p$ por $q$ en el razonamiento anterior, así que la ecuación (\ref{rsa3}) también es verdadera si reemplazamos $p$ por $q$. De esa forma obtenemos:
+$$p|(m^{ed}-m) \qquad \text{ y } \qquad q|(m^{ed}-m).$$
+Como $p$ y $q$ son primos distintos, entonces concluimos que $pq|(m^{ed}-m)$, es decir, $$m^{ed} \equiv m \pmod{pq}.$$
+\end{proof}
+
+\begin{ejemplo*} Probemos el sistema en forma práctica usando primos pequeños, por ejemplo $p=31$, $q=73$. En este caso $n = pq = 2\,263$. 
+
+Busquemos ahora un $e$:  tenemos que $ (p-1)(q-1)= 30\cdot 72 = 2\,160$. Vemos que $2$, $3$, $5$ dividen a $2\,160$, pero $7$ es coprimo con $2\,160$. 
+Tomemos entonces $e = 7$.
+
+Usando el algoritmo de Euclides obtenemos $1 = 2\cdot 2\,160 + (-617)\cdot 7$. Luego, $-617$  es solución de $7x \equiv 1 \pmod{2\,160}$, pero como queremos que la solución sea positiva menor que $2\,160$, podemos tomar $d = 2\,160 -617 =1\,543$. 
+
+Por lo tanto el receptor tiene clave pública $(2\,263, 7)$ y conserva en secreto  su clave privada $1\,543$
+
+- Supongamos que el emisor ha nacido en el año $1993$ y quiere enviarle en secreto al receptor su año de nacimiento. Entonces encripta el año haciendo 
+$$
+1\,993^7 \equiv 10 \pmod{2\,263},
+$$   
+y envía, por una vía insegura, por ejemplo un email, el número $10$ al receptor.
+
+- El receptor calcula
+$$
+10^{1\,543} \pmod{2\,263}
+$$ 
+y obtiene nuevamente $1\,993$ (si quiere convencerse de esto ingrese \texttt{10\^{}1\,543 mod 2\,263} en la ventana de búsqueda de \href{https://www.wolframalpha.com}{Wolfram Alpha}).
+
+Pese a que el cálculo de desencriptado (en este caso $10^{1\,543} \pmod{2\,263}$) puede parecer costoso computacionalmente, hay métodos eficientes para hacerlo como se puede ver, por ejemplo, en la sección \ref{seccion-exponenciacion-modular}. 
+
+\end{ejemplo*}
+
+\subsection*{Firma digital}
+Una propiedad importante del RSA es que puede ser usado para firma digital o autenticación. En las hipótesis de la proposición \ref{rsa}, es claro que lo que probamos es que 
+$$
+(m^e)^d \equiv m \pmod{n},
+$$
+para $m \in \{0,\ldots,n-1\}$. Ahora bien 
+$$
+(m^e)^d  = m^{ed} = (m^d)^e,  
+$$
+es decir
+$$
+(m^d)^e \equiv m \pmod{n}, 
+$$
+para $m \in \{0,\ldots,n-1\}$. Por lo tanto, el receptor puede codificar un número o mensaje $m$ calculando  $b \equiv m^d  \pmod{n}$ y cualquiera que conozca la clave pública puede obtener el original calculando $b^e \pmod{n}$. 
+
+Lo interesante de esto es que si el receptor envía $m$ (el mensaje) y $b$ (la codificación de $m$), cualquiera puede comprobar que el mensaje ha sido codificado por el receptor (y no por otra persona) verificando  que   $m \equiv b^e \pmod{n}$.     
+
+
+\begin{ejemplo*}
+Como ya hemos mencionado, podemos ver que el RSA también puede ser usado para un sistema de \emph{autenticación}, es decir es posible comprobar quien es la persona que envía el mensaje. Veamos una forma de hacerlo: la persona $A$ tiene clave pública $(e,n)$ y clave privada $d$ y   la persona $B$  tiene clave pública $(e',n')$ y clave privada $d'$. 
+
+\begin{enumerate}[label=\textit{\alph*)}]
+    \item  La persona $B$ desea enviar un mensaje $m$ (en forma segura) a la persona $A$ y quiere certificar que el mensaje fue enviado por él.
+    \item  $B$ calcula $x \equiv m^{d'} \pmod{n'}$. Es decir encripta su mensaje usando su  clave privada.
+    \item  Ahora $B$ codifica $m$ y $x$ con la clave pública de $A$, es decir calcula $c \equiv m^{e} \pmod{n}$ e  $y \equiv x^e \pmod{n}$. 
+    \item  $B$ envía $c$ e $y$ al receptor $A$.
+    \item  La persona $A$ recupera $m$ y $x$ calculando  $m \equiv c^d \pmod{n}$ y  $x \equiv y^d \pmod{n}$.
+    \item  $A$ comprueba que el mensaje  proviene de $B$ o, mejor dicho, proviene de la persona con clave pública $(e',n')$, verificando que $m \equiv x^{e'} \pmod{n'}$. 
+\end{enumerate}
+\end{ejemplo*}
+
+\end{section}
+
+\begin{section}{Método binario para exponenciacion modular (*)}\label{seccion-exponenciacion-modular}
+
+    Vimos en la sección anterior que para implementar el criptosistema RSA  es esencial tener una forma eficiente de calcular exponenciación modular,  es decir tener la capacidad de calcular el resto de dividir por cierto número la potencia muy grande de otro número. 
+
+    Más explícitamente, sean $a, d, n$ enteros positivos se desea calcular $r$ tal que $a^d \equiv r \pmod{n}$ con  $0 \le r < n$. En  otras palabras,  se desea calcular el resto de de dividir $a^d$ por $n$. Estaríamos tentados de calcular $a^d$ y luego hacer la congruencia módulo $n$, pero cuando $d$ es grande, por ejemplo $d > 10^{20}$, este cálculo es imposible para cualquier computador. 
+
+    Para realizar el  cálculo de $a^d \equiv r \pmod{n}$ en forma eficiente podemos utilizar el \textit{método binario de exponenciación modular} que explicaremos a continuación. 
+
+    Primero,  recordemos la definición recursiva de la potencia de un número: sea  $a$ número (entero, racional, real, etc.),  entonces 
+    \begin{equation}\label{def-potencia-1}
+        a^d = \left\{
+        \begin{matrix*}[l]
+            1&,&\text{ si $d = 0$,} \\
+            a \cdot a^{d-1}&,&\text{ si $d > 0$.}
+        \end{matrix*}\right.   
+    \end{equation}   
+    
+    Aplicar esta definición tiene el inconveniente de que si $d$ es un número grande, la cantidad de pasos  que se deben realizar para calcular $a^d$ es directamente proporcional (y mayor) a $d$, número que puede ser inmanejable para una computadora. 
+    
+    Una definición alternativa de las potencias de un número nos permite bajar el número de operaciones  en forma significativa. Sea  $a$ número (entero, racional, real, etc.),  entonces
+    \begin{equation}\label{def-potencia-2}
+        a^d = \left\{
+        \begin{matrix*}[l]
+            1&,&\text{ si $d = 0$,} \\
+            a \cdot a^{d-1}&,&\text{  si $d > 0$ y  $d$ impar;} \\
+            {(a^2)}^{\frac{d}{2}}&,&\text{  si $d > 0$ y  $d$ par.}
+        \end{matrix*}\right.   
+    \end{equation}    
+
+    
+    Con esta definición la cantidad de operaciones necesarias para calcular la potencia de un número decrece enormemente. Observemos que mientras que con la definición \eqref{def-potencia-1} la cantidad  de operaciones es del orden de $d$,  con la definición \eqref{def-potencia-2} la cantidad de operaciones es del orden de $\log_2(d)$. 
+    
+    
+\begin{ejemplo}\label{ejemplo-9**17}
+    Supongamos que queremos calcular $9^{17}$.  En  este caso, podríamos hacer este cálculo  directamente, multiplicando $17$ veces $9$ y así obtenemos $16677181699666569$ con $17$ multiplicaciones. Este sería el método que se deduce de la definición recursiva \eqref{def-potencia-mod-1}. 
+
+    Probemos con la segunda definición recursiva:
+    \begin{equation}\label{eq-9**17}
+        \begin{matrix*}[l]
+            9^{17}  &=  9 \cdot 9^{16}& & \\
+                    &=  9 \cdot (9^{2})^8   &=& 3 \cdot 81^8 \\
+                    &=  9 \cdot (81^2)^4 &=&  3 \cdot 6561^4  \\
+                    &=  9 \cdot (6561^2)^2 &=&  3 \cdot 43046721^2\\
+                    &=  9 \cdot 1853020188851841 &=&  16677181699666569.\\
+        \end{matrix*}
+    \end{equation}
+Es decir,  en bastante menos pasos hemos podido calcular $9^{17}$.
+\end{ejemplo}
+
+    
+    Pasemos ahora al problema de calcular exponenciación modular. 
+
+    Supongamos ahora que queremos calcular $r$ tal que, por ejemplo,  
+$$
+    5^{1125899986842625} \equiv r \pmod{100000037},
+$$
+ y $0 \le r < 100000037$. Hacer este cálculo  directamente no nos da un resultado satisfactorio, ni siquiera con un programa de computadora. Pueden hacer el intento con un lenguaje de programación, Python por ejemplo, y verán que el programa no termina. Esto se debe a que $5^{1125899986842625}$  es un número inmenso  cuya representación no cabría en la memoria de ninguna computadora ni actual ni futura. La clave  para poder calcular $r$ es usar un análogo a la definición \eqref{def-potencia-2}, pero con congruencias. Sea $a$ número entero y sean $d \ge 0$ y $n \ge 1$. Definimos $\modulo$ el \textit{operador módulo} de tal forma que $a \modulo n$ devuelve el resto de dividir $a$ por $n$. Hay muchas forma de calcular $a^d \modulo n$, y nosotros elegimos  la siguiente forma recursiva:
+ \begin{equation}\label{def-potencia-mod-1}
+    a^d \modulo n = \left\{
+    \begin{matrix*}[l]
+        1&,&\text{ si $d = 0$,} \\
+        a \cdot (a^{n-1} \modulo n) \modulo n &,&\text{  si $d > 0$ y  $d$ impar;} \\
+        {(a^2 \modulo n)}^{\frac{n}{2}}\modulo n&,&\text{  si $d > 0$ y  $d$ par.}
+    \end{matrix*}\right.   
+\end{equation}
+
+  Esta definición no solo reduce la cantidad de pasos para calcular $r$, si no que, veremos un poco más adelante, también mantiene la cantidad de dígitos de los cálculos intermedios acotada.
+
+  \begin{ejemplo}
+    Sea $n = 23$, calculemos usando  la definición \ref{def-potencia-mod-1}, $r$ tal que  $9^{17} \equiv r \pmod{23}$ con $0 \le r < 23$,  es decir $9^{17} \modulo 23$. Apliquemos la definición \eqref{def-potencia-mod-1} y aprovechemos los cálculos hechos en el ejemplo \ref{ejemplo-9**17}:
+    \begin{equation*}\label{eq-3**17-mod-21}
+        \begin{matrix*}[l]
+            9^{17}  &\equiv  9 \cdot 9^{16}& & &&\\
+                    &\equiv  9 \cdot (9^{2})^8   &\equiv& 9 \cdot 12^8&&\text{(pues $9^2 \equiv 12 \pmod{23}$)} \\
+                    &\equiv  9 \cdot (12^2)^4 &\equiv&  9 \cdot 6^4&&\text{(pues $12^2 \equiv 6\pmod{23}$)}  \\
+                    &\equiv  9 \cdot (6^2)^2 &\equiv&  9 \cdot 13^2&&\text{(pues $6^2 \equiv 13 \pmod{23}$)}\\
+                    &\equiv  9 \cdot 8 &&  &&\text{(pues $13^2 \equiv 8\pmod{23}$)}\\
+                    &\equiv 3 &&  &&\text{(pues $9\cdot 8 \equiv 3 \pmod{23}$).}\\
+        \end{matrix*}
+    \end{equation*}
+    Es decir, $9^{17} \equiv 3 \pmod{23}$. Observar que pese a que $9^{17}$ es un número de $17$ dígitos, los cálculos que hacemos (módulo $23$) involucran pocos dígitos.   
+
+  \end{ejemplo}
+
+Como observamos en el ejemplo,  en cada paso donde $d$ es par tenemos que calcular el cuadrado de un número y elevarlo a una potencia que es la mitad  que la anterior. Luego,  si  el exponente es $d < 2^k$ en alrededor de $k$ pasos (unos pocos más en realidad) obtendremos el resultado deseado. 
+
+En  el caso  que habíamos planteado: calcular $ 5^{1125899986842625} \equiv r \pmod{100000037}$, como $1125899986842625 < 2^{51}$, si lo resolvemos usando el método de la fórmula \eqref{def-potencia-mod-1} necesitaremos poco más de $50$ pasos,y en cada paso la longitud de los dígitos involucrados es totalmente manejable. 
+
+
+La definición \eqref{def-potencia-mod-1}  nos muestra como casi inmediatamente podemos obtener una fórmula recursiva para la exponenciación modular:  sea $n> 0$, definimos $\cociente$ el \textit{operador cociente} de tal forma que $ a \cociente n$ es el cociente entero de dividir $a$ por $n$. Es decir
+\begin{equation*}
+    a = n* (a \cociente n) + (a \modulo n).
+\end{equation*}
+Entonces, nuestro interés es calcular  $f(a,d) =a^d \modulo n$  en forma eficiente y la fórmula \eqref{def-potencia-mod-1} es equivalente a 
+\begin{equation}\label{def-potencia-mod-2}
+    f(a,d) =  \left\{
+    \begin{matrix*}[l]
+        1&,&\text{ si $d = 0$,} \\
+        (a \cdot f(a,d-1)) \modulo n&,&\text{  si $d > 0$ y  $d$ impar;} \\
+        f(a^2 \modulo n, {d}\cociente {2}) &,&\text{  si $d > 0$ y  $d$ par.}
+    \end{matrix*}\right.   
+\end{equation}
+Observar que en la definición hay dos $\modulo n$  que podrían haber sido reemplazados por una instancia de la función $f$ pues $x \modulo n = f(x, 1)$. Pero, en este caso, se pueden calcular directamente por el algorimo de división, pues están aplicados en números considerados ``no grandes''.
+
+
+Esta función recursiva es fácilmente trasladable a pseudocódigo. 
+
+\begin{minipage}{0.90\textwidth}
+    \vskip .5cm
+    \noindent \textsc{Exponenciación modular recursiva}
+    \begin{small}
+        \begin{verbatim}
+def f(a, d):
+    if d == 0:
+        res = 1
+    elif d % 2 == 1:
+        res =  (a * f(a, d - 1)) % n
+    else:
+        res =  f(a**2 % n, d // 2) 
+    return res
+        \end{verbatim}
+    \end{small}
+\end{minipage}
+
+\vskip .2cm 
+
+En pseudocódigo una versión iterativa de la exponenciacion modular se puede describir de la siguiente forma. 
+
+\begin{minipage}{0.90\textwidth}
+    \vskip .5cm
+    \noindent \textsc{Exponenciación modular}
+    \begin{small}
+        \begin{verbatim}
+def exp_modular(a, d, n):
+    res = 1
+    base, exponente = a, d
+    while exponente > 0:
+        # invariante: (a**d) % n = (res * base**exponente) % n
+        if exponente % 2 == 1:
+            res = (res * base) % n
+            exponente = exponente // 2
+            base = base**2 % n
+        elif exponente % 2 == 0:
+            exponente = exponente // 2
+            base = base**2 % n
+    return res
+        \end{verbatim}
+    \end{small}
+\end{minipage}
+\vskip .2cm
+
+\begin{comment}
+\subsection*{Viejo}
+
+En pseudocódigo, una versión iterativa de la exponenciacion modular se puede describir de la siguiente forma. 
+
+\begin{minipage}{0.90\textwidth}
+    \vskip .5cm
+    \noindent \textsc{Exponenciación modular}
+    \begin{small}
+        \begin{verbatim}
+def exp_modular(a, d, n):
+    # pre: a, d >= 0, n > 0
+    # post: calcula res = a**d % n utilizando el método binario 
+    #       de exponenciacion modular
+    res = 1
+    base, exponente = a, d
+    while exponente > 0:
+        # invariante: (a**d) % n = (res * base**exponente) % n
+        if exponente % 2 == 1:
+            res = (res * base) % n
+            exponente = exponente - 1
+        else:
+            res = (res * base**2) % n
+            exponente = exponente // 2
+            base = base**2 % n
+    return res
+        \end{verbatim}
+    \end{small}
+\end{minipage}
+    
+    
+
+\begin{minipage}{0.90\textwidth}
+    \vskip .5cm
+    \noindent \textsc{Exponenciación modular}
+    \begin{small}
+        \begin{verbatim}
+def exp_modular(a, d, n):
+    # pre: a, d >= 0, n > 0
+    # post: calcula em = a**d % n utilizando el método binario 
+    #       de exponenciacion modular
+    a0, em, cociente, resto = a, 1, d, 0
+    while cociente > 0:
+        # invariante: (a**d) % n = (em * a0**cociente) % n
+        resto = cociente % 2
+        cociente = cociente // 2
+        em = (em * a0**resto) % n
+        a0 = a0**2 % n
+    return em
+        \end{verbatim}
+    \end{small}
+\end{minipage}
+
+\begin{enumerate}
+        \item Se calcula la expresión binaria de $d$. 
+        Si $d$ en base $2$ es $d_m...d_0$, entonces
+        $$d = \sum_{i=0}^{m} d_i \cdot  2^i.$$
+        Por lo tanto, 
+        \begin{align*}
+        a^d &= \prod_{i=0}^{m} a^{d_i \cdot 2^i} \\ 
+                     &= \prod_{i=0}^{m} (a^{2^i})^{d_i}.
+        \end{align*}
+        \item 
+        Podemos calcular $c_i \equiv a^{2^i} \pmod{n}$ recursivamente:
+        \begin{itemize}
+            \item $a  \equiv a^{2^0} \pmod{n}$, caso base $i =0$. 
+            \item $a^{2^{i+1}}  \equiv r^2 \pmod{n}$,  donde $r  \equiv a^{2^i} \pmod{n}$  ($i \ge 0$).
+        \end{itemize}
+        \item $a^d  \equiv  \prod_{i=0}^{m} {c_i}^{d_i}\pmod{n}$.
+    \end{enumerate}
+
+El cálculo anterior es eficiente, pero es un poco largo y confuso a la hora de implementarlo en un lenguaje de programación. 
+Sin embargo, como hemos visto más arriba, si $a^2 \equiv a_0 \pmod{n}$, obtenemos la igualdad
+$$
+a^{2^i} = a^{2\cdot 2^{i-1}} = (a^{2})^{2^{i-1}} \equiv a_0^{2^{i-1}} \pmod{n}.
+$$ 
+Luego,  en $i$ pasos podemos obtener el valor $a^{2^i} \pmod{n}$.
+
+Utilizando la idea de escribir el exponente en base $2$, se puede obtener un algoritmo eficiente y más simple en su implementación.
+
+\begin{proposicion}\label{prop-exp-mod}
+    Sea $n \in \N$ y $a,d \in \N_0$ y sean
+    \begin{itemize}
+        \item $a_0 < n$ tal que $a^2 \equiv a_0 \pmod{n}$, y
+        \item $d_0, r$ tales que $d = d_0\cdot 2 + r$ ($0 \le r <n$),
+    \end{itemize}
+    entonces
+    \begin{equation}\label{eq-pmod-2}
+        a^d \equiv  a_0^{d_0}  a^r \pmod n.
+    \end{equation}
+\end{proposicion}
+\begin{proof}
+    $$
+    a^d \equiv a^{d_0\cdot 2 + r} \equiv  (a^2)^{d_0}  a^r  \equiv  a_0^{d_0}  a^r \pmod n.
+    $$
+\end{proof}
+ La clave en la fórmula \eqref{eq-pmod-2} es que el exponente $d_0$ del término de la derecha es la mitad  que el exponente $d$ del término de la izquierda. 
+
+\begin{ejemplo*}
+Supongamos que queremos calcular $r$ tal que 
+$$3^{9} \equiv r\; \pmod 5.$$
+En  este caso, podríamos hacer este cálculo  directamente, pero mostraremos como es el método para ejemplificar. Lo  que haremos es lo siguiente: como $9 = 2\cdot 4 + 1$, tenemos por la fórmula \eqref{eq-pmod-2} que 
+\begin{align*}
+    3^9  &\equiv (3^2)^4 \cdot 3^1 \pmod{5}& &(9 = 4 \cdot 2 +1) \\
+            &\equiv 4^4 \cdot 3 \pmod{5}   && (3^2 \equiv 4) \\% 3^2 \pmod{5} \equiv 9 \pmod{5} \equiv 4
+            &\equiv (4^2)^2\cdot 3^0 \cdot 3 \pmod{5}&& (4 = 2\cdot 2 +0) \\
+            &\equiv 1^2 \cdot 3 \pmod{5}    && (4^2 \equiv 1)\\% 4^2 \pmod{5} \equiv 16 \pmod{5} \equiv 1
+            &\equiv 3 \pmod{5}&&
+\end{align*}
+Observemos,  que  siempre estamos trabajando con números pequeños,  en cambio si hicieramos el cálculo directamente  tendríamos que hacer 
+$$3^{9} = 19683 \equiv 3\; \pmod 5$$
+que es una cuenta un poco más complicada que el cálculo anterior.
+\end{ejemplo*}
+
+Supongamos ahora que queremos calcular 
+$$
+         5^{1125899986842625} \equiv r \pmod{100000037},
+$$
+Hacer este cálculo  directamente no nos da un resultado satisfactorio, ni siquiera con un programa de computadora. Pueden hacer el intento con un lenguaje de programación, Python por ejemplo, y verán que el programa no termina. Ahora bien, como $1125899986842625 < 2^{51}$, usando el método de la fórmula \ref{eq-pmod-2} necesitaremos alrededor de $50$ pasos del tipo: dados $x,c,s$ tal que $0 \le x, c, < 100000037$ y $s = 0, 1$,  encontrar $c'$ tal que:
+$$
+        x^2 \cdot 5^s \cdot c\equiv c'  \pmod{100000037}
+$$
+con $0 \le c' < 100000037$. La clave es que no son muchos pasos y que en cada uno de ellos los cálculos se pueden hacer con facilidad. 
+
+La fórmula de la proposición \ref{prop-exp-mod} nos muestra como casi inmediátamente podemos obtener una fórmula recursiva para la exponenciación modular:  sea $n> 0$, definimos $\modulo$ el \textit{operador módulo} de tal forma que $a \modulo n$ devuelve el resto de dividir $a$ por $n$. También definimos $\cociente$ el \textit{operador cociente} de tal forma que $ a \cociente n$ es el cociente entero de dividir $a$ por $n$. Entonces,  la ecuación \eqref{eq-pmod-2} es equivalente a 
+$$
+a^d \modulo n \; = \;  a_0^{d_0}  a^r \modulo n,
+$$
+donde $a_0 = a^2 \modulo n$, $d_0 = d \cociente 2$ y $r = d \modulo 2$. Por lo tanto,  
+la función $f(a, d) = a^d \modulo n$,  se puede obtener a partir de la siguiente recursión: 
+\begin{align*}
+    f(a,0) &= 1&&(a \in \N) \\
+    f(a,d) &= [f(a^2 \modulo n, d \cociente 2) \cdot a^{d \modulo 2}] \modulo  n&&(a \in \N, d > 0). \\
+\end{align*}  
+
+Esta función recursiva es fácilmente trasladable a pseudocódigo. 
+
+\begin{minipage}{0.90\textwidth}
+    \vskip .5cm
+    \noindent \textsc{Exponenciación modular recursiva}
+    \begin{small}
+        \begin{verbatim}
+def f(a, d):
+    if d == 0:
+        return 1
+    else:
+        return (f(a**2 % n, d // 2) * a**(d % 2)) % n
+        \end{verbatim}
+    \end{small}
+\end{minipage}
+\vskip .2cm
+
+
+\vskip .2cm 
+
+En pseudocódigo una versión iterativa de la exponenciacion modular se puede describir de la siguiente forma. 
+
+\begin{minipage}{0.90\textwidth}
+    \vskip .5cm
+    \noindent \textsc{Exponenciación modular}
+    \begin{small}
+        \begin{verbatim}
+def exp_modular(a, d, n):
+    # pre: a, d >= 0, n > 0
+    # post: calcula em = a**d % n utilizando el método binario 
+    #       de exponenciacion modular
+    a0, em, cociente, resto = a, 1, d, 0
+    while cociente > 0:
+        # invariante: (a**d) % n = (em * a0**cociente) % n
+        resto = cociente % 2
+        cociente = cociente // 2
+        em = (em * a0**resto) % n
+        a0 = a0**2 % n
+    return em
+        \end{verbatim}
+    \end{small}
+\end{minipage}
+\vskip .2cm
+\end{comment}
+
+\end{section}
+
+\begin{section}{Pruebas de primalidad (*)}
+    
+En la implementación del  criptosistema RSA  es fundamental el uso de primos de grandes dimensiones, por ejemplo de más de $100$  dígitos. Ahora bien,  tratar de  demostrar que un número  (grande) es primo buscando sus divisores es imposible con una arquitectura de computadoras determinística,  como la es la de las computadoras actuales. Justamente en la dificultad de la descomposición prima se basa la fortaleza del criptosistema RSA. 
+
+Sin embargo,  veremos en esta parte del apunte  que hay algoritmos que permiten determinar en forma probabilística si un número es primo o no. También mencionaremos, al final de esta sección, algoritmos que determinan eficientemente y en forma determinística si un número es primo a o no. 
+
+
+El algoritmo que veremos principalmente es el test de primalidad Miller-Rabin probabilístico. Como su nombre lo indica  es una prueba probabilística de primalidad: un algoritmo que determina si un número dado es probable que sea primo.
+
+Este test es ampliamente utilizado en la práctica (en RSA, por ejemplo) y es una de las pruebas más simples y rápidas conocidas.
+
+Describamos en forma amplia el método del test: dado $m$ un entero positivo.
+\begin{itemize}
+    \item Si le hacemos el test a $m$ y no supera la prueba, entonces el número no es primo. 
+    \item Si hacemos $k$ veces el test y $m$ supera las $k$ pruebas, entonces  $m$ tiene la probabilidad $1 - ( 1 / 4^k)$ de ser primo. 
+\end{itemize}
+
+El test de  Miller-Rabín se basa en comprobar $k$ veces (para un $k$ dado) si el número es fuertemente probable primo respecto a una base. Veamos a continuación las definiciones necesarias para comprender este concepto. 
+
+\begin{definicion}
+    Sea $n > 2$ un entero impar, entonces $n = 2^s \cdot d + 1$ con $d$ impar. Sea $a$ entero  tal que $0 < a < n$. Entonces diremos que $n$ es \textit{fuertemente probable primo (FPP) respecto a la base $a$} si se cumple
+    \begin{itemize}
+        \item $a^{d} \equiv 1 \pmod{n}$, o
+        \item $a^{2^r\cdot\, d} \equiv -1 \pmod{n}$  para algún $r$ tal que $0 \le r < s$.
+    \end{itemize}
+\end{definicion}
+
+Con la aplicación del teorema de Fermat y la ecuación lineal de congruencia probaremos  que todo número primo es FPP respecto a cualquier base. El contrarrecíproco de esta afirmación nos dice que un número que no es FPP respecto a alguna base es compuesto.
+
+\begin{lema}
+    Sea $n$  un primo impar, entonces las únicas raíces cuadradas de $1$ modulo $n$ son $1$ y $-1$. Es decir, 
+    $$
+    x^2 \equiv 1 \pmod{n}  \quad \Rightarrow\quad x \equiv \pm 1 \pmod{n}.
+    $$
+\end{lema}
+\begin{proof}
+    Sea $x$ tal que $x^2 \equiv 1 \pmod{n}$, luego $x^2 - 1 \equiv 0 \pmod{n}$, como $x^2 -1 = (x-1)(x+1)$, obtenemos  $(x-1)(x+1) \equiv 0 \pmod{n}$. Esto quiere decir  que $n|  (x-1)(x+1)$. Como $n$  es primo, $n | x -1$ o $n| x +1$, es decir $x  \equiv 1 \pmod{n}$  o $x  \equiv -1 \pmod{n}$.
+\end{proof}
+
+\begin{teorema}
+    Si $n$ es un primo impar, entonces $n$ es FPP para cualquier base  $a$ con $0 < a < n$.
+\end{teorema}
+\begin{proof}
+    Consideremos la sucesión $a^{2^s \cdot d}, a^{2^{s-1} \cdot d}, \dots, a^{2d}, a^d$ y  observemos que cada término de la sucesión es el cuadrado del siguiente.
+
+     Por el teorema de Fermat,  $a^{2^s \cdot d} = a^{n-1} \equiv 1 \pmod{n}$. Luego $(a^{2^{s-1} \cdot d})^2 \equiv 1 \pmod{n}$ y por lo tanto $a^{2^{s-1} \cdot d}$ es una raíz cuadrada de $1$ módulo $n$. Por el lema anterior obtenemos  que  $a^{2^{s-1} \cdot d} \equiv \pm 1 \pmod{n}$.
+
+     Si  $a^{2^{s-1} \cdot d} \equiv - 1 \pmod{n}$, obtenemos el resultado.  En caso contrario  $a^{2^{s-1} \cdot d} \equiv 1 \pmod{n}$,  luego $(a^{2^{s-2} \cdot d})^2 \equiv 1 \pmod{n}$ y por lo tanto $a^{2^{s-2} \cdot d}$ es una raíz cuadrada de $1$ módulo $n$ y en consecuencia  $a^{2^{s-2} \cdot d} \equiv \pm 1 \pmod{n}$. 
+
+     Iterando el razonamiento anterior concluimos que alguno de los términos de la sucesión $ a^{2^{r} \cdot d}$  es congruente   a $-1$ módulo $n$ o bien todos los términos son congruentes a $1$,  en particular $a^{d} \equiv 1 \pmod{n}$, con lo cual $n$ resulta ser probable primo fuerte.   
+\end{proof}
+
+
+Ahora bien, también es cierto el recíproco (que no demostraremos): un número $n$ que es FPP respecto a todas las bases $ 0 < a < n$ es primo. Podríamos intentar ver que un número es primo  probando que es FPP para cualquier base, pero este cálculo es computacionalmente imposible para primos grandes.  
+
+Por otro lado, un número $n$ que es FPP respecto alguna base $ 0 < a < n$ podría ser compuesto, pero hay una probabilidad mayor que $0.75$ de que sea primo. La verificación con diferentes bases de que un número es FPP acerca a $1$ la probabilidad de que el número sea primo.  
+
+El test probabilístico de primalidad de Miller-Rabin se basa en las observaciones realizadas más arriba: sea $n$ entero positivo impar y sea $k$ entero positivo.  
+\begin{enumerate}
+    \item\label{mr-p1} Elegir al  azar $a$ entero tal que $0 < a < n$.
+    \item\label{mr-p2} Verificar que  $n$ es FPP respecto a la base $a$.
+    \item\label{mr-p3} Repetir \ref{mr-p1} y \ref{mr-p2} $k$ veces.
+\end{enumerate}
+
+Si $n$ es FPP las $k$ veces,  entonces decimos que $n$ supera el test probabilístico de primalidad de Miller-Rabin y tiene probabilidad $1 - ( 1 / 4^k)$ de ser primo (y lo consideramos primo).  
+
+Mostramos a continuación una implementación en pseudocódigo. 
+
+
+    \begin{minipage}{0.90\textwidth}
+        \vskip .4cm
+        \noindent \textsc{Test de primalidad de Miller-Rabin}
+        \begin{small}
+            \begin{verbatim}
+def test_Miller_Rabin(n: int, k: int) -> bool:
+    s, d = satisfacen n = 2**s * d + 1, s impar
+    repetir k veces:
+        a = entero al azar entre 2 y n-1
+        fpp = False # suponemos n no es fuertemente primo en base a
+        if 1 == a**d % n:
+            fpp = True
+        else:
+            r = 0
+            while r <= s and fpp == False:
+                if n - 1 == a**(2**r * d) % n:
+                    fpp = True
+                r = r + 1
+            if fpp == False: # si n no pasa la prueba
+                return False
+    return True # n pasó las k pruebas
+            \end{verbatim}
+        \end{small}
+    \end{minipage}
+
+    \vskip .2cm
+Observemos que el test de primalidad de Miller-Rabin hace uso de la exponenciación modular y por lo tanto debe ser implementado usando el método binario de exponenciación modular. 
+
+El test de Miller-Rabin probabilístico se deriva del test de Miller: asumiendo que es válida la Hipótesis de Riemman, sea $n$ entero positivo,  si comprobamos que $n$ es FPP en base $a$ con $2 < a < 2\ln(n)^2$,  entonces $n$  es primo.  
+
+El test de Miller no se utiliza en la práctica. Para la mayoría de los propósitos, el uso adecuado de la prueba probabilística de Miller-Rabin es mucho más rápida y brinda suficente seguridad del resultado. Para fines teóricos que requieren un algoritmo de tiempo polinomial determinista, el test de Miller fue reemplazado por la prueba de primalidad de  Agrawal–Kayal–Saxena  (AKS), que no se basa en suposiciones no probadas.
+
+
+\end{section}

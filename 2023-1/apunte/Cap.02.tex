@@ -1,0 +1,1006 @@
+\chapter[Conteo]{Conteo}\label{cap.conteo}
+
+Intuitivamente, diremos que un conjunto $A$ es finito si podemos contar la cantidad de elementos que tiene. En ese caso denotaremos $|A|$ la cantidad de elementos de $A$ y la llamaremos el {\em cardinal de $A$}\index{cardinal de un conjunto}.  
+
+Formalmente, un conjunto $A$ es finito y tiene  cardinal $n$  si existe una función $f: \{1,\ldots,n\} \to A$ biyectiva. Sin embargo,  a lo largo del curso usaremos sólo la definición intuitiva y  no formal de cardinal, más que suficiente para aprender los principios básicos de conteo.  
+
+\begin{section}{Principios básicos de conteo}\label{seccion-principios-basicos-de-conteo}
+
+
+\subsection*{El principio de adición}
+
+Se puede realizar una acción $X$ de $n$ formas distintas o, alternativamente, se puede realizar otra acción $Y$ de $m$ formas distintas. Entonces el número de formas de realizar la acción ``$X$ o $Y$'' es $n + m$.
+
+\begin{ejemplo}\label{cine} Supongamos que una persona va a salir a pasear  y puede ir al cine donde hay $3$ películas en cartel o al teatro donde hay $4$ obras posibles. Entonces, tendrá un total de $3+4=7$ formas distintas de elegir el paseo. 
+\end{ejemplo}
+
+
+Este principio es el más básico del conteo y más formalmente dice que si $A$ y $B$ son conjuntos finitos disjuntos, entonces 
+\begin{equation*}
+|A \cup B| =|A|+|B|.
+\end{equation*}
+El principio es fácilmente generalizable a varios conjuntos.
+
+\begin{proposicion}\label{principiodeadicion}
+Sean $A_1,\ldots,A_n$ conjuntos finitos tal que $A_i \cap A_j = \emptyset$ cuando $i\not=j$, entonces 
+\begin{equation*}
+|A_1 \cup \cdots \cup A_n| =|A_1|+\cdots+|A_n|.
+\end{equation*}
+\end{proposicion}
+
+
+
+\begin{proof} 
+La  prueba se hace por inducción en $n$. Debemos probar 
+\begin{align*}
+P(n) =\; &\text{Si $A_1,\ldots,A_n$ conjuntos finitos disjuntos dos a dos, entonces }\\  &|A_1 \cup \cdots \cup A_n| =|A_1|+\cdots+|A_n|.
+\end{align*}
+
+\noindent({\em Caso base $n=1$}) En este caso no hay nada que probar pues  $|A_1|=|A_1|$.
+
+\noindent({\em Paso inductivo}) La hipótesis inductiva es $P(k)$ y debemos probar que $P(k) \Rightarrow P(k+1)$. Si denotamos $B = A_1 \cup \cdots \cup A_k$, entonces 
+$$
+A_1 \cup \cdots \cup A_{k+1} = B \cup A_{k+1}
+$$
+Ahora bien, si $x \in B \cap A_{k+1}$, entonces $x \in A_i$ para algún $i < k+1$ y $x \in A_{k+1}$. Como $A_{i} \cap A_{k+1} = \emptyset$, se produce un absurdo  que viene de suponer que existía un elemento en $B \cap A_{k+1}$. Luego   $B \cap A_{k+1}= \emptyset$ y por el principio de adición  $|B \cup A_{k+1}| = |B|+|A_{k+1}|$. 
+
+Por la hipótesis inductiva tenemos que 
+$$
+|B| = |A_1 \cup \cdots \cup A_k| =|A_1|+\cdots+|A_k|,
+$$
+Luego
+$$
+|A_1 \cup \cdots \cup A_k \cup  A_{k+1}| = |B|+|A_{k+1}| = |A_1|+\cdots+|A_k|+|A_{k+1}|.
+$$
+\end{proof}
+
+
+
+Si $A$ y $B$ no son disjuntos, cuando sumamos $|A|$ y $|B|$ estamos contando $A \cap B$ dos veces. Entonces, para
+obtener la respuesta correcta debemos restar $|A \cap B|$ y obtenemos
+$$
+|A \cup B| = |A|+|B| - |A \cap B|.
+$$
+Generalizar la fórmula de arriba a más conjuntos no es del todo sencillo y es el  llamado principio del tamiz o principio de inclusión-exclusión (ver apéndice \ref{ape.principio_del_tamiz}). 
+
+
+%\vskip .3cm
+
+\subsection*{El principio de multiplicación}
+
+Suponga que una actividad consiste de $2$ etapas y la primera etapa puede ser realizada de $n_1$ maneras y la etapa $2$  puede realizarse de $n_2$  maneras, independientemente de como se ha hecho la etapa $1$. Entonces toda la actividad puede ser realizada de $n_1\cdot n_2$  formas distintas.
+
+
+\begin{ejemplo*}
+Supongamos que la persona del ejemplo \ref{cine} tiene suficiente tiempo y dinero para ir primero al cine y luego al teatro. Entonces tendrá  $3 \cdot 4=12$ formas distintas de hacer el paseo.
+\end{ejemplo*}
+
+
+Formalmente, si $A,B$ conjuntos y definimos el {\em producto cartesiano}\index{producto cartesiano} entre $A$ y $B$ por
+$$
+A \times B = \{(a,b): a \in A, b \in B\}.
+$$
+Entonces si $A$ y $B$ son conjuntos finitos se cumple que
+$$
+|A \times B| = |A|\cdot|B|.  
+$$
+
+\end{section}
+
+\begin{section}{Selecciones ordenadas con repetición}\label{sccion-selecciones-ordenadas-con-repeticion}
+
+Un aplicación inmediata del principio de multiplicación  es que nos permite calcular la cantidad de selecciones ordenadas con repetición. 
+
+\begin{ejemplo*} Sea  $X = \{ 1, 2, 3 \}$ ¿de cuántas formas se pueden elegir dos de estos números en forma ordenada?
+Es decir, debemos elegir dos números $a$ y $b$ teniendo en cuenta que si $a\not=b$ no es lo mismo elegir $a$ y luego $b$ que $b$ y $a$.  
+
+Para no escribir demasiado vamos a adoptar una notación muy conveniente: si elegimos $a$ y $b$ en forma ordenada, denotamos $ab$. Entonces, en muy breve espacio seremos capaces de escribir todas las selecciones ordenadas de $2$ elementos del  conjunto  $ \{ 1, 2, 3 \}$:
+\begin{align*}
+&11&\quad &12&\quad &13 \\
+&21&\quad &22&\quad &23\\
+&31&\quad &32&\quad &33
+\end{align*}
+Son $9 = 3^2$ formas. ¿Cómo justificamos esto? Es claro que para la primera elección tenemos $3$ valores posibles y para la segunda elección tenemos también $3$ valores posibles, entonces, por el principio de multiplicación, tenemos en total $3\cdot 3$ elecciones posibles.  
+
+Avancemos un poco más y ahora elijamos en forma ordenada $3$ elementos de  $[[ 1 , 3]]$, es claro que estas elecciones son
+\begin{align*}
+&1 1 1&\quad &211&\quad &311 \\
+&1 1 2&\quad & 212&\quad & 312\\
+&1 1 3&\quad & 213&\quad & 313\\
+&1 2 1&\quad & 221&\quad & 321\\
+&1 2 2&\quad & 222&\quad & 322\\
+&1 2 3&\quad & 223&\quad & 323\\
+&1 3 1&\quad & 231&\quad & 331\\
+&1 3 2&\quad & 232&\quad & 332\\
+&1 3 3&\quad & 233&\quad & 333.
+\end{align*}
+El total de elecciones posibles $27 = 3^3$. Esto se justifica usando dos veces el principio de multiplicación: para la primera elección tenemos $3$ va\-lo\-res posibles. Para la segunda elección tenemos también $3$ valores posibles, entonces, por el principio de multiplicación, tenemos en total $3\cdot 3$ va\-lo\-res posibles para la elección de los dos primeros números. Como para la tercera elección tenemos $3$ valores posibles, por el principio de multiplicación nuevamente, tenemos   $3\cdot 3 \cdot 3$ elecciones posibles.
+
+Un diagrama arbolado ayuda a pensar.
+
+
+\begin{tikzpicture}[line width=1pt,scale=0.8]    
+\lineatz{5}{-95}{28}{-35}
+\lineatz{5}{-95}{28}{-95}
+\lineatz{5}{-95}{28}{-155}
+
+\ponertz{30}{-35}{1}
+\lineatz{32}{-35}{57}{-15}
+\lineatz{32}{-35}{57}{-35}
+\lineatz{32}{-35}{57}{-50}
+
+
+\ponertz{60}{-15}{1}
+\lineatz{62}{-15}{87}{-10}
+\lineatz{62}{-15}{87}{-15}
+\lineatz{62}{-15}{87}{-20}
+\ponertz{90}{-10}{1}
+\ponertz{90}{-15}{2}
+\ponertz{90}{-20}{3}
+\ponertz{100}{-10}{111}
+\ponertz{100}{-15}{112}
+\ponertz{100}{-20}{113}
+
+\ponertz{60}{-35}{2}
+\lineatz{62}{-35}{87}{-30}
+\lineatz{62}{-35}{87}{-35}
+\lineatz{62}{-35}{87}{-40}
+\ponertz{90}{-30}{1}
+\ponertz{90}{-35}{2}
+\ponertz{90}{-40}{3}
+\ponertz{100}{-30}{121}
+\ponertz{100}{-35}{122}
+\ponertz{100}{-40}{123}
+
+
+\ponertz{60}{-55}{3}
+\lineatz{62}{-55}{87}{-50}
+\lineatz{62}{-55}{87}{-55}
+\lineatz{62}{-55}{87}{-60}
+\ponertz{90}{-50}{1}
+\ponertz{90}{-55}{2}
+\ponertz{90}{-60}{3}
+\ponertz{100}{-50}{131}
+\ponertz{100}{-55}{132}
+\ponertz{100}{-60}{133}
+
+
+\ponertz{30}{-95}{2}
+\lineatz{32}{-95}{57}{-75}
+\lineatz{32}{-95}{57}{-95}
+\lineatz{32}{-95}{57}{-115}
+
+\ponertz{60}{-75}{1}
+\lineatz{62}{-75}{87}{-70}
+\lineatz{62}{-75}{87}{-75}
+\lineatz{62}{-75}{87}{-80}
+\ponertz{90}{-70}{1}
+\ponertz{90}{-75}{2}
+\ponertz{90}{-80}{3}
+\ponertz{100}{-70}{211}
+\ponertz{100}{-75}{212}
+\ponertz{100}{-80}{213}
+
+
+\ponertz{60}{-95}{2}
+\lineatz{62}{-95}{87}{-90}
+\lineatz{62}{-95}{87}{-95}
+\lineatz{62}{-95}{87}{-100}
+\ponertz{90}{-90}{1}
+\ponertz{90}{-95}{2}
+\ponertz{90}{-100}{3}
+\ponertz{100}{-90}{221}
+\ponertz{100}{-95}{222}
+\ponertz{100}{-100}{223}
+
+\ponertz{60}{-115}{3}
+\lineatz{62}{-115}{87}{-110}
+\lineatz{62}{-115}{87}{-115}
+\lineatz{62}{-115}{87}{-120}
+\ponertz{90}{-110}{1}
+\ponertz{90}{-115}{2}
+\ponertz{90}{-120}{3}
+\ponertz{100}{-110}{231}
+\ponertz{100}{-115}{232}
+\ponertz{100}{-120}{233}
+
+
+\ponertz{30}{-155}{3}
+\lineatz{32}{-155}{57}{-135}
+\lineatz{32}{-155}{57}{-155}
+\lineatz{32}{-155}{57}{-175}
+
+\ponertz{60}{-135}{1}
+\lineatz{62}{-135}{87}{-130}
+\lineatz{62}{-135}{87}{-135}
+\lineatz{62}{-135}{87}{-140}
+\ponertz{90}{-130}{1}
+\ponertz{90}{-135}{2}
+\ponertz{90}{-140}{3}
+\ponertz{100}{-130}{311}
+\ponertz{100}{-135}{312}
+\ponertz{100}{-140}{313}
+
+\ponertz{60}{-155}{2}
+\lineatz{62}{-155}{87}{-150}
+\lineatz{62}{-155}{87}{-155}
+\lineatz{62}{-155}{87}{-160}
+\ponertz{90}{-150}{1}
+\ponertz{90}{-155}{2}
+\ponertz{90}{-160}{3}
+\ponertz{100}{-150}{321}
+\ponertz{100}{-155}{322}
+\ponertz{100}{-160}{323}
+
+\ponertz{60}{-175}{3}
+\lineatz{62}{-175}{87}{-170}
+\lineatz{62}{-175}{87}{-175}
+\lineatz{62}{-175}{87}{-180}
+\ponertz{90}{-170}{1}
+\ponertz{90}{-175}{2}
+\ponertz{90}{-180}{3}
+\ponertz{100}{-170}{331}
+\ponertz{100}{-175}{332}
+\ponertz{100}{-180}{333}
+\end{tikzpicture}
+
+
+%\vskip .3cm
+
+Cada rama del árbol representa una selección ordenada de elementos de $ \{ 1, 2, 3 \}$.
+
+\end{ejemplo*}
+
+El razonamiento anterior  se puede extender:
+
+\begin{proposicion}
+Sean  $m,n \in \mathbb N$. Hay   $n^m$ formas posibles de elegir ordenadamente $m$ elementos de un conjunto de $n$ elementos.
+\end{proposicion}
+\begin{proof}[Idea de la prueba]
+La prueba de esta proposición se basa en aplicar el principio de multiplicación $m-1$ veces, es decir debemos hacer inducción sobre $m$ y usar el principio de multiplicación en el paso inductivo. 
+\end{proof}
+
+\begin{ejemplo*}
+¿Cuántos números de cuatro dígitos pueden formarse con
+los dígitos $1, 2, 3, 4, 5, 6$?
+
+Por la proposición anterior es claro que hay $6^4$ números posibles.
+\end{ejemplo*}
+
+
+\begin{ejemplo*}
+¿Cuántos números de $5$ dígitos y capicúas pueden formarse
+con los números dígitos $1, 2, 3, 4, 5, 6, 7, 8$? Un número
+capicúa de cinco dígitos es de la forma
+$$xyzyx$$
+Se reduce a ver cuántos números de tres dígitos pueden
+formarse con aquéllos dígitos.
+Exactamente $8^3$.
+\end{ejemplo*}
+
+
+
+ 
+
+\begin{ejemplo*} Sea $X$ un conjunto de $m$ elementos. Queremos contar cuántos subconjuntos tiene este conjunto. 
+Por ejemplo, si $X = \{ a, b, c \}$ los subconjuntos de $X$ son exactamente
+$$
+\emptyset, \{ a \} , \{ b \}, \{ c \}, \{ a, b \}, \{ a, c \}, \{ b, c \}, \{ a, b, c\}.
+$$ 
+Es decir que existen $8$ subconjuntos de $X$, un conjunto de $3$ elementos. ¿Cómo podemos encontrar razonando este número? Un forma sería la siguiente:  cuando elijo un subconjunto el $a$ puede estar o no estar en el subconjunto, es decir hay dos posibilidades. Con el $b$ pasa lo mismo, puede estar o no estar y por lo tanto hay $2$ posibilidades. Con el $c$ se hace un razonamiento análogo y por lo tanto tenemos que hay en total 
+$$
+2 \cdot 2 \cdot 2 = 2^3 = 8
+$$
+posibles subconjuntos de $X$.  
+
+Otra forma de verlo: podemos identificar  cada subconjunto de  $X$ con una terna ordenada de $0$'s y $1$'s de la siguiente manera: si $a$ está en el subconjunto la primera coordenada de la terna es $1$, si no es $0$;  si $b$ está en el subconjunto la segunda coordenada de la terna es $1$, si no es $0$;  si $c$ está en el subconjunto la tercera coordenada de la terna es $1$, si no es $0$. Es decir tenemos la identificación
+
+
+
+\begin{align*}
+&\emptyset& &\leftrightarrow& &000 \\ 
+&\{ a \} & &\leftrightarrow& &100 \\ 
+&\{ b \}& &\leftrightarrow& &010 \\ 
+&\{ c \}& &\leftrightarrow& &001 \\ 
+&\{ a, b \}& &\leftrightarrow& &110 \\ 
+&\{ a, c \}& &\leftrightarrow& &101 \\ 
+&\{ b, c \}& &\leftrightarrow& &011 \\ 
+&\{ a, b, c\}& &\leftrightarrow& &111 .
+\end{align*}
+ 
+Observar entonces que seleccionar un subconjunto de $X$ es equivalente a elegir en forma ordenada $3$ elementos del conjunto $\{ 0, 1 \}$; y sabemos entonces que en ese caso tenemos $2^3$ posibilidades. 
+
+En general, cuando $X$ tiene $n$ elementos, 
+elegir un subconjunto de $X$ es  equivalente a elegir en forma 
+ordenada $n$ elementos del conjunto $\{ 0, 1 \}$ y por lo tanto
+
+\begin{proposicion}\label{cardp} La cantidad de subconjuntos de  
+un conjunto de $n$ elementos es $2^n$.
+\end{proposicion}
+
+Dado  $X$ un conjunto, denotamos $\mathcal P(X)$ el  conjunto  formado por todos los subconjuntos de $X$, por ejemplo
+$$
+\mathcal P(\{1,2\}) = \{\emptyset,\{1\},\{2\},\{1,2\}\}.
+$$  
+Si $X$ es un conjunto finito la proposición \ref{cardp} nos dice que
+$$
+\mathcal |\mathcal P(X)| = 2^{|X|}
+$$
+\end{ejemplo*}
+
+\end{section}
+
+\begin{section}{Selecciones ordenadas sin repetición}\label{seccion-selecciones-ordenadas-sin-repeticion}
+
+Sea $n \in \mathbb{N}$. Recordemos  que  definimos recursivamente \emph{factorial de $n$} al número denotado 
+$$n!,$$
+tal que
+\begin{align*}
+1! &= 1\\
+(n + 1)! &= n!  (n + 1)
+\end{align*}
+Definimos también
+$$0! = 1$$
+Por ejemplo
+\begin{align*}
+2! &= 2 \cdot 1 = 2 \\
+3! &= 3 \cdot 2 \cdot 1 = 6 \\
+4! &= 3!\cdot 4 = 6 \cdot 4 = 24. 
+\end{align*}
+
+Si  $n \in \mathbb N$, denotaremos  $[[ 1 , n]]$ al conjunto de los primeros $n$ números naturales. Es decir:
+$$
+ [[ 1 , n]] = \{ 1, 2, \ldots,n\}.
+$$  
+
+Ahora estudiaremos las selecciones ordenadas de $m$ elementos entre $n$ donde {\em no} se permite la repetición. Es decir si  el conjunto es $A= \{a_1,a_2,\ldots,a_n\}$, las selecciones deben ser del tipo 
+$$
+a_{i_1} a_{i_2} \cdots a_{i_m}
+$$
+donde  $a_{i_j} \not= a_{i_k}$ si $i\not=k$. 
+
+Por ejemplo, las selecciones de $3$ elementos en forma ordenada y sin repetición de $[[1, 3]]$  son exactamente
+$$
+1 2 3,\; 1 3 2,\; 2 1 3,\; 2 3 1,\; 3 1 2,\; 3 2 1
+$$
+(son las ternas donde los tres números son distintos). O sea hay $6$ selecciones ordenadas y sin repetición de  elementos de $[[1, 3]]$.
+
+Notemos que
+$$
+3 \cdot 2 \cdot 1 = 6 = 3!
+$$
+Esta forma de escribir nos da la razón de que haya $6$ selecciones ordenadas y sin repetición de  elementos de $[[1, 3]]$: para la elección del primer elemento tenemos $3$ posibilidades (el $1, 2$ o $3$). Cuando elegimos el segundo elemento, si queremos que no haya repetición, debemos excluir el valor elegido en primer lugar, o sea que tenemos solo $2$ elecciones. Análogamente para la tercera elección solo hay solo una posibilidad, pues debemos descartar los valores elegidos en el primer y segundo lugar. Tenemos entonces  $3 \cdot 2 \cdot 1$ selecciones posibles.
+
+En un diagrama arbolado la selección se puede representar de la siguiente forma:
+
+%\vskip .3cm
+
+\begin{tikzpicture}[line width=1pt]
+\lineatz{5}{-35}{27}{-15}
+\lineatz{5}{-35}{27}{-35}
+\lineatz{5}{-35}{27}{-55}
+
+
+\ponertz{30}{-15}{1}
+\lineatz{32}{-15}{57}{-10}
+\lineatz{32}{-15}{57}{-20}
+\ponertz{60}{-10}{2}
+\ponertz{60}{-20}{3}
+\lineatz{62}{-10}{87}{-10}
+\lineatz{62}{-20}{87}{-20}
+\ponertz{90}{-10}{3}
+\ponertz{90}{-20}{2}
+\ponertz{100}{-10}{123}
+\ponertz{100}{-20}{132}
+
+\ponertz{30}{-35}{2}
+\lineatz{32}{-35}{57}{-30}
+\lineatz{32}{-35}{57}{-40}
+\ponertz{60}{-30}{1}
+\ponertz{60}{-40}{3}
+\lineatz{62}{-30}{87}{-30}
+\lineatz{62}{-40}{87}{-40}
+\ponertz{90}{-30}{3}
+\ponertz{90}{-40}{1}
+\ponertz{100}{-30}{213}
+\ponertz{100}{-40}{231}
+
+
+\ponertz{30}{-55}{3}
+\lineatz{32}{-55}{57}{-50}
+\lineatz{32}{-55}{57}{-60}
+\ponertz{60}{-50}{1}
+\ponertz{60}{-60}{2}
+\lineatz{62}{-50}{87}{-50}
+\lineatz{62}{-60}{87}{-60}
+\ponertz{90}{-50}{2}
+\ponertz{90}{-60}{1}
+\ponertz{100}{-50}{312}
+\ponertz{100}{-60}{321}
+\end{tikzpicture}
+
+
+El número total es entonces $3 \cdot 2 \cdot 1 = 6$.
+
+Pensemos ahora que queremos elegir en forma ordenada y sin repetición $3$ elementos entre $5$. Entonces para la primera elección tenemos $5$ posibilidades, para la segunda $4$ posibilidades y para la tercera $3$ posibilidades haciendo un total de 
+$$
+5 \cdot 4 \cdot 3
+$$
+selecciones posibles. 
+
+
+\begin{proposicion}[Principio de las casillas]
+    Si $n < m$, no hay ninguna selección ordenada y  sin repetición de $m$ elementos  de un conjunto de $n$ elementos.
+\end{proposicion}
+
+El principio de las casillas, también llamado \textit{principio del palomar} o \textit{principio de Dirichlet}, es intuitivamente trivial: si hay más personas que asientos, ¡alguien se quedará parado!. Su demostración no es difícil y se basa en la definición formal de conteo, con el uso de funciones biyectivas e inyectivas.
+
+\begin{proposicion}\label{prop1}
+Si $n \ge m$ entonces existen
+\begin{equation*}
+ n \cdot (n - 1) \cdots (n - (m - 1)), \qquad \text{$m$ - factores}
+\end{equation*}
+selecciones ordenadas y sin repetición de $m$ elementos de un conjunto de $n$ elementos.
+\end{proposicion}
+\begin{proof} La prueba es una generalización del razonamiento aplicado más arriba en los e\-jem\-plos: debemos seleccionar $m$-veces elementos de un conjunto que tiene $n$ elementos. La primera selección puede ser de cualquiera de los $n$ objetos; la segunda selección debe recaer en uno de los $n-1$ elementos restantes. De manera similar, hay $n-2$ posibilidades para la tercera selección, y así sucesivamente. Cuando hacemos la $m$-ésima selección, $m-1$ elementos ya han sido seleccionados, y entonces el elemento seleccionado debe ser uno de los $n-(m-1)$ elementos restantes. Por consiguiente el número total de
+selecciones es el propuesto. 
+\end{proof}
+
+\begin{observacion*}
+El resultado anterior en particular nos dice que existen
+$$
+n \cdot (n - 1) \cdots (n - (n - 1)) = n \cdot (n - 1) \cdots 1 = n!
+$$
+selecciones ordenadas y sin repetición de  $n$ elementos en un conjunto con $n$ elementos y esta podría ser una motivación natural del factorial.
+
+
+Las selecciones ordenadas y sin repetición de  $n$ elementos en un conjunto con $n$ elementos se denominan {\em permutaciones}\index{permutación} de grado $n$. Hay, pues, $n!$ permutaciones de grado $n$.
+\end{observacion*}
+
+Volviendo al resultado de la proposición \ref{prop1}, por ejemplo hay 
+\begin{itemize}
+\item $7 \cdot 6 \cdot 5$ selecciones ordenadas y sin repetición de $3$ elementos de  $[[1,7]]$,
+\item $7 \cdot 6 \cdot 5 \cdot 4 \cdot 3$  selecciones ordenadas y sin repetición de $5$ elementos de $[[1,7]]$ y
+\item $7!$  selecciones ordenadas y sin repetición de todos los elementos de $[[1,7]]$.
+\end{itemize}
+%\vskip .3cm
+
+Notemos que si $n \ge m$ entonces
+$$
+n \cdot (n - 1) \cdots (n - (m - 1)) = \frac{n!}{(n - m)!}
+$$
+pues
+$$
+n! = n \cdot (n - 1 ) \cdots (n -(m - 1 ) ) \cdot (n -m)!
+$$
+
+Por lo tanto  la proposición \ref{prop1} se puede reescribir de 
+la siguiente manera:
+
+% \vskip .5cm
+
+\begin{proposicion}Si $n \ge m$ entonces existen
+\begin{equation*}
+\frac{n!}{(n - m)!}
+\end{equation*}
+selecciones ordenadas y sin repetición de $m$ elementos de un conjunto de $n$ elementos.
+\end{proposicion}
+
+%\begin{ejercicio} Simplificar las expresiones siguientes ($n \in \mathbb N$)
+%\begin{align*}
+%&\text{a) } \frac{n!}{( n - 2 ) !} \quad\text{ si } 2 \le n&  & \text{b) } \frac{(n + 2)!}{n!}  \\
+%&\text{c) } \frac{(n + 2)!}{( n - 2 ) !} \quad\text{ si } 2 \le n&  & \text{d) } \frac{n!}{(n-2)! 2!}  \quad \text{ si } 2 \le n\\
+%&\text{e) } \frac{(n-1)!}{(n + 2)!}& \ &
+%\end{align*}
+%\end{ejercicio}
+
+\begin{ejemplo*}
+Si en un colectivo hay $10$ asientos vacíos. ¿De cuántas formas
+pueden sentarse $7$ personas? Se trata de ver cuantas selecciones ordenadas y sin repetición de $7$ asientos entre $10$. 
+
+Este número es
+$$
+10 \cdot 9 \cdot 8 \cdot 7 \cdot 6 \cdot 5 \cdot 4, \qquad \text{$7$ - factores.}
+$$
+\end{ejemplo*}
+
+
+\begin{ejemplo*}
+¿Cuántas permutaciones pueden formarse con las letras de
+{\em silvia}?
+
+Afirmamos que se pueden formar  $\displaystyle{\frac{6!}{2!}}$ palabras usando las letras de {\em silvia}.
+
+Si escribo en lugar de {\em silvia},
+$$
+\text{\em s i l v i' a}
+$$
+Es decir si cambio la segunda {\em i } por {\em i'}, todas las letras son distintas, luego hay $6!$ permutaciones, pero
+cada par de permutaciones del tipo
+\begin{align*}
+\cdots \text{\em i } \cdots  \text{\em i' }  \cdots \\
+\cdots \text{\em i' } \cdots  \text{\em i } \cdots
+\end{align*}
+coinciden, por lo tanto tengo que dividir por $2$ el número total de permutaciones.
+
+Tomemos la palabra
+$$
+\text{\em ramanathan}
+$$
+el número total de permutaciones es $\displaystyle{\frac{10!}{ 4!2!}}$.
+
+En efecto, escribiendo el nombre anterior así 
+$$
+r\;a_1\;m\;a_2\;n_1\;a_3\;t\;h\;a_4\;n_1
+$$
+el número total de permutaciones es $10!$ Pero
+permutando las $a_i$ y las $n_i$ sin mover las otras letras obtenemos
+la misma permutación de {\em ramanathan}.
+
+Como hay $4!$ permutaciones de las letras $a_1$, $a_2$, $a_3$, $a_4$, y
+$2!$ de $n_1$, $n_2$ el número buscado es 
+$$
+\frac{10!}{ 4!2!}.
+$$
+
+Dejamos a cargo del lector probar que el número total de
+permutaciones de las letras de {\em a\-rri\-ve\-der\-ci} es
+$$
+\frac{11!}{3!  2!  2!}  
+$$
+\end{ejemplo*}
+
+
+\subsection*{$\S$ Ejercicios}
+
+\begin{enumex}
+    \item Simplificar las siguientes expresiones, sea $n \in \mathbb N$
+    \begin{enumex}
+        \begin{minipage}{0.45\textwidth}
+            \item $\dfrac{n!}{( n - 2 ) !}$, \; si $n \geq 2$.
+        \end{minipage}
+        \begin{minipage}{0.40\textwidth}
+            \item $ \dfrac{(n + 2)!}{( n - 2 ) !}$, \; si $n \geq 2$.
+        \end{minipage}
+        
+        \begin{minipage}{0.45\textwidth}
+            \item $\dfrac{n!}{(n-2)! 2!} $, \; si $n \geq 2$.
+        \end{minipage}
+        \begin{minipage}{0.40\textwidth}
+            \item $\dfrac{(n + 2)!}{n!}$.
+        \end{minipage}
+        
+        \begin{minipage}{0.40\textwidth}
+            \item $\dfrac{(n-1)!}{(n + 2)!}$.
+        \end{minipage}
+    \end{enumex}       
+    
+    \item
+        En este ejercicio decimos que una \textit{palabra} es una sucesión de letras (tenga sentido o no).
+        \begin{enumex}
+            \item ¿Cuántas palabras de 4 letras o  menos se pueden hacer con un alfabeto de 26 letras?
+            \item ¿De cuántas formas pueden ordenarse las letras de la palabra\newline PREPOTENTE?
+        \end{enumex}
+\end{enumex}
+
+\end{section}
+
+\begin{section}{Selecciones sin orden}\label{seccion-selecciones-sin-orden}
+
+Consideremos un conjunto $X$ finito de $n$ elementos. Nos proponemos averiguar cuántos subconjuntos de $m$ elementos hay en $X$.
+
+\begin{ejemplo*}
+Por ejemplo, sea $X = \{ 1, 2, 3, 4, 5 \}$ y nos interesan los subconjuntos de tres ele\-men\-tos. ¿Cuántos habrá? Una forma de individualizar un subconjunto de tres elementos en $X$, consiste en, primero, seleccionar  ordenadamente $3$ elementos de $[[ 1 , 5 ]]$. 
+
+Habría, a priori, $5 \cdot 4 \cdot 3$ subconjuntos pues ese es el número de selecciones ordenadas y sin repetición de $3$ elementos de $[[ 1 , 5 ]]$.
+
+Pero es claro que algunas de las selecciones ordenadas pueden determinar el mismo subconjunto. En efecto, por ejemplo, cualesquiera de las selecciones
+\begin{align*}
+1 2 3, \qquad  1 3 2, \qquad  2 1 3, \qquad 2 3 1, \qquad  3 1 2, \qquad  3 2 1
+\end{align*}
+determina el subconjunto $\{ 1, 2, 3\}$ . Es decir las permutaciones de $\{ 1, 2, 3\}$ determinan el mismo subconjunto.  Y así con cualquier otro
+subconjunto de tres elementos. Por lo tanto, el número total de
+subconjuntos de $3$ elementos debe ser
+$$
+\frac{5 \cdot 4 \cdot 3}{3!} =  \frac{5!}{3! (5 - 3)!}
+$$
+\end{ejemplo*}
+
+%\vskip .3cm
+
+En el caso general de subconjuntos de $m$ elementos de un
+conjunto de $n$ elementos ($m \le n$) podemos razonar en forma análoga. Cada
+subconjunto de $m$ elementos está determinado por una selección ordenada y todas las permutaciones de esta selección.
+
+\label{eleciones-sin-orden-sin-repeticion} Por lo tanto el número total de subconjunto de $m$ elementos
+de $X$ es
+$$
+\frac{n \cdot (n - 1) \cdots (n - (m - 1))}{m!} = \frac{n!}{(n - m)!\; m!}
+$$
+
+\begin{definicion}
+Sean $n, m \in \mathbb N_0$, $m \le n$. Definimos
+$$
+\binom{n}{m} = \frac{n!}{(n - m)! \; m!}
+$$
+y por razones que se verán más adelante se denomina el {\em coeficiente binomial}\index{coeficiente binomial} o {\em número combinatorio}\index{número combinatorio} asociado al par $n$, $m$ con $m \le n$.
+
+
+Definimos también
+$$
+\binom{n}{m} = 0,\qquad \text{ si } m > n.
+$$
+\end{definicion}
+
+\begin{observacion*} Hay unos pocos números combinatorios que son fácilmente calculables: 
+$$
+\binom{n}{0} = \binom{0}{0} = 1 \qquad \text{ y }\qquad  \binom{n}{1} = \binom{n}{n-1} = n. 
+$$
+Estos resultados se obtienen por aplicación directa de la definición (recordar que  $0! =1$). 
+\end{observacion*}
+
+Concluyendo, el razonamiento de la página \pageref{eleciones-sin-orden-sin-repeticion} se puede resumir en la siguiente proposición.
+
+\begin{proposicion}
+Sean $n, m \in \mathbb N_0$, $m \le n$, y supongamos que el conjunto $X$ tiene $n$ elementos.
+
+Entonces, la cantidad de subconjuntos de $X$ con $m$ elementos es $\displaystyle\binom{n}{m}$.
+\end{proposicion}
+
+Como vimos anteriormente el número combinatorio suele resultar de utilidad para resolver pro\-ble\-mas de conteo. Veamos un ejemplo.
+
+\begin{ejemplo*}
+ ¿Cuántos comités pueden formarse de un conjunto de $6$ mujeres y $4$ hombres, si el comité debe estar compuesto por $4$ mujeres y $2$ hombres?
+\end{ejemplo*}
+\begin{proof}[Solución] Debemos elegir $4$ mujeres entre $6$, y la cantidad de elecciones posibles es   $\binom{6}{4}$. Por otro lado, hay $ \binom{4}{2}$ formas de elegir $2$ hombres entre $4$. Luego, por el principio de multiplicación,  el resultado es
+    $$
+    \binom{6}{3}\cdot \binom{4}{2} = \frac{6!}{2!4!}\cdot\frac{4!}{2!2!} = \frac{6\cdot 5}{2}\cdot\frac{4\cdot 3}{2} = 15 \cdot 6 = 90.
+    $$
+\end{proof}
+
+\begin{proposicion}[Simetría del número combinatorio]\label{simcomb}
+Sean $m,n \in \mathbb N_0$, tal que $m \le n$. Entonces
+$$
+\binom{n}{m} = \binom{n}{n-m}.
+$$
+\end{proposicion}
+\begin{proof}
+$$
+\binom{n}{n-m} = \frac{n!}{(n-(n-m))!\,(n-m)!} =  \frac{n!}{m!\,(n-m)!} =   \frac{n!}{(n-m)!\,m!} = \binom{n}{m}.
+$$
+\end{proof}
+
+
+\begin{observacion*}
+El hecho  de que 
+$$
+\binom{n}{m} = \binom{n}{n-m}.
+$$
+se puede interpretar en términos de subconjuntos:  $\displaystyle\binom{n}{m}$ es el número de subconjuntos de $m$
+ele\-men\-tos de un conjunto de $n$ elementos. Puesto que con cada subconjunto de $m$ ele\-men\-tos hay unívocamente asociado un subconjunto de $n - m$ elementos, su complemento en $X$, es claro que $\displaystyle\binom{n}{m} = \binom{n}{n-m}$.
+\end{observacion*}
+
+\begin{teorema}[Fórmula del triángulo de Pascal] \label{teor-triangulo-de-pascal}
+Sean $m,n \in \mathbb N$, tal que $m \le n$. Entonces
+$$
+\binom{n+1}{m} = \binom{n}{m-1} + \binom{n}{m}  
+$$
+\end{teorema}
+\begin{proof}
+El enunciado nos dice que debemos demostrar que 
+\begin{equation*}
+\frac{(n+1)!}{(n-m+1)!\,m!} = \frac{n!}{(n-m+1)!\,(m-1)!} +  \frac{n!}{(n-m)!\,m!}
+\end{equation*}
+Hay varias forma de operar algebraicamente las expresiones y obtener el resultado. Nosotros partiremos de la expresión de la derecha y obtendremos la de la izquierda:
+\begin{align*}
+\frac{n!}{(n-m+1)!\,(m-1)!} +  &\frac{n!}{(n-m)!\,m!}= \\&= \frac{n!}{(n-m)!\,(m-1)!}\left(\frac{1}{(n-m+1)} +  \frac{1}{m}\right)\\
+&= \frac{n!}{(n-m)!\,(m-1)!}\left(\frac{m+n-m+1}{(n-m+1)m} \right) \\
+& = \frac{n!}{(n-m)!\,(m-1)!}\left(\frac{n+1}{(n-m+1)m} \right) \\
+& = \frac{n!(n+1)}{(n-m)!(n-m+1)\,(m-1)!\,m}\\
+& = \frac{(n+1)!}{(n-m+1)!\,m!}.
+\end{align*}
+
+\end{proof}
+
+
+Aunque por razones de conteo es obvio que los números combinatorios son números naturales, esto no es claro por la definición formal.  
+\begin{corolario}
+Si $n \in \mathbb N$ y $ 0\le m \le n$ entonces $\displaystyle\binom{n}{m} \in \mathbb N$.
+\end{corolario}
+\begin{proof}
+Haremos inducción en $n$. Si $n = 1$ los posibles números
+combinatorios son
+$$
+\binom{1}{1}  = \binom{1}{0}  = 1 \in \mathbb N.
+$$
+
+Ahora supongamos que el resultado sea cierto  para $n \in \mathbb N$. Es decir, $\displaystyle\binom{n}{m} \in \mathbb N$ cualquiera sea $m$ tal que $0 \le m \le n$ (hipótesis inductiva). 
+\vskip .2cm
+Probaremos entonces que 
+\begin{equation*}
+    \binom{n+1}{m} \in \mathbb N
+\end{equation*}
+ para todo  $m \in \mathbb{N}$ tal que $0 \le m \le n+1$. 
+ 
+Consideremos tres casos: $m=0$,\; $1 \le m \le n$\; y \;$m = n+1$.
+
+Si $m=0$, entonces
+\begin{equation*}
+    \binom{n+1}{m} = \binom{n+1}{0} =1 \in \mathbb N.
+\end{equation*}
+
+Si $1 \le m \le n$, entonces por el teorema anterior (en la segunda parte)
+$$
+\binom{n+1}{m} = \binom{n}{m-1} + \binom{n}{m}  
+$$
+Como $\displaystyle\binom{n}{m-1}$  y $\displaystyle\binom{n}{m}$ pertenecen  a $\mathbb  N$ por la hipótesis inductiva, su suma es también un número natural, o sea 
+\begin{equation*}
+    \binom{n+1}{m}   \in \mathbb N
+\end{equation*}
+para $1 \le m \le n$.
+
+
+Si $m = n+1$, entonces 
+\begin{equation*}
+    \binom{n+1}{n+1} = 1  \in \mathbb N.
+\end{equation*}
+
+
+Por lo anterior, se concluye que
+$$
+\binom{n+1}{m}   \in \mathbb N
+$$
+cualquiera sea $m$ , $0 \le m \le n + 1$.
+
+Por lo tanto, es válido el paso inductivo y así nuestra afirmación
+queda probada.
+\end{proof}
+
+El teorema precedente permite calcular los coeficientes
+binomiales inductivamente. Escribamos en forma de triángulo
+
+
+\begin{align*}
+&& && && && && &\binom{0}{0}& && && && && &&  \\
+&& && && && &\binom{1}{0}& && &\binom{1}{1}& && && && &&  \\
+&& && && &\binom{2}{0}& && &\binom{2}{1}& && &\binom{2}{2}& && && &&  \\
+&& && &\binom{3}{0}& && &\binom{3}{1}& && &\binom{3}{2}& && &\binom{3}{3}& && &&  \\
+&& &\binom{4}{0}& && &\binom{4}{1}& && &\binom{4}{2}& && &\binom{4}{3}& && &\binom{4}{4}& &&  \\
+&\cdot& && &\cdot& && &\cdot& && &\cdot& && &\cdot& && &\cdot& 
+\end{align*}
+
+
+
+En virtud del teorema \ref{teor-triangulo-de-pascal} cada término interior es
+suma de los dos términos inmediatos superiores. Los elementos
+en los lados valen 1 por lo tanto se puede calcular cualquiera
+de ellos.
+
+
+\begin{align*}
+&& && && && && &1& && && && && &&  \\
+&& && && && &1& && &1& && && && &&  \\
+&& && && &1& && &2& && &1& && && &&  \\
+&& && &1& && &3& && &3& && &1& && &&  \\
+&& &1& && &4& && &6& && &4& && &1& &&  \\
+&\cdot& && &\cdot& && &\cdot& && &\cdot& && &\cdot& && &\cdot& 
+\end{align*}
+(Lector: calcule el valor de la suma total de cada fila del triángulo.)
+
+El  triángulo es denominado \emph{triángulo de Pascal}. Entre las propiedades que cuenta el triángulo de Pascal está la de ser simétrico respecto de su altura, como consecuencia de la simetría de los números combinatorios (ver proposición \ref{simcomb}). 
+
+
+
+
+
+\end{section}
+
+
+\begin{section}{El teorema del binomio}\label{seccion-teorema-del-binomio}
+
+En álgebra elemental aprendemos las formulas
+$$
+(a+b)^2 = a^2 +2ab +b^2, \qquad (a+b)^3 = a^3 + 3 a^2b +3ab^2 +
+b^3,
+$$
+y a veces nos piden desarrollar la formula para $(a+b)^4$ y potencias mayores de $a+b$. El resultado general que da una formula para $(a+b)^n$ es conocido como el  \textit{{teorema del binomio}}.  \index{Teorema del binomio}
+
+\begin{teorema}\label{t3.6}
+Sea $n$ un entero positivo. El coeficiente del termino $a^{n-r}b^r$ en el desarrollo de $(a+b)^n$ es el número binomial $\binom{n}{r}$. Explícitamente, 
+\begin{equation*}
+(a+b)^n= \binom{n}{0} a^n + \binom{n}{1} a^{n-1}b+ \binom{n}{2}
+a^{n-2}b^2 + \cdots + \binom{n}{n} b^n,
+\end{equation*}
+o,  escrito en forma más concisa, 
+\begin{equation}\label{eq-th-bin-1}
+(a+b)^n= \sum_{i=0}^{n}\binom{n}{i} a^{n-i}b^i.
+\end{equation}
+
+\end{teorema}
+\begin{proof}(Primera) Consideremos que ocurre cuando multiplicamos $n$ factores: $(a+b)(a+b) \cdots (a+b)$.
+
+Un término en el producto se obtiene seleccionando o bien $a$ o bien $ b$ de cada factor. El número de términos $a^{n-r}b^r$ es solo el número de formas de seleccionar $r$ $b$'s (y consecuentemente $n-r$ a's), y por definición éste es el número binomial $\binom{n}{r}$.
+\end{proof}
+
+
+\begin{observacion}\label{cvar} Antes de hacer una segunda demostración del teorema del binomio veamos el siguiente resultado que nos resultará útil: sea $a_k,a_{k+1},\ldots,a_{m-1},a_m$ una sucesión de números reales ($k \le m$) y sea $r \in \mathbb N_0$.  Entonces
+$$
+\sum_{i=k}^m a_i = \sum_{i=r}^{m-k+r} a_{i+k-r}.
+$$ 
+La sumatoria de la derecha es la de la izquierda con un ``cambio de variable'' en el índice. La demostración de este hecho se puede hacer por inducción sobre $m$ (caso base $m=k$) o simplemente escribiendo ambas sumatorias con la notación de puntos suspensivos y verificando que ambas son iguales a
+$$
+a_k+a_{k+1}+\cdots+a_{m-1}+a_m.
+$$  
+\end{observacion}
+
+
+\begin{observacion*}
+    Por la simetría del número binomial la  fórmula (\ref{eq-th-bin-1}) es equivalente a 
+    \begin{equation*}
+    (a+b)^n= \sum_{i=0}^{n}\binom{n}{n-i} a^{n-i}b^i.
+    \end{equation*}
+    Haciendo  el cambio de variable $i \leftrightarrow n-i$, se obtiene la fórmula equivalente
+    \begin{equation*}\label{eq-th-bin-2}
+    (a+b)^n= \sum_{i=0}^{n}\binom{n}{i} a^ib^{n-i}.
+    \end{equation*}
+    La fórmula anterior es también, muy utilizada para enunciar el teorema del binomio.
+\end{observacion*}
+
+
+
+\begin{proof}[Demostración (*)](Segunda) Se hace por inducción en $n$. Si $n=1$, el resultado es trivial. Supongamos que el resultado es cierto para $n-1$, es decir,  de acuerdo  a la fórmula (\ref{eq-th-bin-1}),
+$$
+(a+b)^{n-1}=\sum_{i=0}^{n-1} \binom{n-1}{i}a ^{n-1-i}b^{i}.
+$$
+Luego
+\begin{alignat*}2
+(a+b)^n&= (a+b)(a+b)^{n-1}&& \\
+& = (a+b)\left(\sum_{i=0}^{n-1} \binom{n-1}{i}a ^{n-1-i}b^{i}\right)&&\qquad \text{(hip. ind.)} \\
+&=\sum_{i=0}^{n-1} \binom{n-1}{i}a ^{n-i}b^{i}+\sum_{i=0}^{n-1} \binom{n-1}{i}a ^{n-1-i}b^{i+1}&& \qquad \text{(distributiva)}\\
+&=\sum_{i=0}^{n-1} \binom{n-1}{i}a ^{n-i}b^{i}+\sum_{i=1}^{n} \binom{n-1}{i-1}a ^{n-i}b^{i}&& \qquad \text{( obs. \ref{cvar})}\\
+&= a^n + \sum_{i=1}^{n-1}\left\{ \binom{n-1}{i}+\binom{n-1}{i-1}\right\}a ^{n-i}b^{i}+ b^n && \qquad \text{}\\
+&= a^n + \sum_{i=1}^{n-1} \binom{n}{i}a ^{n-i}b^{i}+ b^n&&\qquad \text{(teor. \ref{teor-triangulo-de-pascal})} \\
+&= \sum_{i=0}^{n} \binom{n}{i}a ^{n-i}b^{i}.&&\text{}
+\end{alignat*}
+\end{proof}
+
+%
+
+Los coeficientes en el desarrollo pueden ser calculados con el método recursivo usado para los números binomiales (triángulo de Pascal) o usando la formula. Por ejemplo,
+\begin{equation*}
+    \begin{aligned} (a+b)^6 &= \binom{6}{0} a^6 + \binom{6}{1} a^5 b
+    +\binom{6}{2}a^4b^2 +
+    \binom{6}{3}a^3b^3 \\
+    &\quad + \binom{6}{4}a^2b^4+\binom{6}{5}ab^5\binom{6}{6}b^6 \\
+    &=  a^6 + 6 a^5 b +15a^4b^2 + 20a^3b^3 + 15a^2b^4+6ab^5+ b^6.
+    \end{aligned}
+\end{equation*}
+
+
+Por supuesto, podemos obtener otras formulas útiles si
+reemplazamos $a$ y $b$ por otras expresiones. Algunos ejemplos
+típicos son:
+$$\begin{aligned}
+(1+x)^4 &= 1 + 4x + 6x^2+ 4x^3+ x^4;\\
+(1-x)^7 &= 1 -7x + 21x^2- 35x^3+ 35x^4- 21x^5+ 7x^6 -x^7;\\
+(x+2y)^5 &= x^5 + 10 x^4 y + 40 x^3 y^2+80 x^2 y^3+80 x y^4+32 y^5; \\
+(x^2+y)^4 &= x^8 +4 x^3 y +6 x^4 y^2 +4 x^2 y^3 + y^4.
+\end{aligned}
+$$
+
+
+
+
+La expresión $a+b$ es conocida como un expresión \textit{binómica}
+porque tiene dos términos. Como los números  \index{expresión
+binómica} $\binom{n}{r}$ aparecen como los coeficientes en el
+desarrollo de $(a+b)^n$, generalmente se los llama, como ya fue dicho, 
+coeficientes binomiales.  
+De todos modos esta claro por la primera prueba del teorema \ref{t3.6} que
+estos números aparecen en este contexto porque representan el
+número de formas de hacer ciertas selecciones. Por esta razón
+continuaremos usando el nombre de números binomiales,
+ que se aproxima más al concepto que
+simbolizan.
+
+Además de ser extremadamente útil en manipulaciones algebraicas,
+el teorema del binomio puede usarse para deducir identidades en
+que estén involucrados los números binomiales.
+
+\begin{ejemplo*} Probemos que 
+    \begin{equation*}
+    \sum_{i=0}^{n}\binom{n}{i} = \binom{n}{0}+\binom{n}{1}+\binom{n}{3}+\cdots+\binom{n}{n}= 2^n.
+    \end{equation*}
+\end{ejemplo*}
+\begin{proof}
+    Observar  que $1 + 1 = 2$, luego, por el teorema del binomio,
+    \begin{align*}
+        2^n = (1 +1)^n 
+            &= \sum_{i=0}^{n} \binom{n}{i}1^{n-i}1^i \\
+            &= \sum_{i=0}^{n} \binom{n}{i}1 \cdot 1 \\
+            &= \sum_{i=0}^{n} \binom{n}{i}.
+    \end{align*} 
+\end{proof}
+
+\begin{ejemplo*}Probemos que
+\begin{equation}\label{eqcuaddo}
+\binom{n}{0}^2+\binom{n}{1}^2+\binom{n}{3}^2+\cdots+\binom{n}{n}^2=
+\binom{2n}{n}.
+\end{equation}
+\end{ejemplo*}
+\begin{proof}
+Usamos la igualdad
+\begin{equation*}\label{eqxn}
+(1+x)^n(1+x)^n=(1+x)^{2n}.
+\end{equation*}
+El resultado se demostrará encontrando el coeficiente del termino $x^n$ de ambos términos de esta igualdad.
+
+De acuerdo con el teorema del binomio el miembro izquierdo es el
+producto de dos factores, ambos iguales a
+$$
+\binom{n}{0}1+\binom{n}{1}x+\cdots+\binom{n}{r}x^r+\cdots+\binom{n}{n}x^n.
+$$
+ Cuando los dos factores se multiplican, un termino en $x^n$ se
+obtiene tomando un termino del primer factor de tipo $x^i$ y un termino del
+segundo factor de tipo $x^{n-i}$. Por lo tanto los coeficientes de $x^n$ en el
+producto son
+\begin{equation}\label{igcuad}
+\binom{n}{0}\binom{n}{n}+\binom{n}{1}\binom{n}{n-1}+\binom{n}{2}\binom{n}{n-2}+\cdots
++\binom{n}{n}\binom{n}{0}.
+\end{equation}
+Como $\binom{n}{n-r}=\binom{n}{r}$, vemos que (\ref{igcuad}) es el lado
+izquierdo de la igualdad (\ref{eqcuaddo}). Pero el lado derecho es
+$\binom{2n}{n}$ que es también el coeficiente de $x^n$ en el
+desarrollo de $(1+x)^{2n}$, y entonces obtenemos la igualdad que
+buscábamos.
+\end{proof}
+
+\vskip .3cm 
+
+\begin{observacion*}[Definición de $0^0$] No hay consenso matemático en cual es el valor de $0^0$, pues dependiendo del contexto puede ser conveniente definir su valor de cierta forma o declarar su valor como \textit{indeterminado} (ver el artículo de Wikipedia  \href{https://es.wikipedia.org/wiki/Cero_a_la_cero}{Cero  a la cero}). 
+    
+    Sin embargo,  para su uso  en álgebra, así como en combinatoria se considera conveniente  definir  $0^0 =1$. ¿Cuál es la razón para darle este valor? Existen varias razones, pero una de las más importantes proviene del teorema del binomio. Observemos que por el teorema del binomio
+    \begin{equation*}
+        (1 +0)^n = \sum_{i=0}^{n}\binom{n}{i}1^{n-1} 0^i =  \sum_{i=0}^{n}\binom{n}{i} 0^i.
+    \end{equation*}
+    Es claro que para $i>0$, $0^i = 0 \cdot \ldots \cdot 0 =0$, luego la ecuación se reduce a
+    \begin{equation*}
+    1 = 1^n =  0^0.
+    \end{equation*}
+    No sería muy convincente enunciar el teorema del binomio con algunas excepciones poco naturales (como ser, exigir que $a$ y $b$ sean no nulos) y la formulación más general parece ser la correcta. Esta formulación exige que $0^0 =1$, como hemos visto más arriba.
+    
+    Una fundamentación extensa y rigurosa sobre la conveniencia de definir $0^0 =1$ puede leerse en el artículo de D. Knuth \textit{Two notes on notation} que se encuentra en \href{https://arxiv.org/abs/math/9205211}{https://arxiv.org/abs/math/9205211}.
+\end{observacion*}
+
+
+\subsection*{$\S$ Ejercicios}\label{ej3.6.1}
+\begin{enumex}
+\item Desarrollar las fórmulas de $(1+x)^8$ y $(1-x)^8$.
+
+\item Calcular los coeficientes de:
+\begin{enumex}
+    \begin{minipage}{0.40\textwidth}
+    \item $x^5$ en $(1+x)^{11}$;
+    \end{minipage}
+    \begin{minipage}{0.40\textwidth}
+    \item $a^2b^8 $ en $(a+b)^{10}$;
+    \end{minipage}
+
+    \begin{minipage}{0.40\textwidth}
+    \item $a^6 b^6$ en $(a^2 +b^3)^5$;
+    \end{minipage}
+    \begin{minipage}{0.40\textwidth}
+    \item $x^3$ en $(3+4x)^6$.
+    \end{minipage}
+\end{enumex}    
+
+\item Usar la identidad $(1+x)^m(1+x)^n=(1+x)^{m+n}$ para probar que
+$$
+\binom{m+n}{r} =
+\binom{m}{0}\binom{n}{r}+\binom{m}{1}\binom{n}{r-1}+\cdots
+\binom{m}{r}\binom{n}{0}
+$$
+donde $m,n$ y $r$ son enteros positivos y, $m\ge r$, y $n \ge r$.
+\end{enumex}
+\end{section}
+

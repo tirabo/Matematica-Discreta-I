@@ -1,0 +1,578 @@
+%\documentclass[handout]{beamer} % sin pausas
+\documentclass{beamer} % con pausas
+\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+
+\usetheme{CambridgeUS}
+
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+%\usepackage{makeidx}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usepackage[customcolors]{hf-tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\tikzset{
+    every picture/.append style={
+        execute at begin picture={\deactivatequoting},
+        execute at end picture={\activatequoting}
+    }
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+\usepackage{mathtools}
+\usepackage{stackrel}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+\usepackage{polynom}
+\polyset{%
+    style=B,
+    delims={(}{)},
+    div=:
+}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate]{label={(\arabic*)}}
+
+\setbeamertemplate{itemize item}{$\circ$}
+\setbeamertemplate{enumerate items}[default]
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand\sgn{\operatorname{sgn}}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\figurename }{Figura}
+
+\include{definiciones}
+
+\newcommand{\nc}{\newcommand}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\nc{\FF}{{\mathbb F}} \nc{\NN}{{\mathbb N}} \nc{\QQ}{{\mathbb Q}}
+\nc{\PP}{{\mathbb P}} \nc{\DD}{{\mathbb D}} \nc{\Sn}{{\mathbb S}}
+\nc{\uno}{\mathbb{1}} \nc{\BB}{{\mathbb B}} \nc{\An}{{\mathbb A}}
+
+\nc{\ba}{\mathbf{a}} \nc{\bb}{\mathbf{b}} \nc{\bt}{\mathbf{t}}
+\nc{\bB}{\mathbf{B}}
+
+\nc{\cP}{\mathcal{P}} \nc{\cU}{\mathcal{U}} \nc{\cX}{\mathcal{X}}
+\nc{\cE}{\mathcal{E}} \nc{\cS}{\mathcal{S}} \nc{\cA}{\mathcal{A}}
+\nc{\cC}{\mathcal{C}} \nc{\cO}{\mathcal{O}} \nc{\cQ}{\mathcal{Q}}
+\nc{\cB}{\mathcal{B}} \nc{\cJ}{\mathcal{J}} \nc{\cI}{\mathcal{I}}
+\nc{\cM}{\mathcal{M}} \nc{\cK}{\mathcal{K}}
+
+\nc{\fD}{\mathfrak{D}} \nc{\fI}{\mathfrak{I}} \nc{\fJ}{\mathfrak{J}}
+\nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+
+
+\title[Clase 19 - Isomorfismo de grafos]{Matemática Discreta I \\ Clase 19 -  Isomorfismo de grafos / Valencias}
+%\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
+\institute[]{\normalsize FAMAF / UNC
+    \\[\baselineskip] ${}^{}$
+    \\[\baselineskip]
+}
+\date[02/06/2022]{2 de junio de 2022}
+
+
+
+
+\begin{document}
+    
+    \frame{\titlepage} 
+    
+    
+    \begin{frame}\frametitle{Isomorfismo de grafos}
+        ¿Cuándo debemos considerar a dos grafos ``iguales''?
+        \vskip .4cm\pause
+        \begin{itemize}
+            \item[$\circ$] No importa el  nombre de los vértices. 
+            \vskip .2cm\pause
+            \item[$\circ$] Un grafo se puede dibujar de muchas maneras.
+            \vskip .2cm\pause
+            \item[$\circ$]  La propiedad característica de un grafo es la manera en que los vértices están conectados por aristas. 
+        \end{itemize}
+        \vskip .4cm\pause
+        Dicho en forma directa: vamos a considerar que dos grafos $G_1$ y $G_2$ son ``iguales'' si  cambiando  el nombre de los vértices de $G_2$  por el de los vértices de $G_1$,  en cierto orden, obtenemos $G_1$.  
+        
+    \end{frame}
+    
+    \begin{frame}
+        \begin{ejemplo} Tenemos dos grafos:
+            \begin{figure}[ht]
+                \begin{center}
+                    \begin{tabular}{llll}
+                        &
+                        \begin{tikzpicture}[scale=1]
+                            %\SetVertexSimple[Shape=circle,FillColor=white]
+                            \Vertex[x=0,y=0]{$a$}
+                            \Vertex[x=2,y=0]{$b$}
+                            \Vertex[x=2,y=-2]{$c$}
+                            \Vertex[x=0,y=-2]{$d$}
+                            \Edges($a$, $b$,$c$,$d$,$a$,$b$,$d$)
+                            \draw (1,-3) node {$G_1$};
+                        \end{tikzpicture}
+                        &
+                        \qquad
+                        & 
+                        \begin{tikzpicture}[scale=1]
+                            %\SetVertexSimple[Shape=circle,FillColor=white]
+                            \Vertex[x=1,y=0]{$t$}
+                            \Vertex[x=1,y=-1.3]{$w$}
+                            \Vertex[x=2,y=-2]{$v$}
+                            \Vertex[x=0,y=-2]{$u$}
+                            \Edges($v$, $t$,$u$,$v$,$w$,$u$)
+                            \draw (1,-3) node {$G_2$};
+                        \end{tikzpicture}
+                    \end{tabular}
+                \end{center}
+            \end{figure}\pause
+            Parecen ser distintos. 
+        \end{ejemplo}
+    \end{frame}
+    
+    \begin{frame}
+        Sin embargo, si dibujamos $G_2$ diferente (``dando vuelta $w$'' y  rotando), obtenemos: \pause
+        
+        \begin{figure}[ht]
+            \begin{center}
+                \begin{tabular}{llll}
+                    &
+                    \begin{tikzpicture}[scale=1]
+                        %\SetVertexSimple[Shape=circle,FillColor=white]
+                        \Vertex[x=0,y=0]{$a$}
+                        \Vertex[x=2,y=0]{$b$}
+                        \Vertex[x=2,y=-2]{$c$}
+                        \Vertex[x=0,y=-2]{$d$}
+                        \Edges($a$, $b$,$c$,$d$,$a$,$b$,$d$)
+                        \draw (1,-3) node {$G_1$};
+                    \end{tikzpicture}
+                    &
+                    \qquad
+                    & 
+                    \begin{tikzpicture}[scale=1]
+                        %\SetVertexSimple[Shape=circle,FillColor=white]
+                        \Vertex[x=0,y=0]{$t$}
+                        \Vertex[x=2,y=0]{$v$}
+                        \Vertex[x=2,y=-2]{$w$}
+                        \Vertex[x=0,y=-2]{$u$}
+                        \Edges($v$, $t$,$u$,$v$,$w$,$u$)
+                        \draw (1,-3) node {$G_2$};
+                    \end{tikzpicture}
+                \end{tabular}
+            \end{center}
+        \end{figure}
+        Los cuales claramente describen el mismo grafo, pero  con los nombres de los vértices cambiados. 
+    \end{frame}
+    
+    \begin{frame}\frametitle{Isomorfismo de grafos: preliminares}
+        
+        \begin{definicion}
+            Dado  dos conjuntos $X,Y$ diremos que una aplicación $f: X \to Y$ es {\em biyectiva} si para cada $y \in Y$ existe un  único $x \in X$ tal que $f(x) =y$. 
+        \end{definicion}
+        \pause
+
+        \vskip .6cm
+        Un propiedad importante, de las funciones biyectivas es:
+        \vskip .4cm
+        \begin{teorema}
+            $f$ es biyectiva si y sólo sí  $f$ tiene {\em inversa}, es decir existe $f^{-1}: Y \to X$, tal que 
+            $$f(f^{-1}(y)) = y\;\;\forall \,y \in Y \quad \wedge \quad f^{-1}(f(x)) = x, \;\;\forall \,x \in X.$$
+        \end{teorema}
+    \end{frame}
+    
+    \begin{frame}
+
+    
+        \begin{ejemplo}
+            La función  
+            \begin{align*}
+                f&: \{1,2,3\}\to\{a,b,c\} \quad \text{definida } f(1) = c, f(2) = b, f(3) = a
+            \end{align*}
+            es biyectiva y su  inversa es 
+            $$
+            f^{-1}(a) = 3,\;f^{-1}(b) = 2,\;f^{-1}(c) =1.
+            $$
+        \end{ejemplo}
+
+        \vskip 2cm
+    \end{frame}
+    
+    \begin{frame}\frametitle{Isomorfismos de grafos: definición}
+        \begin{definicion} Dos grafos $G_1$ y $G_2$ se dicen que
+            son {\em isomorfos} cuando  existe una biyección $\alpha$ entre el
+            conjunto de vértices de $G_1$ y el conjunto de vértices de
+            $G_2$ tal que  
+            
+            \begin{itemize}\pause
+                \item[$\circ$] si $\{x,y\}$ es una arista de $G_1$ entonces $\{\alpha(x),\alpha(y)\}$ es una arista de $G_2$ \pause y, recíprocamente,
+                \item[$\circ$]si  $\{z,w\}$ es una arista de $G_2$ entonces $\{\alpha^{-1}(z),\alpha^{-1}(w)\}$ es una arista de $G_1$. 
+            \end{itemize} \pause
+            \vskip .3cm
+            Equivalentemente, diremos que $\alpha$    es un {\em isomorfismo} si es una biyección entre el     conjunto de vértices de $G_1$ y el conjunto de vértices de
+            $G_2$ tal que por cada $\{z,w\}$  arista de $G_2$,  existe una y solo una $\{x,y\}$  arista de $G_1$ tal que $\{\alpha(x),\alpha(y)\}  = \{z,w\}$.
+            
+        \end{definicion}
+    \end{frame}
+    
+    \begin{frame}
+        \begin{ejemplo}
+            \begin{figure}[ht]
+                \begin{center}
+                    \begin{tabular}{llll}
+                        &
+                        \begin{tikzpicture}[scale=1]
+                            %\SetVertexSimple[Shape=circle,FillColor=white]
+                            \Vertex[x=0,y=0]{$a$}
+                            \Vertex[x=2,y=0]{$b$}
+                            \Vertex[x=2,y=-2]{$c$}
+                            \Vertex[x=0,y=-2]{$d$}
+                            \Edges($a$, $b$,$c$,$d$,$a$,$b$,$d$)
+                            \draw (1,-3) node {$G_1$};
+                        \end{tikzpicture}
+                        &
+                        \qquad
+                        & 
+                        \begin{tikzpicture}[scale=1]
+                            %\SetVertexSimple[Shape=circle,FillColor=white]
+                            \Vertex[x=1,y=0]{$t$}
+                            \Vertex[x=1,y=-1.3]{$w$}
+                            \Vertex[x=2,y=-2]{$v$}
+                            \Vertex[x=0,y=-2]{$u$}
+                            \Edges($v$, $t$,$u$,$v$,$w$,$u$)
+                            \draw (1,-3) node {$G_2$};
+                        \end{tikzpicture}
+                    \end{tabular}
+                \end{center}
+                \caption{$G_1$ y $G_2$ son isomorfos} \label{f5.3}
+            \end{figure}
+            
+            
+            Una biyección es dada por
+            $$
+            \alpha(a)=t,\quad \alpha(b)=v,\quad \alpha(c)=w,\quad \alpha(d)=u.
+            $$
+            Podemos comprobar que a cada arista de $G_1$ le corresponde una
+            arista de $G_2$ y vi\-ce\-ver\-sa.
+        \end{ejemplo}
+    \end{frame}
+    
+    \begin{frame}
+        \begin{itemize}
+            \item Para mostrar que dos grafos no son isomorfos, nosotros debemos
+            demostrar que no hay una biyección entre el conjunto de vértices
+            de uno con el conjunto de vértices de otro, que lleve las aristas
+            de uno en las aristas del otro.\pause
+            \item     Si dos grafos tienen diferente número de vértices, entonces no es
+            posible ninguna biyección, y los grafos no pueden ser isomorfos.\pause
+            \item Si los grafos tienen el mismo número de vértices, pero di\-fe\-ren\-te
+            número de aristas, entonces hay biyecciones de vértices  pero ninguna de ellas
+            puede ser un isomorfismo. 
+        \end{itemize}
+        
+        
+        
+        
+        
+    \end{frame}
+    
+    \begin{frame}
+        
+        
+        
+        \begin{definicion} 
+            
+            Sea $G=(V,E)$ un grafo. Se dice que $G^{\prime}=(V^{\prime},E^{\prime})$ es {\em subgrafo} de $G=(V,E)$ si 
+            \vskip .2cm
+            (1)  $G^{\prime}$  es un grafo,\quad  y \quad (2)     $V^{\prime} \subset V$, $E^{\prime} \subset E$.
+            
+        \end{definicion}
+        \pause \vskip .4cm
+        Algunos subgrafos de 
+        \begin{figure}[ht]
+            \begin{center}
+                \begin{tikzpicture}[scale=0.4]
+                    \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+                    \Vertex[x=0.00, y=2.00]{$a$}
+                    \Vertex[x=1.90, y=0.62]{$b$}
+                    \Vertex[x=1.18, y=-1.62]{$c$}
+                    \Vertex[x=-1.18, y=-1.62]{$d$}
+                    \Vertex[x=-1.90, y=0.62]{$e$}
+                    \Edges($c$, $b$,$a$,$e$,$d$,$b$,$a$,$d$)
+                    \Edges($e$,$b$)
+                \end{tikzpicture}
+            \end{center}
+        \end{figure}
+        son:    
+        \begin{figure}[ht]
+            \begin{center}
+                \begin{tabular}{llllllll}
+                    &
+                    \begin{tikzpicture}[scale=0.4]
+                        \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+                        \Vertex[x=0.00, y=2.00]{$a$}
+                        \Vertex[x=1.90, y=0.62]{$b$}
+                        \Vertex[x=-1.18, y=-1.62]{$d$}
+                        \Edges($a$,$b$,$d$,$a$)
+                    \end{tikzpicture}
+                    &
+                    \qquad
+                    & 
+                    \begin{tikzpicture}[scale=0.4]
+                        \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+                        \Vertex[x=0.00, y=2.00]{$a$}
+                        \Vertex[x=1.90, y=0.62]{$b$}
+                        \Vertex[x=-1.18, y=-1.62]{$d$}
+                        \Vertex[x=-1.90, y=0.62]{$e$}
+                        \Edges($a$,$e$,$b$,$a$)
+                    \end{tikzpicture}
+                    &
+                    \qquad
+                    &
+                    \begin{tikzpicture}[scale=0.4]
+                        \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+                        \Vertex[x=0.00, y=2.00]{$a$}
+                        \Vertex[x=1.90, y=0.62]{$b$}
+                        \Vertex[x=1.18, y=-1.62]{$c$}
+                        \Vertex[x=-1.18, y=-1.62]{$d$}
+                        \Vertex[x=-1.90, y=0.62]{$e$}
+                        \Edges($a$,$e$,$b$)
+                    \end{tikzpicture}
+                    &
+                    \qquad
+                    &
+                    \begin{tikzpicture}[scale=0.4]
+                        \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+                        \Vertex[x=0.00, y=2.00]{$a$}
+                        \Vertex[x=1.90, y=0.62]{$b$}
+                        \Vertex[x=-1.18, y=-1.62]{$d$}
+                        \Vertex[x=-1.90, y=0.62]{$e$}
+                        \Edges( $b$,$a$,$e$,$d$,$b$,$a$,$d$)
+                        \Edges($e$,$b$)
+                    \end{tikzpicture}
+                \end{tabular}
+            \end{center}
+        \end{figure}
+        
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        Es claro, pero  no lo demostraremos aquí, que un isomorfismo lleva un subgrafo a un subgrafo isomorfo. Este resultado es una herramienta que puede ser útil para ver si dos grafos no son isomorfos. \pause
+        \vskip .5cm
+        \begin{figure}[ht]
+            \begin{center}
+                \begin{tabular}{llll}
+                    &
+                    \begin{tikzpicture}[scale=1]
+                        %\SetVertexSimple[Shape=circle,FillColor=white]
+                        \Vertex[x=0.00, y=2.00]{$a$}
+                        \Vertex[x=1.90, y=0.62]{$b$}
+                        \Vertex[x=1.18, y=-1.62]{$c$}
+                        \Vertex[x=-1.18, y=-1.62]{$d$}
+                        \Vertex[x=-1.90, y=0.62]{$e$}
+                        \Edges($c$, $b$,$a$,$e$,$d$,$b$,$a$,$d$)
+                        \Edges($e$,$b$)
+                        \draw (0,-2.2) node {$G_1$};
+                    \end{tikzpicture}
+                    &
+                    \qquad
+                    & 
+                    \begin{tikzpicture}[scale=1]
+                        %\SetVertexSimple[Shape=circle,FillColor=white]
+                        \Vertex[x=0.00, y=2.00]{1}
+                        \Vertex[x=1.90, y=0.62]{2}
+                        \Vertex[x=1.18, y=-1.62]{3}
+                        \Vertex[x=-1.18, y=-1.62]{4}
+                        \Vertex[x=-1.90, y=0.62]{5}
+                        \Edges(1,2,3,4,5,1)
+                        \Edges(4,2,5)
+                        \draw (0,-2.2) node {$G_2$};
+                    \end{tikzpicture}
+                \end{tabular}
+            \end{center}
+            \caption{$G_1$ y $G_2$ no son isomorfos pues $K_4 \subset G_1$ y $K_4 \not\subset G_2$}
+        \end{figure}
+        
+    \end{frame}
+    
+    
+    
+    \begin{frame}\frametitle{Valencias}
+        La {\em {valencia}} de un vértice $v$ en un grafo $G=(V,E)$ es el
+        \index{valencia de un vértice} número de aristas de $G$ que contienen a $v$.
+        Usaremos la notación $\delta(v)$ para la valencia de $v$,
+        formalmente
+        $$
+        \delta(v)=|D_v|, \quad \text{ donde } \quad D_v=\{e \in E| v\in
+        e\}.
+        $$
+        
+        \begin{ejemplo}
+            \begin{figure}[ht]
+                \begin{center}
+                    \begin{tabular}{llll}
+                        &\begin{tikzpicture}[scale=0.8]
+                            %\SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+                            \Vertex[x=0.00, y=2.00,L=$3$]{$a$}
+                            \Vertex[x=1.90, y=0.62,L=$4$]{$b$}
+                            \Vertex[x=1.18, y=-1.62,L=$1$]{$c$}
+                            \Vertex[x=-1.18, y=-1.62,L=$3$]{$d$}
+                            \Vertex[x=-1.90, y=0.62,L=$3$]{$e$}
+                            \Edges($c$, $b$,$a$,$e$,$d$,$b$,$a$,$d$)
+                            \Edges($e$,$b$)
+                        \end{tikzpicture}
+                        &
+                        \qquad    \qquad
+                        & 
+                        \begin{tikzpicture}[scale=0.55]
+                            %\SetVertexSimple[Shape=circle,FillColor=white]
+                            %                
+                            \Vertex[x=3.00, y=0.00, L=$1$]{$v_3$}
+                            \Vertex[x=1.50, y=2.60, L=$0$]{$v_2$}
+                            \Vertex[x=-1.50, y=2.60, L=$2$]{$v_1$}
+                            \Vertex[x=-3.00, y=0.00, L=$2$]{$v_6$}
+                            \Vertex[x=-1.50, y=-2.60, L=$3$]{$v_5$}
+                            \Vertex[x=1.50, y=-2.60, L=$2$]{$v_4$}
+                            \Edges($v_1$,$v_6$, $v_5$,$v_4$,$v_1$)
+                            \Edges($v_3$,$v_5$)
+                        \end{tikzpicture}
+                    \end{tabular}
+                \end{center}
+            \end{figure}
+        \end{ejemplo}
+    \end{frame}
+    
+    \begin{frame}
+        En una lista de adyacencia la valencia de un vértice es exactamente la cantidad de elementos que tiene la columna correspondiente al vértice.
+        
+        \begin{ejemplo}
+            Vimos el $G=(V,E)$ es dado por
+            \begin{equation*}\label{grafosimple}
+                V=\{a,b,c,d,z\}, \qquad\quad
+                E=\{\{a,b\},\{a,d\},\{b,z\},\{c,d\},\{d,z\}\}.
+            \end{equation*}
+            \pause    
+            Su lista de adyacencia es 
+            
+            \begin{center}
+                \begin{tabular}{ccccc}
+                    $a$&$b$&$c$&$d$&$z$ \\ \hline
+                    $b$&$a$&$d$&$a$&$b$ \\
+                    $d$&$z$&&$c$&$d$\\
+                    &&&$z$&
+                \end{tabular}
+            \end{center}
+            \pause    
+            Luego $\delta(a)=2$, $\delta(b)=2$, $\delta(c)=1$, $\delta(d)=3$, $\delta(z)=2$.
+            
+        \end{ejemplo}
+    \end{frame}
+    
+    \begin{frame}
+        
+        
+        
+        \begin{teorema}\label{t5.3} La suma de los valores de las valencias
+            $\delta(v)$, tomados sobre todos los vértices $v$ del grafo
+            $G=(V,E)$, es igual a dos veces el número de aristas:
+            $$
+            \sum_{v \in V} \delta(v) = 2|E|.
+            $$
+        \end{teorema}\vskip -.6cm\pause
+        \begin{proof} La valencia de un vértice $v$ indica la cantidad de
+            ``extremos'' de aristas que ``tocan'' a $v$. Es claro que hay
+            $2|E|$ extremos de aristas, luego la suma total de las valencias
+            de los vértices es $2|E|$.
+
+            \qed
+        \end{proof}
+        
+        
+    \end{frame}
+    
+    \begin{frame}
+        Diremos que un vértice de $G$ es {\em impar} si su  valencia es impar, y {\em par} si su valencia es par.
+        \pause\vskip .3cm
+        
+        Denotemos $V_i$ y $V_p$ los conjuntos de vértices impares y pares
+        respectivamente, luego $V=V_i \cup V_p$ es una partición de $V$.\pause
+        Luego
+        $$
+        \sum_{v \in V_i} \delta(v) + \sum_{v \in V_p} \delta(v)= 2|E|.
+        $$ 
+        y entonces
+        $$
+        \sum_{v \in V_i} \delta(v) = \underbrace{2|E|}_{\text{par}} -  \underbrace{\sum_{v \in V_p} \delta(v)}_{\text{par}}.
+        $$ 
+        \pause
+        Luego, la suma de las valencias de los vértices impares  es par \; $\Rightarrow$
+        
+        \begin{teorema} El número de vértices impares es par.
+        \end{teorema}
+        
+        
+    \end{frame}
+    
+    \begin{frame}
+        Este resultado es a veces llamado el ``handshaking lemma'': dado un conjunto de personas, el número de personas
+        que le ha dado la mano a un número impar de miembros del conjunto
+        es par.
+        
+        \vskip .4cm
+        
+        Un grafo en el cual todos los vértices tienen la misma valencia $r$ se llama {\em regular}  (con valencia $r$), o {\em $r$-valente.} Luego, 
+        $$
+        r|V|=2|E|.
+        $$
+        
+        \begin{itemize}
+            \item $K_n$ regular $(n-1)$-valente.
+            \item  $C_n$,  el polígono de $n$-lados. Si $n \ge3$, $C_n$  es regular de valencia $2$. 
+        \end{itemize}
+        
+        \vskip .4cm 
+        
+        $C_n$  es llamado el \textit{grafo cíclico} de $n$ vértices. Formalmente $C_n =(V,E)$, con
+        $$
+        V = \{ 1,2,\ldots,n\}, \qquad E = \{\{1,2\}, \{2,3\}, \ldots , \{n-1,n\},\{n,1\}  \}.
+        $$
+        
+        
+    \end{frame}
+    
+\end{document}
+
