@@ -88,10 +88,29 @@ $$
 %\addcontentsline{toc}{subsection}{Desarrollos en base $b$, ($b \ge 2$)}    
     
     
-Una consecuencia importante del teorema \ref{t1.5} es que
-justifica nuestro método usual de representación de enteros. 
+Una consecuencia importante del teorema \ref{t1.5} es que justifica nuestro método usual de representación de enteros. Desde chicos aprendimos que nuestro sistema de numeración es \textit{decimal},  es decir hay 10 dígitos,  del $0$  al $9$, y  todo número se escribe como combinación de esos dígitos. Por ejemplo, si queremos representar el número cuyo valor es 
+$$
+1+1+1+1+1+1+1+1+1+1+1+1+1+1
+$$
+(uno sumado catorce veces) hacemos lo siguiente
+\begin{align*}
+    \scriptstyle{1+1+1+1+1+1+1+1+1+1+1+1+1+1} & = \scriptstyle{(1+1+1+1+1+1+1+1+1+1)+(1+1+1+1)} \\
+    &\text{\small (agrupamos lo diez primeros y los cuatro últimos)}\\
+    &= \scriptstyle{10 + 4}\\
+    &= 14. 
+\end{align*} 
+Más formalmente,  todo número $m$ puede ser escrito como 
+\begin{equation*}
+    m =  r_n10^n +r_{n-1} 10^{n-1}+\cdots + r_1 10 + r_0
+\end{equation*}
+con $r_n \not= 0$ y $0 \le r_i < 10$,  entonces la notación decimal del número es 
+$r_n r_{n-1}\ldots r_1r_0$. Por ejemplo,  el número $4 \cdot 10^2 + 0 \cdot 10 + 7$  tiene representación decimal $407$. 
 
-\begin{ejemplo*} Deseamos escribir el número $407$ con una expresión de la forma 
+La representación decimal de un número también el llamada \textit{representación en base $10$}. Así como podemos usar el número $10$ como base de nuestra representación,  podemos usar cualquier otro número mayor o igual a $2$.  
+
+\begin{ejemplo*} 
+    
+Deseamos escribir el número $407$ con una expresión de la forma 
 $$
 407 = r_n5^n +r_{n-1} 5^{n-1}+\cdots + r_1 5 + r_0,
 $$
