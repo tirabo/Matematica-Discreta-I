@@ -102,6 +102,14 @@ Para no escribir demasiado vamos a adoptar una notación muy conveniente: si ele
 \end{align*}
 Son $9 = 3^2$ formas. ¿Cómo justificamos esto? Es claro que para la primera elección tenemos $3$ valores posibles y para la segunda elección tenemos también $3$ valores posibles, entonces, por el principio de multiplicación, tenemos en total $3\cdot 3$ elecciones posibles.  
 
+\begin{notacion*}
+    Si  $n \in \N$, denotaremos  $[[ 1 , n]]$ al conjunto de los primeros $n$ números naturales. Es decir:
+    $$
+    [[ 1 , n]] = \{ 1, 2, \ldots,n\}.
+    $$  
+\end{notacion*}
+
+
 Avancemos un poco más y ahora elijamos en forma ordenada $3$ elementos de  $[[ 1 , 3]]$, es claro que estas elecciones son
 \begin{align*}
 &1 1 1&\quad &211&\quad &311 \\
@@ -314,15 +322,15 @@ En general, cuando $X$ tiene $n$ elementos,
 elegir un subconjunto de $X$ es  equivalente a elegir en forma 
 ordenada $n$ elementos del conjunto $\{ 0, 1 \}$ y por lo tanto
 
-\begin{proposicion}\label{cardp} La cantidad de subconjuntos de  
+\begin{proposicion}\label{prop-card-partes-de-x} La cantidad de subconjuntos de  
 un conjunto de $n$ elementos es $2^n$.
 \end{proposicion}
 
-Dado  $X$ un conjunto, denotamos $\mathcal P(X)$ el  conjunto  formado por todos los subconjuntos de $X$, por ejemplo
+Dado  $X$ un conjunto, denotamos $\mathcal P(X)$, \textit{partes de $X$}, al  conjunto  formado por todos los subconjuntos de $X$, por ejemplo
 $$
 \mathcal P(\{1,2\}) = \{\emptyset,\{1\},\{2\},\{1,2\}\}.
 $$  
-Si $X$ es un conjunto finito la proposición \ref{cardp} nos dice que
+Si $X$ es un conjunto finito la proposición \ref{prop-card-partes-de-x} nos dice que
 $$
 \mathcal |\mathcal P(X)| = 2^{|X|}
 $$
@@ -347,11 +355,6 @@ Por ejemplo
 3! &= 3 \cdot 2 \cdot 1 = 6 \\
 4! &= 3!\cdot 4 = 6 \cdot 4 = 24. 
 \end{align*}
-
-Si  $n \in \mathbb N$, denotaremos  $[[ 1 , n]]$ al conjunto de los primeros $n$ números naturales. Es decir:
-$$
- [[ 1 , n]] = \{ 1, 2, \ldots,n\}.
-$$  
 
 Ahora estudiaremos las selecciones ordenadas de $m$ elementos entre $n$ donde {\em no} se permite la repetición. Es decir si  el conjunto es $A= \{a_1,a_2,\ldots,a_n\}$, las selecciones deben ser del tipo 
 $$
@@ -612,7 +615,7 @@ En el caso general de subconjuntos de $m$ elementos de un
 conjunto de $n$ elementos ($m \le n$) podemos razonar en forma análoga. Cada
 subconjunto de $m$ elementos está determinado por una selección ordenada y todas las permutaciones de esta selección.
 
-\label{eleciones-sin-orden-sin-repeticion} Por lo tanto el número total de subconjunto de $m$ elementos
+\label{elecciones-sin-orden-sin-repeticion} Por lo tanto el número total de subconjunto de $m$ elementos
 de $X$ es
 $$
 \frac{n \cdot (n - 1) \cdots (n - (m - 1))}{m!} = \frac{n!}{(n - m)!\; m!}
@@ -623,7 +626,7 @@ Sean $n, m \in \mathbb N_0$, $m \le n$. Definimos
 $$
 \binom{n}{m} = \frac{n!}{(n - m)! \; m!}
 $$
-y por razones que se verán más adelante se denomina el {\em coeficiente binomial}\index{coeficiente binomial} o {\em número combinatorio}\index{número combinatorio} asociado al par $n$, $m$ con $m \le n$.
+el {\em número combinatorio}\index{número combinatorio} asociado al par $n$, $m$ con $m \le n$. Por razones que se verán más adelante, se denomina también el {\em coeficiente binomial}\index{coeficiente binomial} asociado al par $n$, $m$. 
 
 
 Definimos también
@@ -639,7 +642,7 @@ $$
 Estos resultados se obtienen por aplicación directa de la definición (recordar que  $0! =1$). 
 \end{observacion*}
 
-Concluyendo, el razonamiento de la página \pageref{eleciones-sin-orden-sin-repeticion} se puede resumir en la siguiente proposición.
+Concluyendo, el razonamiento de la página \pageref{elecciones-sin-orden-sin-repeticion} se puede resumir en la siguiente proposición.
 
 \begin{proposicion}
 Sean $n, m \in \mathbb N_0$, $m \le n$, y supongamos que el conjunto $X$ tiene $n$ elementos.
@@ -891,21 +894,9 @@ $$
 
 
 
-La expresión $a+b$ es conocida como un expresión \textit{binómica}
-porque tiene dos términos. Como los números  \index{expresión
-binómica} $\binom{n}{r}$ aparecen como los coeficientes en el
-desarrollo de $(a+b)^n$, generalmente se los llama, como ya fue dicho, 
-coeficientes binomiales.  
-De todos modos esta claro por la primera prueba del teorema \ref{t3.6} que
-estos números aparecen en este contexto porque representan el
-número de formas de hacer ciertas selecciones. Por esta razón
-continuaremos usando el nombre de números binomiales,
- que se aproxima más al concepto que
-simbolizan.
+La expresión $a+b$ es conocida como un expresión \textit{binómica} porque tiene dos términos. Como los números  \index{expresión binómica} $\binom{n}{r}$ aparecen como los coeficientes en el desarrollo de $(a+b)^n$, generalmente se los llama, como ya fue dicho, coeficientes binomiales. De todos modos esta claro por la primera prueba del teorema \ref{t3.6} que estos números aparecen en este contexto porque representan el número de formas de hacer ciertas selecciones. Por esta razón continuaremos usando el nombre de números combinatorios, que se aproxima más al concepto que simbolizan.
 
-Además de ser extremadamente útil en manipulaciones algebraicas,
-el teorema del binomio puede usarse para deducir identidades en
-que estén involucrados los números binomiales.
+Además de ser extremadamente útil en manipulaciones algebraicas, el teorema del binomio puede usarse para deducir identidades en que estén involucrados los números binomiales.
 
 \begin{ejemplo*} Probemos que 
     \begin{equation*}
@@ -921,6 +912,8 @@ que estén involucrados los números binomiales.
             &= \sum_{i=0}^{n} \binom{n}{i}.
     \end{align*} 
 \end{proof}
+
+Observemos que el anterior ejemplo es una demostración alternativa de que el  número de subconjuntos de un conjunto de $n$ elementos es $2^n$ (ver proposición \ref{prop-card-partes-de-x}).
 
 \begin{ejemplo*}Probemos que
 \begin{equation}\label{eqcuaddo}
@@ -959,15 +952,15 @@ buscábamos.
 
 \begin{observacion*}[Definición de $0^0$] No hay consenso matemático en cual es el valor de $0^0$, pues dependiendo del contexto puede ser conveniente definir su valor de cierta forma o declarar su valor como \textit{indeterminado} (ver el artículo de Wikipedia  \href{https://es.wikipedia.org/wiki/Cero_a_la_cero}{Cero  a la cero}). 
     
-    Sin embargo,  para su uso  en álgebra, así como en combinatoria se considera conveniente  definir  $0^0 =1$. ¿Cuál es la razón para darle este valor? Existen varias razones, pero una de las más importantes proviene del teorema del binomio. Observemos que por el teorema del binomio
+    Sin embargo,  para su uso  en álgebra, así como en combinatoria se considera conveniente  definir  $0^0 =1$. ¿Cuál es la razón para darle este valor? Existen varias razones, pero una de las más importantes proviene del teorema del binomio. Observemos que $1 = (1+0)^n$ y que por el teorema del binomio
     \begin{equation*}
         (1 +0)^n = \sum_{i=0}^{n}\binom{n}{i}1^{n-1} 0^i =  \sum_{i=0}^{n}\binom{n}{i} 0^i.
     \end{equation*}
-    Es claro que para $i>0$, $0^i = 0 \cdot \ldots \cdot 0 =0$, luego la ecuación se reduce a
+    Es claro que para $i>0$, $0^i = 0 \cdot \ldots \cdot 0 =0$, luego los términos de la sumatoria se anula para $i>0$ y la ecuación se reduce a
     \begin{equation*}
-    1 = 1^n =  0^0.
+    1 = 1^n =  0^0,
     \end{equation*}
-    No sería muy convincente enunciar el teorema del binomio con algunas excepciones poco naturales (como ser, exigir que $a$ y $b$ sean no nulos) y la formulación más general parece ser la correcta. Esta formulación exige que $0^0 =1$, como hemos visto más arriba.
+    lo cual nos ``obliga'' a definir $0^0$ como $1$. En  caso contrario, deberíamos enunciar el teorema del binomio con alguna excepciones poco naturales (como ser, exigir que $a$ y $b$ sean no nulos). Esto no sería muy conveniente  y la formulación más general parece ser la correcta. Esta formulación exige que $0^0 =1$, como hemos visto más arriba.
     
     Una fundamentación extensa y rigurosa sobre la conveniencia de definir $0^0 =1$ puede leerse en el artículo de D. Knuth \textit{Two notes on notation} que se encuentra en \href{https://arxiv.org/abs/math/9205211}{https://arxiv.org/abs/math/9205211}.
 \end{observacion*}
