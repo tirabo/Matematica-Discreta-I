@@ -165,10 +165,8 @@ Por lo tanto
 $$ (109)_{10} = (1101101)_2.
 $$
 
-La base $16$ también es usada en computación pues se utiliza el byte como unidad básica de memoria y debido a que un byte puede tomar
-$2^8$ posibles valores, tenemos que $$2^8 = 2^4 \cdot 2^4 = 16 \cdot 16 = 1 \cdot 16^2 + 0 \cdot 16^1 + 0 \cdot 16^0.$$ Luego 
- un byte puede representar $(100)_{16}$ valores. Más allá de la justificación, es claro que los dígitos disponibles (del $0$  al $9$) no nos alcanzan  para representar un  número en base $16$, pues se requieren $16$ símbolos. La convención usada es 
- $$\texttt{A}=10,\quad \texttt{B}=11,\quad \texttt{C} =12,\quad \texttt{D} = 13,\quad \texttt{E} = 14,\quad \texttt{F} = 15.$$
+La base $16$ también es usada en computación pues se utiliza el byte como unidad básica de memoria y debido a que un byte puede tomar $2^8$ posibles valores, podemos representar un byte en base $2$ por ternas de $0$ y $1$ , o por un símbolo en base $16$.  Es claro que los dígitos disponibles (del $0$  al $9$) no nos alcanzan  para representar un  número en base $16$, pues se requieren $16$ símbolos. La convención usada es 
+$$\texttt{A}=10,\quad \texttt{B}=11,\quad \texttt{C} =12,\quad \texttt{D} = 13,\quad \texttt{E} = 14,\quad \texttt{F} = 15.$$
 
 \begin{ejemplo*} Representemos  $12488$ en  base $16$.
 \begin{alignat*}2
@@ -238,8 +236,9 @@ También decimos que $y$ es un \textit{factor} de $x$, que $y$ \textit{divide}\i
 Cuando $y|x$ podemos usar el símbolo $\frac{x}{y}$ (o $x/y$) para denotar el entero $q$ tal que $ x=yq$. Cuando $y$ no es un divisor de $x$ tenemos que asignar un nuevo significado a la fracción $x/y$, puesto que este número no es un entero. El lector indudablemente, esta familiarizado con las reglas para manejar
 fracciones, y usaremos esas reglas de tanto en tanto, pero es importante recordar que las fracciones no han sido aún formalmente definidas en el contexto de este apunte. Y es aún más importante recordar que $x/y$ no es un elemento de $\mathbb Z$ a menos que $y$ divida a $x$.
 
+Veamos ahora alguna propiedades básicas de la relación ``divide a''.
 
-\begin{observacion}\label{prop-divide-a-propiedades} Veamos ahora alguna propiedades básicas de la relación ``divide a''. Sean $a,b,c$ enteros, entonces
+\begin{proposicion}\label{prop-divide-a-propiedades}  Sean $a,b,c$ enteros, entonces
 \begin{enumerate}[label=\textit{\alph*)}]
 \item\label{prop-divide-a-propiedades-item-1} $1|a$,\qquad $a|0$,\qquad $a|\pm a$;
 \item\label{prop-divide-a-propiedades-item-2} si $a|b$, entonces $a|bc$ para cualquier $c$;
@@ -247,13 +246,14 @@ fracciones, y usaremos esas reglas de tanto en tanto, pero es importante recorda
 \item\label{prop-divide-a-propiedades-item-4} si $a|b$ y $a|c$, entonces $a|(rb+sc)$ para cualesquiera $r,s \in \mathbb Z$.
 \item\label{prop-divide-a-propiedades-item-5} si $a, b >0$ y $a|b$, entonces $a \le b$.
 \end{enumerate}
+\end{proposicion}
 \begin{proof}
 La demostración de estos hechos es sencilla, por ejemplo \ref{prop-divide-a-propiedades-item-3}: como $a|b$, existe $q$ tal que $b = aq$. Análogamente, como $a|c$, existe $q'$ tal que $c = aq'$. Entonces $b+c = aq+aq' = a(q+q')$, luego $a|(b+c)$.  
 Las demás demostraciones,  excepto la última, se dejan como ejercicio para el lector. 
 
 Demostración de \ref{prop-divide-a-propiedades-item-5}: como $a|b$ existe $q \in \Z$  tal que $b = aq$, como $a, b >0$, entonces, por la compatibilidad de $>$ con el producto,  $q >0$. Luego $q-1 \ge 0$ y,  de nuevo por la compatibilidad, $a(q-1) \ge 0$. Ahora bien, $b = aq = a + a(q-1)$m luego $b-a = a(q-1) \ge 0$, por lo tanto $b \ge a$.
 \end{proof}
-\end{observacion}
+
 
 
 \begin{ejemplo*} Demostremos que si $c$, $d$ y $n$ son enteros tales
@@ -296,11 +296,6 @@ $$y = qx = q(q'y) = (qq')y.$$
 Por el axioma de cancelación (cancelando $y$) obtenemos que $1 = qq'$. Por lo demostrado más arriba tenemos que, o bien $q=q'=1$ y en consecuencia $x=y$, o bien $q=q'=-1$ y en consecuencia $x=-y$. 
 \end{proof}
 
-\begin{observacion*}
-    Si $a$ y $b$ son enteros positivos y $a|b$  entonces $a \le b$. Esto se demuestra de la siguiente manera: como $a|b$  existe $q$  tal que $b = aq$. Como $a$ y $b$ son positivos, por la regla de los signos  también $q >0$. Ahora bien $b = aq = a(q-1) + a \ge a$. La última desigualdad es verdadera pues 
-    $$q >0 \; \Rightarrow  \; q-1 \ge 0\; \Rightarrow \; a(q-1) \ge 0 \; \Rightarrow \; a(q-1) + a \ge a .
-    $$ 
-\end{observacion*}
 
 \subsection*{$\S$ Ejercicios}
 \begin{enumex}
@@ -318,14 +313,14 @@ Por el axioma de cancelación (cancelando $y$) obtenemos que $1 = qq'$. Por lo d
 
 \begin{section}{El máximo común divisor y el mínimo común múltiplo}\label{seccion-maximo-comun-divisor-mcm}
 
-Recordemos que  por la observación \ref{prop-divide-a-propiedades} \ref{prop-divide-a-propiedades-item-5},  si $x|y$  y ambos son mayores que $0$,  entonces $x \le y$. En consecuencia, el conjunto de divisores de un número positivo está compuesto por números menores o iguales al número. 
+Recordemos que  por la proposición \ref{prop-divide-a-propiedades} \ref{prop-divide-a-propiedades-item-5},  si $x|y$  y ambos son mayores que $0$,  entonces $x \le y$. En consecuencia, el conjunto de divisores de un número positivo está compuesto por números menores o iguales al número. 
 
 \begin{definicion}\label{mcd} Si $a$ y $b$ son enteros algunos de ellos no nulo, decimos que un entero positivo $d$ es el \textit{máximo común divisor}\index{máximo común divisor}, o \textit{mcd}, de $a$ y $b$ si
 \begin{enumerate}[label=\textit{\alph*)}]
 \item\label{mcda} $ d|a$  y $d|b$;
 \item\label{mcdb}  si $ c|a $ y $c|b$ entonces $ c \le d$.
 \end{enumerate}
-Denotaremos al máximo común divisor  de $a$ y $b$ por $\mcd(a,b)$ o, en caso de no haber confusión, por $(a,b)$.
+Denotaremos al máximo común divisor  de $a$ y $b$ por $\mcd(a,b)$ o, en caso de no haber confusión, por el par ordenado $(a,b)$.
 \end{definicion}
  
 
@@ -343,13 +338,11 @@ $a$ y $b$ es menor igual que $d$. Podemos resumir la definición en una frase, d
         
         Divisores de 72: 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, 72 
         
-        Luego, $6$ es divisor común de 174 y 72, y todos los demás divisores comunes ($1$, $2$ y $3$) son menosres que  $6$. Por lo tanto $\mcd(174,72) =6$.
+        Luego, los divisores comunes de $174$ y $72$ son $1$, $2$, $3$, $6$, y claramente $6$ es el mayor divisor común. Por lo tanto $\mcd(174,72) =6$.
     \end{proof}
 \end{ejemplo*}
 
-En los  ejemplos anteriores usamos dos enteros pequeños y no tuvimos problemas en encontrar el  máximo común divisor. Pero ¿qué pasaría si consideráramos dos enteros muy grandes? 
-
-En  el desarrollo de esta sección veremos el \textit{algoritmo de Euclides}, un método muy eficiente para calcular el máximo común divisor de dos números. 
+En los  ejemplos anteriores usamos dos enteros pequeños y no tuvimos problemas en encontrar el  máximo común divisor. Pero, ¿qué pasaría si consideráramos dos enteros ``muy grandes''? En  ese caso nos es factible calcular los divisores comunes y por lo tanto no podemos calcular el mcd de sea manera. En  el desarrollo de esta sección veremos el \textit{algoritmo de Euclides}, un método muy eficiente para calcular el máximo común divisor de dos números, incluso donde cada uno con varios cientos de dígitos. 
 
 
 \begin{observacion}\label{obs-mcd-divisores} Sean $a,b$ enteros,  alguno de ellos  no nulo, y $a', b'$ otro par de enteros tal que se cumple la propiedad:
@@ -399,7 +392,7 @@ La siguiente propiedad no es tan obvia y resulta muy importante.
     \begin{enumerate}
         \item[\textit{b')}]si  $ c|a $ y $c|b$, entonces  $c \le d$.
     \end{enumerate}
-    Luego, por definición de mcd, obtenemos que $d = \mcd(a,b)$.
+    Luego, por \textit{a')} y \textit{b')} tenemos que $d$ satisface la definición del mcd de $a$ y $b$, es decir $d = \mcd(a,b)$.
 \end{proof}
 
 La propiedad anterior nos provee un método práctico para encontrar el máximo común divisor entre dos números. Veamos su aplicación en el siguiente ejemplo.
@@ -407,7 +400,7 @@ La propiedad anterior nos provee un método práctico para encontrar el máximo 
 \begin{ejemplo*} Encontrar el mcd entre 72 y 174.
     \begin{proof}[Solución] Observar que 
         \begin{align*}
-        \mcd(72, 174) &= \mcd(72,174-72) = \mcd(72,102) = \mcd(72,30) =  \mcd(42, 30) \\&= \mcd(12,30) = \mcd(12,18)= \mcd(12,6)= \mcd(6,6) = 6.  
+        \mcd(72, 174) &= \mcd(72,174-72) = \mcd(72,102) = \mcd(72,30)\\&=  \mcd(42, 30) = \mcd(12,30) = \mcd(12,18)= \mcd(12,6)\\&= \mcd(6,6) = 6.  
         \end{align*}
     \end{proof}
 \end{ejemplo*} 
@@ -524,7 +517,7 @@ d = i
 \end{small}
 \end{minipage}
 \vskip .2cm
-Observar que en el ciclo \texttt{while} los valores que se obtienen en cada repetición  son $i' = j$, $j' =  i \% \,j$, luego 
+La expresión $ i \% \,j$ representa el resto de dividir $i$ por $j$. Observar que en el ciclo \texttt{while} los valores que se obtienen en cada repetición  son $i' = j$, $j' =  i \% \,j$, luego 
 $$
 i = q \cdot j + j' \; \Rightarrow\;  \mcd(i,j) = \mcd(j,j') = \mcd(i',j').
 $$
@@ -544,7 +537,7 @@ Luego,  al terminar el ciclo \texttt{while},  es decir cuando $j=0$, tenemos que
     es una  \textit{combinación lineal entera} de $a$ y $b$. 
 \end{definicion}
 
-\begin{observacion*} Sean $a,b \in \Z$, alguno de ellos no nulo, y $d$ un máximo común divisor de $a$ y $b$. Entonces, $d$ divide a cualquier combinación lineal entera de $a$ y $b$. Esto es una consecuencia directa de la observación \ref{prop-divide-a-propiedades} \ref{prop-divide-a-propiedades-item-4}.
+\begin{observacion*} Sean $a,b \in \Z$, alguno de ellos no nulo, y $d$ un máximo común divisor de $a$ y $b$. Entonces, $d$ divide a cualquier combinación lineal entera de $a$ y $b$. Esto es una consecuencia directa de la proposición \ref{prop-divide-a-propiedades} \ref{prop-divide-a-propiedades-item-4}.
 \end{observacion*}
 
 \begin{teorema}\label{prop-d-comb-lin}
@@ -605,8 +598,16 @@ $$
     Sean  $a$ y $b$ enteros,  unos de ellos no nulo y  sea $d = \mcd(a,b)$. Sea $c \in \Z$ tal que $c|a$ y $c|b$,  entonces $c|d$. 
 \end{corolario}
 \begin{proof}
-    Por la proposición anterior $d$  es combinación lineal entera de $a$ y $b$. Como $c|a$ y $c|b$, entonces divide a $d$ que es una combinación lineal entera de $a$ y $b$ (observación \ref{prop-divide-a-propiedades} \ref{prop-divide-a-propiedades-item-4}.
+    Por la proposición anterior $d$  es combinación lineal entera de $a$ y $b$. Como $c|a$ y $c|b$, entonces divide a $d$ que es una combinación lineal entera de $a$ y $b$ (proposición \ref{prop-divide-a-propiedades} \ref{prop-divide-a-propiedades-item-4}.
 \end{proof}
+
+\begin{observacion*}
+    El corolario anterior nos permite, después de cierto trabajo,  cambiar la condición \ref{mcdb} de la definición de máximo común divisor por una condición equivalente:
+    \begin{enumerate}
+        \item[\textit{b')}] si $ c|a $ y $c|b$ entonces $ c | d$.
+    \end{enumerate}
+    En alguna literatura puede encontrarse la definición de mcd con la condición \textit{b')}.
+\end{observacion*}
 
 \begin{definicion}
     Si $(a,b)=1$ entonces decimos que $a$ y $ b$ son \textit{coprimos}\index{coprimos}.
@@ -631,11 +632,11 @@ $$
     a|c \; \wedge \; b|c  \quad \Rightarrow \quad ab|c.
     $$
 \end{ejemplo*}
-\begin{proof}[Solución] como $a$ y $b$ son coprimos, existen $s,t \in \Z$ tales que $1 = sa+tb$. Por lo tanto,  multiplicando por $c$ la ecuación,  obtenemos $c = csa + ctb$. Como $a|c$, tenemos que $c/a \in \Z$, y 
-$$
-\frac{c}{a} = \frac{csa + ctb}{a} = cs + (\frac{c}{a})tb.
-$$ 
-Como $b|c$ y $b|b$, entonces $b |cs +(c/a)tb =c/a$, luego $(c/a)/b$ entero,  es decir $ab|c$.     
+\begin{proof}[Solución] como $a$ y $b$ son coprimos, existen $s,t \in \Z$ tales que $1 = sa+tb$. Por lo tanto,  multiplicando por $c$ la ecuación,  obtenemos $c = csa + ctb$. Como $a|c$ y $b|c$, existen $m,n \in \Z$ tal que $c = am$ y $c=bn$, luego:
+\begin{equation*}
+    c = csa + ctb = bnsa + amtb = ab(ns + mt).
+\end{equation*}
+Por lo tanto $ab|c$.
 \end{proof}
 
 El hecho  de que el máximo común divisor de dos enteros $a$ y $b$ puede ser escrito como una combinación lineal entera de $a$ y $b$  (proposición \ref{prop-d-comb-lin}) es una herramienta de suma utilidad para trabajar en problemas relacionados con el mcd. Por ejemplo, todos estamos familiarizados con la idea de que una fracción puede reducirse al ``mínimo término'', o sea a la forma $a/b$ con $a$ y $b$ coprimos. El  siguiente ejemplo establece que esta forma es única, y como veremos, el hecho clave de la demostración es que podemos expresar
@@ -731,7 +732,7 @@ s, t  = s[i-1], t[i-1]
 Sin  embargo, este algoritmo no es muy conveniente,  a nivel de eficiencia de memoria, pues las variables \texttt{r}, \texttt{s} y \texttt{t} van guardando series de valores en forma innecesaria. 
 
 Una versión mejorada, aunque menos legible,  es la siguiente. 
-\vskip .5cm
+
 
 %\centering
 \begin{minipage}{0.90\textwidth}
@@ -803,7 +804,7 @@ Este último código y el de la página \pageref{cod-alg-de-euclides} son códig
         es una  \textit{combinación lineal entera} de $a$ y $b$. 
     \end{definicion}
     
-    \begin{observacion*} Sean $a,b \in \Z$, alguno de ellos no nulo, y $d$ un máximo común divisor de $a$ y $b$. Entonces, $d$ divide a cualquier combinación lineal entera de $a$ y $b$. Esto es una consecuencia directa de la observación \ref{prop-divide-a-propiedades} \ref{prop-divide-a-propiedades-item-4}.
+    \begin{observacion*} Sean $a,b \in \Z$, alguno de ellos no nulo, y $d$ un máximo común divisor de $a$ y $b$. Entonces, $d$ divide a cualquier combinación lineal entera de $a$ y $b$. Esto es una consecuencia directa de la proposición \ref{prop-divide-a-propiedades} \ref{prop-divide-a-propiedades-item-4}.
     \end{observacion*}
     
     \begin{teorema}\label{th-existencia-mcd}
@@ -816,7 +817,7 @@ Este último código y el de la página \pageref{cod-alg-de-euclides} son códig
         \end{equation*}
         el conjunto de las combinaciones lineales positivas de $a$ y $b$. Como  $a$ o $-a$ pertenecen a $S$, tenemos que  $S \not= \emptyset$, luego, por el principio de buena ordenación, $S$ tiene un  mínimo $d$. Probaremos ahora que  $d$  es un  máximo común divisor de $a$ y $b$. 
         
-        \textit{Propiedad {\ref{mcdb}}.} Puesto  que $d \in S$,  existen $s, t \in \Z$ tal que $d = sa+tb$. Sea $c$ tal que $c|a$ y $c|b$, por \ref{prop-divide-a-propiedades-item-4} de la observación \ref{prop-divide-a-propiedades},  tenemos que $c|sa+tb$,  es decir $c|d$. 
+        \textit{Propiedad {\ref{mcdb}}.} Puesto  que $d \in S$,  existen $s, t \in \Z$ tal que $d = sa+tb$. Sea $c$ tal que $c|a$ y $c|b$, por \ref{prop-divide-a-propiedades-item-4} de la proposición \ref{prop-divide-a-propiedades},  tenemos que $c|sa+tb$,  es decir $c|d$. 
         
         \textit{Propiedad {\ref{mcda}}.} Supongamos ahora que $d \nodivide  a$,  entonces $|a| = qd + r$ con $0 < r <d$ y $q \ge 0$, luego $r = \pm a - qd = \pm a-q(sa+tb) = a(\pm1-qs) +(-qt)b$. Por lo tanto,  $r < d$  pertenece a $S$, contradiciendo  el hecho de que $d$  es un mínimo de $S$. La contradicción vino de suponer que  $d \nodivide  a$, por lo tanto $d|a$. En  forma análoga podemos probar que $d|b$. 
     \end{proof}
@@ -1244,7 +1245,7 @@ $$
 m=\frac{a b}{\mcd(a,b)}=\frac{a}{\mcd(a,b)} b
 =a\frac{b}{\mcd(a,b)}
 $$
-resulta que $m$ es múltiplo de $a$ y $b$, y por lo tanto se satisface (a) de la definición de mínimo común múltiplo. Veamos ahora (b): sea $n \in \Z$ tal que  $a|n$ y $b|n$. Como  existen enteros $r,s$ tales que 
+resulta que $m$ es múltiplo de $a$ y $b$, y por lo tanto se satisface \ref{it.defmcm1} de la definición de mínimo común múltiplo. Veamos ahora \ref{it.defmcm2}: sea $n \in \Z$ tal que  $a|n$ y $b|n$. Como  existen enteros $r,s$ tales que 
 \begin{equation}\label{clmcd}
 \mcd(a,b)=ra+sb,
 \end{equation} 
@@ -1319,7 +1320,6 @@ Los primeros primos (los  menores que $100$) son
 
 Podemos expresar el algoritmo en pseudocódigo:
 
-\vskip .5cm
 %\centering
 \begin{minipage}{0.90\textwidth}
 \noindent \textsc{Criba de Eratóstenes}
@@ -1344,7 +1344,6 @@ for i = 2 to n:
 
 Este código en si no es eficiente, pero muestra una forma sencilla de obtener primos con el uso de la criba de Eratóstenes. El código puede ser mejorado y su rendimiento aumenta enormemente, como en la siguiente implementación.
 
-\vskip .5cm
 %\centering
 \begin{minipage}{0.90\textwidth}
 \noindent \textsc{Criba de Eratóstenes 2}
@@ -1480,11 +1479,11 @@ Ejemplos como éste nos ayudan a entender que el teorema \ref{t1.8} expresa una 
 $$
 n_0= p_1p_2\ldots p_k\quad\text{ y }\quad n_0= p'_1p'_2\ldots p'_l,
 $$
-donde los $p_i$ ($1\le i \le k$) son primos, no necesariamente distintos, y los $p'_i$ ($1\le i \le l$) son primos, no necesariamente distintos. La primera ecuación implica que $p_1|n_0$, y la segunda ecuación implica que $p_1 | p'_1p'_2\ldots p'_l$. Por consiguiente por teorema \ref{t1.8} tenemos que $p_1|p'_j$ para algún $j$ ($1\le j \le l$). Reordenando la segunda factorización podemos asumir que $p_1 | p'_1$, y puesto que $p_1$ y $p'_1$ son primos, se sigue que $p_1=p'_1$ (observación \ref{pdivpp}-(3)). Luego por el axioma (\textbf{I7}), podemos cancelar los factores $p_1$ y $p'_1$, y obtener
+donde los $p_i$ ($1\le i \le k$) son primos, no necesariamente distintos, y los $p'_i$ ($1\le i \le l$) son primos, no necesariamente distintos. La primera ecuación implica que $p_1|n_0$, y la segunda ecuación implica que $p_1 | p'_1p'_2\ldots p'_l$. Por consiguiente por teorema \ref{t1.8} tenemos que $p_1|p'_j$ para algún $j$ ($1\le j \le l$). Reordenando la segunda factorización podemos asumir que $p_1 | p'_1$, y puesto que $p_1$ y $p'_1$ son primos, se sigue que $p_1=p'_1$ (observación \ref{pdivpp}  \ref{it.propmcd_b}). Luego por el axioma (\textbf{I7}), podemos cancelar los factores $p_1$ y $p'_1$, y obtener
 $$
 p_2p_3 \ldots p_k = p'_2p'_3 \ldots p'_l,
 $$
-y llamemos a esto $n_1$. Pero supusimos que $n_0$ tenía dos factorizaciones diferentes, y hemos cancelado el mismo número ($p_1=p'_1$) en ambas factorizaciones, luego $n_1$ tiene también dos factorizaciones primas diferentes. Esto contradice la definición de $n_0$ como el mínimo entero sin factorización única. Por lo tanto el teorema es verdadero para $n\ge 2$.
+y llamemos a este número $n_1$. Pero supusimos que $n_0$ tenía dos factorizaciones diferentes, y hemos cancelado el mismo número ($p_1=p'_1$) en ambas factorizaciones, luego $n_1$ tiene también dos factorizaciones primas diferentes. Esto contradice la definición de $n_0$ como el mínimo entero sin factorización única. Por lo tanto el teorema es verdadero para $n\ge 2$.
 \end{proof}
 
 En la práctica a menudo reunimos los primos iguales en la factorización de $n$ y escribimos
@@ -1500,19 +1499,8 @@ La unicidad de la factorización prima de cualquier entero mayor que 1 nos permi
     \begin{equation*}
         n=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},
     \end{equation*}
-    donde $p_i$ primo para todo $i$ ($1\le i \le r$). Entonces, diremos que  $p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}$ es la \textit{factorización prima de $n$} y que $p_i$ es un \textit{factor primo de } $n$  ($1\le i \le r$).
+    donde $p_i$ primo para todo $i$ ($1\le i \le r$) y $e_1,e_2,\ldots,e_r$ son enteros positivos. Entonces, diremos que  $p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}$ es la \textit{factorización prima de $n$} y que $p_i$ es un \textit{factor primo de } $n$  ($1\le i \le r$).
 \end{definicion}
-
-
-\begin{proposicion}
-    Sea $n$  entero mayor o igual a $2$ y $p$ número primo. Entonces, $p|n$ si y solo si $p$ es un factor primo de $n$.
-\end{proposicion}
-\begin{proof}
-    Si $n = q_1q_2 \cdots q_s$ donde los $q_i$ son primos no necesariamente distintos. Como $p|n$,  entonces $p|q_i$, para algún $i$ (teorema \ref{t1.8} \ref{it.pirreducible_b}), por lo tanto $p=q_i$ (observación \ref{pdivpp} \ref{it.propmcd_b}),  es decir, $p$ es factor primo de $n$.
-
-    Recíprocamente, si en la factorización prima de $n$ participa $p$,  es decir si $n= p p_1 \cdots p_k$,  entonces $n = pm$ donde $m = p_1 \cdots p_k$. Por lo tanto, $p|n$.
-\end{proof}
-
 
 La factorización prima nos dice que los números primos son los  ``ladrillos'' esenciales para  ``cons\-truir'' los números enteros usando multiplicaciones. Ahora bien, podría ocurrir que haya un número finitos de ellos y que podamos escribir cada número como producto de primos en forma muy sintética. Pero este no es el caso.
 
