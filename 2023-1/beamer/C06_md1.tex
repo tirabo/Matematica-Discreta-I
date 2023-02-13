@@ -1,8 +1,8 @@
-\documentclass[handout]{beamer} % sin pausas
 %\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
+\usetheme{CambridgeUS}
 %\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
-\usetheme{CambridgeUS}
 
 \usepackage{etex}
 \usepackage{t1enc}
@@ -101,7 +101,7 @@
     \\[\baselineskip] ${}^{}$
     \\[\baselineskip]
 }
-\date[05/04/2022]{5 de abril  de 2022}
+\date[30/03/2023]{39 de marzo de 2023}
 
 
 
@@ -234,7 +234,7 @@ Remarcamos que para aplicar el principio de adición es necesario que los evento
     {\color{blue} Ejemplo}
     \vskip .2cm
     
-    ¿Cuántas palabras de dos letras hay? (26 letras,  no importa si tienen significado)
+    ¿Cuántas palabras de dos letras hay? (26 letras,  no importa si las palabras tienen significado)
     \pause
     
     \vskip .2cm
@@ -267,7 +267,6 @@ Entonces, las posibilidades son
 \vskip .1cm \pause
     Es decir, hay $9 = 3^2$ formas posibles. \pause
     
-    \vskip .2cm ¿Cómo justificamos esto? \pause Por el principio de multiplicación
 
 
 \end{frame}
@@ -303,9 +302,26 @@ Un diagrama arbolado ayuda a pensar. \pause
 \end{center}
 
 %\vskip 8cm
+\vskip .2cm ¿Cómo justificamos esto? \pause Por el principio de multiplicación
 \end{frame}
 
+\begin{frame}    
+    
+    De los dos ejemplos anteriores se podría inferir que hay $3^4$ formas posibles de elegir en forma ordenada $4$ elementos del conjunto $1$, $2$, $3$. También, que cuando elijamos $5$ habrá $3^5$ posibilidades y así sucesivamente para enteros más grandes. 
 
+    \pause 
+
+    \vskip .2cm ¿Cómo justificamos esto? \pause     Por el principio de multiplicación
+
+    \pause 
+
+    \vskip .2cm Hemos visto en las página anteriores que hay $3^3$ formas posibles de elegir $3$ números entre $1$, $2$, $3$.
+
+    \vskip .2cm Ahora,  para elegir el cuarto número hay $3$ posibilidades, por lo tanto, por el principio de multiplicación, el número de posibilidades  con cuatro elecciones es
+    \begin{equation*}
+        3^3 \times 3 = 3^4.
+    \end{equation*}
+    \end{frame}
 
 \begin{frame}    
 
