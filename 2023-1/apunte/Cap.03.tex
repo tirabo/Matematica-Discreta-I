@@ -429,7 +429,7 @@ La propiedad anterior nos provee un método práctico para encontrar el máximo 
     \end{proof}
 \end{ejemplo*} 
 
-En  general no es sencillo encontrar todos los divisores de un número entero grande. Por ejemplo, para los  números de más de cien dígitos no es posible,  en general, calcular sus divisores ni con las computadoras más poderosas de la actualidad. Por  lo tanto, no es factible calcular el  mcd de números grandes revisando todos los divisores comunes.  El algoritmo que nos provee la  propiedad \ref{propiedad1} nos da un método práctico y relativamente eficiente para calcular el mcd. Veremos a continuación un método similar pero mucho más eficiente para calcular el mcd de dos enteros no negativos $a,b$ con $b \not=0$. Este método esta basado en el algoritmo de división y el siguiente resultado.
+En  general no es sencillo encontrar todos los divisores de un número entero. Por ejemplo, para los  números de más de cien dígitos no es posible,  en general, calcular sus divisores ni con las computadoras más poderosas de la actualidad. Por  lo tanto, no es factible calcular el  mcd de números con más de cien dígitos revisando todos los divisores comunes.  El algoritmo que nos provee la  propiedad \ref{propiedad1} nos da un método práctico y relativamente eficiente para calcular el mcd. Veremos a continuación un método similar pero mucho más eficiente para calcular el mcd de dos enteros no negativos $a,b$ con $b \not=0$. Este método esta basado en el algoritmo de división y el siguiente resultado.
 
 \begin{proposicion}\label{prop-alg-eucl} Sean  $a,b$ enteros no negativos con $b \not=0$, entonces 
     \begin{equation}\label{bec}
@@ -459,20 +459,6 @@ La aplicación repetida de este simple resultado, en combinación con el algorit
     \end{alignat*}
     Por lo tanto, $\mcd(2406,654) = 6$.
 \end{proof}
-
-\vskip .3cm
-
-Este ejemplo es un caso particular o una aplicación del algoritmo que nos permite calcular el máximo común divisor: sean $a$ y $b$ enteros con $b>0$, sea $r_0=a$, $r_1 =b$  y suponiendo definidos $r_{i-1}$ y  $r_{i}$ definimos recursivamente $r_{i+1}$ por la siguiente ecuación 
-\begin{equation*}
-    r_{i-1}=r_{i}q + r_{i+1}\quad \text{con \quad $0 < r_{i+1} <r_{i}$}.
-\end{equation*}
-Observar que $r_{i+1]}$  está bien definido por el algoritmo de división. Detenemos el proceso  cuando uno de los restos $r_i$  es igual a $0$. Ahora bien, cada resto no nulo es positivo y estrictamente menor que el anterior. Entonces, queda claro que el proceso se va a detener.
-
-El proceso se explica esquemáticamente en el cuadro \ref{tabla-AE}. 
-\vskip .3cm
-
-Este procedimiento es conocido como el \textit{algoritmo de Euclides}\index{algoritmo de Euclides}, debido al matemático griego Euclides ($300$ a. c.). Es extremadamente útil en la práctica, y tiene importantes consecuencias.
-
 
 \begin{center}
     \begin{table}[h]
@@ -504,7 +490,14 @@ Este procedimiento es conocido como el \textit{algoritmo de Euclides}\index{algo
 \end{table}
 \end{center}
 
-\vskip .2cm
+Este ejemplo es un caso particular o una aplicación del algoritmo que nos permite calcular el máximo común divisor: sean $a$ y $b$ enteros con $b>0$, sea $r_0=a$, $r_1 =b$  y suponiendo definidos $r_{i-1}$ y  $r_{i}$ definimos recursivamente $r_{i+1}$ por la siguiente ecuación 
+\begin{equation*}
+    r_{i-1}=r_{i}q + r_{i+1}\quad \text{con \quad $0 < r_{i+1} <r_{i}$}.
+\end{equation*}
+Observar que $r_{i+1}$  está bien definido por el algoritmo de división. Detenemos el proceso  cuando uno de los restos $r_i$  es igual a $0$. Ahora bien, cada resto no nulo es positivo y estrictamente menor que el anterior. Entonces, queda claro que el proceso se va a detener. El proceso se explica esquemáticamente en el cuadro \ref{tabla-AE}. 
+
+
+Este procedimiento es conocido como el \textit{algoritmo de Euclides}\index{algoritmo de Euclides}, debido al matemático griego Euclides ($300$ a. c.). Es extremadamente útil en la práctica, y tiene importantes consecuencias.
 
 \begin{teorema} Sean  $a$ y $b$ enteros con $b >0$, entonces el máximo común divisor es el último resto no nulo obtenido en el algoritmo de Euclides (con la notación del cuadro \ref{tabla-AE} es $r_k$). 
 \end{teorema}
@@ -1280,8 +1273,7 @@ n= r\frac{a}{\mcd(a,b)}n + s\frac{b}{\mcd(a,b)}n.
 Escribiendo $n=b'b=a'a$ ($a',b'$ en $\mathbb Z$) y haciendo los reemplazos en (\ref{clmcd2}), resulta
 finalmente
 \begin{equation*}
-n= rb'\frac{a b}{\mcd(a,b)}+sa'\frac{a b}{\mcd(a,b)}= \frac{a
-b}{\mcd(a,b)}(rb'+sa')
+n= rb'\frac{a b}{\mcd(a,b)}+sa'\frac{a b}{\mcd(a,b)}= (rb'+sa')m,
 \end{equation*}
 lo cual demuestra que $m$ divide a $n$.
 \end{proof}
