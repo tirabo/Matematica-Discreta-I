@@ -88,14 +88,38 @@ $$
 %\addcontentsline{toc}{subsection}{Desarrollos en base $b$, ($b \ge 2$)}    
     
     
-Una consecuencia importante del teorema \ref{t1.5} es que justifica nuestro método usual de representación de enteros. Desde chicos aprendimos que nuestro sistema de numeración es \textit{decimal},  es decir hay 10 dígitos,  del $0$  al $9$, y  todo número se escribe como combinación de esos dígitos. $0$ y $1$ vienen dados por los axiomas, el símbolo $2$ representa $1+1$, el símbolo $3$ representa $1+1+1$, etc. Para representar la suma de diez $1$ usamos el símbolo $10$, para represntar la suma de diez $10$ usamos el símbolo $100$, etc. Más formalmente,  todo número natural  $m$ puede ser escrito de una única forma como 
-\begin{equation*}
-    m =  r_n10^n +r_{n-1} 10^{n-1}+\cdots + r_1 10 + r_0
-\end{equation*}
-con $r_n \not= 0$ y $0 \le r_i < 10$. Entonces la notación decimal del número es 
-$r_n r_{n-1}\ldots r_1r_0$. Por ejemplo,  el número $4 \cdot 10^2 + 0 \cdot 10 + 7$  tiene representación decimal $407$. 
+Una consecuencia importante del teorema \ref{t1.5} es que justifica nuestro método usual de representación de enteros. Desde chicos aprendimos que nuestro sistema de numeración es \textit{decimal},  es decir hay 10 dígitos,  del $0$  al $9$, y  todo número se escribe como combinación de esos dígitos. 
 
-La representación decimal de un número también el llamada \textit{representación en base $10$}. Así como podemos usar el número $10$ como base de nuestra representación,  podemos usar cualquier otro número mayor o igual a $2$.  
+¿Cuáles son estos 10 dígitos? $0$ y $1$ vienen dados por los axiomas, el símbolo $2$ representa $1+1$, el símbolo $3$ representa $1+1+1$, etc. Todo número natural puede ser escrito con la notación posicional como combinación de estos diez dígitos. Por ejemplo, el número $407$ se puede escribir como 
+$$
+    407 = 4 \cdot 10^2 +0 \cdot 10^{1}+ 7 \cdot 10^0,
+$$
+y el número $23827$ se puede escribir como 
+$$
+    23827 = 2 \cdot 10^4 +3 \cdot 10^3 +8 \cdot 10^2 +2 \cdot 10^{1}+ 7 \cdot 10^0.
+$$
+
+Más formalmente.  
+\begin{teorema}
+    Todo número natural  $m$ puede ser escrito de una única forma como 
+    \begin{equation*}
+        m =  r_n10^n +r_{n-1} 10^{n-1}+\cdots + r_1 10 + r_0
+    \end{equation*}
+    con $r_n \not= 0$ y $0 \le r_i < 10$ para $i= 0, 1, \ldots, {n}$.
+\end{teorema}
+
+Podemos decir entonces que
+\begin{center}
+    \textit{$x$ se representa como la cadena $ r_n r_{n-1}  \ldots  r_1   r_0$ en notación decimal.}
+\end{center}
+o también que 
+\begin{equation*}
+    x = ( r_n r_{n-1}  \ldots  r_1   r_0)_{10}.
+\end{equation*}
+
+La representación decimal de un número también el llamada \textit{representación en base $10$}. 
+
+Este teorema es	una consecuencia importante del algoritmo de división  y es el que justifica nuestro método usual de representación de enteros. También podemos desarrollar en potencias de $b$ con $b$ cualquier entero $\ge 2$ (y vale el teorema anterior reemplazando $10$ por $b$).
 
 \begin{ejemplo*} 
     
