@@ -1,8 +1,7 @@
-%\documentclass[handout]{beamer} % sin pausas
-\documentclass{beamer} 
-\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
-
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
 \usetheme{CambridgeUS}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 \usepackage{etex}
 \usepackage{t1enc}
@@ -101,7 +100,7 @@
 	\\[\baselineskip] ${}^{}$
 	\\[\baselineskip]
 }
-\date[21/04/2022]{21 de abril  de 2022}
+\date[18/04/2023]{18 de abril  de 2023}
 
 
 
@@ -228,7 +227,7 @@ Luego se prueba  que $0\le r<b$.
 		$$
 		x = r_n10^n +r_{n-1} 10^{n-1}+\cdots + r_1 10 + r_0,
 		$$
-		donde $0 < r_n < 10$ y  $0 \le r_i < 10$ para $i= 0, 1, \ldots, {n-1}$.}
+		donde $ r_n \not= 0$ y  $0 \le r_i < 10$ para $i= 0, 1, \ldots, {n}$.}
 	
 	\vskip .8cm\pause
 	
@@ -321,7 +320,7 @@ Luego se prueba  que $0\le r<b$.
 	q_{n-2} & = bq_{n-1} &+\;&r_{n-1} &&(0 \le r_{n-1} < b)\\
 	q_{n-1} & = bq_n &+\;&r_n.&&(0 < r_n < b)
 	\end{alignat*} \pause
-	Este procedimiento se detiene en el primer $q_{n-1} < b$. 
+	Este procedimiento se detiene en el primer $q_{n-1} < b$ (es decir, $q_n=0$). 
     \vskip .2cm \pause
     Reemplazando sucesivamente los cocientes $q_i$, como lo hicimos en el ejemplo, obtenemos
 	$$
