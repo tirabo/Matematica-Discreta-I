@@ -180,7 +180,7 @@
         
     \end{frame}
     
-    \begin{frame}
+    \begin{frame}\label{film-alg-eucl-2}
         
         \begin{teorema}\label{prop-d-comb-lin}
             Sean $a,b \in \Z$, alguno de ellos no nulo. Entonces,  existen $s, t \in \Z$ tal que 
@@ -188,25 +188,45 @@
                 \operatorname{mcd}(a,b) = sa +tb.
             \end{equation*}
         \end{teorema}
-        \vskip .2cm \pause
+        \vskip -.5cm
         {\color{blue}Demostración.}\pause 
         \vskip .2cm
-        Supongamos que $b>0$ y sea $d=\mcd(a,b)$. Entonces, $d=r_{k}$ y
-        $$
-        (e_{k-1}) \quad \Rightarrow \quad  d=r_{k-2} -r_{k-1}q_{k-1}.
-        $$ 
-            
-        Así, $ d = s_{k}r_{k-2} +t_{k}r_{k-1}$, donde $s_{k}=1$ y $t_{k}=-q_{k-1}$ . Usando la ecuación  ($e_{k-2}$), sustituyendo $r_{k-1}$ en términos de $r_{k-3}$ y $r_{k-2}$ obtenemos
-        $$
-        d= s_{k}(r_{k-3}-r_{k-2}q_{k-2}) + t_{k}r_{k-3} =  s_{k-1}r_{k-3} +t_{k-1}r_{k-2}
-        $$
-        donde $s_{k-1} = s_{k} + t_{k} $ y $t_{k-1}= -s_{k}q_{k-2}$.  Aplicando  repetidas veces las ecuaciones del algoritmo de Euclides obtenemos,
-        $$
-        d =  s_{2}r_{0} +t_{2}r_{1} = s_{2}a +t_{2}b.
-        $$
-        \qed
+        Supongamos que $b>0$ y sea $d=\mcd(a,b)$. Entonces, $d$ es el último resto no nulo del algoritmo (ver p. \ref{film-alg-eucl}).
+        \vskip .2cm \pause
+        Cada resto puede ser calculado en base a los dos anteriores:
+        \begin{equation}\label{eq-alg-euclides}
+            (e_{i-1})\quad r_{i-2}=r_{i-1}q_{i-1} + r_{i}\quad \Rightarrow \quad  r_{i} = r_{i-2} - r_{i-1}q_{i-1}.
+        \end{equation}
+        \vskip .2cm \pause
+        Aplicando repetidamente (\ref{eq-alg-euclides}) a los restos correpondientes, $\Rightarrow$  cada resto puede ser escrito como combinación lineal entera de $r_0=a$ y $r_1=b$.
+        \vskip .2cm \pause
+        En particular,  $d=r_k$ puede ser escrito como combinación lineal entera de $r_0=a$ y $r_1=b$.
     \end{frame}
 
+    
+    \begin{frame}\label{fil-obtencion-de-r-s}
+        
+    Más precisamente, de la filmina \ref{film-alg-eucl} :
+    \begin{equation*}
+        (e_{i-1})\quad r_{i-2}=r_{i-1}q_{i-1} + r_{i}.
+    \end{equation*}\pause
+        Esto implica que 
+        $$
+        ({i})\quad r_{i} = r_{i-2} - r_{i-1}q_{i-1}.
+        $$\pause
+        Lo cual nos dice que $r_{i}$  puede ser calculado usando $r_{i-1}$ y $r_{i-2}$.
+        \pause
+        \begin{align*}
+            d = r_{k} &\stackrel{(k)}{=} r_{k-2}-r_{k-1}q_{i} = s_kr_{k-2}+ t_k r_{k-1} \\
+            &\stackrel{(k-1)}{=} s_kr_{k-2}+ t_k (r_{k-3}-r_{k-2}q_{k-2}) =s_{k-1}r_{k-3}+ t_{k-1} r_{k-2} \\
+            &\;\cdots\;\cdots\\
+            &\stackrel{(3)}{=} s_4r_{2}+ t_k (r_{1}-r_{2}q_{2}) =s_{3}r_{1}+ t_{3} r_{2} \\
+            &\stackrel{(2)}{=} s_3r_{1}+ t_3 (r_{0}-r_{1}q_{1}) =s_{2}r_{0}+ t_{2} r_{1} =s_{2}a+ t_{2}b.
+        \end{align*}
+        
+        \qed
+        
+    \end{frame}
 
 
     \begin{frame}
@@ -235,38 +255,7 @@
     
     \end{frame}
 
-    
-    \begin{frame}\label{film-alg-eucl-2}
         
-        Sean $a, b \in \mathbb{Z}$, uno de ellos no nulo, entonces 
-        $$
-        d=sa+tb.
-        $$
-        \pause
-        
-        Calculemos $s$ y $t$. En el caso que $b >0$,  la  ecuación ($e_{i}$) de la filmina \ref{film-alg-eucl} es:
-        $$
-        r_{i-1}=r_{i}q_{i} + r_{i+1}
-        $$\pause
-        Esto implica que 
-        $$
-        r_{i+1} = r_{i-1}-r_{i}q_{i}.
-        $$\pause
-        Lo cual nos dice que $r_i$  puede ser calculado usando $r_{i-1}$ y $r_{i-2}$.
-        \pause
-        \begin{align*}
-            (e_{k-1}) & \Rightarrow & d &= r_{k} =   r_{k-2}-r_{k-1}q_{i} = s_kr_{k-2}+ t_k r_{k-1} \\
-            (e_{k-2}) & \Rightarrow &d &= s_kr_{k-2}+ t_k (r_{k-3}-r_{k-2}q_{k-2}) =s_{k-1}r_{k-3}+ t_{k-1} r_{k-2} \\
-            &\cdots&\cdots&\\
-            (e_{2}) & \Rightarrow & d &= s_4r_{2}+ t_k (r_{1}-r_{2}q_{2}) =s_{3}r_{1}+ t_{3} r_{2} \\
-            (e_{1}) & \Rightarrow &d &= s_3r_{1}+ t_3 (r_{0}-r_{1}q_{1}) =s_{2}r_{0}+ t_{2} r_{1} =s_{2}a+ t_{2}b.
-        \end{align*}
-        
-        
-    \end{frame}
-    
-    
-    
     \begin{frame}
         \begin{ejemplo} Encuentre $d$, el mcd de 174 y 72 y  escribir $d = s \cdot 174 + t \cdot 72$.
         \end{ejemplo}\pause
