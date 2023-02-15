@@ -1,8 +1,7 @@
+%\documentclass{beamer} 
 \documentclass[handout]{beamer} % sin pausas
-%\documentclass{beamer} % con pausas
-%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
-
 \usetheme{CambridgeUS}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 
 \usepackage{etex}
@@ -102,7 +101,7 @@
     \\[\baselineskip] ${}^{}$
     \\[\baselineskip]
 }
-\date[07/06/2022]{7 de junio de 2022}
+\date[06/06/2023]{6 de junio de 2023}
 
 
 
@@ -246,13 +245,15 @@
         \begin{solucion}\pause
             Ambos tienen $6$ vértices, $9$ aristas y todos los vértices son de valencia $3$. 
             \pause
-            \vskip .4cm
-            
+            \vskip.2cm
+            Por lo tanto no podemos utilizar los criterios anteriores para decir que no son isomorfos.
+            \pause 
+            \vskip .2cm
             
             Sin embargo, observar que  $G_1$ tiene un subgrafo $K_3$:
             \vskip .2cm
             \begin{center}
-                \begin{tikzpicture}[scale=0.8]
+                \begin{tikzpicture}[scale=0.6]
                     \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
                     \Vertex[x=0.00, y=2.00]{a}
                     \Vertex[x=2., y=-1.50]{b}

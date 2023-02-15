@@ -1,9 +1,7 @@
+%\documentclass{beamer} 
 \documentclass[handout]{beamer} % sin pausas
-%\documentclass{beamer} % con pausas
-%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
-
 \usetheme{CambridgeUS}
-
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 \usepackage{etex}
 \usepackage{t1enc}
@@ -101,7 +99,7 @@
     \\[\baselineskip] ${}^{}$
     \\[\baselineskip]
 }
-\date[09/06/2022]{9 de junio de 2022}
+\date[08/06/2023]{8 de junio de 2023}
 
 
 
@@ -256,14 +254,14 @@
         
     \begin{frame}\frametitle{Algoritmo de Hierholzer: idea clave}\pause
         
-        La idea clave del algoritmo de Hierholzer  es la siguiente:  en un grafo de valencias pares (conexo o no conexo) todo recorrido maximal termina en el vértice original.
+        La idea clave del algoritmo de Hierholzer  es la siguiente:  en un grafo de valencias pares (conexo o no conexo) todo recorrido maximal termina en el vértice original. Veamos la demostración de esta afirmación.
 
         \vskip .4cm\pause
 
         \begin{itemize}
             \item Sea $x$ un vértice del grafo  que será donde comenzará la caminata.
             \item Cada vez que ingreso y salgo de un vértice $v$ ``consumo'' $2$  aristas y  me quedan $2$ aristas menos para utilizar.\pause
-            \item Como $\delta(v)$  es par,  si $v\ne x$ cada vez que ingraso y salgo  de $v$ me queda un un número para de aristas de ese vértice sin utilizar.\pause
+            \item Como $\delta(v)$  es par,  si $v\ne x$ cada vez que ingreso y salgo  de $v$ me queda un un número par de aristas de ese vértice sin utilizar.\pause
             \item Es decir,  siempre que puedo entrar a un vértice $v \ne x$, puedo salir.\pause
             \item Es  decir, el único vértice al que puedo entrar y quizás no pueda  salir es $x$.\pause
             \item Como el recorrido es maximal,  va a haber algún momento en que no pueda avanzar más y eso solo puede ocurrir cuando estamos en el vértice $x$.

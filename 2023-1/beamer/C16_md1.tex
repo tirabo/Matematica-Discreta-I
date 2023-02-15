@@ -1,8 +1,7 @@
+%\documentclass{beamer} 
 \documentclass[handout]{beamer} % sin pausas
-%\documentclass{beamer} % con pausas
-%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
-
 \usetheme{CambridgeUS}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 
 \usepackage{etex}
@@ -103,7 +102,7 @@
     \\[\baselineskip] ${}^{}$
     \\[\baselineskip]
 }
-\date[17/05/2022]{17 de mayo de 2022}
+\date[11/05/2023]{11 de mayo de 2023}
 
 
 
@@ -147,7 +146,7 @@
             $$
             y por consiguiente el lado izquierdo es divisible por $m$.
             \vskip .2cm\pause 
-            \noindent (b)\pause   Aquí tenemos
+            \noindent (b)\pause {}  Aquí tenemos
             $$
             \begin{aligned}
                 x_1y_1-x_2y_2 &=  x_1y_1-x_2y_1+ x_2y_1-x_2y_2 \\
@@ -326,7 +325,7 @@
     \end{frame}
     
     
-    \begin{frame}
+    \begin{frame}\label{ejemplo-eq-lineal-cong}
         \begin{ejemplo} Encontrar $0 \le x < 109$ solución  de la ecuación $74x\equiv 5 \pmod{109}$.
         \end{ejemplo}\pause
         \begin{solucion}\pause
@@ -438,7 +437,7 @@
     
     \begin{frame}
         \begin{proof}
-            ($\Leftarrow$) Muy  similar al ejemplo anterior. \pause Como 
+            ($\Leftarrow$) Muy  similar al ejemplo anterior (p. {\color{blue}\ref{ejemplo-eq-lineal-cong}}). \pause Como 
             \begin{equation*}
                 d = s \cdot  a +t \cdot m,\qquad \text{para algunos $s,t \in \mathbb Z$,}
             \end{equation*}
@@ -511,17 +510,19 @@
             \begin{equation}
                 6x \equiv 18 \pmod{21}. \tag{*}
             \end{equation}
-        \end{ejemplo} \pause \vskip -.4cm
+        \end{ejemplo} \pause \vskip -.6cm
         \begin{solucion} \pause
             Como $3 =(6,21)$ y $3|18$, la ecuación (*) tiene solución. 
             
             Por otro lado, por el algoritmo de Euclides,
-            \begin{align*}
-                3 &= (-3)\cdot 6 + 1\cdot 21& & \Longrightarrow \\
-                3 &\equiv (-3)\cdot 6 \pmod{21}& & \stackrel{\text{multiplicando por $6$}}{\Longrightarrow} \\
-                18 &\equiv (-18)\cdot 6 \pmod{21}& & {\Longrightarrow} \\
-                6 \cdot (-18 ) &\equiv 18 \pmod{21}& &.
-            \end{align*}
+            \begin{equation*}
+                \begin{matrix*}
+                    3 &=& (-3)\cdot 6 + 1\cdot 21& && \Longrightarrow \\
+                    3 &\equiv& (-3)\cdot 6 &\pmod{21}& & \stackrel{\text{multiplicando por $6$}}{\Longrightarrow} \\
+                    18 &\equiv& (-18)\cdot 6 &\pmod{21}& & {\Longrightarrow} \\
+                    6 \cdot (-18 ) &\equiv& 18 &\pmod{21}& &.
+                \end{matrix*}
+            \end{equation*}
         
             Es decir $x_0 = -18$  es solución de la ecuación (*) y todas las soluciones son $-18 + k\cdot(\frac{21}{3})$, $k \in \mathbb Z$.\qed
         \end{solucion}
