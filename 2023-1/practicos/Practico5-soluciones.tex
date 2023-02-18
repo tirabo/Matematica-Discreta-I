@@ -75,7 +75,7 @@
     \baselineskip=0.55truecm %original
     
     
-    {\bf \begin{center} Práctico 5 \\ Matemática Discreta I -- Año 2022/1 \\ FAMAF \end{center}}
+    {\bf \begin{center} Práctico 5 \\ Matemática Discreta I -- Año 2023/1 \\ FAMAF \end{center}}
     
     {\bf \begin{center} Ejercicios resueltos \end{center}}
     
@@ -1247,16 +1247,16 @@
     \rta En  general el  problema de encontrar ciclos hamiltonianos es difícil de resolver, pero en este caso hay una pista que nos puede ayudar: observar que los vértices pares se relacionan solamente con vértices impares y recíprocamente los vértices impares solo son adyacentes a vértices pares. Podemos graficar el grafo  poniendo todos los vértices impares en una columna a la izquierda y los pares a la derecha. Vemos como hay aristas que van de un costado al otro pero  na hay aristas dentro de la misma columna, estos grafos se llaman  \textit{bipartitos}.  
     
     \begin{center}
-        \begin{tikzpicture}[scale=0.8]
+        \begin{tikzpicture}[scale=0.6]
         \Vertex[x=0,y=0]{1}
-        \Vertex[x=0,y=-1]{3}
-        \Vertex[x=0,y=-2]{5}
-        \Vertex[x=0,y=-3]{7}
+        \Vertex[x=0,y=-2]{3}
+        \Vertex[x=0,y=-4]{5}
+        \Vertex[x=0,y=-6]{7}
         \Vertex[x=5,y=1]{0}
-        \Vertex[x=5,y=0]{2}
-        \Vertex[x=5,y=-1]{4}
-        \Vertex[x=5,y=-2]{6}
-        \Vertex[x=5,y=-3]{8}
+        \Vertex[x=5,y=-1]{2}
+        \Vertex[x=5,y=-3]{4}
+        \Vertex[x=5,y=-5]{6}
+        \Vertex[x=5,y=-7]{8}
         \Edge(0)(1) \Edge(0)(3) \Edge(0)(5) \Edge(0)(7) 
         \Edge(1)(2) \Edge(1)(6) \Edge(1)(8)
         \Edge(2)(3) \Edge(2)(7)
@@ -1269,67 +1269,53 @@
     \end{center}
     Ahora bien, más allá del dibujo, un ciclo hamiltoniano pasa por los 9 vértices y por lo tanto debe tener 9 aristas. Si partimos de la columna de impares (por ejemplo de 1), la primera arista va a la columna de pares, la segunda vuelve a la columna de impares, y  así sucesivamente hasta que nos damos cuenta que una arista impar debe terminar en la columna de pares. Si  partimos de la columna de pares el razonamiento es análogo y podemos concluir \textit{cualquier ciclo impar termina en la otra columna.} Por lo tanto no hay ciclos hamiltonianos. 
     
-    
     Con respecto a las caminata eulerianas, como solo hay dos vértices de valencia impar (2 y 6),  hay caminatas eulerianas que van de 2 a 6 o viceversa. La cantidad de aristas total es $\frac{6\cdot 4 + 2 \cdot 3 + 2}{2} = 16$,  que debe ser el largo de la caminata. Una posible caminata es $21034567850723816$.  
-    
-    
-    
-    
+
 
     \item Un ratón intenta comer un $3\times 3\times 3$ cubo de queso. Él comienza en una esquina y come un subcubo de $1\times 1\times 1$, para luego pasar a un subcubo adyacente. ¿Podrá el ratón terminar de comer el queso en el centro?
+
+    \rta Podemos modelar este problema con un cubo subdividido en 2 en cada dimensión, o también como un grafo en el espacio con vértices $(x,y,z)$ con $0 \le x,y,z \le 2$ y $x,y,x$ enteros. El grafo sería como en el siguiente dibujo, donde el vértice de partida está en gris y el vértice de llegada en negro. 
+    \begin{center}
+        \begin{tikzpicture}[scale=1.8]
+            \foreach \x in{0,...,2}
+            {   \draw (0,\x ,2) -- (2,\x ,2);
+                \draw (\x ,0,2) -- (\x ,2,2);
+                \draw (2,\x ,2) -- (2,\x ,0);
+                \draw (\x ,2,2) -- (\x ,2,0);
+                \draw (2,0,\x ) -- (2,2,\x );
+                \draw (0,2,\x ) -- (2,2,\x );
+            }
+            \draw[gray] (0,0 ,1) -- (2,0,1);
+            \draw[gray] (0,0 ,0) -- (2,0,0);
+            \draw[gray] (0,1,0) -- (2,1,0);
+            \draw[gray] (0,1,0) -- (0,1,2);
+            \draw[gray] (0,1 ,1) -- (2,1,1);
+            \draw[gray] (0,0 ,1) -- (0,2,1);
+            \draw[gray] (1,0 ,1) -- (1,2,1); 
+            \draw[gray] (0,0 ,0) -- (0,2,0);
+            \draw[gray] (1,0 ,0) -- (1,2,0);
+            \draw[gray] (0,0 ,0) -- (0,0,2);
+            \draw[gray] (1,0 ,0) -- (1,0,2);
+            \draw[gray] (1,1 ,0) -- (1,1,2);
+            \foreach \x in{0,...,2}
+            {
+                \foreach \y in{0,...,2}
+                {
+                    \foreach \z in{0,...,2}
+                    {\draw[fill=white] (\x,\y,\z) circle (0.07cm);}
+                }
+            }
+            \draw[fill=gray] (0,0,2) circle (0.07cm);
+            \draw[fill=black] (1,1,1) circle (0.07cm);
+        \end{tikzpicture}  
+    \end{center}
+    Más allá de la representación gráfica, lo que se pregunta en el ejercicio es sobre la existencia de un \textit{camino hamiltoniano} desde $(0,0,0)$ hasta $(1,1,1)$, es decir un camino  que comience en $(0,0,0)$ pase por todos los vértices y  termine en $(1,1,1)$. Veremos que no podremos hacer el camino requerido por el ejercicio y que la forma de resolver el problema es similar a la del ejercicio \ref{ej-ciclo-hamiltoniano}.    
     
-    
-    
-     \rta Podemos modelar este problema con un cubo subdividido en 2 en cada dimensión, o también como un grafo en el espacio con vértices $(x,y,z)$ con $0 \le x,y,z \le 2$ y $x,y,x$ enteros. El grafo sería como en el siguiente dibujo, donde el vértice de partida está en gris y el vértice de llegada en negro. 
-     \begin{center}
-         \begin{tikzpicture}[scale=2]
-         \foreach \x in{0,...,2}
-         {   \draw (0,\x ,2) -- (2,\x ,2);
-             \draw (\x ,0,2) -- (\x ,2,2);
-             \draw (2,\x ,2) -- (2,\x ,0);
-             \draw (\x ,2,2) -- (\x ,2,0);
-             \draw (2,0,\x ) -- (2,2,\x );
-             \draw (0,2,\x ) -- (2,2,\x );
-         }
-         %\draw (1,0,0) node {(100)};
-         %\draw (0,1,0) node {(010)};
-         %\draw (0,0,1) node {(001)};
-         
-         \draw[gray] (0,0 ,1) -- (2,0,1);
-         \draw[gray] (0,0 ,0) -- (2,0,0);
-         \draw[gray] (0,1,0) -- (2,1,0);
-         \draw[gray] (0,1,0) -- (0,1,2);
-         \draw[gray] (0,1 ,1) -- (2,1,1);
-         \draw[gray] (0,0 ,1) -- (0,2,1);
-         \draw[gray] (1,0 ,1) -- (1,2,1); 
-         \draw[gray] (0,0 ,0) -- (0,2,0);
-         \draw[gray] (1,0 ,0) -- (1,2,0);
-         \draw[gray] (0,0 ,0) -- (0,0,2);
-         \draw[gray] (1,0 ,0) -- (1,0,2);
-         \draw[gray] (1,1 ,0) -- (1,1,2);
-         \foreach \x in{0,...,2}
-         {
-             \foreach \y in{0,...,2}
-             {
-                 \foreach \z in{0,...,2}
-                 {\draw[fill=white] (\x,\y,\z) circle (0.07cm);}
-             }
-         }
-         \draw[fill=gray] (0,0,2) circle (0.07cm);
-         \draw[fill=black] (1,1,1) circle (0.07cm);
-         
-         \end{tikzpicture}  
-         
-     \end{center}
-     Má allá de la representación gráfica, lo que se pregunta en el ejercicio es sobre la existencia de un \textit{camino hamiltoniano} desde $(0,0,0)$ hasta $(1,1,1)$, es decir un camino  que comience en $(0,0,0)$ pase por todos los vértices y  termine en $(1,1,1)$. Veremos que no podremos hacer el camino requerido por el ejercicio y que la forma de resolver el problema es similar a la del ejercicio \ref{ej-ciclo-hamiltoniano}.    
-     
-     Primero definiremos un concepto muy sencillo: diremos  que una 3-upla de enteros $(x,y,z)$ es  \textit{par} si $x+y+z$ es un número par, en caso contrario diremos que es impar. 
-     Ahora bien, podemos ver el pasaje de un vértice a otro como una operación algebraica, por ejemplo, la arista que une $(0,0,2)$ con $(0,1,2)$ se obtiene sumando $(0,1,0)$ a $(0,0,2)$.  En general  para pasar de un nodo a otro debemos sumar o restar  $(1,0,0)$ o $(0,1,0)$ o $(0,0,1)$ y es claro que al hacer esta operación cambiamos la paridad del vértice. Si pasamos de $v_0$ a $v_1$ y de $v_1$ a $v_2$ ($v_0,v_1,v_2$ vértices) entonces la parida de $v_0$ es igual a la paridad de $v_2$.  A partir de esta observación podemos concluir que si partimos de un vértice par y hacemos una caminata con un número par de aristas,  entonces terminaremos en un vértice par. Ahora bien, el  ejercicio nos pregunta sobre un camino hamiltoniano desde $(0,0,0)$ hasta $(1,1,1)$. En este caso el camino hamiltoniano debería tener 26 aristas, pues pasa por 27 vértices y por lo tanto,  al partir de un vértice par,  debería terminar  en otro vértice par, sin embargo $(1,1,1)$ es un vértice impar y concluimos que  este camino hamiltoniano  no  puede existir.  
- 
-     
- 
+    Primero definiremos un concepto muy sencillo: diremos  que una 3-upla de enteros $(x,y,z)$ es  \textit{par} si $x+y+z$ es un número par, en caso contrario diremos que es impar. 
+    Ahora bien, podemos ver el pasaje de un vértice a otro como una operación algebraica, por ejemplo, la arista que une $(0,0,2)$ con $(0,1,2)$ se obtiene sumando $(0,1,0)$ a $(0,0,2)$.  En general  para pasar de un nodo a otro debemos sumar o restar  $(1,0,0)$ o $(0,1,0)$ o $(0,0,1)$ y es claro que al hacer esta operación cambiamos la paridad del vértice. Si pasamos de $v_0$ a $v_1$ y de $v_1$ a $v_2$ ($v_0,v_1,v_2$ vértices) entonces la parida de $v_0$ es igual a la paridad de $v_2$.  A partir de esta observación podemos concluir que si partimos de un vértice par y hacemos una caminata con un número par de aristas,  entonces terminaremos en un vértice par. Ahora bien, el  ejercicio nos pregunta sobre un camino hamiltoniano desde $(0,0,0)$ hasta $(1,1,1)$. En este caso el camino hamiltoniano debería tener 26 aristas, pues pasa por 27 vértices y por lo tanto,  al partir de un vértice par,  debería terminar  en otro vértice par, sin embargo $(1,1,1)$ es un vértice impar y concluimos que  este camino hamiltoniano  no  puede existir.  
+
     \item Dé todos los árboles de 5 vértices no isomorfos.
-     
+
     \rta Sabemos que un árbol (conexo por definición) con 5 vértices debe tener 4 aristas. Y que cualquier grafo con 4 aristas tendría un grado total (suma de todas las valencias) de 8.
     Así que nuestro problema se reduce en encontrar árboles con 5 vértices cuyo grado total sea 8, y donde, cada uno de los vértice tiene valencia $\ge 1$. Las posible configuraciones de valencias son 
     \begin{align*}
