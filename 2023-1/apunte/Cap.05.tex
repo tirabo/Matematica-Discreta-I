@@ -676,11 +676,16 @@ Un \textit{ciclo hamiltoniano} en un grafo $G$ es un ciclo que contiene a todos 
 
 El siguiente teorema resume los resultados sobre caminatas eulerianas. La demostración no es demasiada complicada, pero la veremos más adelante.  
 
-\begin{teorema}\label{th-caminata-euleriana} Un grafo conexo con más de un vértice posee una caminata euleriana de $v$ a $w$, con $v \not= w$ si y sólo si $v$ y $w$ son los únicos vértices de grado impar. Un grafo conexo con más de un vértice tiene un circuito euleriano si y sólo si todos los vértices tienen grado par.
+\begin{teorema}\label{th-caminata-euleriana} Un grafo conexo con más de un vértice posee una caminata euleriana si y solo si tiene a lo más dos vértices de grado impar. 
+\begin{enumerate}
+    \item\label{item:dos-vertices-impares} El grafo posee una caminata  euleriana de $v$ a $w$, con $v \not= w$ si y sólo si $v$ y $w$ son los únicos vértices de grado impar.
+    impar.
+    \item\label{item:todos-los-vertices-pares} El grafo tiene un circuito euleriano si y sólo si todos los vértices tienen grado par.
+\end{enumerate}
 \end{teorema}
 
 \begin{observacion}\label{obs-par-a-impar}
-    El caso de un grafo donde todas las valencias son pares se puede reducir al anterior: si deseamos una caminata euleriana que empiece y termine en $v$, eliminamos una arista del grafo que contenga a $v$, digamos la arista $\{v,w\}$ (con lo cual queda un grafo  con solo dos vértices, $v$ y $w$, de valencia impar), aplicamos el caso  anterior, con lo cual hacemos una caminata euleriana que termina en  $w$, y terminamos la caminata agregando  la arista $\{v,w\}$. 
+    El caso de un grafo donde todas las valencias son pares se puede reducir al caso donde hay dos vértices impares: si deseamos una caminata euleriana que empiece y termine en $v$, eliminamos una arista del grafo que contenga a $v$, digamos la arista $\{v,w\}$, con lo cual queda un grafo  con solo dos vértices, $v$ y $w$, de valencia impar. Entonces, aplicamos el caso  \ref{item:dos-vertices-impares}, con lo cual hacemos una caminata euleriana que comienza en $v$ y  termina en  $w$. Terminamos la caminata agregando  la arista $\{v,w\}$. 
 \end{observacion}
 
 \begin{observacion}\label{obs-impar-a-par}
@@ -723,7 +728,7 @@ Teniendo en cuenta las consideraciones anteriores podemos plantear el siguiente 
 Sea $G$ un grafo conexo con vértices de grado par o con dos vértices de grado impar y los demás de grado par. 
 
 \begin{enumerate}
-    \item \textbf{Paso 0.} Elija el vértice inicial $v$. Si $G$  tiene todos sus vértices de grado par,  elija cualquier vértice. Si $G$ tiene dos vértices de grado impar,  elija un vértice de valencia impar.
+    \item \textbf{Paso 0.} Elija el vértice inicial $v$. Si $G$  tiene todos sus vértices de grado par,  elija como $v$ cualquier vértice. Si $G$ tiene dos vértices de grado impar,  entonces $v$ se elegirá como uno de los vértices de valencia impar.
     \item \textbf{Paso 1.} Haga un recorrido maximal partiendo de $v$. 
     
     \item \textbf{Paso iterativo} 
@@ -868,7 +873,8 @@ Es decir si $w$ es un vértice \texttt{libres[w]} es una lista de los vértices 
     
 Como ya mencionamos anteriormente, a un grafo $G$ lo representaremos por una lista de adyacencia. Supongamos que los vértices de $G$ son $0,\ldots,k$,  entonces $G[i] = [i_0,i_1,\ldots]$ serán los vértices adyacentes al vértice $i$. Tomamos como comienzo del recorrido el vértice  $0$. En  el caso de los grafos con valencia impar el vértice $0$ debe ser impar. 
 
-Primero daremos el pseudocódigo para encontrar un recorrido maximal.
+Primero daremos el pseudocódigo para encontrar un recorrido maximal. En el pseudocódigo siguiente y el que le sigue consideramos que un grafo $G$ tiene métodos que nos proveen información:  \verb+G.adyacentes(v)+ son todos los vértices adyacentes a  \verb+v+, \verb+G.aristas()+ es la lista de aristas del grafo y \verb+G.vertices()+ es la lista de vértices del grafo.
+
 \vskip .4cm    
 \begin{minipage}{0.95\textwidth}
     \noindent \textsc{Recorrido maximal}
@@ -892,7 +898,11 @@ def r_max(L, v_ini):
     \end{small}
     \end{minipage}
     
+    Este programa escrito en pseudocódigo  modifica el grafo $L$: cuando termina el programa $L$ es el grafo original menos las aristas utilizadas en el recorrido maximal. 
+
     Ahora, implementamos el circuito euleriano o caminata euleriana,  según corresponda,  con el uso de la función \verb+r_max()+.
+
+    
 
     \vskip .4cm 
 
@@ -903,21 +913,26 @@ def r_max(L, v_ini):
 \begin{verbatim}
 # pre: G grafo con todos los vértices de valencia par o dos impares
 # post: cuando termina 'cam' es una lista de vértices que es
-#       una caminata o circuito euleriano que empieza en 0.
-libres = G.copiar() # sub grafo de aristas no utilizadas
-cam = r_max(libres, 0) # recorrido maximal desde v = 0
-while len(libres.aristas()) > 0: 
-    for v in libres.vertices(): 
-        if len(libres.adyacentes(v)) > 0 and v in cam:
-            pos = cam.index(v) 
-            cam  =  cam[:pos] + r_max(libres, v) + cam[pos+1:]
+#       una caminata o circuito euleriano.
+Libres = G.copiar() # sub grafo de aristas no utilizadas
+if todos los vertices son pares:
+    v_ini = cualquier vértice de G
+else:
+    v_ini = cualquier vértice impar de G
+cam = r_max(Libres, v_ini) # recorrido maximal desde v = v_ini
+while len(Libres.aristas()) > 0:
+    v = primero_libre(cam) 
+    # v es el primer vértice con aristas libres de la caminata
+    cam  =  cam[:i] + r_max(Libres, v) + cam[i+1:]
+    # intercala recorrido maximal en v, Libres queda con las
+    # aristas no utilizadas en cam
 \end{verbatim}
 \end{small}
 \end{minipage}
 
 \vskip .4cm
 
-Cuando el algoritmo termina la variable \verb+cam+ es una lista que describe la caminata o circuito euleriano. En el algoritmo, \verb+cam.index(v)+ indica en que lugar de la caminata se encuentra \verb+v+ y \verb+libres.adyacentes(v)+ indica la lista de vértices adyacentes a \verb+v+ en el grafo \verb+libres+. 
+Cuando el algoritmo termina la variable \verb+cam+ es una lista que describe la caminata o circuito euleriano.
 
 
 \end{observacion*}
