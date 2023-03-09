@@ -659,7 +659,7 @@ Cuando un grafo de moderado tamaño es dado por una representación pictórica e
 \end{proof}
 \end{ejemplo}
 
-En general, la ruta de Leandro es un ciclo que contiene todos los vértices del grafo dado. Tales ciclos fueron estudiados por el matemático irlandés W.R. Hamilton ($1\,805-65$),  \index{Hamilton, W. R.} y en consecuencia un ciclo con esta propiedad es llamado un \textit{ciclo hamiltoniano}. En nuestro ejemplo, fue muy fácil \index{ciclo hamiltoniano} encontrar un ciclo hamiltoniano, pero este fue un caso muy especial y no representativo. Para ciertos grafos, puede ser un problema difícil decidir si un ciclo hamiltoniano existe o no.
+En general, la ruta de Leandro es un ciclo que contiene todos los vértices del grafo dado. Tales ciclos fueron estudiados por el matemático irlandés W.R. Hamilton (1805-1865),  \index{Hamilton, W. R.} y en consecuencia un ciclo con esta propiedad es llamado un \textit{ciclo hamiltoniano}. En nuestro ejemplo, fue muy fácil \index{ciclo hamiltoniano} encontrar un ciclo hamiltoniano, pero este fue un caso muy especial y no representativo. Para ciertos grafos, puede ser un problema difícil decidir si un ciclo hamiltoniano existe o no.
 
 Por otro lado, el problema de Juan puede ser fácilmente resuelto. Una caminata que use cada arista de un grafo solo una vez, o equivalentemente un recorrido que use todas las aristas, es llamada una \textit{caminata euleriana}, debido a que Euler \index{caminata euleriana} fue el primero en estudiar estas caminatas y encontró que si $x\not= y$, una condición necesaria para que exista una caminata euleriana que comience en $x$ y finalice en $y$ es que $x$ e $y$ deben ser vértices impares y el resto debe ser par, mientras que si $x=y$ la condición es que todos los vértices deben ser pares. Es decir que una condición necesaria para que exista una caminata euleriana en un grafo $G$
 es que $G$ debe tener a lo más dos vértices impares. Más aún, puede probarse que esta condición es también suficiente. Puesto que es sencillo calcular las valencias de los vértices de un grafo, es relativamente sencillo decidir si un grafo tendrá o no una caminata euleriana. 
@@ -728,16 +728,18 @@ Teniendo en cuenta las consideraciones anteriores podemos plantear el siguiente 
 Sea $G$ un grafo conexo con vértices de grado par o con dos vértices de grado impar y los demás de grado par. 
 
 \begin{enumerate}
-    \item \textbf{Paso 0.} Elija el vértice inicial $v$. Si $G$  tiene todos sus vértices de grado par,  elija como $v$ cualquier vértice. Si $G$ tiene dos vértices de grado impar,  entonces $v$ se elegirá como uno de los vértices de valencia impar.
+    \item \textbf{Paso 0.} Elija el vértice inicial $v$. Si $G$  tiene todos sus vértices de grado par,  entonces $v$ puede ser cualquier vértice. Si $G$ tiene dos vértices de grado impar,  entonces $v$ debe ser uno de los vértices de valencia impar.
     \item \textbf{Paso 1.} Haga un recorrido maximal partiendo de $v$. 
     
-    \item \textbf{Paso iterativo} 
+    \item \textbf{Paso iterativo.} Mientras en el recorrido ya realizado no estén todas las aristas del grafo, realice los pasos siguientes.    
     \begin{itemize}
-        \item Mientras en la caminata ya realizada exista un vértice $u$  que tenga aristas que no formen parte de la caminata, realice otro recorrido maximal que parte de $u$ siguiendo las aristas no utilizadas. 
-        \item Inserte en $u$ este recorrido a la caminata  anterior obteniendo una nueva caminata (más larga).
-        \item  Si aún queda alguna arista sin recorrer vuelva al inicio del paso iterativo.
+        \item Sea $u$  un vértice que tenga aristas libres, realice un recorrido maximal que parte de $u$ siguiendo las aristas no utilizadas. 
+        \item Inserte en $u$ este recorrido al recorrido  anterior obteniendo un nuevo recorrido (más largo).
+        \item  Vuelva a (3). 
     \end{itemize}
 \end{enumerate}
+
+
 
 Observemos que el recorrido del paso 1 en el caso del grafo con todas las valencias pares, es un recorrido cerrado. En el caso del grafo con dos valencias impares es un recorrido que va de un vértice impar al otro.  
     
@@ -921,8 +923,7 @@ else:
     v_ini = cualquier vértice impar de G
 cam = r_max(Libres, v_ini) # recorrido maximal desde v = v_ini
 while len(Libres.aristas()) > 0:
-    v = primero_libre(cam) 
-    # v es el primer vértice con aristas libres de la caminata
+    v = primer vértice con aristas libres de la caminata
     cam  =  cam[:i] + r_max(Libres, v) + cam[i+1:]
     # intercala recorrido maximal en v, Libres queda con las
     # aristas no utilizadas en cam
