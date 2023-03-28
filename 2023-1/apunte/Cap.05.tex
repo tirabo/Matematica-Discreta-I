@@ -711,7 +711,9 @@ El siguiente teorema resume los resultados sobre caminatas eulerianas. La demost
 
 \subsection*{Algoritmo de Hierholzer}
 
-C. Hierholzer (1840-1871) mostró, poco antes de su muerte, un algoritmo fácilmente implementable para encontrar un circuito euleriano  para cualquier grafo  con vértices de grado  par. El algoritmo de Hierholzer\index{algoritmo de Hierholzer} fue la primera demostración del teorema \ref{th-caminata-euleriana} para el caso  de grafos con vértices de grado par. 
+C. Hierholzer (1840-1871) mostró, poco antes de su muerte, un algoritmo fácilmente implementable para encontrar un circuito euleriano  para cualquier grafo  con vértices de grado  par. El lector interesado puede leer el artículo original \href{https://eudml.org/doc/156599}{Ueber die Möglichkeit, einen Linienzug ohne Wiederholung und ohne Unterbrechung zu umfahren}. Mathematische Annalen volume 6, pp. 30–32 (1873) (en alemán). 
+
+El algoritmo de Hierholzer\index{algoritmo de Hierholzer} fue la primera demostración del teorema \ref{th-caminata-euleriana} para el caso  de grafos con vértices de grado par. 
 %Obviamente,  debido a la observación  \ref{obs-impar-a-par}, esto demuestra también el teorema para grafos con dos valencias impares. 
 Nosotros veremos aquí una versión del algoritmo de Hierholzer que se aplica tanto a los grafos con todos los vértices de valencia par como, a los que tienen dos vértices de valencia impar. 
 
@@ -734,7 +736,7 @@ La idea clave del algoritmo de Hierholzer  es la siguiente.
 
 Teniendo en cuenta las consideraciones anteriores podemos plantear el siguiente algoritmo:\index{algoritmo de Hierholzer}
 
-Sea $G$ un grafo conexo con vértices de grado par o con dos vértices de grado impar y los demás de grado par. 
+Sea $G$ un grafo conexo con vértices de grado par o con dos vértices de grado impar y los demás vértices de grado par. 
 
 \begin{enumerate}
     \item \textbf{Paso 0.} Elija el vértice inicial $v$. Si $G$  tiene todos sus vértices de grado par,  entonces $v$ puede ser cualquier vértice. Si $G$ tiene dos vértices de grado impar,  entonces $v$ debe ser uno de los vértices de valencia impar.
@@ -933,6 +935,7 @@ else:
 cam = r_max(Libres, v_ini) # recorrido maximal desde v = v_ini
 while len(Libres.aristas()) > 0:
     v = primer vértice con aristas libres de la caminata
+    i = cam.index(v) # el índice de v en la caminata
     cam  =  cam[:i] + r_max(Libres, v) + cam[i+1:]
     # intercala recorrido maximal en v, Libres queda con las
     # aristas no utilizadas en cam
