@@ -688,16 +688,25 @@ El siguiente teorema resume los resultados sobre caminatas eulerianas. La demost
     El caso de un grafo donde todas las valencias son pares se puede reducir al caso donde hay dos vértices impares: si deseamos una caminata euleriana que empiece y termine en $v$, eliminamos una arista del grafo que contenga a $v$, digamos la arista $\{v,w\}$, con lo cual queda un grafo  con solo dos vértices, $v$ y $w$, de valencia impar. Entonces, aplicamos el caso  \ref{item:dos-vertices-impares}, con lo cual hacemos una caminata euleriana que comienza en $v$ y  termina en  $w$. Terminamos la caminata agregando  la arista $\{v,w\}$. 
 \end{observacion}
 
+
 \begin{observacion}\label{obs-impar-a-par}
-    Recíprocamente,  el caso de un grafo  $G$ con dos valencias impares y todas las demás valencias pares  se puede reducir al caso en que todas las valencias son pares. Sean $p$ y $q$ los dos vértices de valencia impar,  entonces tenemos dos casos (1) $\{p,q\}$  es arista de $G$ y (2) $\{p,q\}$  no es arista de $G$.  En el caso (1),  eliminamos la arista  $\{p,q\}$  del grafo  y  nos queda un grafo  con todos los vértices de valencia par. Por lo tanto, hay un circuito euleriano de $p$  a $p$. Agregamos al final la arista $\{p,q\}$  y obtenemos una caminata euleriana de  $p$ a $q$. El caso (2) es un poco más complicado: agregamos al grafo $G$ la arista $\{p,q\}$ y obtenemos un grafo  con todos los vértices de valencia par. Luego  hay un circuito euleriano de $q$ a $q$. Podemos describir el circuito como
-    $$
-    q,v_1,\ldots,v_k,q,p,w_1,\ldots,w_r,q.
-    $$
-    A partir de este circuito podemos obtener la caminata
-    $$
-    p,w_1,\ldots,w_r,q,v_1,\ldots,v_k,q, 
-    $$
-    que es una caminata euleriana. 
+    Recíprocamente,  el caso de un grafo  $G$ con dos valencias impares y todas las demás valencias pares  se puede reducir al caso en que todas las valencias son pares. Sean $p$ y $q$ los dos vértices de valencia impar,  agregamos un vértice $e$  al grafo y lo unimos a $p$ y $q$. Así obtenemos un grafo donde todas las valencias son pares. Ahora si tenemos  un circuito euleriano partiendo de $e$, el circuito es de la forma
+    \begin{equation*}
+        e, p,w_1,\ldots,w_r,q,e, 
+    \end{equation*}
+    o
+    \begin{equation*}
+        e, q,v_1,\ldots,v_t,p,e. 
+    \end{equation*}
+    En  ambos caso eliminando $e$ obtenemos una caminata euleriana. En el primer caso la camina euleriana es
+    \begin{equation*}
+        p,w_1,\ldots,w_r,q, 
+    \end{equation*}
+    y en el segundo caso es
+    \begin{equation*}
+        q,v_1,\ldots,v_t,p. 
+    \end{equation*}
+
 \end{observacion}
 
 \subsection*{Algoritmo de Hierholzer}
