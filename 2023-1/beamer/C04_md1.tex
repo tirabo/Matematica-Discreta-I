@@ -1,7 +1,7 @@
-\documentclass{beamer} 
-%\documentclass[handout]{beamer} % sin pausas
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
 \usetheme{CambridgeUS}
-\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 \usepackage{etex}
 \usepackage{t1enc}
@@ -24,10 +24,10 @@
 \usetikzlibrary{arrows}
 \usetikzlibrary{matrix}
 \tikzset{
-	every picture/.append style={
-		execute at begin picture={\deactivatequoting},
-		execute at end picture={\activatequoting}
-	}
+    every picture/.append style={
+        execute at begin picture={\deactivatequoting},
+        execute at end picture={\activatequoting}
+    }
 }
 \usetikzlibrary{decorations.pathreplacing,angles,quotes}
 \usetikzlibrary{shapes.geometric}
@@ -38,9 +38,9 @@
 \usepackage{tkz-graph}
 \usepackage{polynom}
 \polyset{%
-	style=B,
-	delims={(}{)},
-	div=:
+    style=B,
+    delims={(}{)},
+    div=:
 }
 \renewcommand\labelitemi{$\circ$}
 \setlist[enumerate]{label={(\arabic*)}}
@@ -97,8 +97,8 @@
 \title[Clase 4 - Inducción]{Matemática Discreta I \\ Clase 4 - Inducción}
 %\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
 \institute[]{\normalsize FAMAF / UNC
-	\\[\baselineskip] ${}^{}$
-	\\[\baselineskip]
+    \\[\baselineskip] ${}^{}$
+    \\[\baselineskip]
 }
 \date[28/03/2023]{28 de marzo   de 2023}
 
@@ -121,63 +121,63 @@
 
 \begin{frame}\frametitle{El principio de inducción} 
 
-	Queremos  analizar la suma de los primeros $n$ números impares, es decir
-	$$
-	1+3+5+\cdots+(2n-1).
-	$$
-	\pause
-	Por la definición recursiva de la sumatoria,  tenemos que 
-	\begin{equation*}
-	a_1 = 1, \;\text{  y } \; a_n = a_{n-1} + 2n-1,
-	\end{equation*}\pause
-	
-	
-	Analicemos los primero valores
-	
-	\begin{itemize}
-		\item $a_1 = 1$,
-		\item $a_2 = 1 + 3 = 4$, 
-		\item $a_3 = 1 + 3 + 5 = 9$, 
-		\item $a_4 = 1 + 3 + 5 + 7= 16 $, 
-		\item $a_5 = a_4 + 9= 25   $, 
-	\end{itemize}
-	
+    Queremos  analizar la suma de los primeros $n$ números impares, es decir
+    $$
+    1+3+5+\cdots+(2n-1).
+    $$
+    \pause
+    Por la definición recursiva de la sumatoria,  tenemos que 
+    \begin{equation*}
+    a_1 = 1, \;\text{  y } \; a_n = a_{n-1} + 2n-1,
+    \end{equation*}\pause
+    
+    
+    Analicemos los primero valores
+    
+    \begin{itemize}
+        \item $a_1 = 1$,
+        \item $a_2 = 1 + 3 = 4$, 
+        \item $a_3 = 1 + 3 + 5 = 9$, 
+        \item $a_4 = 1 + 3 + 5 + 7= 16 $, 
+        \item $a_5 = a_4 + 9= 25   $, 
+    \end{itemize}
+    
 \end{frame}
 
 
-\begin{frame}	
-	Entonces, podemos conjeturar que\pause
-	$$
-	1+3+5+\cdots+(2n-1) = n^2.
-	$$
-	\pause
-	Para convencernos de que la fórmula es ciertamente correcta procedemos de la siguiente manera
+\begin{frame}    
+    Entonces, podemos conjeturar que\pause
+    $$
+    a_n = 1+3+5+\cdots+(2n-1) = n^2.
+    $$
+    \pause
+    Para convencernos de que la fórmula es ciertamente correcta procedemos de la siguiente manera
     \vskip .4cm
-    \textbf{Caso n=1.} La fórmula es verdadera cuando $n=1$ puesto que 	$1=1^2$.\pause
-	
+    \textbf{Caso n=1.} La fórmula es verdadera cuando $n=1$ puesto que     $1=1^2$.\pause
+    
     
     \vskip .4cm
     \textbf{Paso recursivo.}Supongamos que es correcta para un valor específico
-	de $n$, digamos para $n=k$, de modo que
-	\begin{equation*}
-	1+3+5+\cdots+(2k-1) = k^2. \tag{a}
-	\end{equation*}
+    de $n$, digamos para $n=k$, de modo que
+    \begin{equation*}
+    a_k = 1+3+5+\cdots+(2k-1) = k^2. \tag{a}
+    \end{equation*}
 
 
 
 \end{frame}
 
 \begin{frame}
-		Podemos utilizar (a) para simplificar la expresión definida
-	recursivamente a la izquierda cuando $n$ es igual a $k+1$,\pause
-	$$
-	\begin{aligned}
-	1+3+5+\cdots+(2k+1) &= 1+3+5+\cdots+(2k-1) +(2k+1) \\
-	&\stackrel{(a)}{=}k^2 +(2k+1) \\
-	&=(k+1)^2.
-	\end{aligned}
-	$$\pause
-	Por lo tanto si el resultado es correcto cuando $n=k$, entonces lo es cuando $n=k+1$. \pause 
+        Podemos utilizar (a) para simplificar la expresión definida
+    recursivamente a la izquierda cuando $n$ es igual a $k+1$,\pause
+    $$
+    \begin{aligned}
+    1+3+5+\cdots+(2k+1) &= 1+3+5+\cdots+(2k-1) +(2k+1) \\
+    &\stackrel{(a)}{=}k^2 +(2k+1) \\
+    &=(k+1)^2.
+    \end{aligned}
+    $$\pause
+    Por lo tanto si el resultado es correcto cuando $n=k$, entonces lo es cuando $n=k+1$. \pause 
     
     \vskip .4cm
     Se comienza observando que si es correcto cuando $n=1$, debe ser por lo tanto correcto cuando $n=2$. 
@@ -189,160 +189,158 @@
 \end{frame}
 
 \begin{frame}
-		
-	La esencia de este argumento es comúnmente llamada {\it principio de inducción}.
-	\pause
-	\medskip 
-	
-	 Con $S$ denotemos al subconjunto de $\mathbb N$ para el cual el resultado es correcto: por supuesto, nuestra intención es probar que $S$ es todo $\mathbb N$. 
-	 \pause
-	 
+        
+    La esencia de este argumento es comúnmente llamada {\it principio de inducción}.
+    \pause
+    \medskip 
+    
+     Con $S$ denotemos al subconjunto de $\mathbb N$ para el cual el resultado es correcto: por supuesto, nuestra intención es probar que $S$ es todo $\mathbb N$. 
+     \pause
+     
      \vskip .8cm
-	 
-	%\begin{teorema}\label{t1.4} 
-	{\color{blue} Teorema }
-	\vskip .2cm 
-	{\it
-		Supongamos que $S$ es un subconjunto de $\mathbb N$ que satisface las condiciones \index{principio de inducción}
-		\begin{enumerate}
-			\item[a)] $1 \in S$,
-			\item[b)] para cada $k \in \mathbb N$, si $ k \in S$ entonces $k+1\in S$.
-		\end{enumerate}
-		Entonces se sigue que $S=\mathbb N$.
+     
+    %\begin{teorema}\label{t1.4} 
+    {\color{blue} Teorema }
+    \vskip .2cm 
+    {\it
+        Supongamos que $S$ es un subconjunto de $\mathbb N$ que satisface las condiciones \index{principio de inducción}
+        \begin{enumerate}
+            \item[a)] $1 \in S$,
+            \item[b)] para cada $k \in \mathbb N$, si $ k \in S$ entonces $k+1\in S$.
+        \end{enumerate}
+        Entonces se sigue que $S=\mathbb N$.
 }
-	%\end{teorema}
+    %\end{teorema}
 \end{frame}
 
 \begin{frame}
 
 
-	%\begin{proof}[Demostración]
-	
-	{\color{blue} Demostración.}
-	\vskip .2cm 
-		Si la conclusión es falsa, $S \not= \mathbb N$ y
-		el conjunto complementario $S^{\text{c}}$ definido por
-		$$
-		S^{\text{c}}= \{ r \in \mathbb N | r\not\in S\}
-		$$
-		es no vacío. \pause 
-		
-		\medskip 
-		
-		Por el axioma del buen orden, $S^{\text{c}}$ tiene un menor
-		elemento (mínimo) $m$. 
-		
-		\pause\medskip 
-		
-		Como $1$ pertenece a $S$, $m\not=1$. Se sigue que
-		$m-1$ pertenece a $\mathbb N$ y como $m$ es el mínimo de
-		$S^{\text{c}}$, $m-1$ debe pertenecer a $S$.
-		
-		\pause\medskip 
-		
-		 Poniendo $k=m-1$ en
-		la condición (b), concluimos que $m$ esta en $S$, lo cual
-		contradice el hecho de que $m$ pertenece a $S^{\text{c}}$.
-		
-		\pause\medskip 
-		
-		 De este
-		modo, la suposición $S \not= \mathbb N$ nos lleva a un absurdo, y
-		por lo tanto tenemos $S= \mathbb N$. \qed
-	%\end{proof}
+    %\begin{proof}[Demostración]
+    
+    {\color{blue} Demostración.}
+    \vskip .2cm 
+        Si la conclusión es falsa, $S \not= \mathbb N$ y
+        el conjunto complementario $S^{\text{c}}$ definido por
+        $$
+        S^{\text{c}}= \{ r \in \mathbb N | r\not\in S\}
+        $$
+        es no vacío. \pause 
+        
+        \medskip 
+        
+        Por el axioma del buen orden, $S^{\text{c}}$ tiene un menor
+        elemento (mínimo) $m$. 
+        
+        \pause\medskip 
+        
+        Como $1$ pertenece a $S$, $m\not=1$. Se sigue que
+        $m-1$ pertenece a $\mathbb N$ y como $m$ es el mínimo de
+        $S^{\text{c}}$, $m-1$ debe pertenecer a $S$.
+        
+        \pause\medskip 
+        
+         Poniendo $k=m-1$ en
+        la condición (b), concluimos que $m$ esta en $S$, lo cual
+        contradice el hecho de que $m$ pertenece a $S^{\text{c}}$.
+        
+        \pause\medskip 
+        
+         De este
+        modo, la suposición $S \not= \mathbb N$ nos lleva a un absurdo, y
+        por lo tanto tenemos $S= \mathbb N$. \qed
+    %\end{proof}
 \end{frame}
 
-\begin{frame}	
+\begin{frame}    
 
-	
-	El principio de inducción es útil para probar la veracidad de propiedades relativas a los
-	números naturales. Por ejemplo, consideremos la siguiente propieda de $P(n)$:
-	\medskip 
-	\begin{itemize}
-		\item $P(n)$ es la propiedad: \quad $\displaystyle\sum_{i=1}^n 2i-1 = n^2$,
-	\end{itemize}
+    
+    El principio de inducción es útil para probar la veracidad de propiedades relativas a los
+    números naturales. Por ejemplo, consideremos la siguiente propieda de $P(n)$:
+    \medskip 
+    \begin{itemize}
+        \item $P(n)$ es la propiedad: \quad $\displaystyle\sum_{i=1}^n 2i-1 = n^2$,
+    \end{itemize}
 \medskip 
-	Hemos notado que $P(n)$ es verdadera para cualquier $n$ natural y lo podríamos probar usando el siguiente teorema: 
-	\medskip 
+    Hemos notado que $P(n)$ es verdadera para cualquier $n$ natural y lo podríamos probar usando el siguiente teorema: 
+    \medskip 
 
 
 
 \end{frame}
 
-\begin{frame}	
-	
-	
-	
-	\begin{teorema}[(Principio de inducción)] 
-	\vskip .2cm 
-	{\it Sea $P(n)$ una propiedad para $n \in \mathbb N$ tal que:
-		\begin{enumerate}
-			\item[a)] $P(1)$ es verdadera.
-			\item[b)] Para todo $k \in \mathbb N$, $P(k)$ verdadera implica $P(k + 1)$ verdadera.
-		\end{enumerate}
-		Entonces $P(n)$ es verdadera para todo $n \in \mathbb N$. }
-	\end{teorema}
-	\vskip .2cm \pause
+\begin{frame}    
+    
+    
+    
+    \begin{teorema}[(Principio de inducción)] 
+    \vskip .2cm 
+    {\it Sea $P(n)$ una propiedad para $n \in \mathbb N$ tal que:
+        \begin{enumerate}
+            \item[a)] $P(1)$ es verdadera.
+            \item[b)] Para todo $k \in \mathbb N$, $P(k)$ verdadera implica $P(k + 1)$ verdadera.
+        \end{enumerate}
+        Entonces $P(n)$ es verdadera para todo $n \in \mathbb N$. }
+    \end{teorema}
+    \vskip .2cm \pause
 %\begin{proof}[Demostración] 
-	{\color{blue} Demostración.}
-	\vskip .2cm 
+    {\color{blue} Demostración.}
+    \vskip .2cm 
 
-	\pause
-	 Basta tomar
-	$$S = \{n \in \mathbb N| P(n) \text{ es verdadera} \}.$$ \pause
-	Entonces $S$ es un subconjunto de $\mathbb N$ y las condiciones (a) y (b) nos dicen que $1 \in S$ y  si $ k \in S$ entonces $k+1\in S$. 
-	\vskip .2cm 
-	\pause Por el teorema anterior se sigue que $S= \mathbb N$, es decir que $P(n)$ es verdadera para todo $n$.
-	natural.\qed
-	
-	\vskip 1cm
+    \pause
+    Basta tomar
+    $$S = \{n \in \mathbb N| P(n) \text{ es verdadera} \}.$$ \pause
+    Entonces $S$ es un subconjunto de $\mathbb N$ y las condiciones (a) y (b) nos dicen que $1 \in S$ y  si $ k \in S$ entonces $k+1\in S$. 
+    \vskip .2cm 
+    \pause Por el teorema anterior se sigue que $S= \mathbb N$, es decir que $P(n)$ es verdadera para todo $n$.
+    natural.\qed
+    
+    \vskip 1cm
 %\end{proof}
-	 
-	
 \end{frame}
 
-\begin{frame}	
+\begin{frame}    
 
-	
-		En la práctica, generalmente presentamos una ``demostración por
-	inducción'' en términos más descriptivos. 
-	
-	\medskip
-	
-	En la notación del teorema anterior, 
-	\medskip
-	\begin{itemize}
-		\item (a) es llamado  el {\em caso base},
-		\item  (b) es llamado el  {\em paso inductivo} y
-		\item  $P(k)$ es llamada la {\em hipótesis inductiva}.
-	\end{itemize}
-	\medskip
-	 El paso inductivo  consiste en probar que $P(k) \Rightarrow P(k + 1)$ o, equivalentemente, podemos suponer $P(k)$ verdadera y a partir de ella probar $P(k + 1)$. 
-	
+    
+        En la práctica, generalmente presentamos una ``demostración por
+    inducción'' en términos más descriptivos. 
+    
+    \medskip
+    
+    En la notación del teorema anterior, 
+    \medskip
+    \begin{itemize}
+        \item (a) es llamado  el {\em caso base},
+        \item  (b) es llamado el  {\em paso inductivo} y
+        \item  $P(k)$ es llamada la {\em hipótesis inductiva}.
+    \end{itemize}
+    \medskip
+    El paso inductivo  consiste en probar que $P(k) \Rightarrow P(k + 1)$ o, equivalentemente, podemos suponer $P(k)$ verdadera y a partir de ella probar $P(k + 1)$. 
+    
 \end{frame}
 
 \begin{frame}
-		
-	\begin{ejemplo} 
-	El entero $x_n$ esta definido recursivamente por
-		$$
-		x_1=2, \qquad x_n=x_{n-1} +2n, \qquad n\ge 2.
-		$$
-		Demostremos que  \qquad 
-		$
-		x_n = n(n+1)  \text{ para todo } n\in \mathbb N.
-		$
-	\end{ejemplo}
-	\vskip .2cm\pause
+        
+    \begin{ejemplo} 
+    El entero $x_n$ esta definido recursivamente por
+        $$
+        x_1=2, \qquad x_n=x_{n-1} +2n, \qquad n\ge 2.
+        $$
+        Demostremos que  \qquad 
+        $
+        x_n = n(n+1)  \text{ para todo } n\in \mathbb N.
+        $
+    \end{ejemplo}
+    \vskip .2cm\pause
 \begin{proof}
-	\noindent({\it Caso  base}) El resultado es verdadero
-		cuando $n=1$ pues $ 2 = 1 \cdot 2$.
-    	\vskip .6cm\pause
-		\setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
+    \noindent({\it Caso  base}) El resultado es verdadero
+        cuando $n=1$ pues $ 2 = 1 \cdot 2$.
+        \vskip .6cm\pause
+        \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
     \hskip 2cm\begin{beamercolorbox}[wd=0.7\textwidth,rounded=true,shadow=true]{postit}
         \textit{\quad Caso base $n=1$:\quad $x_1 = 2 = 1\cdot 2 = n(n+1)$}
 \end{beamercolorbox}
-		\medskip\pause
+        \medskip\pause
 \end{proof}
 
 \end{frame}
@@ -350,40 +348,40 @@
 \begin{frame}
 
 \begin{proof}
-		\noindent ({\it Paso  inductivo})
-		Supongamos que el resultado verdadero cuando $n=k$, o
-		sea, que 
+        \noindent ({\it Paso  inductivo})
+        Supongamos que el resultado verdadero cuando $n=k$, o
+        sea, que 
         \vskip .2cm
         \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
         \hskip 1.8cm \begin{beamercolorbox}[wd=0.55\textwidth,rounded=true,shadow=true]{postit}
-			\; $x_k = k(k+1)$ hipótesis inductiva (HI).
+            \; $x_k = k(k+1)$ hipótesis inductiva (HI).
         \end{beamercolorbox}
-		\pause
+        \pause
         \vskip .2cm
         En el paso inductivo queremos probar que 
         \vskip .2cm
         \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
         \hskip 1.8cm \begin{beamercolorbox}[wd=0.65\textwidth,rounded=true,shadow=true]{postit}
-			\; $x_k = k(k+1)$ \; $\Rightarrow$ \; $x_{k+1} = (k+1)(k+2)$.
+            \; $x_k = k(k+1)$ \; $\Rightarrow$ \; $x_{k+1} = (k+1)(k+2)$.
         \end{beamercolorbox}
-		\pause
+        \pause
         \vskip .2cm
-	 Entonces
+    Entonces
 
-		\medskip
-		
-		
-		\begin{tabular}{lllll}
-		$x_{k+1}$ &$=$& $x_k + 2(k+1)$ &\qquad &$\text{(por la definición recursiva)}$ \\
-		&$=$& $k(k+1)+2(k+1)$ &\qquad &$\text{(por hipótesis inductiva)}$ \\
-		&$=$& $(k+1)(k+2).$&\qquad &$\text{($(k+1)$ factor común)}$
-		\end{tabular}
-		\medskip
-		\pause
-		
-		Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.\qed
-	\end{proof}
-	
+        \medskip
+        
+        
+        \begin{tabular}{lllll}
+        $x_{k+1}$ &$=$& $x_k + 2(k+1)$ &\qquad &$\text{(por la definición recursiva)}$ \\
+        &$=$& $k(k+1)+2(k+1)$ &\qquad &$\text{(por hipótesis inductiva)}$ \\
+        &$=$& $(k+1)(k+2).$&\qquad &$\text{($(k+1)$ factor común)}$
+        \end{tabular}
+        \medskip
+        \pause
+        
+        Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.\qed
+    \end{proof}
+    
 \end{frame}
 
 
@@ -406,18 +404,18 @@
         \vskip .4cm 
 
     \end{proof}
-	
+    
 \end{frame}
 
 
 \begin{frame}
     \frametitle{}
 
-		\noindent ({\it Paso  inductivo}) 
+        \noindent ({\it Paso  inductivo}) 
         \pause \vskip .4cm
-		
+        
         Supongamos que el resultado verdadero cuando $n=k$, o
-		sea, que 
+        sea, que 
         $$
         \sum_{i=1}^{k} i = \frac{k(k+1)}{2}\quad \text{hipótesis inductiva (HI).}
         $$
@@ -452,6 +450,24 @@
 
 \end{frame}
 
+
+\begin{frame}
+    \begin{observacion} En los teoremas del principio de inducción podemos reemplazar $\N$ por $\N_0$ y el teorema queda:
+
+        \begin{teorema}[(Principio de inducción)] 
+            \vskip .2cm 
+            {\it Sea $P(n)$ una propiedad para $n \in \mathbb N_0$ tal que:
+                \begin{enumerate}
+                    \item[a)] $P(0)$ es verdadera.
+                    \item[b)] Para todo $k \in \mathbb N_0$, $P(k)$ verdadera implica $P(k + 1)$ verdadera.
+                \end{enumerate}
+                Entonces $P(n)$ es verdadera para todo $n \in \mathbb N_0$. }
+            \end{teorema}
+
+    \end{observacion}
+\end{frame}
+
+
 \begin{frame}\frametitle{} 
 
     \begin{ejercicio}[(Serie geométrica)]\label{serie-geometrica}
@@ -472,15 +488,15 @@
         \vskip .4cm 
 
     \end{proof}
-	
+    
 \end{frame}
 
 \begin{frame}
     \frametitle{}
 
-		\noindent ({\it Paso  inductivo})
-		Supongamos que el resultado verdadero cuando $n=k$, o
-		sea, que 
+        \noindent ({\it Paso  inductivo})
+        Supongamos que el resultado verdadero cuando $n=k$, o
+        sea, que 
         $$
         \sum_{i=0}^{k} q^i = \frac{q^{k+1}-1}{q -1},\quad \text{hipótesis inductiva (HI).}
         $$

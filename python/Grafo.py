@@ -29,7 +29,7 @@ class Grafo:
     
     def vertices(self):
         # post:  devuelve la lista de vértices del grafo
-        return [i for i in range(self.__lst_ady)]
+        return [i for i in range(len(self.__lst_ady))]
     
     def aristas(self):
         # post:  devuelve la lista de aristas del grafo. Cada arista es una 2-lista
@@ -78,82 +78,47 @@ class Grafo:
     INICIO: Algoritmo de Hierholzer
 """
 
-def circuito_euleriano(G, v = 0): #Algoritmo de Hierholzer
-    # pre: G grafo con todos los vértices de valencia par, v vértice.
-    #      Si no se ingresa v toma el valor 0
-    # post: devuelve 'circuito' una lista de vertices que forma un circuito
-    #       euleriano. El  circuito empieza en 0.
-    circuito = [v]  # inicio de la caminata
-    libres = copiar_grafo(G) # aristas no utilizadas
-    while  nro_aristas(libres) > 0:
-        sub_cam = []   
-        h = 0
-        while libres[h] == [] or h not in circuito:
-            h = h + 1
-        # h = vértice en circuito donde libre[h] != [] (hay aristas libres)
-        pos = circuito.index(h) # posición de la 1º ocurrencia de h
-        p0 = h
-        p1 = libres[h][0] 
-        while p1 != h: # mientras no se vuelva al origen
-            sub_cam.append(p1)  # agrega p1 a sub_cam 
-            libres[p0].remove(p1)
-            libres[p1].remove(p0) # quitar arista p0, p1 
-            p0 = p1 
-            p1 = libres[p0][0]
-        libres[p0].remove(h)
-        libres[h].remove(p0) # quitar arista p0, p1 
-        # print( circuito[: pos +1], sub_cam, circuito[pos :]) 
-        circuito = circuito[: pos + 1] +  sub_cam + circuito[pos :]
-        # print('Circuito:',circuito) 
-        # print('Libres;',libres)
-    return circuito   
+def recorrido_max(L, v_ini): 
+    # pre: L grafo, v_ini vértice de L
+    # post: devuelve un recorrido maximal que comienza en v_ini
+    # mod: se quitan de L las aristas utilizadas
+    sub_caminata = [v_ini]  # sub caminata
+    p0 = v_ini
+    while len(L.adyacentes(p0)) > 0:  
+        p1 = L.adyacentes(p0)[0] # p1 primer adyacente a p0 
+        sub_caminata.append(p1) # agrega p1 a caminata
+        L.quitar_arista([p0,p1]) # quita arista {p0, p1}
+        p0 = p1 
+    return sub_caminata
 
-# print(circuito_euleriano(G,3))
 
+def caminata_circuito_euleriano(G):
+    # pre: G grafo con todos los vértices de valencia par o dos impares
+    # post: cuando termina 'cam' es una lista de vértices que es
+    #       una caminata o circuito euleriano.
+    Libres = G.copiar() # sub grafo de aristas no utilizadas
+    vertices = Libres.vertices()
     
-def caminata_euleriana_desde_a(G, v, w): 
-    # pre: graph grafo donde v y w son vértices impares y todos demás pares
-    # post: devuelve  la lista de vertices de la caminata euleriana
-    #       La caminata empieza en v y termmina en w.
-    caminata = []
-    H = copiar_grafo(G) # hace una copia de G
-    if w in G[v]: # si [v,w] es arista en G
-        quitar_arista(H, [v, w]) # quita la arista [v, w]
-        cmnt = circuito_euleriano(H, v)
-        caminata = cmnt.append(w)
-    else: # si [v,w] no es arista en G
-        agregar_arista(H, [v, w]) # agrega la arista [v, w]
-        cmnt = circuito_euleriano(H, w)
-        k = -1
-        for i in range(1,len(cmnt)):
-            if cmnt[i - 1] == w and cmnt[i] == v:
-                k = i
-            if k > 0:
-                caminata.append(cmnt[i])
-        for i in range(1,k):
-            caminata.append(cmnt[i])
+    v_ini = vertices[0]
+    i, lon  = 0, len(vertices)
+    n_imp = 0 # cantidad vértices de valencia impar
+    for vertice in vertices:
+        if len(Libres.adyacentes(vertice)) % 2 == 1:
+            v_ini = vertice
+            n_imp += 1
+    # v_ini es el primer vértice si son todos pares o el último vértice impar
+    assert len(n_imp) == 2 or len(n_imp) == 0,'todos los vértices de valencia par o dos impares'
+    caminata = recorrido_max(Libres, v_ini) # recorrido maximal desde v = v_ini
+    while len(Libres.aristas()) > 0:
+        for vertice in caminata:
+            if len(Libres.adyacentes(vertice)) > 0:
+                v = vertice # v es un vértice de la caminata con aristas libres
+        i = caminata.index(v) # el índice de v en la caminata
+        caminata  =  caminata[:i] + recorrido_max(Libres, v) + caminata[i+1:]
+        # intercala recorrido maximal en v, Libres queda con las
+        # aristas no utilizadas en cam
     return caminata
 
-def caminata_euleriana(G): 
-    # pre: G grafo.
-    # post: devuelve un par. La primera coordenada es True si hay camina euleriana y False en otro caso.
-    #       La segunda coordenada es [] si no hay c e y es la lista de vertices de la caminata si existe  c e
-    #       La caminata empieza desde un vertice arbitrario (0 en el caso par).
-    existe, caminata = False, []
-    impares = []
-    for i in range(len(G)):
-        if len(G[i]) % 2 == 1: # si la valencia es impar
-            impares.append(i)
-    if len(impares) == 0: # todas las valencias pares
-        existe = True
-        caminata = circuito_euleriano(G)
-    elif len(impares) == 2: # dos valencias impares
-        existe = True
-        vini, vfin = impares[0], impares[1]
-        caminata = caminata_euleriana_desde_a(G, vini, vfin)
-    return existe, caminata
-
-# print(caminata_euleriana(G))
 
 """
     FIN: Algoritmo de Hierholzer
@@ -164,42 +129,51 @@ def main():
     # Grafos de prueba
     
     # Grafo 0 (el gran tour)
-    G0 = Grafo({0, 1, 2, 3, 4, 5}, {(0, 1), (0, 2), (0, 4), (0, 5), (1, 2), (1, 4), (1, 5), (2, 3), (2, 5), (3, 4), (4, 5)})
+    # G0 = Grafo({0, 1, 2, 3, 4, 5}, {(0, 1), (0, 2), (0, 4), (0, 5), (1, 2), (1, 4), (1, 5), (2, 3), (2, 5), (3, 4), (4, 5)})
     # print(G0)
     # print(recorrido_euleriano_max(G0, 0))
-    # lista ady= [[1,2,4,5],[0,2,4,5],[0,1,3,5],[2,4],[0,1,3,5],[0,1,2,4]]
+    lista_ady_0= [[1,2,4,5],[0,2,4,5],[0,1,3,5],[2,4],[0,1,3,5],[0,1,2,4]]
+    G0 = Grafo(lista_ady_0)
+    print(caminata_circuito_euleriano(G0))
+    # resultado : [0, 1, 2, 0, 4, 1, 5, 2, 3, 4, 5, 0]
 
     # Grafo 1
-    G1 = Grafo({0, 1, 2, 3, 4, 5, 6}, {(0, 3), (0, 4), (0, 5), (0, 6), (1, 2), (1, 4), (2, 5), (3, 4), (4, 5), (5, 6)})
+    # G1 = Grafo({0, 1, 2, 3, 4, 5, 6}, {(0, 3), (0, 4), (0, 5), (0, 6), (1, 2), (1, 4), (2, 5), (3, 4), (4, 5), (5, 6)})
     #print(G1)
     #print(recorrido_euleriano_max(G1, 0),'\n')
-    #lista_ady [[3,4,5,6], [2,4], [1,5], [0,4], [0,1,3,5], [0,2,4,6], [0,5]]
+    lista_ady_1 = [[3,4,5,6], [2,4], [1,5], [0,4], [0,1,3,5], [0,2,4,6], [0,5]]
+    G1 = Grafo(lista_ady_1)
+    print(caminata_circuito_euleriano(G1))
+    # resultado : [0, 3, 4, 0, 5, 2, 1, 4, 5, 6, 0]
 
     # Grafo 2 (cíclico)
-    G2 = Grafo({0, 1, 2, 3, 4, 5}, {(0, 1), (0, 5), (1, 2), (2, 3), (3, 4), (4, 5)})
+    # G2 = Grafo({0, 1, 2, 3, 4, 5}, {(0, 1), (0, 5), (1, 2), (2, 3), (3, 4), (4, 5)})
     # print(G2)
     # print(recorrido_euleriano_max(G2, 0),'\n')
     #lista_ady [[1,5],[0, 2],[1,3],[2,4],[3,5],[4,0]]
 
     # Grafo 3 
-    G3 = Grafo({0, 1, 2, 3, 4, 5}, {(0, 2), (0, 4), (0, 5), (1, 3), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (4, 5)})
+    # G3 = Grafo({0, 1, 2, 3, 4, 5}, {(0, 2), (0, 4), (0, 5), (1, 3), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (4, 5)})
     # print(G3)
     # print(recorrido_euleriano_max(G3, 0))
     # print(recorrido_euleriano_max(G3, 1),'\n')
-    #lista_ady [[2, 4, 5], [3, 5], [0, 3, 4, 5], [1, 2, 4], [0, 2, 3, 5], [0, 1, 2, 4]]
+    lista_ady_3 = [[2, 4, 5], [3, 5], [0, 3, 4, 5], [1, 2, 4], [0, 2, 3, 5], [0, 1, 2, 4]]
+    G3 = Grafo(lista_ady_3)
+    print(caminata_circuito_euleriano(G3))
+    # resultado : [3, 1, 5, 0, 2, 3, 4, 2, 5, 4, 0]
 
     # Grafo 4
-    G4 = Grafo({0, 1, 2, 3, 4, 5, 6}, {(0, 3), (0, 4), (0, 5), (1, 2), (1, 4), (2, 5), (3, 4), (4, 5), (5, 6)})
+    # G4 = Grafo({0, 1, 2, 3, 4, 5, 6}, {(0, 3), (0, 4), (0, 5), (1, 2), (1, 4), (2, 5), (3, 4), (4, 5), (5, 6)})
     # print(recorrido_euleriano_max(G4, 0))
     #lista_ady [[3,4,5], [2,4], [1,5], [0,4], [0,1,3,5], [0,2,4,6], [5]]
     
     # Grafo 6 (dos valencias impares)
-    G6 = Grafo({0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}, {(0, 1), (1, 2), (2, 3), (2, 4), (2, 7), (3, 4), (4, 5), (4, 6), (5, 6), (7, 8), (8, 9), (8, 10), (8, 11), (9, 10)})
+    # G6 = Grafo({0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}, {(0, 1), (1, 2), (2, 3), (2, 4), (2, 7), (3, 4), (4, 5), (4, 6), (5, 6), (7, 8), (8, 9), (8, 10), (8, 11), (9, 10)})
     #print(G6)
     #print(caminata_euleriana(G6, 0))
 
     # Grafo 7 (todas valencias pares)
-    G7 = Grafo({0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}, {(0, 1), (0, 11), (1, 2), (2, 3), (2, 4), (2, 7), (3, 4), (4, 5), (4, 6), (5, 6), (7, 8), (8, 9), (8, 10), (8, 11), (9, 10)})
+    # G7 = Grafo({0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}, {(0, 1), (0, 11), (1, 2), (2, 3), (2, 4), (2, 7), (3, 4), (4, 5), (4, 6), (5, 6), (7, 8), (8, 9), (8, 10), (8, 11), (9, 10)})
     # print(G7)
     #print(recorrido_euleriano_max(G7,0))
     # G7.agregar_vertice()
@@ -215,10 +189,10 @@ def main():
 
 
     # Pesos en G1
-    pesos_G1 =  {(0, 3):5, (0, 4):0, (0, 5):0, (0, 6):0, (1, 2):10, (1, 4):0, (2, 5):0, (3, 4):0, (4, 5):0, (5, 6):0}
+    # pesos_G1 =  {(0, 3):5, (0, 4):0, (0, 5):0, (0, 6):0, (1, 2):10, (1, 4):0, (2, 5):0, (3, 4):0, (4, 5):0, (5, 6):0}
 
-    print(kruskal(G1, pesos_G1))
-    print(prim(G1, pesos_G1))
+    # print(kruskal(G1, pesos_G1))
+    # print(prim(G1, pesos_G1))
 
 
     return 0
