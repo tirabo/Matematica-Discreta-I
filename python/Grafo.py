@@ -94,7 +94,7 @@ def recorrido_max(L, v_ini):
 
 def caminata_circuito_euleriano(G):
     # pre: G grafo con todos los vértices de valencia par o dos impares
-    # post: cuando termina 'cam' es una lista de vértices que es
+    # post: cuando termina 'caminata' es una lista de vértices que es
     #       una caminata o circuito euleriano.
     Libres = G.copiar() # sub grafo de aristas no utilizadas
     vertices = Libres.vertices()
@@ -107,7 +107,7 @@ def caminata_circuito_euleriano(G):
             v_ini = vertice
             n_imp += 1
     # v_ini es el primer vértice si son todos pares o el último vértice impar
-    assert len(n_imp) == 2 or len(n_imp) == 0,'todos los vértices de valencia par o dos impares'
+    assert len(n_imp) == 2 or len(n_imp) == 0,'hay más de dos vértices de valencia impar'
     caminata = recorrido_max(Libres, v_ini) # recorrido maximal desde v = v_ini
     while len(Libres.aristas()) > 0:
         for vertice in caminata:
