@@ -3,6 +3,7 @@
 \usetheme{CambridgeUS}
 %\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
+
 \usepackage{etex}
 \usepackage{t1enc}
 \usepackage[spanish,es-nodecimaldot]{babel}
@@ -43,6 +44,7 @@
 }
 \renewcommand\labelitemi{$\circ$}
 \setlist[enumerate]{label={(\arabic*)}}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 \setbeamertemplate{itemize item}{$\circ$}
 \setbeamertemplate{enumerate items}[default]
 \definecolor{links}{HTML}{2A1B81}
@@ -93,13 +95,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
 
 
-\title[Clase 22 - Árboles / Coloreo de vértices]{Matemática Discreta I \\ Clase 22 - Árboles / Coloreo de vértices}
+\title[Clase 23 - Algoritmos greedy]{Matemática Discreta I \\ Clase 23 - Algoritmos greedy en grafos}
 %\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
 \institute[]{\normalsize FAMAF / UNC
     \\[\baselineskip] ${}^{}$
     \\[\baselineskip]
 }
-\date[13/06/2023]{13 de junio de 2023}
+\date[15/06/2023]{15 de junio de 2023}
 
 
 
@@ -107,258 +109,194 @@
 \begin{document}
     
     \frame{\titlepage} 
+
+    \begin{frame}
+        \frametitle{Algoritmo greedy para coloración de vértices}
     
-    
-\begin{frame}
-    \frametitle{Árboles}
-    \begin{definicion}
-    Diremos que un grafo $T$ es un \textit{árbol} si cumple que es conexo y no hay ciclos en $T$.
-    \end{definicion}
+        \begin{itemize}
+            \item No se conoce ningún algoritmo general para encontrar el número cromático de un grafo que trabaje en ``tiempo polinomial'' \pause
+            \item Sin embargo hay un método simple de hacer una coloración usando un  ``razonable'' número de colores. \pause
+        \end{itemize}
 
-    \vskip .8cm
-    
-    \begin{figure}[ht]
-        \begin{center}
-        \begin{tabular}{llllllll}
-            &
-            \begin{tikzpicture}[scale=0.8]
-            \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
-            \Vertex[x=0.00, y=0]{a}
-            \Vertex[x=0, y=-1]{b}
-            \Vertex[x=0., y=-2]{c}
-            \Vertex[x=0, y=-3]{d}
-            \Vertex[x=0., y=-4]{e}
-            \Edges(a,b,c,d,e)
-            \end{tikzpicture}
-            &
-            \qquad
-            & 
-            \begin{tikzpicture}[scale=0.8]
-            \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
-            %                
-            \Vertex[x=0.00, y=0]{a}
-            \Vertex[x=-1.5, y=-0.5]{b}
-            \Vertex[x=1.5, y=-0.5]{c}
-            \Vertex[x=-1.5, y=-1.5]{d}
-            \Vertex[x=1.5, y=-1.5]{e}
-            \Vertex[x=0, y=-1.5]{f}
-            \Vertex[x=-0.7, y=-1]{g}
-            \Vertex[x=0.7, y=-1]{h}
-            \Vertex[x=0, y=-4]{i}
-            \Edges(d,b,a,c,e)
-            \Edges(g,f,h)
-            \Edges(a,f,i)
-            \end{tikzpicture}
-            &
-            \qquad
-            & 
-            \begin{tikzpicture}[scale=0.8]
-            \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
-            %                
-            \Vertex[x=0.00, y=0]{a}
-            \Vertex[x=0, y=-1.0]{b}
-            \Vertex[x=0, y=-2.5]{c}
-            \Vertex[x=1.2, y=-2]{e}
-            \Vertex[x=-1.2, y=-2]{f}
-            \Vertex[x=-1.2, y=-3.5]{g}
-            \Vertex[x=1.2, y=-3.5]{h}
-            \Edges(a,b,c)
-            \Edges(f,b,e)
-            \Edges(g,c,h)
-            \end{tikzpicture}
-            &
-            \qquad
-            & 
-            \begin{tikzpicture}[scale=0.50]
-            \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
-            %
-            \Vertex[x=0.00, y=0.00]{0}
-            \Vertex[x=3.00, y=0.00]{1}
-            \Vertex[x=2.12, y=2.12]{2}
-            \Vertex[x=0.00, y=3.00]{3}
-            \Vertex[x=-2.12, y=2.12]{4}
-            \Vertex[x=-3.00, y=0.00]{5}
-            \Vertex[x=-2.12, y=-2.12]{6}
-            \Vertex[x=0.00, y=-3.00]{7}
-            \Vertex[x=2.12, y=-2.12]{8}
-            \Edges(1,0,5) \Edges(3,0,7) \Edges(2,0,6)\Edges(4,0,8)
-            \end{tikzpicture}
-        \end{tabular}
-    \end{center}
-        \caption{Algunos árboles} \label{f5.8}
-    \end{figure}
-    
-
-    
-
-\end{frame}
+        \vskip .4cm
 
 
-\begin{frame}
-    \frametitle{}
+        El algoritmo es muy sencillo y se puede describir en una sola línea.  \pause
+        \vskip .4cm
+        \begin{itemize}
+            \item Si hay vértices no coloreados, elegimos un vértice no coloreado  y le otorgamos un color que no tengan sus vecinos.
+        \end{itemize} \pause
 
-    A causa de su particular estructura y propiedades, los árboles aparecen en diversas aplicaciones de la matemática, especialmente en investigación operativa y ciencias de la computación. \pause
-\vskip .9cm
-    El siguiente lema nos resultará útil para probar una parte del teorema fundamental de esta sección.\pause
-\vskip .4cm
-
-\begin{lema} Sea $G=(V,E)$ un grafo conexo, entonces $|E| \ge |V| -1$.  
-\end{lema}
-
-
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{}
-
-    \begin{proof} Como $G$ es conexo existe una caminata que recorre todos los vértices de $G$:
-        $$
-        v_1,v_2,\ldots,v_r.
-        $$
-        Renombremos los vértices de $G$ con números naturales de tal forma que el primer vértice de la caminata sea $1$, el segundo $2$ y cada vez que aparece un vértice que no ha sido renombrado se le asigna el número siguiente.
+        \vskip .4cm
+        En este algoritmo insistimos en hacer la mejor elección que podemos en cada paso, sin mirar más allá para ver si esta elección nos traerá problemas luego. 
         
-        \vskip .4cm\pause
-
-        Luego la caminata comienza en $1$ y termina en $n$, donde $n = |V|$.  
-        \pause
-        \vskip .4cm
-
-        Observar: si $i$ tal que $1 < i \le n$ tenemos que la caminata tiene la forma
-        $$
-        1,\ldots,j_i,i,\ldots,j_n,n
-        $$ 
-        donde $j_i < i$, luego es claro  que 
-        $$
-        \{j_{2},2\}, \{j_{3},3\}, \ldots, \{j_{n},n\}
-        $$
-        forman un conjunto de $n-1$ aristas distintas en $G$. \qed
-        \end{proof}    
-
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{}
-
-    El siguiente teorema nos da 3 nociones equivalente a la definición de árbol. 
-
-    \vskip .6cm\pause
-
-\begin{teorema}\label{t5.5} Si $T=(V,E)$ es un grafo conexo con al menos dos vértices, entonces son equivalentes las siguientes propiedades
-    \begin{enumerate}
-    \item[\textbf{T1)}] T es un árbol.
-    \item[\textbf{T2)}] \label{T2} Para cada par $x$, $y$ de vértices existe un único camino en $T$ de $x$ a
-    $y$.
-    \item[\textbf{T3)}] \label{T4} $|E|=|V|-1$.
-    \end{enumerate}
-    \end{teorema}
-    
-
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{}
-
-    Este teorema se demuestra haciendo las pruebas:
-
-    $$
-    \textbf{T1} \quad \Rightarrow  \quad \textbf{T2} \quad \Rightarrow  \quad \textbf{T3} \quad \Rightarrow  \quad \textbf{T1}.
-    $$\pause
-
-
-    Luego, toda equivalencia se deduce de estas implicaciones. 
-    \vskip .4cm\pause
-    Por ejemplo,
-
-    $$
-    \textbf{T1} \quad \Leftrightarrow \quad \textbf{T3}\qquad\text{pues} \qquad
-    \left\{ 
-    \begin{matrix*}[l]
-        \textbf{T1} \quad \Rightarrow  \quad \textbf{T2} \quad \Rightarrow  \quad  \textbf{T3} \\
-        \textbf{T3}  \quad \Rightarrow  \quad  \textbf{T1}. 
-    \end{matrix*}    
-    \right. 
-    $$
-
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{}
-
-    (T1 $\Rightarrow$ T2) Si hubiera dos caminos podríamos formar un ciclo. 
-        \vskip .4cm
-    (T2 $\Rightarrow$ T3) Se hará por inducción en $|V|$. \pause
-    
-    Sea $uv$  arista de $T$ y sea  $F = T -uv$.  Como hay un único camino de $u$  a $v$,  $F$ tiene dos componentes conexas: $T_1$  la componente conexa de $u$ y $T_2$ la componente conexa de $v$.\pause
-        \vskip .2cm
-    En cada componente conexa $T_i = (V_i, E_i)$ hay un único camino de un vértice a otro, pues sino esa propiedad no se cumpliría en $T$. \pause
-    \vskip .2cm
-    Por HI, $|E_1|=|V_1|-1$ y $|E_2|=|V_2|-1$. Luego 
-    \vskip -.6cm
-    \begin{align*}
-        |E| &= |E_1 \cup E_2| + 1  = |E_1|+|E_2| + 1 \stackrel{\text{(HI)}}{=} (|V_1|-1)+(|V_2|-1) +1 \\
-            &= |V_1 \cup V_2|-1 = |V| -1. 
-    \end{align*}\pause
-    \vskip .0cm
-    (T3 $\Rightarrow$ T1)  $|E|=|V|-1$ y supongamos que $T$ no es árbol $\Rightarrow$ hay un ciclo $\Rightarrow$ podemos sacar una arista $uv$ y sigue siendo conexo   $\Rightarrow$ $|E -uv|=|V|-2$ y  conexo. Absurdo por el lema. \qed
+        \vskip .4cm \pause
         
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{}
-
-    \begin{corolario}
-        Sea $T$ árbol con al menos dós vértices,  entonces:
-        \vskip .4cm
-        El grafo obtenido de $T$ removiendo alguna arista tiene dos
-        componentes, cada una de las cuales es un árbol.
-    \end{corolario}\pause
-
-    \begin{proof}\pause
-        Es parte de la demostración de  T2 $\Rightarrow$ T3: el grafo que se obtiene de quitar una arista,  es un grafo con dos componentes conexas cada una de ellas sin ciclos (pues sino los habría en $T$), luego cada una de ellas es árbol.
-
-        \qed
-    \end{proof}
-
-     \vskip 2cm
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{Coloreo de los vértices de un grafo}
-
-    \begin{block}[Problema]
-        ¿Cómo hacer un horario de actividades sin interferencias?.
-    \end{block}
-    \pause
+        Un algoritmo de esta clase se llama a menudo un \textit{algoritmo greedy (goloso)}.  \index{algoritmo greedy (goloso)}
+    
+    \end{frame}
 
 
 
-    \vskip .8cm
-
-    \begin{ejemplo}\label{ejemplo-coloracion} Supongamos que deseamos hacer un horario con seis cursos de una hora, $v_1,v_2,v_3,v_4,v_5,v_6$. Entre la audiencia potencial hay gente que desea asistir simultáneamente  a
-        $$ 
-        \{v_1, v_2 \}, \quad\{v_1, v_4 \}, \quad\{v_3, v_5 \}, \quad\{v_2, v_6 \}, \quad\{v_4, v_5 \}, \quad \{v_5, v_6 \}, \quad\{v_1, v_6 \}.
-        $$
+    \begin{frame}
+        \frametitle{}
+    
+        El algoritmo greedy para coloración de vértices es fácil de programar.  \pause
+        \vskip .8cm
+        Supóngase que hemos dado a los vértices algún orden $v_0,v_1,\ldots,v_n$.  \pause
+        \vskip .8cm
+        \begin{itemize}
+            \item Asignemos el color $0$ a $v_0$. \pause
+            \item Tomamos $v_i$ el siguiente vértice de la lista y
+            \begin{itemize}
+                \item $S =$ el conjunto de colores asignados a los vértices $v_j$ ($0\le j <i$) que son adyacentes a $v_i$.
+                \item Le damos a $v_i$ el primer color que no está en $S$.  \pause
+            \end{itemize}
+            \item si $i < n$ volvemos hacemos el procedimiento del paso anterior para $i = i +1$.
+            
+        \end{itemize}
         
-    ¿Cuántas horas son necesarias para poder confeccionar un horario en el cual no haya interferencias?
-
-    \end{ejemplo}    
-
-\end{frame}
+    \end{frame}
 
 
-\begin{frame}
-    \frametitle{}
 
-    \begin{solucion}
-        Podemos representar la situación con el grafo:
-        \vskip .4cm
+    \begin{frame}[fragile]
+        \frametitle{}
+        Mostramos en pseudocódigo del algoritmo greedy para coloración de vértices.  \pause
+        \begin{small}
+\begin{verbatim}
+# pre: 0,...,n los vértices de un grafo G
+# post: devuelve v[0],...,v[n] una coloración de G
+color = []  #  color[j] = c dirá que el color de j es c.
+for i = 0 to n:
+    S = []  # S conjunto de colores asignados a los vértices j
+            # (1 <= j <i) que son adyacentes a i (comienza vacío)
+    for j = 0 to i-1:
+        if j es adyacente a i:
+            S.append(color[j])  # agrega el color de j a  S
+    k = 0
+    while k in S:
+        k = k + 1
+    color.append(k) # Asigna el color k a i, donde k es el primer 
+                    # color que no esta en S. 
+\end{verbatim}
+\end{small}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{}
+    
+        Debido a que la estrategia greedy es corta de vista, el número de colores que usará será normalmente más grande que le mínimo posible.  \pause
+
+        \begin{ejemplo} Aplicar el algoritmo greedy a 
+
             \begin{center}
+                \begin{tikzpicture}[scale=0.55]
+                    %\SetVertexSimple[Shape=circle,FillColor=white]
+                    %                
+                    \Vertex[x=3.00, y=0.00]{$v_3$}
+                    \Vertex[x=1.50, y=2.60]{$v_2$}
+                    \Vertex[x=-1.50, y=2.60]{$v_1$}
+                    \Vertex[x=-3.00, y=0.00]{$v_6$}
+                    \Vertex[x=-1.50, y=-2.60]{$v_5$}
+                    \Vertex[x=1.50, y=-2.60]{$v_4$}
+                    \Edges($v_2$,$v_1$,$v_6$, $v_5$,$v_4$,$v_1$)
+                    \Edges($v_2$,$v_6$)
+                    \Edges($v_3$,$v_5$)
+                \end{tikzpicture}
+                \end{center}
+
+        \end{ejemplo}
+    
+        \begin{solucion} 
+            
+            
+
+        \end{solucion}
+
+
+    \end{frame}
+
+
+     \begin{frame}
+         \frametitle{}
+
+         El orden de los vértices es $v_1$, $v_2$, $v_3$, $v_4$, $v_5$ y $v_6$.  \pause
+     
+         \vskip .4cm
+
+         El algoritmo es:
+
+         \vskip .4cm
+         
+         \begin{itemize}
+            \item \textbf{Paso 1.} $v_1$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$ $v_1$ color $0$. \pause
+            \item \textbf{Paso 2.} $v_2$ tiene colores vecinos $S = \{0\}$ $\Rightarrow$  $v_2$ color $1$. \pause
+            \item \textbf{Paso 3.} $v_3$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$  $v_3$ color $0$. \pause
+            \item \textbf{Paso 4.} $v_4$ tiene colores vecinos $S = \{0\}$ $\Rightarrow$  $v_4$ color $1$. \pause
+            \item  \textbf{Paso 5.} $v_5$ tiene colores vecinos $S = \{0, 1\}$ $\Rightarrow$  $v_5$ color $2$. \pause
+            \item \textbf{Paso 6.} $v_6$ tiene colores vecinos $S = \{0, 1, 2\}$ $\Rightarrow$  $v_6$ color $3$. \pause
+        \end{itemize}
+         
+     
+     \end{frame}
+
+
+     \begin{frame}
+         \frametitle{}
+
+         Es decir el coloreo queda:
+     
+         \begin{center}
+            \begin{tikzpicture}[scale=0.55]
+                %\SetVertexSimple[Shape=circle,FillColor=white]
+                %
+                \tikzset{VertexStyle/.append style={fill= red!50}}
+                \Vertex[x=-1.50, y=2.60]{$v_1$}              
+                \Vertex[x=3.00, y=0.00]{$v_3$}
+                \tikzset{VertexStyle/.append style={fill= blue!50}}
+                \Vertex[x=1.50, y=2.60]{$v_2$}
+                \Vertex[x=1.50, y=-2.60]{$v_4$}
+                \tikzset{VertexStyle/.append style={fill= green!50}}
+                \Vertex[x=-3.00, y=0.00]{$v_6$}
+                \tikzset{VertexStyle/.append style={fill= yellow!50}}
+                \Vertex[x=-1.50, y=-2.60]{$v_5$}
+                \Edges($v_2$,$v_1$,$v_6$, $v_5$,$v_4$,$v_1$)
+                \Edges($v_2$,$v_6$)
+                \Edges($v_3$,$v_5$)
+            \end{tikzpicture}
+            \end{center}
+            \vskip .4cm
+
+        
+            \qed
+     
+     \end{frame}
+        
+        \begin{frame}
+            \frametitle{}
+        
+        El orden que se elige inicialmente para los vértices es fundamental para establecer la coloración.  \pause
+        \vskip .4cm
+        Es bastante fácil ver que si se elige el orden correcto, entonces el algoritmo greedy nos da la mejor coloración posible (ejercicio en el apunte).  \pause
+        \vskip .4cm
+        Pero hay $n!$ órdenes posibles, y si tuviéramos que controlar cada uno de ellos, el algoritmo requeriría ``tiempo factorial'' (peor aún que tiempo exponencial).
+        
+        \end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{}
+
+    \begin{ejemplo}
+        Aplicar el algorimo greedy al siguiente grafo donde el orden de los vértices es 
+        $$
+        v_3, v_4, v_6, v_2, v_5, v_1. 
+        $$ 
+        \vskip .4cm
+        \begin{center}
             \begin{tikzpicture}[scale=0.55]
                 %\SetVertexSimple[Shape=circle,FillColor=white]
                 %                
@@ -373,115 +311,34 @@
                 \Edges($v_3$,$v_5$)
             \end{tikzpicture}
             \end{center}
-            \vskip .4cm
-            Los vértices corresponden a las seis clases, y las aristas indican las interferencias potenciales.
 
-    
-        \end{solucion}
-    
+    \end{ejemplo}
 
+    \begin{solucion} 
+            
+            
 
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{}
-
-Un horario el cual cumple con la condición de evitar interferencias es el siguiente:
-$$
-\begin{matrix}
-\text{Hora 1} & \text{Hora 2} &\text{ Hora 3}& \text{Hora 4} \\
-v_1 \text{ y } v_3 & v_2 \text{ y } v_4 & v_5 & v_6
-\end{matrix}
-$$\pause
-Es una partición del conjuntos de vértices en cuatro partes, con la propiedad que ninguna parte contiene un par de vértices adyacentes del grafo. 
-
-\pause
-Claramente,  le corresponde una función:
-$$
-c: \{ v_1,v_2,v_3,v_4,v_5,v_6\} \to  \{1,2,3,4\},
-$$
-donde
-\begin{align*}
-    c(v_1) &= c(v_3) = 1 \\
-    c(v_2) &= c(v_4) = 2 \\
-    c(v_5) &= 3 \\
-    c(v_6) &= 4. 
-\end{align*}
+    \end{solucion}
 
 
-
-\end{frame}
+\end{frame}        
 
 
 \begin{frame}
     \frametitle{}
 
-    También podemos representar esta función como un \textit{coloreo de vértices} donde dos vértices adyacentes tienen distintos colores:
-    \vskip .4cm\pause
-\begin{center}
-    \begin{tikzpicture}[scale=0.55]
-        %\SetVertexSimple[Shape=circle,FillColor=white]
-        %
-        \tikzset{VertexStyle/.append style={fill= red!50}}
-        \Vertex[x=-1.50, y=2.60]{$v_1$}              
-        \Vertex[x=3.00, y=0.00]{$v_3$}
-        \tikzset{VertexStyle/.append style={fill= blue!50}}
-        \Vertex[x=1.50, y=2.60]{$v_2$}
-        \Vertex[x=1.50, y=-2.60]{$v_4$}
-        \tikzset{VertexStyle/.append style={fill= green!50}}
-        \Vertex[x=-3.00, y=0.00]{$v_6$}
-        \tikzset{VertexStyle/.append style={fill= yellow!50}}
-        \Vertex[x=-1.50, y=-2.60]{$v_5$}
-        \Edges($v_2$,$v_1$,$v_6$, $v_5$,$v_4$,$v_1$)
-        \Edges($v_2$,$v_6$)
-        \Edges($v_3$,$v_5$)
-    \end{tikzpicture}
-    \end{center}
-    \vskip .4cm\pause
-    Cualquiera de las tres formas de presentar el resultado nos daría una solución (quizás no la mejor). 
+    El algoritmo es: \pause
 
-    \qed
-
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{}
-
-    \begin{definicion} Una \textit{coloración de vértices} de un grafo $G=(V,E)$ es una función $c:V \to  \mathbb N$ con la siguiente propiedad:
-        $$
-        c(x)\not= c(y) \quad \text{ si } \quad \{x,y\} \in E.
-        $$\pause
-        El \textit{número cromático} de $G$, denotado $\chi(G)$, se define \index{número cromático} como el mínimo entero $k$ para el cual existe una coloración de vértices de $G$ usando $k$-colores. 
-        
-        \vskip .4cm\pause
-        
-        En otra palabras, $\chi(G)=k$ si  y sólo si existe una coloración de vértices $c$ la cual es una función de $V$ a $\mathbb N_k$, y $k$ es el mínimo entero con esta propiedad. 
-        \end{definicion}
-
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{}
-
-    Volviendo al ejemplo de los horarios,  nuestro primer intento fue de 4 colores.
     \vskip .4cm
-    Un rápido intento con tres  colores nos da la solución de este problema: \pause
-
-    $$
-    \begin{matrix}
-    \text{Color 1}\quad &\text{Color 2}\quad&\text{Color 3} \\
-    v_1 &v_2 \text{ y } v_5 \quad & v_3,v_4 \text{ y } v_6 .
-    \end{matrix}
-    $$\pause
-
-    Más aún, hacen falta por lo menos tres colores, puesto que $v_1$, $v_2$, y $v_6$ son mutuamente adyacentes y por lo tanto deben tener diferentes colores. 
     
-    \vskip .4cm\pause
-
-    Luego concluimos que el número cromático del grafo es $3$.
+    \begin{itemize}
+       \item \textbf{Paso 1.} $v_3$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$ $v_3$ color $0$. \pause
+       \item \textbf{Paso 2.} $v_4$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$  $v_4$ color $0$. \pause
+       \item \textbf{Paso 3.} $v_6$ tiene colores vecinos $S = \emptyset$ $\Rightarrow$  $v_6$ color $0$. \pause
+       \item \textbf{Paso 4.} $v_2$ tiene colores vecinos $S = \{0\}$ $\Rightarrow$  $v_2$ color $1$. \pause
+       \item  \textbf{Paso 5.} $v_5$ tiene colores vecinos $S = \{0\}$ $\Rightarrow$  $v_5$ color $1$. \pause
+       \item \textbf{Paso 6.} $v_1$ tiene colores vecinos $S = \{0, 1\}$ $\Rightarrow$  $v_1$ color $2$. \pause
+   \end{itemize}
 
 \end{frame}
 
@@ -491,7 +348,7 @@ donde
 
     Podemos representar en el  grafo la coloración: 
 
-    \vskip .8 cM
+    \vskip .4 cm
 
     \begin{center}
         \begin{tikzpicture}[scale=0.55]
@@ -511,33 +368,230 @@ donde
             \Edges($v_3$,$v_5$)
         \end{tikzpicture}
         \end{center}
-
+\qed 
+\pause
+El coloreo queda igual que en la clase pasada.  \pause
+\vskip .4 cm
+El orden fue elegido de la siguiente forma: dado el coloreo con colores $\chi(G)$, se elije,  en el orden, primero los vértices de un solo color que haya mayor cantidad, luego de otro color que haya mayor cantidad,  etc.    
 \end{frame}
 
+    \begin{frame}
+        \frametitle{}
+        Más allá que el algoritmo greedy no soluciona el problema, el algoritmo es útil tanto en la teoría como en la práctica.  \pause
+        
+        \vskip .4 cm
+        
+        Probaremos ahora algunos resultados por medio de la estrategia greedy. \pause
 
-\begin{frame}
-    \frametitle{}
-
-    En general, para probar que el número cromático de un grafo dado es $k$, debemos hacer dos cosas:\pause
-
-    \vskip .4cm
-
-\begin{enumerate}[label=\textit{\alph*)}] 
-    \item  encontrar una coloración de vértices usando $k$ colores;\pause
-    \vskip .4cm
-    \item  probar que ninguna coloración de vértices usa menos de $k$ colores.
-\end{enumerate}
-
-\vskip .9cm\pause
-¿Existe algún algoritmo general eficiente para encontrar el número cromático?\pause
-\vskip .2cm
-\textbf{Respuesta:} No.
-\vskip .4cm
-
-Veremos la clase que viene un algoritmo  para encontrar una coloración de vértices que aunque no es óptima nos da un resultado satisfactorio. 
+        \vskip .4 cm
+        
+\begin{teorema}\label{t5.7.1} Si $G$ es un grafo con valencia máxima
+    $k$, entonces
+    \begin{enumerate}[label=\textit{\alph*)}]
+    \item\label{it.com_a}  $\chi(G)\le k+1$,
+    \item\label{it.com_b} Si $G$ es conexo y no regular , $\chi(G) \le k$.
+    \end{enumerate}
+    \end{teorema}
+    
+        
+    
+    \end{frame}
 
 
-\end{frame}
+    \begin{frame}
+        \frametitle{}
+    
+        \begin{proof} \pause
+        
+        \ref{it.com_a} Sea $v_1,v_2,\ldots,v_n$ un ordenamiento cualquiera de los vértices de $G$.  \pause
+        \vskip .2 cm
+        Para cada vértice $v$, si $S$ son los colores de los vecinos a $v$ $\Rightarrow$ $|S| \le k$.  \pause
+        \vskip .2 cm
+        \ref{it.com_b}
+            \begin{enumerate}
+                \item  Sea $v_n$ un vértice con $\delta(v_n) < k$.    \pause
+                \vskip .2 cm
+                \item Sean $v_{n-1},v_{n-2},\ldots,v_{n-r}$ los adyacentes a $v_n$. Hay a lo más $k-1$ de ellos.  \pause
+                \vskip .2 cm
+                \item Luego se van eligiendo los adyacentes a $v_i$  que no están listados antes ($n > i \ge 1$).   \pause
+                \vskip .2 cm
+                \item Si $i < n$ el vértice $v_i$ tiene un adyacente a nivel superior $\Rightarrow$ $v_i$ tiene  a lo más $k-1$ adyacentes a nivel inferior.   \pause
+                \vskip .2 cm
+                \item Si $i < n$, usando greedy y por (4),  se puede colorear $v_i$ con un color en $\{1,\ldots,k\}$.  \pause
+                \vskip .2 cm
+                \item Por (2) se puede colorear $v_n$   on un color en $\{1,\ldots,k\}$.\qed
+        \end{enumerate}
+        \end{proof}
+    
+    \end{frame}
+
+
+
+    \begin{frame}
+        \frametitle{Grafos bipartitos}
+    
+        \begin{definicion} Sea $G$  grafo. Diremos que $G$  es \textit{bipartito} si $\chi(G) = 2$. Es decir,  si se puede colorear con dos colores.
+        \end{definicion}  \pause
+
+        
+        \begin{ejemplo}
+        \begin{center}
+        \begin{tabular}{llll}
+            & 
+            \begin{tikzpicture}[scale=1.2]
+            \tikzset{VertexStyle/.append style={fill= red!50}}
+            \Vertex[x=0.00, y=0.00]{0}
+            \Vertex[x=2.00, y=-2.00]{2}
+            \Vertex[x=2.00 + 1, y=0.00 + 1]{5}
+            \Vertex[x=0.00 + 1, y=-2.00 + 1]{7}
+            \tikzset{VertexStyle/.append style={fill= blue!50}}
+            \Vertex[x=0.00 , y=-2.00]{3}
+            \Vertex[x=0.00 + 1, y=0.00 + 1]{4}
+            \Vertex[x=2.00, y=0.00]{1}
+            \Vertex[x=2.00 + 1, y=-2.00 + 1]{6}
+        
+            \Edges(0,1,2,3,0,4,5,6,7,4)
+            \Edges(1,5)
+            \Edges(2,6)
+            \Edges(3,7)
+            \end{tikzpicture}
+            &
+            \qquad  \qquad
+            & 
+            \begin{tikzpicture}[scale=1.2]
+            \tikzset{VertexStyle/.append style={fill= red!50}}
+            \Vertex[x=0.00, y=0.00]{0}
+            \Vertex[x=0.0, y=-1.00]{2}
+            \Vertex[x=0.00 , y=-2.00]{5}
+            \Vertex[x=0.00, y=-3.00]{7}
+            \tikzset{VertexStyle/.append style={fill= blue!50}}
+            \Vertex[x=2.00, y=0.00]{1}
+            \Vertex[x=2.00 , y=-1.00]{3}
+            \Vertex[x=2.00, y=-2.00]{4}
+            \Vertex[x=2.00, y=-3.00]{6}
+            \Edges(0,1,2,3,0,4,5,6,7,4)
+            \Edges(1,5)
+            \Edges(2,6)
+            \Edges(3,7)
+            \end{tikzpicture}
+        \end{tabular}
+    \end{center}
+\end{ejemplo}
+    \end{frame}
+
+
+
+    \begin{frame}
+        \frametitle{}
+
+        Una consecuencia importante del algoritmo greedy es el siguiente teorema.   \pause
+
+        \vskip .4cm 
+        \begin{teorema}\label{t5.7.2} Un grafo es bipartito si  y sólo si no contiene ciclos de longitud impar.
+        \end{teorema}  \pause
+        \begin{proof}  \pause
+            
+        ($\Rightarrow$) El contrarrecíproco: \pause si $G$ tiene un ciclo de longitud impar $\Rightarrow$ no es bipartito. \pause
+        
+        \vskip .2cm 
+
+        Esto es cierto, pues un ciclo de longitud impar requiere $3$ colores.
+
+        \vskip .4cm 
+
+        ($\Leftarrow$) Supongamos que $G$ es un grafo sin ciclos de longitud impar y conexo. \pause
+        \vskip .2cm
+        Construiremos un orden de $G$ para el cual el algoritmo greedy producirá una coloración de vértices con dos colores. 
+
+        
+    \end{proof}
+    
+    \end{frame}
+
+
+
+    \begin{frame}
+        \frametitle{}
+    
+        
+        \begin{itemize}
+            \item Elijamos cualquier vértice y llamémoslo $v_1$; diremos que $v_1$ esta en el \textit{nivel $0$}. \pause
+            \vskip .2cm
+            \item A continuación, listemos la lista de vecinos de $v_1$, llamémoslos $v_2,v_3, \dots,v_r$; diremos que estos vértices están en el \textit{nivel 1}. \pause
+            \vskip .2cm
+            \item Continuando de esta manera, definimos el \textit{nivel $i$} como todos aquellos vértices adyacentes a los del {nivel $i-1$}, exceptuando aquellos previamente listados en el {nivel $i-2$}. \pause
+        \end{itemize}
+        
+        \vskip .3cm
+        
+        Cuando ningún nuevo vértice puede ser agregado de esta forma, obtenemos $G$ (pues es conexo).\pause
+        \vskip .3cm
+        El hecho crucial producido por este orden es que un vértice del nivel $i$ solo puede ser adyacente a vértices de los niveles $i-1$ y $i+1$, y no a vértices del mismo nivel. Probemos esto.
+    \end{frame}
+
+
+        \begin{frame}
+            \frametitle{}
+    
+
+        Supongamos que $x$ e $y$ son vértices en el mismo nivel.\pause
+        \vskip .2cm
+        Entonces ellos son unidos por caminos de igual longitud $m$ a algún vértice $z$ de un nivel anterior.\pause 
+        \vskip .2cm
+        Los caminos pueden ser elegidos de tal manera que $z$ sea el único vértice común. \pause
+        \vskip .2cm
+        Si $x$ e $y$ fueran adyacentes, habría un ciclo de longitud $2m+1$, lo cual contradice
+        la hipótesis. \pause
+        \vskip .2cm
+            \begin{center}
+            \begin{tikzpicture}[scale=1]
+            \SetVertexSimple[Shape=circle,MinSize=5 pt,FillColor=white]
+            \Vertex[x=0.00, y=0.00]{0}
+            \Vertex[x=-2.50, y=-1.3]{1}
+            \Vertex[x=-3, y=-2.0]{2}
+            \Vertex[x=-2.6 , y=-2.8]{3}
+            \Vertex[x=1.00, y=-1.4]{4}
+            \Vertex[x=1.00 , y=-2.1]{5}
+            \Vertex[x=2, y=-2.8]{6}
+            \draw (-2.6,-3.2) node {$x$};
+            \draw (2,-3.2) node {$y$};
+            \draw (0,0.3) node {$z$};
+            \Edges(1,2,3)
+            \Edges(4,5,6)
+            \begin{scope}   [dashed]  % now dashed is for the lines inside the scope
+            \Edge (0)(1)
+            \Edge (0)(4)
+            \Edge (6)(3)
+            \end{scope}
+            \end{tikzpicture}
+            \end{center}
+
+
+    
+        
+    
+    \end{frame}
+
+
+
+    \begin{frame}
+        \frametitle{}
+            
+        Se deduce entonces que el algoritmo greedy asigna:\pause
+        \vskip .4cm
+        \begin{itemize}
+            \item el color $1$ a los vértices en el nivel $0,2,4,\ldots$,\pause
+            \vskip .2cm
+            \item el color $2$ a los vértices en los niveles $1,3,5,\ldots$.\pause
+        \end{itemize}
+        \vskip .4cm
+        Por consiguiente $\chi(G_0)=2$. \qed
+        
+        \vskip 3cm
+        
+    
+    \end{frame}
+
 
 
 \end{document}

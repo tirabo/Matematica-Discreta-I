@@ -94,13 +94,13 @@
 \nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
 %%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
 
-\title[Clase 5 - Inducción]{Matemática Discreta I \\ Clase 5 - Ejercicios de inducción}
+\title[Clase 5 - Inducción]{Matemática Discreta I \\ Clase 5 - Inducción completa - Conteo}
 %\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
 \institute[]{\normalsize FAMAF / UNC
 	\\[\baselineskip] ${}^{}$
 	\\[\baselineskip]
 }
-\date[28/03/2023]{28 de marzo   de 2023}
+\date[30/03/2023]{30 de marzo   de 2023}
 
 
 
@@ -109,135 +109,11 @@
 
 \frame{\titlepage} 
 
-\begin{frame}\frametitle{} 
 
-    \begin{ejercicio}[(Serie aritmética)]\label{serie-aritmetica}
-        Probar que 
-        $$
-        1 + 2+ 3 + \cdots + n = \frac{n(n+1)}{2},
-        $$
-        para $n \in \N$.
-    \end{ejercicio}
-
-    \vskip .2cm\pause
-    \begin{proof}
-        \vskip .4cm \pause
-        \noindent({\it Caso  base}) El resultado es verdadero
-            cuando $n=1$ pues $ 1 = \frac{1 \cdot (1+1)}{2}$.
-        
-        \vskip .4cm 
-
-    \end{proof}
-	
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{}
-
-		\noindent ({\it Paso  inductivo}) 
-        \pause \vskip .4cm
-		
-        Supongamos que el resultado verdadero cuando $n=k$, o
-		sea, que 
-        $$
-        \sum_{i=1}^{k} i = \frac{k(k+1)}{2}\quad \text{hipótesis inductiva (HI).}
-        $$
-        \vskip .4cm\pause
-        En el paso inductivo queremos probar que 
-        $$
-        \sum_{i=1}^{k} i = \frac{k(k+1)}{2} \quad \Rightarrow \quad    \sum_{i=1}^{k+1} i =\frac{(k+1)(k+2)}{2}.
-        $$
-\vskip 1cm
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{}
-
-    Entonces
-
-    \medskip
-    
-    
-    \begin{tabular}{lllll}
-        $\displaystyle\sum_{i=1}^{k+1} i$ &$=$& $\displaystyle\sum_{i=0}^{k} i + (k+1)$ &\qquad &$\text{(por la definición recursiva de $\sum$)}$ \\[0.6cm]
-    &$=$& $\displaystyle\frac{k(k+1)}{2}+(k+1)$ &\qquad &$\text{(por hipótesis inductiva)}$ \\[0.6cm]
-    &$=$& $\displaystyle(k+1)(\frac{k}{2}+1))$ &\qquad &$\text{($(k+1)$ factor común)}$ \\[0.6cm]
-    &$=$& $\displaystyle(k+1)\frac{(k+2)}{2}.$&\qquad &\\[0.6cm]
-    &$=$& $\displaystyle\frac{(k+1)(k+2)}{2}.$&\qquad &
-    \end{tabular}
-    \medskip
-    \pause
-    
-    Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.\qed
-
-\end{frame}
 
 \begin{frame}\frametitle{} 
 
-    \begin{ejercicio}[(Serie geométrica)]\label{serie-geometrica}
-        Probar que 
-        $$
-        1 + q+ q^2 + \cdots + q^n = \sum_{i=0}^{n} q^i = \frac{q^{n+1}-1}{q -1},
-        $$
-        para $n \in \N_0$, $q >0$ y $q \ne 1$.
-    \end{ejercicio}
-
-    \vskip .2cm\pause
-    \begin{proof} \pause
-        \vskip .2cm 
-        \noindent({\it Caso  base}) El resultado es verdadero
-            cuando $n=0$ pues 
-            $$q^0 = 1 =  \frac{q^{0+1}-1}{q -1}.$$
-        
-        \vskip .4cm 
-
-    \end{proof}
-	
-\end{frame}
-
-\begin{frame}
-    \frametitle{}
-
-		\noindent ({\it Paso  inductivo})
-		Supongamos que el resultado verdadero cuando $n=k$, o
-		sea, que 
-        $$
-        \sum_{i=0}^{k} q^i = \frac{q^{k+1}-1}{q -1},\quad \text{hipótesis inductiva (HI).}
-        $$
-        \vskip .4cm\pause
-        En el paso inductivo queremos probar que 
-        $$
-        \sum_{i=0}^{k} q^i = \frac{q^{k+1}-1}{q -1} \quad \Rightarrow \quad   \sum_{i=0}^{k+1} q^i = \frac{q^{k+2}-1}{q -1}.
-        $$
-\vskip 1cm
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{}
-
-    Entonces
-
-    \medskip
-    
-    
-    \begin{tabular}{lllll}
-        $\displaystyle\sum_{i=0}^{k+1} q^i $ &$=$& $\displaystyle\sum_{i=0}^{k} q^i  + q^{k+1}$ &\qquad &$\text{(por la definición recursiva)}$ \\[0.6cm]
-    &$=$& $\displaystyle\ \frac{q^{k+1}-1}{q -1}+ q^{k+1}$ &\qquad &$\text{(por hipótesis inductiva)}$ \\[0.6cm]
-    &$=$& $\displaystyle\ \frac{q^{k+1}-1+ (q-1) q^{k+1}}{q -1}$ &\qquad & \\[0.6cm]
-    &$=$& $\displaystyle\ \frac{q^{k+1}-1+ q\cdot q^{k+1}- q^{k+1}}{q -1}$ &\qquad &\\[0.6cm]
-    &$=$& $\displaystyle\ \frac{q^{k+2}-1}{q -1}$ &\qquad &
-    \end{tabular}
-    \medskip
-    \pause
-    
-    Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.\qed
-
-\end{frame}
-
-\begin{frame}\frametitle{} 
+    Practiquemos un poco con inducción.
 
     \begin{ejercicio}
         Probar que 
@@ -298,6 +174,108 @@
 
 \begin{frame}
     \frametitle{Inducción completa}
+	Existen varias formas modificadas del principio de inducción. A veces es conveniente tomar como base inductiva el valor $n=0$, por otro lado puede ser apropiado tomar un valor como $2$ o $3$ porque los primeros casos pueden ser excepcionales. 
+	\pause
+	\medskip
+	
+	Cada problema debe ser tratado según sus características. 
+	\pause
+	\medskip
+	
+	Otra modificación útil es tomar como hipótesis inductiva la suposición de que el resultado es verdadero para todos los valores $n\le k$, más que para $n=k$ solamente.
+	\pause
+	\medskip
+	
+	Esta formulación es llamada a veces el {\it principio de inducción completa}. Todas esas modificaciones pueden justificarse con cambios triviales en la demostración del principio de inducción.
+	
+\end{frame}
+
+\begin{frame}	
+	El siguiente teorema incorpora muchas de las modificaciones del principio de inducción mencionadas más arriba.
+
+    \pause
+	\medskip
+	
+
+	
+	%\begin{teorema}[Inducción completa]\label{ind-completa} 
+	{\color{blue} Teorema (Inducción completa)}
+	\vskip .2cm	
+		Sea $n_0$ número entero y sea $P(n)$ una propiedad para $n \ge n_0$ tal que:
+		\begin{enumerate}
+			\item[a)] $P(n_0)$ es verdadera.
+			\item[b)] Si $P(h)$ verdadera para toda $h$ tal que $n_0 \le h \le k$ implica $P(k + 1)$ verdadera.
+		\end{enumerate}
+		Entonces $P(n)$ es verdadera para todo $n \ge n_0$.
+	%\end{teorema}
+
+	
+\end{frame}
+
+
+
+\begin{frame}		
+	
+	\begin{ejemplo}
+		$$u_1 = 3,\qquad u_2 = 5,\qquad u_n = 3u_{n-1}- 2u_{n-2},\qquad  n \ge 3.$$
+		Probemos que $u_n = 2^n + 1$, para todo $n \in  \mathbb N$.
+	\end{ejemplo}
+		{\color{blue} Solución.}
+		\vskip .2cm	
+		\pause
+			
+			\noindent({\it Caso  base})
+            
+            \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
+        \hskip 2.5cm\begin{beamercolorbox}[wd=0.65\textwidth,rounded=true,shadow=true]{postit}
+            $n= 1$ :  $3 = 2^1+1$ \checkmark, \qquad   $n=2$ :  $ 5 =2^2+1$ \checkmark.
+            \end{beamercolorbox} \pause
+			
+			\vskip.4cm
+			
+			\noindent ({\it Paso  inductivo}) Hipótesis inductiva:
+            \vskip.2cm
+            \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
+            \hskip 2.5cm\begin{beamercolorbox}[wd=0.65\textwidth,rounded=true,shadow=true]{postit}
+			\quad $u_h = 2^h+1$  para  $1 \le h \le k$   y  $k \ge 2$  (HI),  
+        \end{beamercolorbox}
+			\pause
+            \vskip.2cm
+		Luego debemos probar que:
+			
+		
+
+		%\end{proof}
+	
+	
+\end{frame}
+
+\begin{frame}
+    \frametitle{}
+    \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
+    \hskip 0.5cm\begin{beamercolorbox}[wd=0.9\textwidth,rounded=true,shadow=true]{postit}
+        \quad $u_h = 2^h+1$  para  $1 \le h \le k$  (HI) \quad $\Rightarrow$ \quad
+        $u_{k+1}=2^{k+1}+1.$  
+    \end{beamercolorbox}	\pause
+    \vskip.5cm
+    Se  comienza con el término izquierdo de lo que se quiere probar y  se obtiene el derecho. 	\pause
+    \vskip.4cm
+    \begin{tabular}{llll}
+        $u_{k+1}$ &$= 3u_k -2u_{k-1}$ &\qquad &{(por definición recursiva)}  \\[0.2cm].
+            &$= 3(2^k+1)-2(2^{k-1}+1)$  &\qquad &{(por hipótesis inductiva)} \\[0.2cm]
+            &= $3\cdot 2^k+3-2\cdot 2^{k-1}-2$ &\qquad & \\[0.2cm]
+            &= $3\cdot 2^k+1- 2^{k}$  &\qquad & \\[0.2cm]
+            &= $2\cdot 2^k+1$  &\qquad & \\[0.2cm]
+            &= $2^{k+1}+1.$  &\qquad & 
+        \end{tabular}
+
+\qed
+\end{frame}
+
+
+
+\begin{frame}
+    
 
     \begin{ejercicio}
         Sea $u_n$ definida recursivamente por:
@@ -466,6 +444,132 @@ Por lo tanto $k+1$  es producto de primos.
 \end{frame}
 
 
+
+\begin{frame}\frametitle{Problemas de conteo}     
+
+    Contar,  a veces, no es una tarea sencilla. \pause
+
+    \vskip .4cm
+
+    Por ejemplo: \pause
+
+
+    \begin{itemize}
+        \item ¿Cuántas chapas patente  es posible hacer con el actual esquema de numeración? Nos referimos a las patentes de automóviles en Argentina.  \pause
+        \item ¿De cuantas formas se pueden elegir 7 personas entre 20? (no importa el orden de la elección)
+    \end{itemize}
+    \pause
+    \vskip .4cm
+
+    En las próximas clases podremos resolver estos dos problemas utilizando \textit{técnicas de conteo.}
+    \pause
+    \vskip .4cm
+
+    Las técnicas de conteo son estrategias matemáticas que permiten determinar el número total de resultados que pueden haber a partir de hacer combinaciones dentro de un conjunto o conjuntos de objetos.
+
+\end{frame}
+
+\begin{frame}\frametitle{Cardinal de un conjunto }     
+
+    Un conjunto $A$ es finito si podemos contar la cantidad de elementos que tiene. En ese caso denotaremos $|A|$ la cantidad de elementos de $A$ y la llamaremos el {\em cardinal de $A$}\
+    \pause
+    \vskip .6cm
+    Por  ejemplo, los conjuntos
+    \begin{equation*}
+        A = \{ a, b, z, x, 1\}, \qquad B = \{ 1, 2, 3, 4, 5\}
+    \end{equation*}
+    tienen 5 elementos cada uno. Es decir $|A| =5$ y $|B|= 5$.
+
+    \vskip .6cm\pause
+
+    Conjuntos como $\mathbb Z$, $\mathbb N$ o $\mathbb R$ son infinitos y por lo tanto no tiene sentido hablar de la cantidad de elementos de estos conjuntos.
+\end{frame}
+
+\begin{frame}\frametitle{El principio de adición}        
+    Dadas dos actividades $X$ e $Y$, si se puede realizar $X$ de $n$ formas distintas o, alternativamente, se puede realizar  $Y$ de $m$ formas distintas. Entonces el número de formas de realizar ``$X$ o $Y$'' es $n + m$.
+
+    \pause
+    \vskip .4cm
+    {\color{blue} Ejemplo}
+    \vskip .2cm 
+    Supongamos que una persona va a salir a pasear  y puede ir al cine donde hay $3$ películas en cartel o al teatro donde hay $4$ obras posibles. Entonces, tendrá un total de $3+4=7$ formas distintas de elegir el paseo. 
+    \vskip .3cm
+
+
+    
+    
+
+\end{frame}
+
+
+\begin{frame}
+    Este principio, el {\it principio de adición}, es el más básico del conteo y más formalmente dice que si $A$ y $B$ son conjuntos finitos disjuntos, entonces 
+\begin{equation*}\label{padd}
+|A \cup B| =|A|+|B|.
+\end{equation*}
+\vskip .4cm  \pause
+Se generaliza fácilmente:  
+Sean $A_1,\ldots,A_n$ conjuntos finitos tal que $A_i \cap A_j = \emptyset$ cuando $i\not=j$, entonces 
+\begin{equation*}
+|A_1 \cup \cdots \cup A_n| =|A_1|+\cdots+|A_n|.
+\end{equation*}
+\pause
+
+\vskip .2cm
+
+Remarcamos que para aplicar el principio de adición es necesario que los eventos se { \bf excluyan mutuamente}. El caso general es
+\begin{equation*}
+    |A \cup B| =|A|+|B| - |A \cap B|.
+\end{equation*}
+
+\end{frame}
+
+\begin{frame}\frametitle{El principio de multiplicación} 
+        Suponga que una actividad consiste de $2$ etapas y la primera etapa puede ser realizada de $n$ maneras y la etapa $2$  puede realizarse de $m$  maneras, independientemente de como se ha hecho la etapa $1$. 
+        \vskip .2cm
+        {\it Principio de multiplicación:} la actividad puede ser realizada de $n\cdot m$  formas distintas.
+        
+    \pause     
+    \vskip .6cm
+    {\color{blue} Ejemplo}
+    \vskip .2cm
+            Supongamos que la persona del ejemplo anterior tiene suficiente tiempo y dinero para ir primero al cine (3 posibilidades) y luego al teatro (4 posibilidades). 
+            \vskip .2cm
+            Entonces tendrá  $3 \cdot 4=12$ formas distintas de hacer el paseo.
+
+\end{frame}
+
+\begin{frame}
+        
+    Formalmente, si $A,B$ conjuntos y definimos el {\em producto cartesiano}\index{producto cartesiano} entre $A$ y $B$ por
+    $$
+    A \times B = \{(a,b): a \in A, b \in B\}.
+    $$
+        \vskip .5cm
+        
+        
+    Entonces si $A$ y $B$ son conjuntos finitos se cumple que
+    $$
+    |A \times B| = |A|\cdot|B|.  
+    $$
+    
+            \vskip .3cm         
+    {\bf Caso  especial:} $A = B$.
+    \pause 
+    \vskip .3cm
+    {\color{blue} Ejemplo}
+    \vskip .2cm
+    
+    ¿Cuántas palabras de dos letras hay? (26 letras,  no importa si las palabras tienen significado)
+    \pause
+    
+    \vskip .2cm
+    
+    
+    {\color{blue} Respuesta:} $26 \cdot 26$. \qed
+    \vskip .2cm
+    
+\end{frame}
 
 \end{document}
 

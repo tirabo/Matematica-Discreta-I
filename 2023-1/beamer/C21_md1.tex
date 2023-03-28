@@ -93,13 +93,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
 
 
-\title[Clase 21 - Caminatas eulerianas]{Matemática Discreta I \\ Clase 21 - Caminatas eulerianas, ciclos hamiltonianos}
+\title[Clase 22 - Árboles / Coloreo de vértices]{Matemática Discreta I \\ Clase 22 - Árboles / Coloreo de vértices}
 %\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
 \institute[]{\normalsize FAMAF / UNC
     \\[\baselineskip] ${}^{}$
     \\[\baselineskip]
 }
-\date[08/06/2023]{8 de junio de 2023}
+\date[13/06/2023]{13 de junio de 2023}
 
 
 
@@ -109,292 +109,436 @@
     \frame{\titlepage} 
     
     
-    \begin{frame}\frametitle{Los puentes de Könisberg}
+\begin{frame}
+    \frametitle{Árboles}
+    \begin{definicion}
+    Diremos que un grafo $T$ es un \textit{árbol} si cumple que es conexo y no hay ciclos en $T$.
+    \end{definicion}
+
+    \vskip .8cm
+    
+    \begin{figure}[ht]
+        \begin{center}
+        \begin{tabular}{llllllll}
+            &
+            \begin{tikzpicture}[scale=0.8]
+            \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+            \Vertex[x=0.00, y=0]{a}
+            \Vertex[x=0, y=-1]{b}
+            \Vertex[x=0., y=-2]{c}
+            \Vertex[x=0, y=-3]{d}
+            \Vertex[x=0., y=-4]{e}
+            \Edges(a,b,c,d,e)
+            \end{tikzpicture}
+            &
+            \qquad
+            & 
+            \begin{tikzpicture}[scale=0.8]
+            \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+            %                
+            \Vertex[x=0.00, y=0]{a}
+            \Vertex[x=-1.5, y=-0.5]{b}
+            \Vertex[x=1.5, y=-0.5]{c}
+            \Vertex[x=-1.5, y=-1.5]{d}
+            \Vertex[x=1.5, y=-1.5]{e}
+            \Vertex[x=0, y=-1.5]{f}
+            \Vertex[x=-0.7, y=-1]{g}
+            \Vertex[x=0.7, y=-1]{h}
+            \Vertex[x=0, y=-4]{i}
+            \Edges(d,b,a,c,e)
+            \Edges(g,f,h)
+            \Edges(a,f,i)
+            \end{tikzpicture}
+            &
+            \qquad
+            & 
+            \begin{tikzpicture}[scale=0.8]
+            \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+            %                
+            \Vertex[x=0.00, y=0]{a}
+            \Vertex[x=0, y=-1.0]{b}
+            \Vertex[x=0, y=-2.5]{c}
+            \Vertex[x=1.2, y=-2]{e}
+            \Vertex[x=-1.2, y=-2]{f}
+            \Vertex[x=-1.2, y=-3.5]{g}
+            \Vertex[x=1.2, y=-3.5]{h}
+            \Edges(a,b,c)
+            \Edges(f,b,e)
+            \Edges(g,c,h)
+            \end{tikzpicture}
+            &
+            \qquad
+            & 
+            \begin{tikzpicture}[scale=0.50]
+            \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+            %
+            \Vertex[x=0.00, y=0.00]{0}
+            \Vertex[x=3.00, y=0.00]{1}
+            \Vertex[x=2.12, y=2.12]{2}
+            \Vertex[x=0.00, y=3.00]{3}
+            \Vertex[x=-2.12, y=2.12]{4}
+            \Vertex[x=-3.00, y=0.00]{5}
+            \Vertex[x=-2.12, y=-2.12]{6}
+            \Vertex[x=0.00, y=-3.00]{7}
+            \Vertex[x=2.12, y=-2.12]{8}
+            \Edges(1,0,5) \Edges(3,0,7) \Edges(2,0,6)\Edges(4,0,8)
+            \end{tikzpicture}
+        \end{tabular}
+    \end{center}
+        \caption{Algunos árboles} \label{f5.8}
+    \end{figure}
+    
+
+    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+    A causa de su particular estructura y propiedades, los árboles aparecen en diversas aplicaciones de la matemática, especialmente en investigación operativa y ciencias de la computación. \pause
+\vskip .9cm
+    El siguiente lema nos resultará útil para probar una parte del teorema fundamental de esta sección.\pause
+\vskip .4cm
+
+\begin{lema} Sea $G=(V,E)$ un grafo conexo, entonces $|E| \ge |V| -1$.  
+\end{lema}
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+    \begin{proof} Como $G$ es conexo existe una caminata que recorre todos los vértices de $G$:
+        $$
+        v_1,v_2,\ldots,v_r.
+        $$
+        Renombremos los vértices de $G$ con números naturales de tal forma que el primer vértice de la caminata sea $1$, el segundo $2$ y cada vez que aparece un vértice que no ha sido renombrado se le asigna el número siguiente.
         
-        {\color{blue}Pregunta}%
-    \vskip .2cm
-            ¿Es posible cruzar todos los puentes pasando  una y solo una vez por cada uno?         Leonhard Euler (1707-1783).
-    
-        
-        \begin{figure}
-            \includegraphics[scale=0.12]{images/konisberg_hc.png}
-        \end{figure}
-        
-    \end{frame}
-    
-    
-    \begin{frame}\frametitle{Los puentes de Könisberg - versión 2}
-        \begin{figure}
-            \includegraphics[scale=0.23]{images/konisberg2.jpg}
-        \end{figure}
-    \end{frame}
-    
-    \begin{frame}\frametitle{Los puentes de Könisberg - versión 3}
-        \begin{figure}
-            \includegraphics[scale=0.18]{images/konisberg3.jpg}
-        \end{figure}
+        \vskip .4cm\pause
+
+        Luego la caminata comienza en $1$ y termina en $n$, donde $n = |V|$.  
         \pause
-        Ahora el problema se reduce a encontrar una caminata  que use cada arista (o puente) una y solo una vez.
-    \end{frame}
+        \vskip .4cm
+
+        Observar: si $i$ tal que $1 < i \le n$ tenemos que la caminata tiene la forma
+        $$
+        1,\ldots,j_i,i,\ldots,j_n,n
+        $$ 
+        donde $j_i < i$, luego es claro  que 
+        $$
+        \{j_{2},2\}, \{j_{3},3\}, \ldots, \{j_{n},n\}
+        $$
+        forman un conjunto de $n-1$ aristas distintas en $G$. \qed
+        \end{proof}    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+    El siguiente teorema nos da 3 nociones equivalente a la definición de árbol. 
+
+    \vskip .6cm\pause
+
+\begin{teorema}\label{t5.5} Si $T=(V,E)$ es un grafo conexo con al menos dos vértices, entonces son equivalentes las siguientes propiedades
+    \begin{enumerate}
+    \item[\textbf{T1)}] T es un árbol.
+    \item[\textbf{T2)}] \label{T2} Para cada par $x$, $y$ de vértices existe un único camino en $T$ de $x$ a
+    $y$.
+    \item[\textbf{T3)}] \label{T4} $|E|=|V|-1$.
+    \end{enumerate}
+    \end{teorema}
     
-    \begin{frame}
-        \begin{observacion}
-            $\delta(A)=5$, $\delta(B)=3$, $\delta(C)=3$, $\delta(D)=3$.
-        \end{observacion}\pause
-        
-        \vskip .5cm
-        
-        Euler, abstrayéndose del problema concreto, razonó de la siguiente manera:\pause
-        
-        \vskip .5cm 
-        \begin{itemize}
-            \item Supongamos que el vértice de partida es $x$ y  el de llegada es $y$. Todos los demás los llamo vértices intermedios.\pause
-            \item En un vértice intermedio cada vez que entro por un puente salgo por otro. Eso  me ``aporta''  2 a la valencia.\pause
-            \item Terminado el proceso usé todos los puentes, por lo tanto  en cada vértice intermedio la cantidad de entradas más la cantidad de salidas es la valencia. Como la cantidad de entradas es igual a la cantidad de salidas, la valencia en los vértices intermedios es par.
-            
-        \end{itemize}
-        
-        
-    \end{frame}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+    Este teorema se demuestra haciendo las pruebas:
+
+    $$
+    \textbf{T1} \quad \Rightarrow  \quad \textbf{T2} \quad \Rightarrow  \quad \textbf{T3} \quad \Rightarrow  \quad \textbf{T1}.
+    $$\pause
+
+
+    Luego, toda equivalencia se deduce de estas implicaciones. 
+    \vskip .4cm\pause
+    Por ejemplo,
+
+    $$
+    \textbf{T1} \quad \Leftrightarrow \quad \textbf{T3}\qquad\text{pues} \qquad
+    \left\{ 
+    \begin{matrix*}[l]
+        \textbf{T1} \quad \Rightarrow  \quad \textbf{T2} \quad \Rightarrow  \quad  \textbf{T3} \\
+        \textbf{T3}  \quad \Rightarrow  \quad  \textbf{T1}. 
+    \end{matrix*}    
+    \right. 
+    $$
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+    (T1 $\Rightarrow$ T2) Si hubiera dos caminos podríamos formar un ciclo. 
+        \vskip .4cm
+    (T2 $\Rightarrow$ T3) Se hará por inducción en $|V|$. \pause
     
-    \begin{frame}
-        \textbf{Concluyendo}
-        \vskip .3cm
-        \begin{itemize}
-            \item Si hay una caminata que pasa por cada puente una y solo una vez,  la cantidad de vértices con valencia impar es a lo sumo 2. \pause
-            \item Como todos los vértices en el problema tienen valencia impar, el problema no tiene solución. 
-        \end{itemize}\pause
-        \vskip .3cm
-        Como veremos más adelante el problema de los puentes de Könisberg puede ser generalizado y también vale la recíproca.\pause
-        \vskip .5cm
-        \textbf{Cita:}  Euler, Leonhard (1736). \href{http://math.dartmouth.edu/\~euler/docs/originals/E053.pdf}{Solutio problematis ad geometriam situs pertinentis}. Comment. Acad. Sci. U. Petrop 8, 128-40 (en latín)
-        
-    \end{frame}
-    
-    \begin{frame}
-        \begin{ejemplo} ¿Es posible recorrer el siguiente gráfo con una caminata que pase por cada vértice una sola vez y volver al de partida? ¿Es posible hacer una caminata  que pasa por cada arista una sola vez?
-            \begin{figure}[h]
-                \begin{center}
-                    \begin{tikzpicture}[scale=1]
-                        %\SetVertexSimple[Shape=circle,FillColor=white]
-                        \def\rvar{1.2}
-                        \Vertex[x=0.00, y=-2.00]{$u$}
-                        \Vertex[x=\rvar*1.90, y=-0.62]{$t$}
-                        \Vertex[x=\rvar*1.18, y=1.62]{$q$}
-                        \Vertex[x=-1.18*\rvar, y=1.62]{$p$}
-                        \Vertex[x=-1.90*\rvar, y=-0.62]{$r$}
-                        \Vertex[x=0, y=0]{$s$}
-                        \Edges($u$,$t$,$q$,$p$,$r$,$u$,$s$,$t$,$r$,$s$,$q$,$r$,$p$,$t$,$s$,$u$,$s$,$p$)
-                    \end{tikzpicture}
-                \end{center}
-            \end{figure}
-            
-        \end{ejemplo}
-    \end{frame}
-    
-    \begin{frame}
-        \begin{solucion}\pause
-            Para la primera pregunta una posibilidad es el ciclo $p,q,t,s,u,r,p$.\pause
-            
-            \vskip .5cm
-            
-            La segunda pregunta tiene respuesta negativa:\pause
-            
-            Las valencias son 
-            $$\delta(p) = 4,\quad\delta(q) = 4,\quad\delta(s) = 5,\quad\delta(r) = 5,\quad\delta(u) = 3,\quad\delta(t) = 5.$$\pause
-            
-            Como en los puentes de Königsberg,  al haber más de $2$ vértices de valencia impar, no es posible recorrer todas las aristas una sola vez.
-            
-            \qed
-            
-            
-            
-        \end{solucion}
-    \end{frame}
-    
-        
-    \begin{frame}
-        \begin{definicion}
-            Un {\em ciclo hamiltoniano} en un grafo $G$ es un ciclo que contiene a todos los vértices del grafo.\pause
-            \vskip .2cm
-            Una {\em caminata euleriana} en un grafo $G$ es un caminata que usa todas las aristas de $G$ exactamente  una vez o,  equivalentemente, un recorrido que utiliza todas las aristas.  \pause
-            \vskip .2cm
-            Una caminata euleriana que comienza y termina en un mismo vértice se llama también {\em circuito euleriano}.
-        \end{definicion}
-        
+    Sea $uv$  arista de $T$ y sea  $F = T -uv$.  Como hay un único camino de $u$  a $v$,  $F$ tiene dos componentes conexas: $T_1$  la componente conexa de $u$ y $T_2$ la componente conexa de $v$.\pause
         \vskip .2cm
+    En cada componente conexa $T_i = (V_i, E_i)$ hay un único camino de un vértice a otro, pues sino esa propiedad no se cumpliría en $T$. \pause
+    \vskip .2cm
+    Por HI, $|E_1|=|V_1|-1$ y $|E_2|=|V_2|-1$. Luego 
+    \vskip -.6cm
+    \begin{align*}
+        |E| &= |E_1 \cup E_2| + 1  = |E_1|+|E_2| + 1 \stackrel{\text{(HI)}}{=} (|V_1|-1)+(|V_2|-1) +1 \\
+            &= |V_1 \cup V_2|-1 = |V| -1. 
+    \end{align*}\pause
+    \vskip .0cm
+    (T3 $\Rightarrow$ T1)  $|E|=|V|-1$ y supongamos que $T$ no es árbol $\Rightarrow$ hay un ciclo $\Rightarrow$ podemos sacar una arista $uv$ y sigue siendo conexo   $\Rightarrow$ $|E -uv|=|V|-2$ y  conexo. Absurdo por el lema. \qed
         
-        \begin{teorema}  Un grafo conexo con más de un vértice tiene un circuito euleriano si y sólo si todos los vértices tienen grado par. Un grafo conexo con más de un vértice posee caminatas eulerianas de $v$ a $w$, con $v \not= w$ si y sólo si $v$ y $w$ son los únicos vértices de grado impar.
-        \end{teorema}
-    \end{frame}
 
-    \begin{frame}
+\end{frame}
+
+\begin{frame}
+    \frametitle{}
+
+    \begin{corolario}
+        Sea $T$ árbol con al menos dós vértices,  entonces:
+        \vskip .4cm
+        El grafo obtenido de $T$ removiendo alguna arista tiene dos
+        componentes, cada una de las cuales es un árbol.
+    \end{corolario}\pause
+
+    \begin{proof}\pause
+        Es parte de la demostración de  T2 $\Rightarrow$ T3: el grafo que se obtiene de quitar una arista,  es un grafo con dos componentes conexas cada una de ellas sin ciclos (pues sino los habría en $T$), luego cada una de ellas es árbol.
+
+        \qed
+    \end{proof}
+
+     \vskip 2cm
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Coloreo de los vértices de un grafo}
+
+    \begin{block}[Problema]
+        ¿Cómo hacer un horario de actividades sin interferencias?.
+    \end{block}
+    \pause
+
+
+
+    \vskip .8cm
+
+    \begin{ejemplo}\label{ejemplo-coloracion} Supongamos que deseamos hacer un horario con seis cursos de una hora, $v_1,v_2,v_3,v_4,v_5,v_6$. Entre la audiencia potencial hay gente que desea asistir simultáneamente  a
+        $$ 
+        \{v_1, v_2 \}, \quad\{v_1, v_4 \}, \quad\{v_3, v_5 \}, \quad\{v_2, v_6 \}, \quad\{v_4, v_5 \}, \quad \{v_5, v_6 \}, \quad\{v_1, v_6 \}.
+        $$
+        
+    ¿Cuántas horas son necesarias para poder confeccionar un horario en el cual no haya interferencias?
+
+    \end{ejemplo}    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+    \begin{solucion}
+        Podemos representar la situación con el grafo:
+        \vskip .4cm
+            \begin{center}
+            \begin{tikzpicture}[scale=0.55]
+                %\SetVertexSimple[Shape=circle,FillColor=white]
+                %                
+                \Vertex[x=3.00, y=0.00]{$v_3$}
+                \Vertex[x=1.50, y=2.60]{$v_2$}
+                \Vertex[x=-1.50, y=2.60]{$v_1$}
+                \Vertex[x=-3.00, y=0.00]{$v_6$}
+                \Vertex[x=-1.50, y=-2.60]{$v_5$}
+                \Vertex[x=1.50, y=-2.60]{$v_4$}
+                \Edges($v_2$,$v_1$,$v_6$, $v_5$,$v_4$,$v_1$)
+                \Edges($v_2$,$v_6$)
+                \Edges($v_3$,$v_5$)
+            \end{tikzpicture}
+            \end{center}
+            \vskip .4cm
+            Los vértices corresponden a las seis clases, y las aristas indican las interferencias potenciales.
+
+    
+        \end{solucion}
     
 
-        C. Hierholzer (1840-1871) mostró, poco antes de su muerte, un algoritmo fácilmente implementable para encontrar un circuito euleriano  para cualquier grafo  con vértices de grado  par. 
 
-        \pause
-        \vskip .4cm
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+Un horario el cual cumple con la condición de evitar interferencias es el siguiente:
+$$
+\begin{matrix}
+\text{Hora 1} & \text{Hora 2} &\text{ Hora 3}& \text{Hora 4} \\
+v_1 \text{ y } v_3 & v_2 \text{ y } v_4 & v_5 & v_6
+\end{matrix}
+$$\pause
+Es una partición del conjuntos de vértices en cuatro partes, con la propiedad que ninguna parte contiene un par de vértices adyacentes del grafo. 
+
+\pause
+Claramente,  le corresponde una función:
+$$
+c: \{ v_1,v_2,v_3,v_4,v_5,v_6\} \to  \{1,2,3,4\},
+$$
+donde
+\begin{align*}
+    c(v_1) &= c(v_3) = 1 \\
+    c(v_2) &= c(v_4) = 2 \\
+    c(v_5) &= 3 \\
+    c(v_6) &= 4. 
+\end{align*}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+    También podemos representar esta función como un \textit{coloreo de vértices} donde dos vértices adyacentes tienen distintos colores:
+    \vskip .4cm\pause
+\begin{center}
+    \begin{tikzpicture}[scale=0.55]
+        %\SetVertexSimple[Shape=circle,FillColor=white]
+        %
+        \tikzset{VertexStyle/.append style={fill= red!50}}
+        \Vertex[x=-1.50, y=2.60]{$v_1$}              
+        \Vertex[x=3.00, y=0.00]{$v_3$}
+        \tikzset{VertexStyle/.append style={fill= blue!50}}
+        \Vertex[x=1.50, y=2.60]{$v_2$}
+        \Vertex[x=1.50, y=-2.60]{$v_4$}
+        \tikzset{VertexStyle/.append style={fill= green!50}}
+        \Vertex[x=-3.00, y=0.00]{$v_6$}
+        \tikzset{VertexStyle/.append style={fill= yellow!50}}
+        \Vertex[x=-1.50, y=-2.60]{$v_5$}
+        \Edges($v_2$,$v_1$,$v_6$, $v_5$,$v_4$,$v_1$)
+        \Edges($v_2$,$v_6$)
+        \Edges($v_3$,$v_5$)
+    \end{tikzpicture}
+    \end{center}
+    \vskip .4cm\pause
+    Cualquiera de las tres formas de presentar el resultado nos daría una solución (quizás no la mejor). 
+
+    \qed
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+    \begin{definicion} Una \textit{coloración de vértices} de un grafo $G=(V,E)$ es una función $c:V \to  \mathbb N$ con la siguiente propiedad:
+        $$
+        c(x)\not= c(y) \quad \text{ si } \quad \{x,y\} \in E.
+        $$\pause
+        El \textit{número cromático} de $G$, denotado $\chi(G)$, se define \index{número cromático} como el mínimo entero $k$ para el cual existe una coloración de vértices de $G$ usando $k$-colores. 
         
-        Artículo: \href{https://eudml.org/doc/156599}{Ueber die Möglichkeit, einen Linienzug ohne Wiederholung und ohne Unterbrechung zu umfahren}. Mathematische Annalen volume 6, pp. 30–32 (1873) (en alemán). \pause
+        \vskip .4cm\pause
         
-        \vskip .4cm
-        
-        El  mismo algoritmo sirve para grafos con dos vértices de grado impar.
-        
-        \vskip .6cm\pause
-        
-        Para explicar el algoritmo de Hierholzer nos es útil la siguiente
-        
-        \vskip .4cm
-        
-        \begin{definicion}
-            Un \textit{recorrido maximal}  es un recorrido que respetando la condición de no repetir aristas no es posible continuarlo.  
+        En otra palabras, $\chi(G)=k$ si  y sólo si existe una coloración de vértices $c$ la cual es una función de $V$ a $\mathbb N_k$, y $k$ es el mínimo entero con esta propiedad. 
         \end{definicion}
 
-    
-    \end{frame}
-        
-    \begin{frame}\frametitle{Algoritmo de Hierholzer: idea clave}\pause
-        
-        La idea clave del algoritmo de Hierholzer  es la siguiente:  en un grafo de valencias pares (conexo o no conexo) todo recorrido maximal termina en el vértice original. Veamos la demostración de esta afirmación.
-
-        \vskip .2cm\pause
-
-        \begin{itemize}
-            \item Sea $x$ un vértice del grafo  que será donde comenzará la caminata.
-            \item Cada vez que ingreso y salgo de un vértice $v$ ``consumo'' $2$  aristas y  me quedan $2$ aristas menos para utilizar.\pause
-            \item Como $\delta(v)$  es par,  si $v\ne x$ cada vez que ingreso y salgo  de $v$ me queda un un número par de aristas de ese vértice sin utilizar.\pause
-            \item Es decir,  siempre que puedo entrar a un vértice $v \ne x$, puedo salir.\pause
-            \item Es  decir, el único vértice al que puedo entrar y quizás no pueda  salir es $x$.\pause
-            \item Como el recorrido es maximal,  va a haber algún momento en que no pueda avanzar más y eso solo puede ocurrir cuando estamos en el vértice $x$.
-        \end{itemize}
-
-    \end{frame}
-
-    \begin{frame}
-        \frametitle{Algoritmo de Hierholzer: idea de la demostración (1)}\pause
-        
-        
-        Algoritmo  de Hierholzer (grafo con todas valencias pares):\pause
-        \vskip .4cm
-        \begin{enumerate}
-            \item \textbf{Paso 1.} Elija cualquier vértice  inicial $v$ y haga un recorrido  maximal.\pause
-            \vskip .2cm
-            (recorrido cerrado, puede no cubrir todas las aristas).\pause
-            \vskip .4cm
-            \item \textbf{Paso iterativo} \pause
-            \begin{enumerate}\pause
-                \item[\textit{i)}] Mientras exista un vértice $u$ en la caminata ya realizada, pero que tenga aristas que no formen parte de la caminata, inicie otro recorrido maximal (será de $u$ a $u$) siguiendo las aristas no utilizadas.\pause
-                \item[\textit{ii)}] Inserte esta  caminata a la caminata  anterior en $u$  para formar una caminata nueva (más larga).\pause
-                \item[\textit{iii)}] Si no cubrió todas las aristas vuelva a \textit{i)}.
-            \end{enumerate} 
-            
-        \end{enumerate}
-    
-    \end{frame}
-    
-    \begin{frame}\frametitle{Algoritmo de Hierholzer: idea de la demostración (2)}
-
-        En  el paso iterativo el subgrafo que obtenemos luego de quitar las aristas recorridas es par. Esto nos permite hacer caminatas cerradas  por aristas no utilizadas desde cada vértice con aristas no utilizadas.\pause
-        \vskip .6cm
-
-        
-            El caso de un grafo donde todas las valencias son pares excepto $2$ se puede reducir al anterior: si deseamos una caminata euleriana que empiece por $v$ y termine en $w$.\pause
-        \begin{itemize}
-            \item Comenzamos en $v$ y haga una caminata  que no repita aristas hasta que se detenga. \pause
-            \item Elimine la aristas utilizadas. El grafo que queda es par y  ahí utilizamos el algoritmo para ese caso. 
-        \end{itemize}
-        
-        \qed
-        
-    \end{frame}
-    
-    
-    
-    \begin{frame}
-        \begin{ejemplo}
-            Encontremos un circuito euleriano del siguiente grafo. 
-            \vskip .4cm
-            \begin{figure}[ht]
-                \begin{center}
-                    \begin{tikzpicture}[scale=1]
-                    %\SetVertexSimple[Shape=circle,FillColor=white]
-                    \def\rvar{1.2}
-                    \Vertex[x=0.00, y=-2.00, L=$u$]{$u$} % 3
-                    \Vertex[x=\rvar*1.90, y=-0.62, L=$t$]{$t$} % 2
-                    \Vertex[x=\rvar*1.18, y=1.62, L=$q$]{$q$} % 1
-                    \Vertex[x=-1.18*\rvar, y=1.62, L=$p$]{$p$} % 0
-                    \Vertex[x=-1.90*\rvar, y=-0.62, L=$r$]{$r$} % 4
-                    \Vertex[x=0, y=0, L=$s$]{$s$} % 5
-                    \Edges($u$,$t$,$q$,$p$)
-                    \Edges($r$,$u$)
-                    \Edges($s$,$t$)
-                    \Edges($r$,$s$,$q$,$r$)
-                    \Edges($p$,$t$,$s$)
-                    \Edges($s$,$p$,$r$)
-                    \end{tikzpicture}
-                    \end{center}
-            \end{figure}
-            
-        \end{ejemplo}
-    \end{frame}
-    
-    \begin{frame}
-        \begin{solucion}
-            Debemos primero observar que  debe existir un circuito euleriano, pues $\delta(p)=4$, $\delta(q)=4$, $\delta(r)=4$, $\delta(s)=4$, $\delta(t)=4$, y $\delta(u)=2$,  es decir todos los vértices tienen grado par. \pause
-            \vskip .2cm
-            
-            Apliquemos el algoritmo de Hierholzer partiendo  desde $u$. Una caminata posible con origen en $u$ y que vuelva a $u$ es $$u, r, p, q, s, t, u.$$
-
-
-            Ahora elijamos $q$ que es un vértice que pertenece a la caminata pero que tiene aristas que no son parte de la caminata. Una caminata que no toca aristas usadas y  que parte de $q$ y regresa a $q$ es $q,t,p,s,r,q$.  \pause
-
-            Insertamos en $q$  esta caminata  a la caminata anterior y obtenemos:
-            $$u, r, p, \underline{q,t,p,s,r,q}, s, t, u.$$
-            (Subrayada la caminata insertada).
-
-            \qed
-        \end{solucion}
-    \end{frame}
-    
-
-    \begin{frame}[fragile]\frametitle{Recorrido maximal}
-Mostramos en pseudocódigo el algoritmo de recorrido maximal. 
-
-\begin{verbatim}
-def r_max(L, v_ini): 
-    # pre: L grafo, v_ini vértice de L
-    # post: recorrido maximal que comienza en v_ini
-    sub_caminata = [v_ini]  # sub caminata
-    p0 = v_ini
-    while len(L.adyacentes(p0)) > 0:  
-        p1 = L.adyacentes(p0)[0] # p1 primer adyacente a p0 
-        sub_caminata.append(p1) # agrega p1 a caminata
-        L.quitar_arista((p0,p1)) # quita arista {p0, p1}
-        p0 = p1 
-    return sub_caminata
-\end{verbatim}
 \end{frame}
 
-\begin{frame}[fragile]
-    \frametitle{Algoritmo de Hierholzer}
-    Mostramos en pseudocódigo el algoritmo de Hierholzer
+
+\begin{frame}
+    \frametitle{}
+
+    Volviendo al ejemplo de los horarios,  nuestro primer intento fue de 4 colores.
+    \vskip .4cm
+    Un rápido intento con tres  colores nos da la solución de este problema: \pause
+
+    $$
+    \begin{matrix}
+    \text{Color 1}\quad &\text{Color 2}\quad&\text{Color 3} \\
+    v_1 &v_2 \text{ y } v_5 \quad & v_3,v_4 \text{ y } v_6 .
+    \end{matrix}
+    $$\pause
+
+    Más aún, hacen falta por lo menos tres colores, puesto que $v_1$, $v_2$, y $v_6$ son mutuamente adyacentes y por lo tanto deben tener diferentes colores. 
     
-\begin{verbatim}
-    # pre: G grafo admisible
-    # post: cuando termina 'c' es una caminata
-    #       o circuito euleriano que empieza en 0.
-    libres = G.copiar() # sub grafo de aristas no utilizadas
-    c = r_max(libres, v_ini) # recorrido maximal
-    while len(libres.aristas()) > 0: 
-        for v in libres.vertices(): 
-            if len(libres.adyacentes(v)) > 0 and v in c:
-                pos = cam.index(v) 
-                c  =  c[:pos] + r_max(libres, v) + c[pos+1:]
-\end{verbatim}
+    \vskip .4cm\pause
+
+    Luego concluimos que el número cromático del grafo es $3$.
 
 \end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+    Podemos representar en el  grafo la coloración: 
+
+    \vskip .8 cM
+
+    \begin{center}
+        \begin{tikzpicture}[scale=0.55]
+            %\SetVertexSimple[Shape=circle,FillColor=white]
+            %
+            \tikzset{VertexStyle/.append style={fill= red!50}}
+            \Vertex[x=-1.50, y=2.60]{$v_1$}              
+            \tikzset{VertexStyle/.append style={fill= blue!50}}
+            \Vertex[x=1.50, y=2.60]{$v_2$}
+            \Vertex[x=-1.50, y=-2.60]{$v_5$}
+            \tikzset{VertexStyle/.append style={fill= green!50}}
+            \Vertex[x=3.00, y=0.00]{$v_3$}
+            \Vertex[x=-3.00, y=0.00]{$v_6$}
+            \Vertex[x=1.50, y=-2.60]{$v_4$}
+            \Edges($v_2$,$v_1$,$v_6$, $v_5$,$v_4$,$v_1$)
+            \Edges($v_2$,$v_6$)
+            \Edges($v_3$,$v_5$)
+        \end{tikzpicture}
+        \end{center}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+
+    En general, para probar que el número cromático de un grafo dado es $k$, debemos hacer dos cosas:\pause
+
+    \vskip .4cm
+
+\begin{enumerate}[label=\textit{\alph*)}] 
+    \item  encontrar una coloración de vértices usando $k$ colores;\pause
+    \vskip .4cm
+    \item  probar que ninguna coloración de vértices usa menos de $k$ colores.
+\end{enumerate}
+
+\vskip .9cm\pause
+¿Existe algún algoritmo general eficiente para encontrar el número cromático?\pause
+\vskip .2cm
+\textbf{Respuesta:} No.
+\vskip .4cm
+
+Veremos la clase que viene un algoritmo  para encontrar una coloración de vértices que aunque no es óptima nos da un resultado satisfactorio. 
+
+
+\end{frame}
+
 
 \end{document}
 

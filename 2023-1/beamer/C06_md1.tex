@@ -101,7 +101,7 @@
     \\[\baselineskip] ${}^{}$
     \\[\baselineskip]
 }
-\date[30/03/2023]{39 de marzo de 2023}
+\date[04/04/2023]{4 de abril de 2023}
 
 
 
@@ -118,132 +118,6 @@
 %\frame{\frametitle{Ãndice}\tableofcontents} 
 
 
-
-\begin{frame}\frametitle{Problemas de conteo}     
-
-    Contar,  a veces, no es una tarea sencilla. \pause
-
-    \vskip .4cm
-
-    Por ejemplo: \pause
-
-
-    \begin{itemize}
-        \item ¿Cuántas chapas patente  es posible hacer con el actual esquema de numeración? Nos referimos a las patentes de automóviles en Argentina.  \pause
-        \item ¿De cuantas formas se pueden elegir 7 personas entre 20? (no importa el orden de la elección)
-    \end{itemize}
-    \pause
-    \vskip .4cm
-
-    En las próximas clases podremos resolver estos dos problemas utilizando \textit{técnicas de conteo.}
-    \pause
-    \vskip .4cm
-
-    Las técnicas de conteo son estrategias matemáticas que permiten determinar el número total de resultados que pueden haber a partir de hacer combinaciones dentro de un conjunto o conjuntos de objetos.
-
-\end{frame}
-
-\begin{frame}\frametitle{Cardinal de un conjunto }     
-
-    Un conjunto $A$ es finito si podemos contar la cantidad de elementos que tiene. En ese caso denotaremos $|A|$ la cantidad de elementos de $A$ y la llamaremos el {\em cardinal de $A$}\
-    \pause
-    \vskip .6cm
-    Por  ejemplo, los conjuntos
-    \begin{equation*}
-        A = \{ a, b, z, x, 1\}, \qquad B = \{ 1, 2, 3, 4, 5\}
-    \end{equation*}
-    tienen 5 elementos cada uno. Es decir $|A| =5$ y $|B|= 5$.
-
-    \vskip .6cm\pause
-
-    Conjuntos como $\mathbb Z$, $\mathbb N$ o $\mathbb R$ son infinitos y por lo tanto no tiene sentido hablar de la cantidad de elementos de estos conjuntos.
-\end{frame}
-
-\begin{frame}\frametitle{El principio de adición}        
-    Dadas dos actividades $X$ e $Y$, si se puede realizar $X$ de $n$ formas distintas o, alternativamente, se puede realizar  $Y$ de $m$ formas distintas. Entonces el número de formas de realizar ``$X$ o $Y$'' es $n + m$.
-
-    \pause
-    \vskip .4cm
-    {\color{blue} Ejemplo}
-    \vskip .2cm 
-    Supongamos que una persona va a salir a pasear  y puede ir al cine donde hay $3$ películas en cartel o al teatro donde hay $4$ obras posibles. Entonces, tendrá un total de $3+4=7$ formas distintas de elegir el paseo. 
-    \vskip .3cm
-
-
-    
-    
-
-\end{frame}
-
-
-\begin{frame}
-    Este principio, el {\it principio de adición}, es el más básico del conteo y más formalmente dice que si $A$ y $B$ son conjuntos finitos disjuntos, entonces 
-\begin{equation*}\label{padd}
-|A \cup B| =|A|+|B|.
-\end{equation*}
-\vskip .4cm  \pause
-Se generaliza fácilmente:  
-Sean $A_1,\ldots,A_n$ conjuntos finitos tal que $A_i \cap A_j = \emptyset$ cuando $i\not=j$, entonces 
-\begin{equation*}
-|A_1 \cup \cdots \cup A_n| =|A_1|+\cdots+|A_n|.
-\end{equation*}
-\pause
-
-\vskip .2cm
-
-Remarcamos que para aplicar el principio de adición es necesario que los eventos se { \bf excluyan mutuamente}. El caso general es
-\begin{equation*}
-    |A \cup B| =|A|+|B| - |A \cap B|.
-\end{equation*}
-
-\end{frame}
-
-\begin{frame}\frametitle{El principio de multiplicación} 
-        Suponga que una actividad consiste de $2$ etapas y la primera etapa puede ser realizada de $n$ maneras y la etapa $2$  puede realizarse de $m$  maneras, independientemente de como se ha hecho la etapa $1$. 
-        \vskip .2cm
-        {\it Principio de multiplicación:} la actividad puede ser realizada de $n\cdot m$  formas distintas.
-        
-    \pause     
-    \vskip .6cm
-    {\color{blue} Ejemplo}
-    \vskip .2cm
-            Supongamos que la persona del ejemplo anterior tiene suficiente tiempo y dinero para ir primero al cine (3 posibilidades) y luego al teatro (4 posibilidades). 
-            \vskip .2cm
-            Entonces tendrá  $3 \cdot 4=12$ formas distintas de hacer el paseo.
-
-\end{frame}
-
-\begin{frame}
-        
-    Formalmente, si $A,B$ conjuntos y definimos el {\em producto cartesiano}\index{producto cartesiano} entre $A$ y $B$ por
-    $$
-    A \times B = \{(a,b): a \in A, b \in B\}.
-    $$
-        \vskip .5cm
-        
-        
-    Entonces si $A$ y $B$ son conjuntos finitos se cumple que
-    $$
-    |A \times B| = |A|\cdot|B|.  
-    $$
-    
-            \vskip .3cm         
-    {\bf Caso  especial:} $A = B$.
-    \pause 
-    \vskip .3cm
-    {\color{blue} Ejemplo}
-    \vskip .2cm
-    
-    ¿Cuántas palabras de dos letras hay? (26 letras,  no importa si las palabras tienen significado)
-    \pause
-    
-    \vskip .2cm
-    
-    
-    {\color{blue} Respuesta:} $26 \cdot 26$. \qed
-    \vskip .2cm
-    
-\end{frame}
 
 \begin{frame}\frametitle{Selecciones ordenadas con repetición}
 
@@ -422,7 +296,7 @@ Razonando de manera análoga obtenemos nuestro primer resultado ``no sencillo'' 
 %\end{proposicion}
 \vskip .4cm
 \pause
-Dado  $X$ un conjunto, denotamos $\mathcal P(X)$ el  conjunto  formado por todos los subconjuntos de $X$, por ejemplo
+Dado  $X$ un conjunto, denotamos $\mathcal P(X)$, \textit{partes de $X$},  al  conjunto  formado por todos los subconjuntos de $X$, por ejemplo
 $$
 \mathcal P(\{1,2\}) = \{\emptyset,\{1\},\{2\},\{1,2\}\}.
 $$  
@@ -434,6 +308,343 @@ $$
 \end{frame}
 
 
+
+
+\begin{frame}    \frametitle{Selecciones ordenadas sin repetición}
+    Sea $X$ un conjunto finito de $n$ elementos. 
+    
+    \vskip .2cm
+    \begin{center}
+        {\it ¿De cuántas formas podemos elegir $m$  de $X$ en forma ordenada?}
+    \end{center}
+    \vskip .3cm        \pause 
+    %\begin{proposicion} 
+    {\color{blue}Ejemplo}
+    \vskip .2cm
+    Elegir en forma ordenada y sin repetición 2 elementos del conjunto $X = \{ a,b,c\}$,\pause {} tenemos \quad $ ab,\quad ac,\quad ba,\quad bc,\quad ca,\quad cb,$ \quad 
+    6  elecciones.
+    
+    \vskip .5cm    \pause
+    
+    Es decir si  el conjunto es $X= \{a_1,a_2,\ldots,a_n\}$, las selecciones deben ser del tipo 
+    $$
+    a_{i_1} a_{i_2} \cdots a_{i_m}
+    $$
+    donde  $a_{i_j} \not= a_{i_k}$ si $i\not=k$. 
+\end{frame}
+
+
+
+
+
+\begin{frame}        
+    Por ejemplo, las selecciones de $3$ elementos en forma ordenada y sin repetición de $\{1, 2,3\}$  son exactamente \pause
+    $$
+    1 2 3,\; 1 3 2,\; 2 1 3,\; 2 3 1,\; 3 1 2,\; 3 2 1
+    $$
+    (son las ternas donde los tres números son distintos). 
+    
+    \vskip .3cm    
+    \pause
+    O sea hay $6$ selecciones ordenadas y sin repetición de  elementos de $\{1, 2,3\}$.
+    \vskip .3cm    
+    Notemos que: 
+    \vskip .3cm    
+    \begin{tabular}{lll}
+        $1^{\circ}$ elemento &$\to$ & 3 posibilidades: 1, 2, 3 \\
+        $2^{\circ}$ elemento &$\to$ & 2 posibilidades: distinto  al elegido en $1^{\circ}$ \\
+        $3^{\circ}$ elemento &$\to$ & 1 posibilidades: distinto  a los elegidos en $1^{\circ}$  y $2^{\circ}$
+    \end{tabular}
+    \vskip .3cm    
+    Tenemos entonces  $3 \cdot 2 \cdot 1 = 3!$ selecciones posibles.
+    \vskip .2cm    \vskip .2cm    
+\end{frame}
+
+
+\begin{frame}    
+    Pensemos ahora que queremos elegir en forma ordenada y sin repetición $3$ elementos entre $5$. Entonces para la primera elección tenemos $5$ posibilidades, para la segunda $4$ posibilidades y para la tercera $3$ posibilidades haciendo un total de 
+    $$
+    5 \cdot 4 \cdot 3
+    $$
+    selecciones posibles. 
+    
+
+    \pause
+    \vskip .5cm    
+    %\begin{proposicion} 
+    {\color{blue}Proposición}\label{ordsinrep}
+    \vskip .2cm
+    {\it Si $n \ge m$ entonces existen
+        \begin{equation*}
+        n \cdot (n - 1) \cdots (n - m + 1), \qquad \text{($m$ - factores)}
+        \end{equation*}
+        selecciones ordenadas y sin repetición de $m$ elementos de un conjunto de $n$ elementos.}
+    %\end{proposicion}
+\end{frame}
+
+
+
+\begin{frame}    
+    
+    
+    {\color{blue}Ejemplo}
+    \vskip .2cm
+    
+    Si  hay 10 personas ¿De cuántas formas puedo  hacer una fila de 7 personas?
+    \vskip .2cm\pause
+    {\color{blue}Solución.}\pause
+    \vskip .2cm
+    Razonando,
+    \vskip .3cm    
+    \begin{tabular}{llrl}
+        $1^{\circ}$ puesto &$\to$ & 10 &posibilidades \\\pause
+        $2^{\circ}$ puesto &$\to$ & 9 &posibilidades\\\pause
+        $3^{\circ}$ puesto &$\to$ & 8 &posibilidades \\\pause
+        $4^{\circ}$ puesto &$\to$ & 7 &posibilidades \\\pause
+        $5^{\circ}$ puesto &$\to$ & 6 &posibilidades\\\pause
+        $6^{\circ}$ puesto &$\to$ & 5 &posibilidades \\\pause
+        $7^{\circ}$ puesto &$\to$ & 4 &posibilidades \\\pause
+    \end{tabular}
+    \vskip .3cm    
+    La solución es entonces $10 \cdot 9  \cdot 8\cdot 7\cdot 6\cdot 5\cdot 4$.\qed
+    
+\end{frame}
+
+
+\begin{frame}    
+    
+    
+    {\color{blue}Ejemplo (repetido)}
+    \vskip .2cm
+    
+    Si  hay 10 personas ¿De cuántas formas puedo  hacer una fila de 7 personas?
+    \vskip .2cm\pause
+    {\color{blue}Solución (aplicando la proposición de p. \ref{ordsinrep}).}\pause
+    \vskip .2cm
+    \begin{tabular}{llr}
+        Cantidad  de elementos: &$\to$ & $n = 10$ \\\pause
+        Cantidad  de elecciones: &$\to$ & $m = 7$
+    \end{tabular}
+    \vskip .3cm    \pause
+    Por lo tanto, $n-m+1 = 10 - 7 +1  = 4$.
+    \vskip .3cm    \pause
+    La solución es entonces: $10 \cdot 9  \cdot 8\cdot 7\cdot 6\cdot 5\cdot 4$.
+    
+    \vskip .5cm     \pause
+    
+    Observar que
+    \begin{align*}
+    10 \cdot 9  \cdot 8\cdot 7\cdot 6\cdot 5\cdot 4 &= \frac{10 \cdot 9  \cdot 8\cdot 7\cdot 6\cdot 5\cdot 4\cdot 3\cdot 2\cdot1}{3\cdot 2\cdot1} = \frac{10!}{3!} \\
+    &= \frac{10!}{(10 -7)!}.
+    \end{align*}\qed
+    
+\end{frame}
+
+
+\begin{frame}    
+
+    {\color{blue}Ejemplo}
+    \vskip .2cm
+    ¿Cómo elegir 4 elementos entre $n$?
+    \vskip .2cm\pause
+    {\color{blue}Solución.}\pause
+    \vskip .2cm
+    Razonando,
+    \vskip .3cm    
+    \begin{tabular}{llrl}
+        $1^{\circ}$ puesto &$\to$ & n-1 &posibilidades \\\pause
+        $2^{\circ}$ puesto &$\to$ & n-2 &posibilidades\\\pause
+        $3^{\circ}$ puesto &$\to$ & n-3 &posibilidades \\\pause
+        $4^{\circ}$ puesto &$\to$ & n-4 &posibilidades \\\pause
+    \end{tabular}
+
+    La solución es entonces 
+    \begin{align*}
+        (n-1)  (n-2)  (n-3) (n-4) &= \frac{(n-1) (n-2)  (n-3)(n-4) (n-5)!}{(n-5)!}\\
+        &=\frac{n!}{(n-5)!}
+    \end{align*}
+    \qed
+
+\end{frame}
+
+\begin{frame}
+    En general
+    \begin{equation*}
+    n \cdot (n-1)  \cdots (n - m +1) = \frac{    n \cdot (n-1)\cdots (n - m + 1) \cdot (n-m) \cdots 2 \cdot 1 }{(n-m) \cdots 2 \cdot  1 }.
+    \end{equation*}
+    \vskip .5cm    \pause
+    Es decir 
+
+    \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
+    \hskip 1.8cm \begin{beamercolorbox}[wd=0.65\textwidth,rounded=true,shadow=true]{postit}
+        \begin{equation*}
+        n \cdot (n-1)  \cdots (n - m +1) =  \frac{n!}{(n-m)!}.
+    \end{equation*}
+    \end{beamercolorbox}    
+
+
+    \vskip 1cm    \pause
+    Por lo tanto podemos reescribir la proposición en forma mas compacta:
+
+    
+\end{frame}
+
+
+
+\begin{frame}
+
+
+    {\color{blue}Proposición}
+    \vskip .2cm
+    {\it Si $n \ge m$ entonces existen
+        \begin{equation*}\label{ordenadas_sin_rep_compacta} 
+        \frac{n!}{(n-m)!}
+        \end{equation*}
+        selecciones ordenadas y sin repetición de $m$ elementos de un conjunto de $n$ elementos.}
+    %\end{proposicion}
+\end{frame}
+
+
+
+\begin{frame}
+    
+    %\begin{ejemplo}
+    {\color{blue}Ejemplo}
+    \vskip .2cm
+    Si en un colectivo hay $9$ asientos vacíos. 
+    
+    \vskip .2cm
+    
+    ¿De cuántas formas se pueden distribuir $3$ pasajeros? 
+    
+    Lo que se está preguntando es cuantas posibles distribuciones de $3$  asientos existen (no importa quien se sienta  en cada asiento). 
+    
+    
+    \vskip .2cm\pause
+    {\color{blue}Solución}\pause
+    \vskip .2cm
+    Se trata de ver cuantas selecciones ordenadas y sin repetición hay de $3$ asientos entre $9$. 
+    \vskip .2cm\pause
+    Primero hagámoslo usando el principio de multiplicación:\pause
+    \vskip .2cm
+    \begin{itemize}
+        \item 1° persona: 9 lugares posibles. Total: 9\pause
+        \item 2° persona: 8 lugares posibles. Total: $9 \times 8$\pause
+        \item 3° persona: 7 lugares posibles. Total: $9\times 8\times 7$.
+    \end{itemize}
+    
+\end{frame}
+
+
+
+\begin{frame}        
+    Este número es
+    $$
+    9 \cdot 8 \cdot 7 , \qquad \text{$3$ - factores.}
+    $$
+    %\end{ejemplo}
+    \vskip .2cm
+    \pause
+    Podríamos haberlo hecho directamente por la proposición de la p. \ref{ordenadas_sin_rep_compacta}: elegir  3 elementos entre 9 son
+    \vskip .2cm
+    \begin{align*}
+    \frac{9!}{(9-3)!} &= \frac{9!}{6!} \\
+    &= \frac{ 9  \cdot 8\cdot 7\cdot 6\cdot 5\cdot 4\cdot 3\cdot 2\cdot1}{6\cdot 5\cdot 4\cdot 3\cdot 2\cdot1} \\
+    &= 9  \cdot 8\cdot 7
+    \end{align*}
+    posibilidades.
+    \qed
+\end{frame}
+
+
+
+
+\begin{frame}\frametitle{Permutaciones}
+    
+
+    Hay 
+    $$
+    \frac{n!}{0!}= n!
+    $$
+    selecciones ordenadas y sin repetición de  $n$ elementos en un conjunto con $n$ elementos. 
+    \vskip .4cm\pause
+    
+    Las selecciones ordenadas y sin repetición de  $n$ elementos en un conjunto con $n$ elementos se denominan {\em permutaciones} de grado $n$.
+        \vskip .4cm\pause
+    Hay, pues, $n!$ permutaciones de grado $n$.
+    \vskip .4cm
+
+
+\end{frame}
+
+\begin{frame}\frametitle{Permutaciones}
+
+Respondamos la siguiente pregunta:
+\vskip .4cm
+¿De cuantas formas puedo ordenar $n$ objetos? \pause
+\vskip .4cm
+Observemos que, ordenar $n$ objetos es equivalente a seleccionar ordenadamente y sin repetición los  $n$ objetos (de un conjunto con $n$ objetos). 
+\vskip .4cm
+Por lo tanto,  la respuesta es $n!$. \pause
+\vskip .4cm
+{\color{blue}Ejemplo.}
+\vskip .2cm
+Dado el conjunto $\mathbb I_4 = \{1,2,3,4 \}$ ¿cuántas permutaciones de los elementos de $\mathbb I_4 $ hay?
+\vskip .2cm\pause
+{\color{blue}Solución.}\pause $4!$.\qed
+\end{frame}
+
+
+
+\begin{frame}
+    
+    {\color{blue}Ejemplo}
+    \vskip .2cm
+        ¿Cuántas permutaciones pueden formarse con las letras de
+        {\em silvia}?
+        \pause
+        \vskip .2cm
+        {\color{blue}Solución}\pause
+        \vskip .2cm
+        Afirmamos que se pueden formar  $\displaystyle{\frac{6!}{2!}}$ palabras usando las letras de {\em silvia}.
+        
+        Si escribo en lugar de {\em silvia},
+        $$
+        \text{\em s i l v i' a}
+        $$
+        Es decir si cambio la segunda {\em i } por {\em i'}, todas las letras son distintas, luego hay $6!$ permutaciones, pero
+        cada par de permutaciones del tipo
+        \begin{align*}
+        \cdots \text{\em i } \cdots  \text{\em i' }  \cdots \\
+        \cdots \text{\em i' } \cdots  \text{\em i } \cdots
+        \end{align*}
+        coinciden, por lo tanto tengo que dividir por $2$ el número total de permutaciones: $6! / 2! = 360$.\qed
+        
+\end{frame}
+
+
+\begin{frame}        Tomemos la palabra
+        $$
+        \text{\em ramanathan}
+        $$
+        el número total de permutaciones es $$\displaystyle{\frac{10!}{ 4!2!}}.$$
+        \pause
+        En efecto, escribiendo el nombre anterior así 
+        $$
+        r_1\;a_1\;m_1\;a_2\;n_1\;a_3\;t_1\;h_1\;a_4\;n_2
+        $$
+        el número total de permutaciones es $10!$ Pero
+        permutando las $a_i$ y las $n_i$ sin mover las otras letras obtenemos
+        la misma permutación de {\em ramanathan}.
+        \vskip .2cm
+        Como hay $4!$ permutaciones de las letras $a_1$, $a_2$, $a_3$, $a_4$, y
+        $2!$ de $n_1$, $n_2$ el número buscado es 
+        $$
+        \frac{10!}{ 4!2!}.
+        $$
+        
+
+\end{frame}
 
 
 \end{document}

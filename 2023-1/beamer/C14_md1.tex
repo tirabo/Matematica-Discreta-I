@@ -43,6 +43,7 @@
 }
 \renewcommand\labelitemi{$\circ$}
 \setlist[enumerate]{label={(\arabic*)}}
+
 \setbeamertemplate{itemize item}{$\circ$}
 \setbeamertemplate{enumerate items}[default]
 \definecolor{links}{HTML}{2A1B81}
@@ -93,14 +94,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
 
 
-
-\title[Clase 14 - Factorización prima]{Matemática Discreta I \\ Clase 14 - Factorización prima 1}
+\title[Clase 15 - Factorización en primos]{Matemática Discreta I \\ Clase 15 - Factorización en primos 2 / Congruencia}
 %\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
 \institute[]{\normalsize FAMAF / UNC
     \\[\baselineskip] ${}^{}$
     \\[\baselineskip]
 }
-\date[04/05/2023]{4 de mayo de 2023}
+\date[09/05/2023]{9 de mayo de 2023}
 
 
 
@@ -109,263 +109,307 @@
     
     \frame{\titlepage} 
     
-    
     \begin{frame}
-        \begin{definicion} Se dice que un entero positivo $p$ es {\em primo}\index{número primo} si $p\ge 2$ y
-            los únicos enteros positivos que dividen $p$ son 1 y $p$ mismo.
-        \end{definicion}\pause
-        \vskip .4cm
-        Los primeros primos (los  menores que $100$) son
-        \vskip .4cm
-        2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89 y 97.
-        
-        \vskip .4cm\pause
-        Enfaticemos que de acuerdo a la definición, 1 {\it no} es primo.
-        
-        \vskip .4cm
-        
-        
-        
-    \end{frame}
-    
-    
-    \begin{frame}
-        
-        
-        \begin{itemize}
-            \item[$\circ$]  $p$ es primo si y solo si $P = m_1m_2$ $\Rightarrow$ $m_1 = 1, m_2=p$ o  $m_1 = p, m_2=1$. 
-            \vskip .4cm\pause
-            \item[$\circ$]   $m\ge 2$ no es un primo si y sólo si existen $1 < m_1, m_2 < m$, tales que $m=m_1m_2$.
-        \end{itemize}
-        \pause
-        \vskip .6cm
-        
-        No son primos:
-        \begin{alignat*}4
-            4 &= 2 \cdot 2,&\qquad 6&= 2\cdot3, &\qquad 8&=2 \cdot 4,&\qquad 9&= 3\cdot 3,\quad \\ 
-            10&= 2\cdot5 ,& 12&= 3\cdot 4,& 14&=2 \cdot 7,& 15&=3 \cdot 5, \\
-            16&= 2\cdot 8,&  18&= 2\cdot 9,& 20&= 4 \cdot 5,& 21 &= 3 \cdot 7.
-        \end{alignat*}
-        
-        
-    \end{frame}
-    
-    
-    \begin{frame}
-        Veremos que todo número entero positivo puede expresarse como producto de primos. Por ejemplo
-        $$
-        825=3\cdot 5\cdot 5\cdot 11.
-        $$ \pause 
-        Si el entero es negativo, es $-1$ por un producto de primos
-        $$
-        -825=-1 \cdot 3\cdot 5\cdot 5\cdot 11.
-        $$ \pause 
-        
-        Como consecuencia del axioma del buen orden obtenemos que todo entero positivo es producto de primos (si $p$ es primo, también lo consideramos un {producto de primos.})
-        
-    \end{frame}
-    
-    
-    \begin{frame}
-        \begin{teorema}
-            Todo  entero  mayor que $1$ es producto de números primos. 
-        \end{teorema}  
-        \pause
-        
-        \begin{idea}\pause
-            \vskip -.4cm
-            $$
-            B = \{n >0: \text{$n$ no es  producto de primos} \}.
-            $$\pause
-            Si $B \ne \emptyset$, por BO existe $m$ mínimo de $B$. \pause
+        \begin{proposicion} Existen infinitos números primos. 
+        \end{proposicion} \pause
+        \begin{proof}\pause Haremos la demostración por el absurdo. 
             \vskip .3cm
-            $m$ no es primo $\Rightarrow$ $m= m_1m_2$ con $1 < m_1, m_2 < m$. \pause
+            Supongamos que $p_1,p_2,\ldots, p_r$ son todos los números primos. 
             \vskip .3cm
-            Como $ m_1, m_2 < m$, ambos son producto de  primos.\pause
+            Sea $n =  p_1p_2\ldots p_r+1$. 
             \vskip .3cm
-            Luego $m_1m_2 = m$ es producto de primos. Absurdo.\pause
+            
+            Sea $p$ primo tal que $p|n$ $\Rightarrow$ existe $i$  tal que $p=p_i$. 
             \vskip .3cm
-            El absurdo vino de suponer que $B \ne \emptyset$.
+            Ahora bien $p_i| n$ y $p_i|p_1p_2\ldots p_r$, luego $p_i|n-p_1p_2\ldots p_r =1$. Absurdo.  
+            
             \qed
+        \end{proof}
+        
+    \end{frame}
+    
+    \begin{frame}
+        
+        \begin{ejemplo} Probemos que si $m$ y $n$ son enteros tales que
+            $m\ge 2$ y $n\ge 2$, entonces $m^2 \not=2n^2$.
+        \end{ejemplo}\pause
+        \begin{proof} \pause
+
+        Recordemos que
+        $$
+        (ab)^r = a^rb^r, \quad (a^r)^s = a^{r s}, \quad  a\cdot a^r = a^{r+1}. 
+        $$    
+
+
+            $$ n = 2^{x}p_2^{e_2}\ldots p_r^{e_r}\text{\quad ($x \ge 0$, $p_i$ todos primos diferentes a 2.)} $$
+            $$ n^2 = 2^{2x}p_2^{2e_2}\ldots p_r^{2e_r}$$
+            \begin{equation}
+                \colorbox{lightgray}{$2n^2= 2^{2x+1}p_2^{2e_2}\ldots p_r^{2e_r}.$ }\tag{*}
+            \end{equation}
             
-        \end{idea}  
-
-
-
+            $$
+            m = 2^{y}q_2^{f_2}\ldots q_s^{f_s}\text{\quad ($y \ge 0$, $q_i$ todos primos diferentes a 2.)}
+            $$
+            \begin{equation}
+                \colorbox{lightgray}{$m^2 = 2^{2y}q_2^{2f_2}\ldots q_s^{2f_s}$} \tag{**}
+            \end{equation}
+            
+        \end{proof}
+        
     \end{frame}
     
     
     \begin{frame}
+        Como $2x+1 \ne 2y$ (el primero es impar y el segundo par), por unicidad de la descomposición, (*) $\ne$ (**), es decir $m^2 \not=2n^2$.
+        
+        \qed
 
         \begin{observacion}
-			\begin{itemize}
-				\item[$\circ$] Por el teorema,  decimos que todo número entero \textit{admite una factorización con factores primos}.
-			\end{itemize}
-			
-		\end{observacion}
+            El  ejemplo anterior nos dice que 
+            $$
+            m^2 \not=2n^2\quad \Rightarrow \quad \frac{m^2}{n^2}\not=2 \quad \Rightarrow \quad \left(\frac{m}{n}\right)^2\not=2 \quad \Rightarrow \quad \frac{m}{n}\not=\sqrt{2}. 
+            $$
+            
+            Es decir $\sqrt{2}$ \textit{no es un número racional.}
+        \end{observacion}
+
+        \begin{ejercicio} Probar que $\sqrt{15}$ no es un número racional.
+        \end{ejercicio}
+
+    \end{frame}
+    
+    \begin{frame}\frametitle{Notación}
+        
+        Sean $m$ y $n$ dos enteros positivos, a veces es conveniente escribir la factorización prima de ambos números usando los mismos primos.
+        
+        Los primos que usamos son los que se encuentran en la factorización prima de ambos:
+        $$
+        m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
+        n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
+        $$
+        con $e_i,f_i \ge 0$ para $i=1,\ldots,r$ y $e_i$ o $f_i$ distinto de cero. 
         \pause
-        \begin{ejemplo} 
-            Encontremos la factorización en números primos de $201\,000$. Esto se hace di\-vi\-dien\-do  sucesivamente los números hasta llegar a factores primos:\pause
+        \begin{ejemplo}
+            168 y 495. \pause Tenemos que
+            \begin{equation*}
+                168 = 2^3 \cdot 3^1 \cdot 7^1, \qquad 495 = 3^2 \cdot 5^1 \cdot 11^1
+            \end{equation*}
+            Luego 
             \begin{align*}
-                201\,000 &= 201\cdot 1000 = 3\cdot 67\cdot 10\cdot 10\cdot 10\\ &=  3\cdot 67\cdot 2\cdot 5 \cdot 2\cdot 5 \cdot 2\cdot 5 \\&= 2^3\cdot 3\cdot 5^3\cdot 67.
+                168 &= 2^3 \cdot 3^1 \cdot 5^0\cdot 7^1\cdot 11^0, \\
+                495 &= 2^0 \cdot3^2 \cdot 5^1 \cdot 7^0 \cdot 11^1
             \end{align*}
-            Como vimos más arriba $2, 3, 5$ y $67$ son  números primos y por lo tanto hemos obtenido la descomposición prima de $201\,000$.
         \end{ejemplo}
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        Veremos ahora un resultado que se puede deducir fácilmente del Teorema Fundamental de la Aritmética (TFA).\pause 
+        
+        \begin{proposicion} Sean $m,n \ge2$ con
+            $$
+            m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
+            n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
+            $$
+            donde $p_i$ primo y $e_i,f_i \ge 0$ para $i=1,\ldots,r$. 
+            
+            Entonces $m|n$ si y sólo si $e_i \le f_i$ para todo $i$.
+        \end{proposicion}\pause 
+        \begin{proof}\pause 
+            \noindent($\Rightarrow$) Por la descomposición de $m$ es claro que $p_i^{e_i}|m$. Como $m|n$ entonces   $p_i^{e_i}|n$. Es decir $n =  p_i^{e_i}u$. Es claro por TFA entonces que $e_i \le f_i$.
+            \vskip .2cm
+            
+            \noindent($\Leftarrow$) Como $e_i \le f_i$, tenemos que $p_i^{e_i}|p_i^{f_i}$, para $1 \le i \le r$.  Luego  $$p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}| p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.$$ Es decir $m|n$.
+        \end{proof}
+        
     \end{frame}
     
     
     \begin{frame}
         
-        \begin{observacion}
-            Sea $a \in \mathbb Z$ y $p$ primo. Entonces 
+        Ahora veremos que es posible calcular el $\operatorname{mcd}$ y el $\operatorname{mcm}$ de un par de números sabiendo sus descomposiciones primas.
+        
+        \begin{proposicion}
+            Sean $m$ y $n$ enteros positivos cuyas factorizaciones primas son
+            $$
+            m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
+            n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
+            $$
             \begin{enumerate}
-                \item[a)]  Si $p{\not|}a$, entonces $\operatorname{mcd}(a,p) = 1$.\pause
-                \item[b)]  Si $p$ y $p'$ son primos y $p|p'$ entonces $p=p'$.
-            \end{enumerate}\pause
-        \end{observacion}
+                \item[a)] El mcd de $m$ y $n$ es $d=p_1^{k_1}p_2^{k_2}\ldots
+                p_r^{k_r}$ donde, para cada $i$ en el rango $1\le i \le r$, $k_i$
+                es el mínimo entre $e_i$ y $f_i$.\vskip .2cm
+                \item[b)] El mcm de $m$ y $n$ es $u=p_1^{h_1}p_2^{h_2}\ldots
+                p_r^{h_r}$ donde, para cada $i$ en el rango $1\le i \le r$, $h_i$
+                es el máximo entre $e_i$ y $f_i$.
+            \end{enumerate}
+        \end{proposicion}
+    \end{frame}
+    
+    
+    \begin{frame}
         \begin{proof}
-            \pause
+            \
             
-            \noindent (a) Como los únicos divisores de $p$ son $p$ y $1$, y $p{\not|}a$, el único  divisor común de $p$ y $a$ es $1$.
-            \vskip .3cm\pause
-            \noindent (b) $p'$ es primo, por lo tanto tiene sólo dos divisores positivos $1$ y $p'$. Como $p$ no es $1$, tenemos que  $p=p'$.  \qed
+            \noindent(a)  Es claro  que  $d = p_1^{k_1}p_2^{k_2}\ldots p_r^{k_r}$ divide a $m$ y $n$.
+            
+            \vskip .3cm
+            Sea $c$ tal que $c|n$ y $c|m$, entonces los primos que intervienen en la factorización de $c$ son $p_1,\ldots,p_r$ y por lo tanto 
+            $$
+            c =  p_1^{t_1}p_2^{t_2}\ldots p_r^{t_r}.
+            $$
+            
+            Además, como $c|n$ y $c|m$ tenemos que $t_i \le e_i,f_i$ y por lo tanto $t_i \le k_i = \min(e_i,f_i)$. 
+            
+            \vskip .3cm
+            
+            De esto se deduce que $c|p_1^{k_1}p_2^{k_2}\ldots p_r^{k_r}=d$. 
+            
+            \vskip .6cm
+            \noindent(b) Se deja como ejercicio. 
+            
+            \qed
+        \end{proof}
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        \begin{ejemplo}
+            Encontremos el mcd y el mcm  de $168$ y $495$.
+            \vskip .2cm
+            Ya habíamos visto que 
+            \begin{align*}
+                168 &= 2^3 \cdot 3^1 \cdot 5^0\cdot 7^1\cdot 11^0, \\
+                495 &= 2^0 \cdot3^2 \cdot 5^1 \cdot 7^0 \cdot 11^1
+            \end{align*}
+            
+            Luego 
+            
+            \begin{align*}
+                \text{mcd}(168,495) &= 2^0 \cdot 3^1 \cdot 5^0\cdot 7^0\cdot 11^0 = 3, \\
+                \text{mcm}(168,495) &= 2^3 \cdot3^2 \cdot 5^1 \cdot 7^1 \cdot 11^1.
+            \end{align*}
+            
+        \end{ejemplo}
+        
+    \end{frame}
+    
+
+    \begin{frame}
+        \frametitle{Congruencia - Definiciones y propiedades básicas}
+    
+        \begin{definicion} Sean $a$ y $b$ enteros y $m$ un
+            entero positivo. Diremos que $a$ es {\em congruente} a $b$
+            {\textit{módulo}} $m$, y escribimos 
+            $$
+            a \equiv b \pmod{m}
+            $$
+            si $a-b$ es divisible or $m$,  es decir si $m| a -b$.
+        \end{definicion}
+        
+        Observar que 
+        
+        $$a\equiv 0 \pmod{m} \Leftrightarrow m|a\qquad\qquad$$ 
+        y que 
+        $$\qquad\qquad a\equiv b \pmod{m}\Leftrightarrow a-b\equiv 0 \pmod{m}.$$ 
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{}
+
+        \begin{notacion}
+            $a \equiv b \pmod{m}$ también  lo denotamos $a \equiv b\; (m)$.
+
+        \end{notacion}
+
+        \begin{ejemplo}
+            \begin{itemize}
+                \item $7 \equiv 3 \;(2)$, pues $2 | 7-3=4$.
+                \item $17 \equiv 8 \;(3)$, pues $3 | 17-8 =9$.  
+                \item $8 \equiv 17 \;(3)$, pues $3 | 8-17 =-9$.
+                \item $35 \equiv 13 \;(11)$, pues $11| 35-13 = 22 = 2 \cdot 11$. 
+            \end{itemize}
+        \end{ejemplo}
+    
+        
+    
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{}
+    
+        \begin{proposicion}\label{prop-mod-resto}
+            Sean $a$ entero y $m$ un entero positivo. Sea $r$ el resto de dividir $a$ por $m$.            
+            $$a\equiv r \pmod{m}.$$\vskip -.6cm
+        \end{proposicion}
+        \begin{proof}
+             $a=mq+r$  con $0 \le r <m$.
+             \vskip.4cm
+             Luego,
+             $$a-r = mq \quad \Rightarrow \quad m|a-r\quad \Rightarrow \quad a\equiv r \pmod{m}.$$ 
+             
+             \qed
+        \end{proof}
+    
+    \end{frame}
+
+
+    
+    \begin{frame}
+        Es fácil verificar que la {congruencia módulo} $m$ verifica las
+        siguientes propiedades\vskip .2cm
+        \begin{enumerate}
+            \item[a)]
+            Es {\it {reflexiva}} es decir $x\equiv x\pmod{m}$.\vskip .2cm
+            \item[b)]
+            Es {\it {simétrica}}, es decir si $x \equiv y \pmod{m}$, entonces\vskip .2cm
+            $y \equiv x \pmod{m}$.
+            \item[c)]
+            Es {\it { transitiva}}, es decir si $x\equiv y \pmod{m}$ e
+            $y\equiv z \pmod{m}$, entonces $x\equiv z \pmod{m}$.
+        \end{enumerate}
+        \begin{proof}
+            a)  $m| x-x =0$  y por lo tanto $x\equiv x\pmod{m}$.
+            \vskip .2cm
+            b) $x \equiv y\;(m)$ $\Rightarrow$ $m|x-y$ $\Rightarrow$  $m|-(x-y)$   $\Rightarrow$  $m|y-x$ $\Rightarrow$ $y \equiv x\; (m)$.
+            \vskip .2cm
+            c) $x \equiv y \;(m) \wedge y \equiv z \;(m)$ \;  $\Rightarrow$ \; $m|x-y \wedge m|y-z$ \; $\Rightarrow$ \; 
+            \vskip.2cm
+            \quad$m |(x-y) + (y-z) = x -z$ \; $\Rightarrow$ \; $x \equiv z \;(m)$.
+            
+            \qed
         \end{proof}
     \end{frame}
-    
-    
+
+
     \begin{frame}
         
-        \begin{lema} Si $n>0$ no es primo, entonces existe $m>0$ tal que $m|n$ y $m \le \sqrt{n}$.  
-        \end{lema}\pause
-        \begin{demostracion}\pause
-            Sea $n > 1$ que no es primo. Entonces existe  $m_1, m_2$ tal que 
-            $$
-            1 < m_1, m_2 < n \quad \text{y} \quad n = m_1 m_2.$$\pause
-            
-            Si $m_1 > \sqrt{n}$ y $m_2 >\sqrt{n}$ entonces 
-            
-            $$
-            n = m_1m_2 > \sqrt{n}\sqrt{n} = \sqrt{n}^2 = n.
-            $$\pause
-            \vskip .2cm
-            Absurdo. Vino de suponer que $m_1 > \sqrt{n}$ y $m_2 >\sqrt{n}$. 
-            \vskip .3cm
-            Luego $m_1 \le \sqrt{n}$ o $m_2 \le \sqrt{n}$\qed
-            
-            
-        \end{demostracion}
         
-    \end{frame}
+        \begin{proposicion}
+            Sean $a$ y $b$ enteros y $m$ un entero positivo. Entonces $a\equiv b \pmod{m}$ si  y sólo si
+            $a$ y $b$ tienen el mismo resto en la división por $m$.
+        \end{proposicion}
+        \begin{proof} Se deduce por la proposición de la p. \ref{prop-mod-resto} y transitividad. \qed
+        \end{proof}
     
-    
-    \begin{frame}
-        \vskip .4cm
-        El contrarrecíproco del  lema anterior, es el \textit{criterio de la raíz}:\pause
-        
-        \begin{proposicion}Sea $n\ge 2$. Si para todo $m$ tal que $1<m \le \sqrt{n}$ se cumple que $m{\not|}n$, entonces $n$ es primo.
-        \end{proposicion}\pause
-        \vskip .3cm
-        \begin{corolario}
-            Sea $n\ge 2$. Si para todo $p$ primo tal que $1<p \le \sqrt{n}$ se cumple que $p{\not|}n$, entonces $n$ es primo.
-        \end{corolario}
-    \end{frame}
-    
-    
-    \begin{frame}
-        \begin{ejemplo} Verifiquemos si $467$ es primo o no.
-        \end{ejemplo}\pause
-        \begin{solucion}
-            Si no utilizamos el criterio de la raíz deberíamos hacer 465 divisiones: deberíamos comprobar si $m|467$ con  $1<m <467$. \pause
-            \vskip .2cm
-            Como $\sqrt{467} = 21.61...$, sólo debemos comprobar si $m|467$ para $2\le m \le 21$. \pause
-            \vskip .2cm
-            Un sencilla comprobación (dividiendo) muestra que los números $2,3,\cdots,20,21$ no  dividen a $467$ y por  lo tanto $467$ es primo. 
-        \end{solucion}
-        \pause
-        \begin{observacion}
-            En  el ejemplo anterior podríamos haber solo comprobado si los primos 2, 3, 5, 7, 11, 13, 17, 19 dividen a 467. 
-        \end{observacion}
-        
-    \end{frame}
-    
-    
-    \begin{frame}
-        
-        \begin{teorema} Sea $p$  un número  primo.
-            
-            \begin{enumerate} 
-                \item[a)] Si $p|xy$ entonces $p|x$ o $p|y$.
-                \item[b)] $x_1,x_2,\ldots,x_n$ son enteros tales que
-                $$
-                p|x_1x_2\ldots x_n
-                $$
-                entonces $p|x_i$ para algún $x_i$ ($1\le i \le n$).
-            \end{enumerate}
-        \end{teorema}
-        \vskip .4cm
-        \begin{observacion}
-            La propiedad a) es \textit{muy importante} y podíamos haber definido número primo como aquel  número que cumple esta propiedad.
-        \end{observacion}
-    \end{frame}
-    
-    
-    \begin{frame}
-        Un error común es asumir que la propiedad a) se mantiene
-        verdadera cuando reemplazamos el primo $p$ por un entero
-        arbitrario . Pero esto claramente falso: por ejemplo
-        $$
-        6| 3\cdot 8 \quad \text{ pero } \quad 6{\not|} 3 \quad \text{ y }
-        \quad 6{\not|}8.
-        $$
+        Así como separamos $\mathbb Z$ en los números pares e
+        impares, la propiedad anterior nos permite expresar $\mathbb Z$
+        como una unión  de $m$ subconjuntos. 
         
         \vskip .4cm
         
-        \pause
-        
-        La propiedad a)  juega un papel crucial en la demostración del
-        siguiente resultado, que a veces es llamado el {\it Teorema
-            Fundamental de la Aritmética}.
+        Es decir si \quad $\mathbb  Z_{[r]} =\{x \in \mathbb Z: \text{el resto de dividir $x$ por $m$ es $r$}\}$,
         \vskip .4cm
-        \begin{teorema}La factorización en primos de un entero
-            positivo $n\ge 2$ es única, salvo el orden de los factores primos.
-        \end{teorema}
-    \end{frame}
-    
-    
-    \begin{frame}
-        Luego todo entero positivo $n$ puede escribirse como
+        entonces, 
+        
         $$
-        m = q_{1}\cdot q_{2}\cdot \cdots q_{m-1}\cdot q_{m}
+        \mathbb Z= \mathbb Z_{[0]}\cup \mathbb Z_{[1]}\cup \cdots\cup \mathbb Z_{[m-1]}.
         $$
-        donde los $q_i$ son  primos no necesariamente distintos.
-        \vskip .8cm
-        En la práctica a menudo reunimos los primos iguales en la
-        factorización de $n$ y escribimos
-        \begin{equation}
-            n=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},
-        \end{equation}
-        donde $p_1,p_2,\ldots ,p_r$ son primos distintos y $e_1,e_2,\ldots,e_r$ son enteros positivos.
     \end{frame}
     
-    
-    \begin{frame}
-        
-        \begin{ejemplo} Encontrar la descomposición prima de 7000.
-        \end{ejemplo}
-        \begin{solucion}
-            $ 7000 = 1000 \cdot 7 = 10\cdot 10\cdot 10\cdot 7= 2\cdot 5\cdot 2\cdot 5\cdot 2 \cdot 5\cdot 7$, Es decir
-            $$
-            7000 = 2\cdot 5\cdot 2\cdot 5\cdot 2 \cdot 5\cdot 7.
-            $$ 
-            
-            Pero suele ser mejor escribirlo  como
-            $$7000 = 2^3 \cdot 5^3    \cdot 7.$$
-        \end{solucion}
-        
-        
-        
-        
-    \end{frame}
     
     
     

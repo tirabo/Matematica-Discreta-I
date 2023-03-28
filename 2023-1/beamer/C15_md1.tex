@@ -3,6 +3,7 @@
 \usetheme{CambridgeUS}
 %\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
+
 \usepackage{etex}
 \usepackage{t1enc}
 \usepackage[spanish,es-nodecimaldot]{babel}
@@ -94,13 +95,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
 
 
-\title[Clase 15 - Factorización en primos]{Matemática Discreta I \\ Clase 15 - Factorización en primos 2 / Congruencia}
+
+\title[Clase 16 - Congruencia ]{Matemática Discreta I \\ Clase 16 - Congruencias / Ecuación lineal de congruencia}
 %\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
 \institute[]{\normalsize FAMAF / UNC
     \\[\baselineskip] ${}^{}$
     \\[\baselineskip]
 }
-\date[09/05/2023]{9 de mayo de 2023}
+\date[11/05/2023]{11 de mayo de 2023}
 
 
 
@@ -109,308 +111,422 @@
     
     \frame{\titlepage} 
     
+    
     \begin{frame}
-        \begin{proposicion} Existen infinitos números primos. 
-        \end{proposicion} \pause
-        \begin{proof}\pause Haremos la demostración por el absurdo. 
-            \vskip .3cm
-            Supongamos que $p_1,p_2,\ldots, p_r$ son todos los números primos. 
-            \vskip .3cm
-            Sea $n =  p_1p_2\ldots p_r+1$. 
-            \vskip .3cm
-            
-            Sea $p$ primo tal que $p|n$ $\Rightarrow$ existe $i$  tal que $p=p_i$. 
-            \vskip .3cm
-            Ahora bien $p_i| n$ y $p_i|p_1p_2\ldots p_r$, luego $p_i|n-p_1p_2\ldots p_r =1$. Absurdo.  
-            
-            \qed
-        \end{proof}
+        La utilidad de las congruencias reside principalmente en el hecho
+        de que son compatibles con las operaciones aritméticas. \pause
+        Específicamente, tenemos el siguiente teorema.
+        
+        \begin{teorema}\label{t4.1} Sea $m$ un entero positivo y sean $x_1$, $x_2$,
+            $y_1$, $y_2$ enteros tales que
+            $$
+            x_1 \equiv x_2 \pmod{m}, \qquad y_1 \equiv y_2 \pmod{m}.
+            $$
+            Entonces
+            \begin{enumerate}
+                \item[a)] $ x_1+ y_1 \equiv x_2+ y_2 \pmod{m}$,
+                \item[b)] $x_1 y_1 \equiv x_2 y_2 \pmod{m}$,
+                \item[c)] Si $x \equiv y \pmod{m}$  y $j \in  \mathbb N$, entonces $x^j \equiv y^j \pmod{m}$.
+            \end{enumerate}
+        \end{teorema}
         
     \end{frame}
     
+    
+    \begin{frame}
+        \begin{proof}
+            
+            \noindent(a) \pause Por hipótesis $\exists x,y$ tq $x_1-x_2=mx$ e $y_1-y_2=my$. Luego, 
+            $$
+            \begin{aligned}
+                (x_1+y_1)-(x_2+y_2) &= (x_1-x_2)+ (y_1 -y_2) \\
+                &= mx +my \\
+                &= m(x+y),
+            \end{aligned}
+            $$
+            y por consiguiente el lado izquierdo es divisible por $m$.
+            \vskip .2cm\pause 
+            \noindent (b)\pause {}  Aquí tenemos
+            $$
+            \begin{aligned}
+                x_1y_1-x_2y_2 &=  x_1y_1-x_2y_1+ x_2y_1-x_2y_2 \\
+                &= (x_1-x_2)y_1+ x_2(y_1 -y_2) \\
+                &= mxy_1 +x_2my \\
+                &= m(xy_1+x_2y),
+            \end{aligned}
+            $$
+            y de nuevo el lado izquierdo es divisible por $m$.
+            
+        \end{proof}
+    \end{frame}
+    
+    
     \begin{frame}
         
-        \begin{ejemplo} Probemos que si $m$ y $n$ son enteros tales que
-            $m\ge 2$ y $n\ge 2$, entonces $m^2 \not=2n^2$.
-        \end{ejemplo}\pause
-        \begin{proof} \pause
-
-        Recordemos que
+        \noindent (c) \pause   Lo haremos por inducción sobre $j$. 
+        \vskip .2cm
+        Es claro que si $j=1$ el resultado es verdadero. 
+        \vskip .2cm
+        Supongamos ahora que el resultado vale para $j-1$, es decir
         $$
-        (ab)^r = a^rb^r, \quad (a^r)^s = a^{r s}, \quad  a\cdot a^r = a^{r+1}. 
-        $$    
-
-
-            $$ n = 2^{x}p_2^{e_2}\ldots p_r^{e_r}\text{\quad ($x \ge 0$, $p_i$ todos primos diferentes a 2.)} $$
-            $$ n^2 = 2^{2x}p_2^{2e_2}\ldots p_r^{2e_r}$$
-            \begin{equation}
-                \colorbox{lightgray}{$2n^2= 2^{2x+1}p_2^{2e_2}\ldots p_r^{2e_r}.$ }\tag{*}
-            \end{equation}
-            
-            $$
-            m = 2^{y}q_2^{f_2}\ldots q_s^{f_s}\text{\quad ($y \ge 0$, $q_i$ todos primos diferentes a 2.)}
-            $$
-            \begin{equation}
-                \colorbox{lightgray}{$m^2 = 2^{2y}q_2^{2f_2}\ldots q_s^{2f_s}$} \tag{**}
-            \end{equation}
-            
-        \end{proof}
-        
-    \end{frame}
-    
-    
-    \begin{frame}
-        Como $2x+1 \ne 2y$ (el primero es impar y el segundo par), por unicidad de la descomposición, (*) $\ne$ (**), es decir $m^2 \not=2n^2$.
-        
+        x^{j-1} \equiv y^{j-1} \pmod{m}.
+        $$
+        Como $x \equiv y \pmod{m}$,  por   { (b)} tenemos que 
+        $$
+        x^{j-1}x \equiv y^{j-1}y  \pmod{m},
+        $$
+        es decir 
+        $$
+        x^j \equiv y^j \pmod{m}.
+        $$
         \qed
-
-        \begin{observacion}
-            El  ejemplo anterior nos dice que 
-            $$
-            m^2 \not=2n^2\quad \Rightarrow \quad \frac{m^2}{n^2}\not=2 \quad \Rightarrow \quad \left(\frac{m}{n}\right)^2\not=2 \quad \Rightarrow \quad \frac{m}{n}\not=\sqrt{2}. 
-            $$
-            
-            Es decir $\sqrt{2}$ \textit{no es un número racional.}
-        \end{observacion}
-
-        \begin{ejercicio} Probar que $\sqrt{15}$ no es un número racional.
-        \end{ejercicio}
-
-    \end{frame}
-    
-    \begin{frame}\frametitle{Notación}
-        
-        Sean $m$ y $n$ dos enteros positivos, a veces es conveniente escribir la factorización prima de ambos números usando los mismos primos.
-        
-        Los primos que usamos son los que se encuentran en la factorización prima de ambos:
-        $$
-        m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
-        n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
-        $$
-        con $e_i,f_i \ge 0$ para $i=1,\ldots,r$ y $e_i$ o $f_i$ distinto de cero. 
-        \pause
-        \begin{ejemplo}
-            168 y 495. \pause Tenemos que
-            \begin{equation*}
-                168 = 2^3 \cdot 3^1 \cdot 7^1, \qquad 495 = 3^2 \cdot 5^1 \cdot 11^1
-            \end{equation*}
-            Luego 
-            \begin{align*}
-                168 &= 2^3 \cdot 3^1 \cdot 5^0\cdot 7^1\cdot 11^0, \\
-                495 &= 2^0 \cdot3^2 \cdot 5^1 \cdot 7^0 \cdot 11^1
-            \end{align*}
-        \end{ejemplo}
-        
     \end{frame}
     
     
-    \begin{frame}
-        Veremos ahora un resultado que se puede deducir fácilmente del Teorema Fundamental de la Aritmética (TFA).\pause 
-        
-        \begin{proposicion} Sean $m,n \ge2$ con
+    \begin{frame}\frametitle{Regla del  nueve}\pause 
+        \begin{proposicion}
+            Sea $(x_nx_{n-1}\ldots x_0)_{10}$ la
+            representación del entero positivo $x$ en base $10$, entonces
             $$
-            m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
-            n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
+            x \equiv x_0+x_1+\cdots+x_n \pmod{9}
             $$
-            donde $p_i$ primo y $e_i,f_i \ge 0$ para $i=1,\ldots,r$. 
-            
-            Entonces $m|n$ si y sólo si $e_i \le f_i$ para todo $i$.
         \end{proposicion}\pause 
         \begin{proof}\pause 
-            \noindent($\Rightarrow$) Por la descomposición de $m$ es claro que $p_i^{e_i}|m$. Como $m|n$ entonces   $p_i^{e_i}|n$. Es decir $n =  p_i^{e_i}u$. Es claro por TFA entonces que $e_i \le f_i$.
+            Observemos:  $10\equiv 1\pmod{9}$ $\Rightarrow$  $10^k\equiv 1^k \equiv 1\pmod{9}$. 
             \vskip .2cm
-            
-            \noindent($\Leftarrow$) Como $e_i \le f_i$, tenemos que $p_i^{e_i}|p_i^{f_i}$, para $1 \le i \le r$.  Luego  $$p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}| p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.$$ Es decir $m|n$.
-        \end{proof}
-        
-    \end{frame}
-    
-    
-    \begin{frame}
-        
-        Ahora veremos que es posible calcular el $\operatorname{mcd}$ y el $\operatorname{mcm}$ de un par de números sabiendo sus descomposiciones primas.
-        
-        \begin{proposicion}
-            Sean $m$ y $n$ enteros positivos cuyas factorizaciones primas son
-            $$
-            m=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r},\qquad
-            n=p_1^{f_1}p_2^{f_2}\ldots p_r^{f_r}.
-            $$
-            \begin{enumerate}
-                \item[a)] El mcd de $m$ y $n$ es $d=p_1^{k_1}p_2^{k_2}\ldots
-                p_r^{k_r}$ donde, para cada $i$ en el rango $1\le i \le r$, $k_i$
-                es el mínimo entre $e_i$ y $f_i$.\vskip .2cm
-                \item[b)] El mcm de $m$ y $n$ es $u=p_1^{h_1}p_2^{h_2}\ldots
-                p_r^{h_r}$ donde, para cada $i$ en el rango $1\le i \le r$, $h_i$
-                es el máximo entre $e_i$ y $f_i$.
-            \end{enumerate}
-        \end{proposicion}
-    \end{frame}
-    
-    
-    \begin{frame}
-        \begin{proof}
-            \
-            
-            \noindent(a)  Es claro  que  $d = p_1^{k_1}p_2^{k_2}\ldots p_r^{k_r}$ divide a $m$ y $n$.
-            
-            \vskip .3cm
-            Sea $c$ tal que $c|n$ y $c|m$, entonces los primos que intervienen en la factorización de $c$ son $p_1,\ldots,p_r$ y por lo tanto 
-            $$
-            c =  p_1^{t_1}p_2^{t_2}\ldots p_r^{t_r}.
-            $$
-            
-            Además, como $c|n$ y $c|m$ tenemos que $t_i \le e_i,f_i$ y por lo tanto $t_i \le k_i = \min(e_i,f_i)$. 
-            
-            \vskip .3cm
-            
-            De esto se deduce que $c|p_1^{k_1}p_2^{k_2}\ldots p_r^{k_r}=d$. 
-            
-            \vskip .6cm
-            \noindent(b) Se deja como ejercicio. 
-            
-            \qed
-        \end{proof}
-        
-    \end{frame}
-    
-    
-    \begin{frame}
-        
-        \begin{ejemplo}
-            Encontremos el mcd y el mcm  de $168$ y $495$.
+            Por la definición de representación en base $10$, tenemos que 
+            $$x=x_0 + 10x_1+ \cdots+10^nx_n,$$ 
             \vskip .2cm
-            Ya habíamos visto que 
+            Luego,  $x_k10^k \equiv x_k \pmod{9}$ y  entonces $x \equiv
+            x_0+x_1+\cdots+x_n \pmod{9}$.
+        \end{proof}
+        \qed
+    \end{frame}
+    
+    
+    \begin{frame}
+        \begin{corolario}     Sea $x = (x_nx_{n-1}\ldots x_0)_{10}$, entonces
+            $$
+            9|x\quad  \Leftrightarrow\quad 9|  x_0+x_1+\cdots+x_n.
+            $$
+        \end{corolario}\pause 
+        \begin{proof}\pause 
+            Por la proposición anterior 
+            \begin{equation}
+                x \equiv x_0+x_1+\cdots+x_n \pmod{9} \tag{*}
+            \end{equation}
+            Entonces,
             \begin{align*}
-                168 &= 2^3 \cdot 3^1 \cdot 5^0\cdot 7^1\cdot 11^0, \\
-                495 &= 2^0 \cdot3^2 \cdot 5^1 \cdot 7^0 \cdot 11^1
+                9|x \quad& \Leftrightarrow \quad    x \equiv 0 \pmod{9}& &\text{(por hipótesis)} \\
+                & \Leftrightarrow \quad    x_0+x_1+\cdots+x_n  \equiv 0 \pmod{9}& &\text{(por (*))} \\    
+                & \Leftrightarrow  \quad 9 |    x_0+x_1+\cdots+x_n.  & &\quad\quad\quad\quad\quad\qed
             \end{align*}
+        \end{proof}
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        \begin{ejemplo}Probar que \quad $54\,321 \cdot 98\,765\not= 5\,363\,013\,565$.
+        \end{ejemplo}\pause 
+        \begin{proof}\pause 
+            Módulo 9:
+            \begin{equation*}
+                \begin{matrix*}[l]
+                    54\,321 & \equiv& 5 +4 +3+2+1 & \equiv& 15 & \equiv& 6 \pmod{9} \\
+                    98\,765 & \equiv& 9+8+ 7+6+5 & \equiv&  35  & \equiv& 8 \pmod{9} 
+                \end{matrix*}
+            \end{equation*}
+            Entonces 
+            \begin{equation*}
+                54\,321 \cdot 98\,765 \equiv 6\cdot 8  \equiv 48  \equiv 4+8 \equiv 12 \equiv 3 \pmod{9} 
+            \end{equation*}
+            Mientras que 
+            $$
+            5\,363\,013\,565  \equiv 5+3+6+3+0+1+3+5+6+5  \equiv37   \equiv 1 \pmod{9} 
+            $$
+            Luego  $54\,321 \cdot 98\,765\not= 5\,363\,013\,565$. \qed
             
+        \end{proof}
+        
+    \end{frame}
+    
+    \begin{comment}
+    \begin{frame}
+        \begin{ejemplo}
+            Sea $x = (x_nx_{n-1}\ldots x_0)_{10}$, entonces
+            $$
+            4 |x\quad  \Leftrightarrow\quad 4 |  2x_1 + x_0.
+            $$
+        \end{ejemplo}\vskip -.5cm
+        \begin{proof}
+            Aquí tenemos que $10  \equiv 2 \pmod{4}$, luego  $10^2  \equiv 4  \equiv 0 \pmod{4}$. 
+            \vskip .2cm
+            Por lo tanto $10^k    \equiv 0 \pmod{4}$ para $k > 1$. 
+            \vskip .2cm
             Luego 
+            \begin{equation*}
+                x \equiv x_n10^n + x_{n-1}10^{n-1}+\cdots+ x_{2}10^{2}+ x_{1}10 + x_0 \equiv 2 x_{1} + x_0 \pmod{4}.
+            \end{equation*}
+            Luego
+            \begin{equation*}
+                4 | x  \;\Leftrightarrow \; x \equiv 0 \pmod{4}  \; \Leftrightarrow  \; 2 x_{1} + x_0  \equiv 0 \pmod{4}   \; \Leftrightarrow  \;4 | 2 x_{1} + x_0 .\qed
+            \end{equation*}
             
-            \begin{align*}
-                \text{mcd}(168,495) &= 2^0 \cdot 3^1 \cdot 5^0\cdot 7^0\cdot 11^0 = 3, \\
-                \text{mcm}(168,495) &= 2^3 \cdot3^2 \cdot 5^1 \cdot 7^1 \cdot 11^1.
-            \end{align*}
-            
-        \end{ejemplo}
-        
-    \end{frame}
-    
-
-    \begin{frame}
-        \frametitle{Congruencia - Definiciones y propiedades básicas}
-    
-        \begin{definicion} Sean $a$ y $b$ enteros y $m$ un
-            entero positivo. Diremos que $a$ es {\em congruente} a $b$
-            {\textit{módulo}} $m$, y escribimos 
-            $$
-            a \equiv b \pmod{m}
-            $$
-            si $a-b$ es divisible or $m$,  es decir si $m| a -b$.
-        \end{definicion}
-        
-        Observar que 
-        
-        $$a\equiv 0 \pmod{m} \Leftrightarrow m|a\qquad\qquad$$ 
-        y que 
-        $$\qquad\qquad a\equiv b \pmod{m}\Leftrightarrow a-b\equiv 0 \pmod{m}.$$ 
-    \end{frame}
-    
-    \begin{frame}
-        \frametitle{}
-
-        \begin{notacion}
-            $a \equiv b \pmod{m}$ también  lo denotamos $a \equiv b\; (m)$.
-
-        \end{notacion}
-
-        \begin{ejemplo}
-            \begin{itemize}
-                \item $7 \equiv 3 \;(2)$, pues $2 | 7-3=4$.
-                \item $17 \equiv 8 \;(3)$, pues $3 | 17-8 =9$.  
-                \item $8 \equiv 17 \;(3)$, pues $3 | 8-17 =-9$.
-                \item $35 \equiv 13 \;(11)$, pues $11| 35-13 = 22 = 2 \cdot 11$. 
-            \end{itemize}
-        \end{ejemplo}
-    
-        
-    
-    \end{frame}
-
-    \begin{frame}
-        \frametitle{}
-    
-        \begin{proposicion}\label{prop-mod-resto}
-            Sean $a$ entero y $m$ un entero positivo. Sea $r$ el resto de dividir $a$ por $m$.            
-            $$a\equiv r \pmod{m}.$$\vskip -.6cm
-        \end{proposicion}
-        \begin{proof}
-             $a=mq+r$  con $0 \le r <m$.
-             \vskip.4cm
-             Luego,
-             $$a-r = mq \quad \Rightarrow \quad m|a-r\quad \Rightarrow \quad a\equiv r \pmod{m}.$$ 
-             
-             \qed
         \end{proof}
+    \end{frame}
+\end{comment}
+        
+    \begin{frame}\frametitle{Ecuación lineal de congruencia}
+        Estudiaremos el problema de encontrar los $x \in \mathbb Z$ tal que
+        
+        \begin{equation}\label{ecuacionlineal}
+            ax \equiv b \pmod{m}.
+        \end{equation}
+        
+        \pause
+        
+        Una ecuación como     (\ref{ecuacionlineal}) es llamada una \textit{ecuación lineal de congruencia.}
+        \vskip .4cm\pause
+        El problema no siempre admite solución. 
+        \vskip .4cm
+        \pause
+        Por  ejemplo, \,$2x\equiv 3 \pmod{2}$\, no posee ninguna solución en
+        $\mathbb Z$, pues cualquiera se $k \in \mathbb Z$, $2k-3$ es
+        impar, luego no es divisible por $2$.
+        \vskip .4cm\pause
+        Notemos además que si $x_0$ es solución de la ecuación
+        (\ref{ecuacionlineal}), también lo es $x_0+km$ de manera que si la
+        ecuación posee una solución, posee infinitas soluciones. 
+        
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        \begin{ejemplo} La solución general de la ecuación $3x\equiv 7
+            \pmod{11}$ es $6+k11$ con $k \in \mathbb Z$.
+        \end{ejemplo}\vskip .2cm\pause
+        \begin{proof} Si probamos con los enteros $x$ tal que  $0\le x < 11$, veremos que la ecuación admite una única solución, a saber $x=6$. 
+            \vskip .2cm\pause
+            
+            Otras soluciones se obtienen tomando $6+11k$. \pause 
+            \vskip .2cm
+            Por otra parte si $u$ es también solución de la ecuación, se tiene 
+            $$
+            3u \equiv 7 \hskip -.3cm\pmod{11},\quad 3 \cdot 6 \equiv 7\hskip -.3cm \pmod{11} \quad \Rightarrow \quad 3u \equiv 3\cdot 6\hskip -.3cm \pmod{11}.
+            $$
+            \pause Por lo tanto $3(u-6)$ es múltiplo de $11$. 
+            \vskip .2cm\pause
+            
+            Como $11$ no divide a $3$ se tiene que $11|(u-6)$, o sea $u=6+11k$. \qed
+        \end{proof}
+    \end{frame}
+    
+    
+    \begin{frame}\label{ejemplo-eq-lineal-cong}
+        \begin{ejemplo} Encontrar $0 \le x < 109$ solución  de la ecuación $74x\equiv 5 \pmod{109}$.
+        \end{ejemplo}\pause
+        \begin{solucion}\pause
+            
+            \begin{itemize}
+                \item[$\circ$] $1 =(74,109)$, por lo tanto, existen $s,t \in \mathbb Z$ tal que
+                \begin{equation}\label{eq:elc1}
+                    1  = s \cdot 74 + t\cdot 109
+                \end{equation}
+                \vskip .2cm\pause
+                \item[$\circ$] Luego,
+                \begin{equation}\label{eq:elc2}
+                    1  \equiv  s \cdot 74\pmod{109}.
+                \end{equation} \vskip .2cm\pause
+                \item[$\circ$] Multiplicando  por $5$ la ecuación (\ref{eq:elc2}), obtenemos
+                \begin{equation}\label{eq:elc3}
+                    5 \equiv  (5s) \cdot 74 \pmod{109}.
+                \end{equation}
+                Eso  implica que $5s$ es solución de  $74x\equiv 5 \pmod{109}$.
+            \end{itemize}
+            
+            
+        \end{solucion}
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{}
+    
+        Con el algoritmo de Euclides obtenemos,
+        $$
+        1 =  28 \cdot  74 + (-19) \cdot 109.
+        $$
+
+        Por lo anterior, $5 \cdot 28 = 140$ es solución de la ecuación, es decir,
+        $$
+        74 \cdot 140  \equiv 5 \pmod{109}.
+        $$
+
+        Pero $140>109$. Pero  $31 = 140 -109$ también  es solución, pues \linebreak $109 \equiv 0\pmod{109}$. 
+        \vskip .3cm
+        Luego la solución es $x = 31$, pues
+        $$74 \cdot 31  \equiv 5 \pmod{109}. \qquad \text{y} \qquad0 \le 31 < 109.$$
+
+        \qed
+
+        
     
     \end{frame}
 
+    \begin{comment}
+    \begin{frame}
+        Obtengamos entonces la ecuación (\ref{eq:elc1}).\pause
+        \begin{alignat}3
+            109 &= 74 \cdot 1 + 35& \qquad&\Rightarrow& \qquad 35 &= 109 - 74 \label{eq:cle1}\\ 
+            74 &=  35\cdot 2 +4 & \qquad&\Rightarrow& \qquad 4 &= 74 - 35\cdot 2 \label{eq:cle2}\qquad\\
+            35 &= 4 \cdot 8 + 3& \qquad&\Rightarrow& \qquad  3 &= 35 - 4 \cdot 8 \label{eq:cle3}  \\
+            4 &=  3\cdot 1 + 1& \qquad&\Rightarrow& \qquad 1 &= 4 - 3\label{eq:cle4}\\
+            3 &=  1\cdot 3  +0 & \qquad&& \qquad  &
+        \end{alignat}
+        \pause    Luego,\pause
+        \begin{align*}
+            1 & \overset{(\ref{eq:cle4})}{=} 4 -3 \overset{(\ref{eq:cle3})}{=} 4 - ( 35 - 4 \cdot 8) \\
+            &=  9 \cdot 4 - 35 \\
+            & \overset{(\ref{eq:cle2})}{=} 9 \cdot (74 - 35\cdot 2) - 35  = 9 \cdot  74 + (-18) \cdot 35 - 35 \\
+            &= 9 \cdot  74 + (-19) \cdot 35 \\
+            & \overset{(\ref{eq:cle1})}{=}  9 \cdot  74 + (-19) \cdot (109 - 74) \\ %= 9 \cdot  74 + (-19) \cdot 109 + 19 \cdot 74 \\
+            &= 28 \cdot  74 + (-19) \cdot 109 .
+        \end{align*}
+    \end{frame}
 
     
     \begin{frame}
-        Es fácil verificar que la {congruencia módulo} $m$ verifica las
-        siguientes propiedades\vskip .2cm
-        \begin{enumerate}
-            \item[a)]
-            Es {\it {reflexiva}} es decir $x\equiv x\pmod{m}$.\vskip .2cm
-            \item[b)]
-            Es {\it {simétrica}}, es decir si $x \equiv y \pmod{m}$, entonces\vskip .2cm
-            $y \equiv x \pmod{m}$.
-            \item[c)]
-            Es {\it { transitiva}}, es decir si $x\equiv y \pmod{m}$ e
-            $y\equiv z \pmod{m}$, entonces $x\equiv z \pmod{m}$.
-        \end{enumerate}
+        Recordemos que debemos resolver la ecuación
+        \begin{equation*}
+            74x\equiv 5 \pmod{109}.
+        \end{equation*}
+        \pause Como 
+        \begin{equation*}
+            1 = 28 \cdot  74 + (-19) \cdot 109,
+        \end{equation*}
+        \pause tenemos
+        \begin{equation*}
+            1  \equiv 28 \cdot  74\pmod{109}.
+        \end{equation*}
+        \pause Por lo tanto, 
+        \begin{equation*}
+            5 \equiv (5 \cdot28)  74\pmod{109}.
+        \end{equation*}
+        \vskip .3cm
+        \pause Es decir, $140$ es solución y $31 = 140 -109$ también lo es, pues \linebreak $109 \equiv 0\pmod{109}$. 
+        \vskip .3cm
+        Luego 
+        $$5 \equiv 31 \cdot  74\pmod{109} \qquad \text{y} \qquad0 \le 31 < 109.\qed $$
+    \end{frame}
+\end{comment}
+    
+    \begin{frame}
+        Analicemos ahora la situación general de la ecuación $ ax\equiv b\pmod{m}$. 
+        \vskip .3cm 
+        \begin{teorema}\label{elc} Sean $a,b$ números enteros y $m$ un entero positivo y denotemos $d =\operatorname{mcd}(a,m)$. La  ecuación 
+            \begin{equation}\label{elc}
+                ax \equiv b \pmod{m}
+            \end{equation}
+            admite solución si y sólo si $d|b$, y en este caso dada $x_0$ una solución, todas las soluciones son de la forma 
+            $$x = x_0 + k n,\qquad \mbox{ con } k \in \mathbb Z \mbox{ y } n = {\frac{m}{d}} $$
+        \end{teorema}
+    \end{frame}
+    
+    
+    \begin{frame}
         \begin{proof}
-            a)  $m| x-x =0$  y por lo tanto $x\equiv x\pmod{m}$.
-            \vskip .2cm
-            b) $x \equiv y\;(m)$ $\Rightarrow$ $m|x-y$ $\Rightarrow$  $m|-(x-y)$   $\Rightarrow$  $m|y-x$ $\Rightarrow$ $y \equiv x\; (m)$.
-            \vskip .2cm
-            c) $x \equiv y \;(m) \wedge y \equiv z \;(m)$ \;  $\Rightarrow$ \; $m|x-y \wedge m|y-z$ \; $\Rightarrow$ \; 
-            \vskip.2cm
-            \quad$m |(x-y) + (y-z) = x -z$ \; $\Rightarrow$ \; $x \equiv z \;(m)$.
-            
+            ($\Leftarrow$) Muy  similar al ejemplo anterior (p. {\color{blue}\ref{ejemplo-eq-lineal-cong}}). \pause Como 
+            \begin{equation*}
+                d = s \cdot  a +t \cdot m,\qquad \text{para algunos $s,t \in \mathbb Z$,}
+            \end{equation*}
+            \pause tenemos
+            \begin{equation*}
+                d  \equiv s \cdot  a\pmod{m}.
+            \end{equation*}
+            \pause Como  $d|b$, tenemos $b = d q$. Por lo tanto, 
+            \begin{equation*}
+                b = d q \equiv qs \cdot  a\pmod{m}.
+            \end{equation*}
+            Es decir 
+            \begin{equation*}
+                a(qs)  \equiv b\pmod{m}.
+            \end{equation*}
+            \vskip .3cm
+            \pause Es decir, $x_0 = qs$ es solución de $ax \equiv b \pmod{m}$. 
+        \end{proof}
+    \end{frame}
+    
+    
+    \begin{frame}
+        Veamos ahora que si $n = {\frac{m}{d}}$ y $k \in \mathbb Z$, entonces $x_0 + kn$ también es solución.
+        \vskip .3cm
+        Es decir
+        \begin{equation*}
+            a(x_0 + kn) \equiv b \pmod{m}.
+        \end{equation*} \pause
+        
+        Como $d|a$ $\Rightarrow$ $a = dr$, luego $akn = dr\frac{m}{d} = rm \equiv 0 \pmod{m}$. 
+        \vskip .3cm\pause
+        Luego
+        $$
+        a(x_0 + kn) \equiv     ax_0 + akn \equiv    ax_0 \equiv b \pmod{m}.
+        $$
+        \vskip .6cm\pause
+        ($\Rightarrow$) Ver apunte. 
+        
+    \end{frame}
+    
+    \begin{comment}
+    \begin{frame}
+        \begin{proposicion}
+            Sean $a$, $b$, $m \in {\mathbb Z}$, $d>0$ tales que  \,$d\mid a$,\,  \,$d\mid b$\, y \,$d\mid m$. Entonces, 
+            \begin{equation*}
+                ax \equiv b\,({m}) \quad \Leftrightarrow\quad\frac{a}{d} x \equiv \frac{b}{d}\,\left(\frac{m}{d}\right).
+            \end{equation*}
+            \vskip -.4cm
+        \end{proposicion} \pause
+        \begin{proof} \pause
+            \vskip -.8cm
+            \begin{align*}
+                a x \equiv b\,({m}) &\Leftrightarrow m| ax -b \\&\Leftrightarrow  a x -b = m \cdot q   \\
+                &\Leftrightarrow \frac{a}{d} x -\frac{b}{d} =\frac{m}{d}\cdot q   \\
+                &\Leftrightarrow \frac{a}{d} x \equiv \frac{b}{d}\,\left(\frac{m}{d}\right)\qquad  
+            \end{align*}
             \qed
         \end{proof}
+        La proposición anterior nos permite reducir las ecuaciones al caso $    ax \equiv b\,({m})$ con $(a,m)=1$. \pause
     \end{frame}
-
-
+\end{comment}
+    
     \begin{frame}
-        
-        
-        \begin{proposicion}
-            Sean $a$ y $b$ enteros y $m$ un entero positivo. Entonces $a\equiv b \pmod{m}$ si  y sólo si
-            $a$ y $b$ tienen el mismo resto en la división por $m$.
-        \end{proposicion}
-        \begin{proof} Se deduce por la proposición de la p. \ref{prop-mod-resto} y transitividad. \qed
-        \end{proof}
     
-        Así como separamos $\mathbb Z$ en los números pares e
-        impares, la propiedad anterior nos permite expresar $\mathbb Z$
-        como una unión  de $m$ subconjuntos. 
         
         \vskip .4cm
         
-        Es decir si \quad $\mathbb  Z_{[r]} =\{x \in \mathbb Z: \text{el resto de dividir $x$ por $m$ es $r$}\}$,
-        \vskip .4cm
-        entonces, 
+        \begin{ejemplo}
+            Encontrar todos los $x \in \mathbb Z$ tales que
+            \begin{equation}
+                6x \equiv 18 \pmod{21}. \tag{*}
+            \end{equation}
+        \end{ejemplo} \pause \vskip -.6cm
+        \begin{solucion} \pause
+            Como $3 =(6,21)$ y $3|18$, la ecuación (*) tiene solución. 
+            
+            Por otro lado, por el algoritmo de Euclides,
+            \begin{equation*}
+                \begin{matrix*}
+                    3 &=& (-3)\cdot 6 + 1\cdot 21& && \Longrightarrow \\
+                    3 &\equiv& (-3)\cdot 6 &\pmod{21}& & \stackrel{\text{multiplicando por $6$}}{\Longrightarrow} \\
+                    18 &\equiv& (-18)\cdot 6 &\pmod{21}& & {\Longrightarrow} \\
+                    6 \cdot (-18 ) &\equiv& 18 &\pmod{21}& &.
+                \end{matrix*}
+            \end{equation*}
         
-        $$
-        \mathbb Z= \mathbb Z_{[0]}\cup \mathbb Z_{[1]}\cup \cdots\cup \mathbb Z_{[m-1]}.
-        $$
+            Es decir $x_0 = -18$  es solución de la ecuación (*) y todas las soluciones son $-18 + k\cdot(\frac{21}{3})$, $k \in \mathbb Z$.\qed
+        \end{solucion}
     \end{frame}
-    
-    
     
     
     

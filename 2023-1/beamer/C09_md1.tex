@@ -3,7 +3,6 @@
 \usetheme{CambridgeUS}
 %\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
-
 \usepackage{etex}
 \usepackage{t1enc}
 \usepackage[spanish,es-nodecimaldot]{babel}
@@ -94,249 +93,375 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
 
 
-\title[Clase 9 - Conteo 4]{Matemática Discreta I \\ Clase 9 - Conteo ($4^\circ$ parte)}
+
+\title[Clase 10 - Cociente y resto]{Matemática Discreta I \\ Clase 10 - Cociente y resto}
 %\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
 \institute[]{\normalsize FAMAF / UNC
 	\\[\baselineskip] ${}^{}$
 	\\[\baselineskip]
 }
-\date[13/04/2023]{13 de abril  de 2023}
+\date[18/04/2023]{18 de abril  de 2023}
+
+
+
 
 
 
 \begin{document}
-	
-	\frame{\titlepage} 
-	
-	
-	\begin{frame}\frametitle{El teorema del binomio}
-		En álgebra elemental aprendemos las fórmulas
-		$$
-		(a+b)^2 = a^2 +2ab +b^2, \qquad (a+b)^3 = a^3 + 3 a^2b +3ab^2 +
-		b^3.
-		$$
-		\vskip .4cm\pause
-		A veces nos piden desarrollar la formula para $(a+b)^4$ y
-		potencias mayores de $a+b$. 
-		\vskip .4cm\pause
-		El resultado general que da una formula para $(a+b)^n$ es conocido como el
-		{\it {teorema del binomio}} o {\it binomio de Newton}.  
-		\vskip .4cm
-	\end{frame}
-	
-	
-	\begin{frame}\frametitle{El teorema del binomio}
-		
-		
-		{\color{blue} Teorema}
-		\vskip .2cm
-		{\it
-			Sea $n$ un entero positivo. El coeficiente del termino
-			$a^{n-r}b^r$ en el desarrollo de $(a+b)^n$ es el número binomial
-			$\binom{n}{r}$.\pause Explícitamente, tenemos
-			$$
-			(a+b)^n= \binom{n}{0} a^n + \binom{n}{1} a^{n-1}b+ \binom{n}{2}
-			a^{n-2}b^2 + \cdots + \binom{n}{n} b^n.$$
-		}
-		\vskip .2cm		\pause
-		Escrito de otra forma:
-		\vskip .2cm	
-		Si $n >0$, 
-		\begin{equation*}
-			(a+b)^n= \sum_{i=0}^n \binom{n}{i} 	a^{n-i}b^i.
-		\end{equation*}
-		
-	\end{frame}
-	
-	
-	\begin{frame}
-		
-		
-		{\color{blue}Observación}
-		\vskip .2cm
-		Los coeficientes binomiales que intervienen en la fórmula de $(a+b)^n$ forman una fila del triángulo de Pascal:\pause
-		\begin{align*}
-			&\binom{n}{0}&&\binom{n}{1}& \binom{n}{2} && &\cdots && &\binom{n}{n-2}&&&\binom{n}{n-1}&&\binom{n}{n}& && 
-		\end{align*}
-		
-		\vskip .4cm\pause
-		{\color{blue}Ejemplo}
-		\begin{align*}
-			(a+ b)^4 &= \binom{4}{0} a^4 + \binom{4}{1} a^{3}b+ \binom{4}{2} a^{2}b^2 + \binom{4}{3} ab^3 + \binom{4}{4} b^4 \\
-			&{}\\
-			&=  a^4 \;+\; 4 a^{3}b\;+\; 6 a^{2}b^2\; +\; 4 ab^3 \;+\; b^4.
-		\end{align*}
-	\end{frame}
-	
-	
-	\begin{frame}
-		El teorema del binomio puede usarse para deducir identidades en
-		que estén involucrados los números binomiales.\pause
-		
-		\vskip .4cm
-		{\color{blue}Ejemplo}
-		\vskip .2cm
-		Probemos que
-		\begin{equation*}
-			\binom{n}{0}+\binom{n}{1}+\binom{n}{2}+\cdots+\binom{n}{n}= 2^n.
-		\end{equation*}
-		
-		\vskip .2cm\pause 
-		{\color{blue}Demostración.}\pause
-		
-		\vskip .2cm
-		Observemos que $2^n = (1 + 1)^n$. Por el  teorema del binomio sabemos que 
-		\begin{align*}
-			(1+1)^n &= \binom{n}{0} 1^n + \binom{n}{1} 1^{n-1}1+ \binom{n}{2}
-			1^{n-2}1^2 + \cdots + \binom{n}{n} 1^n \\
-			&= \binom{n}{0}  + \binom{n}{1} + \binom{n}{2}+ \cdots + \binom{n}{n}. \qed
-		\end{align*}
-		
-	\end{frame}
-	
-	
-	\begin{frame}
-		{\color{blue}Observación}
-		\vskip .2cm
-		La fórmula 
-		\begin{equation*}
-			\binom{n}{0}+\binom{n}{1}+\binom{n}{2}+\cdots+\binom{n}{n}= 2^n. \tag{$*$}
-		\end{equation*}
-		tiene una interpretación combinatoria: nos permite calcular nuevamente la cantidad de subconjuntos de un conjuntos de $n$ elementos. 
-		\pause
-		\vskip .2cm 
-		
-		{\color{blue}1.} Es claro  que la cantidad de subconjuntos de $k$ elementos de un conjunto de $n$ elementos es $\binom{n}{k}$. 
-		
-		\vskip .2cm 
-		\pause
-		{\color{blue}2.} Los subconjuntos de un conjunto son los subconjuntos de 0  elementos, unión los subconjuntos de $1$ elemento, unión los subconjuntos de $2$ elementos, unión los subconjuntos de $3$ elementos, etc.
-		
-		\vskip .2cm 
-		\pause
-		{\color{blue}3 .} Por  el principio de adición y la fórmula $(*)$ obtenemos  que la cantidad de subconjuntos de un conjuntos de $n$ elementos es $2^n$.
-		
-		
-	\end{frame}
-	
-	
-	\begin{frame}\frametitle{Ejercicios de conteo}
-		{\color{blue}Ejercicio}
-		\vskip .2cm
-		¿Cuántos números naturales existen menores que $10^5$, cuyos dígitos sean todos distintos?
-		\vskip .2cm \pause
-		{\color{blue}Solución.}\pause
-		\vskip .2cm
-		Los números naturales menores de $10^5$ son todos aquellos que tienen como máximo 5 dígitos.
-		\pause
-		\begin{enumerate}
-			\item[1.] 1 dígito $\to$ $9$ posibilidades,
-			\item[2.] 2 dígitos $\to$ $9 \times 9$ posibilidades (81),
-			\item[3.] 3 dígitos $\to$ $9 \times 9 \times 8$ posibilidades (648),
-			\item[4.] 4 dígitos $\to$ $9 \times 9 \times  8\times 7$ posibilidades (4536),
-			\item[5.] 5 dígitos $\to$ $9 \times 9 \times  8\times  7\times 6$ posibilidades (27216),
-		\end{enumerate} 
-		\vskip .2cm
-		\textbf{Total:} $9 +81+ 648+4536+27216 = 32490$.\qed
-	\end{frame}
-	
-	
-	\begin{frame}
-		
-		
-		{\color{blue}Ejercicio}
-		\vskip .2cm
-		Extrayendo 5 cartas de una baraja de 40 cartas ¿cuántos resultados diferentes pueden obtenerse? (no importa el orden)
-		\vskip .2cm \pause
-		{\color{blue}Solución.}\pause
-		\vskip .2cm
-		Las cuarenta caretas son diferentes y no nos importa el orden en que recibimos las cartas. 
-		\vskip .2cm
-		El problema es entonces elegir 5 entre 40, por lo tanto la respuesta es
-		\begin{equation*}
-			\binom{40}{5}.
-		\end{equation*}
-        \qed
-		\vskip 2cm
-		
-	\end{frame}
-	
-	\begin{frame}
-		
-		{\color{blue}Ejercicio}
-		\vskip .2cm
-		¿De cuántas formas diferentes pueden repartirse 5 bolas blancas, 3 rojas y 2 negras en 10 urnas
-		distintas (etiquetadas) de forma que cada urna contenga una bola?
-		\vskip .2cm \pause
-		{\color{blue}Solución.}
-		\vskip .2cm
-		Primero nos preguntamos ¿de cuántas forma puedo poner las 5 bolas blancas en  las 10 urnas? 
-		\vskip .3cm
-		Este problema es equivalente a elegir 5 urnas entre 10 (las urnas donde pondremos las bolas blancas) y sabemos que las posibilidades son $\binom{10}{5}$.
-		\vskip .3cm
-		Ahora quedan 5 lugares y  queremos ver de cuántas formas ponemos 3 bolas rojas en 5 urnas y la respuesta es $\binom{5}{3}$ 
-		\vskip 1cm
-		
-	\end{frame}
-	
-	\begin{frame}
-		
-		Finalmente,  hay dos lugares para las dos bolas negras y hay una sola forma de ponerlas.
-		\vskip .2cm
-		El resultado es entonces
-		
-		\begin{equation*}
-			\binom{10}{5}\binom{5}{3} = \frac{10!}{5!5!}\frac{5!}{2!3!} = \frac{10!}{5!2!3!} .
-		\end{equation*}\qed
-		\vskip 4cm
-	\end{frame}
-	
-	
-	
-	
-	\begin{frame}
-		
-		
-		{\color{blue}Ejercicio}
-		\vskip .2cm
-		Un ascensor de un centro comercial parte del sótano con 5 pasajeros y se detiene en 7 pisos. 
-		¿De cuántas maneras distintas pueden descender los pasajeros? ¿Y con la condición de que dos 
-		pasajeros no bajen en el mismo piso?
-		\vskip .2cm \pause
-		{\color{blue}Solución.}\pause
-		\vskip .3cm
-		Hagamos un poco de  abstracción del problema y pensemos las  posibilidades que tiene 5 personas para ubicarse en 7 lugares: la primera persona tiene 7 posibilidades, la segunda también y así sucesivamente, luego el total de posibilidades es 
-		\begin{equation*}
-			7 \times 	7 \times 	7 \times 	7 \times 	7  = 7^5.
-		\end{equation*}
-		
-		
-		
-		\vskip 5cm
-		
-		
-	\end{frame}
-	
-	
-	\begin{frame}
-		
-		
-		Si  no estás convencido del razonamiento, lo podemos ver de la siguiente manera: supongamos  que tenemos 5 posiciones (que representan los 5 pasajeros) y  en cada posición podemos poner un número del 1 al 7 (el piso en que baja), entonces la pregunta se reduce a ¿cuántos números de 5 dígitos se pueden formar con los dígitos del 1 al 7?
-		\vskip .2cm \pause
-		Claramente, la respuesta es también $7^5$.
-		
-		\vskip 1cm\pause
-		
-		Para la segunda pregunta, simplemente hay que modificar la pregunta anterior ¿cuántos números de 5 dígitos con todos los dígitos diferentes se pueden formar con los dígitos del 1 al 7?
-		\vskip .2cm 
-		La respuesta es:
-		\begin{equation*}
-			7 \times 6 \times 5 \times 4 \times 3 = \frac{7!}{(7-5)!}=\frac{7!}{2!}.
-		\end{equation*}
-		\qed
-		
-	\end{frame}
-	
-	
-\end{document}
 
+\frame{\titlepage} 
+
+
+\begin{frame}\frametitle{Cociente y resto}
+Cuando somos chicos aprendemos que $6$ ``cabe'' cuatro veces en $27$ y
+el resto es $3$, o sea
+$$
+27=6 \cdot 4 + 3.
+$$\pause
+Un punto importante es que el resto debe ser menor que 6. Aunque,
+también es verdadero que, por ejemplo
+$$
+27=6 \cdot 3 + 9.
+$$\pause
+
+En la división debemos tomar el menor valor para el resto, de forma que ``lo que
+queda'' sea un número no negativo lo más chico posible. 
+\vskip .2cm\pause
+El hecho de que el conjunto de
+posibles ``restos'' tenga un mínimo es una consecuencia del \textit{axioma
+del buen orden.}
+
+
+\end{frame}
+
+
+\begin{frame}
+	
+
+\vskip .4cm
+{\color{blue}Teorema (Algoritmo de división)}
+\vskip .2cm
+{\it Sean $a$ y $b$ números enteros
+	cualesquiera con $b \in \mathbb N$, entonces existen enteros únicos $q$ y
+	$r$ tales que
+	$$
+	a=b \cdot q + r\qquad\text{ y }\qquad 0\le r<b.
+	$$
+ }\pause
+\vskip 0.4cm
+A la $q$ del teorema anterior lo llamaremos el \textit{cociente de $b$  por $a$}.
+\vskip .4cm
+A $r$ lo llamamos el \textit{resto de dividir $b$ por $a$.}
+\vskip 2cm
+
+\end{frame}
+
+
+\begin{frame}
+
+{\color{blue}Idea de la prueba.}
+\vskip .2cm
+Debemos aplicar el axioma del buen orden al
+conjunto de los ``restos''
+$$ R=\{x \in \mathbb N_0 | a = by + x \ \text{ para algún }\ y \in \mathbb Z\}.
+$$
+\pause
+Primero se demuestra que $R$ no es vacío \pause  (si $a \ge 0$, $a \in R$ tomando  $y=0$).  
+\pause
+\vskip .4cm 
+Entonces, por el axioma del buen orden se encuentra un  mínimo $r \in R$. Es decir existe $q \in \mathbb{Z}$ tal que 
+$$
+a=b \cdot q + r\qquad\text{ y $r$ es mínimo de R} .
+$$\pause  
+Luego se prueba  que $0\le r<b$.
+\qed
+\end{frame}
+
+
+\begin{frame}
+	
+	
+	{\color{blue}Ejemplos}
+	\vskip .2cm
+		\begin{enumerate}
+			\item[1. ] Si $a=10$ y $b=3$, entonces $10 = 3 \cdot 3 +1$. Es decir $q= 3$, $r=1$. \pause\vskip .3cm
+			\item[2. ] Si $a=2$ y $b=5$, entonces $2 = 5 \cdot 0 +2$. Es decir $q= 0$, $r=2$.  \pause\vskip .3cm
+			\item[3. ] Si $a=-10$ y $b=3$, entonces $-10 = 3 \cdot (-4) +2$. Es decir $q= -4$, $r=2$.    \pause\vskip .3cm 
+			\item[4. ] Si $a=-2$ y $b=3$, entonces $-2 = 3 \cdot (-1) +1$. Es decir $q= -1$, $r=1$. 
+		\end{enumerate}
+
+\end{frame}
+
+
+\begin{frame}\frametitle{ Desarrollos en base $b$, ($b \ge 2$)}
+	
+	
+	Los números tal como los escribimos se encuentran en \textit{base 10.} 
+	\vskip .2cm
+	¿Qué significa  esto?
+	\vskip .4cm\pause
+	{\color{blue}Ejemplo}
+	\vskip .2cm
+	El número 407 se puede escribir como 
+	$$
+	407 = 4 \cdot 10^2 +0 \cdot 10^{1}+ 7 \cdot 10^0,
+	$$
+	\vskip .2cm\pause
+	El número 23827 se puede escribir como 
+	$$
+	23827 = 2 \cdot 10^4 +3 \cdot 10^3 +8 \cdot 10^2 +2 \cdot 10^{1}+ 7 \cdot 10^0,
+	$$
+
+
+	
+\end{frame}
+
+
+\begin{frame}
+	
+	En  general:
+	\vskip .4cm
+	{\color{blue}Teorema }
+	\vskip .2cm
+	{\it Todo número natural $x$  se puede escribir de una única forma como  
+		$$
+		x = r_n10^n +r_{n-1} 10^{n-1}+\cdots + r_1 10 + r_0,
+		$$
+		donde $ r_n \not= 0$ y  $0 \le r_i < 10$ para $i= 0, 1, \ldots, {n}$.}
+	
+	\vskip .8cm\pause
+	
+	Podemos decir entonces que
+		\vskip .4cm
+
+	\begin{center}
+		{\it $x$ se representa como la cadena $ r_n r_{n-1}  \ldots  r_1   r_0$ en base 10.}
+	\end{center}
+		\vskip .2cm
+	o también que 
+	
+	\begin{equation*}
+		x = ( r_n r_{n-1}  \ldots  r_1   r_0)_{10}.
+	\end{equation*}
+	\vskip 4cm
+	\end{frame}
+	
+
+\begin{frame}
+	Este teorema es	una consecuencia importante del algoritmo de división  y es el que
+	justifica nuestro método usual de representación de enteros. 
+	
+	\vskip .2cm
+	
+	También podemos desarrollar en potencias de $b$ con $b$ cualquier entero $\ge 2$ (y vale el teorema anterior reemplazando $10$ por $b$).
+	
+ \vskip .8cm\pause
+ {\color{blue}Ejemplo (base 5)}
+ \vskip .2cm
+ Deseamos escribir el número $407$ con una expresión de la forma 
+		$$
+		407 = r_n5^n +r_{n-1} 5^{n-1}+\cdots + r_1 5 + r_0,
+		$$
+		con $0 \le r_i < 5$. Veamos que esto es posible y se puede hacer de forma algorítmica. 
+
+\end{frame}
+
+
+\begin{frame}
+	La forma de hacerlo  es, primero, dividir el número original y los sucesivos cocientes por $5$:   \pause
+	\begin{alignat}2
+	407 &=5\cdot 81 &\;+\;& 2 \label{ib3}\\
+	81 & = 5\cdot 16 &\;+\;& 1  \label{ib4}\\
+	16 & = 5\cdot 3 &\;+\;& 1  \label{ibi5}\\
+	3 & = 5\cdot 0 &\;+\;& 3.
+	\end{alignat} \pause
+	Observar entonces que
+
+\begin{center}
+    \begin{tabular}{rll}
+        $407$&$=5\cdot 81 + 2$  \qquad \qquad&{por (\ref{ib3})} \\ \pause
+        &= $5\cdot (5\cdot 16 + 1) + 2$  \qquad& \text{por (\ref{ib4})}\\ \pause
+        &= $5^2 \cdot 16+ 5\cdot 1 + 2$ \qquad& \text{}\\ \pause
+        &= $5^2 \cdot (5\cdot 3 + 1)+ 5\cdot 1 + 2$    \qquad\qquad& \text{por (\ref{ibi5})}\\ \pause
+        &= $5^3 \cdot 3+ 5^2 \cdot 1 + 5\cdot 1 + 2$.  \qquad& \text{}
+        \end{tabular} 
+\end{center}
+	\pause
+	En este caso diremos que el desarrollo en base $5$ de $407$ es $3112$ o, resumidamente, $407 = (3112)_5$.  
+\end{frame}
+
+
+\begin{frame}
+	Observar que 
+	\begin{alignat*}2
+	407 &=5\cdot 81 &\;+\;& \textbf{2} \\
+	81 & = 5\cdot 16 &\;+\;& \textbf{1} \\
+	16 & = 5\cdot 3 &\;+\;& \textbf{1}  \\
+	3 & = 5\cdot 0 &\;+\;& \textbf{3}.
+	\end{alignat*} \pause
+	
+	y  que 
+	
+	$$407 = (\textbf{3112})_5.$$ 
+	 \pause
+	 
+	Es decir los restos leídos de abajo hacia arriba forman la escritura en base 5 de 407. Esto es general. 
+\end{frame}
+
+\begin{frame}
+	Sea
+	$b \ge 2$ un número entero, llamado {\em base}\index{base (de un sistema de numeración)} para los cálculos.
+	Para cualquier entero positivo $x$ tenemos, por la aplicación
+	repetida del algoritmo de división,
+	\begin{alignat*}3
+	x&=bq_0 &+\;&r_0 &\qquad&(0 \le r_0 < b)\\
+	q_0 & = bq_1 &+\;&r_1&& (0 \le r_1 < b)\\
+	\cdots &&&&& \\
+	q_{n-2} & = bq_{n-1} &+\;&r_{n-1} &&(0 \le r_{n-1} < b)\\
+	q_{n-1} & = bq_n &+\;&r_n.&&(0 < r_n < b)
+	\end{alignat*} \pause
+	Este procedimiento se detiene en el primer $q_{n-1} < b$ (es decir, $q_n=0$). 
+    \vskip .2cm \pause
+    Reemplazando sucesivamente los cocientes $q_i$, como lo hicimos en el ejemplo, obtenemos
+	$$
+	x=r_nb^n +r_{n-1} b^{n-1}+\cdots + r_1 b + r_0.
+	$$
+\end{frame}
+
+
+\begin{frame}
+	Hemos representado $x$ (con respecto a la base $b$) por la
+	secuencia de los restos, y escribimos 	\vskip .2cm
+	$$x=(r_nr_{n-1}\dots r_1
+	r_0)_b.$$
+		\vskip .2cm \pause
+	Convencionalmente $b=10$ es la base para los cálculos
+	hechos ``a mano'' y omitimos ponerle el subíndice, entonces
+	tenemos la notación usual
+		\vskip .2cm\vskip .2cm \pause
+	Por ejemplo,
+		
+	$$
+	1984=1\cdot 10^3  + 9\cdot 10^2 + 8\cdot 10  + 4.
+	$$ \pause
+    o lo que es lo mismo
+    $$
+	(1984)_{10}=1\cdot 10^3  + 9\cdot 10^2 + 8\cdot 10  + 4.
+	$$
+\end{frame}
+
+
+\begin{frame}
+	
+	
+	La base $b=2$ es particularmente adaptable para
+	los cálculos en computadoras. 
+	
+\vskip .2cm\pause
+{\color{blue}Ejemplo}
+\vskip .2cm ?`Cuál es la representación en base $2$ de
+		$(109)_{10}$?
+\vskip .2cm\pause
+{\color{blue}Solución.}  \pause	Dividiendo repetidamente por $2$ obtenemos
+		\begin{alignat*}2
+		109&=2\cdot 54&\;+\;&\textbf{1}\\ 54&=2\cdot 27&\;+\;&\textbf{0}\\ 27&=2\cdot 13&\;+\;&\textbf{1}\\ 13&=2\cdot 6&\;+\;&\textbf{1}\\
+		6&=2\cdot 3&\;+\;&\textbf{0} \\ 3&=2\cdot 1&\;+\;&\textbf{1} \\1&=2\cdot 0&\;+\;&\textbf{1}
+		\end{alignat*}
+		\pause
+		Por lo tanto: \quad $ (109)_{10} = (1101101)_2$.\qed
+		
+\end{frame}
+
+
+\begin{frame}
+	La base $16$ también es  muy usada en computación.
+	\vskip .2cm\pause
+	Los dígitos disponibles (del $0$  al $9$) no nos alcanzan  para representar un  número en base $16$, pues se requieren $16$ símbolos. La convención usada es 
+	$${\tt A}=10,\quad {\tt B}=11,\quad {\tt C} =12,\quad {\tt D} = 13,\quad {\tt E} = 14,\quad {\tt F} = 15.$$
+\vskip .2cm\pause
+{\color{blue}Ejemplo}
+\vskip .2cm
+
+ Representemos  $12488$ en  base $16$. \pause
+		\begin{alignat*}2
+		12488 &= 16 \cdot 780 &\;+\;&  8\\
+		780 & = 16 \cdot 48 &\;+\;& 12\\
+		48 & = 16\cdot 3 &\;+\;& 0\\
+		3 & = 16 \cdot 0  &\;+\;& 3.
+		\end{alignat*}
+		Luego $12488 = (30{\tt C}8)_{16}$. 
+
+	
+\end{frame}
+
+
+
+\begin{frame}\frametitle{Conversiones de base}
+	¿Cómo convertimos un número en  base $b$  a base 10?
+	\vskip .2cm
+	Lo \textit{calculamos}.
+	\vskip .5cm\pause
+	{\color{blue}Ejemplo}
+	\vskip .2cm
+	Convertir $(1304)_6$  a base 10.
+	\vskip .2cm\pause
+	{\color{blue}Solución.}  \pause
+	\begin{align*}
+		(1304)_6 &= 1 \cdot 6^3 + 3 \cdot 6^2 + 0 \cdot 6^1 + 4 \cdot 6^0 \\ 
+		&= 1 \cdot 216 + 3 \cdot 36 + 0 \cdot 6 + 4  \\
+		&= 216 + 108 +  4  \\
+		&= 328. \\
+	\end{align*}
+	Luego $(1304)_6 = 328$.\qed
+	
+\end{frame}
+
+
+\begin{frame}\frametitle{Conversiones de base}
+	
+		¿Cómo convertimos un número en  base $b$  a base $b'$?
+	\vskip .2cm
+	
+	\begin{enumerate}
+	\item[1. ] Convertimos el número de base $b$  a  base 10 .
+	\item[2. ] Convertimos el número obtenido a  base $b'$.
+	\end{enumerate}
+
+	\vskip .4cm\pause
+{\color{blue}Ejemplo}
+\vskip .2cm
+Convertir $(1304)_6$  a base 5.
+\vskip .2cm\pause
+{\color{blue}Solución.}  \pause
+\vskip .2cm 
+Primero calculemos $(1304)_6$  en base $10$ (el sistema que sabemos manejar).
+\pause
+\begin{align*}
+    (1304)_6 &= 1 \cdot 6^3 + 3 \cdot 6^2 + 0 \cdot 6 + 4\\
+    &= 1 \cdot 216 + 3 \cdot 36 + 0 \cdot 6 + 4\\ 
+    &= 216 + 108 + 0 + 4\\ 
+    &= 328
+    \end{align*}
+\end{frame}
+
+
+\begin{frame}
+
+Ahora debemos ver como se escribe $328$  en base $5$.
+\begin{align*}
+328 &= 5 \cdot 65   + 3\\ 
+65 &= 5 \cdot 13   + 0\\ 
+13 &= 5 \cdot 2   + 3\\ 
+2 &= 5 \cdot 0   + 2
+\end{align*}
+
+Luego  $328 = (2303)_5$ y como $(1304)_6 = 328$, tenemos  
+$$(1304)_6 = (2303)_5.$$ \qed
+
+\vskip 3cm
+\end{frame}
+
+
+
+
+\end{document}
