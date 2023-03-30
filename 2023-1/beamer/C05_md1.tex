@@ -1,5 +1,5 @@
-%\documentclass{beamer} 
-\documentclass[handout]{beamer} % sin pausas
+\documentclass{beamer} 
+%\documentclass[handout]{beamer} % sin pausas
 \usetheme{CambridgeUS}
 \setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
@@ -118,19 +118,16 @@
     \begin{ejercicio}
         Probar que 
         $$
-        (1 + 2+ 3 + \cdots + n)^2 = 1^3 +2^3 +3^3 + \cdots +n^3,
+            1^3 +2^3 +3^3 + \cdots +n^3 = \frac{n^2(n+1)^2}{4},
         $$
         para $n \in \N$.
     \end{ejercicio}\pause
 \begin{proof}\pause
-    Para probar esto primero debemos usar el resultado de la página \ref{serie-aritmetica} que nos dice  que 
-    $$
-    (1 + 2+ 3 + \cdots + n)^2 = \left(\sum_{i=1}^n i\right)^2 = \left(\frac{n(n+1)}{2}\right)^2 = \frac{n^2(n+1)^2}{4}.
-    $$\pause
-    Luego debemos probar que 
-    $$
-    \sum_{i=1}^{n} i^3 =  \frac{n^2(n+1)^2}{4}.
-    $$
+    \vskip .4cm 
+    \noindent({\it Caso  base})\pause El resultado es verdadero
+        cuando $n=1$ pues 
+        $$ \sum_{i=1}^{1} i^3 = 1\quad \text{y}\quad\frac{1^2(1+1)^2}{4} =\frac{4}{4} =1.$$
+    
 \end{proof}
 \end{frame}
 
@@ -138,14 +135,12 @@
 \begin{frame}
     \frametitle{}
 
-        \vskip .4cm 
-        \noindent({\it Caso  base})\pause El resultado es verdadero
-            cuando $n=1$ pues 
-            $$ \sum_{i=1}^{1} i^3 = 1\quad \text{y}\quad\frac{1^2(1+1)^2}{4} =\frac{4}{4} =1.$$
+
         
-        \vskip .4cm \pause
+        \vskip 1cm \pause
         \noindent ({\it Paso  inductivo})\pause
         Debemos probar que si $k \ge 1$, 
+        \vskip 0.4cm 
         $$
         \sum_{i=0}^{k} i^3 = \frac{k^2(k+1)^2}{4} \;\; \text{ (HI) }\quad \Rightarrow \quad    \sum_{i=0}^{k+1} i^3 =\frac{(k+1)^2(k+2)^2}{4}.
         $$
