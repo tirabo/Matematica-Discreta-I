@@ -1,7 +1,7 @@
 %\documentclass{beamer} 
 \documentclass[handout]{beamer} % sin pausas
 \usetheme{CambridgeUS}
-%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 \usepackage{etex}
 \usepackage{t1enc}
@@ -24,10 +24,10 @@
 \usetikzlibrary{arrows}
 \usetikzlibrary{matrix}
 \tikzset{
-	every picture/.append style={
-		execute at begin picture={\deactivatequoting},
-		execute at end picture={\activatequoting}
-	}
+    every picture/.append style={
+        execute at begin picture={\deactivatequoting},
+        execute at end picture={\activatequoting}
+    }
 }
 \usetikzlibrary{decorations.pathreplacing,angles,quotes}
 \usetikzlibrary{shapes.geometric}
@@ -38,9 +38,9 @@
 \usepackage{tkz-graph}
 \usepackage{polynom}
 \polyset{%
-	style=B,
-	delims={(}{)},
-	div=:
+    style=B,
+    delims={(}{)},
+    div=:
 }
 \renewcommand\labelitemi{$\circ$}
 \setlist[enumerate]{label={(\arabic*)}}
@@ -97,8 +97,8 @@
 \title[Clase 5 - Inducción]{Matemática Discreta I \\ Clase 5 - Inducción completa - Conteo}
 %\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
 \institute[]{\normalsize FAMAF / UNC
-	\\[\baselineskip] ${}^{}$
-	\\[\baselineskip]
+    \\[\baselineskip] ${}^{}$
+    \\[\baselineskip]
 }
 \date[30/03/2023]{30 de marzo   de 2023}
 
@@ -145,7 +145,7 @@
         
         \vskip .4cm \pause
         \noindent ({\it Paso  inductivo})\pause
-		Debemos probar que si $k \ge 1$, 
+        Debemos probar que si $k \ge 1$, 
         $$
         \sum_{i=0}^{k} i^3 = \frac{k^2(k+1)^2}{4} \;\; \text{ (HI) }\quad \Rightarrow \quad    \sum_{i=0}^{k+1} i^3 =\frac{(k+1)^2(k+2)^2}{4}.
         $$
@@ -174,80 +174,74 @@
 
 \begin{frame}
     \frametitle{Inducción completa}
-	Existen varias formas modificadas del principio de inducción. A veces es conveniente tomar como base inductiva el valor $n=0$, por otro lado puede ser apropiado tomar un valor como $2$ o $3$ porque los primeros casos pueden ser excepcionales. 
-	\pause
-	\medskip
-	
-	Cada problema debe ser tratado según sus características. 
-	\pause
-	\medskip
-	
-	Otra modificación útil es tomar como hipótesis inductiva la suposición de que el resultado es verdadero para todos los valores $n\le k$, más que para $n=k$ solamente.
-	\pause
-	\medskip
-	
-	Esta formulación es llamada a veces el {\it principio de inducción completa}. Todas esas modificaciones pueden justificarse con cambios triviales en la demostración del principio de inducción.
-	
+    Existen varias formas modificadas del principio de inducción. A veces es conveniente tomar como base inductiva el valor $n=0$, por otro lado puede ser apropiado tomar un valor como $2$ o $3$ porque los primeros casos pueden ser excepcionales. 
+    \pause
+    \medskip
+    
+    Cada problema debe ser tratado según sus características. 
+    \pause
+    \medskip
+    
+    Otra modificación útil es tomar como hipótesis inductiva la suposición de que el resultado es verdadero para todos los valores $n\le k$, más que para $n=k$ solamente.
+    \pause
+    \medskip
+    
+    Esta formulación es llamada a veces el {\it principio de inducción completa}. Todas esas modificaciones pueden justificarse con cambios triviales en la demostración del principio de inducción.
+    
 \end{frame}
 
-\begin{frame}	
-	El siguiente teorema incorpora muchas de las modificaciones del principio de inducción mencionadas más arriba.
+\begin{frame}    
+    El siguiente teorema incorpora muchas de las modificaciones del principio de inducción mencionadas más arriba.
 
     \pause
-	\medskip
-	
+    \medskip
+    
 
-	
-	%\begin{teorema}[Inducción completa]\label{ind-completa} 
-	{\color{blue} Teorema (Inducción completa)}
-	\vskip .2cm	
-		Sea $n_0$ número entero y sea $P(n)$ una propiedad para $n \ge n_0$ tal que:
-		\begin{enumerate}
-			\item[a)] $P(n_0)$ es verdadera.
-			\item[b)] Si $P(h)$ verdadera para toda $h$ tal que $n_0 \le h \le k$ implica $P(k + 1)$ verdadera.
-		\end{enumerate}
-		Entonces $P(n)$ es verdadera para todo $n \ge n_0$.
-	%\end{teorema}
+    
+    %\begin{teorema}[Inducción completa]\label{ind-completa} 
+    {\color{blue} Teorema (Inducción completa)}
+    \vskip .2cm    
+        Sea $n_0$ número entero y sea $P(n)$ una propiedad para $n \ge n_0$ tal que:
+        \begin{enumerate}
+            \item[a)] $P(n_0)$ es verdadera.
+            \item[b)] Si $P(h)$ verdadera para toda $h$ tal que $n_0 \le h \le k$ implica $P(k + 1)$ verdadera.
+        \end{enumerate}
+        Entonces $P(n)$ es verdadera para todo $n \ge n_0$.
+    %\end{teorema}
 
-	
+    
 \end{frame}
 
 
 
-\begin{frame}		
-	
-	\begin{ejemplo}
-		$$u_1 = 3,\qquad u_2 = 5,\qquad u_n = 3u_{n-1}- 2u_{n-2},\qquad  n \ge 3.$$
-		Probemos que $u_n = 2^n + 1$, para todo $n \in  \mathbb N$.
-	\end{ejemplo}
-		{\color{blue} Solución.}
-		\vskip .2cm	
-		\pause
-			
-			\noindent({\it Caso  base})
+\begin{frame}        
+    
+    \begin{ejemplo}
+        $$u_1 = 3,\qquad u_2 = 5,\qquad u_n = 3u_{n-1}- 2u_{n-2},\qquad  n \ge 3.$$
+        Probemos que $u_n = 2^n + 1$, para todo $n \in  \mathbb N$.
+    \end{ejemplo}
+        {\color{blue} Solución.}
+        \vskip .2cm    
+        \pause
+            
+            \noindent({\it Caso  base})
             
             \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
         \hskip 2.5cm\begin{beamercolorbox}[wd=0.65\textwidth,rounded=true,shadow=true]{postit}
-            $n= 1$ :  $3 = 2^1+1$ \checkmark, \qquad   $n=2$ :  $ 5 =2^2+1$ \checkmark.
+            $n= \colorbox{blue!30}{1}$ :  $3 = 2^1+1$ \checkmark, \qquad   $n=\colorbox{green!50}{2}$ :  $ 5 =2^2+1$ \checkmark.
             \end{beamercolorbox} \pause
-			
-			\vskip.4cm
-			
-			\noindent ({\it Paso  inductivo}) Hipótesis inductiva:
+            
+            \vskip.4cm
+            
+            \noindent ({\it Paso  inductivo}) Hipótesis inductiva:
             \vskip.2cm
             \setbeamercolor{postit}{fg=black,bg=example text.fg!75!black!10!bg}
             \hskip 2.5cm\begin{beamercolorbox}[wd=0.65\textwidth,rounded=true,shadow=true]{postit}
-			\quad $u_h = 2^h+1$  para  $1 \le h \le k$   y  $k \ge 2$  (HI),  
+            \quad $u_h = 2^h+1$  para  $\colorbox{blue!30}{1} \le h \le k$   y  $k \ge \colorbox{green!50}{2}$  (HI),  
         \end{beamercolorbox}
-			\pause
+            \pause
             \vskip.2cm
-		Luego debemos probar que:
-			
-		
-
-		%\end{proof}
-	
-	
+        Luego debemos probar que:
 \end{frame}
 
 \begin{frame}
@@ -256,9 +250,9 @@
     \hskip 0.5cm\begin{beamercolorbox}[wd=0.9\textwidth,rounded=true,shadow=true]{postit}
         \quad $u_h = 2^h+1$  para  $1 \le h \le k$  (HI) \quad $\Rightarrow$ \quad
         $u_{k+1}=2^{k+1}+1.$  
-    \end{beamercolorbox}	\pause
+    \end{beamercolorbox}    \pause
     \vskip.5cm
-    Se  comienza con el término izquierdo de lo que se quiere probar y  se obtiene el derecho. 	\pause
+    Se  comienza con el término izquierdo de lo que se quiere probar y  se obtiene el derecho.     \pause
     \vskip.4cm
     \begin{tabular}{llll}
         $u_{k+1}$ &$= 3u_k -2u_{k-1}$ &\qquad &{(por definición recursiva)}  \\[0.2cm].
@@ -309,9 +303,9 @@
 
         {\noindent 2.} \noindent ({\it Caso base})\pause
         \vskip .2cm
-        Por un lado $u_0 =1$, por definición, por otro lado  si calculamos con la fórmula: $u_0 = 3 \cdot 2^0 - 2 \cdot 3^0 = 3- 2 = 1$ y listo.
+        $n=\colorbox{blue!30}{0}$: por un lado $u_0 =1$, por definición, por otro lado  si calculamos con la fórmula: $u_0 = 3 \cdot 2^0 - 2 \cdot 3^0 = 3- 2 = 1$ y listo.
         \vskip .2cm\pause
-        Por un lado $u_1 =0$, por definición, por otro lado  si calculamos con la fórmula: $u_1 = 3 \cdot 2^1 - 2 \cdot 3^1 = 3 \cdot 2- 2 \cdot 3 =  6-6 = 0$ y listo.\pause
+        $n=\colorbox{green!50}{1}$: por un lado $u_1 =0$, por definición, por otro lado  si calculamos con la fórmula: $u_1 = 3 \cdot 2^1 - 2 \cdot 3^1 = 3 \cdot 2- 2 \cdot 3 =  6-6 = 0$ y listo.\pause
         
         \vskip .6cm
         
@@ -319,7 +313,7 @@
         \vskip .2cm
         Debemos probar que si
         \begin{equation*}
-            k \ge 1 \text{\; y\; } u_h = 3\cdot 2^h - 2 \cdot 3^h \text{ \;para\; }  1 \le h \le k, \tag{HI}
+            k \ge \colorbox{green!50}{1} \text{\; y\; } u_h = 3\cdot 2^h - 2 \cdot 3^h \text{ \;para\; }  \colorbox{blue!30}{0} \le h \le k, \tag{HI}
         \end{equation*}\pause
         eso implica que
         \begin{equation*}
@@ -381,7 +375,8 @@ Como esto último es verdadero,  es verdadero (***) y por lo tanto son verdadero
 \begin{frame}
     \frametitle{}
 
-Nos adelantamos un poco en los temas de la materia para ejemplificar el principio de inducción completa. \pause
+Nos adelantamos un poco en los temas de la materia para ejemplificar el principio de inducción completa aplicado a un problema que no es de recursión. 
+\vskip .4cm\pause
 
 \begin{definicion} Sea $n \in \N$ diremos que es \textit{primo} si $n \ne 1$ y el  único natural menor que lo divide es  $1$.
 \end{definicion}
@@ -456,7 +451,7 @@ Por lo tanto $k+1$  es producto de primos.
 
     \begin{itemize}
         \item ¿Cuántas chapas patente  es posible hacer con el actual esquema de numeración? Nos referimos a las patentes de automóviles en Argentina.  \pause
-        \item ¿De cuantas formas se pueden elegir 7 personas entre 20? (no importa el orden de la elección)
+        \item ¿De cuántas formas se pueden elegir 7 personas entre 20? (no importa el orden de la elección)
     \end{itemize}
     \pause
     \vskip .4cm
@@ -471,7 +466,9 @@ Por lo tanto $k+1$  es producto de primos.
 
 \begin{frame}\frametitle{Cardinal de un conjunto }     
 
-    Un conjunto $A$ es finito si podemos contar la cantidad de elementos que tiene. En ese caso denotaremos $|A|$ la cantidad de elementos de $A$ y la llamaremos el {\em cardinal de $A$}\
+    Un conjunto $A$ es finito si podemos contar la cantidad de elementos que tiene. En ese caso denotaremos $|A|$ la cantidad de elementos de $A$ y la llamaremos el {\em cardinal de $A$}. 
+    
+    A veces se denota también $\sharp A$.
     \pause
     \vskip .6cm
     Por  ejemplo, los conjuntos
