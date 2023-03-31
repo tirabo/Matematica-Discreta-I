@@ -119,126 +119,23 @@
 
 
 
-\begin{frame}\frametitle{Selecciones ordenadas con repetición}
 
 
-{\color{blue} Ejemplo}
-\vskip .2cm
-
-Sea  $X = \{ 1, 2, 3 \}$.
-\vskip .2cm
-¿De cuántas formas se pueden elegir dos de estos números en forma ordenada?
-    \vskip .2cm\pause
-{\bf Notación:} si elegimos $a$ y $b$ en forma ordenada, denotamos $ab$. 
-\vskip .2cm
-Entonces, las posibilidades son 
-    \begin{align*}
-    &11&\quad &12&\quad &13 \\
-    &21&\quad &22&\quad &23\\
-    &31&\quad &32&\quad &33
-    \end{align*}
-    
-\vskip .1cm \pause
-    Es decir, hay $9 = 3^2$ formas posibles. \pause
-    
-
-
-\end{frame}
-
-\begin{frame}    
-
-    
-Avancemos un poco más y ahora elijamos en forma ordenada $3$ elementos de  ${1,2,3}$, es claro que estas elecciones son
-\begin{align*}
-&1 1 1&\quad &211&\quad &311 \\
-&1 1 2&\quad & 212&\quad & 312\\
-&1 1 3&\quad & 213&\quad & 313\\
-&1 2 1&\quad & 221&\quad & 321\\
-&1 2 2&\quad & 222&\quad & 322\\
-&1 2 3&\quad & 223&\quad & 323\\
-&1 3 1&\quad & 231&\quad & 331\\
-&1 3 2&\quad & 232&\quad & 332\\
-&1 3 3&\quad & 233&\quad & 333.
-\end{align*}
-El total de elecciones posibles $27 = 3^3$. 
-
-
-
-
-\end{frame}
-
-\begin{frame}    
-    
-
-Un diagrama arbolado ayuda a pensar. \pause
-\begin{center}
-    \includegraphics[scale=0.50]{images/arbol_pos.jpg}
-\end{center}
-
-%\vskip 8cm
-\vskip .2cm ¿Cómo justificamos esto? \pause Por el principio de multiplicación
-\end{frame}
-
-\begin{frame}    
-    
-    De los dos ejemplos anteriores se podría inferir que hay $3^4$ formas posibles de elegir en forma ordenada $4$ elementos del conjunto $1$, $2$, $3$. También, que cuando elijamos $5$ habrá $3^5$ posibilidades y así sucesivamente para enteros más grandes. 
-
-    \pause 
-
-    \vskip .2cm ¿Cómo justificamos esto? \pause     Por el principio de multiplicación
-
-    \pause 
-
-    \vskip .2cm Hemos visto en las página anteriores que hay $3^3$ formas posibles de elegir $3$ números entre $1$, $2$, $3$.
-
-    \vskip .2cm Ahora,  para elegir el cuarto número hay $3$ posibilidades, por lo tanto, por el principio de multiplicación, el número de posibilidades  con cuatro elecciones es
-    \begin{equation*}
-        3^3 \times 3 = 3^4.
-    \end{equation*}
-    \end{frame}
-
-\begin{frame}    
-
-    
-El razonamiento anterior  se puede extender:
-
-%\begin{proposicion}
-\vskip .3cm
-{\color{blue} Proposición}
-\vskip .2cm
-    {\it  Sean  $m,n \in \mathbb N$. Hay   $n^m$ formas posibles de elegir ordenadamente $m$ elementos de un conjunto de $n$ elementos.}
-%\end{proposicion}
-\vskip .5cm \pause
-{\color{blue} Idea de la prueba.} \pause
-\vskip .2cm
-%\begin{proof}[Idea de la prueba]
-    La prueba de esta proposición se basa en aplicar el principio de multiplicación $m-1$ veces, 
-    \vskip .2cm
-    A nivel formal,  debemos hacer inducción sobre $m$ y usar el principio de multiplicación en el paso inductivo. 
-
-    \qed
-%\end{proof}
-
-\end{frame}
-
-
-
-\begin{frame}    
+\begin{frame} \frametitle{Selecciones ordenadas con repetición - ejemplos}
 
 
 %\begin{ejemplo}
-    \vskip .3cm
     {\color{blue} Ejemplo}
     \vskip .2cm
     ¿Cuántos números de cuatro dígitos pueden formarse con
     los dígitos $1, 2, 3, 4, 5, 6$?
     \vskip .2cm \pause
-    Por la proposición anterior es claro que hay $6^4$ números posibles.
+    Por la proposición de la clase pasada es claro que hay $6^4$ números posibles.
 %\end{ejemplo}
 
 %\begin{ejemplo}
 \pause
-\vskip .8cm
+\vskip .6cm
 {\color{blue} Ejemplo}
 \vskip .2cm
     ¿Cuántos números de $5$ dígitos y capicúas pueden formarse
