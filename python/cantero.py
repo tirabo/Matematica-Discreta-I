@@ -5,7 +5,7 @@ from itertools import product
 Se colocan 6 plantines en un cantero circular
 1) Hay 4 clases de plantines (0, 1, 2, 3)
 2) No puede haber 2 plantines consecutivos de la misma clase
-De cuantas formas se puede hacer? (las rotaciones son equivalentes)
+¿De cuantas formas se puede hacer? (las rotaciones son equivalentes)
 """
 
 
@@ -17,7 +17,7 @@ def acomodar_plantines(cantero = 6, cls_plantines= 4):
     cls_repetidos = [cls]*cantero
     plt1 = list(product(*cls_repetidos))
     r0 = [list(w) for w in plt1]
-    # r0 son todos los canteros posibles, sin restricciones, sin equivalencia de rotaciones (es cls**6)
+    # r0 son todos los canteros posibles, sin restricciones, sin equivalencia de rotaciones (es cls**cantero)
     r1 = []
     for u in r0:
         sirve = True
