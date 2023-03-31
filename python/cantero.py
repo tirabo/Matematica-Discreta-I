@@ -6,6 +6,11 @@ Se colocan 6 plantines en un cantero circular
 1) Hay 4 clases de plantines (0, 1, 2, 3)
 2) No puede haber 2 plantines consecutivos de la misma clase
 ¿De cuantas formas se puede hacer? (las rotaciones son equivalentes)
+
+o
+
+Se quieren pintar los vértices de un polígono de 6 lados con 4 colores sin que haya dos vértices consecutivos pintados del mismo color.
+¿De cuántas formas se puede hacer? (las rotaciones son equivalentes)
 """
 
 
