@@ -25,6 +25,18 @@ Dos casos:
 Solución (fuerza bruta): 1) 732; 2) 130. 
 """
 
+"""
+La solución a 1) es recursiva. Es la siguiente: si f(n, i) es la cantidad de formas de pintar una línea de n puntos con i colores tal que: 1) comienza con color 0; 2) no hay dos puntos consecutivos pintados del mismo color; 3) termina en el color i, entonces:
+f(2, 0) = 0 ; f(2, i) = 1 si 0 < i < 4
+f(n, 0) = 3 * f(n - 1, 1) # f(k, i) = f(k, j) si 0 < i < j < 4
+f(n, i) = f(n - 1, 0) + 2 * f(n - 1, 1) si  0 < i < 4
+
+La solución al problema original es 
+a(7) = 4 * f(7, 0) 
+pues identificando el primer y último vértice el valor  f(7, 0) resuelve el problema de los 6 plantines cuando el primer vértice es 0. 
+Luego hay que multiplicar por la cantidad de colores para no tener restricciones en el primer vértice.
+"""
+
 
 
 def pintar_poligono_fb(ver = 6, col = 4):
@@ -192,23 +204,26 @@ def pintar_poligono_formas(ver = 6, col = 4):
     return ret * col
 
 def main():
-    ver, col = 6, 4
-    print('Fuerza bruta. Vértices:', ver, 'colores:',col,'->',pintar_poligono_fb(ver, col))
+    # ver, col = 7, 4
+    # print('Fuerza bruta. Vértices:', ver, 'colores:',col,'->',pintar_poligono_fb(ver, col))
     # Fuerza bruta no funciona para ver o col grandes, por ejemplo para ver, col = 10, 4 se demora varios minutos en calcular.
 
-    ver, col = 20, 4
-    print('Recursión. Vértices:', ver, 'colores:', col,'->' , pintar_poligono_rec(ver, col))
+    # ver, col = 20, 4
+    # print('Recursión. Vértices:', ver, 'colores:', col,'->' , pintar_poligono_rec(ver, col))
     # Recursión se demora mucho para números grandes. Por ejemplo para ver, col = 50, 4 se demora varios minutos en calcular.
 
-    ver, col = 1000, 80
-    print('Progamación dinámica. Vértices:', ver, 'colores:', col,'->' , pintar_poligono_pd(ver, col))
+    # ver, col = 1000, 80
+    # print('Progamación dinámica. Vértices:', ver, 'colores:', col,'->' , pintar_poligono_pd(ver, col))
     # Programación dinámica funciona para ver o col grandes
 
-    ver, col = 10, 4
-    print('Formas. Vértices:', ver, 'colores:', col,'->' , len(pintar_poligono_formas(ver, col)))
+    # ver, col = 10, 4
+    # print('Formas. Vértices:', ver, 'colores:', col,'->' , len(pintar_poligono_formas(ver, col)))
     # Esto se complica para ver grandes (guarda en memoria todas las formas). Por ejemplo para ver, col = 20, 4 se demora varios minutos en calcular.
 
-
+    for ver in range(2, 10):
+        print('a('+str(ver)+') =',pintar_linea_pd(ver, 1, 4))
+    ver, col = 3 , 4
+    print('Fuerza bruta. Vértices:', ver, 'colores:',col,'->',pintar_poligono_fb(ver, col))
 if __name__ == "__main__":
     main()
 
