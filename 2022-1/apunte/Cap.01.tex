@@ -456,92 +456,135 @@ La esencia de este argumento es comúnmente llamada \textit{principio de inducci
 
 Supongamos que queremos demostrar que un resultado es verdadero para todo $n \in \mathbb N$. Con $S$ denotemos al subconjunto de $\mathbb N$ para el cual el resultado es correcto: por supuesto, nuestra intención es probar que $S$ es todo $\mathbb N$. El primer paso es probar que $1$ pertenece a $S$, y luego demostraremos que si $k$ pertenece a $S$, también $k+1$. Entonces lo pensamos paso a paso, un procedimiento infinito, y concluimos que $S=\mathbb N$. Afortunadamente el pensarlo paso a paso no es esencial debido a que el principio de inducción es consecuencia de los axiomas que elegimos tan cuidadosamente para $\mathbb Z$ y $\mathbb N$. Más específicamente es consecuencia del axioma del buen orden.
 
-\begin{teorema}[Principio de inducción]\label{teorema-principio-de-induccion} Supongamos que $S$ es un subconjunto de $\mathbb N$ que satisface las condiciones \index{principio de inducción}
-\begin{enumerate}[label=\textit{\alph*)}]
-\item\label{caso-base} $1 \in S$,
-\item\label{paso-inductivo} para cada $k \in \mathbb N$, si $ k \in S$ entonces $k+1\in S$.
-\end{enumerate}
-Entonces se sigue que $S=\mathbb N$.
-\end{teorema}
-\begin{proof}Si la conclusión es falsa, $S \not= \mathbb N$ y
-el conjunto complementario $S^{\text{c}}$ definido por
-$$
-S^{\text{c}}= \{ r \in \mathbb N | r\not\in S\}
-$$
- es no vacío. Por el axioma del buen orden, $S^{\text{c}}$ tiene un menor elemento $m$. Como por \ref{caso-base} el $1$ pertenece a $S$, $m\not=1$. Se sigue que $m-1$ pertenece a $\mathbb N$ y como $m$ es el mínimo de $S^{\text{c}}$, $m-1$ debe pertenecer a $S$. Poniendo $k=m-1$ en la condición \ref{paso-inductivo}, concluimos que $m$ esta en $S$, lo cual contradice el hecho de que $m$ pertenece a $S^{\text{c}}$. De este modo, la suposición $S \not= \mathbb N$ nos lleva a un absurdo, y por lo tanto tenemos $S= \mathbb N$. 
- \end{proof}
+\begin{comment}
+    \begin{teorema}[Principio de inducción]\label{teorema-principio-de-induccion} Supongamos que $S$ es un subconjunto de $\mathbb N$ que satisface las condiciones \index{principio de inducción}
+    \begin{enumerate}[label=\textit{\alph*)}]
+    \item\label{caso-base} $1 \in S$,
+    \item\label{paso-inductivo} para cada $k \in \mathbb N$, si $ k \in S$ entonces $k+1\in S$.
+    \end{enumerate}
+    Entonces se sigue que $S=\mathbb N$.
+    \end{teorema}
+    \begin{proof}Si la conclusión es falsa, $S \not= \mathbb N$ y
+    el conjunto complementario $S^{\text{c}}$ definido por
+    $$
+    S^{\text{c}}= \{ r \in \mathbb N | r\not\in S\}
+    $$
+    es no vacío. Por el axioma del buen orden, $S^{\text{c}}$ tiene un menor elemento $m$. Como por \ref{caso-base} el $1$ pertenece a $S$, $m\not=1$. Se sigue que $m-1$ pertenece a $\mathbb N$ y como $m$ es el mínimo de $S^{\text{c}}$, $m-1$ debe pertenecer a $S$. Poniendo $k=m-1$ en la condición \ref{paso-inductivo}, concluimos que $m$ esta en $S$, lo cual contradice el hecho de que $m$ pertenece a $S^{\text{c}}$. De este modo, la suposición $S \not= \mathbb N$ nos lleva a un absurdo, y por lo tanto tenemos $S= \mathbb N$. 
+    \end{proof}
+\end{comment}
 
-En la práctica, generalmente presentamos una ``demostración por inducción'' en términos más descriptivos. El hecho de que el resultado es verdadero cuando $n=1$ se llama \textit{base de la inducción} o \textit{caso base}, \ref{paso-inductivo} del teorema \ref{teorema-principio-de-induccion} es llamado  el \textit{paso inductivo} y la suposición de que es verdadero cuando $n=k$ es llamada \textit{hipótesis inductiva}\index{hipótesis inductiva}. Cuando se utilizan estos términos, no es necesario introducir explícitamente el conjunto $S$.
+Veremos ahora una versión muy utilizada del principio de inducción.
 
+\begin{teorema}[Principio de inducción]\label{teorema-principio-de-induccion} Sea $P(n)$ una propiedad para $n \in \mathbb N$ tal que:
+    \begin{enumerate}[label=\textit{\alph*)}]
+    \item\label{it.ind1} $P(1)$ es verdadera.
+    \item\label{it.ind2} Para todo $k \in \mathbb N$, $P(k)$ verdadera implica $P(k + 1)$ verdadera.
+    \end{enumerate}
+    Entonces $P(n)$ es verdadera para todo $n \in \mathbb N$.
+    \end{teorema}
+    \begin{proof} Basta tomar
+    $$S = \{n \in \mathbb N| P(n) \text{ es verdadera} \}.$$
+    Entonces $S$ es un subconjunto de $\mathbb N$ y las condiciones \ref{it.ind1} y \ref{it.ind2} nos dicen que 1) $1 \in S$ y   2) si $ k \in S$ entonces $k+1\in S$. 
+    
+    Si la conclusión es falsa, tenemos que $S \not= \mathbb N$ y entonces
+    el conjunto complementario $S^{\text{c}}$ definido por
+    $$
+    S^{\text{c}}= \{ r \in \mathbb N | r\not\in S\}
+    $$
+    es no vacío. Por el axioma del buen orden, $S^{\text{c}}$ tiene un menor elemento $m$. Por 1) el $1$ pertenece a $S$, luego $m\not=1$. Se sigue que $m-1$ pertenece a $\mathbb N$ y como $m$ es el mínimo de $S^{\text{c}}$, $m-1$ debe pertenecer a $S$. Poniendo $k=m-1$ en la condición 2), concluimos que $m$ esta en $S$, lo cual contradice el hecho de que $m$ pertenece a $S^{\text{c}}$. 
+    
+    De este modo, la suposición $S \not= \mathbb N$ nos lleva a un absurdo, y por lo tanto tenemos $S= \mathbb N$ y $P(n)$ es verdadera para todo $n \in \mathbb N$.
+    \end{proof}
+    
+    
+    En la notación del teorema anterior, \ref{it.ind1} es llamado  el \textit{caso base}, \ref{it.ind2} es llamado el  \textit{paso inductivo} y $P(k)$ es llamada la \textit{hipótesis inductiva}. El paso inductivo  consiste en probar que $P(k) \Rightarrow P(k + 1)$ o, equivalentemente, podemos suponer $P(k)$ verdadera y a partir de ella probar $P(k + 1)$. 
+    
 
 El principio de inducción es útil para probar la veracidad de propiedades relativas a los números naturales. Por ejemplo, consideremos las siguientes propiedades $P(n)$, $Q(n)$ y $R(n)$:
 \begin{enumerate}[label=\textit{\alph*)}]
-\item $P(n)$ es la propiedad: $2n -1 < n^2 + 1$,
+\item $P(n)$ es la propiedad: si $0<a$,  entonces $0<a^n$ para todo $n \in \mathbb N$.
 \item $Q(n)$ es la afirmación: si $n$ es par entonces $n$ es divisible por 4,
 \item $R(n)$ es la afirmación: $2n < n- 1$.
 \end{enumerate}
-Intuitivamente notamos que $P(n)$ es verdadera para cualquier $n$ natural, $Q(n)$ lo es para algunos valores de $n$ y es falsa para otros y $R(n)$ es falsa para todo valor de $n$. Sin embargo, para verificar realmente que la propiedad $P(n)$ es verdadera para todo $n$ natural no podemos hacerlo probando para cada $n$ en particular. Resulta entonces muy útil la siguiente versión equivalente del principio de inducción.
 
-\begin{teorema}\label{induccion2} Sea $P(n)$ una propiedad para $n \in \mathbb N$ tal que:
-\begin{enumerate}[label=\textit{\alph*)}]
-\item\label{it.ind1} $P(1)$ es verdadera.
-\item\label{it.ind2} Para todo $k \in \mathbb N$, $P(k)$ verdadera implica $P(k + 1)$ verdadera.
-\end{enumerate}
-Entonces $P(n)$ es verdadera para todo $n \in \mathbb N$.
-\end{teorema}
-\begin{proof} Basta tomar
-$$S = \{n \in \mathbb N| P(n) \text{ es verdadera} \}.$$
-Entonces $S$ es un subconjunto de $\mathbb N$ y las condiciones \ref{it.ind1} y \ref{it.ind2} nos dicen que $1 \in S$ y  si $ k \in S$ entonces $k+1\in S$. Por el teorema \ref{teorema-principio-de-induccion} se sigue que $S= \mathbb N$, es decir que $P(n)$ es verdadera para todo $n$.
-natural.
+Intuitivamente notamos que $P(n)$ es verdadera para cualquier $n$ natural, $Q(n)$ lo es para algunos valores de $n$ y es falsa para otros y $R(n)$ es falsa para todo valor de $n$. Sin embargo, para verificar realmente que la propiedad $P(n)$ es verdadera para todo $n$ natural no podemos hacerlo probando para cada $n$ en particular y  entonces lo podemos probar por el principio de inducción. 
+
+
+
+\begin{ejemplo*}[Serie aritmética] Probar  que asi $n > 0$,  
+    \begin{equation*}
+        1 +  2 + 3 +\cdots + n = \frac{n(n+1)}{2}.
+    \end{equation*}
+    \begin{proof}[Solución] Primero observemos que lo que debemos probar es equivalente a demostrar que
+        \begin{equation*}
+            \sum_{i=1}^n i = \frac{n(n+1)}{2}.
+        \end{equation*}
+    \noindent(\textit{Caso  base $n=1$}) Debemos ver que $\sum_{i=1}^1 i = \frac{1(1+1)}{2}$. Ahora bien, $\sum_{i=1}^1 i = 1$ por definición de sumatoria y $\frac{1(1+1)}{2} = \frac22 = 1$, luego la igualdad se verifica.
+        
+        \noindent (\textit{Paso  inductivo}) Supongamos que el resultado es verdadero para $n=k$, es decir que 
+        \begin{equation}
+            \sum_{i=1}^k i = \frac{k(k+1)}{2}, \tag{HI}
+        \end{equation}
+        la hipótesis inductiva. Entonces debemos probar que 
+        \begin{equation}
+            \sum_{i=1}^{k+1} i = \frac{(k+1)(k+2)}{2} . \label{eq:ind}
+        \end{equation}
+        Partiremos del lado izquierdo de la igualdad \eqref{eq:ind} y obtendremos el lado derecho:
+        \begin{align*}
+                \sum_{i=1}^{k+1} i  &= \sum_{i=1}^k i + (k+1) &\qquad  &\text{(definición de sumatoria)} \\
+                &=  \frac{k(k+1)}{2} + (k+1)&\qquad &\text{(hipótesis inductiva)} \\
+                &=  \frac{k(k+1) + 2(k+1)}{2} &\qquad  & \text{(común denominador)} \\ 
+                &=  \frac{(k+1)(k+2)}{2} &\qquad  & \text{(factor común $k+1$)}.
+        \end{align*}
+        Luego hemos obtenido  \eqref{eq:ind} y por el principio de inducción concluimos que el resultado es verdadero para todo $n\ge 1$.
+    \end{proof}
+    \end{ejemplo*}
+
+\begin{ejemplo*}Sea $a\in \mathbb Z$ tal que $0<a$. Probemos que $0<a^n$ para todo $n \in \mathbb N$.
+
+\begin{proof}[Solución]
+    \
+    
+    \noindent (\textit{Caso  base}) El resultado es verdadero
+    cuando $n=1$ pues $ a^1 = a > 0$.
+    
+    \noindent (\textit{Paso  inductivo})
+    Supongamos que el resultado verdadero cuando $n=k$, o sea, que la hipótesis inductiva es $0 < a^k$. Como $0<a$, multiplicando por $a$ ambos lados de la desigualdad obtenemos, por la compatibilidad de $<$ con el producto, que $a\cdot 0 < a^k \cdot a$, es decir $0<a^{k+1}$.  Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.
 \end{proof}
-
-
-En la notación del teorema anterior, \ref{it.ind1} es llamado  el \textit{caso base}, \ref{it.ind2} es llamado el  \textit{paso inductivo} y $P(k)$ es llamada la \textit{hipótesis inductiva}. El paso inductivo  consiste en probar que $P(k) \Rightarrow P(k + 1)$ o, equivalentemente, podemos suponer $P(k)$ verdadera y a partir de ella probar $P(k + 1)$. 
-
-
-\begin{ejemplo}\label{ejemplo141} Sea $a\in \mathbb Z$ tal que $0<a$. Probemos que $0<a^n$ para todo $n \in \mathbb N$.
-\end{ejemplo}
-\begin{proof}
-\
-
-\noindent (\textit{Caso  base}) El resultado es verdadero
-cuando $n=1$ pues $ 0 < a=a^1$.
-
-\noindent (\textit{Paso  inductivo})
- Supongamos que el resultado verdadero cuando $n=k$, o sea, que la hipótesis inductiva es $0 < a^k$. Entonces, como $0<a$, multiplicando por $a$ ambos lados de la desigualdad obtenemos, por la compatibilidad de $<$ con el producto, que $a\cdot 0 < a^k \cdot a$, es decir $0<a^{k+1}$.  Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.
-\end{proof}
-
-\begin{ejemplo*} El entero $x_n$ esta definido recursivamente por
-$$
-x_1=2, \qquad x_n=x_{n-1} +2n, \qquad n\ge 2.
-$$
-Demostremos que
-$$
-x_n = n(n+1) \qquad \text{ para todo } n\in \mathbb N.
-$$
 \end{ejemplo*}
-\begin{proof}
-\    
 
-\noindent(\textit{Caso  base}) El resultado es verdadero cuando $n=1$ pues $ 2 = 1 \cdot 2$.
-
-\noindent (\textit{Paso  inductivo})
- Supongamos que el resultado verdadero cuando $n=k$, o sea, que la hipótesis inductiva es $x_k = k(k+1)$. Entonces
-$$
-\begin{matrix*}[l]
-x_{k+1} &= x_k + 2(k+1) \hfill &\qquad &\text{(por la definición recursiva)} \hfill \\
-&= k(k+1)+2(k+1) \hfill &\qquad &\text{(por hipótesis inductiva)}\hfill \\
-&= (k+1)(k+2). \hfill  &\qquad &\text{(propiedad distributiva)}\hfill
-\end{matrix*}
-$$
-Luego el resultado es verdadero cuando $n=k+1$ y por el principio de inducción, es verdadero para todos los enteros positivos $n$.
-\end{proof}
-
-
-Existen varias formas modificadas del principio de inducción. A veces es conveniente tomar como base inductiva el valor $n=0$, por otro lado puede ser apropiado tomar un valor como $2$ o $3$ porque los primeros casos pueden ser excepcionales. Cada problema debe ser tratado según sus características. Otra modificación útil es tomar como hipótesis inductiva la suposición de que el resultado es verdadero para todos los valores $n\le k$, más que para $n=k$ solamente. Esta formulación es llamada \textit{el principio de inducción completa}. Todas esas modificaciones pueden justificarse con cambios triviales en la demostración del teorema \ref{teorema-principio-de-induccion}
+Existen varias formas modificadas del principio de inducción. A veces es conveniente tomar como base inductiva el valor $n=0$, por otro lado puede ser apropiado tomar un valor como $2$ o $3$ porque los primeros casos pueden ser excepcionales. A veces, el caso base puede  ser una secuencia de números enteros. Cada problema debe ser tratado según sus características. Otra modificación útil es tomar como hipótesis inductiva la suposición de que el resultado es verdadero para todos los valores $n\le k$, más que para $n=k$ solamente. Esta formulación es llamada \textit{el principio de inducción completa}. Todas esas modificaciones pueden justificarse con cambios triviales en la demostración del teorema \ref{teorema-principio-de-induccion}
 
 El siguiente teorema incorpora todas las modificaciones del principio de inducción mencionadas más arriba.
 
+\begin{teorema}[Principio de inducción completa] \label{ind-completa} Sean $m_0 \le n_0$ números enteros y sea $P(n)$ una propiedad para $n \ge m_0$ tal que:
+    \begin{enumerate}[label=\textit{\alph*)}]
+    \item\label{it.indcompleta_1} $P(m_0), P(m_0 +1), \ldots, P(n_0)$ son verdaderas.
+    \item\label{it.indcompleta_n} Si  $P(h)$ verdadera para toda $h$ tal que $m_0 \le h \le k$, entonces $P(k + 1)$ verdadera.
+    \end{enumerate}
+    Entonces $P(n)$ es verdadera para todo $n \ge m_0$.
+    \end{teorema}
+    \begin{proof}[Demostración (*)]
+        Sea $Q(n) = P(h)$ verdadera para toda $h$ tal que $m_0 \le h \le n$. A partir de aquí la demostración es completamente análoga   a  la del teorema \ref{teorema-principio-de-induccion}. 
+        
+        Sea 
+        \begin{equation*}
+            S = \{n\in \Z_{\ge m_0}: Q(n)\}.
+        \end{equation*}
+        Entonces $S$ es un subconjunto de $\Z_{\ge m_0}$. Por  \ref{it.indcompleta_1}, 1) $m_0 \in S$. Por \ref{it.indcompleta_1} y \ref{it.indcompleta_n}, 2) si $ k \in S$ entonces $k+1\in S$.  
+    
+        Si la conclusión es falsa, tenemos que $S \not= \Z_{\ge m_0}$ y entonces
+        el conjunto complementario $S^{\text{c}}$ definido por
+        $$
+        S^{\text{c}}= \{ r \in \Z_{\ge m_0}| r\not\in S\}
+        $$
+        es no vacío. Por el axioma del buen orden, $S^{\text{c}}$ tiene un menor elemento $m$. Por 1) el entero $m_0$ pertenece a $S$, luego $m> m_0$. Se sigue que $m-1$ pertenece a $\Z_{\ge m_0}$ y como $m$ es el mínimo de $S^{\text{c}}$, $m-1$ debe pertenecer a $S$. Poniendo $k=m-1$ en la condición 2), concluimos que $m$ esta en $S$, lo cual contradice el hecho de que $m$ pertenece a $S^{\text{c}}$. 
+        
+        De este modo, la suposición $S \not=\Z_{\ge m_0}$ nos lleva a un absurdo, y por lo tanto tenemos $S= \Z_{\ge m_0}$ y $Q(n)$ es verdadera para todo $n \in \Z_{\ge m_0}$.
+    \end{proof}
+    
+
+\begin{comment}
 \begin{teorema}[Principio de inducción completa] Supongamos que $n_0$ es cualquier entero (no necesariamente positivo), y sea $\Z_{\ge n_0}$ el conjunto de enteros $n$ tal que $ n \ge n_0$. Sea $S$ un subconjunto de  $\Z_{\ge n_0}$ que satisface las condiciones: \index{principio de inducción completa}
 \begin{enumerate}[label=\textit{\alph*)}]
 \item\label{it.indcompleta_1} $n_0 \in S$,
@@ -556,29 +599,20 @@ S^{\text{c}}= \{ r \in  \Z_{\ge n_0} | r\not\in S\}
 $$
 es no vacío. Como $ \Z_{\ge n_0}$ es un conjunto acotado inferiormente por $n_0$, por el axioma del buen orden, $S^{\text{c}}$ tiene un menor elemento $m$. Como $n_0$ pertenece a $S$, $m\not=n_0$. Se sigue que $m-1$ pertenece a $X$ y como $m$ es el mínimo de $S^{\text{c}}$, $m-1$ debe pertenecer a $S$. Poniendo $k=m-1$ en la condición \ref{it.indcompleta_n}, concluimos que $m$ esta en $S$, lo cual contradice el hecho de que $m$ pertenece a $S^{\text{c}}$. De este modo, la suposición $S \not=  \Z_{\ge n_0}$ nos lleva a un absurdo, y por lo tanto tenemos $S=  \Z_{\ge n_0}$.
 \end{proof}
+\end{comment}
 
-Como se podrá observar, la demostración es muy similar a  la del teorema \ref{teorema-principio-de-induccion}. El teorema anterior lo podemos utilizar para la demostración de propiedades dependientes de números enteros.
-
-\begin{teorema}\label{ind-completa} Sea $n_0$ número entero y sea $P(n)$ una propiedad para $n \ge n_0$ tal que:
-\begin{enumerate}[label=\textit{\alph*)}]
-\item $P(n_0)$ es verdadera.
-\item Si $P(h)$ verdadera para toda $h$ tal que $n_0 \le h \le k$ implica $P(k + 1)$ verdadera.
-\end{enumerate}
-Entonces $P(n)$ es verdadera para todo $n \ge n_0$.
-\end{teorema}
-\begin{proof} Ejercicio.
-\end{proof}
+Como en el principio de inducción,  \ref{it.indcompleta_1}  es llamado el \textit{caso base} y \ref{it.indcompleta_n} el \textit{paso inductivo}.  
 
 
 
 \begin{ejemplo*}
 Sean $$u_1 = 3,\qquad u_2 = 5,\qquad u_n = 3u_{n-1}- 2u_{n-2},\qquad  n \ge 3.$$
 Probemos que $u_n = 2^n + 1$, para todo $n \in  \mathbb N$.
-\begin{proof}[Solución] Aquí usaremos una extensión natural del principio de inducción: en este caso, el caso base es $n=1$ y $n=2$.
+\begin{proof}[Solución] En este caso, el caso base es $n=1$ y $n=2$.
 
 \noindent(\textit{Caso  base}) El resultado es verdadero cuando $n= 1$ pues $3 = 2^1+1$ y para $n=2$ pues $ 5 =2^2+1$.
 
-\noindent (\textit{Paso  inductivo}) Supongamos que $k \ge 2$ y el resultado  es cierto para los $h$ tales que  $1 \le h \le k$. Es decir que $u_h = 2^h+1$ para $1 \le h \le k$ y $k \ge 2$ (hipótesis inductiva), entonces
+\noindent (\textit{Paso  inductivo}) Sea $k \ge 2$ y supongamos que el resultado  es cierto para los $h$ tales que  $1 \le h \le k$. Es decir que $u_h = 2^h+1$ para $1 \le h \le k$  (hipótesis inductiva), entonces
 $$
 \begin{matrix*}[l]u_{k+1} &=& 3u_k -2u_{k-1} \hfill &\qquad &\text{(por definición recursiva)} \hfill \\
 &=& 3(2^k+1)-2(2^{k-1}+1) \hfill &\qquad &\text{(por hipótesis inductiva)}\hfill \\
@@ -633,6 +667,36 @@ Si $n,m \in \mathbb N$ verifiquemos las siguientes propiedades
     \end{matrix*}
 \end{equation*}
 \end{proof}
+
+
+\begin{ejemplo*}[Serie geométrica] Sea $q$ número real positivo distinto de $1$. Probar  que si $n \ge 0$,  entonces
+    \begin{equation*}
+        \sum_{i=0}^n q^i = \frac{q^{n+1} -1}{q -1}.
+    \end{equation*}
+    \begin{proof}[Solución] Lo probaremos haciendo inducción sobre $n$.
+
+    \noindent(\textit{Caso  base $n=0$}) Debemos ver que $\sum_{i=0}^0 q^i = \frac{q^{1} -1}{q -1}$. Ahora bien,  por definición de sumatoria $\sum_{i=0}^0 q^i= q^0 = 1$ y como $\frac{q^{1} -1}{q -1} = \frac{q -1}{q -1}= 1$, la igualdad se verifica.
+        
+    \noindent (\textit{Paso  inductivo}) Supongamos que el resultado es verdadero para $n=k$, es decir que 
+    \begin{equation}
+        \sum_{i=0}^k q^i = \frac{q^{k+1} -1}{q -1} \tag{HI},
+    \end{equation}
+    la hipótesis inductiva. Entonces debemos probar que 
+    \begin{equation}
+        \sum_{i=0}^{k+1} q^i = \frac{q^{k+2} -1}{q -1} . \label{eq:geometrica}
+    \end{equation}
+    Partiremos del lado izquierdo de la igualdad \eqref{eq:geometrica} y obtendremos el lado derecho:
+    \begin{align*}
+        \sum_{i=0}^{k+1} q^i  &= \sum_{i=0}^k q^i + q^{k+1} &\qquad  &\text{(definición de sumatoria)} \\
+            &=  = \frac{q^{k+1} -1}{q -1}  +  q^{k+1}&\qquad &\text{(hipótesis inductiva)} \\
+            &=  \frac{q^{k+1} -1 + (q-1)q^{k+1}}{q -1} &\qquad  & \text{(común denominador $q-1$)} \\ 
+            &=  \frac{q^{k+1} -1 + q\cdot q^{k+1}- q^{k+1}}{q -1} &\qquad  & \text{(distributiva)} \\
+            &=  \frac{q^{k+1} -1 + q^{k+2}- q^{k+1}}{q -1} &\qquad  &\\
+            &=  \frac{q^{k+2}- 1}{q -1}. &\qquad  &
+    \end{align*}
+    Luego hemos obtenido  \eqref{eq:geometrica} y por el principio de inducción concluimos que el resultado es verdadero para todo $n\ge 0$.
+    \end{proof}
+    \end{ejemplo*}
 
 \subsection*{$\S$ Ejercicios}
 
