@@ -265,8 +265,7 @@
 		
 		{\color{blue}Ejercicio}
 		\vskip .2cm
-		¿De cuántas formas diferentes pueden repartirse 5 bolas blancas, 3 rojas y 2 negras en 10 urnas
-		distintas (etiquetadas) de forma que cada urna contenga una bola?
+		¿De cuántas formas diferen 		distintas (etiquetadas) de forma que cada urna contenga una bola? Es decir en  cada urna una bola.
 		\vskip .2cm \pause
 		{\color{blue}Solución.}
 		\vskip .2cm
@@ -288,7 +287,15 @@
 		\begin{equation*}
 			\binom{10}{5}\binom{5}{3} = \frac{10!}{5!5!}\frac{5!}{2!3!} = \frac{10!}{5!2!3!} .
 		\end{equation*}\qed
-		\vskip 4cm
+		
+        {\color{blue}Observación} Este problema es equivalente a ``cuantas permutaciones de 5 blancas, 3 rojas y 2 negras''. Como resolvíamos problemas similares, podemos pensar primero que toda las bolas tienen distinto color,  con lo cual tenemos $10!$ permutaciones.
+        \vskip .2cm
+        Luego,  hay que dividir por las permutaciones de dos bolas blancas, 3 rojas  y 2 negras, y el resultado es
+
+        \begin{equation*}
+			\frac{10!}{5!2!3!} .
+		\end{equation*}
+		
 	\end{frame}
 	
 	
