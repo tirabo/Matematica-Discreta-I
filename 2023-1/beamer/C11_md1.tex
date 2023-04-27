@@ -1,7 +1,8 @@
-%\documentclass{beamer} 
 \documentclass[handout]{beamer} % sin pausas
-\usetheme{CambridgeUS}
+%\documentclass{beamer} 
 %\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+
+\usetheme{CambridgeUS}
 
 \usepackage{etex}
 \usepackage{t1enc}
@@ -97,12 +98,11 @@
 
 
 \title[Clase 11 - MCD (1)]{Matemática Discreta I \\ Clase 11 - Máximo común divisor (1)}
-%\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
 \institute[]{\normalsize FAMAF / UNC
     \\[\baselineskip] ${}^{}$
     \\[\baselineskip]
 }
-\date[27/04/2023]{27 de abril de 2023}
+\date[27/04/2022]{27 de abril de 2023}
 
 \newcommand{\mcd}{\operatorname{mcd}}
 
@@ -119,7 +119,7 @@
         Si $a$ y $b$ son enteros algunos de ellos no nulo, decimos que un entero positivo $d$ es un {\em máximo común divisor}\index{máximo común divisor}, o {\em mcd}, de $a$ y $b$ si
         \begin{enumerate}
             \item[{\color{blue} a)}] $ d|a$  y $d|b$;
-            \item[{\color{blue} b)}]  si $ c|a $ y $c|b$ entonces $ c\le d$.
+            \item[{\color{blue} b)}]  si $ c|a $ y $c|b$ entonces $ c|d$.
         \end{enumerate}
         \end{definicion}\pause
         \vskip .4cm 
@@ -128,7 +128,7 @@
             \vskip .4cm \pause
             
             \item[$\bullet$] La condición (b) nos dice que cualquier divisor común de
-            $a$ y $b$ es mayor o igual a $d$. 
+            $a$ y $b$ es también divisor de $d$. 
         \end{itemize}
         
         \vskip .4cm 
@@ -141,12 +141,12 @@
         \begin{ejemplo}
             ¿Cuál es el mcd entre $60$ y $84$?
         \end{ejemplo}
-        \pause
+         \pause
         \begin{solucion}
             \pause
             \begin{itemize}
                 \item[$\bullet$] $6$ es un divisor común de $60$ y $84$, pero no es el mayor divisor común, porque
-                $12|60$ y $12|84$ pero $12 < 6$.
+                $12|60$ y $12|84$ pero $12{\not|}6$.
                 \vskip .2cm 
                 \item[$\bullet$] Los divisores positivos comunes de 60  y 84 son 1, 2, 3, 6 y 12, luego aunque 6  es un divisor común, no satisface (2) de la definición. 
                 \vskip .2cm 
@@ -158,14 +158,59 @@
         
     \end{frame}
     
+    
+    \begin{frame}
         
+        \begin{preguntas}
+            \pause
+
+            \begin{itemize}
+                \item[$\bullet$] Dados $a,b \in \mathbb Z$ arbitrarios, alguno de ellos no nulo ¿existe el máximo común divisor? \pause \newline \textbf{Rta:} Sí.
+                \vskip .4cm \pause
+                \item[$\bullet$]
+                Si existe, ¿hay una forma eficiente de calcularlo? \pause \newline \textbf{Rta:} Sí.
+                \vskip .4cm \pause
+                \item[$\bullet$]  ¿Cuántos máximos común divisores puede tener un  par de enteros? \pause\newline \textbf{Rta:} 1. 
+            \end{itemize}
+            \vskip .8cm 
+        \end{preguntas}
+
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        La primera y tercera pregunta son respondidas por el siguiente:
+        \vskip .4cm
+        \begin{teorema}\label{th-mcd}
+            {\it Dados $a,b \in \mathbb Z$, alguno de ellos no nulo, existe un único $d \in \mathbb Z$ que es el máximo común divisor. }
+            \vskip .2cm \pause
+        \end{teorema}
+        \begin{idea}
+            \pause 
+            \begin{equation*}
+                S = \{m a+n b : m,n\in \mathbb Z, m a+n b>0\} \subset \mathbb N.
+            \end{equation*}
+            
+            El mínimo de $S$ es el mcd.\qed
+        \end{idea}
+        \pause 
+        \vskip .4cm 
+        \begin{notacion}
+            Sean $a,b \in \mathbb Z$, alguno de ellos no nulo, denotamos $\mcd(a,b)$ o $(a,b)$ al máximo común divisor entre $a$ y $b$.
+        \end{notacion}
+
+        
+    \end{frame}
+    
+    
     \begin{frame}
         
         
         \begin{ejemplo}
             Hallar   $\mcd(174,72)$.
         \end{ejemplo}
-        \pause    
+         \pause    
         \begin{solucion}
             \pause
         Divisores de 174: 1, 2, 3, 6, 29, 58, 87, 174\pause
@@ -180,7 +225,55 @@
         
     \end{frame}
     
+    
+    \begin{frame}
         
+        \begin{proposicion} 
+        Sean $a,b \in \mathbb Z$, alguno de ellos no nulo. Entonces existen $s,t \in \mathbb Z$ tal que
+        \begin{equation*}
+            (a,b) = sa + tb. 
+        \end{equation*}
+        \end{proposicion}
+        \begin{proof}
+            Es consecuencia inmediata de la demostración del  teorema de la p. \ref{th-mcd}. \qed
+        \end{proof}
+        \pause
+        \vskip .2cm 
+        \begin{corolario}
+            Sean $a$ y $b$ enteros, $b$ no nulo, entonces
+            $$
+            (a,b) = 1 \Leftrightarrow \text{existen $s,t \in \mathbb Z$ tales que $1 = sa+tb$.}
+            $$
+        \end{corolario}
+        \pause
+    
+        
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{}
+        
+    \begin{definicion}
+        Si  $(a,b)=1$ entonces decimos que $a$ y $ b$ son {\em coprimos}\index{coprimos}.
+    \end{definicion}
+
+    \begin{observacion}
+        Por el corolario de la página anterior 
+        $$
+        a,b \text{ coprimos }\quad \Leftrightarrow\quad \text{existen $s,t \in \mathbb Z$ tales que $1 = sa+tb$.}
+        $$
+    \end{observacion}
+
+    \begin{observacion}
+        \textit{NO} es cierto  que si existen $s,t \in \mathbb Z$ tales que $d = sa+tb$ $\Rightarrow$ $d = (a,b)$.
+\vskip .4cm
+        Por ejemplo, $4 = 2 \cdot 6 + (-2) \cdot 4$ y $(6,4) =2$. 
+    \end{observacion}
+        
+        
+    
+    \end{frame}
+    
     \begin{frame}
         
         \begin{proposicion} Sean $a,b$ enteros con $a \not = 0$, entonces
@@ -234,27 +327,27 @@
     
     
     \begin{frame}
-        \begin{ejemplo} Encontrar el mcd entre $174$ y $72$.
+        \begin{ejemplo} Encontrar el mcd entre 72 y 174.
         \end{ejemplo} \pause\vskip -.6cm
         $$
         \begin{matrix*}[l]
-            \text{{\color{blue}Solución:}\qquad} & (174, 72)     &= (72, 174) =  (72,174-72) =  (72,102)\qquad\qquad\qquad{}^{}\\
+            \text{{\color{blue}Solución:}\qquad} & (72, 174)     &=  (72,174-72) =  (72,102)\qquad\qquad\qquad{}^{}\\
             &&=  (72,102 - 72) = (72,30)\\
-            &&= (30,72) = (30,72 -30) = (42, 30) \\
-            &&=  (30,42)= (30,42 -30) =(30,12) \\
-            &&= (12,30) = (12, 30-12)\\ 
-            &&= (12,18)=  (12, 18-12)= (12,6)\\
-            &&= (6,12) = (6,12-6) \\
-            &&=(6,6)= (6, 6-6) \\
-            &&=(6,0) \\
-            &&= 6. \qquad\qquad\qquad\qquad\qquad\qquad\qed 
+            &&= (30,72)  \\
+            &&= (30,72 -30) = (42, 30) \\
+            &&=  (30,42)\\
+            &&= (30,42 -30) =(30,12) \\
+            &&= (12,30) \\
+            &&= (12, 30-12) = (12,18)\\
+            &&=  (12, 18-12)= (12,6)\\
+            &&= (6,12) \\
+            &&= (6,12-6) =(6,6)\\
+            &&= (6, 6-6) = (6,0) = 6. \qquad\qquad\qquad\qquad\qquad\qquad\qed 
         \end{matrix*}
         $$
         
     \end{frame}
-
     
-
     
     \begin{frame}
         
@@ -292,80 +385,6 @@
     \end{frame}
     
     
-    
-    \begin{frame}\frametitle{Algoritmo de Euclides}\label{film-alg-eucl}
-        Para calcular el mcd de enteros $a$ y $b$, con $b >0$, 
-        definimos $q_i$ y $r_i$ recursivamente  de la siguiente manera: $r_0 = a$, $r_1 = b$,  y \pause
-        \begin{align*}
-            &\text{($e_{1}$)}\qquad& r_0&=r_1 q_1 + r_2& &(0 < r_2<r_1)\\
-            &\text{($e_{2}$)}\qquad& r_1&=r_2q_2 + r_3\quad{}\quad{}\quad{}& &(0 < r_3<r_2)  \\
-            &\text{($e_{3}$)}\qquad& r_2&=r_3q_3 + r_4\quad{}\quad{}\quad{}& &(0 < r_4<r_3)  \\
-            &\cdots&&\\
-            &\text{($e_{i}$)}\qquad& r_{i-1}&=r_{i}q_{i} + r_{i+1}& &(0 < r_{i+1} <r_{i}) \\
-            &\cdots&& \\
-            &\text{($e_{k-1}$)}\qquad& r_{k-2}&=r_{k-1}q_{k-1} + r_{k}& &(0 < r_{k} <r_{k-1}) \\
-            &\text{($e_{k}$)}\qquad& r_{k-1}&=r_{k}q_{k} + 0 ,&&  
-        \end{align*}\pause
-        
-        Entonces $r_k = \mcd(a,b)$.
-    \end{frame}
-
-    
-
-    
-    \begin{frame}
-        
-        \begin{itemize}
-            \item[$\bullet$] El proceso se detiene en el primer resto $r_i$  igual a $0$.
-            \vskip .4cm\pause
-            \item[$\bullet$]  El proceso debe detenerse, porque cada resto no nulo es positivo y estrictamente menor que el anterior.
-            \vskip .4cm\pause
-            \item[$\bullet$]  Este procedimiento es conocido como el {\em algoritmo de Euclides}.
-        \end{itemize}
-        \pause
-        
-        \vskip .4cm
-        \begin{teorema} Sean  $a$ y $b$ enteros con $b >0$, entonces el máximo común divisor  es el último resto no nulo obtenido en el algoritmo de Euclides ($r_k$ de la filmina anterior). 
-        \end{teorema}
-        \pause
-        \begin{idea}
-            $r_{i-1}=r_{i}q_{i} + r_{i+1} \Rightarrow \mcd(r_{i-1},r_{i}) = \mcd(r_{i} , r_{i+1})$. Luego,
-            \begin{multline*}
-                \mcd(a,b) = \mcd(r_{0},r_{1}) = \mcd(r_{1},r_{2}) = \cdots \\
-                \cdots = \mcd(r_{k-1},r_{k})  = \mcd(r_{k},0) = r_k. \qed
-            \end{multline*}
-            
-            
-        \end{idea}
-    \end{frame}
-    
-    \begin{frame}
-        
-        
-        Ejemplifiquemos el algoritmo de Euclides.\pause
-        
-        \vskip .4cm
-        
-        \begin{ejemplo} Encuentre el mcd de 2406 y 654.
-        \end{ejemplo}\pause
-        \begin{solucion}\pause Tenemos
-            \begin{alignat*}3
-                2406&=654\cdot3+444,&\quad&\text{ entonces  }&\quad (2406,654)&= (654,444) \\
-                654&=444\cdot1+210, &\quad&\text{ entonces  }&(654,444)&= (444,210)\\
-                444&=210\cdot2+24,&\quad&\text{ entonces  }&(444,210)&= (210,24)\\
-                210&=24\cdot8+18,&\quad&\text{ entonces  }&(210,24)&= (24,18)\\
-                24 &=18\cdot1+6,&\quad&\text{ entonces  }&(24,18)&= (18,6)\\
-                18&=6\cdot3 + 0&\quad&\text{ entonces  }& (18,6) &= (6,0) = 6 
-            \end{alignat*}\pause
-            Por lo tanto $(2406,654)=6$.
-            
-            
-            
-        \end{solucion}
-        
-    \end{frame}
-    
-
     
 \end{document}
 
