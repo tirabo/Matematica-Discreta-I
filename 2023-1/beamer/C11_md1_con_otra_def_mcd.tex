@@ -1,0 +1,371 @@
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
+\usetheme{CambridgeUS}
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+%\usepackage{makeidx}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usepackage[customcolors]{hf-tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\tikzset{
+    every picture/.append style={
+        execute at begin picture={\deactivatequoting},
+        execute at end picture={\activatequoting}
+    }
+}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{shapes.geometric}
+\usepackage{mathtools}
+\usepackage{stackrel}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+\usepackage{polynom}
+\polyset{%
+    style=B,
+    delims={(}{)},
+    div=:
+}
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate]{label={(\arabic*)}}
+
+\setbeamertemplate{itemize item}{$\circ$}
+\setbeamertemplate{enumerate items}[default]
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\img}{\operatorname{Im}}
+\newcommand{\nuc}{\operatorname{Nu}}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand\nu{\operatorname{Nu}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\sin}{{\,\operatorname{sen}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathbb K}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand\sgn{\operatorname{sgn}}
+\renewcommand{\t}{{\operatorname{t}}}
+\renewcommand{\figurename }{Figura}
+
+\include{definiciones} % definiciones propias
+
+\newcommand{\nc}{\newcommand}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+\nc{\FF}{{\mathbb F}} \nc{\NN}{{\mathbb N}} \nc{\QQ}{{\mathbb Q}}
+\nc{\PP}{{\mathbb P}} \nc{\DD}{{\mathbb D}} \nc{\Sn}{{\mathbb S}}
+\nc{\uno}{\mathbb{1}} \nc{\BB}{{\mathbb B}} \nc{\An}{{\mathbb A}}
+
+\nc{\ba}{\mathbf{a}} \nc{\bb}{\mathbf{b}} \nc{\bt}{\mathbf{t}}
+\nc{\bB}{\mathbf{B}}
+
+\nc{\cP}{\mathcal{P}} \nc{\cU}{\mathcal{U}} \nc{\cX}{\mathcal{X}}
+\nc{\cE}{\mathcal{E}} \nc{\cS}{\mathcal{S}} \nc{\cA}{\mathcal{A}}
+\nc{\cC}{\mathcal{C}} \nc{\cO}{\mathcal{O}} \nc{\cQ}{\mathcal{Q}}
+\nc{\cB}{\mathcal{B}} \nc{\cJ}{\mathcal{J}} \nc{\cI}{\mathcal{I}}
+\nc{\cM}{\mathcal{M}} \nc{\cK}{\mathcal{K}}
+
+\nc{\fD}{\mathfrak{D}} \nc{\fI}{\mathfrak{I}} \nc{\fJ}{\mathfrak{J}}
+\nc{\fS}{\mathfrak{S}} \nc{\gA}{\mathfrak{A}}
+%%%%%%%%%%%%%%%%%%%%%%%%%LETRAS
+
+
+
+
+\title[Clase 11 - MCD (1)]{Matemática Discreta I \\ Clase 11 - Máximo común divisor (1)}
+%\author[C. Olmos / A. Tiraboschi]{Carlos Olmos / Alejandro Tiraboschi}
+\institute[]{\normalsize FAMAF / UNC
+    \\[\baselineskip] ${}^{}$
+    \\[\baselineskip]
+}
+\date[27/04/2023]{27 de abril de 2023}
+
+\newcommand{\mcd}{\operatorname{mcd}}
+
+
+\begin{document}
+    
+    \frame{\titlepage} 
+    
+    
+    \begin{frame}\frametitle{Definición de MCD}
+        
+        
+        \begin{definicion}
+        Si $a$ y $b$ son enteros algunos de ellos no nulo, decimos que un entero positivo $d$ es un {\em máximo común divisor}\index{máximo común divisor}, o {\em mcd}, de $a$ y $b$ si
+        \begin{enumerate}
+            \item[{\color{blue} a)}] $ d|a$  y $d|b$;
+            \item[{\color{blue} b)}]  si $ c|a $ y $c|b$ entonces $ c\le d$.
+        \end{enumerate}
+        \end{definicion}\pause
+        \vskip .4cm 
+        \begin{itemize}
+            \item[$\bullet$]  La condición (a) nos dice que $d$ es un común divisor de $a$ y $b$.
+            \vskip .4cm \pause
+            
+            \item[$\bullet$] La condición (b) nos dice que cualquier divisor común de
+            $a$ y $b$ es mayor o igual a $d$. 
+        \end{itemize}
+        
+        \vskip .4cm 
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        
+        \begin{ejemplo}
+            ¿Cuál es el mcd entre $60$ y $84$?
+        \end{ejemplo}
+        \pause
+        \begin{solucion}
+            \pause
+            \begin{itemize}
+                \item[$\bullet$] $6$ es un divisor común de $60$ y $84$, pero no es el mayor divisor común, porque
+                $12|60$ y $12|84$ pero $12 < 6$.
+                \vskip .2cm 
+                \item[$\bullet$] Los divisores positivos comunes de 60  y 84 son 1, 2, 3, 6 y 12, luego aunque 6  es un divisor común, no satisface (2) de la definición. 
+                \vskip .2cm 
+                \item[$\bullet$] En este caso, 12  claramente es  el  \textbf{máximo común divisor}.
+            \end{itemize}
+        \end{solucion}
+
+        
+        
+    \end{frame}
+    
+        
+    \begin{frame}
+        
+        
+        \begin{ejemplo}
+            Hallar   $\mcd(174,72)$.
+        \end{ejemplo}
+        \pause    
+        \begin{solucion}
+            \pause
+        Divisores de 174: 1, 2, 3, 6, 29, 58, 87, 174\pause
+        \vskip .2cm         
+        Divisores de 72: 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, 72 \pause
+        \vskip .2cm         
+        Luego, $6$ es divisor común de 174 y 72, y todos los demás divisores comunes ($1$, $2$ y $3$) dividen a $6$. 
+        \vskip .2cm     
+        
+        Por lo tanto $\mcd(174,72) =6$.\qed
+        \end{solucion} 
+        
+    \end{frame}
+    
+        
+    \begin{frame}
+        
+        \begin{proposicion} Sean $a,b$ enteros con $a \not = 0$, entonces
+            \begin{enumerate}
+                \item[1.] $\mcd(b,a) = \mcd(a,b) = \mcd(\pm a, \pm b)$,\pause
+                \item[2.] si $a>0$,  $\mcd(a,0) = a$ y $\mcd(a,a) = a$,\pause
+                \item[3.] $\mcd(1,b) = 1$.
+            \end{enumerate}
+        \end{proposicion}
+        \pause
+        \begin{proof}
+            Estas propiedades son de demostración casi trivial, por ejemplo para demostrar que  $\mcd(1,b) = 1$ comprobamos que 1 cumple con la definición:
+            \begin{enumerate}
+                \item[({a})] $ 1|1$ y $1|b$;
+                \item[({b})] si $ c|1 $ y $c|b$ entonces $ c|1$,
+            \end{enumerate}
+            propiedades que son obviamente verdaderas.
+            
+            1. y 2.  se dejan a cargo del lector. \qed
+        \end{proof}
+        \vskip .8cm
+        
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        La siguiente propiedad no es tan obvia y resulta muy importante. 
+        \vskip .2cm
+        \begin{propiedad}
+            Si $a \not=0, b \in \mathbb Z$, entonces $\mcd(a,b) = \mcd(a,b-a)$. 
+        \end{propiedad}\pause
+        \begin{proof}
+            Sea $d =  \mcd(a,b)$, luego 
+            \vskip .2cm
+            (a) $ d|a$ y $d|b$ \; \quad \;\,\, y \; (b) si $ c|a $ y $c|b$ entonces $ c|d$.\pause
+            \vskip .2cm
+            Debemos probar que 
+            \vskip .2cm
+            (a') $ d|a$ y $d|b -a$ \; y \; (b') si $ c|a $ y $c|b -a$ entonces $ c|d$.\pause
+            \vskip .6cm
+            Por (a),  $ d|a$ y $d|b$ $\Rightarrow$  $d|b -a$  $\Rightarrow$ (a').\pause
+            \vskip .2cm
+            Si $ c|a $ y $c|b -a$ $\Rightarrow$  $c|a +(b -a) = b$ $\stackrel{(b)}{\Rightarrow}$ $ c|d$ $\Rightarrow$  (b').
+
+            \qed
+
+        \end{proof}
+        
+    \end{frame}
+    
+    
+    \begin{frame}
+        \begin{ejemplo} Encontrar el mcd entre $174$ y $72$.
+        \end{ejemplo} \pause\vskip -.6cm
+        $$
+        \begin{matrix*}[l]
+            \text{{\color{blue}Solución:}\qquad} & (174, 72)     &= (72, 174) =  (72,174-72) =  (72,102)\qquad\qquad\qquad{}^{}\\
+            &&=  (72,102 - 72) = (72,30)\\
+            &&= (30,72) = (30,72 -30) = (42, 30) \\
+            &&=  (30,42)= (30,42 -30) =(30,12) \\
+            &&= (12,30) = (12, 30-12)\\ 
+            &&= (12,18)=  (12, 18-12)= (12,6)\\
+            &&= (6,12) = (6,12-6) \\
+            &&=(6,6)= (6, 6-6) \\
+            &&=(6,0) \\
+            &&= 6. \qquad\qquad\qquad\qquad\qquad\qquad\qed 
+        \end{matrix*}
+        $$
+        
+    \end{frame}
+
+    
+
+    
+    \begin{frame}
+        
+        $\bullet$ En  general no es sencillo encontrar todos los divisores de un número entero grande. 
+        \vskip .2cm
+        $\bullet$ No es factible calcular el  mcd de números grandes revisando todos los divisores comunes.  
+        \vskip .2cm
+        $\bullet$ El algoritmo anterior  nos da un método práctico y relativamente eficiente para calcular el mcd. 
+        \vskip .6cm
+        \pause
+        La próxima proposición nos provee una herramienta aún mejor para calcular el mcd.
+        \pause
+        \begin{proposicion}\label{prop-alg-eucl} Sean  $a,b$ enteros no negativos con $b \not=0$, entonces 
+            \begin{equation}\label{bec}
+                a=bq+r\quad \Rightarrow \quad\mcd(a,b)=\mcd(b,r).
+            \end{equation}
+        \end{proposicion}
+    \end{frame}
+    
+    
+    \begin{frame}
+        \begin{ejemplo} Encuentre el mcd de 174 y 72.
+        \end{ejemplo}\pause
+        \begin{solucion}\pause Con el uso repetido de la proposición anterior, obtenemos
+            \begin{alignat*}3
+                174&=72\cdot 2+30,&\quad&\text{ entonces  }& \quad(174,72)&= (72,30)\\
+                72&=30\cdot 2+12,&\quad&\text{ entonces  }& (72,30)&= (30,12)\\
+                30&=12\cdot 2+6,&\quad&\text{ entonces  }& (30,12)&= (12,6)\\
+                12&=6\cdot 2+0,&\quad&\text{ entonces  }&(12,6)&= (6,0)=6.\\
+            \end{alignat*}
+            
+            Por lo tanto $(174,72) = 6$. \qed
+            
+        \end{solucion}
+    \end{frame}
+    
+    
+    
+    \begin{frame}\frametitle{Algoritmo de Euclides}\label{film-alg-eucl}
+        Para calcular el mcd de enteros $a$ y $b$, con $b >0$, 
+        definimos $q_i$ y $r_i$ recursivamente  de la siguiente manera: $r_0 = a$, $r_1 = b$,  y \pause
+        \begin{align*}
+            &\text{($e_{1}$)}\qquad& r_0&=r_1 q_1 + r_2& &(0 < r_2<r_1)\\
+            &\text{($e_{2}$)}\qquad& r_1&=r_2q_2 + r_3\quad{}\quad{}\quad{}& &(0 < r_3<r_2)  \\
+            &\text{($e_{3}$)}\qquad& r_2&=r_3q_3 + r_4\quad{}\quad{}\quad{}& &(0 < r_4<r_3)  \\
+            &\cdots&&\\
+            &\text{($e_{i}$)}\qquad& r_{i-1}&=r_{i}q_{i} + r_{i+1}& &(0 < r_{i+1} <r_{i}) \\
+            &\cdots&& \\
+            &\text{($e_{k-1}$)}\qquad& r_{k-2}&=r_{k-1}q_{k-1} + r_{k}& &(0 < r_{k} <r_{k-1}) \\
+            &\text{($e_{k}$)}\qquad& r_{k-1}&=r_{k}q_{k} + 0 ,&&  
+        \end{align*}\pause
+        
+        Entonces $r_k = \mcd(a,b)$.
+    \end{frame}
+
+    
+
+    
+    \begin{frame}
+        
+        \begin{itemize}
+            \item[$\bullet$] El proceso se detiene en el primer resto $r_i$  igual a $0$.
+            \vskip .4cm\pause
+            \item[$\bullet$]  El proceso debe detenerse, porque cada resto no nulo es positivo y estrictamente menor que el anterior.
+            \vskip .4cm\pause
+            \item[$\bullet$]  Este procedimiento es conocido como el {\em algoritmo de Euclides}.
+        \end{itemize}
+        \pause
+        
+        \vskip .4cm
+        \begin{teorema} Sean  $a$ y $b$ enteros con $b >0$, entonces el máximo común divisor  es el último resto no nulo obtenido en el algoritmo de Euclides ($r_k$ de la filmina anterior). 
+        \end{teorema}
+        \pause
+        \begin{idea}
+            $r_{i-1}=r_{i}q_{i} + r_{i+1} \Rightarrow \mcd(r_{i-1},r_{i}) = \mcd(r_{i} , r_{i+1})$. Luego,
+            \begin{multline*}
+                \mcd(a,b) = \mcd(r_{0},r_{1}) = \mcd(r_{1},r_{2}) = \cdots \\
+                \cdots = \mcd(r_{k-1},r_{k})  = \mcd(r_{k},0) = r_k. \qed
+            \end{multline*}
+            
+            
+        \end{idea}
+    \end{frame}
+    
+    \begin{frame}
+        
+        
+        Ejemplifiquemos el algoritmo de Euclides.\pause
+        
+        \vskip .4cm
+        
+        \begin{ejemplo} Encuentre el mcd de 2406 y 654.
+        \end{ejemplo}\pause
+        \begin{solucion}\pause Tenemos
+            \begin{alignat*}3
+                2406&=654\cdot3+444,&\quad&\text{ entonces  }&\quad (2406,654)&= (654,444) \\
+                654&=444\cdot1+210, &\quad&\text{ entonces  }&(654,444)&= (444,210)\\
+                444&=210\cdot2+24,&\quad&\text{ entonces  }&(444,210)&= (210,24)\\
+                210&=24\cdot8+18,&\quad&\text{ entonces  }&(210,24)&= (24,18)\\
+                24 &=18\cdot1+6,&\quad&\text{ entonces  }&(24,18)&= (18,6)\\
+                18&=6\cdot3 + 0&\quad&\text{ entonces  }& (18,6) &= (6,0) = 6 
+            \end{alignat*}\pause
+            Por lo tanto $(2406,654)=6$.
+            
+            
+            
+        \end{solucion}
+        
+    \end{frame}
+    
+
+    
+\end{document}
+
