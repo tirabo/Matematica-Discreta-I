@@ -1,7 +1,7 @@
-\documentclass{beamer} 
-%\documentclass[handout]{beamer} % sin pausas
+%\documentclass{beamer} 
+\documentclass[handout]{beamer} % sin pausas
 \usetheme{CambridgeUS}
-\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 \usepackage{etex}
 \usepackage{t1enc}
@@ -132,36 +132,7 @@
 
     
 
-    
     \begin{frame}
-        
-        \begin{itemize}
-            \item[$\bullet$] El proceso se detiene en el primer resto $r_i$  igual a $0$.
-            \vskip .4cm\pause
-            \item[$\bullet$]  El proceso debe detenerse, porque cada resto no nulo es positivo y estrictamente menor que el anterior.
-            \vskip .4cm\pause
-            \item[$\bullet$]  Este procedimiento es conocido como el {\em algoritmo de Euclides}.
-        \end{itemize}
-        \pause
-        
-        \vskip .4cm
-        \begin{teorema} Sean  $a$ y $b$ enteros con $b >0$, entonces el máximo común divisor  es el último resto no nulo obtenido en el algoritmo de Euclides ($r_k$ de la filmina anterior). 
-        \end{teorema}
-        \pause
-        \begin{idea}
-            $r_{i-1}=r_{i}q_{i} + r_{i+1} \Rightarrow \mcd(r_{i-1},r_{i}) = \mcd(r_{i} , r_{i+1})$. Luego,
-            \begin{multline*}
-                \mcd(a,b) = \mcd(r_{0},r_{1}) = \mcd(r_{1},r_{2}) = \cdots \\
-                \cdots = \mcd(r_{k-1},r_{k})  = \mcd(r_{k},0) = r_k. \qed
-            \end{multline*}
-            
-            
-        \end{idea}
-    \end{frame}
-    
-    \begin{frame}
-        
-        
         Ejemplifiquemos el algoritmo de Euclides.\pause
         
         \vskip .4cm
@@ -178,12 +149,9 @@
                 18&=6\cdot3 + 0&\quad&\text{ entonces  }& (18,6) &= (6,0) = 6 
             \end{alignat*}\pause
             Por lo tanto $(2406,654)=6$.
-            
-            
-            
         \end{solucion}
-        
     \end{frame}
+
     
     \begin{frame}[fragile=singleslide]
         
@@ -212,39 +180,82 @@
         
     \end{frame}
     
-    
-    
     \begin{frame}\label{film-alg-eucl-2}
         
-        Sean $a, b \in \mathbb{Z}$, uno de ellos no nulo, entonces 
-        $$
-        d=sa+tb.
-        $$
-        \pause
+        \begin{teorema}\label{prop-d-comb-lin}
+            Sean $a,b \in \Z$, alguno de ellos no nulo. Entonces,  existen $s, t \in \Z$ tal que 
+            \begin{equation*}
+                \operatorname{mcd}(a,b) = sa +tb.
+            \end{equation*}
+        \end{teorema}
+        \vskip -.5cm
+        {\color{blue}Demostración.}\pause 
+        \vskip .2cm
+        Supongamos que $b>0$ y sea $d=\mcd(a,b)$. Entonces, $d$ es el último resto no nulo del algoritmo (ver p. \ref{film-alg-eucl}).
+        \vskip .2cm \pause
+        Cada resto puede ser calculado en base a los dos anteriores:
+        \begin{equation}\label{eq-alg-euclides}
+            (e_{i-1})\quad r_{i-2}=r_{i-1}q_{i-1} + r_{i}\quad \Rightarrow \quad  r_{i} = r_{i-2} - r_{i-1}q_{i-1}.
+        \end{equation}
+        \vskip .2cm \pause
+        Aplicando repetidamente (\ref{eq-alg-euclides}) a los restos correpondientes, $\Rightarrow$  cada resto puede ser escrito como combinación lineal entera de $r_0=a$ y $r_1=b$.
+        \vskip .2cm \pause
+        En particular,  $d=r_k$ puede ser escrito como combinación lineal entera de $r_0=a$ y $r_1=b$.
+    \end{frame}
+
+    
+    \begin{frame}\label{fil-obtencion-de-r-s}
         
-        Calculemos $s$ y $t$. En el caso que $b >0$,  la  ecuación ($e_{i}$) de la filmina \ref{film-alg-eucl} es:
-        $$
-        r_{i-1}=r_{i}q_{i} + r_{i+1}
-        $$\pause
+    Más precisamente, de la filmina \ref{film-alg-eucl} :
+    \begin{equation*}
+        (e_{i-1})\quad r_{i-2}=r_{i-1}q_{i-1} + r_{i}.
+    \end{equation*}\pause
         Esto implica que 
         $$
-        r_{i+1} = r_{i-1}-r_{i}q_{i}.
+        ({i})\quad r_{i} = r_{i-2} - r_{i-1}q_{i-1}.
         $$\pause
-        Lo cual nos dice que $r_i$  puede ser calculado usando $r_{i-1}$ y $r_{i-2}$.
+        Lo cual nos dice que $r_{i}$  puede ser calculado usando $r_{i-1}$ y $r_{i-2}$.
         \pause
         \begin{align*}
-            r_{k} \quad &\text{puede ser calculado con $r_{k-1}$ y $r_{k-2} $ } \\
-            r_{k-1} \quad &\text{puede ser calculado con $r_{k-2}$ y $r_{k-3} $ } \\
-            \cdots\quad &\cdots \\
-            r_{3} \quad &\text{puede ser calculado con $r_{2}$ y $r_{1} $ } \\
-            r_{2} \quad &\text{puede ser calculado con $r_{1} =b$ y $r_{0}=a $ } \\
+            d = r_{k} &\stackrel{(k)}{=} r_{k-2}-r_{k-1}q_{i} = s_kr_{k-2}+ t_k r_{k-1} \\
+            &\stackrel{(k-1)}{=} s_kr_{k-2}+ t_k (r_{k-3}-r_{k-2}q_{k-2}) =s_{k-1}r_{k-3}+ t_{k-1} r_{k-2} \\
+            &\;\cdots\;\cdots\\
+            &\stackrel{(3)}{=} s_4r_{2}+ t_k (r_{1}-r_{2}q_{2}) =s_{3}r_{1}+ t_{3} r_{2} \\
+            &\stackrel{(2)}{=} s_3r_{1}+ t_3 (r_{0}-r_{1}q_{1}) =s_{2}r_{0}+ t_{2} r_{1} =s_{2}a+ t_{2}b.
         \end{align*}
         
+        \qed
         
     \end{frame}
+
+
+    \begin{frame}
+        \frametitle{}
+
+        \begin{corolario}
+            Sean $a$ y $b$ enteros, $b$ no nulo, entonces
+            $$
+            (a,b) = 1 \Leftrightarrow \text{existen $s,t \in \mathbb Z$ tales que $1 = sa+tb$.}
+            $$
+        \end{corolario}
+        \pause
+        
+    \begin{definicion}
+        Si  $(a,b)=1$ entonces decimos que $a$ y $ b$ son {\em coprimos}\index{coprimos}.
+    \end{definicion}
+
+
+    \begin{observacion}
+        \textit{NO} es cierto  que si existen $s,t \in \mathbb Z$ tales que $d = sa+tb$ $\Rightarrow$ $d = (a,b)$.
+\vskip .4cm
+        Por ejemplo, $4 = 2 \cdot 6 + (-2) \cdot 4$ y $(6,4) =2$. 
+    \end{observacion}
+        
+        
     
-    
-    
+    \end{frame}
+
+        
     \begin{frame}
         \begin{ejemplo} Encuentre $d$, el mcd de 174 y 72 y  escribir $d = s \cdot 174 + t \cdot 72$.
         \end{ejemplo}\pause
@@ -352,6 +363,8 @@
         
     \end{frame}
     
+
+
     
     
     \begin{frame}
