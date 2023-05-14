@@ -147,16 +147,18 @@
             y por consiguiente el lado izquierdo es divisible por $m$.
             \vskip .2cm\pause 
             \noindent (b)\pause {}  Aquí tenemos
+            \begin{itemize}
+                \item $m | x_1 -x_2$, multiplicando por $y_1$ $\Rightarrow$ $m | x_1y_1-x_2y_1$.
+                \item $m | y_1 -y_2$, multiplicando por $x_2$ $\Rightarrow$ $m | x_2y_1-x_2y_2$.
+            \end{itemize}
+            Luego
+            \begin{itemize}
+                \item  $m | (x_1y_1-x_2y_1) + (x_2y_1-x_2y_2) = x_1y_1-x_2y_2$.
+            \end{itemize}
+            Por lo tanto,
             $$
-            \begin{aligned}
-                x_1y_1-x_2y_2 &=  x_1y_1-x_2y_1+ x_2y_1-x_2y_2 \\
-                &= (x_1-x_2)y_1+ x_2(y_1 -y_2) \\
-                &= mxy_1 +x_2my \\
-                &= m(xy_1+x_2y),
-            \end{aligned}
-            $$
-            y de nuevo el lado izquierdo es divisible por $m$.
-            
+            x_1 y_1 \equiv x_2 y_2 \pmod{m}.
+            $$\qed
         \end{proof}
     \end{frame}
     
@@ -308,19 +310,21 @@
         \begin{ejemplo} La solución general de la ecuación $3x\equiv 7
             \pmod{11}$ es $6+k11$ con $k \in \mathbb Z$.
         \end{ejemplo}\vskip .2cm\pause
-        \begin{proof} Si probamos con los enteros $x$ tal que  $0\le x < 11$, veremos que la ecuación admite una única solución, a saber $x=6$. 
+        \begin{proof} Si probamos con los enteros $x$ tal que  $0\le x < 11$, veremos que la ecuación admite una única solución en ese rango, a saber $x=6$. 
             \vskip .2cm\pause
             
-            Otras soluciones se obtienen tomando $6+11k$. \pause 
-            \vskip .2cm
-            Por otra parte si $u$ es también solución de la ecuación, se tiene 
+            Otras soluciones se obtienen tomando $6+11k$, pues \pause 
             $$
-            3u \equiv 7 \hskip -.3cm\pmod{11},\quad 3 \cdot 6 \equiv 7\hskip -.3cm \pmod{11} \quad \Rightarrow \quad 3u \equiv 3\cdot 6\hskip -.3cm \pmod{11}.
+            3(6+11k) \equiv  18+3\cdot 11k \equiv 7+3\cdot 0\cdot k\equiv 7 \pmod{11}.
             $$
-            \pause Por lo tanto $3(u-6)$ es múltiplo de $11$. 
-            \vskip .2cm\pause
-            
-            Como $11$ no divide a $3$ se tiene que $11|(u-6)$, o sea $u=6+11k$. \qed
+        Sea $x$ tal que $3x\equiv 7  \pmod{11}$.  Veremos que $x$ es de la forma $6+11k$.
+        \vskip .2cm\pause
+        Ahora bien, por algoritmo de división, $x = 11k + r$, con $0 \le r < 11$. Luego
+        $$
+        7 \equiv 3x \equiv 3\cdot 11k + 3r \equiv 3r \pmod{11}.
+        $$
+        Como $0 \le r < 11$ $\Rightarrow$ $r=6$.\qed
+
         \end{proof}
     \end{frame}
     
