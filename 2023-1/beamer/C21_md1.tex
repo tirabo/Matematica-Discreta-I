@@ -288,10 +288,15 @@
 \begin{frame}
     \frametitle{}
 
-    (T1 $\Rightarrow$ T2) Si hubiera dos caminos podríamos formar un ciclo. 
+{\color{blue} Esquema de la demostración} \pause
+        \vskip .4cm
+
+    (T1 $\Rightarrow$ T2) Si entre dos vértices hubiera dos caminos podríamos formar un ciclo: primero vamos de un vértice a otro por un camino y volvemos por el otro camino. \pause 
         \vskip .4cm
     (T2 $\Rightarrow$ T3) Se hará por inducción en $|V|$. \pause
-    
+    \vskip .2cm
+    El caso base es $|V|=1$, en ese caso $|E|  =0 = |V| -1$. \pause
+    \vskip .2cm
     Sea $uv$  arista de $T$ y sea  $F = T -uv$.  Como hay un único camino de $u$  a $v$,  $F$ tiene dos componentes conexas: $T_1$  la componente conexa de $u$ y $T_2$ la componente conexa de $v$.\pause
         \vskip .2cm
     En cada componente conexa $T_i = (V_i, E_i)$ hay un único camino de un vértice a otro, pues sino esa propiedad no se cumpliría en $T$. \pause
@@ -301,9 +306,8 @@
     \begin{align*}
         |E| &= |E_1 \cup E_2| + 1  = |E_1|+|E_2| + 1 \stackrel{\text{(HI)}}{=} (|V_1|-1)+(|V_2|-1) +1 \\
             &= |V_1 \cup V_2|-1 = |V| -1. 
-    \end{align*}\pause
-    \vskip .0cm
-    (T3 $\Rightarrow$ T1)  $|E|=|V|-1$ y supongamos que $T$ no es árbol $\Rightarrow$ hay un ciclo $\Rightarrow$ podemos sacar una arista $uv$ y sigue siendo conexo   $\Rightarrow$ $|E -uv|=|V|-2$ y  conexo. Absurdo por el lema. \qed
+    \end{align*}
+    
         
 
 \end{frame}
@@ -311,20 +315,24 @@
 \begin{frame}
     \frametitle{}
 
+    (T3 $\Rightarrow$ T1)  $|E|=|V|-1$ y supongamos que $T$ no es árbol $\Rightarrow$ hay un ciclo $\Rightarrow$ podemos sacar una arista $uv$ y sigue siendo conexo   $\Rightarrow$ $|E -uv|=|V|-2$ y  conexo. Absurdo por el lema. \qed
+    \vskip .8cm
+
+    \pause
+
+    El siguiente resultado se deduce de la demostración del teorema anterior. \pause
+
+    \vskip .4cm
+
     \begin{corolario}
         Sea $T$ árbol con al menos dós vértices,  entonces:
-        \vskip .4cm
+        \vskip .2cm
         El grafo obtenido de $T$ removiendo alguna arista tiene dos
         componentes, cada una de las cuales es un árbol.
     \end{corolario}\pause
 
-    \begin{proof}\pause
-        Es parte de la demostración de  T2 $\Rightarrow$ T3: el grafo que se obtiene de quitar una arista,  es un grafo con dos componentes conexas cada una de ellas sin ciclos (pues sino los habría en $T$), luego cada una de ellas es árbol.
 
-        \qed
-    \end{proof}
-
-     \vskip 2cm
+    \vskip 2cm
 
 \end{frame}
 
@@ -338,7 +346,7 @@
 
 
 
-    \vskip .8cm
+    \vskip .4cm
 
     \begin{ejemplo}\label{ejemplo-coloracion} Supongamos que deseamos hacer un horario con seis cursos de una hora, $v_1,v_2,v_3,v_4,v_5,v_6$. Entre la audiencia potencial hay gente que desea asistir simultáneamente  a
         $$ 
@@ -417,7 +425,7 @@ donde
 \begin{frame}
     \frametitle{}
 
-    También podemos representar esta función como un \textit{coloreo de vértices} donde dos vértices adyacentes tienen distintos colores:
+    También podemos representar esta función como un \textit{coloreo de vértices} que cumple que dos vértices adyacentes tienen distintos colores:
     \vskip .4cm\pause
 \begin{center}
     \begin{tikzpicture}[scale=0.55]
@@ -489,7 +497,7 @@ donde
 \begin{frame}
     \frametitle{}
 
-    Podemos representar en el  grafo la coloración: 
+    Podemos representar el nuevo coloreo de vértices del  grafo de la siguiente manera:
 
     \vskip .8 cM
 
