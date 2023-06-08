@@ -1080,7 +1080,7 @@ $$
 forman un conjunto de $n-1$ aristas distintas en $G$. 
 \end{proof}
 
-\begin{teorema}\label{t5.5} Si $T=(V,E)$ es un grafo conexo con al menos dos vértices, entonces son equivalentes las siguientes propiedades
+\begin{teorema}\label{t5.5} Si $T=(V,E)$ es un grafo conexo, entonces son equivalentes las siguientes propiedades
 \begin{enumerate}[label=\text{\textbf{(T\arabic*)}}]
 \item \label{T1} $T$ no tiene ciclos.
 \item \label{T2} Para cada par $x$, $y$ de vértices existe un único camino en $T$ de $x$ a $y$.
@@ -1235,9 +1235,9 @@ El camino $C_5C_3^{-1}C_1C_4^{-1}C_6$ une $a$ con $b$ sin pasar por $xy$ y en co
 
 \noindent \ref{T2} $\Rightarrow$ \ref{T3}.  Se hará por inducción completa en $|V|$. 
 
-Si $|V|=2$  el resultado es obviamente cierto. 
+Si $|V|=1$  el resultado es obviamente cierto, pues cuando un grafo tiene un solo punto $|E| =0 = |V|-1$. 
     
-Veamos el caso $|V|>2$. Sea $uv$  arista de $T$ y sea  $F = T -uv$,  es decir el grafo con el mismo conjunto de vértices que $T$ y con el conjunto de aristas $E'=E-uv$. 
+Veamos el caso $|V|\ge 2$. Sea $uv$  arista de $T$ y sea  $F = T -uv$,  es decir el grafo con el mismo conjunto de vértices que $T$ y con el conjunto de aristas $E'=E-uv$. 
 
 Por  \ref{T2} $\Rightarrow$ \ref{T4}, $F$ tiene dos componentes conexas   $T_1 = (V_1, E_1)$ y  $T_2 = (V_2, E_2)$. En cada componente conexa  hay un único camino de un vértice a otro, pues sino esa propiedad no se cumpliría en $T$. Además, 
 $$
