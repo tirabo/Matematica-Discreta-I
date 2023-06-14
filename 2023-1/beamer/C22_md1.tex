@@ -534,15 +534,33 @@ El orden fue elegido de la siguiente forma: dado el coloreo con colores $\chi(G)
             \frametitle{}
     
 
-        Supongamos que $x$ e $y$ son vértices en el mismo nivel.\pause
+        Supongamos que $x$ e $y$ son vértices en el mismo nivel $i$.\pause
         \vskip .2cm
-        Entonces ellos son unidos por caminos de igual longitud $m$ a algún vértice $z$ de un nivel anterior.\pause 
+        Entonces $x$ e $y$ son adyacentes a vértices $x_{i-1}$, $y_{i-1}$, respectivamente,  del nivel $i-1$.\pause
         \vskip .2cm
-        Los caminos pueden ser elegidos de tal manera que $z$ sea el único vértice común. \pause
+        A su vez, estos vértices del nivel $i-1$ son adyacentes a vértices $x_{i-2}$, $y_{i-2}$, respectivamente, del nivel $i-2$.\pause
         \vskip .2cm
+        Así bajamos de nivel hasta que esta sucesión de adyacencias termina en el  vértice $v_1$ del nivel 1.
+        \vskip .2cm\pause 
+        Sea $z$ el primer vértice común en esta sucesión de adyacencias. \pause
+        \vskip .2cm
+        Entonces los vértices $x$, $y$ son unidos por caminos de igual longitud $m$ a algún vértice $z$ de un nivel anterior.\pause 
+        \vskip .2cm
+        
         Si $x$ e $y$ fueran adyacentes, habría un ciclo de longitud $2m+1$, lo cual contradice
-        la hipótesis. \pause
-        \vskip .2cm
+        la hipótesis. 
+
+    
+        
+    
+    \end{frame}
+
+
+
+    \begin{frame}
+        \frametitle{}
+
+        
             \begin{center}
             \begin{tikzpicture}[scale=1]
             \SetVertexSimple[Shape=circle,MinSize=5 pt,FillColor=white]
@@ -565,17 +583,8 @@ El orden fue elegido de la siguiente forma: dado el coloreo con colores $\chi(G)
             \end{scope}
             \end{tikzpicture}
             \end{center}
-
-
-    
-        
-    
-    \end{frame}
-
-
-
-    \begin{frame}
-        \frametitle{}
+            \pause
+        \vskip .2cm
             
         Se deduce entonces que el algoritmo greedy asigna:\pause
         \vskip .4cm
