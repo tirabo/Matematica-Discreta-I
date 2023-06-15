@@ -1,7 +1,7 @@
-%\documentclass{beamer} 
-\documentclass[handout]{beamer} % sin pausas
+\documentclass{beamer} 
+%\documentclass[handout]{beamer} % sin pausas
 \usetheme{CambridgeUS}
-%\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
+\setbeamertemplate{background}[grid][step=8 ] % cuadriculado
 
 
 \usepackage{etex}
@@ -369,6 +369,7 @@ for i = 0 to n:
         \end{tikzpicture}
         \end{center}
 \qed 
+
 \pause
 El coloreo queda igual que en la clase pasada.  \pause
 \vskip .4 cm
@@ -540,11 +541,11 @@ El orden fue elegido de la siguiente forma: dado el coloreo con colores $\chi(G)
         \vskip .2cm
         A su vez, estos vértices del nivel $i-1$ son adyacentes a vértices $x_{i-2}$, $y_{i-2}$, respectivamente, del nivel $i-2$.\pause
         \vskip .2cm
-        Así bajamos de nivel hasta que esta sucesión de adyacencias termina en el  vértice $v_1$ del nivel 1.
+        Así bajamos de nivel hasta que esta sucesión de adyacencias termina en el  vértice $v_1$ del nivel $0$.
         \vskip .2cm\pause 
-        Sea $z$ el primer vértice común en esta sucesión de adyacencias. \pause
+        Sea $z$ el primer vértice común en esta sucesión de adyacencias y sea $m$ el nivel donde se encuentra $z$. \pause
         \vskip .2cm
-        Entonces los vértices $x$, $y$ son unidos por caminos de igual longitud $m$ a algún vértice $z$ de un nivel anterior.\pause 
+        Entonces, los vértices $x$, $y$ son unidos por caminos longitud $m$ al vértice $z$.\pause 
         \vskip .2cm
         
         Si $x$ e $y$ fueran adyacentes, habría un ciclo de longitud $2m+1$, lo cual contradice
