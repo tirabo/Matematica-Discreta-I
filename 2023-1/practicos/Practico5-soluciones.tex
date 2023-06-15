@@ -800,6 +800,7 @@
         \vskip .3cm
         
         En  el caso que  $|V|=4$ tenemos un solo grafo sin aristas, un solo grafo con una arista y  si seguimos agregando aristas podemos ver que hay 2 grafos con 2 aristas, 3 grafos con 3 aristas, 2 grafos con 4 aristas, un grafo con 5 aristas y un grafo con 6 aristas. Estos grafos son: 
+        \vskip .2cm
         \begin{center}
             \begin{tabular}{l}
                 $0 \to $ \hskip 0.5cm
@@ -810,7 +811,9 @@
                 \Vertex[x=1, y=1]{c}
                 \Vertex[x=0, y=1]{d}
                 \end{tikzpicture}
-                \hskip 0.5cm$1 \to $ \hskip 0.5cm
+                \\
+                \\
+                $1 \to $ \hskip 0.5cm
                 \begin{tikzpicture}[scale=0.8]
                 \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
                 \Vertex[x=0, y=0]{a}
@@ -896,7 +899,9 @@
                 \Vertex[x=0, y=1]{d}
                 \Edges(a,b,c,d,a,c)
                 \end{tikzpicture}
-                \hskip 0.5cm$6 \to $ \hskip 0.5cm
+                \\
+                \\
+                $6 \to $\hskip 0.5cm
                 \begin{tikzpicture}[scale=0.8]
                 \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
                 \Vertex[x=0, y=0]{a}
@@ -908,11 +913,12 @@
             \end{tabular}
         \end{center}
     \end{enumerate}
+    \vskip .2cm
     Es fácil verificar que las  valencias determinan el grafo.
 
     
 
-    \item Encuentre una función biyectiva del grafo $A$ al $B$ que preserve valencias. ¿Es un isomorfismo?.
+    \item Encuentre una función del grafo $A$ al $B$ que preserve valencias. ¿Puede ser un isomorfismo?.
     
     \begin{tabular}{llll}
         $A:$ & &\qquad$B:$& \\
