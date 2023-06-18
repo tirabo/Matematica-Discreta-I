@@ -382,32 +382,77 @@ Una extensión de esta idea se da en la siguiente proposición.
 Observar que los criterios vistos hasta ahora relativos a cantidad de vértices,  cantidad de aristas y valencias, incluyendo el de la proposición \ref{criterioiso}, no son útiles para determinar si los grafos de  la Fig. \ref{f5.5} son isomorfos o no: ambos tienen $6$ vértices, $9$ aristas y todos los vértices son de valencia $3$. Sin embargo, en el caso de la Fig. \ref{f5.5} podemos determinar que los grafos no son isomorfos observando los subgrafos de cada uno. Ahora bien, no  hay ningún criterio general eficiente para determinar si dos grafos son isomorfos o no: en los casos difíciles esencialmente debemos probar con todas las biyecciones posibles de los vértices de un grafo a los vértices del otro y eso es no computable para casos no demasiado  grandes.   
 \end{ejemplo*}
 
-\subsection*{$\S$ Ejercicios}\label{ejercicios5.3}
-\begin{enumex}
-\item ¿Es posible que las siguientes listas sean las valencias de todos los vértices de un grafo? Si así lo fuera, dar una representación pictórica de tal grafo. (Recordar que hay a lo más una arista que una un par de
-vértices dados.)
-    \begin{enumex}
-        \begin{minipage}{0.4\textwidth}
-            \item $2,2,2,3.$
-        \end{minipage}
-        \begin{minipage}{0.4\textwidth}
-            \item $1,2,2,3,4.$
-        \end{minipage}
+Ahora veremos el grafo complemento, que, a veces, es una herramienta útil para probar que dos grafos no son isomorfos.
 
-        \begin{minipage}{0.4\textwidth}
-            \item $2,2,4,4,4.$
-        \end{minipage}
-        \begin{minipage}{0.4\textwidth}
-            \item $1,2,3,4.$
-        \end{minipage}
-    \end{enumex}
+\begin{definicion}
+    Si $G=(V,E)$ es un grafo, el \textit{complemento}\index{complemento de un grafo} $G^c$ de $G$ es el grafo cuyo conjunto de vértices es $V$ y cuyas aristas unen aquellos vértices que no son unidos por $G$. 
+\end{definicion}
+
+Si $G$ es  un grafo de $n$ vértices,  el complemento de $G$ también puede verse como el grafo  completo $K_n$ ``menos'' $G$. Esto está ejemplificado en la siguiente figura.
 
 
-\item Si $G=(V,E)$ es un grafo, el \textit{complemento}\index{complemento de un grafo} $G^c$ de $G$ es el grafo cuyo conjunto de vértices es $V$ y cuyas aristas unen aquellos vértices que no son unidos por $G$. Si $G$ tiene $n$ vértices y sus valencias son $d_1,d_2,\ldots,d_n$, ¿cuáles son las valencias de $G^c$? 
+\begin{center}
+    \begin{tabular}{llllll}
+        &
+        \begin{tikzpicture}[scale=0.8]
+        %\SetVertexSimple[Shape=circle,FillColor=white]
+        \Vertex[x=0.00, y=2.00]{$0$}
+        \Vertex[x=1.90, y=0.62]{$1$}
+        \Vertex[x=1.18, y=-1.62]{$2$}
+        \Vertex[x=-1.18, y=-1.62]{$3$}
+        \Vertex[x=-1.90, y=0.62]{$4$}
+        \Edges($0$, $2$,$1$,$3$,$0$,$4$,$1$)
+        \draw (0,-2.2) node {$G$};
+        \end{tikzpicture}
+        &
+        \qquad
+        & 
+        \begin{tikzpicture}[scale=0.8]
+        %\SetVertexSimple[Shape=circle,FillColor=white]
+        \Vertex[x=0.00, y=2.00]{$0$}
+        \Vertex[x=1.90, y=0.62]{$1$}
+        \Vertex[x=1.18, y=-1.62]{$2$}
+        \Vertex[x=-1.18, y=-1.62]{$3$}
+        \Vertex[x=-1.90, y=0.62]{$4$}
+        \Edges($0$, $2$,$1$,$3$,$0$,$4$,$1$)
+        \Edges[color=red]($0$,$1$)
+        \Edges[color=red]($2$,$3$)
+        \Edges[color=red]($2$,$4$)
+        \Edges[color=red]($3$,$4$)
+        \draw (0,-2.2) node {$K_5$};
+        \end{tikzpicture}
+        &
+        \qquad
+        & 
+        \begin{tikzpicture}[scale=0.8]
+        %\SetVertexSimple[Shape=circle,FillColor=white]
+        \Vertex[x=0.00, y=2.00]{$0$}
+        \Vertex[x=1.90, y=0.62]{$1$}
+        \Vertex[x=1.18, y=-1.62]{$2$}
+        \Vertex[x=-1.18, y=-1.62]{$3$}
+        \Vertex[x=-1.90, y=0.62]{$4$}
+        \Edges[color=red]($0$,$1$)
+        \Edges[color=red]($2$,$3$)
+        \Edges[color=red]($2$,$4$)
+        \Edges[color=red]($3$,$4$)
+        \draw (0,-2.2) node {$G^c$};
+        \end{tikzpicture}
+    \end{tabular}
+\end{center}
 
-\item  Probar que dos grafos $G_1$ y $G_2$  son isomorfos si y solo si $G_1^c$ y $G_2^c$ son isomorfos. 
 
-\item Usando la propiedad anterior probar que  los siguientes grafos no son isomorfos.
+
+Debido a que podemos mirar el complemento de un grafo $G$ como las aristas que le faltan para ser completo, si $G$ tiene $n$ vértices y sus valencias son $d_1,d_2,\ldots,d_n$, entonces las valencias de $G^c$ son $n-1-d_1,n-1-d_2,\ldots,n-1-d_n$. En particular, si $G$ es regular de valencia $r$, entonces $G^c$ es regular de valencia $n-1-r$. 
+
+\begin{proposicion}
+    Dos grafos $G_1$ y $G_2$  son isomorfos si y solo si $G_1^c$ y $G_2^c$ son isomorfos. 
+\end{proposicion}
+\begin{proof}
+No es difícil ver que si $\alpha:V_1 \to  V_2$ es un isomorfismo entre $G_1$ y $G_2$ entonces $\alpha$ es un isomorfismo entre $G_1^c$ y $G_2^c$. Recíprocamente, si $\alpha:V_1 \to  V_2$ es un isomorfismo entre $G_1^c$ y $G_2^c$, entonces $\alpha$ es un isomorfismo entre $G_1$ y $G_2$.
+\end{proof}
+
+\begin{ejemplo}
+    Probar que  los siguientes grafos no son isomorfos.
 \begin{center}
     \begin{tabular}{llll}
         &
@@ -436,6 +481,63 @@ vértices dados.)
         \end{tikzpicture}
     \end{tabular}
 \end{center}
+\begin{proof}[Solución] 
+    Los grafos tienen el mismo número de vértices y aristas, y todos los vértices son de valencia $3$. Luego, la proposición \ref{criterioiso} no nos permite determinar si los grafos no son isomorfos. Sin embargo, observemos que los dos vértices de valencia $1$ de  $G_1^c$ están unidos por una arista,  mientras que esto no ocurre en $G_2^c$. Luego, por la proposición anterior, $G_1$ y $G_2$ no son isomorfos.
+    \begin{center}
+        \begin{tabular}{llll}
+            &
+            \begin{tikzpicture}[scale=1]
+            %\SetVertexSimple[Shape=circle,FillColor=white]
+            \Vertex[x=0.00, y=2.00]{$0$}
+            \Vertex[x=1.90, y=0.62]{$1$}
+            \Vertex[x=1.18, y=-1.62]{$2$}
+            \Vertex[x=-1.18, y=-1.62]{$3$}
+            \Vertex[x=-1.90, y=0.62]{$4$}
+            \Edges($0$, $1$)
+            \Edges($2$,$3$,$4$,$2$)
+            \draw (0,-2.2) node {$G_1^c$};
+            \end{tikzpicture}
+            &
+            \qquad\quad
+            & 
+            \begin{tikzpicture}[scale=1]
+            %\SetVertexSimple[Shape=circle,FillColor=white]
+            \Vertex[x=0.00, y=2.00]{$a$}
+            \Vertex[x=1.90, y=0.62]{$b$}
+            \Vertex[x=1.18, y=-1.62]{$c$}
+            \Vertex[x=-1.18, y=-1.62]{$d$}
+            \Vertex[x=-1.90, y=0.62]{$e$}
+            \Edges($a$, $d$, $e$)
+            \Edges($b$, $c$, $e$)
+            \draw (0,-2.2) node {$G_2^c$};
+            \end{tikzpicture}
+        \end{tabular}
+    \end{center}
+
+\end{proof}
+\end{ejemplo} 
+
+
+\subsection*{$\S$ Ejercicios}\label{ejercicios5.3}
+\begin{enumex}
+\item ¿Es posible que las siguientes listas sean las valencias de todos los vértices de un grafo? Si así lo fuera, dar una representación pictórica de tal grafo. (Recordar que hay a lo más una arista que una un par de
+vértices dados.)
+    \begin{enumex}
+        \begin{minipage}{0.4\textwidth}
+            \item $2,2,2,3.$
+        \end{minipage}
+        \begin{minipage}{0.4\textwidth}
+            \item $1,2,2,3,4.$
+        \end{minipage}
+
+        \begin{minipage}{0.4\textwidth}
+            \item $2,2,4,4,4.$
+        \end{minipage}
+        \begin{minipage}{0.4\textwidth}
+            \item $1,2,3,4.$
+        \end{minipage}
+    \end{enumex}
+
 
 \item Encontrar todos los grafos posibles (no isomorfos) que pueda, que sean regulares, $4$-valentes y con $7$ vértices. [Ayuda: considere el complemento de esos grafos.]
 
