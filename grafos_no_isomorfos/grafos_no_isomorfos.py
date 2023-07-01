@@ -1,6 +1,7 @@
 import json
 from itertools import chain, combinations, permutations
 import math
+import os
 
 # Aqui un grafo será un n = vertices de  0 a n-1 y un conjunto de aristas frozenset({a,b})
 
@@ -142,10 +143,11 @@ def importar_lista_grafos(nombre):
         file_json = json.loads(file.read())
     lista_grafos = []
     for grafo  in file_json:
-        grafo_set = set()
+        grafo_lista = []
         for edge in grafo:
-            grafo_set.add(frozenset(edge))
-        lista_grafos.append(grafo_set)
+            grafo_lista.append(tuple(edge))
+        gr_lista = sorted(grafo_lista, key=lambda x: (x[0], x[1]))  
+        lista_grafos.append(gr_lista)
     lista_grafos.sort()
     return lista_grafos
 
@@ -158,31 +160,35 @@ def str_grafo(grafo):
 
 
 def main():
+    print('Directorio actual:',os.getcwd())
+    dir = './grafos_no_isomorfos/'
     # grafos_no_iso = grafos_conexos(4)
-    # guardar_lista_grafos(grafos_no_iso, './python/grafos_no_iso/grafos-4.json' )
+    # guardar_lista_grafos(grafos_no_iso, dir + 'grafos-4.json' )
     # grafos_no_iso = grafos_conexos(5)
-    # guardar_lista_grafos(grafos_no_iso, './python/grafos_no_iso/grafos-5.json' )
+    # guardar_lista_grafos(grafos_no_iso, dir + 'grafos-5.json' )
     # grafos_no_iso = grafos_conexos(6)
-    # guardar_lista_grafos(grafos_no_iso, './python/grafos_no_iso/grafos-6.json' )
+    # guardar_lista_grafos(grafos_no_iso, dir + 'grafos-6.json' )
     # grafos_no_iso = grafos_conexos(7)
-    # guardar_lista_grafos(grafos_no_iso, './python/grafos_no_iso/grafos-7.json' )
+    # guardar_lista_grafos(grafos_no_iso, dir + 'grafos-7.json' )
     """
     Lo de arriba genera un archivo .json con la lista de grafos no isomorfos
     """
-    # grafos, n_vert = importar_lista_grafos('./python/grafos_no_iso/grafos-4.json'), 4
-    # grafos, n_vert = importar_lista_grafos('./python/grafos_no_iso/grafos-5.json'), 5
-    # grafos, n_vert = importar_lista_grafos('./python/grafos_no_iso/grafos-6.json'), 6
-    # grafos, n_vert = importar_lista_grafos('./python/grafos_no_iso/grafos-7.json'), 7
+    # grafos, n_vert = importar_lista_grafos(dir + 'grafos-4.json'), 4
+    # grafos, n_vert = importar_lista_grafos(dir + 'grafos-5.json'), 5
+    grafos, n_vert = importar_lista_grafos(dir + 'grafos-6.json'), 6
+    # grafos, n_vert = importar_lista_grafos(dir + 'grafos-7.json'), 7
     
 
 
-    # val_gr = []
-    # for grafo in grafos:
-    #     val_gr.append([lista_de_valencias(n_vert, grafo), grafo])
-    # val_gr.sort()
+    val_gr = []
+    for grafo in grafos:
+        # print(list(grafo))
+        val_gr.append([lista_de_valencias(n_vert, grafo), list(grafo)])
+    lista_ordenada = sorted(val_gr, key=lambda x: (x[0], x[1])) 
+    # print(lista_ordenada)
 
-    # for w in val_gr:
-    #     print(w[0], str_grafo(w[1]))
+    for w in lista_ordenada:
+        print(w[0], w[1])
     return 0
 
 
