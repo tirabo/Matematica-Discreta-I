@@ -175,8 +175,8 @@ def main():
     """
     # grafos, n_vert = importar_lista_grafos(dir + 'grafos-4.json'), 4
     # grafos, n_vert = importar_lista_grafos(dir + 'grafos-5.json'), 5
-    grafos, n_vert = importar_lista_grafos(dir + 'grafos-6.json'), 6
-    # grafos, n_vert = importar_lista_grafos(dir + 'grafos-7.json'), 7
+    # grafos, n_vert = importar_lista_grafos(dir + 'grafos-6.json'), 6
+    grafos, n_vert = importar_lista_grafos(dir + 'grafos-7.json'), 7
     
 
 
@@ -187,9 +187,27 @@ def main():
     lista_ordenada = sorted(val_gr, key=lambda x: (x[0], x[1])) 
     # print(lista_ordenada)
 
-    for w in lista_ordenada:
-        print(w[0], w[1])
-    return 0
+    print('Hay '+str(len(lista_ordenada))+' grafos conexos de '+str(n_vert)+' vértices no isomorfos.')
+    # for w in lista_ordenada:
+    #     print(w[0], w[1])
+
+    print('Grafos no isomorfos con lista de valencias igual:')
+    dic_no_iso = {}
+    for i in range(len(lista_ordenada)):
+        if lista_ordenada[i][0] not in dic_no_iso.keys():
+            dic_no_iso[lista_ordenada[i][0]] = [(i,lista_ordenada[i][1])]
+        else:
+            dic_no_iso[lista_ordenada[i][0]].append((i,lista_ordenada[i][1]))
+    for w in dic_no_iso:
+        if len(dic_no_iso[w]) > 1:
+            for gr in dic_no_iso[w]:
+                pass
+                print(gr[0], w, str_grafo(gr[1]),)
+                for edge in gr[1]:
+                    print('\\Edges'+str(edge), end=' ')
+                print()
+            print()
+
 
 
     
