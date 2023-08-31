@@ -1304,11 +1304,11 @@ def test_Miller_Rabin(n: int, k: int) -> bool:
     \end{minipage}
 
     \vskip .2cm
-Observemos que el test de primalidad de Miller-Rabin hace uso de la exponenciación modular y por lo tanto debe ser implementado usando el método binario de exponenciación modular. 
+Observemos que el test de primalidad de Miller-Rabin hace uso de la exponenciación modular y por lo tanto debe ser implementado usando el método binario de exponenciación modular. La complejidad del test de primalidad de Miller-Rabin es $O(k \cdot d^3)$, donde $d$ es el número de dígitos de $n$ y $k$ la cantidad de pruebas. Esto quiere decir que la cantidad de operaciones que se deben realizar para verificar si $n$ es primo es proporcional a $k \cdot d^3$.
 
-El test de Miller-Rabin probabilístico se deriva del test de Miller: asumiendo que es válida la Hipótesis de Riemman, sea $n$ entero positivo,  si comprobamos que $n$ es FPP en base $a$ con $2 < a < 2\ln(n)^2$,  entonces $n$  es primo.  
+El test de Miller-Rabin probabilístico se deriva del test de Miller: asumiendo que es válida la Hipótesis de Riemman, sea $n$ entero positivo,  si comprobamos que $n$ es FPP en base $a$ con $2 < a < 2\ln(n)^2$,  entonces $n$  es primo.  El test de Miller tiene complejidad $O(d^5)$, donde $d$ es el número de dígitos de $n$.
 
-El test de Miller no se utiliza en la práctica. Para la mayoría de los propósitos, el uso adecuado de la prueba probabilística de Miller-Rabin es mucho más rápida y brinda suficente seguridad del resultado. Para fines teóricos que requieren un algoritmo de tiempo polinomial determinista, el test de Miller fue reemplazado por la prueba de primalidad de  Agrawal–Kayal–Saxena  (AKS), que no se basa en suposiciones no probadas.
+El test de Miller no se utiliza en la práctica. Para la mayoría de los propósitos, el uso adecuado de la prueba probabilística de Miller-Rabin es mucho más rápida y brinda suficiente seguridad del resultado. Para fines teóricos que requieren un algoritmo de tiempo polinomial determinista, el test de Miller fue reemplazado por la prueba de primalidad de  Agrawal-Kayal-Saxena  (AKS), que se basa solo en suposiciones probadas. La complejidad del test de AKS es $O(d^6)$, donde $d$ es el número de dígitos de $n$.
 
 
 \end{section}
