@@ -1,0 +1,800 @@
+% PDFLaTeX
+\documentclass[a4paper,12pt,twoside,spanish,reqno]{amsbook}
+%%%---------------------------------------------------
+
+%\renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
+%\usepackage[T1]{fontenc}
+
+% Para hacer el  indice en linea de comando hacer 
+% makeindex main
+%% En http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf hay ejemplos de packages de fonts libres, como los siguientes:
+%\usepackage{cmbright}
+%\usepackage{pxfonts}
+%\usepackage[varg]{txfonts}
+%\usepackage{ccfonts}
+%\usepackage[math]{iwona}
+\usepackage[math]{kurier}
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\usepackage{mathtools}
+\usepackage{stackrel}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+%\usepackage{makeidx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage{hypcap}
+\numberwithin{equation}{section}
+% http://www.texnia.com/archive/enumitem.pdf (para las labels de los enumerate)
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate, 1]{label={(\arabic*)}}
+\setlist[enumerate, 2]{label=\emph{\alph*)}}
+\setcounter{MaxMatrixCols}{20}
+
+%%% FORMATOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+\usepackage[a4paper, top=3cm, left=3cm, right=2cm, bottom=2.5cm]{geometry}
+\usepackage{setspace}
+%\setlength{\parindent}{0,7cm}% tamaño de sangria.
+\setlength{\parskip}{0,4cm} % separación entre parrafos.
+\renewcommand{\baselinestretch}{0.90}% separacion del interlineado
+\setlist[1]{topsep=8pt,itemsep=.4cm,partopsep=4pt, parsep=4pt} %espacios nivel 1 listas
+\setlist[2]{itemsep=.15cm}  %espacios nivel 2 listas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\end{comment}
+%%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\rta}{\noindent\textit{Rta: }} 
+
+\newcommand \Z{{\mathbb Z}}
+\newcommand \N{{\mathbb N}}
+\newcommand \mcd{\operatorname{mcd}}
+\newcommand \mcm{\operatorname{mcm}}
+
+\begin{document}
+    \baselineskip=0.55truecm %original
+    
+
+{\bf \begin{center}\large  Práctico 5 \\ Matemática Discreta I -- Año 2023/1 \\ FAMAF \end{center}}
+
+
+
+
+
+\begin{enumerate}
+\setlength\itemsep{1.1em}
+
+\item\label{ej-grafos-a-ady} Escribir las listas de adyacencia de los siguientes grafos 
+    
+    \begin{tabular}{ll}
+        ${}^{}$ \qquad &
+        \begin{tikzpicture}[scale=1]
+            %\SetVertexSimple[Shape=circle, FillColor=white,MinSize=8 pt]
+            %\SetVertexNoLabel
+            \draw (-1,2) node {(a)};
+            \Vertex[ L=$A$]{A}
+            \Vertex[x=1.5,y=0, L=$B$]{B}
+            \Vertex[x=3,y=0, L=$C$]{C}
+            \Vertex[x=1.5,y=1.5, L=$D$]{D}
+            \Vertex[x=1.5,y=-1.5, L=$E$]{E}
+            %
+            \Edges(A,D,C,E,A)
+            \Edges(A,B,C)
+            \Edges(D,B)
+            \draw (3.5,2) node {(b)};
+            \Vertex[x=4.5,y=0.5]{2}
+            \Vertex[x=6,y=0.5]{3}
+            \Vertex[x=7.5,y=0.5]{4}
+            \Vertex[x=4.5,y=-1]{5}
+            \Vertex[x=6,y=-1]{6}
+            \Edge[style={bend left}](2)(4)
+            \Edges(2,3,4,6,5,2)
+            \Edges(4,3,6)
+        \end{tikzpicture}
+    \end{tabular}
+
+    \begin{tabular}{ll}
+        ${}^{}$ \qquad &
+        \begin{tikzpicture}[scale=1]
+            %\SetVertexSimple[Shape=circle, FillColor=white,MinSize=8 pt]
+            %\SetVertexNoLabel
+            \draw (-1,2) node {(c)};
+            \Vertex[x=0,y=0, L=$A$]{A}
+            \Vertex[x=1.5,y=0.8, L=$B$]{B}
+            \Vertex[x=3,y=0, L=$C$]{C}
+            \Vertex[x=1.5,y=-0.8, L=$D$]{D}
+            \Vertex[x=0,y=-0.8, L=$E$]{E}
+            \Vertex[x=1.5,y=0, L=$F$]{F}
+            \Vertex[x=3,y=-0.8, L=$G$]{G}
+            \Vertex[x=1.5,y=-1.6, L=$H$]{H}
+            %
+            \Edges(A,B,C,D,A)
+            \Edges(E,F,G,H,E)
+            \Edges(A,E)
+            \Edges(B,F)
+            \Edges(C,G)
+            \Edges(D,H)
+
+            \draw (3.5,2) node {(d)};
+            \Vertex[x=4.5,y=0]{1}
+            \Vertex[x=5.5,y=0]{2}
+            \Vertex[x=6.5,y=0]{3}
+            \Vertex[x=7.5,y=0]{4}
+            \Vertex[x=4.5,y=-1]{5}
+            \Vertex[x=5.5,y=-1]{6}
+            \Vertex[x=6.5,y=-1]{7}
+            \Vertex[x=7.5,y=-1]{8}
+            \Edge[style={bend left}](1)(4)
+            \Edges(1,2,3,4,8,7,6,5,1)
+            \Edges(2,6,7,3)
+            \Edge[style={bend right}](5)(8)
+        \end{tikzpicture}
+    \end{tabular}
+
+
+\item\label{ej-ady-a-grafos} Dibujar los grafos correspondientes a las siguientes listas de adyacencias. 
+
+    \begin{align*}
+        &\text{(a)}&&\begin{matrix}
+            a&b&c&d&e \\\hline \\[-.3cm]
+            b&a&b&a&a \\
+            e&e&e&e&b \\
+            d&c&d&c&c \\
+            &&&&d
+            \end{matrix}&
+        &\text{(b)}&& \begin{matrix}
+            1& 2& 3& 4& 5\\\hline \\[-.3cm]
+            2& 1& 1& 1& 1\\
+            3& 3& 2& 2& \\
+            4& 4& 4& 3&\\
+            & & & & 
+            \end{matrix}
+    \\[0.3cm]
+        &\text{(c)}&&\begin{matrix}
+            1& 2& 3& 4& 5& 6& 7& 8\\\hline \\[-.3cm]
+            6& 3& 2& 5& 4& 1& 1& 6\\
+            7& 7& & 6& & 4& 2& 7\\
+            & & & & & 8& 8& \\
+            & & & & & & & 
+        \end{matrix}&
+        &\text{(d)}&&\begin{matrix}
+            1& 2& 3& 4& 5\\\hline \\[-.3cm]
+            2& 1& 1& 1& 1\\
+            3& 3& 2& 2& 4\\
+            4& 4& 4& 3& \\
+            5& & & 5& 
+        \end{matrix}       
+    \\[0.3cm]
+        &\text{(e)}&&\begin{matrix}
+            a& b& c& d& e\\\hline \\[-.3cm]
+            b& a& b& a& a\\
+            d& c& d& c& c\\
+            & & & & \\
+        \end{matrix}&
+        &\text{(f)}&&\begin{matrix}
+            a& b& c& d& e\\\hline \\[-.3cm]
+            b& a& b& a& a\\
+            d& c& e& e& c\\
+            & & & & d\\
+        \end{matrix}
+    \end{align*}
+
+    \begin{align*}
+        &\text{(g)}&&\begin{matrix}
+            1& 2& 3& 4& 5& 6& 7& 8& 9& 10& 11& 12\\\hline \\[-.3cm]
+            6& 4& 7& 2& 2& 1& 3& 3& 1& 8& 7& 6\\
+            9& 5& 8& & & 9& 11& 10& 12& 11& 10& 9\\
+            & & & & & 12& & & & & &\qquad
+            \end{matrix}
+    \end{align*}
+
+\item Determinar la valencia máxima y la valencia mínima de cada grafo del ejercicio \ref{ej-grafos-a-ady}. Decir cuál grafo es regular. 
+    
+\item   Escribir la lista de valencias de cada grafo del ejercicio \ref{ej-ady-a-grafos}. Es decir escribir todos los valores que toman las valencias en cada grafo (sin repetir).
+
+
+\item Un  {\em grafo planar} es un grafo para el que  \textit{existe} un dibujo del grafo en el plano tal que no hay ningún cruce de aristas. Por ejemplo, los grafos (a), (b) y (d) del ejercicio \ref{ej-grafos-a-ady} son planares. 
+
+    Un  grafo planar divide al plano en \textit{regiones} delimitadas por aristas, por ejemplo el grafo (a) del ejercicio  \ref{ej-grafos-a-ady} determina $4$ regiones: 
+    \begin{itemize}
+        \item la delimitada por las aristas $AB$, $BD$ y $DA$,
+        \item la delimitada por  $BC$, $CD$ y $DB$,
+        \item  la delimitada por  $AB$, $BC$, $CE$ y $EA$, y 
+        \item la región exterior.
+    \end{itemize}
+    Para todo grafo planar vale el famoso \textit{teorema de Euler para poliedros} que dice 
+    \begin{equation}\label{formula-de-euler}
+        C + V - A = 2, \tag{*}
+    \end{equation}
+    donde $C$ es el número de regiones (en el caso de poliedros, caras), $A$ es el número de aristas y $V$ es el número de vértices.
+
+    Comprobar que los grafos (a), (b) y (d) del ejercicio  \ref{ej-grafos-a-ady} satisfacen la fórmula \eqref{formula-de-euler}. 
+
+
+\item Demostrar que el grafo (d) del ejercicio \ref{ej-ady-a-grafos} es planar y comprobar la fórmula de Euler.
+
+\item  ¿Cuántas aristas tiene el  grafo completo $K_n$? ¿Para qué valores de $n$ se puede afirmar que $K_n$ es planar?
+
+\item Para cada una de las siguientes secuencias, encuentre un grafo que tenga exactamente las valencias indicadas o demuestre que tal grafo no existe:
+    \begin{enumerate}
+        \begin{minipage}{0.25 \textwidth}
+            \item $3,3,1,1$
+        \end{minipage}
+        \begin{minipage}{0.25 \textwidth}
+            \item $3,2,2,1$
+        \end{minipage}
+        \begin{minipage}{0.25 \textwidth}
+            \item $3,3,2,2,1,1$
+        \end{minipage}
+
+        \begin{minipage}{0.25 \textwidth}
+            \item $4,1,1,1,1$
+        \end{minipage}
+        \begin{minipage}{0.25 \textwidth}
+            \item $7,3,3,3,2,2$
+        \end{minipage}
+        \begin{minipage}{0.25 \textwidth}
+            \item $4,1,1,1$
+        \end{minipage}
+    \end{enumerate}
+
+
+\item Encuentre un isomorfismo entre los grafos por las siguientes listas. (Ambas listas especifican versiones de un famoso grafo conocida como {\it grafo de Petersen}.)
+    \begin{equation*}
+        \begin{matrix}
+            a&b&c&d&e&f&g&h&i&j\\[.1cm] \hline\\[-.3cm]
+            b&a&b&c&d&a&b&c&d&e\\
+            e&c&d&e&a&h&i&j&f&g\\
+            f&g&h&i&j&i&j&f&g&h
+        \end{matrix}
+        \qquad 
+        \begin{matrix}
+            0&1&2&3&4&5&6&7&8&9\\[.1cm]  \hline\\[-.3cm]
+            1&2&3&4&5&0&1&0&2&6\\
+            5&0&1&2&3&4&4&3&5&7\\
+            7&6&8&7&6&8&9&9&9&8
+        \end{matrix}
+    \end{equation*}
+
+
+\item
+    \begin{enumerate}
+        \item Encuentre todos los grafos de 5 vértices y 2 aristas no isomorfos entre sí.
+        \item ¿Cuál es el máximo número de aristas que puede tener un grafo de 5 vértices?
+    \end{enumerate}
+
+
+\item Demuestre que los siguientes pares de grafos son isomorfos (encuentre un isomorfismo):
+
+    \begin{tabular}{ll}
+        ${}^{}$ \qquad &
+        \begin{tikzpicture}[scale=1]
+            \draw (-1,2) node {(a)};
+            \SetVertexSimple[Shape=circle, FillColor=white,MinSize=8 pt]
+            \SetVertexNoLabel
+            \Vertex[]{A}
+            \Vertex[x=1.5,y=0]{B}
+            \Vertex[x=3,y=0]{C}
+            \Vertex[x=1.5,y=1.5]{D}
+            \Vertex[x=1.5,y=-1.5]{E}
+            %
+            \Edges(A,D,C,E,A)
+            \Edges(A,B,C)
+            \Edges(D,B)
+
+            \Vertex[x=4.5,y=0.5]{2}
+            \Vertex[x=6,y=0.5]{3}
+            \Vertex[x=7.5,y=0.5]{4}
+            \Vertex[x=4.5,y=-1]{5}
+            \Vertex[x=6,y=-1]{6}
+            \Edge[style={bend left}](2)(4)
+            \Edges(2,3,4,6,5,2)
+            \Edges(4,3,6)
+        \end{tikzpicture}
+    \end{tabular}
+
+    \begin{tabular}{ll}
+        ${}^{}$ \qquad &
+        \begin{tikzpicture}[scale=1]
+            \draw (-1,1) node {(b)};
+            \SetVertexSimple[Shape=circle, FillColor=white,MinSize=8 pt]
+            %\SetVertexNoLabel
+            \Vertex[x=0,y=0]{A}
+            \Vertex[x=1.5,y=0.8]{B}
+            \Vertex[x=3,y=0]{C}
+            \Vertex[x=1.5,y=-0.8]{D}
+            \Vertex[x=0,y=-0.8]{E}
+            \Vertex[x=1.5,y=0]{F}
+            \Vertex[x=3,y=-0.8]{G}
+            \Vertex[x=1.5,y=-1.6]{H}
+            %
+            \Edges(A,B,C,D,A)
+            \Edges(E,F,G,H,E)
+            \Edges(A,E)
+            \Edges(B,F)
+            \Edges(C,G)
+            \Edges(D,H)
+
+            \Vertex[x=4.5,y=0]{1}
+            \Vertex[x=5.5,y=0]{2}
+            \Vertex[x=6.5,y=0]{3}
+            \Vertex[x=7.5,y=0]{4}
+            \Vertex[x=4.5,y=-1]{5}
+            \Vertex[x=5.5,y=-1]{6}
+            \Vertex[x=6.5,y=-1]{7}
+            \Vertex[x=7.5,y=-1]{8}
+            \Edge[style={bend left}](1)(4)
+            \Edges(1,2,3,4,8,7,6,5,1)
+            \Edges(2,6,7,3)
+            \Edge[style={bend right}](5)(8)
+        \end{tikzpicture}
+    \end{tabular}
+
+
+
+
+
+\item Sean $G=(V,E)$ y $G^{\prime}=(V^{\prime},E^{\prime})$ dos grafos y sea $\alpha :V \mapsto V^{\prime}$ una función biyectiva tal que $\delta (v)=\delta (\alpha (v)) \;\;\forall\,\; v \in V$.
+    \begin{enumerate}
+        \item ¿Puede afirmar que $\alpha $ es un isomorfismo?.
+        \item ¿Puede afirmarlo si $|V|=3$ ó $4$?.
+    \end{enumerate}
+
+
+\item Encuentre una función  del grafo $A$ al $B$ que preserve valencias. ¿Puede ser un isomorfismo?.
+\vskip .2cm
+    \begin{tabular}{llll}
+        $A:$ & &\qquad$B:$& \\
+        &
+        \begin{tikzpicture}[scale=1]
+            \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+            \Vertex[x=0,y=0]{A}
+            \Vertex[x=3,y=0]{B}
+            \Vertex[x=3,y=-3]{C}
+            \Vertex[x=0,y=-3]{D}
+            \Vertex[x=1,y=-1]{E}
+            \Vertex[x=2,y=-1]{F}
+            \Vertex[x=2,y=-2]{G}
+            \Vertex[x=1,y=-2]{H}
+            \Edges(A,B,C,D,A)
+            \Edges(E,F)
+            \Edges(G,H)
+            \Edges(A,E,G,C)
+            \Edges(B,F,H,D)
+        \end{tikzpicture}
+        &
+        & 
+        \begin{tikzpicture}[scale=1]
+            \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+            \Vertex[x=0,y=0]{A}
+            \Vertex[x=3,y=0]{B}
+            \Vertex[x=3,y=-3]{C}
+            \Vertex[x=0,y=-3]{D}
+            \Vertex[x=1,y=-1]{E}
+            \Vertex[x=2,y=-1]{F}
+            \Vertex[x=2,y=-2]{G}
+            \Vertex[x=1,y=-2]{H}
+            \Edges(A,B,C,D,A)
+            \Edges(E,F,G,H,E)
+            \Edges(A,E)
+            \Edges(B,F)
+            \Edges(C,G)
+            \Edges(H,D)
+        \end{tikzpicture}
+    \end{tabular}
+
+
+\item Pruebe que si $G$ es un grafo con más de un vértice, entonces existen dos vértices con la misma valencia.
+
+
+\item Si $G=(V,E)$ grafo,  el \textit{grafo complemento}  es $G' = (V,E')$, donde $E'$ son todos los 2-subconjuntos de $V$ que no están en $E$. Es decir, el grafo complemento tiene los mismos vértices que el grafo original y todas las aristas que le faltan a $G$ para ser grafo completo. 
+    \begin{enumerate}
+        \item  Halle el complemento de los siguientes grafos:
+            \vskip .2cm
+            \begin{tikzpicture}[scale=1]
+                \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+                \draw (-0.8,0) node {(1)};
+                \Vertex[x=0,y=0]{A}
+                \Vertex[x=0,y=-1]{B}
+                \Edges(A,B)
+                
+                \draw (1.2,0) node {(2)};
+                \Vertex[x=2,y=0]{A}
+                \Vertex[x=3,y=-0.5]{B}
+                \Vertex[x=2,y=-1]{C}
+                \Edges(A,B,C,A)
+                
+                \draw (4.2,0) node {(3)};
+                \Vertex[x=5,y=0]{A}
+                \Vertex[x=6.5,y=0]{B}
+                \Vertex[x=6.5,y=-1.5]{C}
+                \Vertex[x=5,y=-1.5]{D}
+                \Edges(A,B,C,D,A,C)
+                
+                \draw (7.2,0) node {(4)};
+                \Vertex[x=8,y=-1]{A}
+                \Vertex[x=9.5,y=0]{B}
+                \Vertex[x=11,y=0]{C}
+                \Vertex[x=12.5,y=-1]{D}
+                \Vertex[x=11,y=-2]{E}
+                \Vertex[x=9.5,y=-2]{F}
+                \Edges(A,B,C,D,E,F,A)
+                \Edges(B,C,E,F,B)
+                \Edges(A,C)
+            \end{tikzpicture}
+        \item  Si $V=\{ v_1 \dots v_n \} $ y $\delta (v_i)=d_i \;\;\forall\,\; i=1,\dots , n\,$, calcule las valencias de el grafo complemento.
+    \end{enumerate}
+
+
+\item Pruebe que los siguientes grafos no son isomorfos:
+    \vskip .2cm
+    \begin{tabular}{llll}
+        &
+        \begin{tikzpicture}[scale=1]
+            \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+            \Vertex[x=0.00, y=2.00]{a}
+            \Vertex[x=2., y=-1.50]{b}
+            \Vertex[x=-2., y=-1.50]{c}
+            \Edges(a,b,c,a)
+            \Vertex[x=0.00, y=0.85]{1}
+            \Vertex[x=1., y=-0.9]{2}
+            \Vertex[x=-1., y=-0.9]{3}
+            \Edges(1,2,3,1)
+            \Edges(a,1,3,c,b,2)
+        \end{tikzpicture}
+        &
+        \qquad
+        & 
+        \begin{tikzpicture}[scale=0.65]
+            \SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+            %
+            \Vertex[x=3.00, y=0.00]{1}
+            \Vertex[x=1.50, y=2.60]{2}
+            \Vertex[x=-1.50, y=2.60]{3}
+            \Vertex[x=-3.00, y=0.00]{4}
+            \Vertex[x=-1.50, y=-2.60]{5}
+            \Vertex[x=1.50, y=-2.60]{6}
+            \Edges(1,2,3,4,5,6,1)
+            \Edges(1,4) \Edges(3,6) \Edges(2,5)
+        \end{tikzpicture}
+    \end{tabular}
+
+
+\item Dados los siguientes grafos:
+
+    \begin{tikzpicture}[scale=0.8]
+        %\SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+        \draw (-0.8,0.2) node {(1)};
+        \Vertex[x=0,y=-1.5, L=$a$]{A} %\draw (-0.50,-1.5) node {$a$};
+        \Vertex[x=1.5,y=0, L=$b$]{B}  %\draw (1,0) node {$b$};
+        \Vertex[x=3,y=-1.5, L=$c$]{C}
+        \Vertex[x=1.5,y=-3, L=$d$]{D}
+        \Vertex[x=1.5,y=-1.5, L=$e$]{E}
+        \Edges(A,B,C,D,A)
+        \Edges(A,E,C)
+        \Edges(B,E,D)
+
+        \draw (4.2,0.2) node {(2)};
+        \Vertex[x=5,y=-1.5]{1}
+        \Vertex[x=6.5,y=0]{2}
+        \Vertex[x=8.5,y=-1.5]{3}
+        \Vertex[x=5.7,y=-2.5]{4}
+        \Vertex[x=7.7,y=-2.7]{5}
+        \Edges(1,2,3,4,1,5)
+        \Edges(1,3)
+        \Edges(2,4)
+
+        \draw (10,0.2) node {(3)};
+        \Vertex[x=12.8,y=0]{1}
+        \Vertex[x=11.8,y=-1.2]{2}
+        \Vertex[x=3+10.8,y=-1.2]{3}
+        \Vertex[x=0+10.8,y=-2.4]{4}
+        \Vertex[x=4+10.8,y=-2.4]{5}
+        \Vertex[x=1+10.8,y=-3.6]{6}
+        \Vertex[x=3+10.8,y=-3.6]{7}
+        \Vertex[x=2+10.8,y=-3.8]{8}
+        \Edges(1,6,8,7,1)
+        \Edges(3,2,7,8,6,4,5)
+    \end{tikzpicture} 
+
+    \begin{tikzpicture}[scale=0.8]
+        \draw (-0.8,-5.5) node {(4)};
+        \Vertex[x=0+0.2,y=0-5.9]{1}
+        \Vertex[x=3+0.2,y=0-5.9]{2}
+        \Vertex[x=3+0.2,y=-3-5.9]{3}
+        \Vertex[x=1.5+0.2,y=-3-5.9]{4}
+        \Vertex[x=0+0.2,y=-3-5.9]{5}
+        \Edges(1,2,3,4,5,1)
+        \Edges(2,4,1,3)
+
+        \draw (4.2,-5.3) node {(5)};
+        \Vertex[x=0+5,y=-1.5-5.9, L=$a$]{A}
+        \Vertex[x=1.5+5,y=0-5.9, L=$b$]{B}
+        \Vertex[x=3+5,y=-1.5-5.9, L=$c$]{C}
+        \Vertex[x=1.5+5,y=-3-5.9, L=$d$]{D}
+        \Vertex[x=1.5+5,y=-1.5-5.9, L=$e$]{E}
+        \Edges(A,B,C,D,A)
+        \Edges(A,E,C)
+
+        \draw (10,-5.3) node {(6)};
+        \Vertex[x=0+5+5.8,y=-1.5-5.9, L=$a$]{A}
+        \Vertex[x=1.5+5+5.8,y=0-5.9, L=$b$]{B}
+        \Vertex[x=3+5+5.8,y=-1.5-5.9, L=$c$]{C}
+        \Vertex[x=1.5+5+5.8,y=-3-5.9, L=$d$]{D}
+        \Vertex[x=1.5+5+5.8,y=-1.5-5.9, L=$e$]{E}
+        \Edges(A,B,C,E,A,D,E)
+    \end{tikzpicture} 
+
+    \begin{tikzpicture}[scale=0.7]
+        \draw (-0.8,-10) node {(7)};
+        \Vertex[x=2,y=-11]{1}
+        \Vertex[x=4,y=-11]{2}
+        \Vertex[x=6,y=-11]{3}
+        \Vertex[x=0,y=-13]{4}
+        \Vertex[x=5,y=-14]{5}
+        \Vertex[x=6.3,y=-13]{6}
+        \Vertex[x=2,y=-15]{7}
+        \Vertex[x=8,y=-15]{8}
+        \Vertex[x=3,y=-16]{9}
+        \Vertex[x=7,y=-16]{10}
+        \Vertex[x=3,y=-18]{11}
+        \Vertex[x=5,y=-18]{12}
+        \Edges(1,6,12,9,1)
+        \Edges(4,2,5)
+        \Edges(3,7,11,10,8,3)
+    \end{tikzpicture} 
+
+
+
+    \begin{enumerate}
+        \item Determine en cada caso si existen subgrafos completos de más de 2 vértices.
+        \item Para el grafo (1), dé todos los caminos que unen $a$ con $b$.
+        \item Dé caminatas eulerianas en los grafos (4), (5) y (6).
+        \item Determinar si los grafos (2), (3) y (4) tienen ciclos hamiltonianos.
+        \item Determinar cuales de los siguientes pares de grafos son isomorfos:
+            \begin{enumerate}
+                \item  (4) y (2),
+                \item (5) y (6),
+                \item (5) y (1).
+            \end{enumerate}
+        \item Halle las componentes conexas del grafo (7).
+    \end{enumerate} 
+
+
+\item Dado el siguiente grafo
+    \begin{equation*}
+        \begin{matrix}
+            0&1&2&3&4&5&6&7&8\\ \hline
+            1&0&1&0&3&0&1&0&1\\
+            3&2&3&2&5&4&5&2&3\\
+            5&6&7&4&&6&7&6&5\\
+            7&8&&8&&8&&8&7.
+            \end{matrix}
+    \end{equation*}
+    encuentre un ciclo hamiltoniano (si existe). Determine si existe una caminata euleriana y en caso de ser así encuentre una. 
+
+
+\item Un ratón intenta comer un $3\times 3\times 3$ cubo de queso. Él comienza en una esquina y come un subcubo de $1\times 1\times 1$, para luego pasar a un subcubo adyacente. ¿Podrá el ratón terminar de comer el queso en el centro?
+
+
+\item Dé todos los árboles de 5 vértices no isomorfos.
+
+\end{enumerate}
+
+\subsection*{$\S$ Ejercicios de repaso}
+
+\begin{enumerate}[resume]
+
+\item 
+    \begin{enumerate}
+        \item Probar que los  siguientes grafos no son isomorfos. 
+            \vskip .1cm
+            \begin{center}
+                \begin{tabular}{llll}
+                    & 
+                    \begin{tikzpicture}[scale=0.6,rotate=90]
+                    %\SetVertexSimple[Shape=circle,MinSize=5 pt,FillColor=white]
+                    %
+                    \Vertex[x=0.00, y=0.00]{0}
+                    \Vertex[x=3.00, y=0.00]{1}
+                    \Vertex[x=3, y=-6]{2}
+                    \Vertex[x=1.5, y=-3.00]{3}
+                    \Vertex[x=4.5, y=-3.00]{4}
+                    \Edges(0,3,1,4,2,3,0,4)
+                    \end{tikzpicture}
+                    &
+                    \qquad\qquad
+                    & 
+                    \begin{tikzpicture}[scale=0.6,rotate=90]
+                    %\SetVertexSimple[Shape=circle,MinSize=5 pt,FillColor=white]
+                    \Vertex[x=0.00, y=0.00, L=$a$]{a}
+                    \Vertex[x=3.00, y=0.00, L=$b$]{b}
+                    \Vertex[x=3, y=3, L=$c$]{c}
+                    \Vertex[x=0.00, y=3.00, L=$d$]{d}
+                    \Vertex[x=4.50, y=1.5, L=$e$]{e}
+                    \Edges(a,b,e,c,d,a,e)
+                    \end{tikzpicture}
+                \end{tabular}
+            \end{center}
+            \vskip .1cm
+        \item Encontrar una caminata euleriana en el siguiente grafo. 
+            \vskip .1cm
+            \begin{center}
+                \begin{tikzpicture}[scale=0.8]
+                %\SetVertexSimple[Shape=circle,MinSize=5 pt,FillColor=white]
+                \Vertex[x=0, y=1.00,L=3]{1}
+                \Vertex[x=3, y=2,L=4]{2}
+                \Vertex[x=9, y=0,L=5]{3}
+                \Vertex[x=3, y=-2,L=6]{4}
+                \Vertex[x=0, y=-1,L=2]{5}
+                \Vertex[x=6, y=0,L=1]{6}
+                \Edges(1,2,3,4,5,1)
+                \Edges(5,2,6,4)
+                \end{tikzpicture} 
+            \end{center}
+    \end{enumerate}
+
+\item 
+    \begin{enumerate}
+        \item Probar que los  siguientes grafos no son isomorfos.
+            \vskip .1cm
+            \begin{center}
+                \begin{tabular}{llll}
+                    &
+                    \begin{tikzpicture}[scale=0.8]
+                        %\SetVertexSimple[Shape=circle,MinSize=5 pt,FillColor=white]
+                        \Vertex[x=-2, y=3, L=$a$]{a}
+                        \Vertex[x=0, y=3, L=$b$]{b}
+                        \Vertex[x=2, y=3, L=$c$]{c}
+                        \Vertex[x=-1, y=1, L=$d$]{d}
+                        \Vertex[x=1, y=1, L=$e$]{e}
+                        \Vertex[x=0, y=-1, L=$f$]{f}
+                        \Edges(a,b,c,e,f,d,a)\Edges(b,e,d,b)
+                    \end{tikzpicture}
+                    &
+                    \qquad \qquad
+                    &
+                    \begin{tikzpicture}[scale=0.5]
+                        %\SetVertexSimple[Shape=circle,FillColor=white,MinSize=8 pt]
+                        \Vertex[x=0, y=4]{5}
+                        \Vertex[x=0, y=-4]{6}
+                                    
+                        \Vertex[x=-2, y=2]{1}
+                        \Vertex[x=2, y=2]{2}
+                        \Vertex[x=2, y=-2]{3}
+                        \Vertex[x=-2, y=-2]{4}
+                        \Edges(1,5,2)\Edges(3,6,4)
+                        \Edges(1,2,3,4,1,3,4,2)
+                    \end{tikzpicture}
+                \end{tabular}
+            \end{center}
+        \item En el grafo de la derecha del ítem anterior, encontrar un \textit{circuito euleriano}, es decir una caminata euleriana que comienza y termina en un mismo vértice.    
+    \end{enumerate}
+
+
+\item 
+\begin{enumerate}
+    \item Probar que los  siguientes grafos no son isomorfos. 
+        \vskip .1cm
+        \begin{center}
+            \begin{tabular}{llll}
+                & 
+                    \begin{tikzpicture}[scale=0.6,rotate=-243]
+                    %\SetVertexSimple[Shape=circle,MinSize=5 pt,FillColor=white]
+                    %
+                    \Vertex[x=0.00, y=-6.0, L=$a$]{0}
+                    \Vertex[x=3.00, y=0.00, L=$b$]{1}
+                    \Vertex[x=3, y=-6, L=$c$]{2}
+                    \Vertex[x=1.5, y=-3.00, L=$d$]{3}
+                    \Vertex[x=4.5, y=-3.00, L=$e$]{4}
+                    \Edges(0,3,1,4,2,3,0,4)
+                \end{tikzpicture}
+                &
+                \qquad\qquad
+                & 
+                \begin{tikzpicture}[scale=0.6]%,rotate=90]
+                    %\SetVertexSimple[Shape=circle,MinSize=5 pt,FillColor=white]
+                    \Vertex[x=1.5, y=1.5, L=$1$]{a}
+                    \Vertex[x=3.00, y=0.00, L=$2$]{b}
+                    \Vertex[x=3, y=3, L=$3$]{c}
+                    \Vertex[x=0.00, y=3.00, L=$4$]{d}
+                    \Vertex[x=4.50, y=1.5, L=$5$]{e}
+                    \Edges(a,b,e,c,d,a,e)
+                \end{tikzpicture}
+            \end{tabular}
+        \end{center}
+        \vskip .1cm
+    \item Encontrar una caminata euleriana en el siguiente grafo. 
+    \vskip .1cm
+    \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+            %\SetVertexSimple[Shape=circle,MinSize=5 pt,FillColor=white]
+            \Vertex[x=6, y=1.00,L=3]{1}
+            \Vertex[x=3, y=2,L=4]{2}
+            \Vertex[x=0, y=0,L=5]{3}
+            \Vertex[x=3, y=-2,L=6]{4}
+            \Vertex[x=6, y=-1,L=2]{5}
+            \Vertex[x=3, y=0,L=1]{6}
+            \Edges(1,2,3,4,5,1)
+            \Edges(5,2,6,4)
+        \end{tikzpicture} 
+    \end{center}
+\end{enumerate}
+
+
+\item 
+    \begin{enumerate}
+        \item Probar que los  siguientes grafos no son isomorfos.
+            \vskip .1cm
+            \begin{center}
+                \begin{tabular}{llll}
+                    &
+                    \begin{tikzpicture}[scale=1]%,rotate=45]
+                        %\SetVertexSimple[Shape=circle,MinSize=5 pt,FillColor=white]
+                        \Vertex[x=0, y=0, L={\footnotesize$1$}]{a}
+                        \Vertex[x=0, y=2, L={\footnotesize$2$}]{b}
+                        \Vertex[x=2, y=0, L={\footnotesize$3$}]{c}
+                        \Vertex[x=2, y=2, L={\footnotesize$4$}]{d}
+                        \Vertex[x=3.5, y=1, L={\footnotesize$5$}]{e}
+                        \Vertex[x=1, y=1, L={\footnotesize$6$}]{f}
+                        \Edges(a,b,d)
+                        \Edges(c,a,c,e,d,f,a)
+                    \end{tikzpicture}
+                    &
+                    \qquad\qquad
+                    &
+                    \begin{tikzpicture}[scale=1]
+                        %\SetVertexSimple[Shape=circle,MinSize=5 pt,FillColor=white]
+                        %
+                        \Vertex[x=0.00, y=1.5, L=$a$]{0}
+                        \Vertex[x=2, y=1.5, L=$b$]{1}
+                        \Vertex[x=0.00, y=0, L=$c$]{2}
+                        \Vertex[x=2, y=0, L=$d$]{3}
+                        \Vertex[x=0, y=-1.5, L=$e$]{4}
+                        \Vertex[x=2, y=-1.5, L=$f$]{5}
+                        \Edges(2,0,1,3,2,1)
+                        \Edges(2,4,5,3)
+                    \end{tikzpicture}
+                \end{tabular}
+            \end{center}
+            \vskip .1cm
+        \item Encontrar una caminata euleriana en el siguiente grafo.
+            \vskip .1cm
+            \begin{center}
+                \begin{tikzpicture}[scale=1,rotate=180]
+                    %\SetVertexSimple[Shape=circle,MinSize=5 pt,FillColor=white]
+                    \Vertex[x=0, y=0, L={\footnotesize$1$}]{a}
+                    \Vertex[x=0, y=2, L={\footnotesize$2$}]{b}
+                    \Vertex[x=2, y=0, L={\footnotesize$3$}]{c}
+                    \Vertex[x=2, y=2, L={\footnotesize$4$}]{d}
+                    \Vertex[x=3.5, y=1, L={\footnotesize$5$}]{e}
+                    \Vertex[x=1, y=1, L={\footnotesize$6$}]{f}
+                    \Edges(a,b,d,c,a,c,e,d,f,a)
+                \end{tikzpicture}
+            \end{center}
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{document}

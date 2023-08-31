@@ -1,0 +1,315 @@
+% PDFLaTeX
+\documentclass[a4paper,12pt,twoside,spanish,reqno]{amsbook}
+%%%---------------------------------------------------
+
+%\renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
+%\usepackage[T1]{fontenc}
+
+% Para hacer el  indice en linea de comando hacer 
+% makeindex main
+%% En http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf hay ejemplos de packages de fonts libres, como los siguientes:
+%\usepackage{cmbright}
+%\usepackage{pxfonts}
+%\usepackage[varg]{txfonts}
+%\usepackage{ccfonts}
+%\usepackage[math]{iwona}
+\usepackage[math]{kurier}
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\usepackage{mathtools}
+\usepackage{stackrel}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+%\usepackage{makeidx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage{hypcap}
+\numberwithin{equation}{section}
+% http://www.texnia.com/archive/enumitem.pdf (para las labels de los enumerate)
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate, 1]{label={(\arabic*)}}
+\setlist[enumerate, 2]{label=\emph{\alph*)}}
+
+
+%%% FORMATOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+\usepackage[a4paper, top=3cm, left=3cm, right=2cm, bottom=2.5cm]{geometry}
+\usepackage{setspace}
+%\setlength{\parindent}{0,7cm}% tamaño de sangria.
+\setlength{\parskip}{0,4cm} % separación entre parrafos.
+\renewcommand{\baselinestretch}{0.90}% separacion del interlineado
+\setlist[1]{topsep=8pt,itemsep=.4cm,partopsep=4pt, parsep=4pt} %espacios nivel 1 listas
+\setlist[2]{itemsep=.15cm}  %espacios nivel 2 listas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\end{comment}
+%%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\rta}{\noindent\textit{Rta: }} 
+
+\newcommand \Z{{\mathbb Z}}
+\newcommand \N{{\mathbb N}}
+\newcommand \mcd{\operatorname{mcd}}
+\newcommand \mcm{\operatorname{mcm}}
+
+\begin{document}
+    \baselineskip=0.55truecm %original
+    
+
+{\bf \begin{center}\large  Práctico 1 \\ Matemática Discreta I -- Año 2023/1 \\ FAMAF \end{center}}
+
+%\begin{enumerate}[topsep=8pt,itemsep=.4cm,partopsep=4pt, parsep=4pt]
+
+\begin{enumerate}
+\item\label{prob1} Demostrar las siguientes afirmaciones, donde $a$, $b$ son siempre números \linebreak enteros. Justificar cada uno de los pasos en cada demostración indicando el axioma o resultado que utiliza.
+\begin{enumerate}
+	\item $a+a=a$\, implica que \,  $a=0$.
+	\item $0\cdot a = 0$.
+	\item $-a = (-1)\cdot a$.
+    \item  $-(-a) = a$.
+    \item  $a=b\,$ si y sólo si $\,-a=-b$.
+\end{enumerate}
+
+
+
+
+\item Idem \ref{prob1}, donde $a$, $b$, $c$ son siempre números enteros.
+
+\begin{enumerate}
+	\item $c<0$\, implica que \, $0 < -c$.
+	\item $a+c <b+c$\, implica que \, $a<b$.
+    \item $0<a\,$ y $\,0<b\,$ implican $\,0<a\cdot b$
+    \item $a<b\,$ y $\,c<0$\, implican $\,b\cdot c<a\cdot c$
+\end{enumerate}
+
+
+
+\item  Probar las siguientes afirmaciones, justificando los pasos que realiza.
+\begin{enumerate}
+  \item Si $0 < a$  y $\,0<b\,$ entonces $\,a<b\,$ si y sólo si $a^2<b^2$.
+  \item Si $a\neq 0$  entonces $a^2>0$.
+  \item Si $a\neq b$  entonces $a^2+b^2>0$.
+\end{enumerate}
+
+
+\item Calcular, evaluando, las siguientes expresiones:
+\vskip .2cm
+\begin{enumerate}
+\begin{minipage}{0.40 \textwidth}
+\item \quad $\displaystyle{\sum_{r=0}^4 r}$
+\end{minipage}
+\begin{minipage}{0.40 \textwidth}
+\item \quad $\displaystyle{\prod_{i=1}^5 i}$
+ \end{minipage}
+
+\vskip .2cm
+
+\begin{minipage}{0.40 \textwidth}
+\item  \quad $\displaystyle{\sum_{k=-3}^{-1} \frac{1}{k(k+4)}}$
+\end{minipage}
+\begin{minipage}{0.40 \textwidth}
+\item \quad $\displaystyle{\prod_{n=2}^7 \frac{n}{n-1}}$
+\end{minipage}
+\end{enumerate}
+
+
+\begin{comment}
+\item Dado un natural $m$, probar que $\forall n \in {\mathbb N} $; $x$, $y \in {\mathbb R}$, se cumple:
+\begin{enumerate}
+	\begin{minipage}{0.25 \textwidth}\item $x^n \cdot x^m = x^{n+m}$
+	\end{minipage}
+	\begin{minipage}{0.25 \textwidth}
+		\item $(x\cdot y)^n=x^n\cdot y^n$
+	\end{minipage}
+	\begin{minipage}{0.25\textwidth}
+		\item $(x^n)^m = x^{n\cdot m}$
+	\end{minipage}
+\end{enumerate}
+\end{comment}
+
+
+\item Usando las propiedades de las potencias, calcular:
+ \begin{enumerate}
+\begin{minipage}{0.40 \textwidth}
+\item \quad $2^{10} - 2^{9}$
+\end{minipage}
+\begin{minipage}{0.40 \textwidth}
+\item \quad $3^2 2^5 - 3^5 2^2$
+\end{minipage}
+\vskip .2cm
+\begin{minipage}{0.40 \textwidth}
+\item \quad $\left(2^2\right)^n - \left(2^n\right)^2$
+\end{minipage}
+\begin{minipage}{0.40 \textwidth}
+\item \quad $\left(2^{2^n} + 1\right)\left(2^{2^n} - 1\right)$
+\end{minipage}
+\end{enumerate}
+
+
+
+\item Analizar la validez de las siguientes afirmaciones:
+ \begin{enumerate}
+\item  $\left(2^{2^n}\right)^{2^k} = 2^{2^{n+k}}$,  \ $n$, $k \in {\mathbb N}$.
+\item $(2^n)^2 = 4^n$, $n \in {\mathbb N}$.
+\item $2^{7+11} = 2^7 + 2^{11}$.
+\end{enumerate}
+
+\item Probar que \,  $\sum_{i=0}^n 2^i = 2^{n+1} -1$,\ para todo \ $n \in \N_0$. 
+
+\item Demostrar por inducción  las siguientes igualdades:
+  \begin{enumerate}
+  \item  $\displaystyle{ \sum_{j=1}^n j = \frac{n(n+1)}{2}}$, \ $n\in \mathbb N$.
+  \item  $\displaystyle{ \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}}$, \  $n\in \mathbb N$.
+  \item  $\displaystyle{ \sum_{k=0}^n (2k+1) = (n+1)^2}$, \ $n\in \mathbb N_0$.
+  \item  $\displaystyle{ \sum_{i=1}^n i^3 = \left( \frac{n(n+1)}{2 }\right)^2}$, \ $n\in \mathbb N$.
+  \item  $\displaystyle{ \sum_{k=0}^n a^k = \frac{a^{n+1}-1}{a-1}}$, \  donde $a\in {\mathbb R}$, $a \neq 0$, $a \neq 1$, $n\in \mathbb N_0$.
+  \item  $\displaystyle{ \sum_{i=1}^n (i^2+1) i! = n (n+1)!}$, \ $n\in \N$.
+  \item  $\displaystyle{ \prod_{i=1}^n (4i - 2) = \dfrac{(2n)!}{n!}}$, \ $n\in \N$.
+  \end{enumerate}
+
+\item Hallar $n_0 \in {\mathbb N}$ tal que $\forall n \ge n_0$ se cumpla que $n^2 \ge 11 n + 3$, y usar el principio de inducción para probar dicha desigualdad.
+
+\item Sea $\{u_n\}_{n \in \mathbb N_0}$ la sucesión definida por recurrencia como sigue: \ $u_0=2$, $u_1=4$ y $u_n=4 u_{n-1} - 3 u_{n-2}$ con $n\in \mathbb N$, $n\geq 2$. Probar que $u_n=3^n+1$, para todo $n\in\mathbb{N}_0$.
+
+\item Sea $\{ u_n \}_{n \in \mathbb N}$ la sucesión definida por recurrencia como sigue: $u_1 = 9$, $u_2 = 33$, $u_n = 7u_{n-1} - 10u_{n-2}$, $\forall n \geq 3$. Probar que $u_n = 2^{n+1} + 5^n$, para todo $n \in \mathbb N$.
+
+
+\item  Sea $\{a_n\}_{n\in\mathbb N_0}$ la sucesi\'on definida recursivamente por
+$$\begin{cases}
+a_0=1, \\a_1=1, \\a_{n} = 3a_{n-1}+(n-1)(n-3)a_{n-2}, \text{ para $n\geq 2$}.
+\end{cases}$$
+Probar que $a_n=n!$ para todo $n\in \mathbb N_0$.
+
+\item Sea $\{a_n\}_{n\in\mathbb N_0}$ la sucesi\'on definida recursivamente por
+$$\begin{cases}
+   a_0=0, \\a_1=7, \\a_{n} = 5a_{n-1}+6a_{n-2}, \text{ para $n\geq 2$}.
+  \end{cases}$$
+Probar que $a_n=6^n + (-1)^{n+1}$ para todo $n\in \mathbb N_0$.
+
+\newpage
+
+\item Sea $u_n$ definida recursivamente por: $u_1=2$, $u_n=2+\sum_{i=1}^{n-1}2^{n-2i}u_i \;\;\forall\; n >1$.
+\begin{enumerate}
+	\item Calcule $u_2$ y $u_3$.
+	\item Proponga una fórmula para el término general $u_n$ y pruébela por inducción.
+\end{enumerate}
+
+
+\item Las siguientes proposiciones no son válidas para todo $n \in {\mathbb N}$. Indicar en qué paso del principio de inducción falla la demostración:
+\begin{enumerate}
+\begin{minipage}{0.20 \textwidth}
+\item  $n=n^2$,
+\end{minipage}
+\begin{minipage}{0.20 \textwidth}
+\item  $n=n+1$,
+\end{minipage}
+\begin{minipage}{0.20 \textwidth}
+\item  $3^n = 3^{n+2}$,
+\end{minipage}
+\begin{minipage}{0.20 \textwidth}
+\item  $3^{3n} = 3^{n+2}$.
+\end{minipage}
+\end{enumerate}
+\end{enumerate}
+
+\subsection*{$\S$ Ejercicios de repaso} Los ejercicios marcados con ${}^{(*)}$ son de mayor dificultad.
+
+\begin{enumerate}[resume]
+\item Demostrar las siguientes igualdades:
+  \begin{enumerate}
+  \item  $\displaystyle{ \prod_{i=1}^n \frac{i+1}{i} = n+1}$, \ $n\in \mathbb N$.
+
+  \item $\displaystyle{ \sum_{i=1}^n \frac{1}{4i^2-1} = \frac{n}{2n+1}}$, \  $n\in \mathbb N$.
+
+  \item $\displaystyle{ \sum_{i=1}^n i^2\, /\, \sum_{j=1}^n j = \frac{2n+1}{3}}$, \ $n\in \mathbb N$.
+
+  \item $\displaystyle{ \prod_{i=2}^n \left(1-\frac{1}{i^2}\right) = \frac{n+1}{2n}}$, \ $n\in \mathbb N$ y $ n\ge 2$.
+\vskip .2cm
+  \item Si $a\in \mathbb R$ y $a\geq -1$, entonces $(1+a)^n\geq 1+n\cdot a$, \ $\forall \, n \in \mathbb N$.
+\vskip .2cm
+  \item Si $a_1,\dots,a_n \in \mathbb R$, entonces $\displaystyle{\sum_{k=1}^n a_{k}^{2}\leq \left(\sum_{k=1}^n |a_{k}|\right)^{2}}$, $n\in \mathbb N$.
+\vskip .2cm
+
+  \item Si $a_1,\dots,a_n \in \mathbb R$ y $0<a_i<1\, \forall \, i$, entonces $\forall \, n\in \mathbb N$,
+  $$(1-a_1)\cdots(1-a_n)\ge 1-a_1-\cdots -a_n.$$
+
+  \end{enumerate}
+
+  \item   Sea $\{a_n\}_{n\in\mathbb N}$ la sucesión definida recursivamente por
+  $$\begin{cases}
+  a_1=1, \\a_2=2, \\a_{n} = (n-2)a_{n-1}+2(n-1)a_{n-2}, \text{ para $n\geq 3$}.
+  \end{cases}$$
+  Probar que $a_n=n!$ para todo $n\in \mathbb N$.
+
+  \item   Sea $\{a_n\}_{n\in\mathbb N_0}$ la sucesión definida recursivamente por
+  $$\begin{cases}
+     a_0=0, \\a_1=5, \\a_{n} = a_{n-1}+6a_{n-2}, \text{ para $n\geq 2$}.
+    \end{cases}$$
+  Probar que $a_n=3^n + (-1)^{n+1}2^n$ para todo $n\in \mathbb N_0$.
+
+\newpage
+
+\item${}^{(*)}$ Encuentre el error en los siguientes argumentos de inducción.
+\begin{enumerate}
+\item  Demostraremos que $5n+3$ es múltiplo de 5 para todo $n\in \mathbb N$.
+
+Supongamos que $5k+3$ es múltiplo de 5, siendo $k\in \mathbb N$. Entonces existe
+$p\in \mathbb N$ tal que  $5k+3=5p$. Probemos que $5(k+1)+3$ es múltiplo de 5:
+Como
+$$
+5(k+1)+3=(5k+5)+3=(5k+3)+5=5p+5=5(p+1),
+$$
+entonces obtenemos que $5(k+1)+3$ es múltiplo de 5. Por lo tanto, por el principio
+de inducción, demostramos que $5n+3$ es múltiplo de 5 para todo $n\in \mathbb
+N$.
+
+\item Sea $a\in\mathbb R$, con $a\neq 0$. Vamos a demostrar que para todo entero no negativo $n$, $a^n=1$.
+
+Como $a^0=1$ por definición, la proposición es verdadera para $n=0$. Supongamos
+que para  un entero $k$, $a^m=1$ para $0\leq m \leq k$. Entonces
+$a^{k+1}= \frac{a^k a^k}{a^{k-1}}=\frac{1\cdot1}1=1$.
+Por lo tanto, el principio de inducción fuerte implica que $a^n=1$ para todo $n\in \mathbb N$.
+\end{enumerate}
+
+\item${}^{(*)}$ La \emph{sucesión de Fibonacci} se define recursivamente de la siguiente manera:
+$$
+u_1=1,\quad u_2=1,\quad u_{n+1}=u_{n}+u_{n-1}, \, n\geq 2.
+$$
+Los primeros términos de esta sucesión son: $1,1,2,3,5,8,13,\ldots$
+
+Demostrar por inducción que el término general de esta sucesión se puede calcular mediante la fórmula
+\[ u_n= \frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n-\left(\frac{1-\sqrt{5}}{2}\right)^n\right].\]
+\vskip .2cm
+\textit{Ayuda:} usar que $\frac{1+\sqrt{5}}{2}$ y $\frac{1-\sqrt{5}}{2}$ son las raíces de la ecuación cuadrática $x^2-x-1=0$ y por lo tanto  $\left(\frac{1\pm\sqrt{5}}{2}\right)^{n+1} = \left(\frac{1\pm\sqrt{5}}{2}\right)^{n}+\left(\frac{1\pm\sqrt{5}}{2}\right)^{n-1}$.
+
+    \item Probar las siguientes afirmaciones usando inducción en $n$:
+    \begin{enumerate}
+    	\item $2n+1 < 2^n$ para todo $n\in{\mathbb N}$, $n>2$.
+        \item $n^2\leq 2^n$ para todo $n\in{\mathbb N}$, $n>3$.
+        \item $\forall n \in {\mathbb N}$,\ $3^n \ge 1 + 2^n$.
+    \end{enumerate}
+
+\end{enumerate}
+
+
+\end{document}

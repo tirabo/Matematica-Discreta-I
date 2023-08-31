@@ -1,0 +1,145 @@
+% PDFLaTeX
+\documentclass[a4paper,12pt,twoside,spanish,reqno]{amsbook}
+%%%---------------------------------------------------
+
+%\renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
+%\usepackage[T1]{fontenc}
+
+% Para hacer el  indice en linea de comando hacer 
+% makeindex main
+%% En http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf hay ejemplos de packages de fonts libres, como los siguientes:
+%\usepackage{cmbright}
+%\usepackage{pxfonts}
+%\usepackage[varg]{txfonts}
+%\usepackage{ccfonts}
+%\usepackage[math]{iwona}
+\usepackage[math]{kurier}
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\usepackage{mathtools}
+\usepackage{stackrel}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+%\usepackage{makeidx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage{hypcap}
+\numberwithin{equation}{section}
+% http://www.texnia.com/archive/enumitem.pdf (para las labels de los enumerate)
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate, 1]{label={(\arabic*)}}
+\setlist[enumerate, 2]{label=\emph{\alph*)}}
+
+
+%%% FORMATOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+\usepackage[a4paper, top=3cm, left=3cm, right=2cm, bottom=2.5cm]{geometry}
+\usepackage{setspace}
+%\setlength{\parindent}{0,7cm}% tamaño de sangria.
+\setlength{\parskip}{0,4cm} % separación entre parrafos.
+\renewcommand{\baselinestretch}{0.90}% separacion del interlineado
+\setlist[1]{topsep=8pt,itemsep=.4cm,partopsep=4pt, parsep=4pt} %espacios nivel 1 listas
+\setlist[2]{itemsep=.15cm}  %espacios nivel 2 listas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\end{comment}
+%%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\rta}{\noindent\textit{Rta: }} 
+
+\begin{document}
+    \baselineskip=0.55truecm %original
+    
+
+    
+    
+    {\bf \begin{center} Práctico 1 \\ Matemática Discreta I -- Año 2023/1 \\ FAMAF \end{center}}
+    
+    {\bf \begin{center} Ejercicios resueltos (1° parte)\end{center}}
+    
+    
+    
+    \begin{enumerate}
+    \setlength\itemsep{1.1em}
+        
+        \item\label{prob1} Demostrar las siguientes afirmaciones donde $a$, $b$, $c$ y $d$ son siempre números enteros. Justificar cada uno de los pasos en cada demostración indicando el axioma o resultado que utiliza.
+        \begin{enumerate}
+            \item  $a=-(-a)$
+            
+            \rta $-a$  es el inverso aditivo de $a$ y por lo tanto el inverso aditivo de $-a$ es $a$.  Ahora bien, $-(-a)$  es el inverso aditivo de  $-a$, luego por  unicidad del inverso aditivo (axioma { I6}), obtenemos que $a = -(-a)$.
+            
+            \item  $a=b\,$ si y sólo si $\,-a=-b$
+            
+            \rta Si  $a=b$, es claro que $-a=-b$. Si $-a= -b$, entonces $-(-a) = -(-b)$ y  por \textit{a)}, tenemos que $a=b$.  
+            
+            \item  $a+a=a$ implica que  $a=0$.
+            
+            \rta Sumo $-a$ a ambos lados de la ecuación  $a+a=a$ y obtengo, por axioma I6,  $-a + a + a = -a +a$, luego $0 +a = 0$ y, finalmente por axioma I4, $a=0$. 
+            
+        \end{enumerate}
+        
+    
+        
+        \item Idem \ref{prob1}.
+        
+        \begin{enumerate}
+            \item $0<a\,$ y $\,0<b\,$ implican $\,0<a\cdot b$
+            
+            \rta Como $0<a\,$ y $\,0<b\,$, por axioma I11, $0 \cdot b < a \cdot b$. Por un resultado del teórico  tenemos que $0 \cdot b = 0$, luego $0 < a\cdot b$.
+            
+            \item $a<b\,$ y $\,c<0$ implican $\,b\cdot c<a\cdot c$
+            
+            \rta Sumamos $-c$  a la inecuación  $\,c<0$ y  obtenemos, por axioma I10,    $-c + c<-c + 0$, luego por axioma I6 en la parte izquierda y axioma I4 en la parte derecha, obtenemos $0 < -c$: Ahora bien  por axioma I11, $a<b\,$ y  $0 < -c$ implican $a \cdot (-c)<b \cdot (-c)$. Por la regla de los signos tenemos $-a \cdot c<- b \cdot c$. Sumando $a \cdot c$ y $ b \cdot c$  a ambos lados de la inecuación y aplicando axioma I10 y  repetidamente los axiomas I4 e I6, obtenemos  $\,b\cdot c<a\cdot c$.
+        \end{enumerate}
+        
+        \item  Probar las siguientes afirmaciones, justificando los pasos que realiza.
+        \begin{enumerate}
+            \item Si $0 < a$  y $\,0<b\,$ entonces $\,a<b\,$ si y sólo si $a^2<b^2$.
+            
+            \rta  Como $a < b$ y $0 < a$ por I11 obtenemos $a^2 < ba$. Como $a < b$ y $0 < b$ por I11 obtenemos $ab < b^2$. Luego  $a^2 < ba = ab < b^2$.
+            
+            
+            \item Si $a\neq 0$  entonces $0 < a^2$.
+            
+            \rta  Por tricotomía (axioma I8) o bien $0 <a$ o bien $a <0$. Si $0<a$, entonces, por \textit{a)} tenemos que $0 = 0^2 < a^2$.  Si $a<0$, sumando $-a$ a ambos miembros de la desigualdad y aplicando axiomas I10, I6 e I4 obtenemos $0 < -a$. Luego, por \textit{a)},  $0 = 0^2 < (-a)^2 = a^2$. La última igualdad se deduce de la regla de los signos. 
+            
+            \item Si $a\neq b$  entonces $a^2+b^2>0$.
+            
+            \rta Como $a\neq b$,  alguno de los dos, $a$ o $b$, es distinto de cero. Supongamos que $a \ne 0$ y, entonces, por  \textit{b)} tenemos que $0 = < a^2$. Análogamente, si $b \ne 0$, $0 < b^2$ y sumando  $a^2$  a esta inecuación, por axioma I10, obtenemos $a^2 + 0 <a^2 + b^2$, que por axioma I4, es $a^2  <a^2 + b^2$. Como $0 = < a^2$, tenemos $0 = < a^2 < a^2 + b^2$. Falta considerar el caso en que  $b =0$. en este caso $a^2 + b^2 = a^2 + 0^2 = a^2 + 0 = a^2 > 0$.
+            
+            
+            
+            
+            \item Probar que si $a+c <b+c$ entonces $a<b$.
+            
+            \rta Por  axioma I10 $a+c -c  <b+c -c$. Por axiomas I6 e I4 obtenemos $a<b$.
+        \end{enumerate}
+    \end{enumerate}
+        
+    
+
+
+    
+
+\end{document}
+

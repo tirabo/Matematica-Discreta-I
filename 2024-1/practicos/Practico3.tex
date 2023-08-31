@@ -1,0 +1,369 @@
+% PDFLaTeX
+\documentclass[a4paper,12pt,twoside,spanish,reqno]{amsbook}
+%%%---------------------------------------------------
+
+%\renewcommand{\familydefault}{\sfdefault} % la font por default es sans serif
+%\usepackage[T1]{fontenc}
+
+% Para hacer el  indice en linea de comando hacer 
+% makeindex main
+%% En http://www.tug.org/pracjourn/2006-1/hartke/hartke.pdf hay ejemplos de packages de fonts libres, como los siguientes:
+%\usepackage{cmbright}
+%\usepackage{pxfonts}
+%\usepackage[varg]{txfonts}
+%\usepackage{ccfonts}
+%\usepackage[math]{iwona}
+\usepackage[math]{kurier}
+
+\usepackage{etex}
+\usepackage{t1enc}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
+\usepackage{amsthm}
+\usepackage{calc}         % From LaTeX distribution
+\usepackage{graphicx}     % From LaTeX distribution
+\usepackage{ifthen}
+\input{random.tex}        % From CTAN/macros/generic
+\usepackage{subfigure} 
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+\usepackage{mathtools}
+\usepackage{stackrel}
+\usepackage{enumitem}
+\usepackage{tkz-graph}
+%\usepackage{makeidx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage{hypcap}
+\numberwithin{equation}{section}
+% http://www.texnia.com/archive/enumitem.pdf (para las labels de los enumerate)
+\renewcommand\labelitemi{$\circ$}
+\setlist[enumerate, 1]{label={(\arabic*)}}
+\setlist[enumerate, 2]{label=\emph{\alph*)}}
+
+
+%%% FORMATOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tolerance=10000
+\renewcommand{\baselinestretch}{1.3}
+\usepackage[a4paper, top=3cm, left=3cm, right=2cm, bottom=2.5cm]{geometry}
+\usepackage{setspace}
+%\setlength{\parindent}{0,7cm}% tamaño de sangria.
+\setlength{\parskip}{0,4cm} % separación entre parrafos.
+\renewcommand{\baselinestretch}{0.90}% separacion del interlineado
+\setlist[1]{topsep=8pt,itemsep=.4cm,partopsep=4pt, parsep=4pt} %espacios nivel 1 listas
+\setlist[2]{itemsep=.15cm}  %espacios nivel 2 listas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\end{comment}
+%%% FIN FORMATOS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\rta}{\noindent\textit{Rta: }} 
+
+\begin{document}
+    \baselineskip=0.55truecm %original    
+
+{\bf \begin{center}\large  Práctico 3 \\ Matemática Discreta I -- Año 2023/1 \\ FAMAF \end{center}}
+
+
+
+\begin{enumerate}
+\setlength\itemsep{1.1em}
+
+
+\item Hallar el cociente y el resto de la división de:
+    \begin{enumerate}
+        \begin{minipage}{0.25 \textwidth}
+            \item $135$ por $23$.
+        \end{minipage}
+        \begin{minipage}{0.25 \textwidth}
+            \item  $-135$ por $23$.
+        \end{minipage}
+        \begin{minipage}{0.25 \textwidth}
+            \item $135$ por $-23$.
+        \end{minipage}
+
+        \begin{minipage}{0.25 \textwidth}
+            \item $-135$ por $-23$.
+        \end{minipage}
+        \begin{minipage}{0.25 \textwidth}
+            \item$127$ por $99$.
+        \end{minipage}
+        \begin{minipage}{0.25 \textwidth}
+            \item   $-98$ por $-73$. 
+        \end{minipage}
+    \end{enumerate}
+
+\item 
+    \begin{enumerate}
+        \item Si $a=b\cdot q+r$, con $b \le r <2 b$, hallar el cociente y el resto de la división de $a$ por $b$.
+        \item Repetir el ejercicio anterior, suponiendo ahora que $-b \le r < 0$.
+    \end{enumerate}
+
+
+\item Dado $m\in \mathbb N$ hallar los restos posibles de $m^2$ y $m^3$ en la división por $3,4,5,7,8, 11$.
+
+\item Expresar en base 10 los siguientes enteros:
+    \begin{enumerate}
+        \begin{minipage}{0.25 \textwidth}
+            \item $(1503)_6$ 
+        \end{minipage}
+        \begin{minipage}{0.25 \textwidth}
+            \item $(1111)_2$ 
+        \end{minipage}
+        \begin{minipage}{0.25 \textwidth}
+            \item $(1111)_{12}$
+        \end{minipage}
+
+        \begin{minipage}{0.25 \textwidth}
+            \item $(123)_4$ 
+        \end{minipage}
+        \begin{minipage}{0.25 \textwidth}
+            \item $(12121)_3$
+        \end{minipage}
+        \begin{minipage}{0.25 \textwidth}
+            \item $(1111)_5$
+        \end{minipage}
+    \end{enumerate}
+
+\item Convertir
+    \begin{enumerate}
+        \begin{minipage}{0.40 \textwidth}
+            \item  $(133)_4$ a base 8,
+        \end{minipage}
+        \begin{minipage}{0.40 \textwidth}
+            \item  $(B38)_{16}$ a base 8,
+        \end{minipage}
+
+        \begin{minipage}{0.40 \textwidth}
+            \item  $(3506)_7$ a base 2,
+        \end{minipage}
+        \begin{minipage}{0.40 \textwidth}
+            \item  $(1541)_6$ a base 4.  
+        \end{minipage}
+    \end{enumerate}
+
+\item Calcular:
+    \begin{enumerate}
+        \begin{minipage}{0.40 \textwidth}
+            \item  $(2234)_5+(2310)_5$,
+        \end{minipage}
+        \begin{minipage}{0.40 \textwidth}
+            \item $(10101101)_2+(10011)_2$.
+        \end{minipage}
+    \end{enumerate}
+
+\item Expresar en  base $5$:  $(1503)_6 + (1111)_2$.  
+
+\item Sean $a$, $b$, $c \in {\mathbb Z}$. Demostrar las siguientes afirmaciones:
+    \begin{enumerate}
+        %\item $\forall a$,\,\, $a \mid 0$. (En particular, $0 \mid 0$).
+        %\item $\forall a \neq 0$,\, $0 \not|\  a$.
+        \item Si $ab=1$, entonces \,$a=b=1$\, ó \,$a=b=-1$.
+        \item Si $a,b \neq 0$,  $a| b$\, y \,$b | a$, entonces \,$a=b$\, ó \,$a=-b$.
+        \item Si $a | 1$, entonces \,$a=1$\, ó \,$a=-1$.
+        \item Si $a \neq 0$, $a | b$\, y \,$a | c$, entonces \,$a | (b+c)$\, y \,$a | (b-c)$.
+        \item Si $a \neq 0$, $a | b$\, y \,$a | (b+c)$, entonces \,$a | c$.
+        \item Si $a \neq 0$\, y \,$a | b$, entonces \,$a| b\cdot c$.
+    \end{enumerate}
+
+
+\item Dados $b,c$ enteros, probar las siguientes propiedades:
+    \begin{enumerate}
+        \item  $0$\, es par y $1$\, es impar.
+        \item  Si $b$ es par y \,$b \mid c$, entonces $c$ es par.  (Por lo tanto, si $b$ es par, también lo es $-b$).
+        \item  Si $b$ y $c$ son pares, entonces $b+c$ también lo es. %(Por lo tanto, la suma de una cantidad cualquiera de números pares es par).
+        \item  Si un número par divide a 2, entonces ese número es 2\, ó \,$-2$.
+        \item  La suma de un número par y uno impar es impar.
+        \item $b + c$ es par si y  sólo si $b$ y $c$ son ambos pares o ambos impares.
+    \end{enumerate}
+
+
+\item Sea $n\in \mathbb Z$. Probar que $n$ es par si y sólo si $n^2$ es par.
+
+
+\item Probar que $n(n+1)$ es par para todo $n$ entero.
+
+
+\item Sean $a$, $b$, $c \in {\mathbb Z}$. ¿Cuáles de las siguientes afirmaciones son verdaderas? Justificar las respuestas.
+    \begin{enumerate}
+        \item $a \mid b\cdot c \Rightarrow a \mid b$\, ó \,$a \mid c$.
+        \item $a \mid (b+c) \Rightarrow a\mid b$\, ó \,$a \mid c$.
+        \item $a \mid c$\, y \,$b \mid c \Rightarrow a\cdot b \mid c$.
+        \item $a \mid c$\, y \,$b \mid c$ $\Rightarrow (a +b) \mid c$.
+        \item $a$, $b$, $c>0$\, y \,$a=b\cdot c$, entonces\, $a \ge b$ y $a \ge c$.
+    \end{enumerate}
+
+
+
+\item Probar que cualquiera sea $n \in {\mathbb N}$:
+    \begin{enumerate}
+        \item $3^{2n+2}+ 2^{6n+1}$ es múltiplo de 11.
+        \item $3^{2n+2} - 8n - 9$\, es divisible por 64.
+    \end{enumerate}
+
+
+\item Decir si es verdadero o falso justificando:
+    \begin{enumerate}
+        \item $3^n+1$\, es múltiplo de $n$, $\forall n \in {\mathbb N}$.
+        \item $3n^2+1$\, es múltiplo de 2, $\forall n \in {\mathbb N}$.
+        \item $(n+1)\cdot (5n+2)$\, es múltiplo de 2, $\forall n \in {\mathbb N}$.
+    \end{enumerate}
+
+
+\item Probar que para todo $n \in {\mathbb Z}$, $n^2 + 2$ no es divisible por 4.
+
+
+\item Probar que todo entero impar que no es múltiplo de 3, es de la forma $6m\pm 1$, con $m$ entero.
+
+
+\item 
+    \begin{enumerate}
+        \item Probar que el producto de tres enteros consecutivos es divisible por 6.
+        \item Probar que el producto de cuatro enteros consecutivos es divisible por 24 (ayuda: el número combinatorio $\binom{n}{4}$ es entero).
+        \item Probar que el producto de $m$  enteros consecutivos es divisible por $m!$.
+    \end{enumerate}
+
+
+\item Probar que si $a$ y $b$ son enteros entonces $a^2+b^2$ es divisible por 7 si y sólo si $a$ y $b$ son divisibles por 7. ¿Es lo mismo cierto para 3? ¿Para 5?
+
+
+
+\item Encontrar 
+    \begin{enumerate}
+        \begin{minipage}{0.40 \textwidth}
+        \item $(7469,2464)$,
+        \end{minipage}
+        \begin{minipage}{0.40 \textwidth}
+        \item  $(2689,4001)$,
+        \end{minipage}
+        \vskip .1cm
+        \begin{minipage}{0.40 \textwidth}
+        \item  $(2447,-3997)$,
+        \end{minipage}
+        \begin{minipage}{0.40 \textwidth}
+        \item $(-1109,-4999)$.
+        \end{minipage}
+    \end{enumerate}
+
+
+\item Calcular el máximo común divisor y expresarlo como combinación lineal de los números dados, para cada uno de  los siguientes pares de números:
+    \begin{enumerate}
+        \begin{minipage}{0.25 \textwidth}
+            \item  14 y 35, 
+        \end{minipage}
+        \begin{minipage}{0.25 \textwidth}
+            \item 11 y 15, 
+        \end{minipage}
+        \begin{minipage}{0.25 \textwidth}
+            \item 12 y 52,
+        \end{minipage}
+        \vskip .1cm
+        \begin{minipage}{0.25 \textwidth}
+            \item 12 y $-52$, 
+        \end{minipage}
+        \begin{minipage}{0.25 \textwidth} 
+            \item 12 y 532,
+        \end{minipage}
+        \begin{minipage}{0.25 \textwidth}
+            \item 725 y 441,
+        \end{minipage}
+        \vskip .1cm
+        \begin{minipage}{0.25 \textwidth}
+            \item 606 y 108.
+        \end{minipage}
+    \end{enumerate}
+
+
+
+
+\item Probar que no existen enteros $x$ e $y$ que satisfagan $x+y=100$ y $(x,y)=3$.
+
+
+\item %Si $(a,b)=1$. Probar:
+    \begin{enumerate}
+        \item Sean $a$ y $b$ coprimos. Probar que si $a\mid b\cdot c$ entonces $a \mid c$.
+        \item Sean $a$ y $b$ coprimos. Probar que si $a \mid c$ y $b \mid c$, entonces $a\cdot b \mid c$.
+    \end{enumerate}
+
+
+\item Encontrar todos los enteros positivos $a$ y $b$ tales que $(a,b)=10$ y $[a,b]=100$.
+
+
+\item
+    \begin{enumerate}
+        \item Probar que si $d$ es divisor común de $a$ y $b$, entonces $\dfrac{(a,b)}{d} = \left(\dfrac{a}{d}, \dfrac{b}{d}\right)$.
+        \item Probar que si $a,b\in \mathbb Z$ no nulos, entonces  $\displaystyle \frac a{(a,b)}$ y $\displaystyle \frac b{(a,b)}$ son coprimos.
+    \end{enumerate}
+
+
+\item Probar que $3$  y $5$ son números primos.
+
+
+\item  Dar todos los números primos positivos menores que $100$.
+
+
+\item Determinar con el criterio de la raíz  cuáles de los siguientes números son primos: $113$, $123$, $131$, $151$, $199$, $503$.
+
+
+\item Probar que si $n \in {\mathbb Z}$, entonces los números $2n+1$ y $n(n+1)$ son coprimos.
+
+
+\item Si $a\cdot b$ es un cuadrado y $a$ y $b$ son coprimos, probar que $a$ y $b$ son cuadrados.
+
+
+\item 
+    \begin{enumerate}
+        \item Probar  que $\sqrt{5}$ no es un número racional.   
+        \item Probar  que $\sqrt{15}$ no es un número racional.  
+        \item Probar  que $\sqrt{8}$ no es un número racional.  
+        \item Probar  que $\sqrt[3]{4}$ no es un número racional.
+    \end{enumerate}
+
+\item  
+    \begin{enumerate}
+        \item Probar  que $\sqrt[4]{54}$ no es racional. 
+        \item Probar no existen $m, n$ tal que $21 n^5 = m^5$. 
+    \end{enumerate}
+
+\item Probar que si $p_k$ es el $k$-ésimo primo positivo entonces 
+    \begin{equation*}
+        p_{k+1}\leq p_1\cdot p_2\cdot \cdots \cdot p_k+1.
+    \end{equation*}
+
+
+
+\item Calcular el máximo común divisor y el mínimo común múltiplo de los siguientes pares de números usando la descomposición en números primos. 
+    \begin{enumerate}
+        \begin{minipage}{0.40 \textwidth}
+            \item $a=12$ y $b=15$. 
+        \end{minipage}
+        \begin{minipage}{0.40 \textwidth}
+            \item$a=11$ y $b=13$.
+        \end{minipage}
+        
+        \begin{minipage}{0.40 \textwidth}
+            \item $a=140$ y $b=150$.
+        \end{minipage}
+        \begin{minipage}{0.40 \textwidth}
+            \item $a=3^2 \cdot 5^2$ y $b=2^2 \cdot 11$.
+        \end{minipage}
+        
+        \begin{minipage}{0.40 \textwidth}
+            \item $a=2^2 \cdot 3\cdot 5$ y $b=2\cdot 5\cdot 7$.
+        \end{minipage}
+    \end{enumerate}
+
+
+\end{enumerate}
+
+
+\end{document}
+
