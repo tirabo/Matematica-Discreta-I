@@ -1252,13 +1252,13 @@ Con la aplicación del teorema de Fermat y la ecuación lineal de congruencia pr
     Si $n$ es un primo impar, entonces $n$ es FPP para cualquier base  $a$ con $0 < a < n$.
 \end{teorema}
 \begin{proof}
-    Consideremos la sucesión $a^{2^s \cdot d}, a^{2^{s-1} \cdot d}, \dots, a^{2d}, a^d$ y  observemos que cada término de la sucesión es el cuadrado del siguiente.
+    Sea $n = 2^s \cdot d + 1$ con $d$ impar. Consideremos la sucesión $a^{2^s \cdot d}, a^{2^{s-1} \cdot d}, \dots, a^{2d}, a^d$ y  observemos que cada término de la sucesión es el cuadrado del siguiente.
 
-     Por el teorema de Fermat,  $a^{2^s \cdot d} = a^{n-1} \equiv 1 \pmod{n}$. Luego $(a^{2^{s-1} \cdot d})^2 \equiv 1 \pmod{n}$ y por lo tanto $a^{2^{s-1} \cdot d}$ es una raíz cuadrada de $1$ módulo $n$. Por el lema anterior obtenemos  que  $a^{2^{s-1} \cdot d} \equiv \pm 1 \pmod{n}$.
+    Por el teorema de Fermat,  $a^{2^s \cdot d} = a^{n-1} \equiv 1 \pmod{n}$. Luego $(a^{2^{s-1} \cdot d})^2 \equiv 1 \pmod{n}$ y por lo tanto $a^{2^{s-1} \cdot d}$ es una raíz cuadrada de $1$ módulo $n$. Por el lema anterior obtenemos  que  $a^{2^{s-1} \cdot d} \equiv \pm 1 \pmod{n}$.
 
-     Si  $a^{2^{s-1} \cdot d} \equiv - 1 \pmod{n}$, obtenemos el resultado.  En caso contrario  $a^{2^{s-1} \cdot d} \equiv 1 \pmod{n}$,  luego $(a^{2^{s-2} \cdot d})^2 \equiv 1 \pmod{n}$ y por lo tanto $a^{2^{s-2} \cdot d}$ es una raíz cuadrada de $1$ módulo $n$ y en consecuencia  $a^{2^{s-2} \cdot d} \equiv \pm 1 \pmod{n}$. 
+    Si  $a^{2^{s-1} \cdot d} \equiv - 1 \pmod{n}$, obtenemos el resultado.  En caso contrario  $a^{2^{s-1} \cdot d} \equiv 1 \pmod{n}$,  luego $(a^{2^{s-2} \cdot d})^2 \equiv 1 \pmod{n}$ y por lo tanto $a^{2^{s-2} \cdot d}$ es una raíz cuadrada de $1$ módulo $n$ y en consecuencia  $a^{2^{s-2} \cdot d} \equiv \pm 1 \pmod{n}$. 
 
-     Iterando el razonamiento anterior concluimos que alguno de los términos de la sucesión $ a^{2^{r} \cdot d}$  es congruente   a $-1$ módulo $n$ o bien todos los términos son congruentes a $1$,  en particular $a^{d} \equiv 1 \pmod{n}$, con lo cual $n$ resulta ser probable primo fuerte.   
+    Iterando el razonamiento anterior concluimos que alguno de los términos de la sucesión $ a^{2^{r} \cdot d}$  es congruente   a $-1$ módulo $n$ o bien todos los términos son congruentes a $1$,  en particular $a^{d} \equiv 1 \pmod{n}$, con lo cual $n$ resulta ser probable primo fuerte.   
 \end{proof}
 
 

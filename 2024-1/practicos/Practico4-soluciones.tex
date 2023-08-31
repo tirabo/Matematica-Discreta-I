@@ -473,8 +473,8 @@
     Por lo tanto $a^{720}=((a^6)^{10})^{12}\equiv 1 \pmod{7\cdot11\cdot13}$.
     
     \item Sea $p$ primo impar. 
-\begin{enumerate}
-    \item Probar que las únicas raíces cuadradas de 1 módulo $p$,  son $1$ y $-1$ módulo $p$. Es decir, probar que $x^2 \equiv 1 \pmod{p}$, entonces  $x \equiv \pm1 \pmod{p}$.
+\begin{enumerate} 
+    \item\label{mr-a} Probar que las únicas raíces cuadradas de 1 módulo $p$,  son $1$ y $-1$ módulo $p$. Es decir, probar que $x^2 \equiv 1 \pmod{p}$, entonces  $x \equiv \pm1 \pmod{p}$.
     
     \rta   $x^2 \equiv 1 \pmod{p}$ $\Rightarrow$  $x^2 - 1 \equiv 0 \pmod{p}$, como $x^2 -1 = (x-1)(x+1)$, obtenemos  $ (x-1)(x+1) \equiv 0 \pmod{p}$. Esto quiere decir  que $p|  (x-1)(x+1)$. Como $p$  es primo, $p | x -1$ o $p| x +1$, es decir 
     \begin{align*}
@@ -482,15 +482,23 @@
         x  \equiv 1 \pmod{p} \;\;&\vee \;\; x  \equiv -1 \pmod{p}.
     \end{align*}
 
+    \item Probar que   $p= 2^s \cdot d + 1$ con $d$ impar. 
+    
+    \rta Como $p$ es impar $p-1$ es par, por la descomposición única en factores primos tenemos que $p-1=2^s \cdot d$ con $d$ impar. Luego $p= 2^s \cdot d + 1$.
+    
+    \item \label{mr-c} Probar que $a^{2^{s-1} \cdot d} \equiv \pm 1 \pmod{p}$.
+    
+    \rta Por el teorema de Fermat,  $a^{2^s \cdot d} = a^{n-1} \equiv 1 \pmod{n}$. Luego $(a^{2^{s-1} \cdot d})^2 \equiv 1 \pmod{n}$ y por lo tanto $a^{2^{s-1} \cdot d}$ es una raíz cuadrada de $1$ módulo $n$. Por el lema anterior obtenemos  que  $a^{2^{s-1} \cdot d} \equiv \pm 1 \pmod{n}$.
+
     \item Sea  $p = d \cdot 2^s + 1$ donde $d$ es impar. Dado $a$ entero tal que $0 < a <p$, probar que 
     \begin{itemize}
         \item $a^{d} \equiv 1 \pmod{p}$, o
         \item $a^{2^r\cdot\, d} \equiv -1 \pmod{p}$  para algún $r$ tal que $0 \le r < s$.
     \end{itemize}
-    \rta Consideremos la sucesión $a^{2^s \cdot d}, a^{2^{s-1} \cdot d}, \dots, a^{2d}, a^d$. La demostración la haremos usando el teorema de Fermat,  el resultado del inciso anterior y  observando que cada término de la sucesión es el cuadrado del siguiente.
+    \rta Consideremos la sucesión $a^{2^s \cdot d}, a^{2^{s-1} \cdot d}, \dots, a^{2d}, a^d$. La demostración la haremos usando el teorema de Fermat,  los resultados anteriores y observando que cada término de la sucesión es el cuadrado del siguiente.
     \begin{itemize}
-        \item Por el teorema de Fermat  $a^{2^s \cdot d} = a^{p-1} \equiv 1 \pmod{p}$. Luego $(a^{2^{s-1} \cdot d})^2 \equiv 1 \pmod{p}$ y por lo tanto $a^{2^{s-1} \cdot d}$ es una raíz cuadrada de $1$ módulo $p$. Por  el inciso anterior entonces  $a^{2^{s-1} \cdot d} \equiv \pm 1 \pmod{p}$.
-        \item Si  $a^{2^{s-1} \cdot d} \equiv - 1 \pmod{p}$, listo,  en caso contrario  $a^{2^{s-1} \cdot d} \equiv 1 \pmod{p}$,  luego $(a^{2^{s-2} \cdot d})^2 \equiv 1 \pmod{p}$ y por lo tanto $a^{2^{s-2} \cdot d}$ es una raíz cuadrada de $1$ módulo $p$. Por  el inciso anterior entonces  $a^{2^{s-2} \cdot d} \equiv \pm 1 \pmod{p}$.
+        \item Por \ref{mr-c},  $a^{2^{s-1} \cdot d} \equiv \pm 1 \pmod{p}$.
+        \item Si  $a^{2^{s-1} \cdot d} \equiv - 1 \pmod{p}$, listo,  en caso contrario  $a^{2^{s-1} \cdot d} \equiv 1 \pmod{p}$,  luego $(a^{2^{s-2} \cdot d})^2 \equiv 1 \pmod{p}$ y por lo tanto $a^{2^{s-2} \cdot d}$ es una raíz cuadrada de $1$ módulo $p$. Luego por \ref{mr-a} tenemos que   $a^{2^{s-2} \cdot d} \equiv \pm 1 \pmod{p}$.
         \item Iterando el razonamiento anterior concluimos que alguno de los términos de la sucesión $ a^{2^{r} \cdot d}$  es congruente   a $-1$ módulo $p$ o bien todos los términos son congruentes a $1$,  en particular $a^{d} \equiv 1 \pmod{p}$.
     \end{itemize}
     
