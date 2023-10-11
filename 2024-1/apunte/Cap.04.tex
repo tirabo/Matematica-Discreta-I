@@ -922,17 +922,14 @@ Como ya hemos mencionado, podemos ver que el RSA también puede ser usado para u
                     &=  9 \cdot 1853020188851841 &=&  16677181699666569.\\
         \end{matrix*}
     \end{equation}
-Es decir,  en bastante menos pasos hemos podido calcular $9^{17}$.
+Es decir,  en bastante menos pasos. $5$ para ser precisos,  hemos podido calcular $9^{17}$.
 \end{ejemplo}
 
-    
-    Pasemos ahora al problema de calcular exponenciación modular. 
-
-    Supongamos ahora que queremos calcular $r$ tal que, por ejemplo,  
+    Pasemos ahora al problema de calcular exponenciación modular. Supongamos ahora que queremos calcular $r$ tal que, por ejemplo,  
 $$
     5^{1125899986842625} \equiv r \pmod{100000037},
 $$
- y $0 \le r < 100000037$. Hacer este cálculo  directamente no nos da un resultado satisfactorio, ni siquiera con un programa de computadora. Pueden hacer el intento con un lenguaje de programación, Python por ejemplo, y verán que el programa no termina. Esto se debe a que $5^{1125899986842625}$  es un número inmenso  cuya representación no cabría en la memoria de ninguna computadora ni actual ni futura. La clave  para poder calcular $r$ es usar un análogo a la definición \eqref{def-potencia-2}, pero con congruencias. Sea $a$ número entero y sean $d \ge 0$ y $n \ge 1$. Definimos $\modulo$ el \textit{operador módulo} de tal forma que $a \modulo n$ devuelve el resto de dividir $a$ por $n$. Hay muchas forma de calcular $a^d \modulo n$, y nosotros elegimos  la siguiente forma recursiva:
+ y $0 \le r < 100000037$. Hacer este cálculo  directamente no es materialmente posible, ni siquiera con un programa de computadora. Pueden hacer el intento con un lenguaje de programación, Python por ejemplo, y verán que el programa no termina. Esto se debe a que $5^{1125899986842625}$  es un número inmenso  cuya representación no cabría en la memoria de ninguna computadora ni actual ni futura. La clave  para poder calcular $r$ es usar un análogo a la definición \eqref{def-potencia-2}, pero con congruencias. Sea $a$ número entero y sean $d \ge 0$ y $n \ge 1$. Definimos $\modulo$ el \textit{operador módulo} de tal forma que $a \modulo n$ devuelve el resto de dividir $a$ por $n$. Hay muchas forma de calcular $a^d \modulo n$, y nosotros elegimos  la siguiente forma recursiva:
  \begin{equation}\label{def-potencia-mod-1}
     a^d \modulo n = \left\{
     \begin{matrix*}[l]
@@ -1226,7 +1223,7 @@ Describamos en forma amplia el método del test: dado $m$ un entero positivo.
     \item Si hacemos $k$ veces el test y $m$ supera las $k$ pruebas, entonces  $m$ tiene la probabilidad $1 - ( 1 / 4^k)$ de ser primo. 
 \end{itemize}
 
-El test de  Miller-Rabín se basa en comprobar $k$ veces (para un $k$ dado) si el número es fuertemente probable primo respecto a una base. Veamos a continuación las definiciones necesarias para comprender este concepto. 
+El test de  Miller-Rabín se basa en comprobar $k$ veces (para un $k$ dado) si el número es \textit{fuertemente probable primo} respecto a una base. Veamos a continuación las definiciones necesarias para comprender este concepto. 
 
 \begin{definicion}
     Sea $n > 2$ un entero impar, entonces $n = 2^s \cdot d + 1$ con $d$ impar. Sea $a$ entero  tal que $0 < a < n$. Entonces diremos que $n$ es \textit{fuertemente probable primo (FPP) respecto a la base $a$} si se cumple
