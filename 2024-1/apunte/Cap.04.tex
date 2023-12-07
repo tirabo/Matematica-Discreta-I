@@ -1218,7 +1218,7 @@ El algoritmo que veremos principalmente es el test de primalidad Miller-Rabin pr
 Este test es ampliamente utilizado en la práctica (en RSA, por ejemplo) y es una de las pruebas más simples y rápidas conocidas.
 
 Describamos en forma amplia el método del test: dado $m$ un entero positivo.
-\begin{itemize}
+\begin{itemize} 
     \item Si le hacemos el test a $m$ y no supera la prueba, entonces el número no es primo. 
     \item Si hacemos $k$ veces el test y $m$ supera las $k$ pruebas, entonces  $m$ tiene la probabilidad $1 - ( 1 / 4^k)$ de ser primo. 
 \end{itemize}
