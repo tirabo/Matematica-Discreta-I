@@ -35,6 +35,8 @@ La solución al problema original es
 a(7) = 4 * f(7, 0) 
 pues identificando el primer y último vértice el valor  f(7, 0) resuelve el problema de los 6 plantines cuando el primer vértice es 0. 
 Luego hay que multiplicar por la cantidad de colores para no tener restricciones en el primer vértice.
+
+Ver https://colab.research.google.com/drive/1AAJMHXu9UXhbc3EipJaxbqWMRPZH4f3z?hl=es pra una explicación más detallada, o ver el archivo Problema_del_cantero.ipynb en este directorio. 
 """
 
 
