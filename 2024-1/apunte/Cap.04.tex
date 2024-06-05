@@ -710,6 +710,8 @@ En los sistemas de clave pública el receptor conoce una clave privada $y$ (no c
 
 Rivest, Shamir y Adleman descubrieron el primer criptosistema práctico de clave pública, que es llamado RSA. La seguridad del RSA se basa en la dificultad de factorizar números enteros grandes. Este sistema es el más comúnmente recomendado para uso en sistemas de clave pública. La mayor ventaja del RSA es que puede ser usado para proveer privacidad y autenticación (firma digital) en las comunicaciones. Su principal desventaja es que su implementación se basa en exponenciación de números enteros grandes, una operación que consume recursos de la computadora, aunque esto es cada vez menos significativo.
 
+La fortaleza del algoritmo RSA se basa en que no es posible  con la tecnología actual factorizar números grandes en tiempo razonable. Esto dejará de ser cierto cuando se desarrollen suficientemente las computadoras cuánticas, para las cuales existen algoritmos para factorizar números grandes en forma eficiente. El algoritmo de Schor es un algoritmo cuántico que factoriza en tiempo polinomial, pero hasta el momento no se ha logrado implementar en una computadora cuántica.
+
 
 Antes de describir el RSA digamos que se basa fuertemente en el teorema de Fermat visto en la sección anterior. 
 
@@ -721,19 +723,26 @@ En el sistema RSA deben realizarse algunos paso previos para fijar ciertos pará
 
 \subsection*{Idea del  algoritmo}
 
+El algoritmo RSA se basa en $3$ parámetros
+\begin{itemize}
+    \item Clave pública: dos números $n$ y $e$.
+    \item Clave privada: un número $d$.
+\end{itemize}
+Estos números deben ser elegidos de tal forma que se cumplan ciertas propiedades que veremos a continuación. La clave pública es publicada y la clave privada es mantenida en secreto por una persona que desee recibir mensaje encriptados.
+
 Supongamos que la persona $B$  quiere enviar a la persona $A$ un mensaje $m$ pero encriptado de tal forma que sólo $A$ pueda leer su contenido. Por su parte $A$ hace públicos dos números $e$ y $n$ que son los que se utilizarán para encriptar los mensajes que le envíen. 
 
-Entonces a partir de $m$ la persona $B$ genera un mensaje cifrado $c$ mediante la siguiente ope\-ra\-ción:
+Entonces a partir de $m$ la persona $B$ genera un mensaje cifrado $c$ mediante la siguiente operación:
 $$
     c\equiv m^e\ \pmod{n}\ ,
 $$
-donde $e$ y $n$ es la clave pública de $A$.
+donde $(n, e)$ es la clave pública de $A$.
 
 Ahora $A$ recupera le mensaje $m$ a partir del mensaje en clave $c$ mediante la operación inversa dada por
 $$
     m\equiv c^d\ \pmod{n}\ ,
 $$
-donde $d$ es la clave privada que solo $A$ conoce.
+donde $d$ es la clave privada que solo $A$ conoce. Veremos a continuación como debemos elegir $n$, $e$ y $d$ para que este método funcione.
 
 
 
@@ -744,21 +753,21 @@ donde $d$ es la clave privada que solo $A$ conoce.
 
 %\vskip .3cm 
 
-Sean  $p$ y $q$ primos distintos suficientemente . 
+Sean  $p$ y $q$ primos distintos suficientemente grandes y $k =(p-1)(q-1)$. 
 \begin{itemize}
-    \item  La \emph{clave pública} es $(n, e)$ con $n = pq$ y $e$ tal que $1 < e < (p-1)(q-1)$ y $\operatorname{mcd}(e, (p-1)(q-1)) = 1$. 
-    \item  La \emph{clave privada} es un entero $d$ tal que $ed \equiv 1 \pmod{(p-1)(q-1)}$ y $0 \le d <(p-1)(q-1)$.
+    \item  La \emph{clave pública} es $(n, e)$ con $n = pq$ y $e$ tal que $1 < e < k$ y $\operatorname{mcd}(e, k) = 1$. 
+    \item  La \emph{clave privada} es un entero $d$ tal que $ed \equiv 1 \pmod{k}$ y $0 \le d <k$.
 \end{itemize}
 
 
 \begin{observacion*} Algunos comentarios sobre la elección de $p,q,e,d$.
 \begin{itemize}
 \item
-Los dos primos $p$ y $q$ deberían tener alrededor de $100$ dígitos cada uno (longitud considerada segura en este momento).
+Los dos primos $p$ y $q$ deberían tener alrededor de $200$ dígitos cada uno (longitud considerada segura en este momento).
 \item
-El número $e$ puede elegirse pequeño y se selecciona haciendo prueba y error con el algoritmo de Euclides, es decir probando hasta encontrar un $e$ tal que $\operatorname{mcd}(e, (p-1)(q-1)) = 1$.
+El número $e$ puede elegirse pequeño y se selecciona haciendo prueba y error con el algoritmo de Euclides, es decir probando hasta encontrar un $e$ tal que $\operatorname{mcd}(e, k) = 1$.
 \item
-La existencia de $d$ está garantizada por el teorema \ref{teorema-elc} (ecuación lineal de congruencia), pues $e$ y $(p-1)(q-1)$ son coprimos.
+La existencia de $d$ está garantizada por el teorema \ref{teorema-elc} (ecuación lineal de congruencia), pues $e$ y $k$ son coprimos.
 \end{itemize}
 
 \end{observacion*}
@@ -841,6 +850,10 @@ y obtiene nuevamente $1\,993$ (si quiere convencerse de esto ingrese \texttt{10\
 
 Pese a que el cálculo de desencriptado (en este caso $10^{1\,543} \pmod{2\,263}$) puede parecer costoso computacionalmente, hay métodos eficientes para hacerlo como se puede ver, por ejemplo, en la sección \ref{seccion-exponenciacion-modular}. 
 
+\begin{observacion*} 
+    Hasta el momento, la única forma de desencriptar un mensajeencriptado con RSA  es con la clave privada, es decir con $d$ y para conocer $d$ es necesario conocer $p$ y $q$. Luego la seguridad del algoritmo está dada por la dificultad de factorizar $n=pq$. Como ya fue mencionado al comienzo de esta sección y en la sección \ref{seccion-factorizacion-en-primos}, factorizar números grandes es un problema difícil y no se conoce un algoritmo eficiente para hacerlo. 
+\end{observacion*}
+
 \end{ejemplo*}
 
 \subsection*{Firma digital}
@@ -910,7 +923,7 @@ Como ya hemos mencionado, podemos ver que el RSA también puede ser usado para u
     
     
 \begin{ejemplo}\label{ejemplo-9**17}
-    Supongamos que queremos calcular $9^{17}$.  En  este caso, podríamos hacer este cálculo  directamente, multiplicando $17$ veces $9$ y así obtenemos $16677181699666569$ con $17$ multiplicaciones. Este sería el método que se deduce de la definición recursiva \eqref{def-potencia-mod-1}. 
+    Supongamos que queremos calcular $9^{17}$.  En  este caso, podríamos hacer este cálculo  directamente, multiplicando $17$ veces $9$ y así obtenemos $16677181699666569$ con $17$ multiplicaciones. Este sería el método que se deduce de la definición recursiva \eqref{def-potencia-1}. 
 
     Probemos con la segunda definición recursiva:
     \begin{equation}\label{eq-9**17}
@@ -922,7 +935,7 @@ Como ya hemos mencionado, podemos ver que el RSA también puede ser usado para u
                     &=  9 \cdot 1853020188851841 &=&  16677181699666569.\\
         \end{matrix*}
     \end{equation}
-Es decir,  en bastante menos pasos. $5$ para ser precisos,  hemos podido calcular $9^{17}$.
+Es decir,  en bastante menos pasos, $5$ para ser precisos,  hemos podido calcular $9^{17}$.
 \end{ejemplo}
 
     Pasemos ahora al problema de calcular exponenciación modular. Supongamos ahora que queremos calcular $r$ tal que, por ejemplo,  
@@ -959,12 +972,12 @@ $$
 
 Como observamos en el ejemplo,  en cada paso donde $d$ es par tenemos que calcular el cuadrado de un número y elevarlo a una potencia que es la mitad  que la anterior. Luego,  si  el exponente es $d < 2^k$ en alrededor de $k$ pasos (unos pocos más en realidad) obtendremos el resultado deseado. 
 
-En  el caso  que habíamos planteado: calcular $ 5^{1125899986842625} \equiv r \pmod{100000037}$, como $1125899986842625 < 2^{51}$, si lo resolvemos usando el método de la fórmula \eqref{def-potencia-mod-1} necesitaremos poco más de $50$ pasos,y en cada paso la longitud de los dígitos involucrados es totalmente manejable. 
+En  el caso  que habíamos planteado: calcular $ 5^{1125899986842625} \equiv r \pmod{100000037}$, como $1125899986842625 < 2^{51}$, si lo resolvemos usando el método de la fórmula \eqref{def-potencia-mod-1} necesitaremos poco más de $50$ pasos,y en cada paso la longitud de los dígitos involucrados es totalmente manejable, no más de $20$. 
 
 
 La definición \eqref{def-potencia-mod-1}  nos muestra como casi inmediatamente podemos obtener una fórmula recursiva para la exponenciación modular:  sea $n> 0$, definimos $\cociente$ el \textit{operador cociente} de tal forma que $ a \cociente n$ es el cociente entero de dividir $a$ por $n$. Es decir
 \begin{equation*}
-    a = n* (a \cociente n) + (a \modulo n).
+    a = n \cdot (a \cociente n) + (a \modulo n).
 \end{equation*}
 Entonces, nuestro interés es calcular  $f(a,d) =a^d \modulo n$  en forma eficiente y la fórmula \eqref{def-potencia-mod-1} es equivalente a 
 \begin{equation}\label{def-potencia-mod-2}

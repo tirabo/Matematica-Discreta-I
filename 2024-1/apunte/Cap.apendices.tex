@@ -423,10 +423,14 @@ $$
 El mismo método puede ser usado para dar una fórmula explícita para $\phi(n)$ en el caso general.
 
 \begin{teorema}\label{tA2.2} Sea $n \ge 2$ un entero cuya factorización es $n=p_1^{e_1}p_2^{e_2}\ldots p_r^{e_r}$. Entonces $$
-\phi(n)=n\left(1-\frac{1}{p_1}\right)\left(1-\frac{1}{p_2}\right)\cdots\left(1-\frac{1}{p_r}\right).
+\phi(n)=n\left(1-\frac{1}{p_1}\right)\left(1-\frac{1}{p_2}\right)\cdots\left(1-\frac{1}{p_r}\right),
+$$
+o equivalentemente
+$$
+\phi(n)= (p_1-1)p_1^{e_1-1}\cdot (p_2 -1)p_2^{e_2-1}\cdot \ldots  \cdot (p_r -1)p_2^{e_r-1}.
 $$
 \end{teorema}
-\begin{proof} Denotemos $A_j$ el subconjunto de $\mathbb N_n$ que contiene los múltiplos de $p_j$ ($1\le j \le r$). Entonces 
+\begin{proof} Denotemos $A_j$ el subconjunto de $\{1,2,\cdots, n\}$ que contiene los múltiplos de $p_j$ ($1\le j \le r$). Entonces 
 $$
 \begin{aligned}
 \phi(n) &= n- |A_1 \cup A_2 \cup \cdots \cup A_r| \\

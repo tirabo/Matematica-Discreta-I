@@ -1612,9 +1612,12 @@ $$
 \end{proof}
 
 
-\begin{observacion*} La proposición anterior nos puede llevar a pensar que una forma sencilla de encontrar el mcd y mcm  es usando la descomposición en factores primos de los números involucrados. Esto, en general, no es así para números grandes: no hay un método eficiente para encontrar la descomposición prima de un número grande. Esencialmente, el mejor método para encontrar un divisor de un número grande es el criterio de la raíz, es decir probando si algún número menor que la raíz del número original lo divide. El criterio de la raíz baja el número de comprobaciones de $n$ a $\sqrt{n}$ y eso no ayuda mucho cuando $n$ es grande.
+\begin{observacion*} La proposición anterior nos puede llevar a pensar que una forma sencilla de encontrar el mcd y mcm  es usando la descomposición en factores primos de los números involucrados. Esto, en general, no es así para números grandes: no hay un método eficiente para encontrar la descomposición prima de un número grande. Para encontrar un divisor de un número podemos utilizar el criterio de la raíz, es decir probando si algún primo menor que la raíz del número original lo divide. El criterio de la raíz baja el número de comprobaciones de $n$ a $\sqrt{n}$ y eso no ayuda mucho cuando $n$ es grande. Por ejemplo,  si $n$  es un número de $100$ dígitos, entonces $\sqrt{n}$ es un número de $50$ dígitos y ninguna computadora en el mundo es capaz, ni será capaz, de hacer alrededor de $10^{50}$ operaciones.
+    
+También hay métodos más eficientes para encontrar los divisores de un número, por ejemplo la ``criba general de cuerpos numéricos'' o ``the general number field sieve'' (GNFS), que es un algoritmo de factorización de enteros. Este algoritmo puede factorizar  en tiempo razonable números de $70$ o más dígitos.
 
- Ahora bien, ¿qué es un ``número grande''? En la actualidad, por ejemplo, con todos los recursos computacionales de que se disponen, no es posible factorizar números de $200$ dígitos o más. Por lo tanto, no podríamos encontrar el mcd  de dos números de $200$ dígitos o más a partir de la factorización prima de ambos. Sin embargo,  con el algoritmo de Euclides el mcd de estos números se obtendría en pocos segundos.     
+
+ Sin embargo, para números grandes no hay ningún algoritmo actual que corra en las más potentes máquinas que se disponen en este momento, que permita factorizarlos. Ahora bien, ¿qué es un ``número grande''? En la actualidad, por ejemplo, con todos los recursos computacionales de que se disponen, no es posible factorizar números de $300$ dígitos o más. Por lo tanto, no podríamos encontrar el mcd  de dos números de $300$ dígitos o más a partir de la factorización prima de ambos. Sin embargo,  con el algoritmo de Euclides el mcd de estos números se obtendría en pocos segundos.     
 \end{observacion*}
 
 

@@ -9,5 +9,6 @@
         "s\\'olo",
         "soluci",
         "soluci\\'on"
-    ]
+    ],
+    "restructuredtext.pythonRecommendation.disabled": true
 }
