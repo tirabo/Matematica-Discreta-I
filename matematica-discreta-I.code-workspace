@@ -14,6 +14,7 @@
 			"soluci",
 			"soluci\\'on"
         ],
-        "esbonio.sphinx.confDir": ""
+        "esbonio.sphinx.confDir": "",
+        "restructuredtext.pythonRecommendation.disabled": true
 	}
 }
